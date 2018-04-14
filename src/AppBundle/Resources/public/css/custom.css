@@ -1,0 +1,21 @@
+/* Step Record */
+.step_1{ background-color: #00BCD4; }
+.step_2{ background-color: #4CAF50; }
+.step_3a{background-color: #F44336; }
+.step_3b{background-color: #FF5722;}
+.step_4{background-color: #673AB7; }
+
+.state_1{background-color: #4CAF50;}
+.state_2{background-color: #F44336;}
+.state_3{background-color: #673AB7;}
+
+.no-padding{
+    padding: 0 !important;
+}
+.width-140{
+    width: 140px !important;
+}
+
+.client-area{
+    background-color: red;
+}

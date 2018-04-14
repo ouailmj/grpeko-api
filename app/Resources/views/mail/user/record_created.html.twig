@@ -1,0 +1,5 @@
+{% extends "mail/layout.html.twig" %}
+
+{% block content %}
+    Un nouveau dossier sinistre a été créé sur l'extranet d'AXA Assurances. Pour y accéder veuiller cliquer sur ce lien <a href="{{ url('record_show', {'id': record.id}) }}">{{ url('record_show', {'id': record.id}) }}</a>.
+{% endblock %}

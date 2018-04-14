@@ -1,0 +1,11 @@
+{% if not is_granted('IS_AUTHENTICATED_REMEMBERED') or is_granted('ROLE_ADVISORY')%}
+    {% set base_template = 'layout/base.html.twig' %}
+{% else %}
+    {% set base_template = 'layout/front_base.html.twig' %}
+{% endif %}
+
+{% extends base_template %}
+
+{% if form is defined and form %}
+    {% form_theme form 'Form/fields.html.twig' %}
+{% endif %}

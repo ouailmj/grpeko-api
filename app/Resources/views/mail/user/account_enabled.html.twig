@@ -1,0 +1,7 @@
+{% extends "mail/layout.html.twig" %}
+
+{% block content %}
+    <p>Votre compte sur l'extranet d'AXA a été activé</p>
+    Email: <strong>{{ email }}</strong><br>
+    Lien: <strong><a href="{{ url('fos_user_security_login') }}">{{ url('fos_user_security_login') }}</a></strong>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "mail/layout.html.twig" %}
+
+{% block body %}
+    <p>Bonjour,</p>
+    Votre compte sur l'extranet de AXA vient d'être créé. Ci-dessous les accès: <br>
+    Email: <strong>{{ email }}</strong><br>
+    Password: <strong>{{ password }}</strong><br>
+    Lien: <strong><a href="{{ url('fos_user_security_login') }}">{{ url('fos_user_security_login') }}</a></strong>
+
+    <p>Cordialement.</p>
+{% endblock %}

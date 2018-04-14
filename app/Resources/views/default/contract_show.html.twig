@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h6 class="panel-title">Détails du contrat<a class="heading-elements-toggle"><i class="icon-more"></i></a>
+            </h6>
+            <div class="heading-elements">
+                <a href="#" class="btn btn-primary btn-xs "><b><i class="icon-loop3"></i></b> Retour à la fiche
+                    client</a>
+            </div>
+        </div>
+        <div class="panel-body"></div>
+
+        <table class="table">
+            <tbody>
+            <tr>
+                <th>Numéro de contrat</th>
+                <td>155554007</td>
+            </tr>
+            <tr>
+                <th>Type de contrat</th>
+                <td>IARD (Incendie,Acciends,Riques divers)</td>
+            </tr>
+
+            <tr>
+                <th>Produit</th>
+                <td> Premium - Collectivités</td>
+            </tr>
+            <tr>
+                <th>Compagnie</th>
+                <td><a href="{{ path('client_show') }}" title="Voir les détails du client">La mairie de Paris</a></td>
+            </tr>
+            <tr>
+                <th>Etat</th>
+                <td><span class="label label-info">En cours</span></td>
+            </tr>
+            <tr>
+                <th>Date début</th>
+                <td>15-02-2017</td>
+            </tr>
+            <tr>
+                <th>Date fin</th>
+                <td>15-02-2018</td>
+            </tr>
+            <tr>
+                <th>Notes</th>
+                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat.
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <div class="text-right">
+                        <div class="btn-group">
+                            <button name="update" type="submit" class="btn btn-primary legitRipple">Mettre à jour<i
+                                        class="icon-rotate-cw2 position-right"></i></button>
+                            <button onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');"
+                                    name="delete" title="Supprimer cet utilisateur" type="submit"
+                                    class="btn btn-danger legitRipple">Supprimer <i
+                                        class="icon-trash-alt position-right"></i></button>
+                        </div>
+                    </div>
+                </th>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

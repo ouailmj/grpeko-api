@@ -1,0 +1,140 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <!-- Highlighting rows and columns -->
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h5 class="panel-title">Liste des conducteurs</h5>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li><a data-action="collapse"></a></li>
+                    <li><a data-action="reload"></a></li>
+                    <li><a data-action="close"></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <span title="Ajouter un nouvel client" class="pull-right"><a href="{{ path('driver_new') }}" class="btn btn-labeled btn-labeled-left bg-blue heading-btn"><b><i class="icon-user-plus"></i></b> Ajouter</a></span>
+        </div>
+
+        <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Nom </th>
+                <th>Prénom</th>
+                <th>Adresse Complément </th>
+                <th>N° de téléphone</th>
+                <th>N° de licence</th>
+                <th>Documents numérisés</th>
+                <th class="text-center">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {#{% for item in users %}#}
+            <tr>
+                <td><a href="#">1</a></td>
+
+                <td>Eugene</td>
+                <td>Kopyov</td>
+                <td>Ring street 12, building D, flat #67</td>
+                <td>+99-99-9999-9999</td>
+                <td>2096</td>
+                <td class="text-center"><i class="icon-folder-download position-center"></i></td>
+
+                <td class="text-center">
+                    {#
+                    <ul class="icons-list">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="icon-menu9"></i>
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li><a href="#"><i class="icon-file-pdf"></i> Export to .pdf</a></li>
+                                <li><a href="#"><i class="icon-file-excel"></i> Export to .csv</a></li>
+                                <li><a href="#"><i class="icon-file-word"></i> Export to .doc</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    #}
+                    <div class="btn-group">
+                        <a title="Afficher les détails" href="{{ path('driver_show') }}" class=" legitRipple"><i class="icon-eye position-left"></i></a>
+                        <a title="Modifier" href="{{ path('driver_edit') }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
+                        <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
+                    </div>
+                </td>
+            </tr> <tr>
+                <td><a href="#">2</a></td>
+                <td>Said</td>
+                <td>milf</td>
+                <td>Ring streat 45, building M, flat #77</td>
+                <td>+99-99-9999-9999</td>
+                <td>8526</td>
+                <td class="text-center"><i class="icon-folder-download position-center"></i></td>
+
+                <td class="text-center">
+                    {#
+                    <ul class="icons-list">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="icon-menu9"></i>
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li><a href="#"><i class="icon-file-pdf"></i> Export to .pdf</a></li>
+                                <li><a href="#"><i class="icon-file-excel"></i> Export to .csv</a></li>
+                                <li><a href="#"><i class="icon-file-word"></i> Export to .doc</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    #}
+                    <div class="btn-group">
+                        <a title="Afficher les détails" href="{{ path('driver_show') }}" class=" legitRipple"><i class="icon-eye position-left"></i></a>
+                        <a title="Modifier" href="{{ path('driver_edit') }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
+                        <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
+                    </div>
+                </td>
+            </tr> <tr>
+                <td><a href="#">3</a></td>
+                <td>jamal</td>
+                <td>saty</td>
+                <td>Ring street 98, building A, flat #84</td>
+                <td>+99-99-9999-9999</td>
+                <td>7916</td>
+                <td class="text-center"><i class="icon-folder-download position-center"></i></td>
+
+
+                <td class="text-center">
+                    {#
+                    <ul class="icons-list">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="icon-menu9"></i>
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li><a href="#"><i class="icon-file-pdf"></i> Export to .pdf</a></li>
+                                <li><a href="#"><i class="icon-file-excel"></i> Export to .csv</a></li>
+                                <li><a href="#"><i class="icon-file-word"></i> Export to .doc</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    #}
+                    <div class="btn-group">
+                        <a title="Afficher les détails" href="{{ path('driver_show') }}" class=" legitRipple"><i class="icon-eye position-left"></i></a>
+                        <a title="Modifier" href="{{ path('driver_edit') }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
+                        <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
+                    </div>
+                </td>
+            </tr>
+            {#{% endfor %}#}
+            </tbody>
+        </table>
+    </div>
+    <!-- /highlighting rows and columns -->
+
+{% endblock %}
+

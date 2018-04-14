@@ -1,0 +1,121 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <div class="panel panel-white">
+        <div class="panel-heading">
+            <h6 class="panel-title">Gestion des utilisateurs<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+            <div class="heading-elements">
+                <a href="{{ path('user_index') }}" class="btn btn-primary btn-xs "><b><i class="icon-loop3"></i></b> Retour à la liste</a>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-6 content-group">
+                    <img src="{{ asset('assets/images/avatar.png') }}" class="content-group mt-10" alt="" style="width: 120px;">
+                    <ul class="list-condensed list-unstyled">
+                        <li>{{ user.zipCode|default('') }} {{ user.lastName|default('') }} {{ user.firstName|default('') }}</li>
+                        <li>{{ user.phoneNumber|default('') }}</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 col-lg-12">
+
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <th>Nom</th>
+                            <td>{{ user.firstName }}</td>
+                        </tr>
+                        <tr>
+                            <th>Prénom</th>
+                            <td>{{ user.lastName }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{  'profile.show.email'|trans({}, 'FOSUserBundle') }}</th>
+                            <td>{{ user.email|default('') }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{ 'profile.show.username'|trans({}, 'FOSUserBundle') }}</th>
+                            <td>{{ user.username|default('') }}</td>
+                        </tr>
+                        <tr>
+                            <th>Adresse</th>
+                            <td>{{ user.address }}</td>
+                        </tr>
+                        <tr>
+                            <th>Complément adresse</th>
+                            <td>{{ user.addressComplement }}</td>
+                        </tr>
+                        <tr>
+                            <th>Code postal</th>
+                            <td>{{ user.zipCode }}</td>
+                        </tr>
+                        <tr>
+                            <th>Ville</th>
+                            <td>{{ user.city }}</td>
+                        </tr>
+                        <tr>
+                            <th>Téléphone</th>
+                            <td>{{ user.phoneNumber }}</td>
+                        </tr>
+                        <tr>
+                            <th>Rôles</th>
+                            <td>
+                                {% for role in user.tableRoles %}
+                                    <span class="label label-success">{{ role }}</span>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Date de création</th>
+                            <td>{% if user.createdAt %}{{ user.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Dernière modification</th>
+                            <td>{% if user.updatedAt %}{{ user.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Dernière connexion</th>
+                            <td>{% if user.updatedAt %}{{ user.lastLogin|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Statut</th>
+                            <td>
+                                {% if user.enabled %}
+                                    <span class="label label-success">Activé</span>
+                                    {% set labelEnable = 'Désactiver'%}
+                                {% else %}
+                                    <span class="label label-danger">Désactivé</span>
+                                    {% set labelEnable = 'Activer'%}
+                                {% endif %}
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="heading-elements pull-right">
+                <div class="col-md-12">
+                    <div class="btn-group">
+                        <a href="{{ path('user_edit', {'id': user.id}) }}" class="btn btn-primary btn-labeled btn-xs legitRipple"><b><i class="icon-pencil"></i></b> Modifier</a>
+                        {% if (user.enabled == false ) %}
+                        <a href="#" data-toggle="modal" data-target="#modal_change_status" class="btn btn-action btn-labeled btn-xs legitRipple" style="color: #4CAF50"><b><i class="icon-unlocked"></i></b> {{ labelEnable }}</a>
+                        {% else %}
+                        <a href="#" data-toggle="modal" data-target="#modal_change_status" class="btn btn-action btn-labeled btn-xs legitRipple" style="color: #F44336"><b><i class="icon-lock"></i></b> {{ labelEnable }}</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {% include 'layout/modal_delete.html.twig' %}
+    {% include 'layout/modal_changeStatusUser.html.twig' %}
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends "mail/layout.html.twig" %}
+
+{% block content %}
+    Une nouvelle surface a été créée sur l'extranet d'AXA Assurances. Pour visualiser la fiche de surface, veuillez cliquer sur le lien ci-après:
+     <a href="{{ url('surface_show', {'id': surface.id}) }}">{{ url('surface_show', {'id': surface.id}) }}</a>
+
+{% endblock %}

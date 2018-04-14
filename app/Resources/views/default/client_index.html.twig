@@ -1,0 +1,114 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <!-- Highlighting rows and columns -->
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h5 class="panel-title">Liste des clients</h5>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li><a data-action="collapse"></a></li>
+                    <li><a data-action="reload"></a></li>
+                    <li><a data-action="close"></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <span title="Ajouter un nouveau client" class="pull-right"><a href="{{ path('client_new') }}" class="btn btn-labeled btn-labeled-left bg-blue heading-btn"><b><i class="icon-plus3"></i></b> Ajouter</a></span>
+        </div>
+
+        <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Nom</th>
+                <th>Type</th>
+                <th>Année</th>
+                <th>Naf </th>
+                <th>Siret </th>
+                <th>Code Tva </th>
+                <th>CA</th>
+                <th>Nbr. d'employés</th>
+                <th class="text-center">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {#{% for item in users %}#}
+            <tr>
+                <td><a href="#">1</a></td>
+                <td>IWEB Maroc</td>
+                <td>SAS</td>
+                <td>2010</td>
+                <td>258963</td>
+                <td>325415</td>
+                <td>2597412</td>
+                <td>
+                    <span class="label label-info">0 à 499k</span>
+                </td>
+                <td>
+                    <span class="label label-info">500 à 999 salariés</span>
+                </td>
+
+                <td class="text-center">
+                    <div class="">
+                        <a title="Afficher les détails" href="{{ path('client_show') }}" class=" legitRipple"><i class="icon-eye position-left"></i></a>
+                        <a title="Modifier" href="{{ path('client_edit') }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
+                        <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><a href="#">1</a></td>
+                <td>La mairie de Paris</td>
+                <td>Collectivité Territoriale</td>
+                <td>2016</td>
+                <td>256978</td>
+                <td>159757</td>
+                <td>798231</td>
+                <td>
+                    <span class="label label-info">Plus de 1M</span>
+                </td>
+                <td>
+                    <span class="label label-info">0 à 499 salariés</span>
+                </td>
+                <td class="text-center">
+                    <div class="">
+                        <a title="Afficher les détails" href="{{ path('client_show') }}" class=" legitRipple"><i class="icon-eye position-left"></i></a>
+                        <a title="Modifier" href="{{ path('client_edit') }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
+                        <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><a href="#">1</a></td>
+                <td>Said</td>
+                <td>SARL</td>
+                <td>2017</td>
+                <td>739148</td>
+                <td>286479</td>
+                <td>196473</td>
+                <td>
+                    <span class="label label-info">0 à 499k</span>
+                </td>
+                <td>
+                    <span class="label label-info">Plus de 1000 salariés</span>
+                </td>
+
+                <td class="text-center">
+                    <div class="">
+                        <a title="Afficher les détails" href="{{ path('client_show') }}" class=" legitRipple"><i class="icon-eye position-left"></i></a>
+                        <a title="Modifier" href="{{ path('client_edit') }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
+                        <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
+                    </div>
+                </td>
+            </tr>
+            {#{% endfor %}#}
+            </tbody>
+        </table>
+    </div>
+    <!-- /highlighting rows and columns -->
+
+{% endblock %}
+

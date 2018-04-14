@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{#{% form_theme edit_form 'Form/fields.html.twig' %}#}
+
+{% block content %}
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h6 class="panel-title">Gestion des étapes de dossiers<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+            <div class="heading-elements">
+                <a href="#" class="btn btn-primary btn-xs "><b><i class="icon-loop3"></i></b> Retour à la liste</a>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <p class="content-group-lg"></p>
+
+            <form name="appbundle_user" method="post" class="form-horizontal">
+            <div id="appbundle_user">
+                <div class="form-group">
+                <label class="control-label col-lg-2 text-semibold control-label required" for="appbundle_user_firstName">Nom</label>
+                    <div class="col-lg-10">
+                        <input type="text" id="appbundle_user_firstName" name="appbundle_user[firstName]" required="required" class="form-control" value="Adah" />
+                    </div>
+                </div>
+                <div class="form-group">
+                <label class="control-label col-lg-2 text-semibold control-label required" for="appbundle_user_lastName">Description</label>
+                    <div class="col-lg-10">
+                        <input type="text" id="appbundle_user_lastName" name="appbundle_user[lastName]" required="required" class="form-control" value="Reichel" />
+                    </div>
+                </div>
+                <input type="hidden" id="appbundle_user__token" name="appbundle_user[_token]" value="kiCkiLqcAbTrgyBCnyvXyhNm0CHHqrErjkmL3MgVsaU" />
+    </div>
+            <div class="text-right">
+                <div class="btn-group">
+                    <button name="update" type="submit" class="btn btn-primary legitRipple">Mettre à jour<i class="icon-rotate-cw2 position-right"></i></button>
+                    <button onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" name="delete" title="Supprimer cette étape" type="submit" class="btn btn-danger legitRipple">Supprimer <i class="icon-trash-alt position-right"></i></button>
+                </div>
+            </div>
+
+    </form>
+        </div>
+    </div>
+{% endblock %}

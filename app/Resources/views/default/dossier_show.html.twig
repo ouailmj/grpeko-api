@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+{#{% form_theme edit_form 'Form/fields.html.twig' %}#}
+
+{% block content %}
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h6 class="panel-title">Gestion des dossiers<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+            <div class="heading-elements">
+                <a href="#" class="btn btn-primary btn-xs "><b><i class="icon-loop3"></i></b> Retour à la liste</a>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <p class="content-group-lg"></p>
+            <table class="table table-bordered table-lg">
+                        <tbody>
+                        <tr>
+                            <th>Nom Dossier</th>
+                            <td>Dossier 1</td>
+                        </tr>
+                        <tr>
+                            <th>Description</th>
+                            <td>DIY synth PBR banksy irony</td>
+                        </tr>
+                        <tr>
+                            <th>Nom de client</th>
+                            <td>Jean</td>
+                        </tr>
+
+                        <tr>
+                            <th>Nom de conseiller</th>
+                            <td>Schowalter</td>
+                        </tr>
+                        <tr>
+                            <th>Date d'événement</th>
+                            <td>12-06-2016</td>
+                        </tr>
+                        <tr>
+                            <th>Adresse d'événement</th>
+                            <td>Ring street 12</td>
+                        </tr>
+                        <tr>
+                            <th>Complément adresse</th>
+                            <td>Ring street 12, building D, flat #67"</td>
+                        </tr>
+                        <tr>
+                            <th>Montant d’assurance</th>
+                            <td>45 000</td>
+                        </tr>
+                        <tr>
+                            <th>Nom d'intermédiaire</th>
+                            <td>Dupont</td>
+                        </tr>
+                        <tr>
+                            <th>N° reference d'intermédiaire</th>
+                            <td>1259-658</td>
+                        </tr>
+                        <tr>
+                            <th>N° reference client</th>
+                            <td>7853-826</td>
+                        </tr>
+                        <tr>
+                            <th colspan="2">
+                                <div class="text-right">
+                                    <div class="btn-group">
+                                        <a href="{{ path('dossier_edit') }}" class="btn btn-primary btn-labeled btn-xs legitRipple"><b><i class="icon-pencil"></i></b> Modifier</a>
+                                        <a href="#" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" type="button" class="btn btn-danger btn-labeled btn-xs legitRipple"><b><i class="icon-trash-alt"></i></b> Supprimer</a>
+                                     </div>
+                                </div>
+                            </th>
+                        </tr>
+
+                        </tbody>
+                     </table>
+
+        </div>
+    </div>
+{% endblock %}

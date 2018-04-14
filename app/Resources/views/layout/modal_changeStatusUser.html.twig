@@ -1,0 +1,25 @@
+{% block content %}
+
+    <!-- Delete modal -->
+    <div id="modal_change_status" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-teal-400">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h6 class="modal-title">Confirmation du changement statut</h6>
+                </div>
+
+                <div class="modal-body">
+                    <p>Êtes-vous sûr pour changer la status ?</p>
+                </div>
+
+                <div class="modal-footer">
+                    {{ form_start(changeStatus) }}
+                    <button type="button" class="btn btn-link" data-dismiss="modal">Fermer</button>
+                    <input type="submit"  value="Changer" name="delete" title="Changer la statut" class="btn bg-teal-400 legitRipple" />
+                    {{ form_end(changeStatus) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock  %}

@@ -1,0 +1,123 @@
+{% extends 'base.html.twig' %}
+{#{% form_theme edit_form 'Form/fields.html.twig' %}#}
+
+{% block content %}
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h6 class="panel-title">Gestion des dossiers<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+            <div class="heading-elements">
+                <a href="#" class="btn btn-primary btn-xs "><b><i class="icon-loop3"></i></b> Retour à la liste</a>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <p class="content-group-lg"></p>
+
+            <form name="appbundle_user" method="post" class="form-horizontal">
+            <div id="appbundle_user">
+                <div class="form-group">
+                <label class="control-label col-lg-2 text-semibold control-label" for="appbundle_user_addressComplement">Nom Dossier</label>
+                    <div class="col-lg-10">
+                        <input type="text" id="appbundle_user_addressComplement" name="appbundle_user[addressComplement]" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                <label class="control-label col-lg-2 text-semibold control-label" for="appbundle_user_addressComplement">Description</label>
+                    <div class="col-lg-10">
+                        <input type="text" id="appbundle_user_addressComplement" name="appbundle_user[addressComplement]" class="form-control" />
+                    </div>
+                </div>
+              <div class="form-group">
+                    <label class="control-label col-lg-2 text-semibold control-label required" for="appbundle_user_tableClient">Nom de client</label>
+                    <div class="col-lg-10">
+                        <select class="select-size-xs select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                            <option value="Jean">IWEB Maroc</option>
+                            <option value="Adah">Mairie de Mrrakech</option>
+                            <option value="Maynard">Maynard</option>
+                        </select>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-lg-2 text-semibold control-label required" for="appbundle_user_roless">Nom de conseiller</label>
+                    <div class="col-lg-10">
+                        <select id="appbundle_user_roless" name="appbundle_user[roless]" class="form-control">
+                        <option value="Wolff">Wolff</option>
+                        <option value="Schowalter">Schowalter</option>
+                        <option value="Reichel">Reichel</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                <label class="control-label col-lg-2 text-semibold control-label required" for="appbundle_user_firstName">Date d'événement</label>
+                    <div class="col-lg-10">
+                        <input type="text" id="appbundle_user_firstName" name="appbundle_user[firstName]" required="required" class="form-control" value="" />
+                    </div>
+                </div>
+                <div class="form-group">
+                <label class="control-label col-lg-2 text-semibold control-label required" for="appbundle_user_lastName">Adresse d'événement</label>
+                    <div class="col-lg-10">
+                        <input type="text" id="appbundle_user_lastName" name="appbundle_user[lastName]" required="required" class="form-control" value="" />
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                <label class="control-label col-lg-2 text-semibold control-label" for="appbundle_user_addressComplement">Complément adresse</label>
+                    <div class="col-lg-10">
+                        <input type="text" id="appbundle_user_addressComplement" name="appbundle_user[addressComplement]" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group"><label class="control-label col-lg-2 text-semibold control-label" for="appbundle_user_zipCode">Code postal</label>
+                    <div class="col-lg-10">
+                        <input type="text" id="appbundle_user_zipCode" name="appbundle_user[zipCode]" class="form-control" value="" />
+                    </div>
+                </div>
+                <div class="form-group">
+                <label class="control-label col-lg-2 text-semibold control-label required" for="appbundle_user_city">Ville</label>
+                    <div class="col-lg-10">
+                        <input type="text" id="appbundle_user_city" name="appbundle_user[city]" required="required" class="form-control" value="" />
+                    </div>
+                </div>
+                <div class="form-group">
+                <label class="control-label col-lg-2 text-semibold control-label" for="appbundle_user_phoneNumber">Montant d’assurance</label>
+                    <div class="col-lg-10">
+                        <input type="text" id="appbundle_user_city" name="appbundle_user[city]" required="required" class="form-control" value="" />
+                    </div>
+               </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label text-semibold">Détail du calcul</label>
+                    <div class="col-lg-10">
+                        <div class="input-group file-caption-main">
+                            <div class="input-group-btn">
+                                   <input type="file" class="file-input-advanced" multiple="multiple" id="1501934553000">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                <label class="control-label col-lg-2 text-semibold control-label" for="appbundle_user_password_first">Nom d'intermédiaire</label>
+                    <div class="col-lg-10">
+                        <input type="text" id="appbundle_user_city" name="appbundle_user[city]" required="required" class="form-control" value="" />
+                    </div>
+                </div>
+                <div class="form-group">
+                <label class="control-label col-lg-2 text-semibold control-label" for="appbundle_user_password_first">referenced'intermédiaire</label>
+                    <div class="col-lg-10">
+                        <input type="text" id="appbundle_user_city" name="appbundle_user[city]" required="required" class="form-control" value="" />
+                    </div>
+                </div>
+
+                <input type="hidden" id="appbundle_user__token" name="appbundle_user[_token]" value="kiCkiLqcAbTrgyBCnyvXyhNm0CHHqrErjkmL3MgVsaU" />
+    </div>
+            <div class="text-right ">
+                <div class="btn-group">
+                    <button name="update" type="submit" class="btn btn-primary legitRipple">Ajouter <i class="icon-arrow-right14 position-right"></i></button>
+                </div>
+            </div>
+
+    </form>
+        </div>
+    </div>
+{% endblock %}

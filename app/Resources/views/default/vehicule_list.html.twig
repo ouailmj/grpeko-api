@@ -1,0 +1,128 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <div class="panel panel-white">
+        <div class="panel-heading">
+            <h6 class="panel-title">Liste des Véhicules<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+            <div class="heading-elements">
+                <a href="{{ path('user_index') }}" class="btn btn-primary btn-xs "><b><i class="icon-loop3"></i></b> Retour à la liste</a>
+            </div>
+        </div>
+
+        <div class="panel-body">
+
+        </div>
+        <table class="table datatable-responsive  table-bordered table-hover datatable-highlight">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Marque</th>
+                <th>Modèle dossier</th>
+                <th>Modèle commercial</th>
+                <th>Désignation commerciale</th>
+                <th>CNIT</th>
+                <th>Type Variante Version (TVV)</th>
+                <th>Carburant</th>
+                <th>Hybride</th>
+                <th>Puissance administrative</th>
+                <th>Puissance maximale</th>
+                <th>Boite de vitesse</th>
+                <th>Consommation urbaine</th>
+                <th>Consommation extra-urbaine</th>
+                <th>Consommation mixte</th>
+                <th>CO2</th>
+                <th>CO</th>
+                <th>type I</th>
+                <th>HC</th>
+                <th>NOx</th>
+                <th>HC+NOx</th>
+                <th>Particules</th>
+                <th>Masse vide euro min</th>
+                <th>Masse vide euro max</th>
+                <th>Champ v9</th>
+                <th>Année</th>
+                <th>Carrosserie</th>
+                <th>Gamme</th>
+                <th class="text-center">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>MERCEDES</td>
+                <td>CLASSE C</td>
+                <td> C 250</td>
+                <td>C 250</td>
+                <td>BLUETEC</td>
+                <td>4MATIC</td>
+                <td>BVA7</td>
+                <td>FAP</td>
+                <td>M10MCDVPLX3A485</td>
+                <td>204KR204P1NRAAA513</td>
+                <td>Diesel</td>
+                <td>Non hybride</td>
+                <td>11</td>
+                <td>150.0</td>
+                <td>A 7</td>
+                <td>6.0</td>
+                <td>4.6</td>
+                <td>5.1</td>
+                <td>134.0</td>
+                <td>0.179</td>
+                <td>0.05</td>
+                <td>0.063</td>
+                <td>0.001</td>
+                <td>1710</td>
+                <td>1710</td>
+                <td>715/2007*136/2014EURO6</td>
+                <td>2015</td>
+                <td class="text-center">
+                    <div class="">
+                        <a title="Afficher les détails" href="#" class="text-primary legitRipple"><i class="icon-eye position-left"></i></a>
+                        <a title="Modifier" href="#" class="text-primary legitRipple"><i class="icon-pen position-left"></i></a>
+                        <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>MERCEDES</td>
+                <td>CLASSE C</td>
+                <td>C 250</td>
+                <td>C 250</td>
+                <td>BLUETEC</td>
+                <td>4MATIC</td>
+                <td> BVA7</td>
+                <td>FAP</td>
+                <td>M10MCDVPPT91639</td>
+                <td>204KR204P1NRAAA562</td>
+                <td>Diesel</td>
+                <td>Non hybride</td>
+                <td>11</td>
+                <td>150.0</td>
+                <td>A 7</td>
+                <td>5.9</td>
+                <td>4.6</td>
+                <td>5.1</td>
+                <td>133.0</td>
+                <td>0.179</td>
+                <td>0.05</td>
+                <td>0.063</td>
+                <td>0.001</td>
+                <td>1710</td>
+                <td>1710</td>
+                <td>715/2007*136/2014EURO6</td>
+                <td>2015</td>
+                <td class="text-center">
+                    <div class="">
+                        <a title="Afficher les détails" href="#" class="text-primary legitRipple"><i class="icon-eye position-left"></i></a>
+                        <a title="Modifier" href="#" class="text-primary legitRipple"><i class="icon-pen position-left"></i></a>
+                        <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

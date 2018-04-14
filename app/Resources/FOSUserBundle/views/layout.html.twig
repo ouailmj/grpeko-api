@@ -1,0 +1,67 @@
+{% extends 'layout/base.html.twig' %}
+{% block stylesheets %}
+    <style>
+        @media (min-width: 450px) {
+            body {
+                background: url("{{  asset('assets/images/background-axa.jpg')}}") no-repeat 50% 0 fixed #f7f7f7;
+                background-size: cover;
+            }
+        }
+
+        @media (min-width: 450px) {
+            body {
+                background: url("{{  asset('assets/images/page_background.jpg')}}") 50% 0 no-repeat fixed #f7f7f7;
+                background-size: cover;
+            }
+        }
+    </style>
+{% endblock %}
+{% block navbar %}
+
+    <div class="navbar navbar-inverse">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{{ path('homepage') }}"><img src="{{ asset('assets/images/logo_axa.png') }}"
+                                                                       alt="Extranet AXA"></a>
+            <ul class="nav navbar-nav pull-right visible-xs-block">
+                <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+            </ul>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-mobile">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a title=" Retourner au site web" href="http://www.jdg-assurances.fr">
+                        <i class="icon-home9"></i> <span class="visible-xs-inline-block position-right"> Retouner au site web</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}
+{% block content %}
+    <div>
+        {#
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+            <a href="{{ path('fos_user_security_logout') }}">
+                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+            </a>
+        {% else %}
+            <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+        {% endif %}
+        #}
+    </div>
+    <div>
+        {% block fos_user_content %}
+        {% endblock fos_user_content %}
+    </div>
+{% endblock %}
+{% block body_attributes %} class="login-container" {% endblock %}
+
+{% block sidebar %} {% endblock %}
+
+{% block footer %}
+    <div class="footer text-muted text-center">
+        &copy; {{ 'now'|date('Y') }}. <a href="http://www.jdg-assurances.fr" target="_blank">JDG Assurances</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,151 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <!-- Highlighting rows and columns -->
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h5 class="panel-title">Gestion des relations client</h5>
+            {#<div class="heading-elements">
+                <ul class="icons-list">
+                    <li><a data-action="collapse"></a></li>
+                    <li><a data-action="reload"></a></li>
+                    <li><a data-action="close"></a></li>
+                </ul>
+            </div>#}
+        </div>
+
+        <div class="panel-body">
+            <span title="Ajouter un nouveau client" class="pull-right"><a href="{{ path('relation_client_new') }}" class="btn btn-labeled btn-labeled-left bg-blue heading-btn"><b><i class="icon-plus3"></i></b> Ajouter</a></span>
+        </div>
+
+        {# form search #}
+        <form class="form-horizontal" action="#">
+            <div class="panel panel-flat">
+                <div class="panel-heading">
+                    <h5 class="panel-title">Recherche dans l’historiques<a class="heading-elements-toggle"><i class="icon-more"></i></a></h5>
+                    <div class="heading-elements">
+                        <ul class="icons-list">
+                            <li><a data-action="collapse"></a></li>
+                            <li><a data-action="reload"></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3 col-lg-3">
+                            <fieldset>
+                                <div class="form-group">
+                                    <legend class="text-semibold"><i class="icon-search4 position-left"></i> Chercher : </legend>
+                                    <div class="col-lg-10">
+                                        <input type="text" id="appbundle_user_addressComplement" name="appbundle_user[addressComplement]" class="form-control" />
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                        </div>
+
+                        <div class="col-md-3 col-lg-3">
+                            <fieldset>
+                                <div class="form-group">
+                                    <legend class="text-semibold"><i class="icon-user position-left"></i> Chercher par nom du clinet : </legend>
+                                    <div class="col-lg-10">
+                                        <select id="appbundle_user_roless" name="appbundle_user[roless]" class="form-control">
+                                            <option value="Jean">Jean</option>
+                                            <option value="Adah">Adah</option>
+                                            <option value="Maynard">Maynard</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="col-md-3 col-lg-3">
+                            <fieldset>
+                                <div class="form-group">
+                                    <legend class="text-semibold"><i class="icon-user-tie position-left"></i> Chercher par nom d'utilisateur : </legend>
+                                    <div class="col-lg-10">
+                                        <select id="appbundle_user_roless" name="appbundle_user[roless]" class="form-control">
+                                            <option value="Wolff">Wolff</option>
+                                            <option value="Schowalter">Schowalter</option>
+                                            <option value="Reichel">Reichel</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="col-md-3 col-lg-3">
+                            <fieldset>
+                                <div class="form-group">
+                                    <legend class="text-semibold"><i class="icon-calendar22 position-left"></i> Chercher par date : </legend>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control daterange-left" value="{{  "now"|date("d/m/y") }} - {{ "now"|date('d/m/y') }}">
+                                        <span class="input-group-addon"></span>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-primary legitRipple">Recherchez <i class="icon-arrow-right14 position-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+        {# tab result #}
+        <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Action</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th class="text-center">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr>
+                <td><a href="#">1</a></td>
+                <td>Eugene</td>
+                <td>Ahmed</td>
+                <td>-</td>
+                <td>-</td>
+                <td>12-12-2016</td>
+                <td class="text-center">
+                    <div class="">
+                        <a title="Afficher les détails" href="{{ path('relation_client_show') }}" class=" legitRipple"><i class="icon-eye position-left"></i></a>
+                        <a title="Modifier" href="{{ path('relation_client_edit') }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
+                        <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><a href="#">2</a></td>
+                <td>Eugene</td>
+                <td>Ahmed</td>
+                <td>-</td>
+                <td>-</td>
+                <td>12-12-2016</td>
+                <td class="text-center">
+                    <div class="">
+                        <a title="Afficher les détails" href="{{ path('relation_client_show') }}" class=" legitRipple"><i class="icon-eye position-left"></i></a>
+                        <a title="Modifier" href="{{ path('relation_client_edit') }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
+                        <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- /highlighting rows and columns -->
+
+{% endblock %}
+

@@ -1,0 +1,5 @@
+{% extends "mail/layout.html.twig" %}
+
+{% block content %}
+    Un nouveau fichier a été téléchargé au sinistre <a target="_blank" href="{{ url('record_show', {'id': record.id}) }}">{{ url('record_show', {'id': record.id}) }}</a>.
+{% endblock %}

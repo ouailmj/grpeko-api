@@ -1,0 +1,43 @@
+<div class="navbar navbar-default navbar-fixed-top header-highlight">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="/"><img src="{{ asset('assets/images/logo_axa.png') }}" alt="AXA EXTRANET"></a>
+
+        <ul class="nav navbar-nav pull-right visible-xs-block">
+            <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+            <li><a class="sidebar-mobile-main-toggle"><i class="icon-paragraph-justify3"></i></a></li>
+        </ul>
+    </div>
+
+    <div class="navbar-collapse collapse" id="navbar-mobile">
+        <ul class="nav navbar-nav">
+            <li><a class="sidebar-control sidebar-main-toggle hidden-xs"><i class="icon-paragraph-justify3"></i></a></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            {#
+            <li><a href="#">Text link</a></li>
+
+            <li>
+                <a href="#">
+                    <i class="icon-cog3"></i>
+                    <span class="visible-xs-inline-block position-right">Icon link</span>
+                </a>
+            </li>
+            #}
+
+            <li class="dropdown dropdown-user">
+                <a class="dropdown-toggle" data-toggle="dropdown">
+                    <img src="{{ asset('assets/images/avatar.png') }}" alt="">
+                    <span> {{ app.user.firstName|default('') }} </span>
+                    <i class="caret"></i>
+                </a>
+
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a href="{{ path('fos_user_profile_show')}}"><i class="icon-user-plus"></i> Mon profil</a></li>
+                    <li class="divider"></li>
+                    <li><a href="{{ path('fos_user_security_logout') }}"><i class="icon-switch2"></i> Déconnexion</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

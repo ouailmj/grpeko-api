@@ -1,0 +1,57 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<form action="{{ path("fos_user_security_check") }}" method="post">
+    <div class="panel panel-body login-form">
+        <div class="text-center">
+            <div class="logo"></div>
+            <h5 class="content-group">Espace de connexion <small class="display-block">Remplissez le formulaire ci-dessous</small></h5>
+        </div>
+
+        {% if error %}
+            <div class="form-group "><span class="text-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</span></div>
+        {% endif %}
+
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+        <div class="form-group has-feedback has-feedback-left">
+            <input id="username" name="_username" value="{{ last_username }}" required="required" class="form-control {% if error %}has-error{% endif %}" placeholder="{{ 'security.login.username'|trans }}">
+            <div class="form-control-feedback">
+                <i class="icon-user text-muted"></i>
+            </div>
+        </div>
+
+        <div class="form-group has-feedback has-feedback-left">
+            <input type="password" id="password" name="_password" required="required" class="form-control" placeholder="{{ 'security.login.password'|trans }}">
+            <div class="form-control-feedback">
+                <i class="icon-lock2 text-muted"></i>
+            </div>
+        </div>
+
+        <div class="form-group login-options">
+            <div class="row">
+                <div class="col-sm-12">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="remember_me" name="_remember_me" value="on" class="styled" checked="checked">
+                        {{ 'security.login.remember_me'|trans }}
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" id="_submit" name="_submit" class="btn btn-primary btn-block">{{ 'security.login.submit'|trans }} <i class="icon-arrow-right14 position-right"></i></button>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-12"><a href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié ?</a></div>
+            </div>
+            <div class="row">
+                <br>
+                {#<div class="col-sm-12">Accès Super Admin: <span class="text-bold">superadmin/superadmin</span></div>
+                <div class="col-sm-12">Accès Admin: <span class="text-bold">admin/admin</span></div>
+                <div class="col-sm-12">Accès Conseiller: <span class="text-bold">advisory/advisory</span></div>#}
+                <div class="col-sm-12">Accès Client: <span class="text-bold">customer@test.com/customer</span></div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h6 class="panel-title">Détails du conducteur<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+            <div class="heading-elements">
+                <a href="{{ path('driver_index') }}" class="btn btn-primary btn-xs "><b><i class="icon-loop3"></i></b> Retour à la liste</a>
+            </div>
+        </div>
+        <div class="panel-body"></div>
+
+        <table class="table">
+            <tbody>
+            <tr>
+                <th>Nom </th>
+                <td>Adah</td>
+            </tr>
+            <tr>
+                <th>Prénom</th>
+                <td>Reichel</td>
+            </tr>
+
+            <tr>
+                <th>Adresse</th>
+                <td>Ring street 12</td>
+            </tr>
+
+            <tr>
+                <th>Adresse Complément</th>
+                <td>Ring street 12, building D, flat #67</td>
+            </tr>
+            <tr>
+                <th>Code postal</th>
+                <td>9749</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>paris</td>
+            </tr>
+            <tr>
+                <th>Numéro de téléphone</th>
+                <td>+99-99-9999-9999</td>
+            </tr>
+            <tr>
+                <th>Numéro de licence</th>
+                <td>2096</td>
+            </tr>
+            <tr>
+                <th>Documents numérisés</th>
+                <td ><i class="icon-folder-open position-center"></i></td>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <div class="text-right">
+                        <div class="btn-group">
+                            <a href="{{ path('driver_edit') }}" class="btn btn-primary btn-labeled btn-xs legitRipple"><b><i class="icon-pencil"></i></b> Modifier</a>
+                            <a href="#" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" type="button" class="btn btn-danger btn-labeled btn-xs legitRipple"><b><i class="icon-trash-alt"></i></b> Supprimer</a>
+                        </div>
+                    </div>
+                </th>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

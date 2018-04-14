@@ -1,0 +1,225 @@
+{% set current_menu="records" %}
+{% extends ':layout:front_base.html.twig' %}
+{#{% form_theme edit_form 'Form/fields.html.twig' %}#}
+{% block stylesheets %}
+    <style>
+        @media (min-width: 1200px) {
+            .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
+                float: none;
+            }
+        }
+    </style>
+{% endblock stylesheets %}
+{% block content %}
+    <div class="page-container" xmlns="http://www.w3.org/1999/html">
+
+        <!-- Page content -->
+        <div class="page-content">
+
+            <!-- Main content -->
+            <div class="content-wrapper">
+
+                <!-- Page header -->
+                <div class="page-header">
+                    <div class="page-header-content">
+                        <div class="page-title">
+                            <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">
+                                - Mes dossieres</span></h4>
+                            <a class="heading-elements-toggle"><i class="icon-more"></i></a><a
+                                    class="heading-elements-toggle"><i class="icon-more"></i></a></div>
+                    </div>
+                    <div class="breadcrumb-line breadcrumb-line-component"><a class="breadcrumb-elements-toggle"><i
+                                    class="icon-menu-open"></i></a><a class="breadcrumb-elements-toggle"><i
+                                    class="icon-menu-open"></i></a>
+                        <ul class="breadcrumb">
+                            <li><a href="index.html"><i class="icon-home2 position-left"></i> Accueil</a></li>
+                            <li class="active">Mes dossiers</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /page header -->
+
+
+                <!-- Content area -->
+                <div class="content">
+
+                    <!-- Traffic sources -->
+                    <div class="panel panel-flat">
+                        <div class="panel-body">
+                            <div class="col-md-12 col-md-offset-0 text-right ">
+                                <div class="btn-group">
+                                    <button name="update" type="submit" class="btn btn-axa btn-primary legitRipple">
+                                        <a href="{{ path('portail_record_new') }}">Déclarer un sinistre
+                                        <i class="icon-arrow-right14 position-right"></i>
+                                    </a></button>
+                                </div>
+                                <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nom client</th>
+                                        <th>Nom</th>
+                                        <th>Prénom</th>
+                                        <th>Adress</th>
+                                        <th>Adresse Complément</th>
+                                        <th>ZIP code</th>
+                                        <th>Ville</th>
+                                        <th>Numéro de téléphone</th>
+                                        <th class="text-center">Actions</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {#{% for item in users %}#}
+                                    <tr>
+                                        <td><a href="#">1</a></td>
+                                        <td>Adah</td>
+                                        <td>Eugene</td>
+                                        <td>Kopyov</td>
+                                        <td>Ring street 12</td>
+                                        <td>Ring street 12, building D, flat #67</td>
+                                        <td>1031</td>
+                                        <td>Munich</td>
+                                        <td>+99-99-9999-9999</td>
+
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button name="update" type="submit"
+                                                        class="btn btn-axa btn-primary legitRipple">
+                                                    Modifier <a title="Afficher les détails" href="#"
+                                                                class=" legitRipple"></a>
+                                                    <i class="icon-pen position-right"></i></button>
+                                                <button name="update" type="submit"
+                                                        class="btn btn-axa btn-info legitRipple">
+                                                    Voir détails <a title="Afficher les détails" href="#"
+                                                                    class=" legitRipple"></a>
+                                                    <i class="icon-eye position-right"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#">2</a></td>
+                                        <td>Said</td>
+                                        <td>raul</td>
+                                        <td>milf</td>
+                                        <td>Ring streat 45</td>
+                                        <td>Ring streat 45, building M, flat #77</td>
+                                        <td>1564</td>
+                                        <td>Munich</td>
+                                        <td>+99-99-9999-9999</td>
+
+
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button name="update" type="submit"
+                                                        class="btn btn-axa btn-primary legitRipple">
+                                                    Modifier <a title="Afficher les détails" href="#"
+                                                                class=" legitRipple"></a>
+                                                    <i class="icon-pen position-right"></i></button>
+                                                <button name="update" type="submit"
+                                                        class="btn btn-axa btn-info legitRipple">
+                                                    Voir détails <a title="Afficher les détails" href="#"
+                                                                    class=" legitRipple"></a>
+                                                    <i class="icon-eye position-right"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#">3</a></td>
+                                        <td>jamal</td>
+                                        <td>Paoilo</td>
+                                        <td>saty</td>
+                                        <td>Ring yhef 482</td>
+                                        <td>Ring street 98, building A, flat #84</td>
+                                        <td>9782</td>
+                                        <td>Lion</td>
+                                        <td>+99-99-9999-9999</td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button name="update" type="submit"
+                                                        class="btn btn-axa btn-primary legitRipple">
+                                                    Modifier <a title="Afficher les détails" href="#"
+                                                                class=" legitRipple"></a>
+                                                    <i class="icon-pen position-right"></i></button>
+                                                <button name="update" type="submit"
+                                                        class="btn btn-axa btn-info legitRipple">
+                                                    Voir détails <a title="Afficher les détails" href="#"
+                                                                    class=" legitRipple"></a>
+                                                    <i class="icon-eye position-right"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {#{% endfor %}#}
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <!-- /traffic sources -->
+
+
+                    <!-- Quick stats boxes -->
+
+                    <!-- /quick stats boxes -->
+
+
+                    <!-- Marketing campaigns -->
+
+                    <!-- /marketing campaigns -->
+
+
+                    <!-- Main charts -->
+
+                    <!-- /main charts -->
+
+
+                    <!-- Sales stats -->
+
+                    <!-- /sales stats -->
+
+
+                    <!-- Support tickets -->
+
+                    <!-- /support tickets -->
+
+
+                </div>
+                <!-- /content area -->
+
+            </div>
+            <!-- /main content -->
+
+        </div>
+        <!-- /page content -->
+
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).on('ready', function () {
+            $('select#appbundle_record_type').on('select2:select', function () {
+                var which_case = parseInt($(this).val());
+                console.log(which_case);
+                switch (which_case) {
+                    case 2 :
+                        $('div.dommage_aux_biens').removeClass('hidden');
+                        $('div.flote').addClass('hidden');
+                        break;
+                    case 4:
+                        $('div.flote').removeClass('hidden');
+                        $('div.dommage_aux_biens').addClass('hidden');
+                        break;
+                    default :
+                        $('div.flote').addClass('hidden');
+                        $('div.dommage_aux_biens').addClass('hidden');
+                        break;
+                }
+                ;
+            });
+        });
+    </script>
+
+{% endblock %}

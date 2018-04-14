@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <div class="panel panel-white">
+        <div class="panel-heading">
+            <h6 class="panel-title">Liste des Souscriptions de Produits<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+            <div class="heading-elements">
+                <a href="{{ path('user_index') }}" class="btn btn-primary btn-xs "><b><i class="icon-loop3"></i></b> Retour à la liste</a>
+            </div>
+        </div>
+
+        <div class="panel-body">
+
+        </div>
+        <table class="table datatable-responsive  table-bordered table-hover datatable-highlight">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Client</th>
+                <th>Contrat</th>
+                <th>Produit</th>
+                <th>Etat de la Souscription</th>
+                <th>Date de Démarrage</th>
+                <th>Date de Fin</th>
+                <th>Commentaire</th>
+                <th class="text-center">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>Dupont</td>
+                <td>Assurance Vie</td>
+                <td>produit 1</td>
+                <td>En cours</td>
+                <td>10-10-2017</td>
+                <td>10-10-2018</td>
+                <td>RAS</td>
+                <td class="text-center">
+                    <div class="">
+                        <a title="Afficher les détails" href="#" class="text-primary legitRipple"><i class="icon-eye position-left"></i></a>
+                        <a title="Modifier" href="#" class="text-primary legitRipple"><i class="icon-pen position-left"></i></a>
+                        <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Faretti</td>
+                <td>IARD</td>
+                <td>produit 2</td>
+                <td>Instances</td>
+                <td>10-10-2016</td>
+                <td>10-10-2018</td>
+                <td>Dossier à compléter</td>
+                <td class="text-center">
+                    <div class="">
+                        <a title="Afficher les détails" href="#" class="text-primary legitRipple"><i class="icon-eye position-left"></i></a>
+                        <a title="Modifier" href="#" class="text-primary legitRipple"><i class="icon-pen position-left"></i></a>
+                        <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

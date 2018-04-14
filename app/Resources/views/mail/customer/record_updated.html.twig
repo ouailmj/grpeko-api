@@ -1,0 +1,5 @@
+{% extends "mail/layout.html.twig" %}
+
+{% block content %}
+    Vous recevez ce message car votre dossier sinistre sur AXA a été mis à jour. Vous pouvez accéder au dossier en cliquant <a href="{{ url('portal_show_record', {'id': record.id}) }}">{{ url('portal_show_record', {'id': record.id}) }}</a>.
+{% endblock %}
