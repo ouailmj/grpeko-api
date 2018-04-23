@@ -4,11 +4,11 @@ Napier Project
 Extranet AXA.
 
 # Installation
-* Créer une base de données sobekdb dans votre MySQL.
+* Créer une base de données napier_db dans votre MySQL.
 
 * Cloner le projet dans votre répertoire de travail
 ```
- git clone https://github.com/multiinfo/napier.git
+ git clone https://github.com/multiinfo/napier-api.git
 ```
 * Installer les dépendances
 ```

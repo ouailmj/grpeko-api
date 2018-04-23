@@ -10,5 +10,10 @@ _errors:
     resource: "@TwigBundle/Resources/config/routing/errors.xml"
     prefix:   /_error
 
+mock_app_routing:
+    resource: "@AppBundle/Controller/DefaultController.php"
+    prefix:   /__mock__
+    type: annotation
+
 _main:
     resource: routing.yml
