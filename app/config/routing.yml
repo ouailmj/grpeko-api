@@ -1,6 +1,12 @@
-app_routing:
-    resource: "@AppBundle/Resources/config/routing.yml"
+website_routing:
+    resource: "@WebsiteBundle/Controller/"
+    type:     annotation
     prefix:   /
+
+app_routing:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+    prefix:   /app
 
 _liip_imagine:
     resource: "@LiipImagineBundle/Resources/config/routing.xml"
