@@ -1,6 +1,6 @@
 parameters:
     from_email: "%mailer_user%"
-    from_name: "AXA Assurances"
+    from_name: "Groupe EKO"
 
 services:
     # default configuration for services in *this* file
@@ -19,7 +19,7 @@ services:
         resource: '../../src/AppBundle/*'
         # you can exclude directories or files
         # but if a service is unused, it's removed anyway
-        exclude: '../../src/AppBundle/{Entity,Repository,Form}'
+        exclude: '../../src/AppBundle/{Entity,Repository,Form,DTO}'
 
     # controllers are imported separately to make sure they're public
     # and have a tag that allows actions to type-hint services
@@ -33,16 +33,13 @@ services:
     #     arguments:
     #         $someArgument: 'some_value'
 
-    app.mailer:
-        class: AppBundle\Mailer\Mailer
+    AppBundle\Mailer\Mailer:
         arguments: ["@mailer", "%from_email%", "%from_name%", "@templating", "%mail_admin%"]
 
-    app.search_engine:
-        class: AppBundle\Search\SearchEngine
+    AppBundle\Search\SearchEngine:
         arguments: ["@doctrine.orm.entity_manager"]
 
-    app.menu_builder:
-        class: AppBundle\Menu\Builder
+    AppBundle\Menu\Builder:
         arguments: ["@knp_menu.factory", "@security.authorization_checker"]
         tags:
             - { name: knp_menu.menu_builder, method: createMainMenu, alias: main }

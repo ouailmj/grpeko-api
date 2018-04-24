@@ -12,7 +12,7 @@
 
 namespace AppBundle\Util;
 
-class DateUtil
+final class DateUtil
 {
     const DATE_FORMAT = 'Y-m-d';
 
