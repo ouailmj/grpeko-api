@@ -6,7 +6,6 @@
 {%- endblock form_label %}
 
 {% block form_row -%}
-    {{ dump(compound) }}
     <div class="form-group{% if (not compound or force_error|default(false)) and not valid %} has-error{% endif %}">
         {{- form_label(form) -}}
         <div class="col-lg-10">
