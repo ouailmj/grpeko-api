@@ -22,7 +22,9 @@ class DefaultController extends BaseController
      */
     public function indexAction(Request $request)
     {
-        return $this->render('base.html.twig');
+      //  return $this->render('base.html.twig');
+
+        return $this->render('website/index.html.twig');
     }
 
     /**
