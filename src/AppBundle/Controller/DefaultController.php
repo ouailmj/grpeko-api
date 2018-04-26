@@ -402,4 +402,78 @@ class DefaultController extends BaseController
     {
         return $this->render('default/record_new.html.twig');
     }
+
+//*******************************************************************************************************************************************
+//*************************************************************** YOUNESS *******************************************************************
+//*******************************************************************************************************************************************
+    /**
+     * @Route("/client/entre_relation", name="client_entre_relation")
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function clientRelationAction(Request $request)
+    {
+        return $this->render('default/client_entre_relation.html.twig');
+    }
+
+
+    /**
+     * @Route("/client/rdvs", name="client_rdvs")
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function rdvsAction(Request $request)
+    {
+        return $this->render('default/rdvs.html.twig');
+    }
+
+
+    /**
+     * @Route("/client/rdvs/new", name="client_rdvs_new")
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function newRDVAction(Request $request)
+    {
+        return $this->render('default/client_rdv_new.html.twig');
+    }
+
+
+    /**
+     * @Route("/client/contact", name="client_contact")
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function clientContactAction(Request $request)
+    {
+        return $this->render('default/client_contact.html.twig');
+    }
+
+
+
+    /**
+     * @Route("/client/contact/new", name="client_contact_new")
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function newClientContactAction(Request $request)
+    {
+        return $this->render('default/client_contact_new.html.twig');
+    }
+
+
+
+//*******************************************************************************************************************************************
+//*************************************************************** END *******************************************************************
+//*******************************************************************************************************************************************
 }
