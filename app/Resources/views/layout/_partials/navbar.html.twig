@@ -1,6 +1,6 @@
 <div class="navbar navbar-default navbar-fixed-top header-highlight">
     <div class="navbar-header">
-        <a class="navbar-brand" href="/"><img src="{{ asset('assets/images/logo_axa.png') }}" alt="AXA EXTRANET"></a>
+        <a class="navbar-brand" href="/"><b style="color: #fff;">Groupe Eko</b></a>
 
         <ul class="nav navbar-nav pull-right visible-xs-block">
             <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
@@ -27,6 +27,42 @@
 
             <li class="dropdown dropdown-user">
                 <a class="dropdown-toggle" data-toggle="dropdown">
+                    <img src="{{ asset('assets/images/alarm.png') }}" alt="">
+                    <span> {{ app.user.firstName|default('') }} </span>
+                    <i class="caret"></i>
+                </a>
+
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a href="{{ path('fos_user_profile_show')}}"> Des execrices sont a créer</a></li>
+                    <li class="divider"></li>
+                    <li><a href="{{ path('fos_user_security_logout') }}"> Des execrices sont en anomalie</a></li>
+                    <li class="divider"></li>
+                    <li><a href="{{ path('fos_user_security_logout') }}"> Anomalies Répetoires</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown dropdown-user">
+                <a class="dropdown-toggle" data-toggle="dropdown">
+                    <img src="{{ asset('assets/images/job-search.png') }}" alt="">
+                    <span> {{ app.user.firstName|default('') }} </span>
+                    <i class="caret"></i>
+                </a>
+
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a href="{{ path('fos_user_profile_show')}}"> Fiches Client</a></li>
+                    <li class="divider"></li>
+                    <li><a href="{{ path('fos_user_security_logout') }}"> Planning</a></li>
+                    <li class="divider"></li>
+                    <li><a href="{{ path('fos_user_security_logout') }}"> Ecritures CFONB a rapprocher</a></li>
+                    <li class="divider"></li>
+                    <li><a href="{{ path('fos_user_security_logout') }}"> Dossier de travail a créer</a></li>
+                    <li class="divider"></li>
+                    <li><a href="{{ path('fos_user_security_logout') }}"> Clients a débit différé</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown dropdown-user">
+                <a class="dropdown-toggle" data-toggle="dropdown">
                     <img src="{{ asset('assets/images/avatar.png') }}" alt="">
                     <span> {{ app.user.firstName|default('') }} </span>
                     <i class="caret"></i>
@@ -38,6 +74,7 @@
                     <li><a href="{{ path('fos_user_security_logout') }}"><i class="icon-switch2"></i> Déconnexion</a></li>
                 </ul>
             </li>
+
         </ul>
     </div>
 </div>
