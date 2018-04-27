@@ -18,30 +18,6 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends BaseController
 {
 
-
-    /**
-         * @Route("/client/access1", name="client_access1")
-     *
-     * @param Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function accessClientAction(Request $request)
-    {
-        return $this->render('default/access1.html.twig');
-    }
-
-
-    /**
-     * @Route("/", name="__homepage")
-     */
-    public function indexAction(Request $request)
-    {
-       return $this->render('base.html.twig');
-
-      // return $this->render('website/index.html.twig');
-    }
-
     /**
      * @Route("/client/show", name="client_show")
      *
@@ -76,18 +52,6 @@ class DefaultController extends BaseController
     public function newClientAction(Request $request)
     {
         return $this->render('default/client_new.html.twig');
-    }
-
-    /**
-     * @Route("/client/index", name="client_index")
-     *
-     * @param Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function indexClientAction(Request $request)
-    {
-        return $this->render('default/client_index.html.twig');
     }
 
     /**
@@ -417,6 +381,52 @@ class DefaultController extends BaseController
     {
         return $this->render('default/record_new.html.twig');
     }
+
+
+
+    /**************************************************/
+
+
+    /**
+     * @Route("/client/access1", name="client_access1")
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function accessClientAction(Request $request)
+    {
+        return $this->render('default/access1.html.twig');
+    }
+
+
+    /**
+     * @Route("/", name="__homepage")
+     */
+    public function indexAction(Request $request)
+    {
+        return $this->render('base.html.twig');
+
+        // return $this->render('website/index.html.twig');
+    }
+
+
+    /**
+     * @Route("/client/index", name="client_index")
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function indexClientAction(Request $request)
+    {
+        return $this->render('default/client_index.html.twig');
+    }
+
+
+    /**************************************************/
+
+
 
 //*******************************************************************************************************************************************
 //*************************************************************** YOUNESS *******************************************************************
