@@ -1,0 +1,564 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+
+    <div class="panel panel-flat">
+        <div class="tabbale">
+
+
+                <ul class="nav nav-tabs nav-tabs-solid">
+                    <li id="clikfirsttab" class="active"><a href="#firsttab" data-toggle="tab" aria-expanded="true">Prise de connaissance</a></li>
+                    <li class=""><a href="#secondtab" data-toggle="tab" aria-expanded="false">Fiche Client</a></li>
+                </ul>
+
+
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="firsttab">
+
+                        <div class="">
+                            <ul class="nav nav-tabs nav-tabs-solid">
+                                <li class="active"><a href="#Contacts" data-toggle="tab" aria-expanded="true"><i class="icon-users position-left"></i>Informations générales</a></li>
+                                <li class=""><a href="#Dossiers" data-toggle="tab" aria-expanded="false"><i class="icon-folder position-left"></i>Rendez-vous</a></li>
+                                <li class=""><a href="#Contrats" data-toggle="tab" aria-expanded="false"><i class="icon-address-book3 position-left"></i>Contacts</a></li>
+                                <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false"><i class="icon-users2 position-left"></i>Mission</a></li>
+                                <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false"><i class="icon-users2 position-left"></i>Exercices</a></li>
+                                <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false"><i class="icon-users2 position-left"></i>Informations Bancaires</a></li>
+                                <li>
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li class="dropdown dropdown-user">
+                                            <a class="dropdown-toggle" data-toggle="dropdown">
+                                                <img src="{{ asset('assets/images/icons8.png') }}">
+                                            </a>
+
+                                            <ul class="dropdown-menu dropdown-menu-right">
+                                                <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Rapprochement CFONB - Mots clés</a></li>
+                                                <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Facturation</a></li>
+                                                <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Codes accés espaces clients</a></li>
+
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="Contacts">
+
+                                <form class="form-horizontal" action="/action_page.php">
+
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2" for="email">&nbsp;&nbsp;Raison Social:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control colorback" id="email" placeholder="Entrer Raison Social" name="email">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2" for="pwd">&nbsp;&nbsp;Forme Juridique:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="pwd" placeholder="Entrer Forme Juridique" name="pwd">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2" for="pwd">&nbsp;&nbsp;Régime d'imposition:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="pwd" placeholder="Entrer Forme Juridique" name="pwd">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2" for="pwd">&nbsp;&nbsp;Régime de TVA:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="pwd" placeholder="Entrer Forme Juridique" name="pwd">
+                                            </div>
+                                        </div>
+
+                                    <br><br>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2" for="pwd">&nbsp;&nbsp;Adresse</label>
+                                            <div class="col-sm-10">
+                                                <textarea class="form-control colorback" rows="4" id="adresse" placeholder="Frankfort is the capital city of the Commonwealth of Kentucky and the seat of Franklin County. It is a home rule-class city in Kentucky; the "></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2" for="pwd">&nbsp;&nbsp;CP:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control colorback" id="pwd" placeholder="12232112" name="pwd">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2" for="pwd">&nbsp;&nbsp;Ville:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
+                                            </div>
+                                        </div>
+
+
+                                    <div class="form-group">
+                                        <div class=" col-sm-12">
+
+                                            <fieldset class="scheduler-border">
+
+                                                <legend class="scheduler-border" style="text-transform: capitalize">Anciennes Adresse</legend>
+
+                                                <table class="table datatable-responsive table-bordered table-hover datatable-highlight table-striped">
+                                                    <thead>
+                                                    <tr>
+                                                        <th class="text-center">Date de changement</th>
+                                                        <th>Ancienne adresse</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td>wvwxv</td>
+                                                        <td>xvwxvw</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>wvwxv</td>
+                                                        <td>xvwxvw</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>wvwxv</td>
+                                                        <td>xvwxvw</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+
+                                            </fieldset>
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <div class=" col-sm-12">
+
+                                            <fieldset class="scheduler-border">
+                                                <legend class="scheduler-border" style="text-transform: capitalize">Adresse du SIE</legend>
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;Adresse</label>
+                                                    <div class="col-sm-9">
+                                                        <textarea class="form-control colorback" rows="4" id="adresse" placeholder="Frankfort is the capital city of the Commonwealth"></textarea>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;CP</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;Ville</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;Email</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="email" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
+                                                    </div>
+                                                </div>
+
+                                            </fieldset>
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <div class=" col-sm-12">
+
+                                            <fieldset class="scheduler-border">
+                                                <legend class="scheduler-border" style="text-transform: capitalize">aaaaa</legend>
+
+                                                <div class="form-group">
+
+                                                    <div class="col-sm-12">
+                                                        <div class="dropdown">
+                                                            <label class="control-label col-sm-3" for="pwd">Code APE:</label>
+
+                                                            <div class="col-sm-9">
+                                                                <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Tutorials
+                                                                    <span class="caret"></span></button>
+                                                                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
+                                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
+                                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
+                                                                    <li role="presentation" class="divider"></li>
+                                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+
+                                                <div class="form-group">
+
+                                                    <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;Activité principale:</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+
+
+                                                    <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;N° SIRET:</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;N° SIREN:</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;N° TVA Intra Communautaire</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+
+
+                                                    <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;Nombre d'actions ou parts socials</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+
+
+                                                    <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;Capital social</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
+                                                    </div>
+
+                                                </div>
+
+                                            </fieldset>
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <div class=" col-sm-12">
+
+                                            <fieldset class="scheduler-border">
+                                                <legend class="scheduler-border" style="text-transform: capitalize">Ancien Expert-Comptable</legend>
+
+                                                <div class="form-group">
+
+                                                    <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;Societé</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;Civilité</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;Prénom</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;Nom</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;Adresse</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;CP</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;Ville</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;Email</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="email" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
+                                                    </div>
+
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <div class="col-xs- col-md-5 pull-right" >
+                                                        <input type="button" class="form-control btn-info" id="pwd" value="&nbsp;Générer et envoyer la lettre de reprise de dossier&nbsp;" name="pwd">
+                                                    </div>
+                                                </div>
+
+
+                                            </fieldset>
+
+                                        </div>
+                                    </div>
+
+                                </form>
+
+
+                            </div>
+                            <div class="tab-pane" id="Dossiers">
+                                <div class="padding-r-5 pull-right"><a href="#" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-plus3"></i></b> Ajouter</a></div>
+                                <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nom</th>
+                                        <th>Date d'événement</th>
+                                        <th>Réference intermédiaire</th>
+                                        <th>Etat</th>
+                                        <th>Créé le</th>
+                                        <th>Modifié le</th>
+                                        <th class="text-center">Actions</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {#{% for item in users %}#}
+                                    <tr>
+                                        <td><a href="#">1</a></td>
+                                        <td>Dossier 1</td>
+                                        <td>12-09-2016</td>
+                                        <td>9856-74</td>
+                                        <td><span class="label label-danger">Fermé</span></td>
+                                        <td>12-09-2016</td>
+                                        <td>12-09-2016</td>
+                                        <td class="text-center">
+                                            <div class="">
+                                                <a title="Afficher les détails" href="{{ path('dossier_show') }}" class=" legitRipple"><i class="icon-eye position-left"></i></a>
+                                                <a title="Modifier" href="{{ path('dossier_edit') }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
+                                                <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#">2</a></td>
+                                        <td>Dossier 2</td>
+                                        <td>12-09-2016</td>
+                                        <td>9856-74</td>
+                                        <td><span class="label label-info">Ouvert</span></td>
+                                        <td>12-09-2016</td>
+                                        <td>12-09-2016</td>
+                                        <td class="text-center">
+                                            <div class="">
+                                                <a title="Afficher les détails" href="{{ path('dossier_show') }}" class=" legitRipple"><i class="icon-eye position-left"></i></a>
+                                                <a title="Modifier" href="{{ path('dossier_edit') }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
+                                                <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {#{% endfor %}#}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane " id="Contrats">
+                                <div class="padding-r-5 pull-right"><a href="{{ path('_contract_new') }}" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-plus3"></i></b> Ajouter</a></div>
+                                </table>
+                                <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Numéro</th>
+                                        <th>Type</th>
+                                        <th>Produit</th>
+                                        <th>Créé le</th>
+                                        <th>Modifié le</th>
+                                        <th class="text-center">Actions</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td><a href="#">1</a></td>
+                                        <td><a href="#">123456789</a></td>
+                                        <td>Flotte</td>
+                                        <td>Assurance Flotte</td>
+                                        <td>12-12-2016</td>
+                                        <td>12-12-2016</td>
+                                        <td class="text-center">
+                                            <div class="">
+                                                <a title="Afficher les détails" href="#" class=" legitRipple"><i class="icon-eye position-left"></i></a>
+                                                <a title="Modifier" href="#" class=" legitRipple"><i class="icon-pen position-left"></i></a>
+                                                <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#">2</a></td>
+                                        <td><a href="#">123456789</a></td>
+                                        <td>Flotte</td>
+                                        <td>Assurance Collectivité</td>
+                                        <td>12-12-2016</td>
+                                        <td>12-12-2016</td>
+                                        <td class="text-center">
+                                            <div class="">
+                                                <a title="Afficher les détails" href="#" class=" legitRipple"><i class="icon-eye position-left"></i></a>
+                                                <a title="Modifier" href="#" class=" legitRipple"><i class="icon-pen position-left"></i></a>
+                                                <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane" id="Relation_client">
+                                <div class="padding-r-5 pull-right">
+                                    <a href="{{ path('relation_client_new') }}" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-plus3"></i></b> Ajouter</a>
+                                    <a href="{{ path('relation_client_search') }}" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-folder-search"></i></b> Cherche relations </a>
+                                </div>
+                                <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nom</th>
+                                        <th>Prénom</th>
+                                        <th>Action</th>
+                                        <th>Description</th>
+                                        <th>Date</th>
+                                        <th class="text-center">Actions</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    <tr>
+                                        <td><a href="#">1</a></td>
+                                        <td>Eugene</td>
+                                        <td>Ahmed</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>12-12-2016</td>
+                                        <td class="text-center">
+                                            <div class="">
+                                                <a title="Afficher les détails" href="{{ path('relation_client_show') }}" class=" legitRipple"><i class="icon-eye position-left"></i></a>
+                                                <a title="Modifier" href="{{ path('relation_client_edit') }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
+                                                <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#">2</a></td>
+                                        <td>Eugene</td>
+                                        <td>Ahmed</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>12-12-2016</td>
+                                        <td class="text-center">
+                                            <div class="">
+                                                <a title="Afficher les détails" href="#" class=" legitRipple"><i class="icon-eye position-left"></i></a>
+                                                <a title="Modifier" href="#" class=" legitRipple"><i class="icon-pen position-left"></i></a>
+                                                <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                </div>
+
+
+                <div class="tab-pane" id="secondtab">
+                    <div class="">
+                        <ul class="nav nav-tabs nav-tabs-solid">
+                            <li class="active"><a href="#Contacts" data-toggle="tab" aria-expanded="true"><i class="icon-users position-left"></i>Entrée en relation</a></li>
+                            <li class=""><a href="#Dossiers" data-toggle="tab" aria-expanded="false"><i class="icon-folder position-left"></i>Devis Client</a></li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+
+                    </div>
+                </div>
+             </div>
+
+        </div>
+    </div>
+
+
+
+    <style>
+        fieldset.scheduler-border {
+            border: 1px groove #ddd !important;
+            padding: 0 1.4em 1.4em 1.4em !important;
+            margin: 0 0 1.5em 0 !important;
+            -webkit-box-shadow:  0px 0px 0px 0px #000;
+            box-shadow:  0px 0px 0px 0px #000;
+        }
+
+        legend.scheduler-border {
+            font-size: 1.2em !important;
+            font-weight: bold !important;
+            text-align: left !important;
+            width:auto;
+            padding:0 10px;
+            border-bottom:none;
+            color: #7b5d5a;
+        }
+
+        .colorback{
+            background-color: #eef3fd;
+        }
+    </style>
+
+
+{% endblock %}
