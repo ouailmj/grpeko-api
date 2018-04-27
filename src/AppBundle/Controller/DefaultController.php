@@ -17,6 +17,21 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends BaseController
 {
+
+
+    /**
+         * @Route("/client/access1", name="client_access1")
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function accessClientAction(Request $request)
+    {
+        return $this->render('default/access1.html.twig');
+    }
+
+
     /**
      * @Route("/", name="__homepage")
      */
