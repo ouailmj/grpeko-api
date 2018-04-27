@@ -424,14 +424,7 @@ class DefaultController extends BaseController
     }
 
 
-    /**************************************************/
-
-
-
-//*******************************************************************************************************************************************
-//*************************************************************** YOUNESS *******************************************************************
-//*******************************************************************************************************************************************
-    /**
+   /**
      * @Route("/client/entre_relation", name="client_entre_relation")
      *
      * @param Request $request
@@ -469,7 +462,6 @@ class DefaultController extends BaseController
         return $this->render('default/client_rdv_new.html.twig');
     }
 
-
     /**
      * @Route("/client/contact", name="client_contact")
      *
@@ -481,7 +473,6 @@ class DefaultController extends BaseController
     {
         return $this->render('default/client_contact.html.twig');
     }
-
 
 
     /**
@@ -496,9 +487,40 @@ class DefaultController extends BaseController
         return $this->render('default/client_contact_new.html.twig');
     }
 
+    /**
+     * @Route("/client/devis", name="Devis_client")
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function showDevisClient(Request $request)
+    {
+        return $this->render('default/Devis_clients.html.twig');
+    }
 
+    /**
+     * @Route("/client/mission", name="Mission_client")
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function MissionClient(Request $request)
+    {
+        return $this->render('default/Mission.html.twig');
+    }
 
-//*******************************************************************************************************************************************
-//*************************************************************** END *******************************************************************
-//*******************************************************************************************************************************************
+    /**
+     * @Route("/client/showTable", name="showTable")
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function ShowTable(Request $request)
+    {
+        return $this->render('default/ShowTable.html.twig');
+    }
+
 }
