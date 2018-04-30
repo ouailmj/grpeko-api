@@ -1,0 +1,299 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<style>
+    @media (min-width: 1025px){
+.col-md-6 {
+    width: 50%;
+    margin-bottom: 2rem !important;
+}}
+input[type=text], textarea{
+    background-color:#eef3fd !important;
+}
+.alert.alert-styled-left {
+    border-left-width: 27px !important;
+}
+.alert[class*=alert-styled-].alert-info:after, .alert[class*=alert-styled-][class*=bg-info]:after
+{
+content: none !important;
+}
+.border-top-info {
+    border-top-color: #00bcd4;
+}
+th{
+    background-color:#eef3fd !important;
+}
+</style>
+
+                <div class="sidebar sidebar-secondary sidebar-default">
+                        <div class="sidebar-content">
+                            <!-- Sidebar tabs -->
+                            <div class="tabbable sortable ui-sortable">
+                                <div class="tab-content">
+                                        <div class="sidebar-category">
+                                                <div class="category-title">
+                                                    <ul class="icons-list">
+                                                        <li><a href="#" data-action="collapse" class=""></a></li>
+                                                    </ul>
+                                                </div>
+            
+                                                <div class="category-content" style="display: block;">
+                                                    <form action="#">
+                                                        <div class="form-group">
+                                                            <label>Single Select:</label>
+                                                            <select class="select select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                                                <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                                    <option value="AK">Comptabilité</option>
+                                                                    <option value="HI">Hawaii</option>
+                                                                </optgroup>
+                                                                <optgroup label="Pacific Time Zone">
+                                                                    <option value="CA">California</option>
+                                                                    <option value="NV">Nevada</option>
+                                                                    <option value="OR">Oregon</option>
+                                                                    <option value="WA">Washington</option>
+                                                                </optgroup>
+                                                                <optgroup label="Mountain Time Zone">
+                                                                    <option value="AZ">Arizona</option>
+                                                                    <option value="CO">Colorado</option>
+                                                                    <option value="ID">Idaho</option>
+                                                                    <option value="WY">Wyoming</option>
+                                                                </optgroup>
+                                                            </select>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <ul class="nav navigation">
+                                                    <li><a href="#scrollspy">Import CFONB</a></li>
+                                                    <li>
+                                                        <a href="#scrollspy-data-attributes" class="has-ul">Balance Générale</a>
+                                                    </li>
+                                                    <li><a href="#scrollspy-methods">Grand livre</a></li>
+                                                    <li class="active"><a href="#scrollspy-options">Journal Générale</a></li>
+                                                    <li><a href="#scrollspy-events">Etats Financiers</a></li>
+                                                    <li><a href="#affix">Reporting</a></li>
+                                                    <li>
+                                                        <a href="#affix-data-attributes" class="has-ul ">Points en suspens</a>
+                                                    </li>
+                                                    <li><a href="#affix-options">Mail de cloture</a></li>
+                                                    <li><a href="#affix-events">1</a></li>
+                                                    <li><a href="#affix-events">2</a></li>
+                                                    <li><a href="#affix-events">3</a></li>
+                                                    <li><a href="#affix-events">40</a></li>
+
+                                                    <li><a href="#affix-events">41</a></li>
+                                                    <li><a href="#affix-events">23</a></li>
+                                                    <li><a href="#affix-events">45</a></li>
+                                                    <li><a href="#affix-events">46</a></li>
+                                                </ul>
+                                
+                                        </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="content-wrapper">
+
+                        <!-- Page header -->
+                        <div class="page-header page-header-default">
+                            <div class="page-header-content">
+                                <div class="page-title">
+                                    <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Sidebars</span> - Components</h4>
+                                <a class="heading-elements-toggle"><i class="icon-more"></i></a></div>
+        
+                              
+                            </div> 
+                        </div>
+                      
+                        <div class="content">
+        
+                        <div class="panel panel-flat">
+                            <div class="panel-heading">
+                                <h5 class="panel-title">Sidebars overview<a class="heading-elements-toggle"><i class="icon-more"></i></a></h5>
+                                <div class="heading-elements">
+                                    <ul class="icons-list">
+                                        <li><a data-action="collapse"></a></li>
+                                        <li><a data-action="reload"></a></li>
+                                        <li><a data-action="close"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="row">
+                                        <fieldset class="alert alert-info alert-styled-left alert-arrow-left alert-component">
+                                            <div class="form-group">
+                                                <div class="col-md-6"><label>Date de début de mission</label></div> 
+                                                <div class="col-md-6">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="icon-calendar22"></i></span>
+                                                        <input type="text" class="form-control daterange-single" value="03/18/2013">
+                                                    </div>
+                                                </div>
+                                            </div>
+                        
+                                            <div class="form-group">
+                                                <div class="col-md-6"><label>Date de début de mission</label></div> 
+                                                <div class="col-md-6">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="icon-calendar22"></i></span>
+                                                    <input type="text" class="form-control daterange-single" value="03/18/2013">
+                                                </div>
+                                            </div>
+                                            </div>
+                        
+                                            <div class="form-group">
+                                                <div class="col-md-6"><label>Date de début de mission</label></div> 
+                                                <div class="col-md-6">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="icon-calendar22"></i></span>
+                                                    <input type="text" class="form-control daterange-single" value="03/18/2013">
+                                                </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-6"><label>Date de début de mission</label></div> 
+                                                <div class="col-md-6">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="icon-calendar22"></i></span>
+                                                    <input type="text" class="form-control daterange-single" value="03/18/2013">
+                                                </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-6"><label>Date de début de mission</label></div> 
+                                                <div class="col-md-6">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="icon-calendar22"></i></span>
+                                                    <input type="text" class="form-control daterange-single" value="03/18/2013">
+                                                </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-6">
+                                                    <button type="button" class=" btn-flat  border-slate text-slate-800 form-control col-md-5">Validation du devis par le client</button>
+                                                </div> 
+                                                <div class="col-md-6">
+                                                    <button type="button" class="btn-flat  border-slate text-slate-800 form-control col-md-5">Arrét du planning</button>                             
+                                                </div> 
+                                            </div>
+                                        </fieldset>
+                        
+                                        
+                                        <fieldset class="alert alert-info alert-styled-left alert-arrow-left alert-component">
+                                            <div class="form-group">
+                                                <div class="col-md-6">
+                                                    <div class="col-md-6"><label>Collaboration affecté au client</label></div> 
+                                                </div> 
+                                                
+                                                    <div class="col-md-6">
+                                                        <select data-placeholder="Select your state" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                                                <option></option>
+                                                                <optgroup label="Central Time Zone">
+                                                                    <option value="AL">Alabama</option>
+                                                                    <option value="AR">Arkansas</option>
+                                                                    <option value="KY">Kentucky</option>
+                                                                </optgroup>
+                                                                <optgroup label="Eastern Time Zone">
+                                                                    <option value="CT">Connecticut</option>
+                                                                    <option value="DE">Delaware</option>
+                                                                    <option value="WV">West Virginia</option>
+                                                                </optgroup>
+                                                        </select>
+                                                    </div> 
+                                            </div>
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Mission</th>
+                                                        <th>Par défaut Collaboration affecté</th>
+                                                    </tr>
+                                                    
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>ADMINISTATIF</td>
+                                                        <td>
+                                                                <select data-placeholder="Select your state" class="select select2-hidden-accessible" class="col-md-6" tabindex="-1" aria-hidden="true">
+                                                                        <option></option>
+                                                                        <optgroup label="Central Time Zone">
+                                                                            <option value="AL">Alabama</option>
+                                                                            <option value="AR">Arkansas</option>
+                                                                            <option value="KY">Kentucky</option>
+                                                                        </optgroup>
+                                                                        <optgroup label="Eastern Time Zone">
+                                                                            <option value="CT">Connecticut</option>
+                                                                            <option value="DE">Delaware</option>
+                                                                            <option value="WV">West Virginia</option>
+                                                                        </optgroup>
+                                                                </select>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                            <td>COMPTABLE</td>
+                                                            <td>
+                                                            <select data-placeholder="Select your state" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                                                    <option></option>
+                                                                    <optgroup label="Central Time Zone">
+                                                                        <option value="AL">Alabama</option>
+                                                                        <option value="AR">Arkansas</option>
+                                                                        <option value="KY">Kentucky</option>
+                                                                    </optgroup>
+                                                                    <optgroup label="Eastern Time Zone">
+                                                                        <option value="CT">Connecticut</option>
+                                                                        <option value="DE">Delaware</option>
+                                                                        <option value="WV">West Virginia</option>
+                                                                    </optgroup>
+                                                            </select>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>CONSEIL</td>
+                                                            <td>
+                                                            <select data-placeholder="Select your state" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                                                    <option></option>
+                                                                    <optgroup label="Central Time Zone">
+                                                                        <option value="AL">Alabama</option>
+                                                                        <option value="AR">Arkansas</option>
+                                                                        <option value="KY">Kentucky</option>
+                                                                    </optgroup>
+                                                                    <optgroup label="Eastern Time Zone">
+                                                                        <option value="CT">Connecticut</option>
+                                                                        <option value="DE">Delaware</option>
+                                                                        <option value="WV">West Virginia</option>
+                                                                    </optgroup>
+                                                            </select>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>FISCALE</td>
+                                                            <td>
+                                                                    <select data-placeholder="Select your state" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                                                            <option></option>
+                                                                            <optgroup label="Central Time Zone">
+                                                                                <option value="AL">Alabama</option>
+                                                                                <option value="AR">Arkansas</option>
+                                                                                <option value="KY">Kentucky</option>
+                                                                            </optgroup>
+                                                                            <optgroup label="Eastern Time Zone">
+                                                                                <option value="CT">Connecticut</option>
+                                                                                <option value="DE">Delaware</option>
+                                                                                <option value="WV">West Virginia</option>
+                                                                            </optgroup>
+                                                                    </select>
+                                                            </td>
+                                                        </tr>
+                                                </tbody>
+                                            </table>
+                                            <br>
+                                            <div class="form-group">
+                                                    <div class="col-md-6 col-md-offset-3">
+                                                        <button type="button" class="btn-flat  border-slate text-slate-800 form-control col-md-5">Paramétrer le planning</button>                             
+                                                    </div> 
+                                                </div>
+                                        </fieldset>
+                                    </div>
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+{% endblock %} 

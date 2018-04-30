@@ -522,6 +522,42 @@ class DefaultController extends BaseController
     {
         return $this->render('default/ShowTable.html.twig');
     }
+    // kamal
+ /**
+     * @Route("/client/planning", name="planning")
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function Planning(Request $request)
+    {
+        return $this->render('default/Planning.html.twig');
+    }
+    // kamal
+ /**
+     * @Route("/client/gestion-cabinet", name="gestion-cabinet")
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function Gestion_cabinet(Request $request)
+    {
+        return $this->render('default/gestion-cabinet.html.twig');
+    }
+    // kamal
+ /**
+     * @Route("/client/comptabilite", name="comptabilite")
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function comptabilite(Request $request)
+    {
+        return $this->render('default/comptabilite.html.twig');
+    }
 
 
 
