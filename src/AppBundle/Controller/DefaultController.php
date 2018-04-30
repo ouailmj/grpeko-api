@@ -523,4 +523,21 @@ class DefaultController extends BaseController
         return $this->render('default/ShowTable.html.twig');
     }
 
+
+
+    /**
+     * @Route("/client/exercices", name="client_excercices")
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function ExcerciceClient(Request $request)
+    {
+        return $this->render('default/client_excercice.html.twig');
+    }
+
+
+
+
 }
