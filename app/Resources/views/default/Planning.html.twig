@@ -9,94 +9,107 @@
 }}
 input[type=text], textarea{
     background-color:#eef3fd !important;
-   
-  }
-  .border-top-info {
+}
+.border-top-info {
     border-top-color: #00bcd4;
 }
- th {
+th{
     background-color:#eef3fd !important;
 }
 </style>
 <form action="#">
-        
     <div class="panel panel-flat border-top-info ">
             <div class="panel-heading">
-                    <h6 class="panel-title">
-                        <ul class="icons-list">
-                            <li><a data-action="collapse"></a></li>
-                            <li><a data-action="reload"></a></li>
-                            <li><a data-action="close"></a></li>
-                        </ul>
-                    </h6>
-                    <div class="heading-elements">
-                            <button type="button" class="btn border-warning text-warning-600 btn-flat btn-icon"><i class="glyphicon glyphicon-share"></i></button>
-                    </div>
+                <h6 class="panel-title">
+                    <ul class="icons-list">
+                        <li><a data-action="collapse"></a></li>
+                        <li><a data-action="reload"></a></li>
+                        <li><a data-action="close"></a></li>
+                    </ul>
+                </h6>
+                <div class="heading-elements">
+                        <button type="button" class="btn border-warning text-warning-600 btn-flat btn-icon"><i class="glyphicon glyphicon-share"></i></button>
                 </div>
+            </div>
 
         <div class="panel-body">
-                <div class="table-responsive">
-                    <div class="form-group">
-                        <div class="col-md-3">
-                            <button type="button" class=" btn-flat  border-slate text-slate-800 form-control ">Ajouetr une nouvelle tache</button>
+            <div class="table-responsive">
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <button type="button" class=" btn-flat  border-slate text-slate-800 form-control ">Ajouetr une nouvelle tache</button>
+                    </div> 
+                    <div class="col-md-3">
+                        <button type="button" class=" btn-flat  border-slate text-slate-800 form-control">Filtre Automatique 1</button>
+                    </div> 
+                    <div class="col-md-3">
+                            <button type="button" class=" btn-flat  border-slate text-slate-800 form-control ">Filtre Automatique 2</button>
                         </div> 
                         <div class="col-md-3">
-                            <button type="button" class=" btn-flat  border-slate text-slate-800 form-control">Filtre Automatique 1</button>
-                        </div> 
-                        <div class="col-md-3">
-                                <button type="button" class=" btn-flat  border-slate text-slate-800 form-control ">Filtre Automatique 2</button>
-                         </div> 
-                         <div class="col-md-3">
-                            <button type="button" class=" btn-flat  border-slate text-slate-800 form-control">Filtre Automatique 3</button>
-                        </div> 
-                    </div><br><br><br>
-                    <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
-                        <thead>
-                            <tr>
-                                <th style="border-left-style:hidden; border-top-style:hidden;background-color:transparent;"></th>
-                                <th colspan="7">Double  clic sur client : ouvre le dossier de travail</th>
-                                <th>Double clic modifier</th>
-                                <th><button type="submit" class="label label-info">Submit</button></th>
-                                <th></th>
-                                <th>Double clic pour modifier</th>
-                                <th colspan="2">Double clic : Crée email ou client+indiquedu jour</th>
-                                <th>
-                                 <div><button type="submit" class="label label-info " >Submit</button>
-                                    <button type="submit" class="label label-info" style="margin-top:1px;">Submit</button>
-                                </th>
-                                <th>Doucle clic pour modifier</th>
-                            </tr>
-                            <tr>
-                                <th style="border-left-style:hidden; border-top-style:hidden;background-color:transparent;"></th>
-                                <th>Expert Comptable</th>
-                                <th>Chef Mission</th>
-                                <th>collab.</th>
-                                <th>Client</th>
-                                <th>Mission</th>
-                                <th>Type</th>
-                                <th>Sous Type</th>
+                        <button type="button" class=" btn-flat  border-slate text-slate-800 form-control">Filtre Automatique 3</button>
+                    </div> 
+                </div><br><br><br>
+                <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
+                    <thead>
+                        <tr>
+                            <th style="border-left-style:hidden; border-top-style:hidden;background-color:transparent;"></th>
+                            <th colspan="7">Double  clic sur client : ouvre le dossier de travail</th>
+                            <th>Double clic modifier</th>
+                            <th><button type="submit" class="label label-info">Submit</button></th>
+                            <th></th>
+                            <th>Double clic pour modifier</th>
+                            <th colspan="2">Double clic : Crée email ou client+indiquedu jour</th>
+                            <th>
+                                <div><button type="submit" class="label label-info " >Submit</button>
+                                <button type="submit" class="label label-info" style="margin-top:1px;">Submit</button>
+                            </th>
+                            <th>Doucle clic pour modifier</th>
+                        </tr>
+                        <tr>
+                            <th style="border-left-style:hidden; border-top-style:hidden;background-color:transparent;"></th>
+                            <th>Expert Comptable</th>
+                            <th>Chef Mission</th>
+                            <th>collab.</th>
+                            <th>Client</th>
+                            <th>Mission</th>
+                            <th>Type</th>
+                            <th>Sous Type</th>
 
-                                <th>Statut</th>
-                                <th>Mois</th>
-                                <th>Date Planning</th>
-                                <th>Date Ok</th>
-                                <th>Date Demande</th>
-                                <th>Date Relance</th>
-                                <th> 
-                                   Séléction 
-                                </th>
-                                <th>Commentaire</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>  
-                                    <div class="">
-                                        <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
-                                    </div>
-                                </td>
-                                <td>  
-                                    <select data-placeholder="TDA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                            <th>Statut</th>
+                            <th>Mois</th>
+                            <th>Date Planning</th>
+                            <th>Date Ok</th>
+                            <th>Date Demande</th>
+                            <th>Date Relance</th>
+                            <th> 
+                                Séléction 
+                            </th>
+                            <th>Commentaire</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>  
+                                <div class="">
+                                    <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
+                                </div>
+                            </td>
+                            <td>  
+                                <select data-placeholder="TDA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                    <option></option>
+                                    <optgroup label="Central Time Zone">
+                                        <option value="AL">Alabama</option>
+                                        <option value="AR">Arkansas</option>
+                                        <option value="KY">Kentucky</option>
+                                    </optgroup>
+                                    <optgroup label="Eastern Time Zone">
+                                        <option value="CT">Connecticut</option>
+                                        <option value="DE">Delaware</option>
+                                        <option value="WV">West Virginia</option>
+                                    </optgroup>
+                                </select>
+                            </td>
+                            <td>
+                                <select data-placeholder="TDA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
                                         <option></option>
                                         <optgroup label="Central Time Zone">
                                             <option value="AL">Alabama</option>
@@ -109,40 +122,9 @@ input[type=text], textarea{
                                             <option value="WV">West Virginia</option>
                                         </optgroup>
                                     </select>
-                                </td>
-                                <td>
-                                    <select data-placeholder="TDA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
-                                            <option></option>
-                                            <optgroup label="Central Time Zone">
-                                                <option value="AL">Alabama</option>
-                                                <option value="AR">Arkansas</option>
-                                                <option value="KY">Kentucky</option>
-                                            </optgroup>
-                                            <optgroup label="Eastern Time Zone">
-                                                <option value="CT">Connecticut</option>
-                                                <option value="DE">Delaware</option>
-                                                <option value="WV">West Virginia</option>
-                                            </optgroup>
-                                        </select>
-                                </td>
-                                <td>
-                                    <select data-placeholder="TDA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
-                                            <option></option>
-                                            <optgroup label="Central Time Zone">
-                                                <option value="AL">Alabama</option>
-                                                <option value="AR">Arkansas</option>
-                                                <option value="KY">Kentucky</option>
-                                            </optgroup>
-                                            <optgroup label="Eastern Time Zone">
-                                                <option value="CT">Connecticut</option>
-                                                <option value="DE">Delaware</option>
-                                                <option value="WV">West Virginia</option>
-                                            </optgroup>
-                                        </select>
-                                </td>
-                                <td>test</td>
-                                <td>
-                                    <select data-placeholder="TDA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                            </td>
+                            <td>
+                                <select data-placeholder="TDA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
                                         <option></option>
                                         <optgroup label="Central Time Zone">
                                             <option value="AL">Alabama</option>
@@ -155,24 +137,25 @@ input[type=text], textarea{
                                             <option value="WV">West Virginia</option>
                                         </optgroup>
                                     </select>
-                                </td>
-                                <td>
-                                    <select data-placeholder="TDA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
-                                            <option></option>
-                                            <optgroup label="Central Time Zone">
-                                                <option value="AL">Alabama</option>
-                                                <option value="AR">Arkansas</option>
-                                                <option value="KY">Kentucky</option>
-                                            </optgroup>
-                                            <optgroup label="Eastern Time Zone">
-                                                <option value="CT">Connecticut</option>
-                                                <option value="DE">Delaware</option>
-                                                <option value="WV">West Virginia</option>
-                                            </optgroup>
-                                        </select>
-                                </td>
-                                <td>
-                                    <select data-placeholder="TDA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                            </td>
+                            <td>test</td>
+                            <td>
+                                <select data-placeholder="TDA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                    <option></option>
+                                    <optgroup label="Central Time Zone">
+                                        <option value="AL">Alabama</option>
+                                        <option value="AR">Arkansas</option>
+                                        <option value="KY">Kentucky</option>
+                                    </optgroup>
+                                    <optgroup label="Eastern Time Zone">
+                                        <option value="CT">Connecticut</option>
+                                        <option value="DE">Delaware</option>
+                                        <option value="WV">West Virginia</option>
+                                    </optgroup>
+                                </select>
+                            </td>
+                            <td>
+                                <select data-placeholder="TDA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
                                         <option></option>
                                         <optgroup label="Central Time Zone">
                                             <option value="AL">Alabama</option>
@@ -185,79 +168,94 @@ input[type=text], textarea{
                                             <option value="WV">West Virginia</option>
                                         </optgroup>
                                     </select>
-                                </td>
+                            </td>
+                            <td>
+                                <select data-placeholder="TDA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                    <option></option>
+                                    <optgroup label="Central Time Zone">
+                                        <option value="AL">Alabama</option>
+                                        <option value="AR">Arkansas</option>
+                                        <option value="KY">Kentucky</option>
+                                    </optgroup>
+                                    <optgroup label="Eastern Time Zone">
+                                        <option value="CT">Connecticut</option>
+                                        <option value="DE">Delaware</option>
+                                        <option value="WV">West Virginia</option>
+                                    </optgroup>
+                                </select>
+                            </td>
 
-                                <td>
-                                    <select data-placeholder="TDA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
-                                        <option></option>
-                                        <optgroup label="Central Time Zone">
-                                            <option value="AL">Alabama</option>
-                                            <option value="AR">Arkansas</option>
-                                            <option value="KY">Kentucky</option>
-                                        </optgroup>
-                                        <optgroup label="Eastern Time Zone">
-                                            <option value="CT">Connecticut</option>
-                                            <option value="DE">Delaware</option>
-                                            <option value="WV">West Virginia</option>
-                                        </optgroup>
-                                    </select>
-                                </td>
-                                <td>
-                                    <select data-placeholder="TDA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
-                                        <option></option>
-                                        <optgroup label="Central Time Zone">
-                                            <option value="AL">Alabama</option>
-                                            <option value="AR">Arkansas</option>
-                                            <option value="KY">Kentucky</option>
-                                        </optgroup>
-                                        <optgroup label="Eastern Time Zone">
-                                            <option value="CT">Connecticut</option>
-                                            <option value="DE">Delaware</option>
-                                            <option value="WV">West Virginia</option>
-                                        </optgroup>
-                                    </select>
-                                </td>
+                            <td>
+                                <select data-placeholder="TDA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                    <option></option>
+                                    <optgroup label="Central Time Zone">
+                                        <option value="AL">Alabama</option>
+                                        <option value="AR">Arkansas</option>
+                                        <option value="KY">Kentucky</option>
+                                    </optgroup>
+                                    <optgroup label="Eastern Time Zone">
+                                        <option value="CT">Connecticut</option>
+                                        <option value="DE">Delaware</option>
+                                        <option value="WV">West Virginia</option>
+                                    </optgroup>
+                                </select>
+                            </td>
+                            <td>
+                                <select data-placeholder="TDA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                    <option></option>
+                                    <optgroup label="Central Time Zone">
+                                        <option value="AL">Alabama</option>
+                                        <option value="AR">Arkansas</option>
+                                        <option value="KY">Kentucky</option>
+                                    </optgroup>
+                                    <optgroup label="Eastern Time Zone">
+                                        <option value="CT">Connecticut</option>
+                                        <option value="DE">Delaware</option>
+                                        <option value="WV">West Virginia</option>
+                                    </optgroup>
+                                </select>
+                            </td>
 
-                                <td></td>
-                                <td></td>
+                            <td></td>
+                            <td></td>
 
-                                <td>
-                                   <button type="submit" class="label label-info">Submit</button>
-                                </td>
-                                <td>
-                                   <button type="submit" class="label label-info">Submit</button>
-                                </td>
-                                <td>
-                                   <input type="checkbox" value="">
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="">
-                                        <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
-                                    </div>
-                                </td>
-                                <td>test</td>
-                                <td>test</td>
-                                <td>test</td>
-                                <td>test</td>
-                                <td>test</td>
-                                <td>test</td>
-                                <td>test</td>
+                            <td>
+                                <button type="submit" class="label label-info">Submit</button>
+                            </td>
+                            <td>
+                                <button type="submit" class="label label-info">Submit</button>
+                            </td>
+                            <td>
+                                <input type="checkbox" value="">
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="">
+                                    <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
+                                </div>
+                            </td>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>test</td>
 
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td><input type="checkbox" value=""></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><input type="checkbox" value=""></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </form>
