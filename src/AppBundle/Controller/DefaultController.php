@@ -558,9 +558,7 @@ class DefaultController extends BaseController
     {
         return $this->render('default/comptabilite.html.twig');
     }
-
-
-
+    
     /**
      * @Route("/client/exercices", name="client_excercices")
      *
@@ -572,8 +570,4 @@ class DefaultController extends BaseController
     {
         return $this->render('default/client_excercice.html.twig');
     }
-
-
-
-
 }
