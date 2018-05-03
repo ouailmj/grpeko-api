@@ -9,7 +9,6 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
-    google_analytics_code: ''
 
 framework:
     #esi: ~
