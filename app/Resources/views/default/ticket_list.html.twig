@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+        <div class="panel panel-flat">
+            <div class="panel-heading">
+
+                <h1>List des Conversations <small>Historiques des Conversations</small></h1>
+
+            </div>
+            <div class="tabbale">
+                <div class="padding-r-5 pull-right"><a href="/app/ticketadd" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-plus3"></i></b> Créer une Conversations</a></div>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="Contacts">
+                        <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
+                            <thead>
+                            <tr>
+                                <th>Mission</th>
+                                <th>Type du Client</th>
+                                <th>Description</th>
+                                <th>Statut</th>
+                                <th>Date mise à jour</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr style="background-color: #dff0d8" onclick="window.location='#'">
+                                <td>Mission 1</td>
+                                <td>Eugene</td>
+                                <td href="#"><a>Description1...</a></td>
+                                <td><b>Ouvert</b></td>
+                                <td>05/11/2018</td>
+                            </tr>
+                            <tr style="background: #f2dede;"  onclick="window.location='#'">
+                                <td>Mission 2</td>
+                                <td>raul</td>
+                                <td><a href="#">Description2...</a></td>
+                                <td><b>Fermé</b></td>
+                                <td>10/4/2017</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+{% endblock %}

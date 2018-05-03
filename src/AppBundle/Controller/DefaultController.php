@@ -559,8 +559,6 @@ class DefaultController extends BaseController
         return $this->render('default/comptabilite.html.twig');
     }
 
-
-
     /**
      * @Route("/client/exercices", name="client_excercices")
      *
@@ -573,7 +571,42 @@ class DefaultController extends BaseController
         return $this->render('default/client_excercice.html.twig');
     }
 
+    /**
+     * @Route("/ticketlist", name="ticket_list")
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function listTicket(Request $request)
+    {
+        return $this->render('default/ticket_list.html.twig');
+    }
 
 
+    /**
+     * @Route("/ticketadd", name="ticket_add")
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function addTicket(Request $request)
+    {
+        return $this->render('default/ticket_add.html.twig');
+    }
+
+
+    /**
+     * @Route("/ticketdetails", name="ticket_details")
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function detailsTicket(Request $request)
+    {
+        return $this->render('default/ticket_details.html.twig');
+    }
 
 }

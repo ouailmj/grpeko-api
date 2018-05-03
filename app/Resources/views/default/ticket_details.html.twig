@@ -1,0 +1,134 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+
+    <div class="alert alert-warning text-center __web-inspector-hide-shortcut__">
+        Cette conversation est fermé Vous pouvez répondre pour la rouvrir.
+    </div>
+
+
+        <p>
+            <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1"
+               role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+                <i class="fa fa-reply"></i>&nbsp;Répondre
+            </a>
+
+            <a class="btn btn-danger"
+               role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+                <i class="fa fa-times"></i>&nbsp;Fermer
+            </a>
+
+        </p>
+
+
+
+
+    <div class="row">
+        <div class="col">
+            <div class="collapse multi-collapse" id="multiCollapseExample1">
+
+
+
+                <div class="panel panel-flat">
+
+                    <div style="padding: 10px">
+                        <form id="myForm" method="post" class="form-horizontal" enctype="multipart/form-data">
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-2 text-semibold control-label required">Message</label>
+                                <div class="col-lg-10">
+                                    <textarea rows="4" cols="50" class="form-control" placeholder="Ajouter un message" required></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-2 text-semibold control-label required">Joindre des fichiers</label>
+                                <div class="col-lg-10" id="attachment">
+                                    <a href="#" onclick="addMoreFiles()"><i class="fa fa-plus"></i> Ajouter plus</a>
+                                    <input type="file" name="files[]"  class="form-control">
+                                </div>
+                            </div>
+
+                            <p class="text-center">
+                                <input type="submit" value="Valider" class="btn btn-primary">
+                            </p>
+                        </form>
+                    </div>
+
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="panel">
+        <div class="panel-heading" style="background-color: #f2f9ff">
+
+            <div class="user">
+                <i class="fa fa-user fa-2x"></i>
+                <span class="name">&nbsp;Collaborateur</span>
+
+
+                <div class="date" style="float: right">
+                    <i class="fa fa-calendar fa-2x"></i>
+                    <span class="name">&nbsp; 13/10/2017</span>
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+        <div class="panel-body">
+
+            Bonjour,</br>
+
+            Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
+            Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
+            Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
+            Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
+            Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
+        </div>
+    </div>
+
+    <div class="panel" style="margin-left: 20px ;">
+        <div class="panel-heading" style="background-color: #f2f9ff">
+
+            <div class="user">
+                <i class="fa fa-user fa-2x"></i>
+                <span class="name">&nbsp;Client</span>
+
+
+                <div class="date" style="float: right">
+                    <i class="fa fa-calendar fa-2x"></i>
+                    <span class="name">&nbsp; 13/10/2017</span>
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+        <div class="panel-body">
+
+            Bonjour,</br>
+
+            Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
+            Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
+            Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
+            Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
+            Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
+        </div>
+    </div>
+
+
+{% endblock %}
