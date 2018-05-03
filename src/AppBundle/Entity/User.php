@@ -13,6 +13,7 @@
 namespace AppBundle\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -25,25 +26,17 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\HasLifecycleCallbacks()
  * @UniqueEntity("email")
  * @UniqueEntity("username")
- * @ApiResource(
- *     itemOperations={
- *     "get",
- *     "put",
- *     "delete",
- *     "api_sign_up"={"route_name"="signUpAPI"},
- *     },
- *     collectionOperations= {
- *     "api_current_user"={
- *          "route_name"="currentUserAPI",
- *          "method"="GET"
- *      },
- *     "api_update_profile"={"route_name"="updateProfileAPI"},
- *     "api_change_password"={"route_name"="ChangePasswordAPI"},
- *     }
- *)
+ * @ApiResource()
  */
 class User extends BaseUser
 {
+
+    const ROLE_COLLABORATEUR = 'ROLE_COLLABORATEUR';
+
+    const ROLE_EXPERT_COMPTABLE = 'ROLE_EXPERT_COMPTABLE';
+
+    const ROLE_CLIENT = 'ROLE_CLIENT';
+
     /**
      * @var int
      *
@@ -58,14 +51,10 @@ class User extends BaseUser
      */
     protected $facebookId = '';
 
-    protected $facebookAccessToken;
-
     /**
      * @ORM\Column(name="google_id", type="string", length=255, nullable=true)
      */
     protected $googleId = '';
-
-    private $googleAccessToken;
 
     /**
      * @var string
@@ -75,15 +64,50 @@ class User extends BaseUser
 
     /**
      * @var string
+     *
      * @ORM\Column( type="string", length=250, nullable=true)
      */
     protected $fullName;
 
     /**
      * @var string
+     *
+     * @ORM\Column(type="string", length=250, nullable=true)
+     */
+    protected $firstName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=250, nullable=true)
+     */
+    protected $lastName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=10, nullable=true)
+     */
+    protected $initials;
+
+    /**
+     * @var string
      * @ORM\Column( type="string", length=50, nullable=true)
      */
     protected $timezoneId;
+
+    /**
+     * @var Role[]|ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="\AppBundle\Entity\Role", inversedBy="users")
+     */
+    protected $tableRoles;
+
+    // Transient Properties //
+
+    protected $facebookAccessToken;
+
+    protected $googleAccessToken;
 
     /**
      * Get id.
@@ -241,5 +265,104 @@ class User extends BaseUser
     public function setTimezoneId(string $timezoneId)
     {
         $this->timezoneId = $timezoneId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * @param string $firstName
+     *
+     * @return User
+     */
+    public function setFirstName(string $firstName)
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @param string $lastName
+     *
+     * @return User
+     */
+    public function setLastName(string $lastName)
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getInitials()
+    {
+        return $this->initials;
+    }
+
+    /**
+     * @param string $initials
+     * @return User
+     */
+    public function setInitials(string $initials)
+    {
+        $this->initials = $initials;
+        return $this;
+    }
+
+    /**
+     * Add tableRole
+     *
+     * @param Role $tableRole
+     *
+     * @return User
+     */
+    public function addTableRole(Role $tableRole)
+    {
+        $this->tableRoles[] = $tableRole;
+        return $this;
+    }
+    /**
+     * Remove tableRole
+     *
+     * @param Role $tableRole
+     */
+    public function removeTableRole(Role $tableRole)
+    {
+        $this->tableRoles->removeElement($tableRole);
+    }
+    /**
+     * Get tableRoles
+     *
+     * @return \Doctrine\Common\Collections\ArrayCollection|Role[]
+     */
+    public function getTableRoles()
+    {
+        return $this->tableRoles;
+    }
+
+    public function getRoles()
+    {
+        $roles = parent::getRoles();
+
+        foreach ($this->tableRoles as $role) {
+            $roles[] = $role->getRole();
+        }
+        return array_unique($roles);
     }
 }
