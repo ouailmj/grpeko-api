@@ -9,7 +9,9 @@
 namespace WebsiteBundle\Controller;
 
 
-class WebsiteController
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+class WebsiteController extends Controller
 {
 
 }
