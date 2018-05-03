@@ -9,7 +9,7 @@
 }}
 input[type=text], textarea{
     background-color:#eef3fd !important;
-   
+
   }
   .border-top-info {
     border-top-color: #00bcd4;
@@ -19,7 +19,7 @@ input[type=text], textarea{
 }
 </style>
 <form action="#">
-        
+
     <div class="panel panel-flat border-top-info ">
             <div class="panel-heading">
                     <h6 class="panel-title">
@@ -38,17 +38,17 @@ input[type=text], textarea{
                 <div class="table-responsive">
                     <div class="form-group">
                         <div class="col-md-3">
-                            <button type="button" class=" btn-flat  border-slate text-slate-800 form-control ">Ajouetr une nouvelle tache</button>
-                        </div> 
+                            <button type="button" class=" btn-flat  border-slate text-slate-800 form-control " data-toggle="modal" data-target="#myModal" >Ajouter une nouvelle tache</button>
+                        </div>
                         <div class="col-md-3">
-                            <button type="button" class=" btn-flat  border-slate text-slate-800 form-control">Filtre Automatique 1</button>
-                        </div> 
+                            <button type="button" class=" btn-flat  border-slate text-slate-800 form-control" onclick="location.href='/app/client/gestion-cabinet'">Filtre Automatique 1</button>
+                        </div>
                         <div class="col-md-3">
                                 <button type="button" class=" btn-flat  border-slate text-slate-800 form-control ">Filtre Automatique 2</button>
-                         </div> 
+                         </div>
                          <div class="col-md-3">
                             <button type="button" class=" btn-flat  border-slate text-slate-800 form-control">Filtre Automatique 3</button>
-                        </div> 
+                        </div>
                     </div><br><br><br>
                     <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
                         <thead>
@@ -82,20 +82,20 @@ input[type=text], textarea{
                                 <th>Date Ok</th>
                                 <th>Date Demande</th>
                                 <th>Date Relance</th>
-                                <th> 
-                                   Séléction 
+                                <th>
+                                   Séléction
                                 </th>
                                 <th>Commentaire</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>  
+                                <td>
                                     <div class="">
                                         <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
                                     </div>
                                 </td>
-                                <td>  
+                                <td>
                                     <select data-placeholder="TDA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
                                         <option></option>
                                         <optgroup label="Central Time Zone">
@@ -262,4 +262,35 @@ input[type=text], textarea{
     </div>
 </form>
 
-{% endblock %} 
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Ajout d'une nouvelle tache</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="usr">Name:</label>
+                                <input type="text" class="form-control" id="usr">
+                            </div>
+                            <div class="form-group">
+                                <label for="pwd">Password:</label>
+                                <input type="password" class="form-control" id="pwd">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                        <button type="button" class="btn btn-info">Valider</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+{% endblock %}
