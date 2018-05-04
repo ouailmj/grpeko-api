@@ -1,6 +1,31 @@
+<style>
+    .dropdown-ticket > li > a {
+
+         width: 200px;
+    }
+    .fa-stack{
+         height:1.2em !important;
+     }
+    #ex4 .p1[data-count]:after{
+        position:absolute;
+        right:10%;
+        top:8%;
+        content: attr(data-count);
+        font-size:40%;
+        padding:.2em;
+        border-radius:50%;
+        line-height:1em;
+        color: white;
+        background:rgba(255,0,0,.85);
+        text-align:center;
+        min-width: 1em;
+    }
+</style>
+
 <div class="navbar navbar-default navbar-fixed-top header-highlight">
     <div class="navbar-header">
-        <a class="navbar-brand" href="/"><b style="color: #fff;">Groupe Eko</b></a>
+
+         <a class="navbar-brand" href="/"><b style="color: #fff;">Groupe Eko</b></a>
 
         <ul class="nav navbar-nav pull-right visible-xs-block">
             <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
@@ -14,22 +39,30 @@
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-            {#
-            <li><a href="#">Text link</a></li>
-
-            <li>
-                <a href="#">
-                    <i class="icon-cog3"></i>
-                    <span class="visible-xs-inline-block position-right">Icon link</span>
-                </a>
-            </li>
-            #}
-
             <li class="dropdown dropdown-user">
                 <a class="dropdown-toggle" data-toggle="dropdown">
-                    <img src="{{ asset('assets/images/alarm.png') }}" alt="">
-                    <span> {{ app.user.firstName|default('') }} </span>
-                    <i class="caret"></i>
+                    <div id="ex4" style="margin-top: -4px">
+                          <span class="p1 fa-stack fa-2x has-badge" data-count="9" title="Conversations">
+                             <i class="p3 fa fa-comments fa-stack-1x xfa-inverse" style="margin-top: -5px"></i>
+                          </span>
+                    </div>
+                </a>
+
+                <ul class="dropdown-menu dropdown-menu-right dropdown-ticket">
+
+                    <li><a href="/app/conversationlist"><i class="fa fa-list"></i>lister les conversations</a></li>
+
+                    <li><a href="/app/conversationadd"><i class="fa fa-plus-circle"></i> Créer une conversation</a></li>
+
+                </ul>
+            </li>
+            <li class="dropdown dropdown-user">
+                <a class="dropdown-toggle" data-toggle="dropdown">
+                    <div id="ex4" style="margin-top: -4px">
+                          <span class="p1 fa-stack fa-2x has-badge" data-count="4" title="Notifications">
+                             <i class="p3 fa fa-bell fa-stack-1x xfa-inverse" style="margin-top: -5px"></i>
+                          </span>
+                    </div>
                 </a>
 
                 <ul class="dropdown-menu dropdown-menu-right">
@@ -43,9 +76,11 @@
 
             <li class="dropdown dropdown-user">
                 <a class="dropdown-toggle" data-toggle="dropdown">
-                    <img src="{{ asset('assets/images/job-search.png') }}" alt="">
-                    <span> {{ app.user.firstName|default('') }} </span>
-                    <i class="caret"></i>
+                    <div id="ex4" style="margin-top: -5px">
+                          <span class="p1 fa-stack fa-2x has-badge" title="Fichiers">
+                             <i class="p3 fa fa-file fa-stack-1x xfa-inverse" style="margin-top: -5px"></i>
+                          </span>
+                    </div>
                 </a>
 
                 <ul class="dropdown-menu dropdown-menu-right">
@@ -63,9 +98,11 @@
 
             <li class="dropdown dropdown-user">
                 <a class="dropdown-toggle" data-toggle="dropdown">
-                    <img src="{{ asset('assets/images/avatar.png') }}" alt="">
-                    <span> {{ app.user.firstName|default('') }} </span>
-                    <i class="caret"></i>
+                    <div id="ex4" style="margin-top: -5px">
+                          <span class="p1 fa-stack fa-2x has-badge" title="Profil">
+                             <i class="p3 fa fa-user fa-stack-1x xfa-inverse" style="margin-top: -5px"></i>
+                          </span>
+                    </div>
                 </a>
 
                 <ul class="dropdown-menu dropdown-menu-right">
