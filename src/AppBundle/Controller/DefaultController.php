@@ -570,4 +570,64 @@ class DefaultController extends BaseController
     {
         return $this->render('default/client_excercice.html.twig');
     }
+//kamal
+       /**
+     * @Route("/client/collaborateurs", name="collaborateurs")
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function collaborateurs(Request $request)
+    {
+        return $this->render('default/gestion-collaborateurs.html.twig');
+    }
+    //kamal
+       /**
+     * @Route("/client/add-collaborateur", name="add-collaborateur")
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function addCollaborateur(Request $request)
+    {
+        return $this->render('default/Add-collaborateurs.html.twig');
+    }
+     //kamal
+       /**
+     * @Route("/client/view_collaborateur", name="viewcollaborateur")
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function viewCollaborateur(Request $request)
+    {
+        return $this->render('default/view_collaborateur.html.twig');
+    }
+    //kamal
+    /**
+     * @Route("/client/edit_collaborateur", name="editcollaborateur")
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function editCollaborateur(Request $request)
+    {
+        return $this->render('default/edit_collaborateur.html.twig');
+    }
+     //kamal
+    /**
+     * @Route("/client/accueill", name="accueill")
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function accueill(Request $request)
+    {
+        return $this->render('default/accueill.html.twig');
+    }
 }

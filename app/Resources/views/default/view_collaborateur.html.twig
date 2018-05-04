@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<style>
+ 
+.alert.alert-styled-left {
+    border-left-width: 27px !important;
+}
+.alert[class*=alert-styled-].alert-info:after, .alert[class*=alert-styled-][class*=bg-info]:after
+{
+content: none !important;
+}
+
+</style>
+
+    <div class="panel panel-flat border-top-info">
+            <div class="panel-heading">
+                <h6 class="panel-title">Gestion des collaborateurs<a class="heading-elements-toggle"><i class="icon-more"></i></a><a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+                <div class="heading-elements">
+                    <a href="" class="btn btn-primary btn-xs  legitRipple"><b><i class="icon-loop3"></i></b> Retour à la liste</a>
+                </div>
+            </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-6 content-group">
+                    <img src="" class="content-group mt-10" alt="" style="width: 120px;">
+                    <ul class="list-condensed list-unstyled">
+                        <li>16 783 Alves Virginie</li>
+                        <li>+8692322616518</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                        <table class="table">
+                            <tbody>
+                            <tr>
+                                <th>Nom</th>
+                                <td>Virginie</td>
+                            </tr>
+                            <tr>
+                                <th>Prénom</th>
+                                <td>Alves</td>
+                            </tr>
+                            <tr>
+                                <th>Adresse e-mail</th>
+                                <td>advisory@test.com</td>
+                            </tr>
+                            <tr>
+                                <th>Adresse</th>
+                                <td>45, impasse Océane</td>
+                            </tr>
+                            <tr>
+                                <th>Téléphone</th>
+                                <td>+8692322616518</td>
+                            </tr>
+                            <tr>
+                                <th>Date de création</th>
+                                <td>1983-01-23 09:00:52</td>
+                            </tr>
+                            <tr>
+                                <th>Dernière modification</th>
+                                <td>2017-12-05 11:06:28</td>
+                            </tr>
+                            <tr>
+                                <th>Dernière connexion</th>
+                                <td>2017-12-05 11:06:28</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="panel-footer"><a class="heading-elements-toggle"><i class="icon-more"></i></a>
+                    <div class="heading-elements pull-right">
+                        <div class="col-md-12">
+                            <div class="btn-group">
+                                <a href="" class="btn btn-primary btn-labeled btn-xs legitRipple"><b><i class="icon-pencil"></i></b> Modifier</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+{% endblock %}
