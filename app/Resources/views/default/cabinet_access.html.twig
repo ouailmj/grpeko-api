@@ -1,0 +1,168 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+
+    <div class="panel panel-flat">
+        <div class="tabbale">
+            <div class="tab-content">
+                <div class="tab-pane active" id="firsttab">
+
+                    <div class="">
+                        <ul class="nav nav-tabs nav-tabs-solid">
+                            <li class="active"><a href="#Contacts" data-toggle="tab" aria-expanded="true">Collaborateurs</a></li>
+                            <li class=""><a href="#Dossiers" data-toggle="tab" aria-expanded="false">Collaborateurs Affectations</a></li>
+                            <li class=""><a href="#Contrats" data-toggle="tab" aria-expanded="false">Gestion du cabinet</a></li>
+                            <li class=""><a href="#mission" data-toggle="tab" aria-expanded="false">Comptes</a></li>
+                            <li class=""><a href="#Exercices" data-toggle="tab" aria-expanded="false">journaux</a></li>
+                            <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Import CFONB</a></li>
+                            <li>
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="dropdown dropdown-user">
+                                        <a class="dropdown-toggle" data-toggle="dropdown">
+                                            <img src="{{ asset('assets/images/icons8.png') }}">
+                                        </a>
+
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Suivi CEB</a></li>
+                                            <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Facturation</a></li>
+                                            <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Facturation Remises</a></li>
+                                            <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Chiffre d'affaires</a></li>
+                                            <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Commissions</a></li>
+                                            <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Paramétrages</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="Contacts">
+
+
+
+                            <!-- Highlighting rows and columns -->
+                            <div class="panel panel-flat">
+                                <div class="panel-heading">
+                                    <div class="heading-elements">
+                                        <ul class="icons-list">
+                                            <li><a data-action="collapse"></a></li>
+                                            <li><a data-action="reload"></a></li>
+                                            <li><a data-action="close"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <a href="{{ path('client_access1') }}" style="margin-left: 18px"><img src="{{ asset('assets/images/green.png') }}" t></a>
+
+                                <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-center">Filtres</th>
+                                        <th>Entité juridique</th>
+                                        <th>Forme juridique</th>
+                                        <th>Date de cloture</th>
+                                        <th>Regime Fiscal</th>
+                                        <th>Regime TVA</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {#{% for item in users %}#}
+                                    <tr>
+                                        <td class="text-center">
+                                            <div class="">
+                                                <a title="Modifier" href="{{ path('client_access1') }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
+                                            </div>
+                                        </td>
+                                        <td>EKO</td>
+                                        <td>EURL</td>
+                                        <td>31/12/2018</td>
+                                        <td><span class="label label-info">0 à 499k</span></td>
+                                        <td><span class="label label-info">0 à 499k</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">
+                                            <div class="">
+                                                <a title="Modifier" href="{{ path('client_access1') }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
+                                            </div>
+                                        </td>
+                                        <td>PITI CONSEIL</td>
+                                        <td>EURL</td>
+                                        <td>31/12/2018</td>
+                                        <td><span class="label label-info">0 à 499k</span></td>
+                                        <td><span class="label label-info">0 à 499k</span></td>
+                                    </tr>
+                                    {#{% endfor %}#}
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+
+                        <div class="tab-pane" id="Dossiers">
+
+
+
+                        </div>
+                        <div class="tab-pane" id="Contrats">
+
+
+
+                        </div>
+                        <div class="tab-pane" id="mission">
+
+
+
+                        </div>
+                        <div class="tab-pane" id="Exercices">
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="tab-pane" id="secondtab">
+                    <div class="">
+                        <ul class="nav nav-tabs nav-tabs-solid">
+                            <li class="active"><a href="#Contacts" data-toggle="tab" aria-expanded="true"><i class="icon-users position-left"></i>Entrée en relation</a></li>
+                            <li class=""><a href="#Dossiers" data-toggle="tab" aria-expanded="false"><i class="icon-folder position-left"></i>Devis Client</a></li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <style>
+        fieldset.scheduler-border {
+            border: 1px groove #ddd !important;
+            padding: 0 1.4em 1.4em 1.4em !important;
+            margin: 0 0 1.5em 0 !important;
+            -webkit-box-shadow:  0px 0px 0px 0px #000;
+            box-shadow:  0px 0px 0px 0px #000;
+        }
+
+        legend.scheduler-border {
+            font-size: 1.2em !important;
+            font-weight: bold !important;
+            text-align: left !important;
+            width:auto;
+            padding:0 10px;
+            border-bottom:none;
+            color: #7b5d5a;
+        }
+
+        .colorback{
+            background-color: #eef3fd;
+        }
+    </style>
+
+
+{% endblock %}

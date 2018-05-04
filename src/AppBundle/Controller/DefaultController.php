@@ -609,4 +609,15 @@ class DefaultController extends BaseController
         return $this->render('default/conversation_details.html.twig');
     }
 
+    /**
+     * @Route("/cabinetacess", name="cabinet_access")
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function cabinetacess(Request $request)
+    {
+        return $this->render('default/cabinet_access.html.twig');
+    }
 }
