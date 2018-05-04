@@ -54,7 +54,7 @@ class Builder implements ContainerAwareInterface
         ])->setAttribute('class', 'navigation-header');
 
         $menu->addChild('Clients', [
-            'uri' => '#',
+            'uri' => '/app/client/access1',
             'label' => '<i class="icon-users4"></i> <span>Clients</span>',
             'extras' => ['safe_label' => true],
         ]);

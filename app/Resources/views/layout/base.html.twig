@@ -17,6 +17,9 @@
         <link href="{{ asset('assets/css/components.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('assets/css/colors.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('bundles/app/css/custom.css') }}" rel="stylesheet" type="text/css">
+        <link href=" https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
     {% endblock %}
     <style>
         .padding-r-5 {
@@ -164,6 +167,12 @@
     #}
     <script type="text/javascript" src="{{ asset('assets/js/plugins/ui/ripple.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/custom.js') }}"></script>
+    <script>
+        function addMoreFiles(){
+            $("#attachment").append('<input type="file" name="files[]" class="form-control" />')
+        }
+
+    </script>
     <!-- /theme JS files -->
 {% endblock %}
 {% block javascripts %}

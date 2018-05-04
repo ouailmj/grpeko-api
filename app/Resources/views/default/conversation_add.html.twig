@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+
+
+    <div class="panel panel-flat" style="padding: 20px">
+
+       <div style="padding: 10px">
+            <form id="myForm" method="post" class="form-horizontal" enctype="multipart/form-data">
+
+
+                <div class="form-group">
+                    <label class="control-label col-lg-2 text-semibold control-label required" >Mission </label>
+                    <div class="col-lg-10">
+
+
+                        <select  class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                            <option value="1" disabled selected> Choisir une mission</option>
+                            <option value="1">0 à 499 salariés</option>
+                            <option value="2">500 à 999 salariés</option>
+                            <option value="3">Plus de 1000 salariés</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-lg-2 text-semibold control-label required" >Type de Client</label>
+                    <div class="col-lg-10">
+
+
+                        <select  class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                            <option value="1" disabled selected> Choisir type du client</option>
+                            <option value="1">0 à 499 salariés</option>
+                            <option value="2">500 à 999 salariés</option>
+                            <option value="3">Plus de 1000 salariés</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-lg-2 text-semibold control-label required">Message</label>
+                    <div class="col-lg-10">
+                        <textarea rows="4" cols="50" class="form-control" placeholder="Ajouter un message" required></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-lg-2 text-semibold control-label required">Joindre des fichiers</label>
+                    <div class="col-lg-10" id="attachment">
+                        <a href="#" onclick="addMoreFiles()"><i class="fa fa-plus"></i> Ajouter plus</a>
+                        <input type="file" name="files[]"  class="form-control">
+                    </div>
+                </div>
+
+                <p class="text-center">
+                    <input type="submit" value="Valider" class="btn btn-primary">
+                </p>
+
+            </form>
+       </div>
+
+    </div>
+{% endblock %}

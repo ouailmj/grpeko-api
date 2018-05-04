@@ -559,6 +559,7 @@ class DefaultController extends BaseController
         return $this->render('default/comptabilite.html.twig');
     }
     
+
     /**
      * @Route("/client/exercices", name="client_excercices")
      *
@@ -570,4 +571,93 @@ class DefaultController extends BaseController
     {
         return $this->render('default/client_excercice.html.twig');
     }
+//kamal
+       /**
+     * @Route("/client/collaborateurs", name="collaborateurs")
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function collaborateurs(Request $request)
+    {
+        return $this->render('default/gestion-collaborateurs.html.twig');
+    }
+    //kamal
+       /**
+     * @Route("/client/add-collaborateur", name="add-collaborateur")
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function addCollaborateur(Request $request)
+    {
+        return $this->render('default/Add-collaborateurs.html.twig');
+    }
+    //kamal
+    /**
+    * @Route("/client/view_collaborateur", name="viewcollaborateur")     
+    *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function viewCollaborateur(Request $request)
+    {
+        return $this->render('default/view_collaborateur.html.twig');
+    }
+    /**
+    * @Route("/conversationlist", name="conversation_list")
+    * @param Request $request
+    * @return \Symfony\Component\HttpFoundation\Response
+    */
+    public function listconversation(Request $request)
+    {
+        return $this->render('default/conversation_list.html.twig');
+    }
+
+    /**
+     * @Route("/conversationadd", name="conversation_add")
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     *  
+     */
+    public function addconversation(Request $request)
+    {
+        return $this->render('default/conversation_add.html.twig');
+    }
+    
+     //kamal
+    /**
+     * @Route("/client/edit_collaborateur", name="editcollaborateur")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function editCollaborateur(Request $request)
+    {
+        return $this->render('default/edit_collaborateur.html.twig');
+    }
+   
+
+    //kamal
+    /**
+     * @Route("/client/accueill", name="accueill")
+    
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function accueill(Request $request)
+    {
+        return $this->render('default/accueill.html.twig');
+    }
+    public function detailsconversation(Request $request)
+    {
+        return $this->render('default/conversation_details.html.twig');
+    }
+    
+
 }

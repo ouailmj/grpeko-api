@@ -20,8 +20,8 @@
                                 <li class="active"><a href="#Contacts" data-toggle="tab" aria-expanded="true"><i class="icon-users position-left"></i>Informations générales</a></li>
                                 <li class=""><a href="#Dossiers" data-toggle="tab" aria-expanded="false"><i class="icon-folder position-left"></i>Rendez-vous</a></li>
                                 <li class=""><a href="#Contrats" data-toggle="tab" aria-expanded="false"><i class="icon-address-book3 position-left"></i>Contacts</a></li>
-                                <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false"><i class="icon-users2 position-left"></i>Mission</a></li>
-                                <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false"><i class="icon-users2 position-left"></i>Exercices</a></li>
+                                <li class=""><a href="#mission" data-toggle="tab" aria-expanded="false"><i class="icon-users2 position-left"></i>Mission</a></li>
+                                <li class=""><a href="#Exercices" data-toggle="tab" aria-expanded="false"><i class="icon-users2 position-left"></i>Exercices</a></li>
                                 <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false"><i class="icon-users2 position-left"></i>Informations Bancaires</a></li>
                                 <li>
                                     <ul class="nav navbar-nav navbar-right">
@@ -363,160 +363,29 @@
 
 
                             </div>
-                            <div class="tab-pane" id="Dossiers">
-                                <div class="padding-r-5 pull-right"><a href="#" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-plus3"></i></b> Ajouter</a></div>
-                                <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
-                                    <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Nom</th>
-                                        <th>Date d'événement</th>
-                                        <th>Réference intermédiaire</th>
-                                        <th>Etat</th>
-                                        <th>Créé le</th>
-                                        <th>Modifié le</th>
-                                        <th class="text-center">Actions</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {#{% for item in users %}#}
-                                    <tr>
-                                        <td><a href="#">1</a></td>
-                                        <td>Dossier 1</td>
-                                        <td>12-09-2016</td>
-                                        <td>9856-74</td>
-                                        <td><span class="label label-danger">Fermé</span></td>
-                                        <td>12-09-2016</td>
-                                        <td>12-09-2016</td>
-                                        <td class="text-center">
-                                            <div class="">
-                                                <a title="Afficher les détails" href="{{ path('dossier_show') }}" class=" legitRipple"><i class="icon-eye position-left"></i></a>
-                                                <a title="Modifier" href="{{ path('dossier_edit') }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
-                                                <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#">2</a></td>
-                                        <td>Dossier 2</td>
-                                        <td>12-09-2016</td>
-                                        <td>9856-74</td>
-                                        <td><span class="label label-info">Ouvert</span></td>
-                                        <td>12-09-2016</td>
-                                        <td>12-09-2016</td>
-                                        <td class="text-center">
-                                            <div class="">
-                                                <a title="Afficher les détails" href="{{ path('dossier_show') }}" class=" legitRipple"><i class="icon-eye position-left"></i></a>
-                                                <a title="Modifier" href="{{ path('dossier_edit') }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
-                                                <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    {#{% endfor %}#}
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="tab-pane " id="Contrats">
-                                <div class="padding-r-5 pull-right"><a href="{{ path('_contract_new') }}" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-plus3"></i></b> Ajouter</a></div>
-                                </table>
-                                <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
-                                    <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Numéro</th>
-                                        <th>Type</th>
-                                        <th>Produit</th>
-                                        <th>Créé le</th>
-                                        <th>Modifié le</th>
-                                        <th class="text-center">Actions</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td><a href="#">1</a></td>
-                                        <td><a href="#">123456789</a></td>
-                                        <td>Flotte</td>
-                                        <td>Assurance Flotte</td>
-                                        <td>12-12-2016</td>
-                                        <td>12-12-2016</td>
-                                        <td class="text-center">
-                                            <div class="">
-                                                <a title="Afficher les détails" href="#" class=" legitRipple"><i class="icon-eye position-left"></i></a>
-                                                <a title="Modifier" href="#" class=" legitRipple"><i class="icon-pen position-left"></i></a>
-                                                <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#">2</a></td>
-                                        <td><a href="#">123456789</a></td>
-                                        <td>Flotte</td>
-                                        <td>Assurance Collectivité</td>
-                                        <td>12-12-2016</td>
-                                        <td>12-12-2016</td>
-                                        <td class="text-center">
-                                            <div class="">
-                                                <a title="Afficher les détails" href="#" class=" legitRipple"><i class="icon-eye position-left"></i></a>
-                                                <a title="Modifier" href="#" class=" legitRipple"><i class="icon-pen position-left"></i></a>
-                                                <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="tab-pane" id="Relation_client">
-                                <div class="padding-r-5 pull-right">
-                                    <a href="{{ path('relation_client_new') }}" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-plus3"></i></b> Ajouter</a>
-                                    <a href="{{ path('relation_client_search') }}" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-folder-search"></i></b> Cherche relations </a>
-                                </div>
-                                <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
-                                    <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Nom</th>
-                                        <th>Prénom</th>
-                                        <th>Action</th>
-                                        <th>Description</th>
-                                        <th>Date</th>
-                                        <th class="text-center">Actions</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
 
-                                    <tr>
-                                        <td><a href="#">1</a></td>
-                                        <td>Eugene</td>
-                                        <td>Ahmed</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>12-12-2016</td>
-                                        <td class="text-center">
-                                            <div class="">
-                                                <a title="Afficher les détails" href="{{ path('relation_client_show') }}" class=" legitRipple"><i class="icon-eye position-left"></i></a>
-                                                <a title="Modifier" href="{{ path('relation_client_edit') }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
-                                                <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#">2</a></td>
-                                        <td>Eugene</td>
-                                        <td>Ahmed</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>12-12-2016</td>
-                                        <td class="text-center">
-                                            <div class="">
-                                                <a title="Afficher les détails" href="#" class=" legitRipple"><i class="icon-eye position-left"></i></a>
-                                                <a title="Modifier" href="#" class=" legitRipple"><i class="icon-pen position-left"></i></a>
-                                                <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                            <div class="tab-pane" id="Dossiers">
+
+                                {% include 'default/rdvs.html.twig' %}
+
                             </div>
+
+                            <div class="tab-pane " id="Contrats">
+
+                                {% include 'default/client_contact.html.twig' %}
+
+                            </div>
+                            <div class="tab-pane" id="mission">
+
+                                {% include 'default/mission.html.twig' %}
+
+                            </div>
+                            <div class="tab-pane" id="Exercices">
+
+                                {% include 'default/client_excercice.html.twig' %}
+
+                            </div>
+
                         </div>
                 </div>
 
