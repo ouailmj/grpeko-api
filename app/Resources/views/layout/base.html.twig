@@ -167,6 +167,12 @@
     #}
     <script type="text/javascript" src="{{ asset('assets/js/plugins/ui/ripple.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/custom.js') }}"></script>
+    <script>
+        function addMoreFiles(){
+            $("#attachment").append('<input type="file" name="files[]" class="form-control" />')
+        }
+
+    </script>
     <!-- /theme JS files -->
 {% endblock %}
 {% block javascripts %}

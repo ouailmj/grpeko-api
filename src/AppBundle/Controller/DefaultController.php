@@ -572,41 +572,41 @@ class DefaultController extends BaseController
     }
 
     /**
-     * @Route("/ticketlist", name="ticket_list")
+     * @Route("/conversationlist", name="conversation_list")
      *
      * @param Request $request
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function listTicket(Request $request)
+    public function listconversation(Request $request)
     {
-        return $this->render('default/ticket_list.html.twig');
+        return $this->render('default/conversation_list.html.twig');
     }
 
 
     /**
-     * @Route("/ticketadd", name="ticket_add")
+     * @Route("/conversationadd", name="conversation_add")
      *
      * @param Request $request
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function addTicket(Request $request)
+    public function addconversation(Request $request)
     {
-        return $this->render('default/ticket_add.html.twig');
+        return $this->render('default/conversation_add.html.twig');
     }
 
 
     /**
-     * @Route("/ticketdetails", name="ticket_details")
+     * @Route("/conversationdetails", name="conversation_details")
      *
      * @param Request $request
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function detailsTicket(Request $request)
+    public function detailsconversation(Request $request)
     {
-        return $this->render('default/ticket_details.html.twig');
+        return $this->render('default/conversation_details.html.twig');
     }
 
 }

@@ -4,7 +4,7 @@
 
 
 
-    <div class="panel panel-flat">
+    <div class="panel panel-flat" style="padding: 20px">
 
        <div style="padding: 10px">
             <form id="myForm" method="post" class="form-horizontal" enctype="multipart/form-data">
@@ -41,7 +41,7 @@
                 <div class="form-group">
                     <label class="control-label col-lg-2 text-semibold control-label required">Message</label>
                     <div class="col-lg-10">
-                        <textarea rows="4" cols="50" class="form-control" placeholder="Ajouter une description" required></textarea>
+                        <textarea rows="4" cols="50" class="form-control" placeholder="Ajouter un message" required></textarea>
                     </div>
                 </div>
 
@@ -61,13 +61,4 @@
        </div>
 
     </div>
-
-    <script>
-        function addMoreFiles(){
-
-            $("#attachment").append('<input type="file" name="files[]" class="form-control" />')
-        }
-
-    </script>
-
 {% endblock %}
