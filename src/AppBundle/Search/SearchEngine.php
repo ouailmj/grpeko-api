@@ -21,7 +21,6 @@ class SearchEngine
      */
     private $em;
 
-
     /**
      * DoctrineEngine constructor.
      *
@@ -124,8 +123,9 @@ class SearchEngine
 
     private function getClassName($className)
     {
-        if (!class_exists($className)) throw new \InvalidArgumentException();
-
+        if (!class_exists($className)) {
+            throw new \InvalidArgumentException();
+        }
         return $this->em->getClassMetadata($className)->getName();
     }
 

@@ -17,7 +17,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends BaseController
 {
-
     /**
      * @Route("/client/show", name="client_show")
      *
@@ -382,10 +381,7 @@ class DefaultController extends BaseController
         return $this->render('default/record_new.html.twig');
     }
 
-
-
     /**************************************************/
-
 
     /**
      * @Route("/client/access1", name="client_access1")
@@ -399,17 +395,14 @@ class DefaultController extends BaseController
         return $this->render('default/access1.html.twig');
     }
 
-
     /**
      * @Route("/", name="__homepage")
      */
     public function indexAction(Request $request)
     {
         return $this->render('base.html.twig');
-
         // return $this->render('website/index.html.twig');
     }
-
 
     /**
      * @Route("/client/index", name="client_index")
@@ -423,8 +416,7 @@ class DefaultController extends BaseController
         return $this->render('default/client_index.html.twig');
     }
 
-
-   /**
+    /**
      * @Route("/client/entre_relation", name="client_entre_relation")
      *
      * @param Request $request
@@ -435,7 +427,6 @@ class DefaultController extends BaseController
     {
         return $this->render('default/client_entre_relation.html.twig');
     }
-
 
     /**
      * @Route("/client/rdvs", name="client_rdvs")
@@ -448,7 +439,6 @@ class DefaultController extends BaseController
     {
         return $this->render('default/rdvs.html.twig');
     }
-
 
     /**
      * @Route("/client/rdvs/new", name="client_rdvs_new")
@@ -473,7 +463,6 @@ class DefaultController extends BaseController
     {
         return $this->render('default/client_contact.html.twig');
     }
-
 
     /**
      * @Route("/client/contact/new", name="client_contact_new")
@@ -522,8 +511,10 @@ class DefaultController extends BaseController
     {
         return $this->render('default/ShowTable.html.twig');
     }
+
     // kamal
- /**
+
+    /**
      * @Route("/client/planning", name="planning")
      *
      * @param Request $request
@@ -534,8 +525,10 @@ class DefaultController extends BaseController
     {
         return $this->render('default/Planning.html.twig');
     }
+
     // kamal
- /**
+
+    /**
      * @Route("/client/gestion-cabinet", name="gestion-cabinet")
      *
      * @param Request $request
@@ -546,8 +539,10 @@ class DefaultController extends BaseController
     {
         return $this->render('default/gestion-cabinet.html.twig');
     }
+
     // kamal
- /**
+
+    /**
      * @Route("/client/comptabilite", name="comptabilite")
      *
      * @param Request $request
@@ -558,7 +553,6 @@ class DefaultController extends BaseController
     {
         return $this->render('default/comptabilite.html.twig');
     }
-    
 
     /**
      * @Route("/client/exercices", name="client_excercices")
@@ -571,8 +565,10 @@ class DefaultController extends BaseController
     {
         return $this->render('default/client_excercice.html.twig');
     }
-//kamal
-       /**
+
+    //kamal
+
+    /**
      * @Route("/client/collaborateurs", name="collaborateurs")
      *
      * @param Request $request
@@ -583,8 +579,10 @@ class DefaultController extends BaseController
     {
         return $this->render('default/gestion-collaborateurs.html.twig');
     }
+
     //kamal
-       /**
+
+    /**
      * @Route("/client/add-collaborateur", name="add-collaborateur")
      *
      * @param Request $request
@@ -595,10 +593,12 @@ class DefaultController extends BaseController
     {
         return $this->render('default/Add-collaborateurs.html.twig');
     }
+
     //kamal
+
     /**
-    * @Route("/client/view_collaborateur", name="viewcollaborateur")     
-    *
+     * @Route("/client/view_collaborateur", name="viewcollaborateur")
+     *
      * @param Request $request
      *
      * @return \Symfony\Component\HttpFoundation\Response
@@ -607,11 +607,14 @@ class DefaultController extends BaseController
     {
         return $this->render('default/view_collaborateur.html.twig');
     }
+
     /**
-    * @Route("/conversationlist", name="conversation_list")
-    * @param Request $request
-    * @return \Symfony\Component\HttpFoundation\Response
-    */
+     * @Route("/conversationlist", name="conversation_list")
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function listconversation(Request $request)
     {
         return $this->render('default/conversation_list.html.twig');
@@ -621,30 +624,33 @@ class DefaultController extends BaseController
      * @Route("/conversationadd", name="conversation_add")
      *
      * @param Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\Response
-     *  
      */
     public function addconversation(Request $request)
     {
         return $this->render('default/conversation_add.html.twig');
     }
-    
-     //kamal
+
+    //kamal
+
     /**
      * @Route("/client/edit_collaborateur", name="editcollaborateur")
+     *
      * @param Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function editCollaborateur(Request $request)
     {
         return $this->render('default/edit_collaborateur.html.twig');
     }
-   
 
     //kamal
+
     /**
      * @Route("/client/accueill", name="accueill")
-    
+
      *
      * @param Request $request
      *
@@ -654,10 +660,9 @@ class DefaultController extends BaseController
     {
         return $this->render('default/accueill.html.twig');
     }
+
     public function detailsconversation(Request $request)
     {
         return $this->render('default/conversation_details.html.twig');
     }
-    
-
 }
