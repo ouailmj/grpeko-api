@@ -1,0 +1,19 @@
+{% extends "mail/layout.html.twig" %}
+
+{% block content %}
+    <p>
+        Vous avez reçu un nouveau message provenant de votre application Groupe EKO. Ci-dessous les details du message.
+    </p>
+
+    <p>
+        Nom: {{ name }}
+    </p>
+    <p>
+        Email: {{ email }}
+    </p>
+    <p>
+        Message: <br>
+
+        {{ message }}
+    </p>
+{% endblock %}
