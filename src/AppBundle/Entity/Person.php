@@ -52,12 +52,6 @@ class Person extends BasePerson
      * @ORM\Column(type="datetimetz", nullable=true)
      */
     protected $deathDate = null;
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $legalName;
 
     /**
      * @var string
