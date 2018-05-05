@@ -12,6 +12,6 @@
 
 namespace AppBundle\Model;
 
-trait PersonTrait
+class CREntry
 {
 }

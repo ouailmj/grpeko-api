@@ -1,18 +1,15 @@
 <?php
-
-/*
- * This file is part of the Napier project.
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- *
- * Developed by MIT <contact@mit-agency.com>
- *
+/**
+ * Created by PhpStorm.
+ * User: mac
+ * Date: 04/05/2018
+ * Time: 22:48
  */
 
 namespace AppBundle\Model;
 
-class LegalPerson
+
+class LegalEntity
 {
     /**
      * @var string
@@ -48,4 +45,5 @@ class LegalPerson
      * @var Address[]
      */
     protected $oldAddresses;
+
 }

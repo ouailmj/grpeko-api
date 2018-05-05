@@ -36,14 +36,14 @@ class Role extends BaseRole
     /**
      * @var string
      *
-     * @ORM\Column(name="role", type="string", length=50, unique=true)
+     * @ORM\Column(type="string", length=50, unique=true)
      */
     private $role;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="description", type="text", nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
     private $description;
 

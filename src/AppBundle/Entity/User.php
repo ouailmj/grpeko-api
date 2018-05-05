@@ -30,12 +30,11 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class User extends BaseUser
 {
+    const ROLE_COLLABORATOR = 'ROLE_COLLABORATOR';
 
-    const ROLE_COLLABORATEUR = 'ROLE_COLLABORATEUR';
+    const ROLE_ACCOUNTANT = 'ROLE_ACCOUNTANT';
 
-    const ROLE_EXPERT_COMPTABLE = 'ROLE_EXPERT_COMPTABLE';
-
-    const ROLE_CLIENT = 'ROLE_CLIENT';
+    const ROLE_CUSTOMER = 'ROLE_CUSTOMER';
 
     /**
      * @var int
@@ -317,16 +316,18 @@ class User extends BaseUser
 
     /**
      * @param string $initials
+     *
      * @return User
      */
     public function setInitials(string $initials)
     {
         $this->initials = $initials;
+
         return $this;
     }
 
     /**
-     * Add tableRole
+     * Add tableRole.
      *
      * @param Role $tableRole
      *
@@ -335,10 +336,12 @@ class User extends BaseUser
     public function addTableRole(Role $tableRole)
     {
         $this->tableRoles[] = $tableRole;
+
         return $this;
     }
+
     /**
-     * Remove tableRole
+     * Remove tableRole.
      *
      * @param Role $tableRole
      */
@@ -346,8 +349,9 @@ class User extends BaseUser
     {
         $this->tableRoles->removeElement($tableRole);
     }
+
     /**
-     * Get tableRoles
+     * Get tableRoles.
      *
      * @return \Doctrine\Common\Collections\ArrayCollection|Role[]
      */
@@ -363,6 +367,7 @@ class User extends BaseUser
         foreach ($this->tableRoles as $role) {
             $roles[] = $role->getRole();
         }
+
         return array_unique($roles);
     }
 }
