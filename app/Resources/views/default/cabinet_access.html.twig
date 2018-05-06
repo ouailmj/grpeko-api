@@ -27,7 +27,7 @@
                                             <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Facturation Remises</a></li>
                                             <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Chiffre d'affaires</a></li>
                                             <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Commissions</a></li>
-                                            <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Paramétrages</a></li>
+                                            <li class=""><a href="#Parametrages" data-toggle="tab" aria-expanded="false">Paramétrages</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -37,8 +37,6 @@
 
                     <div class="tab-content">
                         <div class="tab-pane active" id="Contacts">
-
-
 
                             <!-- Highlighting rows and columns -->
                             <div class="panel panel-flat">
@@ -107,7 +105,7 @@
 
 
                         </div>
-                        <div class="tab-pane" id="mission">
+                        <div class="tab-pane" id="Mission">
 
 
 
@@ -117,6 +115,73 @@
 
 
                         </div>
+                        <div class="tab-pane" id="Parametrages">
+
+                            <div class="panel panel-flat">
+                                <div class="tabbale">
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="firsttab">
+
+                                            <div class="">
+                                                <ul class="nav nav-tabs nav-tabs-solid">
+                                                    <li class="active"><a href="#Emails" data-toggle="tab" aria-expanded="true">Emails</a></li>
+                                                    <li class=""><a href="#rendezvous" data-toggle="tab" aria-expanded="false">Rendez-vous client</a></li>
+                                                    <li class=""><a href="#devis" data-toggle="tab" aria-expanded="false">Devis</a></li>
+                                                    <li class=""><a href="#commission" data-toggle="tab" aria-expanded="false">Commissions</a></li>
+                                                    <li class=""><a href="#siteinternet" data-toggle="tab" aria-expanded="false">Sites Internet</a></li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="tab-content">
+
+                                                <div class="tab-pane active" id="Emails">
+                                                    {% include 'default/parametrages_emails.html.twig' %}
+                                                </div>
+
+                                                <div class="tab-pane" id="rendezvous">
+
+                                                    {% include 'default/parametrages_rendezvous.html.twig' %}
+
+                                                </div>
+                                                <div class="tab-pane" id="devis">
+
+                                                    {% include 'default/parametrages_devis.html.twig' %}
+
+                                                </div>
+                                                <div class="tab-pane" id="commission">
+
+                                                    {% include 'default/parametrages_commission.html.twig' %}
+
+                                                </div>
+                                                <div class="tab-pane" id="siteinternet">
+
+                                                    {% include 'default/parametrages_internetsite.html.twig' %}
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+                                        <div class="tab-pane" id="secondtab">
+                                            <div class="">
+                                                <ul class="nav nav-tabs nav-tabs-solid">
+                                                    <li class="active"><a href="#Contacts" data-toggle="tab" aria-expanded="true"><i class="icon-users position-left"></i>Entrée en relation</a></li>
+                                                    <li class=""><a href="#Dossiers" data-toggle="tab" aria-expanded="false"><i class="icon-folder position-left"></i>Devis Client</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="tab-content">
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
 
                     </div>
                 </div>
