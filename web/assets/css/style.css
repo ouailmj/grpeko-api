@@ -1169,13 +1169,20 @@ p {
 .email-text > p {
     font-size: 18px;
     margin-bottom: 10px;
+    padding-right: 100px;
 }
-
-.address-text > p > span,
+.ilformat {
+   list-style:square;
+   margin-left: 1rem;
+   color: #726a84;
+   font-size: 16px;
+   font-weight: 300;
+}
+/* .address-text > p > span,
 .phone-text > p > span,
 .email-text > p > span {
     color: #5d9d9c;
-}
+} */
 
 .footer-contact-area .line-shape {
     margin-left: 0;
