@@ -1,124 +1,103 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-    <div class="panel panel-flat">
-        <div class="panel-heading">
-            <h6 class="panel-title">Gestion Cabinet<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
-        </div>
-        <div class="tabbale">
-            <div class="">
-                <ul class="nav nav-tabs nav-tabs-solid">
-                    <li class="active"><a href="#Contacts" data-toggle="tab" aria-expanded="true">Collaborateurs</a></li>
-                    <li class=""><a href="#Dossiers" data-toggle="tab" aria-expanded="false">Journaux</a></li> 
-                </ul>
-            </div>
-
-            <div class="tab-content">
-                <div class="tab-pane active" id="Contacts">
-                    <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
-                        <thead>
-                        <tr>
-                            <th class="text-center">Actions</th>
-                            <th>Nom</th>
-                            <th>Prénom</th>
-                            <th>Initiales</th>
-                            <th>Login Windows</th>
-                            <th>Email</th>
-                            <th>Racine OwnCloud</th>
-                            <th>Type</th>
-                            <th>Supérieur</th>
-                            <th>Actif</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td class="text-center">
-                                <div class="">
-                                   <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
-                                </div>
-                            </td>
-                            <td>Eugene</td>
-                            <td>Kopyov</td>
-                            <td>Ring street 12</td>
-                            <td>Eugene</td> 
-                            <td>Adresse</td>
-                            <td>Adresse</td>
-                            <td>
-                                <select data-placeholder="TDA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
-                                    <option></option>
-                                    <optgroup label="Central Time Zone">
-                                        <option value="AL">Alabama</option>
-                                        <option value="AR">Arkansas</option>
-                                        <option value="KY">Kentucky</option>
-                                    </optgroup>
-                                    <optgroup label="Eastern Time Zone">
-                                        <option value="CT">Connecticut</option>
-                                        <option value="DE">Delaware</option>
-                                        <option value="WV">West Virginia</option>
-                                    </optgroup>
-                                </select>
-                            </td>
-                            <td>
-                                <select data-placeholder="TDA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
-                                    <option></option>
-                                    <optgroup label="Central Time Zone">
-                                        <option value="AL">Alabama</option>
-                                        <option value="AR">Arkansas</option>
-                                        <option value="KY">Kentucky</option>
-                                    </optgroup>
-                                    <optgroup label="Eastern Time Zone">
-                                        <option value="CT">Connecticut</option>
-                                        <option value="DE">Delaware</option>
-                                        <option value="WV">West Virginia</option>
-                                    </optgroup>
-                                </select>
-                            </td>
-                            <td><input type="checkbox" value=""></td>
-                        </tr>
-                       
-                        </tbody>
-                    </table>
-                </div>
-                <div class="tab-pane" id="Dossiers">
-                    <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
-                        <thead>
-                        <tr> 
-                            <th class="text-center">Actions</th>
-                            <th>Code Journal</th>
-                            <th>Libellé</th>
-                            <th>Type</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td class="text-center">
-                                <div class="">
-                                   <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
-                                </div>
-                            </td>
-                            <td>AA</td>
-                            <td>AA</td>
-                            <td>
-                                <select data-placeholder="ACHATS" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
-                                    <option></option>
-                                    <optgroup label="Central Time Zone">
-                                        <option value="AL">Alabama</option>
-                                        <option value="AR">Arkansas</option>
-                                        <option value="KY">Kentucky</option>
-                                    </optgroup>
-                                    <optgroup label="Eastern Time Zone">
-                                        <option value="CT">Connecticut</option>
-                                        <option value="DE">Delaware</option>
-                                        <option value="WV">West Virginia</option>
-                                    </optgroup>
-                                </select>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-        </div>
+<div class="sidebar sidebar-secondary sidebar-default">
+       
+</div>
+<div class="panel panel-flat">
+    <div class="panel-heading">
+        <h6 class="panel-title">Gestion Cabinet<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
     </div>
+    <div class="tabbale">
+        <div class="">
+            <ul class="nav nav-tabs nav-tabs-solid">
+                <li class="active"><a href="#Contacts" data-toggle="tab" aria-expanded="true">Collaborateurs</a></li>
+                <li class=""><a href="#Dossiers" data-toggle="tab" aria-expanded="false">Journaux</a></li> 
+            </ul>
+        </div>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="Contacts">
+                <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
+                    <thead>
+                    <tr>
+                        <th class="text-center">Actions</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Initiales</th>
+                        <th>Login</th>
+                        <th>Email</th>
+                        <th>Racine OwnCloud</th>
+                        <th>Type</th>
+                        <th>Supérieur</th>
+                        <th>Actif</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="text-center">
+                            <div class="">
+                                <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
+                            </div>
+                        </td>
+                        <td>Eugene</td>
+                        <td>Kopyov</td>
+                        <td>Ring street 12</td>
+                        <td>Eugene</td> 
+                        <td>Adresse</td>
+                        <td>Adresse</td>
+                        <td>
+                            <span class="label bg-success-400">TVA</span>
+                        </td>
+                        <td>
+                            <span class="label bg-success-400">TDA</span>
+                        </td>
+                        <td><input type="checkbox" value=""></td>
+                    </tr>
+                    
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane" id="Dossiers">
+                <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
+                    <thead>
+                    <tr> 
+                        <th class="text-center">Actions</th>
+                        <th>Code Journal</th>
+                        <th>Libellé</th>
+                        <th>Type</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="text-center">
+                            <div class="">
+                                <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
+                            </div>
+                        </td>
+                        <td>AA</td>
+                        <td>AA</td>
+                        <td>
+                            <select data-placeholder="ACHATS" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                <option></option>
+                                <optgroup label="Central Time Zone">
+                                    <option value="AL">Alabama</option>
+                                    <option value="AR">Arkansas</option>
+                                    <option value="KY">Kentucky</option>
+                                </optgroup>
+                                <optgroup label="Eastern Time Zone">
+                                    <option value="CT">Connecticut</option>
+                                    <option value="DE">Delaware</option>
+                                    <option value="WV">West Virginia</option>
+                                </optgroup>
+                            </select>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
 {% endblock %}

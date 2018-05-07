@@ -1,0 +1,12 @@
+.single-special>p{
+ 
+    text-justify: auto;
+}
+.single-feature>p {
+   
+    text-justify: auto;
+}
+
+.color-brown{
+    color: #726a84 !important;
+}
