@@ -2,6 +2,7 @@
 
 {% block content %}
 <div class="content">
+    
     <div class="row">
         <div class="col-md-12">      
         </div>
@@ -10,7 +11,7 @@
    
     <div class="panel panel-flat">
         <div class="panel-heading">
-        <h5 class="panel-title">Liste des utilisateurs</h5>
+        <h5 class="panel-title">Liste des collaborateurs</h5>
         </div>
 
         <div class="panel-body">
@@ -24,25 +25,57 @@
                         <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="#: activate to sort column descending">#</th>
                         <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Prénom: activate to sort column ascending">Prénom</th>
                         <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Nom: activate to sort column ascending">Nom</th>
+                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Téléphone: activate to sort column ascending">Initiales</th>
+                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Téléphone: activate to sort column ascending">login Windows</th>
                         <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">Email</th>
-                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Téléphone: activate to sort column ascending">Téléphone</th>
-                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Rôles: activate to sort column ascending">Rôles</th>
-                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Statut: activate to sort column ascending">Statut</th>
-                        <th class="text-center sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Actions: activate to sort column ascending">Actions</th>
+                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Rôles: activate to sort column ascending">Type</th>
+                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Statut: activate to sort column ascending">Supérieur</th>
+                        <th class="text-center sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Actions: activate to sort column ascending">Actif</th>
+                        <th class="text-center sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Actions: activate to sort column ascending">Action</th>
+
                     </tr>           
                 </thead>
                 <tbody>
                     <tr role="row" class="even">
-                        <td class="sorting_1"><a href="/user/3/show">3</a></td>
+                        <td class="sorting_1"><a href="">3</a></td>
                         <td>Augustina</td>
                         <td>sfsdfsdf</td>
+                        <td>MAI</td>
+                        <td>mabassi</td>
                         <td>Augustina@test.com</td>
-                        <td>+8845977</td>
                         <td>
-                            <span class="label label-info"> Administrateur </span>
+                            <select data-placeholder="Collaborateur" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                    <option></option>
+                                    <optgroup label="Central Time Zone">
+                                        <option value="AL">Alabama</option>
+                                        <option value="AR">Arkansas</option>
+                                        <option value="KY">Kentucky</option>
+                                    </optgroup>
+                                    <optgroup label="Eastern Time Zone">
+                                        <option value="CT">Connecticut</option>
+                                        <option value="DE">Delaware</option>
+                                        <option value="WV">West Virginia</option>
+                                    </optgroup>
+                            </select>
                         </td>
                         <td>
-                            <span class="label label-success">Activé</span>
+                            <select data-placeholder="RYA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                    <option></option>
+                                    <optgroup label="Central Time Zone">
+                                        <option value="AL">Alabama</option>
+                                        <option value="AR">Arkansas</option>
+                                        <option value="KY">Kentucky</option>
+                                    </optgroup>
+                                    <optgroup label="Eastern Time Zone">
+                                        <option value="CT">Connecticut</option>
+                                        <option value="DE">Delaware</option>
+                                        <option value="WV">West Virginia</option>
+                                    </optgroup>
+                            </select>
+                        </td>
+
+                        <td>
+                            <input type="checkbox" >
                         </td>
                         <td class="text-center">
                             <div class="">

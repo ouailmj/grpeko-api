@@ -22,7 +22,7 @@
                                     <li class="nav-item"><a class="nav-link" href="#contact">CONTACT</a></li>
                                 </ul>
                                 <div class="sing-up-button d-lg-none">
-                                    <a href="#">SE CONNECTER</a>
+                                    <a href="{{ path('fos_user_security_login') }}">SE CONNECTER</a>
                                 </div>
                             </div>
                         </nav>
@@ -31,7 +31,7 @@
                 <!-- Signup btn -->
                 <div class="col-12 col-lg-2">
                     <div class="sing-up-button d-none d-lg-block">
-                        <a href="#">SE CONNECTER</a>
+                        <a href="{{ path('fos_user_security_login') }}">SE CONNECTER</a>
                     </div>
                 </div>
             </div>
@@ -49,6 +49,7 @@
                             EXPERTISE-COMPTABLE<br>
                             COMMISSARIAT AUX COMPTES
                                 </h2>
+                        <h3>C</h3>
                     </div>
                 </div>
             </div>
@@ -78,9 +79,8 @@
 
                         <h4 class="brownclass">NOTRE MISSION</h4>
                         <p>
-                            Notre mission comme Cabinet d’Expertise-comptable est de vous aider à respecter vos multiples obligations légales en vous prenant le moins de temps possible et en vous conseillant au mieux. 
-                            Chaque métier possède ses caractéristiques propres. Un commerçant n’affronte pas les obligations légales de la même manière qu’une profession libérale ou qu’un indépendant. 
-                            Notre force : personnaliser nos conseils et nos approches à votre profil et à vos besoins.
+                            Notre mission comme Cabinet d’Expertise-comptable est de vous aider à respecter vos multiples obligations légales en vous prenant le moins de temps possible et en vous conseillant au mieux.
+                            Chaque métier possède ses caractéristiques propres. Un commerçant n’affronte pas les obligations légales de la même manière qu’une profession libérale ou qu’un indépendant. Notre force : personnaliser nos conseils et nos approches à votre profil et à vos besoins.
                         </p>
                     </div>
                 </div>
@@ -194,7 +194,7 @@
                             - Révision des procédures de contrôle interne<br>
                             - Révision légale des comptes (commissariat aux comptes)<br>
                             - Révision avant prise de participation<br>
-                            - Révision préalable à l'introduction en Bourse des titres d'une société     
+                            - Révision préalable à l'introduction en Bourse des titres d'une société                                 
                         </p>
                     </div>
                 </div>
@@ -226,40 +226,36 @@
                         <h2 class="greenclass">Contactez-nous</h2>
                         <div class="line-shape"></div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6"><p><span class="greenclass">Adresse :</span></p></div>
-                        <div class="col-md-6"><p class="brownclass text-right">2, rue Taine 75012 PARIS</p></div>
+                    <div class="address-text">
+                        <p><span>Address:</span>12, rue Taine 75012 PARIS</p>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6"><p><span class="greenclass">Téléphone :</span></p></div>
-                        <div class="col-md-6"><p class="brownclass text-right">(+33)01.83.62.09.38</p></div>
+                    <div class="phone-text">
+                        <p><span>Téléphone :</span> 01.83.62.09.38</p>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6"><p><span class="greenclass">Fax :</span></p></div>
-                        <div class="col-md-6"><p class="brownclass text-right">(+33)01.83.62.09.86</p></div>
+                    <div class="phone-text">
+                        <p><span>Fax :</span> 01.83.62.09.86</p>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6"><p><span class="greenclass">Email :</span></p></div>
-                        <div class="col-md-6"><p class="brownclass text-right">carlos.teixeira@groupe-eko.fr</p></div>
+                    <div class="email-text">
+                        <p><span>Email :</span> carlos.teixeira@groupe-eko.fr</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <!-- Form Start-->
                     <div class="contact_from">
-                        <form action="{{ path('website_page_contact') }}" method="post">
+                        <form action="#" method="post">
                             <!-- Message Input Area Start -->
                             <div class="contact_input_area">
                                 <div class="row">
                                     <!-- Single Input Area Start -->
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="name" id="name" placeholder="Votre Nom *" required>
+                                            <input type="text" class="form-control" name="name" id="name" placeholder="Votre Nom" required>
                                         </div>
                                     </div>
                                     <!-- Single Input Area Start -->
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <input type="email" class="form-control" name="email" id="email" placeholder="Votre E-mail *" required>
+                                            <input type="email" class="form-control" name="email" id="email" placeholder="Votre E-mail" required>
                                         </div>
                                     </div>
                                     <!-- Single Input Area Start -->
