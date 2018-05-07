@@ -654,10 +654,45 @@ class DefaultController extends BaseController
     {
         return $this->render('default/accueill.html.twig');
     }
-    public function detailsconversation(Request $request)
-    {
-        return $this->render('default/conversation_details.html.twig');
-    }
+  //kamal
+    /**
+     * @Route("/client/information_generale", name="information_generale")
     
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function informationGenerale(Request $request)
+    {
+        return $this->render('default/information_generale.html.twig');
+    }
+    //kamal
+    /**
+     * @Route("/client/parametrage_devis", name="parametrage_devis")
+    
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function parametrageDevis(Request $request)
+    {
+        return $this->render('default/parametrage_devis.html.twig');
+    }
+        //kamal
+    /**
+     * @Route("/client/parametrage_commissions", name="commissions")
+    
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function parametrageCommissions(Request $request)
+    {
+        return $this->render('default/commision.html.twig');
+    }
+
 
 }
