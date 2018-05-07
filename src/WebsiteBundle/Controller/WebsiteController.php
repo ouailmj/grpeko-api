@@ -10,10 +10,10 @@
  *
  */
 
-namespace WebsiteBundle;
+namespace WebsiteBundle\Controller;
 
-use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class WebsiteBundle extends Bundle
+class WebsiteController extends Controller
 {
 }

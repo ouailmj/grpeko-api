@@ -66,10 +66,10 @@ class SearchEngine
         /** @var \Doctrine\ORM\QueryBuilder $qcl */
         $qcl = $this->em->getRepository($this->getClassName($class))->createQueryBuilder('cl');
 
-        $searchvalues = $filters;
-        $token = $searchvalues['token'];
-        $fromDate = $searchvalues['dateStart'];
-        $toDate = $searchvalues['dateEnd'];
+        $searchValues = $filters;
+        $token = $searchValues['token'];
+        $fromDate = $searchValues['dateStart'];
+        $toDate = $searchValues['dateEnd'];
 
         if (!empty($toDate) && !empty($fromDate) && $toDate instanceof \DateTime) {
             $toDate->modify('+1 day');
@@ -85,12 +85,12 @@ class SearchEngine
                 ->andWhere($qcl->expr()->orX('cl.shortDesc like :token', 'cl.action like :token'))
                 ->setParameter('token', '%'.$token.'%');
         }
-        if (!empty($user = $searchvalues['user'])) {
+        if (!empty($user = $searchValues['user'])) {
             $qcl->andWhere('cl.user = :user')
                 ->setParameter('user', $user)
             ;
         }
-        if (!empty($customer = $searchvalues['customer'])) {
+        if (!empty($customer = $searchValues['customer'])) {
             $qcl->innerJoin('cl.record', 'cl_record');
             $qcl->andWhere($qcl->expr()->orX('cl.customer = :customer', 'cl_record.customer = :customer'))
                 ->setParameter('customer', $customer)
@@ -121,12 +121,12 @@ class SearchEngine
         return $qb;
     }
 
-    private function getClassName($type)
+    private function getClassName($className)
     {
-        return $type
-            ? $this->em->getClassMetadata($type)->getName()
-            : null
-            ;
+        if (!class_exists($className)) {
+            throw new \InvalidArgumentException();
+        }
+        return $this->em->getClassMetadata($className)->getName();
     }
 
     private function searchInSearchable($searchableClass, array $criteria)

@@ -35,6 +35,7 @@ services:
 
     AppBundle\Mailer\Mailer:
         arguments: ["@mailer", "%from_email%", "%from_name%", "@templating", "%mail_admin%"]
+        public: true
 
     AppBundle\Search\SearchEngine:
         arguments: ["@doctrine.orm.entity_manager"]

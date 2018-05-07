@@ -10,10 +10,8 @@
  *
  */
 
-namespace WebsiteBundle;
+namespace AppBundle\Mailer;
 
-use Symfony\Component\HttpKernel\Bundle\Bundle;
-
-class WebsiteBundle extends Bundle
+trait ContactMailTrait
 {
 }
