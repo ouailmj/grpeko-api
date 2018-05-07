@@ -565,6 +565,7 @@ p {
     font-size: 22px;
     color: #5b32b4;
     margin-bottom: 15px;
+    height: 70px;
 }
 
 .single-special {
@@ -683,6 +684,7 @@ p {
 .single-feature > h5 {
     font-size: 22px;
     color: #5b32b4;
+    height: 45px;
 }
 
 .single-feature > p {
