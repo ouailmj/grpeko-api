@@ -684,7 +684,6 @@ class DefaultController extends BaseController
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function parametrageDevis(Request $request)
-
     {
         return $this->render('default/parametrage_devis.html.twig');
     }
