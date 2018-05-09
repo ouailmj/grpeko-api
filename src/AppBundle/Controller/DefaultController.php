@@ -272,8 +272,10 @@ class DefaultController extends BaseController
     }
 
     /**
+     * afficher la liste des familles de produits.
+     *
      * @Route("/product_family/list", name="product_family_list")
-     *afficher la liste des familles de produits
+     * afficher la liste des familles de produits
      *
      * @param Request $request
      *
@@ -285,8 +287,9 @@ class DefaultController extends BaseController
     }
 
     /**
+     * tableau pour afficher les souscriptions de produits.
+     *
      * @Route("/product_subscription/list", name="product_subscription_list")
-     *tableau pour afficher les souscriptions de produits
      *
      * @param Request $request
      *
@@ -512,8 +515,6 @@ class DefaultController extends BaseController
         return $this->render('default/ShowTable.html.twig');
     }
 
-    // kamal
-
     /**
      * @Route("/client/planning", name="planning")
      *
@@ -526,8 +527,6 @@ class DefaultController extends BaseController
         return $this->render('default/Planning.html.twig');
     }
 
-    // kamal
-
     /**
      * @Route("/client/gestion-cabinet", name="gestion-cabinet")
      *
@@ -539,8 +538,6 @@ class DefaultController extends BaseController
     {
         return $this->render('default/gestion-cabinet.html.twig');
     }
-
-    // kamal
 
     /**
      * @Route("/client/comptabilite", name="comptabilite")
@@ -566,8 +563,6 @@ class DefaultController extends BaseController
         return $this->render('default/client_excercice.html.twig');
     }
 
-    //kamal
-
     /**
      * @Route("/client/collaborateurs", name="collaborateurs")
      *
@@ -580,8 +575,6 @@ class DefaultController extends BaseController
         return $this->render('default/gestion-collaborateurs.html.twig');
     }
 
-    //kamal
-
     /**
      * @Route("/client/add-collaborateur", name="add-collaborateur")
      *
@@ -593,8 +586,6 @@ class DefaultController extends BaseController
     {
         return $this->render('default/Add-collaborateurs.html.twig');
     }
-
-    //kamal
 
     /**
      * @Route("/client/view-collaborateur", name="view-collaborateur")
@@ -632,8 +623,6 @@ class DefaultController extends BaseController
         return $this->render('default/conversation_add.html.twig');
     }
 
-    //kamal
-
     /**
      * @Route("/client/edit-collaborateur", name="edit-collaborateur")
      *
@@ -645,8 +634,6 @@ class DefaultController extends BaseController
     {
         return $this->render('default/edit_collaborateur.html.twig');
     }
-
-    //kamal
 
     /**
      * @Route("/client/accueill", name="accueill")
