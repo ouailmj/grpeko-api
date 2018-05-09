@@ -2,106 +2,64 @@
 
 {% block content %}
 <div class="page-content">
-        {% block sidebar %}
-            {% include 'layout/_partials/sidebar.html.twig' %}
-        {% endblock %}
+  {% block sidebar %}
+        {% include 'layout/_partials/sidebar.html.twig' %}
+    {% endblock %}
     <div class="content-wrapper">
         <div class="content">
             <div class="panel panel-flat">
                 <div class="panel-heading">
-                    <h6 class="panel-title">Gestion Cabinet<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
-                </div>
-                <div class="tabbale">
-                    <div class="">
-                        <ul class="nav nav-tabs nav-tabs-solid">
-                            <li class="active"><a href="#Contacts" data-toggle="tab" aria-expanded="true">Collaborateurs</a></li>
-                            <li class=""><a href="#Dossiers" data-toggle="tab" aria-expanded="false">Journaux</a></li> 
+                    <div class="heading-elements">
+                        <ul class="icons-list">
+                            <li><a data-action="collapse"></a></li>
+                            <li><a data-action="reload"></a></li>
+                            <li><a data-action="close"></a></li>
                         </ul>
                     </div>
-
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="Contacts">
-                            <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
-                                <thead>
-                                <tr>
-                                    <th class="text-center">Actions</th>
-                                    <th>Nom</th>
-                                    <th>Prénom</th>
-                                    <th>Initiales</th>
-                                    <th>Login</th>
-                                    <th>Email</th>
-                                    <th>Racine OwnCloud</th>
-                                    <th>Type</th>
-                                    <th>Supérieur</th>
-                                    <th>Actif</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td class="text-center">
-                                        <div class="">
-                                            <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
-                                        </div>
-                                    </td>
-                                    <td>Eugene</td>
-                                    <td>Kopyov</td>
-                                    <td>Ring street 12</td>
-                                    <td>Eugene</td> 
-                                    <td>Adresse</td>
-                                    <td>Adresse</td>
-                                    <td>
-                                        <span class="label bg-success-400">TVA</span>
-                                    </td>
-                                    <td>
-                                        <span class="label bg-success-400">TDA</span>
-                                    </td>
-                                    <td><input type="checkbox" value=""></td>
-                                </tr>
-                                
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="tab-pane" id="Dossiers">
-                            <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
-                                <thead>
-                                <tr> 
-                                    <th class="text-center">Actions</th>
-                                    <th>Code Journal</th>
-                                    <th>Libellé</th>
-                                    <th>Type</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td class="text-center">
-                                        <div class="">
-                                            <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
-                                        </div>
-                                    </td>
-                                    <td>AA</td>
-                                    <td>AA</td>
-                                    <td>
-                                        <select data-placeholder="ACHATS" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
-                                            <option></option>
-                                            <optgroup label="Central Time Zone">
-                                                <option value="AL">Alabama</option>
-                                                <option value="AR">Arkansas</option>
-                                                <option value="KY">Kentucky</option>
-                                            </optgroup>
-                                            <optgroup label="Eastern Time Zone">
-                                                <option value="CT">Connecticut</option>
-                                                <option value="DE">Delaware</option>
-                                                <option value="WV">West Virginia</option>
-                                            </optgroup>
-                                        </select>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
                 </div>
+                <a href="{{ path('information_generale') }}" style="margin-left: 18px" class="btn btn-primary btn-icon">
+                        <i class="glyphicon glyphicon-plus"></i>
+                </a>
+                <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
+                    <thead>
+                    <tr>
+                        <th class="text-center">Filtres</th>
+                        <th>Entité juridique</th>
+                        <th>Forme juridique</th>
+                        <th>Date de cloture</th>
+                        <th>Regime Fiscal</th>
+                        <th>Regime TVA</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {#{% for item in users %}#}
+                    <tr>
+                        <td class="text-center">
+                            <div class="">
+                                <a title="Modifier" href="{{ path('client_access1') }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
+                            </div>
+                        </td>
+                        <td>EKO</td>
+                        <td>EURL</td>
+                        <td>31/12/2018</td>
+                        <td><span class="label label-info">0 à 499k</span></td>
+                        <td><span class="label label-info">0 à 499k</span></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">
+                            <div class="">
+                                <a title="Modifier" href="{{ path('client_access1') }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
+                            </div>
+                        </td>
+                        <td>PITI CONSEIL</td>
+                        <td>EURL</td>
+                        <td>31/12/2018</td>
+                        <td><span class="label label-info">0 à 499k</span></td>
+                        <td><span class="label label-info">0 à 499k</span></td>
+                    </tr>
+                    {#{% endfor %}#}
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

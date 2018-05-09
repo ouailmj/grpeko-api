@@ -66,7 +66,7 @@ class Builder implements ContainerAwareInterface
         ]);
 
         $menu->addChild('Gestion du Cabinet', [
-            'uri' => '#',
+            'uri' => '/app/client/gestion-cabinet',
             'label' => '<i class="icon-file-text3"></i> <span>Gestion du Cabinet</span>',
             'extras' => ['safe_label' => true],
         ]);
@@ -88,17 +88,21 @@ class Builder implements ContainerAwareInterface
                 'extras' => ['safe_label' => true],
         ]);
 
-        $settings = $menu->addChild('Parametrage', [
+        $settings = $menu->addChild('Suivi CEB', [
                  'uri' => '#',
                  'label' => '<i class="icon-cog5"></i> <span>Suivi CEB</span>',
                  'extras' => ['safe_label' => true],
         ]);
-        $settings = $menu->addChild('Parametragee', [
+        $settings = $menu->addChild('Facturation', [
             'uri' => '#',
             'label' => '<i class="icon-cog5"></i> <span>Facturation</span>',
             'extras' => ['safe_label' => true],
         ]);
-
+        $settings = $menu->addChild('Parametragee', [
+            'uri' => '#',
+            'label' => '<i class="icon-cog5"></i> <span>Parametragee</span>',
+            'extras' => ['safe_label' => true],
+        ]);
         $this->paramaetrageItem($settings);
 
         return $menu;
@@ -151,14 +155,14 @@ class Builder implements ContainerAwareInterface
 
     private function paramaetrageItem(ItemInterface $menu)
     {
-        $menu->addChild('Type Staff', [
-         'uri' => '#',
-         'label' => '<i class="icon-arrow-right14"></i> <span>Type de Clients</span>',
+        $menu->addChild('Email', [
+         'uri' => '/app/client/parametrage_email',
+         'label' => '<i class="icon-arrow-right14"></i> <span>Email</span>',
          'extras' => ['safe_label' => true],
      ]);
-        $menu->addChild('Type Contrats', [
-         'uri' => '#',
-         'label' => '<i class="icon-arrow-right14"></i> <span>Type de Contrats</span>',
+        $menu->addChild('Rendez-vos clients', [
+         'uri' => '/app/client/parametrage_rendezvous',
+         'label' => '<i class="icon-arrow-right14"></i> <span>Rendez-vos clients</span>',
          'extras' => ['safe_label' => true],
      ]);
         /*$menu->addChild('Type de garanties', array(
@@ -166,14 +170,19 @@ class Builder implements ContainerAwareInterface
             'label' => "<i class=\"icon-arrow-right14\"></i> <span>Type de garanties</span>",
             'extras'    => array('safe_label' => true)
         ));*/
-        $menu->addChild('Produits', [
-            'uri' => '#',
-            'label' => '<i class="icon-arrow-right14"></i> <span>Produits</span>',
+        $menu->addChild('Devis', [
+            'uri' => '/app/client/parametrage_devis',
+            'label' => '<i class="icon-arrow-right14"></i> <span>Devis</span>',
             'extras' => ['safe_label' => true],
         ]);
-        $menu->addChild('Product Family', [
-            'uri' => '#',
-            'label' => '<i class="icon-arrow-right14"></i> <span>Famile de Produits</span>',
+        $menu->addChild('Commissions', [
+            'uri' => '/app/client/parametrage_commissions',
+            'label' => '<i class="icon-arrow-right14"></i> <span>Commissions</span>',
+            'extras' => ['safe_label' => true],
+        ]);
+        $menu->addChild('Sites internet', [
+            'uri' => '/app/client/parametrage_internet',
+            'label' => '<i class="icon-arrow-right14"></i> <span>Sites internet</span>',
             'extras' => ['safe_label' => true],
         ]);
 
