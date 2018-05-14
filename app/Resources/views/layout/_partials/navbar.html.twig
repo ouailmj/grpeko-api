@@ -32,131 +32,47 @@
     </div>
 
     <div class="navbar-collapse collapse" id="navbar-mobile">
-        <!-- <ul class="nav navbar-nav breadcrumb-line">
-            <li><a class="sidebar-control sidebar-main-toggle hidden-xs"><i class="icon-paragraph-justify3"></i></a></li>
-            <li><a class="legitRipple"  href="#"><i class="icon-file-text3"></i>Gestion de cabinet</a></li>
-            <li><a class="legitRipple"   href="#"><i class="icon-collaboration"></i>Planning</a></li>
-            <li><a class="legitRipple"   href="#"><i class="icon-users4"></i>Clients</a></li>
-            <li><a class="legitRipple"   href="#"><i class="icon-books"></i>Formalités</a></li>
-            <li><a class="legitRipple"   href="#"><i class="icon-cog5"></i>Suivi de projet</a></li>
-        </ul> -->
         <ul class="nav navbar-nav">
-            <li class="active dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-file-text3 position-left"></i>Gestion de cabinet<span class="caret"></span></a>
-                <ul class="dropdown-menu width-200">
-                    <li >
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-grid2"></i>Collaborateurs</a>
-                    </li>
-                    <li >
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-paragraph-justify3"></i>Collaborateurs affectation</a>
-                    </li>
-                    <li><a href="#"><i class="icon-align-center-horizontal"></i>gestion de cabinet</a></li>
-                    <li><a href="#"><i class="icon-flip-vertical3"></i>Comptes</a></li>
-                    <li><a href="#"><i class="icon-flip-vertical3"></i>Journaux</a></li>
-                    <li><a href="#"><i class="icon-flip-vertical3"></i>import CF0NB</a></li>
-                    <li><a href="#"><i class="icon-flip-vertical3"></i>Suivi SEB</a></li>
-                    <li><a href="#"><i class="icon-flip-vertical3"></i>Facturation</a></li>
-                    <li><a href="#"><i class="icon-flip-vertical3"></i>Cheffre d'affaires</a></li>
-                    <li><a href="#"><i class="icon-flip-vertical3"></i>Commissions</a></li>
-                    <li>
-                        <li class="dropdown-submenu">
-                            <a href="#"><i class="icon-flip-vertical3"></i>Paramétrages</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Emails</a></li>
-                                <li><a href="#">Rendez vous Clients</a></li>
-                                <li><a href="#">Devis</a></li>
-                                <li><a href="#">Commissions</a></li>
-                                <li><a href="#">Sites internet</a></li>
-                            </ul>
-                        </li>
-                   </li>
-                </ul>
-            </li>
-
-            <li class="dropdown mega-menu mega-menu-wide">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Planning</a>
-            </li>
-
-            <li class="dropdown mega-menu mega-menu-wide">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Clients</a>
-            </li>
-
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    Formalités
-                </a>
-
-            </li>
-
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                   Suivi de projet
-                </a>
-            </li>
+            <li><a class="sidebar-control sidebar-main-toggle hidden-xs legitRipple"><i class="icon-paragraph-justify3"></i></a></li>
         </ul>
 
-        <ul class="nav navbar-nav navbar-right"> 
-          
-           
-
+        <ul class="nav navbar-nav navbar-right">
             <!-- <li class="dropdown dropdown-user">
-                <a class="dropdown-toggle" data-toggle="dropdown">
-                    <div id="ex4" style="margin-top: -5px">
-                          <span class="p1 fa-stack fa-2x has-badge" title="Fichiers">
-                             <i class="p3 fa fa-file fa-stack-1x xfa-inverse" style="margin-top: -5px"></i>
+                <a class="dropdown-toggle legitRipple" data-toggle="dropdown">
+                    <div id="ex4" style="margin-top: -4px">
+                          <span class="p1 fa-stack fa-2x has-badge" data-count="9" title="Conversations">
+                             <i class="p3 fa fa-comments fa-stack-1x xfa-inverse" style="margin-top: -5px"></i>
+                          </span>
+                    </div>
+                </a>
+
+                <ul class="dropdown-menu dropdown-menu-right dropdown-ticket">
+
+                    <li><a href="/app/conversationlist"><i class="fa fa-list"></i>lister les conversations</a></li>
+
+                    <li><a href="/app/conversationadd"><i class="fa fa-plus-circle"></i> Créer une conversation</a></li>
+
+                </ul>
+            </li> -->
+            <!-- <li class="dropdown dropdown-user">
+                <a class="dropdown-toggle legitRipple" data-toggle="dropdown">
+                    <div id="ex4" style="margin-top: -4px">
+                          <span class="p1 fa-stack fa-2x has-badge" data-count="4" title="Notifications">
+                             <i class="p3 fa fa-bell fa-stack-1x xfa-inverse" style="margin-top: -5px"></i>
                           </span>
                     </div>
                 </a>
 
                 <ul class="dropdown-menu dropdown-menu-right">
-                    <li><a href="{{ path('fos_user_profile_show')}}"> Fiches Client</a></li>
+                    <li><a href=""> Des execrices sont a créer</a></li>
                     <li class="divider"></li>
-                    <li><a href="{{ path('fos_user_security_logout') }}"> Planning</a></li>
+                    <li><a href=""> Des execrices sont en anomalie</a></li>
                     <li class="divider"></li>
-                    <li><a href="{{ path('fos_user_security_logout') }}"> Ecritures CFONB a rapprocher</a></li>
-                    <li class="divider"></li>
-                    <li><a href="{{ path('fos_user_security_logout') }}"> Dossier de travail a créer</a></li>
-                    <li class="divider"></li>
-                    <li><a href="{{ path('fos_user_security_logout') }}"> Clients a débit différé</a></li>
-                </ul>-->
-                <li class="dropdown dropdown-user">
-                    <a class="dropdown-toggle" data-toggle="dropdown">
-                        <div id="ex4" style="margin-top: -4px">
-                                <span class="p1 fa-stack fa-2x has-badge" data-count="4" title="Notifications">
-                                    <i class="p3 fa fa-bell fa-stack-1x xfa-inverse" style="margin-top: -5px"></i>
-                                </span>
-                        </div>
-                    </a>
-    
-                    <ul class="dropdown-menu dropdown-menu-right">
-                        <li><a href="{{ path('fos_user_profile_show')}}"> Des execrices sont a créer</a></li>
-                        <li class="divider"></li>
-                        <li><a href="{{ path('fos_user_security_logout') }}"> Des execrices sont en anomalie</a></li>
-                        <li class="divider"></li>
-                        <li><a href="{{ path('fos_user_security_logout') }}"> Anomalies Répetoires</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown dropdown-user">
-                    <a class="dropdown-toggle" data-toggle="dropdown">
-                        <div id="ex4" style="margin-top: -4px">
-                                <span class="p1 fa-stack fa-2x has-badge" data-count="9" title="Conversations">
-                                    <i class="p3 fa fa-comments fa-stack-1x xfa-inverse" style="margin-top: -5px"></i>
-                                </span>
-                        </div>
-                    </a>
-    
-                    <ul class="dropdown-menu dropdown-menu-right dropdown-ticket">
-    
-                        <li><a href="/app/conversationlist"><i class="fa fa-list"></i>lister les conversations</a></li>
-    
-                        <li><a href="/app/conversationadd"><i class="fa fa-plus-circle"></i> Créer une conversation</a></li>
-    
-                    </ul>
-                </li>
-            </li>
-
+                    <li><a href=""> Anomalies Répetoires</a></li>
+                </ul>
+            </li> -->
             <li class="dropdown dropdown-user">
-                <a class="dropdown-toggle" data-toggle="dropdown">
+                <a class="dropdown-toggle legitRipple" data-toggle="dropdown">
                     <div id="ex4" style="margin-top: -5px">
                           <span class="p1 fa-stack fa-2x has-badge" title="Profil">
                              <i class="p3 fa fa-user fa-stack-1x xfa-inverse" style="margin-top: -5px"></i>
@@ -165,13 +81,12 @@
                 </a>
 
                 <ul class="dropdown-menu dropdown-menu-right">
-                    <li><a href="{{ path('fos_user_profile_show')}}"><i class="icon-user-plus"></i> Mon profil</a></li>
+                    <li><a href=""><i class="icon-user-plus"></i> Mon profil</a></li>
                     <li class="divider"></li>
-                    <li><a href="{{ path('fos_user_security_logout') }}"><i class="icon-switch2"></i> Déconnexion</a></li>
+                    <li><a href=""><i class="icon-switch2"></i> Déconnexion</a></li>
                 </ul>
             </li>
 
-        </ul> 
+        </ul>
     </div>
-
 </div>

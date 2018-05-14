@@ -61,7 +61,10 @@ h6 {
     line-height: 1.2;
 }
 
-
+.panel-flat > .panel-heading{
+    background-color: #009688 !important;
+    color: white;
+}
 .section_padding_100 {
     padding-top: 100px;
     padding-bottom: 100px;

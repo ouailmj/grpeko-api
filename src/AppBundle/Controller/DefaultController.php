@@ -730,4 +730,34 @@ class DefaultController extends BaseController
     {
         return $this->render('default/parametrages_rendezvous.html.twig');
     }
+     //kamal
+    /**
+     * @Route("/client/info-bancaire", name="InfoBancaire")
+     * @param Request $request
+     *  * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function InfoBancaire(Request $request)
+    {
+        return $this->render('default/Client_info_bancaires.html.twig');
+    }
+             //kamal
+    /**
+     * @Route("/client/formalites", name="formalites")
+     * @param Request $request
+     *  * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function Formalites(Request $request)
+    {
+        return $this->render('default/Formalités.html.twig');
+    }
+     //kamal
+    /**
+     * @Route("/client/parametrages", name="parametrages")
+     * @param Request $request
+     *  * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function Parametrages(Request $request)
+    {
+        return $this->render('default/Parametrages.html.twig');
+    }
 }

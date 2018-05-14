@@ -1,0 +1,104 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<div class="page-content">
+  {% block sidebar %}
+        {% include 'layout/_partials/sidebar.html.twig' %}
+    {% endblock %}
+    <div class="content-wrapper">
+        <div class="content">
+            <div class="content-group tab-content-bordered navbar-component">
+                    <div class="navbar navbar-inverse " style="background-color: #5d9d9c; border-color: #5d9d9c; position: relative; z-index: 30;">
+                        <div class="navbar-header">
+                            <ul class="nav navbar-nav pull-right visible-xs-block">
+                                <li><a data-toggle="collapse" data-target="#demo1" class="legitRipple"><i class="icon-tree5"></i></a></li>
+                            </ul>
+                        </div>
+
+                        <div class="navbar-collapse collapse" id="demo1">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="#tab-demo1" data-toggle="tab" class="legitRipple" aria-expanded="false">Planning</a></li>
+
+                                <li class=""><a href="#tab-demo2" data-toggle="tab" class="legitRipple" aria-expanded="true">Frais Kms TVS</a></li>
+                                <li class=""><a href="#tab-demo3" data-toggle="tab" class="legitRipple" aria-expanded="true">Devis</a></li>
+                                <li class=""><a href="#tab-demo4" data-toggle="tab" class="legitRipple" aria-expanded="true">Obligation respectives</a></li>
+                                <li class=""><a href="#tab-demo5" data-toggle="tab" class="legitRipple" aria-expanded="true">Catégorie Analytiques</a></li>
+                                <li class=""><a href="#tab-demo6" data-toggle="tab" class="legitRipple" aria-expanded="true">Emails</a>
+                            </ul>
+
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle legitRipple" data-toggle="dropdown" aria-expanded="false">
+                                        <i class="icon-file-stats2 position-left"></i>
+                                        Autre
+                                        <span class="caret"></span>
+                                    </a>
+
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="#tab-demo7" data-toggle="tab">Commissions</a></li>
+                                        <li><a href="#tab-demo8" data-toggle="tab">Taux TNS CIPAV</a></li>
+                                        <li><a href="#tab-demo9" data-toggle="tab">Import CFNOB</a></li>
+                                        <li><a href="#tab-demo10" data-toggle="tab">IRPP</a></li>
+                                        <li><a href="#tab-demo11" data-toggle="tab">Liasses fiscales</a></li>
+                                        <li><a href="#tab-demo12" data-toggle="tab">Sites Internet</a></li>
+                                        <li><a href="#tab-demo13" data-toggle="tab">Modéles d'écritures</a></li>
+                                        <li><a href="#tab-demo14" data-toggle="tab">Rendez-vous client</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tab-content">
+                        <div class="tab-pane fade has-padding active in" id="tab-demo1">
+                                {% include 'default/ShowTable.html.twig' %}
+                        </div>
+                        <div class="tab-pane fade has-padding active in" id="tab-demo2">
+                                Frais Kms TVS
+                        </div>
+                        <div class="tab-pane fade has-padding" id="tab-demo3">
+                            {% include 'default/parametrages_devis.html.twig' %}
+                        </div>
+                        <div class="tab-pane fade has-padding" id="tab-demo4">
+                                Obligation respectives
+                        </div>
+                        <div class="tab-pane fade has-padding" id="tab-demo5">
+                                Catégorie Analytiques
+                        </div>
+                    
+                        <div class="tab-pane fade has-padding" id="tab-demo6">
+                            {% include 'default/parametrages_emails.html.twig' %}
+                        </div>
+                        
+                        <div class="tab-pane fade has-padding" id="tab-demo7">
+                            {% include 'default/parametrages_commission.html.twig' %}
+                        </div>
+                        <div class="tab-pane fade has-padding" id="tab-demo8">
+                                Taux TNS CIPAV
+
+                        </div>
+                        <div class="tab-pane fade has-padding" id="tab-demo9">
+                                Import CFNOB
+                        </div>
+                        <div class="tab-pane fade has-padding" id="tab-demo10">
+                                IRPP
+                        </div>
+                        <div class="tab-pane fade has-padding" id="tab-demo11">
+                                Liasses fiscales
+                        </div>
+                        <div class="tab-pane fade has-padding" id="tab-demo12">
+                            {% include 'default/parametrages_internetsite.html.twig' %}
+                        </div>
+                        <div class="tab-pane fade has-padding" id="tab-demo12">
+                                Modéles d'écritures
+                        </div>
+                       
+                        <div class="tab-pane fade has-padding" id="tab-demo14">
+                            {% include 'default/parametrages_rendezvous.html.twig' %}
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

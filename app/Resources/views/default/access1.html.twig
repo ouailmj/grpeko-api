@@ -1,49 +1,102 @@
 {% extends 'base.html.twig' %}
 {% block content %}
+
 <div class="page-content">
+        {% block sidebar %}
+        {% include 'layout/_partials/sidebar.html.twig' %}
+    {% endblock %}
     <div class="content-wrapper">
         <div class="content">
+            <div class="content-group border-top-lg border-top-primary">
+                <div class="page-header page-header-default" style="border-left: 1px solid #ddd; border-right: 1px solid #ddd;">
+                    <div class="page-header-content">
+                        <div class="page-title">
+                            <h5>
+                            <span class="text-semibold">EC0025</span>
+                            </h5>
+                            <a class="heading-elements-toggle"><i class="icon-more"></i></a>
+                        </div>
+
+                        <div class="heading-elements col-md-10 col-md-offset-1">
+                                <div class="col-md-1">
+                                    <div class="form-group ">
+                                        <label class="control-label col-lg-2">Entité Juridique</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" >
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Status</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group ">
+                                        <select data-placeholder="En cours" class="select select2-hidden-accessible" class="col-md-6" tabindex="-1" aria-hidden="true">
+                                                <option></option>
+                                                <optgroup label="Central Time Zone">
+                                                    <option value="AL">Alabama</option>
+                                                    <option value="AR">Arkansas</option>
+                                                    <option value="KY">Kentucky</option>
+                                                </optgroup>
+                                                <optgroup label="Eastern Time Zone">
+                                                    <option value="CT">Connecticut</option>
+                                                    <option value="DE">Delaware</option>
+                                                    <option value="WV">West Virginia</option>
+                                                </optgroup>
+                                        </select>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="panel panel-flat">
                 <div class="tabbale">
-                        <ul class="nav nav-tabs nav-tabs-solid">
+                        <ul class="nav nav-tabs bg-teal-400 nav-justified">
                             <li id="clikfirsttab" class="active"><a href="#firsttab" data-toggle="tab" aria-expanded="true">Prise de connaissance</a></li>
                             <li class=""><a href="#secondtab" data-toggle="tab" aria-expanded="false">Fiche Client</a></li>
                         </ul>
-                    <div class="tab-content">
+                    <div class="tab-content ">
                         <div class="tab-pane active" id="firsttab">
+                            <div class="">
+                                <ul class="nav nav-tabs nav-tabs-highlight">
+                                    <li class="active"><a href="#Contacts" data-toggle="tab" aria-expanded="true"><i class="icon-users position-left"></i>Informations générales</a></li>
+                                    <li class=""><a href="#Dossiers" data-toggle="tab" aria-expanded="false"><i class="icon-folder position-left"></i>Rendez-vous</a></li>
+                                    <li class=""><a href="#Contrats" data-toggle="tab" aria-expanded="false"><i class="icon-address-book3 position-left"></i>Contacts</a></li>
+                                                                        <li>
+                                        <ul class="nav navbar-nav navbar-right">
+                                            <li class="dropdown dropdown-user">
+                                                <a class="dropdown-toggle" data-toggle="dropdown">
+                                                        <i class="icon-file-stats2 position-left"></i>
+                                                        Autre
+                                                        <span class="caret"></span>
+                                                </a>
 
-                                <div class="">
-                                    <ul class="nav nav-tabs nav-tabs-solid">
-                                        <li class="active"><a href="#Contacts" data-toggle="tab" aria-expanded="true"><i class="icon-users position-left"></i>Informations générales</a></li>
-                                        <li class=""><a href="#Dossiers" data-toggle="tab" aria-expanded="false"><i class="icon-folder position-left"></i>Rendez-vous</a></li>
-                                        <li class=""><a href="#Contrats" data-toggle="tab" aria-expanded="false"><i class="icon-address-book3 position-left"></i>Contacts</a></li>
-                                        <li class=""><a href="#mission" data-toggle="tab" aria-expanded="false"><i class="icon-users2 position-left"></i>Mission</a></li>
-                                        <li class=""><a href="#Exercices" data-toggle="tab" aria-expanded="false"><i class="icon-users2 position-left"></i>Exercices</a></li>
-                                        <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false"><i class="icon-users2 position-left"></i>Informations Bancaires</a></li>
-                                        <li>
-                                            <ul class="nav navbar-nav navbar-right">
-                                                <li class="dropdown dropdown-user">
-                                                    <a class="dropdown-toggle" data-toggle="dropdown">
-                                                        <img src="{{ asset('assets/images/icons8.png') }}">
-                                                    </a>
+                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                    <li class=""><a href="#mission" data-toggle="tab" aria-expanded="false"><i class="icon-users2 position-left"></i>Mission</a></li>
+                                                    <li class=""><a href="#Exercices" data-toggle="tab" aria-expanded="false"><i class="icon-users2 position-left"></i>Exercices</a></li>
+                                                    <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false"><i class="icon-users2 position-left"></i>Informations Bancaires</a></li>                    
+                                                    <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Rapprochement CFONB - Mots clés</a></li>
+                                                    <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Facturation</a></li>
+                                                    <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Codes accés espaces clients</a></li>
 
-                                                    <ul class="dropdown-menu dropdown-menu-right">
-                                                        <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Rapprochement CFONB - Mots clés</a></li>
-                                                        <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Facturation</a></li>
-                                                        <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Codes accés espaces clients</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
 
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="tab-content">
-                                    <div class="tab-pane active" id="Contacts">
-
+                            <div class="tab-content panel panel-flat border-top-info">
+                                <div class="tab-pane active" id="Contacts">
+                                    <div class="panel-body">
                                         <form class="form-horizontal" action="/action_page.php">
-
+                                            <fieldset class="content-group">
+                                                <legend class="text-bold">Informations générales</legend>
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-2" for="email">&nbsp;&nbsp;Raison Social:</label>
                                                     <div class="col-sm-10">
@@ -59,7 +112,7 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-2" for="pwd">&nbsp;&nbsp;Régime d'imposition:</label>
                                                     <div class="col-sm-10">
-                                                        <input type="text" class="form-control" id="pwd" placeholder="Entrer Forme Juridique" name="pwd">
+                                                        <input type="text" class="form-control"  placeholder="Entrer Forme Juridique" name="pwd">
                                                     </div>
                                                 </div>
 
@@ -95,6 +148,7 @@
                                                         <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
                                                     </div>
                                                 </div>
+                                            </fieldset>
 
 
                                             <div class="form-group">
@@ -357,45 +411,43 @@
                                             </div>
 
                                         </form>
-
-
                                     </div>
+                                </div>
 
-                                    <div class="tab-pane" id="Dossiers">
+                                <div class="tab-pane" id="Dossiers">
 
-                                        {% include 'default/rdvs.html.twig' %}
-
-                                    </div>
-
-                                    <div class="tab-pane " id="Contrats">
-
-                                        {% include 'default/client_contact.html.twig' %}
-
-                                    </div>
-                                    <div class="tab-pane" id="mission">
-
-                                        {% include 'default/mission.html.twig' %}
-
-                                    </div>
-                                    <div class="tab-pane" id="Exercices">
-
-                                        {% include 'default/client_excercice.html.twig' %}
-
-                                    </div>
+                                    {% include 'default/rdvs.html.twig' %}
 
                                 </div>
+
+                                <div class="tab-pane " id="Contrats">
+
+                                    {% include 'default/client_contact.html.twig' %}
+
+                                </div>
+                                <div class="tab-pane" id="mission">
+
+                                    {% include 'default/mission.html.twig' %}
+
+                                </div>
+                                <div class="tab-pane" id="Exercices">
+
+                                    {% include 'default/client_excercice.html.twig' %}
+
+                                </div>
+
+                            </div>
                         </div>
 
 
                         <div class="tab-pane" id="secondtab">
                             <div class="">
-                                <ul class="nav nav-tabs nav-tabs-solid">
+                                <ul class="nav nav-tabs nav-tabs-highlight">
                                     <li class="active"><a href="#Contacts" data-toggle="tab" aria-expanded="true"><i class="icon-users position-left"></i>Entrée en relation</a></li>
                                     <li class=""><a href="#Dossiers" data-toggle="tab" aria-expanded="false"><i class="icon-folder position-left"></i>Devis Client</a></li>
                                 </ul>
                             </div>
                             <div class="tab-content">
-
                             </div>
                         </div>
                     </div>
@@ -406,29 +458,30 @@
     </div>
 </div>
 
-    <style>
-        fieldset.scheduler-border {
-            border: 1px groove #ddd !important;
-            padding: 0 1.4em 1.4em 1.4em !important;
-            margin: 0 0 1.5em 0 !important;
-            -webkit-box-shadow:  0px 0px 0px 0px #000;
-            box-shadow:  0px 0px 0px 0px #000;
-        }
 
-        legend.scheduler-border {
-            font-size: 1.2em !important;
-            font-weight: bold !important;
-            text-align: left !important;
-            width:auto;
-            padding:0 10px;
-            border-bottom:none;
-            color: #7b5d5a;
-        }
+<style>
+    fieldset.scheduler-border {
+        border: 1px groove #ddd !important;
+        padding: 0 1.4em 1.4em 1.4em !important;
+        margin: 0 0 1.5em 0 !important;
+        -webkit-box-shadow:  0px 0px 0px 0px #000;
+        box-shadow:  0px 0px 0px 0px #000;
+    }
 
-        .colorback{
-            background-color: #eef3fd;
-        }
-    </style>
+    legend.scheduler-border {
+        font-size: 1.2em !important;
+        font-weight: bold !important;
+        text-align: left !important;
+        width:auto;
+        padding:0 10px;
+        border-bottom:none;
+        color: #7b5d5a;
+    }
+
+   input[type=text], textarea{
+    border-bottom-color: #4caf50 ;
+  }
+</style>
 
 
 {% endblock %}

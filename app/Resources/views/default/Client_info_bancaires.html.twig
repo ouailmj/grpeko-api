@@ -1,0 +1,370 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<div class="page-content">
+    <div class="content-wrapper">
+        <div class="content">
+            <div class="content-group border-top-lg border-top-primary">
+                <div class="page-header page-header-default" style="border-left: 1px solid #ddd; border-right: 1px solid #ddd;">
+                    <div class="page-header-content">
+                        <div class="page-title">
+                            <h5>
+                            <span class="text-semibold">EC0025</span>
+                            </h5>
+                            <a class="heading-elements-toggle"><i class="icon-more"></i></a>
+                        </div>
+
+                        <div class="heading-elements col-md-10 col-md-offset-1">
+                                <div class="col-md-1">
+                                    <div class="form-group ">
+                                        <label class="control-label col-lg-2">Entité Juridique</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" >
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2">Status</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group ">
+                                        <select data-placeholder="En cours" class="select select2-hidden-accessible" class="col-md-6" tabindex="-1" aria-hidden="true">
+                                                <option></option>
+                                                <optgroup label="Central Time Zone">
+                                                    <option value="AL">Alabama</option>
+                                                    <option value="AR">Arkansas</option>
+                                                    <option value="KY">Kentucky</option>
+                                                </optgroup>
+                                                <optgroup label="Eastern Time Zone">
+                                                    <option value="CT">Connecticut</option>
+                                                    <option value="DE">Delaware</option>
+                                                    <option value="WV">West Virginia</option>
+                                                </optgroup>
+                                        </select>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-flat">
+                <div class="panel-heading">
+                    <div class="heading-elements">
+                        <ul class="icons-list">
+                            <li><a data-action="collapse"></a></li>
+                            <li><a data-action="reload"></a></li>
+                            <li><a data-action="close"></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Compte</th>
+                        <th>Journale</th>
+                        <th>Banque</th>
+                        <th>Guichet</th>
+                        <th>Type de compte</th>
+                        <th>Carte bancaire</th>
+                        <th>Carte bancaire type de débit</th>
+                        <th>Mandat Collecte Bancaire</th>
+                        <th>Lequel?</th>
+                        <th>Commentaire</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="">
+                                    <a title="Supprimer" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" href="#" class="text-danger legitRipple"><i class="icon-trash position-left"></i></a>
+                                </div>
+                            </td>
+                            <td>
+                                <select data-placeholder="Compte" class="select select2-hidden-accessible" class="col-md-6" tabindex="-1" aria-hidden="true">
+                                        <option></option>
+                                        <optgroup label="Central Time Zone">
+                                            <option value="AL">Alabama</option>
+                                            <option value="AR">Arkansas</option>
+                                            <option value="KY">Kentucky</option>
+                                        </optgroup>
+                                        <optgroup label="Eastern Time Zone">
+                                            <option value="CT">Connecticut</option>
+                                            <option value="DE">Delaware</option>
+                                            <option value="WV">West Virginia</option>
+                                        </optgroup>
+                                </select>
+                            </td>
+                            <td>
+                                <select data-placeholder="Journale" class="select select2-hidden-accessible" class="col-md-6" tabindex="-1" aria-hidden="true">
+                                    <option></option>
+                                    <optgroup label="Central Time Zone">
+                                        <option value="AL">Alabama</option>
+                                        <option value="AR">Arkansas</option>
+                                        <option value="KY">Kentucky</option>
+                                    </optgroup>
+                                    <optgroup label="Eastern Time Zone">
+                                        <option value="CT">Connecticut</option>
+                                        <option value="DE">Delaware</option>
+                                        <option value="WV">West Virginia</option>
+                                    </optgroup>
+                                </select>
+                            </td>
+                            <td>Banque</td>
+                            <td>Guichet</td>
+                            <td>
+                                <select data-placeholder="Compte" class="select select2-hidden-accessible" class="col-md-6" tabindex="-1" aria-hidden="true">
+                                    <option></option>
+                                    <optgroup label="Central Time Zone">
+                                        <option value="AL">Alabama</option>
+                                        <option value="AR">Arkansas</option>
+                                        <option value="KY">Kentucky</option>
+                                    </optgroup>
+                                    <optgroup label="Eastern Time Zone">
+                                        <option value="CT">Connecticut</option>
+                                        <option value="DE">Delaware</option>
+                                        <option value="WV">West Virginia</option>
+                                    </optgroup>
+                                </select>
+                            </td>
+                            <td>
+                                <select data-placeholder="Carte" class="select select2-hidden-accessible" class="col-md-6" tabindex="-1" aria-hidden="true">
+                                    <option></option>
+                                    <optgroup label="Central Time Zone">
+                                        <option value="AL">Alabama</option>
+                                        <option value="AR">Arkansas</option>
+                                        <option value="KY">Kentucky</option>
+                                    </optgroup>
+                                    <optgroup label="Eastern Time Zone">
+                                        <option value="CT">Connecticut</option>
+                                        <option value="DE">Delaware</option>
+                                        <option value="WV">West Virginia</option>
+                                    </optgroup>
+                                </select>
+                            </td>
+                            <td>
+                                <select data-placeholder="Compte" class="select select2-hidden-accessible" class="col-md-6" tabindex="-1" aria-hidden="true">
+                                    <option></option>
+                                    <optgroup label="Central Time Zone">
+                                        <option value="AL">Alabama</option>
+                                        <option value="AR">Arkansas</option>
+                                        <option value="KY">Kentucky</option>
+                                    </optgroup>
+                                    <optgroup label="Eastern Time Zone">
+                                        <option value="CT">Connecticut</option>
+                                        <option value="DE">Delaware</option>
+                                        <option value="WV">West Virginia</option>
+                                    </optgroup>
+                                </select>
+                            </td>
+                            <td>
+                                <select data-placeholder="Compte" class="select select2-hidden-accessible" class="col-md-6" tabindex="-1" aria-hidden="true">
+                                    <option></option>
+                                    <optgroup label="Central Time Zone">
+                                        <option value="AL">Alabama</option>
+                                        <option value="AR">Arkansas</option>
+                                        <option value="KY">Kentucky</option>
+                                    </optgroup>
+                                    <optgroup label="Eastern Time Zone">
+                                        <option value="CT">Connecticut</option>
+                                        <option value="DE">Delaware</option>
+                                        <option value="WV">West Virginia</option>
+                                    </optgroup>
+                                </select>
+                            </td>
+                            <td>
+                                <select data-placeholder="Compte" class="select select2-hidden-accessible" class="col-md-6" tabindex="-1" aria-hidden="true">
+                                    <option></option>
+                                    <optgroup label="Central Time Zone">
+                                        <option value="AL">Alabama</option>
+                                        <option value="AR">Arkansas</option>
+                                        <option value="KY">Kentucky</option>
+                                    </optgroup>
+                                    <optgroup label="Eastern Time Zone">
+                                        <option value="CT">Connecticut</option>
+                                        <option value="DE">Delaware</option>
+                                        <option value="WV">West Virginia</option>
+                                    </optgroup>
+                                </select>
+                            </td>
+                            <td>Commentaire</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-7">
+
+                    <!-- Traffic sources -->
+                    <div class="panel panel-flat">
+                        <div class="panel-heading">
+                            <h6 class="panel-title"><a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+                            <div class="heading-elements">
+                                <ul class="icons-list">
+                                    <li><a data-action="collapse"></a></li>
+                                    <li><a data-action="reload"></a></li>
+                                    <li><a data-action="close"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Envoyé client</th>
+                                    <th>Relance client</th>
+                                    <th>Retour client</th>
+                                    <th>Envoyé Banque</th>
+                                    <th>RIB Actif</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        Statut
+                                    </td>
+                                    <td>
+                                        <select data-placeholder="Compte" class="select select2-hidden-accessible" class="col-md-6" tabindex="-1" aria-hidden="true">
+                                                <option></option>
+                                                <optgroup label="Central Time Zone">
+                                                    <option value="AL">Alabama</option>
+                                                    <option value="AR">Arkansas</option>
+                                                    <option value="KY">Kentucky</option>
+                                                </optgroup>
+                                                <optgroup label="Eastern Time Zone">
+                                                    <option value="CT">Connecticut</option>
+                                                    <option value="DE">Delaware</option>
+                                                    <option value="WV">West Virginia</option>
+                                                </optgroup>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select data-placeholder="Journale" class="select select2-hidden-accessible" class="col-md-6" tabindex="-1" aria-hidden="true">
+                                            <option></option>
+                                            <optgroup label="Central Time Zone">
+                                                <option value="AL">Alabama</option>
+                                                <option value="AR">Arkansas</option>
+                                                <option value="KY">Kentucky</option>
+                                            </optgroup>
+                                            <optgroup label="Eastern Time Zone">
+                                                <option value="CT">Connecticut</option>
+                                                <option value="DE">Delaware</option>
+                                                <option value="WV">West Virginia</option>
+                                            </optgroup>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select data-placeholder="Compte" class="select select2-hidden-accessible" class="col-md-6" tabindex="-1" aria-hidden="true">
+                                            <option></option>
+                                            <optgroup label="Central Time Zone">
+                                                <option value="AL">Alabama</option>
+                                                <option value="AR">Arkansas</option>
+                                                <option value="KY">Kentucky</option>
+                                            </optgroup>
+                                            <optgroup label="Eastern Time Zone">
+                                                <option value="CT">Connecticut</option>
+                                                <option value="DE">Delaware</option>
+                                                <option value="WV">West Virginia</option>
+                                            </optgroup>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select data-placeholder="Carte" class="select select2-hidden-accessible" class="col-md-6" tabindex="-1" aria-hidden="true">
+                                            <option></option>
+                                            <optgroup label="Central Time Zone">
+                                                <option value="AL">Alabama</option>
+                                                <option value="AR">Arkansas</option>
+                                                <option value="KY">Kentucky</option>
+                                            </optgroup>
+                                            <optgroup label="Eastern Time Zone">
+                                                <option value="CT">Connecticut</option>
+                                                <option value="DE">Delaware</option>
+                                                <option value="WV">West Virginia</option>
+                                            </optgroup>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select data-placeholder="Compte" class="select select2-hidden-accessible" class="col-md-6" tabindex="-1" aria-hidden="true">
+                                            <option></option>
+                                            <optgroup label="Central Time Zone">
+                                                <option value="AL">Alabama</option>
+                                                <option value="AR">Arkansas</option>
+                                                <option value="KY">Kentucky</option>
+                                            </optgroup>
+                                            <optgroup label="Eastern Time Zone">
+                                                <option value="CT">Connecticut</option>
+                                                <option value="DE">Delaware</option>
+                                                <option value="WV">West Virginia</option>
+                                            </optgroup>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Date</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /traffic sources -->
+
+                </div>
+
+                <div class="col-lg-5">
+
+                    <!-- Sales stats -->
+                    <div class="panel panel-flat">
+                        <div class="panel-heading">
+                            <h6 class="panel-title"><a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+                            <div class="heading-elements">
+                                <ul class="icons-list">
+                                    <li><a data-action="collapse"></a></li>
+                                    <li><a data-action="reload"></a></li>
+                                    <li><a data-action="close"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Date signature</th>
+                                    <th>Date de début</th>
+                                    <th>Date de fin</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>SO BANK</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>JE DECLARE</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <!-- /sales stats -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

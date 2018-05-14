@@ -1,125 +1,134 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
+<div class="page-content">
+        {% block sidebar %}
+            {% include 'layout/_partials/sidebar.html.twig' %}
+        {% endblock %}
+    <div class="content-wrapper">
+        <div class="content">
+            <!-- Highlighting rows and columns -->
+            <div class="panel panel-flat">
+                <div class="panel-heading">
+                    <h5 class="panel-title">Clients - Access</h5>
+                    <div class="heading-elements">
+                        <ul class="icons-list">
+                            <li><a data-action="collapse"></a></li>
+                            <li><a data-action="reload"></a></li>
+                            <li><a data-action="close"></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="{{ path('client_access1') }}" style="margin-left: 18px" class="btn btn-primary btn-icon legitRipple">
+                    <i class="glyphicon glyphicon-plus"></i>
+                </a>
+                <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
+                    <thead>
+                    <tr>
+                        <th class="text-center">Filtres</th>
+                        <th>Code</th>
+                        <th>Entité juridique</th>
+                        <th>Statut</th>
+                        <th>Collaborateur</th>
+                        <th>Forme juridique </th>
+                        <th>Date de cloture </th>
+                        <th>Date de dernier excercice a traiter</th>
+                        <th>Regime Fiscal</th>
+                        <th>Regime TVA</th>
+                        <th>Activité Principale</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {#{% for item in users %}#}
+                        <tr>
+                            <td class="text-center">
+                                <div class="">
+                                    <a title="Modifier" href="{{ path('client_access1') }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
+                                </div>
+                            </td>
+                            <td>IWEB Maroc</td>
+                            <td>SAS</td>
+                            <td>2010</td>
+                            <td>258963</td>
+                            <td>325415</td>
+                            <td>2597412</td>
+                            <td>
+                                <span class="label label-info">0 à 499k</span>
+                            </td>
+                            <td>
+                                <span class="label label-info">500 à 999 salariés</span>
+                            </td>
 
-    <!-- Highlighting rows and columns -->
-    <div class="panel panel-flat">
-        <div class="panel-heading">
-            <h5 class="panel-title">Clients - Access</h5>
-            <div class="heading-elements">
-                <ul class="icons-list">
-                    <li><a data-action="collapse"></a></li>
-                    <li><a data-action="reload"></a></li>
-                    <li><a data-action="close"></a></li>
-                </ul>
+                            <td>
+                                <span class="label label-info">500 à 999 salariés</span>
+                            </td>
+
+                            <td>
+                                <span class="label label-info">500 à 999 salariés</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">
+                                <div class="">
+                                    <a title="Modifier" href="{{ path('client_edit') }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
+                                </div>
+                            </td>
+                            <td>HP USA</td>
+                            <td>SAS</td>
+                            <td>2014</td>
+                            <td>258963</td>
+                            <td>325415</td>
+                            <td>2597412</td>
+                            <td>
+                                <span class="label label-info">0 à 499k</span>
+                            </td>
+                            <td>
+                                <span class="label label-info">500 à 999 salariés</span>
+                            </td>
+
+                            <td>
+                                <span class="label label-info">500 à 999 salariés</span>
+                            </td>
+
+                            <td>
+                                <span class="label label-info">500 à 999 salariés</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">
+                                <div class="">
+                                    <a title="Modifier" href="{{ path('client_edit') }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
+                                </div>
+                            </td>
+                            <td>IWEB france</td>
+                            <td>SAS</td>
+                            <td>2013</td>
+                            <td>121212</td>
+                            <td>325415</td>
+                            <td>2597412</td>
+                            <td>
+                                <span class="label label-info">0 à 499k</span>
+                            </td>
+                            <td>
+                                <span class="label label-info">500 à 999 salariés</span>
+                            </td>
+
+                            <td>
+                                <span class="label label-info">500 à 999 salariés</span>
+                            </td>
+
+                            <td>
+                                <span class="label label-info">500 à 999 salariés</span>
+                            </td>
+                        </tr>
+                    {#{% endfor %}#}
+                    </tbody>
+                </table>
             </div>
+            <!-- /highlighting rows and columns -->
         </div>
-        <a href="{{ path('client_access1') }}" style="margin-left: 18px"><img src="{{ asset('assets/images/green.png') }}"></a>
-
-        <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
-            <thead>
-            <tr>
-                <th class="text-center">Filtres</th>
-                <th>Code</th>
-                <th>Entité juridique</th>
-                <th>Statut</th>
-                <th>Collaborateur</th>
-                <th>Forme juridique </th>
-                <th>Date de cloture </th>
-                <th>Date de dernier excercice a traiter</th>
-                <th>Regime Fiscal</th>
-                <th>Regime TVA</th>
-                <th>Activité Principale</th>
-            </tr>
-            </thead>
-            <tbody>
-            {#{% for item in users %}#}
-                <tr>
-                    <td class="text-center">
-                        <div class="">
-                            <a title="Modifier" href="{{ path('client_access1') }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
-                        </div>
-                    </td>
-                    <td>IWEB Maroc</td>
-                    <td>SAS</td>
-                    <td>2010</td>
-                    <td>258963</td>
-                    <td>325415</td>
-                    <td>2597412</td>
-                    <td>
-                        <span class="label label-info">0 à 499k</span>
-                    </td>
-                    <td>
-                        <span class="label label-info">500 à 999 salariés</span>
-                    </td>
-
-                    <td>
-                        <span class="label label-info">500 à 999 salariés</span>
-                    </td>
-
-                    <td>
-                        <span class="label label-info">500 à 999 salariés</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="text-center">
-                        <div class="">
-                            <a title="Modifier" href="{{ path('client_edit') }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
-                        </div>
-                    </td>
-                    <td>HP USA</td>
-                    <td>SAS</td>
-                    <td>2014</td>
-                    <td>258963</td>
-                    <td>325415</td>
-                    <td>2597412</td>
-                    <td>
-                        <span class="label label-info">0 à 499k</span>
-                    </td>
-                    <td>
-                        <span class="label label-info">500 à 999 salariés</span>
-                    </td>
-
-                    <td>
-                        <span class="label label-info">500 à 999 salariés</span>
-                    </td>
-
-                    <td>
-                        <span class="label label-info">500 à 999 salariés</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="text-center">
-                        <div class="">
-                            <a title="Modifier" href="{{ path('client_edit') }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
-                        </div>
-                    </td>
-                    <td>IWEB france</td>
-                    <td>SAS</td>
-                    <td>2013</td>
-                    <td>121212</td>
-                    <td>325415</td>
-                    <td>2597412</td>
-                    <td>
-                        <span class="label label-info">0 à 499k</span>
-                    </td>
-                    <td>
-                        <span class="label label-info">500 à 999 salariés</span>
-                    </td>
-
-                    <td>
-                        <span class="label label-info">500 à 999 salariés</span>
-                    </td>
-
-                    <td>
-                        <span class="label label-info">500 à 999 salariés</span>
-                    </td>
-                </tr>
-            {#{% endfor %}#}
-            </tbody>
-        </table>
     </div>
-    <!-- /highlighting rows and columns -->
+</div>
 
 {% endblock %}
 

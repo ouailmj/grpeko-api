@@ -7,7 +7,7 @@
     {% endblock %}
     <div class="content-wrapper">
         <div class="content">
-            <div class="panel panel-flat">
+            <!-- <div class="panel panel-flat">
                 <div class="panel-heading">
                     <div class="heading-elements">
                         <ul class="icons-list">
@@ -60,7 +60,195 @@
                     {#{% endfor %}#}
                     </tbody>
                 </table>
-            </div>
+            </div> -->
+            <div class="content-group tab-content-bordered navbar-component">
+                    <div class="navbar navbar-inverse " style="background-color: #5d9d9c; border-color: #5d9d9c; position: relative; z-index: 30;">
+                        <div class="navbar-header">
+                            <ul class="nav navbar-nav pull-right visible-xs-block">
+                                <li><a data-toggle="collapse" data-target="#demo1" class="legitRipple"><i class="icon-tree5"></i></a></li>
+                            </ul>
+                        </div>
+
+                        <div class="navbar-collapse collapse" id="demo1">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="#tab-demo1" data-toggle="tab" class="legitRipple" aria-expanded="false">Collaborateurs</a></li>
+
+                                <li class=""><a href="#tab-demo2" data-toggle="tab" class="legitRipple" aria-expanded="true">Affectations</a></li>
+                                <li class=""><a href="#tab-demo3" data-toggle="tab" class="legitRipple" aria-expanded="true">Gestion du cabinet</a></li>
+
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle legitRipple" data-toggle="dropdown" aria-expanded="false">
+                                        <i class="icon-file-stats2 position-left"></i>
+                                        Autre
+                                        <span class="caret"></span>
+                                    </a>
+
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="#tab-demo4" data-toggle="tab">Comptes</a></li>
+                                        <li><a href="#tab-demo5" data-toggle="tab">Journaux</a></li>
+                                        <li><a href="#tab-demo6" data-toggle="tab">Import CFNOB</a></li>
+                                        <li><a href="#tab-demo6" data-toggle="tab">Suivi CEB</a></li>
+                                        <li><a href="#tab-demo5" data-toggle="tab">Facturation</a></li>
+                                        <li><a href="#tab-demo5" data-toggle="tab">Remise Facturation</a></li>
+                                        <li><a href="#tab-demo5" data-toggle="tab">Chiffre d'affaires</a></li>
+                                        <li><a href="#tab-demo11" data-toggle="tab">Commissions</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="{{ path('parametrages') }}"><i class="icon-cog"></i> Parametrages</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tab-content">
+                        <div class="tab-pane fade has-padding active in" id="tab-demo1">
+                            <span title="Ajouter un nouvel utilisateur" class="pull-right"><a href="{{ path('add-collaborateur') }}" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-user-plus"></i></b> Ajouter</a></span>
+                            <div class="datatable-scroll-wrap">
+                                <table class="table datatable-responsive table-bordered table-hover datatable-highlight dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+                                    <thead>
+                                    <tr role="row">
+                                        <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="#: activate to sort column descending">#</th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Prénom: activate to sort column ascending">Prénom</th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Nom: activate to sort column ascending">Nom</th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Téléphone: activate to sort column ascending">Initiales</th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Téléphone: activate to sort column ascending">Login</th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">Email</th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Rôles: activate to sort column ascending">Type</th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Statut: activate to sort column ascending">Supérieur</th>
+                                        <th class="text-center sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Actions: activate to sort column ascending">Statut</th>
+                                        <th class="text-center sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Actions: activate to sort column ascending">Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr role="row" class="">
+                                        <td class="sorting_1"><a href="">2</a></td>
+                                        <td>Giraud</td>
+                                        <td>Roger</td>
+                                        <td>MAI</td>
+                                        <td>groger</td>
+                                        <td>groger@groupe-eko.fr</td>
+                                        <td>
+                                            Expert Comptable
+                                        </td>
+                                        <td>
+                                            BIE
+                                        </td>
+                                        <td><span class="label label-danger">Inactif</span></td>
+                                        <td class="text-center">
+                                            <div class="">
+                                                <a title="Afficher les détails" href="{{ path('view-collaborateur') }}" class="text-primary legitRipple"><i class="icon-eye position-left"></i></a>
+                                                <a title="Modifier" href="{{ path('edit-collaborateur') }}" class="text-primary legitRipple"><i class="icon-pen position-left"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr role="row" class="">
+                                        <td class="sorting_1"><a href="">3</a></td>
+                                        <td>Augustina</td>
+                                        <td>Hardy</td>
+                                        <td>DAI</td>
+                                        <td>augustin</td>
+                                        <td>tjacques@groupe-eko.fr</td>
+                                        <td>
+                                            Collaborateur
+                                        </td>
+                                        <td>
+                                            JID
+                                        </td>
+                                        <td><span class="label label-success">Actif</span></td>
+                                        <td class="text-center">
+                                            <div class="">
+                                                <a title="Afficher les détails" href="" class="text-primary legitRipple"><i class="icon-eye position-left"></i></a>
+                                                <a title="Modifier" href="" class="text-primary legitRipple"><i class="icon-pen position-left"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade has-padding" id="tab-demo3">
+                                <a href="{{ path('information_generale') }}" style="margin-left: 18px" class="btn btn-primary btn-icon">
+                                        <i class="glyphicon glyphicon-plus"></i>
+                                </a>
+                                <div class="datatable-scroll-wrap">
+                                    <div class="datatable-header">
+                                        <div id="DataTables_Table_0_filter" class="dataTables_filter">
+                                            <label><span>Filtrer:</span> 
+                                                <input type="search" class="" placeholder="Tapez pour filtrer..." aria-controls="DataTables_Table_0">
+                                            </label>
+                                        </div>
+                                        <div class="dataTables_length" id="DataTables_Table_0_length">
+                                            <label><span>Afficher:</span> 
+                                                <select name="DataTables_Table_0_length" aria-controls="DataTables_Table_1" class="select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                                    <option value="10">10</option>
+                                                    <option value="25">25</option>
+                                                    <option value="50">50</option>
+                                                    <option value="100">100</option>
+                                                </select>
+                                            </label>
+                                        </div>
+                                    </div>
+                                <table class="table dataTable " id="DataTables_Table_1">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-center">Filtres</th>
+                                        <th>Entité juridique</th>
+                                        <th>Forme juridique</th>
+                                        <th>Date de cloture</th>
+                                        <th>Regime Fiscal</th>
+                                        <th>Regime TVA</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {#{% for item in users %}#}
+                                    <tr>
+                                        <td class="text-center">
+                                            <div class="">
+                                                <a title="Modifier" href="{{ path('client_access1') }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
+                                            </div>
+                                        </td>
+                                        <td>EKO</td>
+                                        <td>EURL</td>
+                                        <td>31/12/2018</td>
+                                        <td><span class="label label-info">0 à 499k</span></td>
+                                        <td><span class="label label-info">0 à 499k</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">
+                                            <div class="">
+                                                <a title="Modifier" href="{{ path('client_access1') }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
+                                            </div>
+                                        </td>
+                                        <td>PITI CONSEIL</td>
+                                        <td>EURL</td>
+                                        <td>31/12/2018</td>
+                                        <td><span class="label label-info">0 à 499k</span></td>
+                                        <td><span class="label label-info">0 à 499k</span></td>
+                                    </tr>
+                                    {#{% endfor %}#}
+                                    </tbody>
+                                </table>
+                                </div>
+                        </div>
+                        <div class="tab-pane fade has-padding" id="tab-demo3">
+
+                        </div>
+                        <div class="tab-pane fade has-padding" id="tab-demo4">
+
+                        </div>
+                        <div class="tab-pane fade has-padding" id="tab-demo5">
+
+                        </div>
+                        <div class="tab-pane fade has-padding" id="tab-demo6">
+
+                        </div>
+                        <div class="tab-pane fade has-padding" id="tab-demo11">
+
+                        </div>
+                    </div>
+                </div>
         </div>
     </div>
 </div>
