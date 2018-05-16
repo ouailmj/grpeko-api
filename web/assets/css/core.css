@@ -89,6 +89,12 @@ figure:hover figcaption {
 *  Latest update: Nov 25, 2015
 *
 * ---------------------------------------------------------------------------- */
+.bg-greenn
+{
+ background-color: #009688;
+ color:white;
+}
+
 h1,
 h2,
 h3,
@@ -6413,7 +6419,9 @@ a.list-group-item-danger:focus {
   margin: 0;
 }
 .panel-flat > .panel-heading {
-  background-color: #fff;
+  background-color: #5d9d9c !important;
+  color: white;
+  margin-bottom: 1rem;
 }
 .panel-flat > .panel-heading > .panel-title {
   margin-top: 2px;

@@ -588,7 +588,7 @@ class DefaultController extends BaseController
     }
 
     /**
-     * @Route("/client/view_collaborateur", name="viewcollaborateur")
+     * @Route("/client/view-collaborateur", name="view-collaborateur")
      *
      * @param Request $request
      *
@@ -624,7 +624,7 @@ class DefaultController extends BaseController
     }
 
     /**
-     * @Route("/client/edit_collaborateur", name="editcollaborateur")
+     * @Route("/client/edit-collaborateur", name="edit-collaborateur")
      *
      * @param Request $request
      *
@@ -648,8 +648,10 @@ class DefaultController extends BaseController
         return $this->render('default/accueill.html.twig');
     }
 
+  //kamal
     /**
      * @Route("/client/information_generale", name="information_generale")
+    
      *
      * @param Request $request
      *
@@ -659,9 +661,10 @@ class DefaultController extends BaseController
     {
         return $this->render('default/information_generale.html.twig');
     }
-
+    //kamal
     /**
      * @Route("/client/parametrage_devis", name="parametrage_devis")
+    
      *
      * @param Request $request
      *
@@ -669,18 +672,92 @@ class DefaultController extends BaseController
      */
     public function parametrageDevis(Request $request)
     {
-        return $this->render('default/parametrage_devis.html.twig');
+        return $this->render('default/parametrages_devis.html.twig');
     }
 
+
+    //kamal
     /**
      * @Route("/client/parametrage_commissions", name="commissions")
+     * @param Request $request
+     *  * @return \Symfony\Component\HttpFoundation\Response
+     */
+      public function parametrageCommissions(Request $request)
+    {
+        return $this->render('default/parametrages_commission.html.twig');
+    }
+    /**
+     * @Route("/cabinetacess", name="cabinet_access")
      *
      * @param Request $request
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function parametrageCommissions(Request $request)
+    public function cabinetacess(Request $request)
     {
-        return $this->render('default/commision.html.twig');
+        return $this->render('default/cabinet_access.html.twig');
+    }
+
+        //kamal
+    /**
+     * @Route("/client/parametrage_email", name="email")
+     * @param Request $request
+     *  * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function parametrageEmail(Request $request)
+    {
+        return $this->render('default/parametrages_emails.html.twig');
+    }
+
+        //kamal
+    /**
+     * @Route("/client/parametrage_internet", name="Sites_internet")
+     * @param Request $request
+     *  * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function parametrageInternet(Request $request)
+    {
+        return $this->render('default/parametrages_internetsite.html.twig');
+    }
+
+     //kamal
+    /**
+     * @Route("/client/parametrage_rendezvous", name="Rendez_vouz")
+     * @param Request $request
+     *  * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function parametrageRendezVous(Request $request)
+    {
+        return $this->render('default/parametrages_rendezvous.html.twig');
+    }
+     //kamal
+    /**
+     * @Route("/client/info-bancaire", name="InfoBancaire")
+     * @param Request $request
+     *  * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function InfoBancaire(Request $request)
+    {
+        return $this->render('default/Client_info_bancaires.html.twig');
+    }
+             //kamal
+    /**
+     * @Route("/client/formalites", name="formalites")
+     * @param Request $request
+     *  * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function Formalites(Request $request)
+    {
+        return $this->render('default/Formalités.html.twig');
+    }
+     //kamal
+    /**
+     * @Route("/client/parametrages", name="parametrages")
+     * @param Request $request
+     *  * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function Parametrages(Request $request)
+    {
+        return $this->render('default/Parametrages.html.twig');
     }
 }

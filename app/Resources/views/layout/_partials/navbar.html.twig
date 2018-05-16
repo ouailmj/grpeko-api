@@ -24,9 +24,7 @@
 
 <div class="navbar navbar-default navbar-fixed-top header-highlight">
     <div class="navbar-header">
-
-         <a class="navbar-brand" href="/"><b style="color: #fff;">Groupe Eko</b></a>
-
+         <a class="navbar-brand sidebar-control sidebar-main-toggle" href="/"><b style="color: #fff;">Groupe Eko</b></a>
         <ul class="nav navbar-nav pull-right visible-xs-block">
             <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
             <li><a class="sidebar-mobile-main-toggle"><i class="icon-paragraph-justify3"></i></a></li>
@@ -35,12 +33,12 @@
 
     <div class="navbar-collapse collapse" id="navbar-mobile">
         <ul class="nav navbar-nav">
-            <li><a class="sidebar-control sidebar-main-toggle hidden-xs"><i class="icon-paragraph-justify3"></i></a></li>
+            <li><a class="sidebar-control sidebar-main-toggle hidden-xs legitRipple"><i class="icon-paragraph-justify3"></i></a></li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown dropdown-user">
-                <a class="dropdown-toggle" data-toggle="dropdown">
+            <!-- <li class="dropdown dropdown-user">
+                <a class="dropdown-toggle legitRipple" data-toggle="dropdown">
                     <div id="ex4" style="margin-top: -4px">
                           <span class="p1 fa-stack fa-2x has-badge" data-count="9" title="Conversations">
                              <i class="p3 fa fa-comments fa-stack-1x xfa-inverse" style="margin-top: -5px"></i>
@@ -55,9 +53,9 @@
                     <li><a href="/app/conversationadd"><i class="fa fa-plus-circle"></i> Créer une conversation</a></li>
 
                 </ul>
-            </li>
-            <li class="dropdown dropdown-user">
-                <a class="dropdown-toggle" data-toggle="dropdown">
+            </li> -->
+            <!-- <li class="dropdown dropdown-user">
+                <a class="dropdown-toggle legitRipple" data-toggle="dropdown">
                     <div id="ex4" style="margin-top: -4px">
                           <span class="p1 fa-stack fa-2x has-badge" data-count="4" title="Notifications">
                              <i class="p3 fa fa-bell fa-stack-1x xfa-inverse" style="margin-top: -5px"></i>
@@ -66,38 +64,15 @@
                 </a>
 
                 <ul class="dropdown-menu dropdown-menu-right">
-                    <li><a href="{{ path('fos_user_profile_show')}}"> Des execrices sont a créer</a></li>
+                    <li><a href=""> Des execrices sont a créer</a></li>
                     <li class="divider"></li>
-                    <li><a href="{{ path('fos_user_security_logout') }}"> Des execrices sont en anomalie</a></li>
+                    <li><a href=""> Des execrices sont en anomalie</a></li>
                     <li class="divider"></li>
-                    <li><a href="{{ path('fos_user_security_logout') }}"> Anomalies Répetoires</a></li>
+                    <li><a href=""> Anomalies Répetoires</a></li>
                 </ul>
-            </li>
-
+            </li> -->
             <li class="dropdown dropdown-user">
-                <a class="dropdown-toggle" data-toggle="dropdown">
-                    <div id="ex4" style="margin-top: -5px">
-                          <span class="p1 fa-stack fa-2x has-badge" title="Fichiers">
-                             <i class="p3 fa fa-file fa-stack-1x xfa-inverse" style="margin-top: -5px"></i>
-                          </span>
-                    </div>
-                </a>
-
-                <ul class="dropdown-menu dropdown-menu-right">
-                    <li><a href="{{ path('fos_user_profile_show')}}"> Fiches Client</a></li>
-                    <li class="divider"></li>
-                    <li><a href="{{ path('fos_user_security_logout') }}"> Planning</a></li>
-                    <li class="divider"></li>
-                    <li><a href="{{ path('fos_user_security_logout') }}"> Ecritures CFONB a rapprocher</a></li>
-                    <li class="divider"></li>
-                    <li><a href="{{ path('fos_user_security_logout') }}"> Dossier de travail a créer</a></li>
-                    <li class="divider"></li>
-                    <li><a href="{{ path('fos_user_security_logout') }}"> Clients a débit différé</a></li>
-                </ul>
-            </li>
-
-            <li class="dropdown dropdown-user">
-                <a class="dropdown-toggle" data-toggle="dropdown">
+                <a class="dropdown-toggle legitRipple" data-toggle="dropdown">
                     <div id="ex4" style="margin-top: -5px">
                           <span class="p1 fa-stack fa-2x has-badge" title="Profil">
                              <i class="p3 fa fa-user fa-stack-1x xfa-inverse" style="margin-top: -5px"></i>
@@ -106,9 +81,9 @@
                 </a>
 
                 <ul class="dropdown-menu dropdown-menu-right">
-                    <li><a href="{{ path('fos_user_profile_show')}}"><i class="icon-user-plus"></i> Mon profil</a></li>
+                    <li><a href=""><i class="icon-user-plus"></i> Mon profil</a></li>
                     <li class="divider"></li>
-                    <li><a href="{{ path('fos_user_security_logout') }}"><i class="icon-switch2"></i> Déconnexion</a></li>
+                    <li><a href=""><i class="icon-switch2"></i> Déconnexion</a></li>
                 </ul>
             </li>
 

@@ -54,25 +54,24 @@ class Builder implements ContainerAwareInterface
         ])->setAttribute('class', 'navigation-header');
 
         $menu->addChild('Clients', [
-            'uri' => '/app/client/access1',
+            'uri' => '/app/client/index',
             'label' => '<i class="icon-users4"></i> <span>Clients</span>',
             'extras' => ['safe_label' => true],
         ]);
-
         $menu->addChild('Plannings', [
-            'uri' => '#',
+            'uri' => '/app/client/planning',
             'label' => '<i class="icon-users"></i> <span>Plannings</span>',
             'extras' => ['safe_label' => true],
         ]);
 
         $menu->addChild('Gestion du Cabinet', [
-            'uri' => '#',
+            'uri' => '/app/client/gestion-cabinet',
             'label' => '<i class="icon-file-text3"></i> <span>Gestion du Cabinet</span>',
             'extras' => ['safe_label' => true],
         ]);
 
         $menu->addChild('Formalités', [
-            'uri' => '#',
+            'uri' => '/app/client/formalites',
             'label' => '<i class="icon-books"></i> <span>Formalités</span>',
             'extras' => ['safe_label' => true],
         ]);
@@ -81,20 +80,12 @@ class Builder implements ContainerAwareInterface
             'label' => '<i class="icon-home5"></i> <span>Suivi de projet</span>',
             'extras' => ['safe_label' => true],
         ]);
-
-        $menu->addChild('CRM', [
-                'uri' => '#',
-                'label' => '<i class="icon-collaboration"></i> <span>Relations Client</span>',
-                'extras' => ['safe_label' => true],
-        ]);
-
-        $settings = $menu->addChild('Parametrage', [
-                 'uri' => '#',
-                 'label' => '<i class="icon-cog5"></i> <span>Paramètrage</span>',
-                 'extras' => ['safe_label' => true],
-        ]);
-
-        $this->paramaetrageItem($settings);
+        // $settings = $menu->addChild('Parametragee', [
+        //     'uri' => '#',
+        //     'label' => '<i class="icon-cog5"></i> <span>Parametragee</span>',
+        //     'extras' => ['safe_label' => true],
+        // ]);
+        // $this->paramaetrageItem($settings);
 
         return $menu;
     }
@@ -144,39 +135,44 @@ class Builder implements ContainerAwareInterface
         return $menu;
     }
 
-    private function paramaetrageItem(ItemInterface $menu)
-    {
-        $menu->addChild('Type Staff', [
-         'uri' => '#',
-         'label' => '<i class="icon-arrow-right14"></i> <span>Type de Clients</span>',
-         'extras' => ['safe_label' => true],
-     ]);
-        $menu->addChild('Type Contrats', [
-         'uri' => '#',
-         'label' => '<i class="icon-arrow-right14"></i> <span>Type de Contrats</span>',
-         'extras' => ['safe_label' => true],
-     ]);
-        /*$menu->addChild('Type de garanties', array(
-            'route' => 'warrantytype_index',
-            'label' => "<i class=\"icon-arrow-right14\"></i> <span>Type de garanties</span>",
-            'extras'    => array('safe_label' => true)
-        ));*/
-        $menu->addChild('Produits', [
-            'uri' => '#',
-            'label' => '<i class="icon-arrow-right14"></i> <span>Produits</span>',
-            'extras' => ['safe_label' => true],
-        ]);
-        $menu->addChild('Product Family', [
-            'uri' => '#',
-            'label' => '<i class="icon-arrow-right14"></i> <span>Famile de Produits</span>',
-            'extras' => ['safe_label' => true],
-        ]);
+    // private function paramaetrageItem(ItemInterface $menu)
+    // {
+    //     $menu->addChild('Email', [
+    //      'uri' => '/app/client/parametrage_email',
+    //      'label' => '<i class="icon-arrow-right14"></i> <span>Email</span>',
+    //      'extras' => ['safe_label' => true],
+    //  ]);
+    //     $menu->addChild('Rendez-vos clients', [
+    //      'uri' => '/app/client/parametrage_rendezvous',
+    //      'label' => '<i class="icon-arrow-right14"></i> <span>Rendez-vos clients</span>',
+    //      'extras' => ['safe_label' => true],
+    //  ]);
+    //     /*$menu->addChild('Type de garanties', array(
+    //         'route' => 'warrantytype_index',
+    //         'label' => "<i class=\"icon-arrow-right14\"></i> <span>Type de garanties</span>",
+    //         'extras'    => array('safe_label' => true)
+    //     ));*/
+    //     $menu->addChild('Devis', [
+    //         'uri' => '/app/client/parametrage_devis',
+    //         'label' => '<i class="icon-arrow-right14"></i> <span>Devis</span>',
+    //         'extras' => ['safe_label' => true],
+    //     ]);
+    //     $menu->addChild('Commissions', [
+    //         'uri' => '/app/client/parametrage_commissions',
+    //         'label' => '<i class="icon-arrow-right14"></i> <span>Commissions</span>',
+    //         'extras' => ['safe_label' => true],
+    //     ]);
+    //     $menu->addChild('Sites internet', [
+    //         'uri' => '/app/client/parametrage_internet',
+    //         'label' => '<i class="icon-arrow-right14"></i> <span>Sites internet</span>',
+    //         'extras' => ['safe_label' => true],
+    //     ]);
 
-        /*
-        $menu->addChild('Type Client', array(
-            'route' => 'client_index',
-            'label' => "<i class=\"icon-arrow-right14\"></i> <span>Type Client</span>",
-            'extras'    => array('safe_label' => true)
-        ));*/
-    }
+    //     /*
+    //     $menu->addChild('Type Client', array(
+    //         'route' => 'client_index',
+    //         'label' => "<i class=\"icon-arrow-right14\"></i> <span>Type Client</span>",
+    //         'extras'    => array('safe_label' => true)
+    //     ));*/
+    // }
 }
