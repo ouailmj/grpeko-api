@@ -19,9 +19,8 @@
                         </ul>
                     </div>
                 </div>
-                <a href="{{ path('client_access1') }}" style="margin-left: 18px" class="btn btn-primary btn-icon legitRipple">
-                    <i class="glyphicon glyphicon-plus"></i>
-                </a>
+                <div class="panel-body">
+                <span title="Ajouter un nouvel Client" class="pull-right"><a href="{{ path('client_access1') }}" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-user-plus"></i></b> Ajouter</a></span>
                 <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
                     <thead>
                     <tr>
@@ -124,7 +123,7 @@
                     {#{% endfor %}#}
                     </tbody>
                 </table>
-            </div>
+                </div>
             <!-- /highlighting rows and columns -->
         </div>
     </div>

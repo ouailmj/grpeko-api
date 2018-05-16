@@ -3469,6 +3469,7 @@ select[multiple].input-group-xs > .input-group-btn > .btn {
     background-size: auto 26px;
     float: none;
     display: block;
+    margin-left: -0.4rem !important;
   }
   .sidebar-xs .header-highlight .navbar-header .navbar-brand > img {
     display: none;
