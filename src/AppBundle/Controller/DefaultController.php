@@ -760,4 +760,25 @@ class DefaultController extends BaseController
     {
         return $this->render('default/Parametrages.html.twig');
     }
+
+     //kamal
+    /**
+     * @Route("/client/affecctaionCollaborateurF", name="affecctaionCollaborateur")
+     * @param Request $request
+     *  * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function affecctaionCollaborateur(Request $request)
+    {
+        return $this->render('default/collaborateur_affectation.html.twig');
+    }
+     //kamal
+    /**
+     * @Route("/client/gestion_comptabilite", name="gestion_comptabilite")
+     * @param Request $request
+     *  * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function gestionComptabilite(Request $request)
+    {
+        return $this->render('default/gestion_comptabilité.html.twig');
+    }
 }

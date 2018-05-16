@@ -5,62 +5,14 @@
   {% block sidebar %}
         {% include 'layout/_partials/sidebar.html.twig' %}
     {% endblock %}
+    <div class="sidebar sidebar-secondary sidebar-default">
+       <div class="category-title category-collapsed">azerty</div>
+       <div class="category-title category-collapsed">azerty</div>
+       <div class="category-title category-collapsed">azerty</div>
+
+    </div>
     <div class="content-wrapper">
         <div class="content">
-            <!-- <div class="panel panel-flat">
-                <div class="panel-heading">
-                    <div class="heading-elements">
-                        <ul class="icons-list">
-                            <li><a data-action="collapse"></a></li>
-                            <li><a data-action="reload"></a></li>
-                            <li><a data-action="close"></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <a href="{{ path('information_generale') }}" style="margin-left: 18px" class="btn btn-primary btn-icon">
-                        <i class="glyphicon glyphicon-plus"></i>
-                </a>
-                <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
-                    <thead>
-                    <tr>
-                        <th class="text-center">Filtres</th>
-                        <th>Entité juridique</th>
-                        <th>Forme juridique</th>
-                        <th>Date de cloture</th>
-                        <th>Regime Fiscal</th>
-                        <th>Regime TVA</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {#{% for item in users %}#}
-                    <tr>
-                        <td class="text-center">
-                            <div class="">
-                                <a title="Modifier" href="{{ path('client_access1') }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
-                            </div>
-                        </td>
-                        <td>EKO</td>
-                        <td>EURL</td>
-                        <td>31/12/2018</td>
-                        <td><span class="label label-info">0 à 499k</span></td>
-                        <td><span class="label label-info">0 à 499k</span></td>
-                    </tr>
-                    <tr>
-                        <td class="text-center">
-                            <div class="">
-                                <a title="Modifier" href="{{ path('client_access1') }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
-                            </div>
-                        </td>
-                        <td>PITI CONSEIL</td>
-                        <td>EURL</td>
-                        <td>31/12/2018</td>
-                        <td><span class="label label-info">0 à 499k</span></td>
-                        <td><span class="label label-info">0 à 499k</span></td>
-                    </tr>
-                    {#{% endfor %}#}
-                    </tbody>
-                </table>
-            </div> -->
             <div class="content-group tab-content-bordered navbar-component">
                     <div class="navbar navbar-inverse " style="background-color: #5d9d9c; border-color: #5d9d9c; position: relative; z-index: 30;">
                         <div class="navbar-header">
@@ -87,10 +39,10 @@
                                         <li><a href="#tab-demo4" data-toggle="tab">Comptes</a></li>
                                         <li><a href="#tab-demo5" data-toggle="tab">Journaux</a></li>
                                         <li><a href="#tab-demo6" data-toggle="tab">Import CFNOB</a></li>
-                                        <li><a href="#tab-demo6" data-toggle="tab">Suivi CEB</a></li>
-                                        <li><a href="#tab-demo5" data-toggle="tab">Facturation</a></li>
-                                        <li><a href="#tab-demo5" data-toggle="tab">Remise Facturation</a></li>
-                                        <li><a href="#tab-demo5" data-toggle="tab">Chiffre d'affaires</a></li>
+                                        <li><a href="#tab-demo7" data-toggle="tab">Suivi CEB</a></li>
+                                        <li><a href="#tab-demo8" data-toggle="tab">Facturation</a></li>
+                                        <li><a href="#tab-demo9" data-toggle="tab">Remise Facturation</a></li>
+                                        <li><a href="#tab-demo10" data-toggle="tab">Chiffre d'affaires</a></li>
                                         <li><a href="#tab-demo11" data-toggle="tab">Commissions</a></li>
                                     </ul>
                                 </li>
@@ -104,7 +56,7 @@
 
                     <div class="tab-content">
                         <div class="tab-pane fade has-padding active in" id="tab-demo1">
-                            <span title="Ajouter un nouvel utilisateur" class="pull-right"><a href="{{ path('add-collaborateur') }}" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-user-plus"></i></b> Ajouter</a></span>
+                            <span title="Ajouter un nouvel collaborateur" class="pull-right"><a href="{{ path('add-collaborateur') }}" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-user-plus"></i></b> Ajouter</a></span>
                             <div class="datatable-scroll-wrap">
                                 <table class="table datatable-responsive table-bordered table-hover datatable-highlight dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
                                     <thead>
@@ -169,9 +121,7 @@
                             </div>
                         </div>
                         <div class="tab-pane fade has-padding" id="tab-demo3">
-                                <a href="{{ path('information_generale') }}" style="margin-left: 18px" class="btn btn-primary btn-icon">
-                                        <i class="glyphicon glyphicon-plus"></i>
-                                </a>
+                                <span title="Ajouter un nouvel Sociétés" class="pull-right"><a href="{{ path('information_generale') }}" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-user-plus"></i></b> Ajouter</a></span>
                                 <div class="datatable-scroll-wrap">
                                     <div class="datatable-header">
                                         <div id="DataTables_Table_0_filter" class="dataTables_filter">
@@ -232,11 +182,11 @@
                                 </table>
                                 </div>
                         </div>
-                        <div class="tab-pane fade has-padding" id="tab-demo3">
-
+                        <div class="tab-pane fade has-padding" id="tab-demo2">
+                                {% include 'default/collaborateur_affectation.html.twig' %}
                         </div>
                         <div class="tab-pane fade has-padding" id="tab-demo4">
-
+                                
                         </div>
                         <div class="tab-pane fade has-padding" id="tab-demo5">
 
@@ -244,8 +194,43 @@
                         <div class="tab-pane fade has-padding" id="tab-demo6">
 
                         </div>
-                        <div class="tab-pane fade has-padding" id="tab-demo11">
+                        <div class="tab-pane fade has-padding" id="tab-demo7">
 
+                        </div>
+                        <div class="tab-pane fade has-padding" id="tab-demo8">
+                            {% include 'default/Facturation.html.twig' %}
+                        </div>
+                        <div class="tab-pane fade has-padding" id="tab-demo10">
+                            {% include 'default/chiffer_affaire.html.twig' %}
+                        </div>
+                        <div class="tab-pane fade has-padding" id="tab-demo11">
+                                <div class="row">
+                                    <div class="col-md-6 col-md-offset-3">
+                                        <form action="#" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class=" col-sm-2 control-label">Année</label>
+                                            <div class="col-sm-3">
+                                                <input type="text" placeholder="2010" class="form-control">
+                                            </div>  
+                                            <div class="form-group">
+                                                <label class="radio-inline">
+                                                    <div class="choice">
+                                                        <input type="radio" name="gender2" class="styled" checked="checked">
+                                                    </div>
+                                                    Par collaborateur
+                                                </label>
+
+                                                <label class="radio-inline">
+                                                    <div class="choice">
+                                                        <input type="radio" name="gender2" class="styled">
+                                                    </div>
+                                                    Par groupe
+                                                </label>
+                                            </div>
+                                        </div>
+                                        </form>
+                                    </div>
+                                </div>
                         </div>
                     </div>
                 </div>

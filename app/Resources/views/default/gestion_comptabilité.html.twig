@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<div class="page-content">
+  {% block sidebar %}
+        {% include 'layout/_partials/sidebar.html.twig' %}
+    {% endblock %}
+    <div class="sidebar sidebar-secondary sidebar-default">
+            <div class="sidebar-category">
+                <div class="category-title">
+                    <select data-placeholder="Administratif" class="select select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                        <option value="AL">Administratif</option>
+                        <option value="AL">Comptabilité</option>
+                        <option value="AR">Fascalité</option>
+                        <option value="KY">Social</option>
+                    </select>
+                    <ul class="icons-list">
+                        <li><a href="#" data-action="collapse" class=""></a></li>
+                    </ul>
+                </div>
+
+                <div class="category-content" style="display: block;">
+                    <div class="category-title category-collapsed text-center">Import CFONB</div>
+                    <div class="category-title category-collapsed text-center">Balance Générale</div>
+                    <div class="category-title category-collapsed text-center">Grand livre</div>
+                    <div class="category-title category-collapsed text-center">Journal Générale</div>
+                    <div class="category-title category-collapsed text-center">Etats Financiers</div>
+                    <div class="category-title category-collapsed text-center">Reporting</div>
+                    <div class="category-title category-collapsed text-center">Point en suspens</div>
+                    <div class="category-title category-collapsed text-center">Mail de cloture</div>
+                    <div class="category-title category-collapsed text-center">1</div>
+                    <div class="category-title category-collapsed text-center">2</div>
+                    <div class="category-title category-collapsed text-center">3</div>
+                    <div class="category-title category-collapsed text-center">40</div>
+                    <div class="category-title category-collapsed text-center">41</div>
+                    <div class="category-title category-collapsed text-center">42</div>
+                    <div class="category-title category-collapsed text-center">43</div>
+                    <div class="category-title category-collapsed text-center">44</div>
+                </div>
+            </div>
+    </div>
+    <div class="content-wrapper">
+        <div class="content">
+         </div>
+    </div>
+</div>
+{% endblock %}

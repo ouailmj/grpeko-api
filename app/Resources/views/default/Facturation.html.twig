@@ -1,0 +1,177 @@
+
+<button type="button" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-labeled-left bg-blue heading-btn">Importer les réglements</button>
+<span title="Ajouter un nouvel collaborateur" class="pull-right"><a href="{{ path('add-collaborateur') }}" style="background-color: #5d9d9c; border-color: #5d9d9c; margin-left:1rem;" class="btn btn-labeled-left bg-blue heading-btn legitRipple">Editer les factures</a></span>
+<span title="Ajouter un nouvel collaborateur" class="pull-right"><a href="{{ path('add-collaborateur') }}" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-labeled-left bg-blue heading-btn legitRipple">Créer les facture suivantes</a></span>
+
+<div class="datatable-scroll-wrap">
+    <table class="table datatable-responsive table-bordered table-hover datatable-highlight dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+        <thead>
+        <tr role="row">
+            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Code</th>
+            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Entité Juridique</th>
+            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Date Cloture</th>
+            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >N facture</th>
+            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Date</th>
+            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >A/F</th>
+            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Mode Régl</th>
+            <th class="text-center sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Réglée</th>
+            <th class="text-center sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Editée</th>
+            <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1">HT</th>
+            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >TVA</th>
+            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >TTC</th>
+            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Mt Réglé</th>
+            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Solde</th>
+            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Date de dernier exercice à traiter</th>
+            <th colspan="2"></th>
+            <th>#</th>
+        </tr>
+      
+        </thead>
+        <tbody>
+            <tr role="row">
+                
+                <td>Code</td>
+                <td>Entité Juridique</td>
+                <td>
+                    <select data-placeholder="Papier" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                            <option></option>
+                            <optgroup label="Central Time Zone">
+                                <option value="AL">Alabama</option>
+                                <option value="AR">Arkansas</option>
+                                <option value="KY">Kentucky</option>
+                            </optgroup>
+                            <optgroup label="Eastern Time Zone">
+                                <option value="CT">Connecticut</option>
+                                <option value="DE">Delaware</option>
+                                <option value="WV">West Virginia</option>
+                            </optgroup>
+                    </select>
+                </td>
+                <td>N facture</td>
+                <td> 
+                    <select data-placeholder="Papier" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                        <option></option>
+                        <optgroup label="Central Time Zone">
+                            <option value="AL">Alabama</option>
+                            <option value="AR">Arkansas</option>
+                            <option value="KY">Kentucky</option>
+                        </optgroup>
+                        <optgroup label="Eastern Time Zone">
+                            <option value="CT">Connecticut</option>
+                            <option value="DE">Delaware</option>
+                            <option value="WV">West Virginia</option>
+                        </optgroup>
+                    </select>
+                </td>
+                <td>
+                    <select data-placeholder="Papier" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                            <option></option>
+                            <optgroup label="Central Time Zone">
+                                <option value="AL">Alabama</option>
+                                <option value="AR">Arkansas</option>
+                                <option value="KY">Kentucky</option>
+                            </optgroup>
+                            <optgroup label="Eastern Time Zone">
+                                <option value="CT">Connecticut</option>
+                                <option value="DE">Delaware</option>
+                                <option value="WV">West Virginia</option>
+                            </optgroup>
+                    </select>
+                </td>
+                <td>
+                    <select data-placeholder="Papier" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                            <option></option>
+                            <optgroup label="Central Time Zone">
+                                <option value="AL">Alabama</option>
+                                <option value="AR">Arkansas</option>
+                                <option value="KY">Kentucky</option>
+                            </optgroup>
+                            <optgroup label="Eastern Time Zone">
+                                <option value="CT">Connecticut</option>
+                                <option value="DE">Delaware</option>
+                                <option value="WV">West Virginia</option>
+                            </optgroup>
+                    </select>
+                </td>
+                <td>
+                    <select data-placeholder="Papier" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                            <option></option>
+                            <optgroup label="Central Time Zone">
+                                <option value="AL">Alabama</option>
+                                <option value="AR">Arkansas</option>
+                                <option value="KY">Kentucky</option>
+                            </optgroup>
+                            <optgroup label="Eastern Time Zone">
+                                <option value="CT">Connecticut</option>
+                                <option value="DE">Delaware</option>
+                                <option value="WV">West Virginia</option>
+                            </optgroup>
+                    </select>
+                </td>
+                <td>
+                    <select data-placeholder="Papier" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                            <option></option>
+                            <optgroup label="Central Time Zone">
+                                <option value="AL">Alabama</option>
+                                <option value="AR">Arkansas</option>
+                                <option value="KY">Kentucky</option>
+                            </optgroup>
+                            <optgroup label="Eastern Time Zone">
+                                <option value="CT">Connecticut</option>
+                                <option value="DE">Delaware</option>
+                                <option value="WV">West Virginia</option>
+                            </optgroup>
+                    </select>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <select data-placeholder="Papier" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                            <option></option>
+                            <optgroup label="Central Time Zone">
+                                <option value="AL">Alabama</option>
+                                <option value="AR">Arkansas</option>
+                                <option value="KY">Kentucky</option>
+                            </optgroup>
+                            <optgroup label="Eastern Time Zone">
+                                <option value="CT">Connecticut</option>
+                                <option value="DE">Delaware</option>
+                                <option value="WV">West Virginia</option>
+                            </optgroup>
+                    </select>
+                </td>
+                <td><span class="label label-success">Tous</span></td>
+                <td><span class="label label-success">Aucun</span></td>
+                <td>#</td>
+            </tr>
+            <tr role="row">
+                <td>Code</td>
+                <td>Entité Juridique</td>
+                <td>Date Cloture</td>
+                <td>N facture</td>
+                <td>Date</td>
+                <td>A/F</td>
+                <td>Mode Régl</td>
+                <td>Réglée</td>
+                <td>Editée</td>
+                <td>1000,00</td>
+                <td>2000,00</td>
+                <td>2340,23</td>
+                <td>6000,00</td>
+                <td>7000,0</td>
+                <td>31/12/2018</td>
+                <td colspan="2"><input type="checkbox"></td>
+                <td>
+                    <div class="">
+                        <a title="Afficher les détails" href="" class="text-primary legitRipple"><i class="icon-eye position-left"></i></a>
+                        <a title="Modifier" href="" data-toggle="modal" data-target="#modal_full" class="text-primary legitRipple"><i class="icon-pen position-left"></i></a>
+                    </div>  
+                </td>
+            </tr>
+       
+        </tbody>
+    </table>
+</div>

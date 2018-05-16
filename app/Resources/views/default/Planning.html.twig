@@ -1,9 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-
     <div class="page-content">
-     {% block sidebar %}
+    {% block sidebar %}
         {% include 'layout/_partials/sidebar.html.twig' %}
     {% endblock %}
         <div class="content-wrapper">
@@ -26,10 +25,12 @@
                         <div class="panel-body">
                                 <div class="table-responsive">
                                     <div class="form-group">
-                                        <div class="col-md-3">
+                                            <span title="Ajouter une nouvelle tache" class="pull-right"><a data-toggle="modal" data-target="#myModal" href="" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-user-plus"></i></b> Ajouter</a></span>
+                                        <!-- <div class="col-md-3">
+
                                             <button type="button" class="btn bg-teal-400  form-control" data-toggle="modal" data-target="#myModal" >Ajouter une nouvelle tache</button>
-                                        </div>
-                                        <div class="col-md-3">
+                                        </div> -->
+                                        <!-- <div class="col-md-3">
                                             <button type="button" class="btn bg-teal-400  form-control" onclick="location.href='/app/client/gestion-cabinet'">Filtre Automatique 1</button>
                                         </div>
                                         <div class="col-md-3">
@@ -37,7 +38,7 @@
                                         </div>
                                         <div class="col-md-3">
                                             <button type="button" class="btn bg-teal-400  form-control">Filtre Automatique 3</button>
-                                        </div>
+                                        </div> -->
                                     </div><br><br><br>
                                     <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
                                         <thead>
@@ -133,18 +134,18 @@
                                             </td>
                                             <td>
                                                 <select data-placeholder="TDA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
-                                                        <option></option>
-                                                        <optgroup label="Central Time Zone">
-                                                            <option value="AL">Alabama</option>
-                                                            <option value="AR">Arkansas</option>
-                                                            <option value="KY">Kentucky</option>
-                                                        </optgroup>
-                                                        <optgroup label="Eastern Time Zone">
-                                                            <option value="CT">Connecticut</option>
-                                                            <option value="DE">Delaware</option>
-                                                            <option value="WV">West Virginia</option>
-                                                        </optgroup>
-                                                    </select>
+                                                    <option></option>
+                                                    <optgroup label="Central Time Zone">
+                                                        <option value="AL">Alabama</option>
+                                                        <option value="AR">Arkansas</option>
+                                                        <option value="KY">Kentucky</option>
+                                                    </optgroup>
+                                                    <optgroup label="Eastern Time Zone">
+                                                        <option value="CT">Connecticut</option>
+                                                        <option value="DE">Delaware</option>
+                                                        <option value="WV">West Virginia</option>
+                                                    </optgroup>
+                                                </select>
                                             </td>
                                             <td>
                                                 <select data-placeholder="TDA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
@@ -243,90 +244,115 @@
     <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
-
             <!-- Modal content-->
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header bg-teal-400">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Ajout d'une nouvelle tache</h4>
                 </div>
-                <div class="modal-body">
-                        <form action="#">
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-sm-2">
-                                            <label>Collaborateur</label>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <input type="text" placeholder="Eugene" class="form-control">
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <input type="text" placeholder="Kopyov" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <label>Address line 1</label>
-                                            <input type="text" placeholder="Ring street 12" class="form-control">
-                                        </div>
-
-                                        <div class="col-sm-6">
-                                            <label>Address line 2</label>
-                                            <input type="text" placeholder="building D, flat #67" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <label>City</label>
-                                            <input type="text" placeholder="Munich" class="form-control">
-                                        </div>
-
-                                        <div class="col-sm-4">
-                                            <label>State/Province</label>
-                                            <input type="text" placeholder="Bayern" class="form-control">
-                                        </div>
-
-                                        <div class="col-sm-4">
-                                            <label>ZIP code</label>
-                                            <input type="text" placeholder="1031" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <label>Email</label>
-                                            <input type="text" placeholder="eugene@kopyov.com" class="form-control">
-                                            <span class="help-block">name@domain.com</span>
-                                        </div>
-
-                                        <div class="col-sm-6">
-                                            <label>Phone #</label>
-                                            <input type="text" placeholder="+99-99-9999-9999" data-mask="+99-99-9999-9999" class="form-control">
-                                            <span class="help-block">+99-99-9999-9999</span>
-                                        </div>
-                                    </div>
-                                </div>
+                <form action="#" class="form-horizontal">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">Collaborateur</label>
+                            <div class="col-sm-6">
+                                <input type="text" placeholder="Date" class="form-control">
                             </div>
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Submit form</button>
+                            <div class="col-sm-3">
+                                <input type="text"  class="form-control">
                             </div>
-                        </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-                    <button type="button" class="btn btn-info">Valider</button>
-                </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">Mission</label>
+                            <div class="col-sm-9">
+                                <select data-placeholder="TDA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                    <option></option>
+                                    <optgroup label="Central Time Zone">
+                                        <option value="AL">Alabama</option>
+                                        <option value="AR">Arkansas</option>
+                                        <option value="KY">Kentucky</option>
+                                    </optgroup>
+                                    <optgroup label="Eastern Time Zone">
+                                        <option value="CT">Connecticut</option>
+                                        <option value="DE">Delaware</option>
+                                        <option value="WV">West Virginia</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">Type</label>
+                            <div class="col-sm-9">
+                                <select data-placeholder="TDA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                    <option></option>
+                                    <optgroup label="Central Time Zone">
+                                        <option value="AL">Alabama</option>
+                                        <option value="AR">Arkansas</option>
+                                        <option value="KY">Kentucky</option>
+                                    </optgroup>
+                                    <optgroup label="Eastern Time Zone">
+                                        <option value="CT">Connecticut</option>
+                                        <option value="DE">Delaware</option>
+                                        <option value="WV">West Virginia</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">Sous type</label>
+                            <div class="col-sm-9">
+                                <select data-placeholder="TDA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                    <option></option>
+                                    <optgroup label="Central Time Zone">
+                                        <option value="AL">Alabama</option>
+                                        <option value="AR">Arkansas</option>
+                                        <option value="KY">Kentucky</option>
+                                    </optgroup>
+                                    <optgroup label="Eastern Time Zone">
+                                        <option value="CT">Connecticut</option>
+                                        <option value="DE">Delaware</option>
+                                        <option value="WV">West Virginia</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">Client(optionnel)</label>
+                            <div class="col-sm-9">
+                                <select data-placeholder="TDA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                    <option></option>
+                                    <optgroup label="Central Time Zone">
+                                        <option value="AL">Alabama</option>
+                                        <option value="AR">Arkansas</option>
+                                        <option value="KY">Kentucky</option>
+                                    </optgroup>
+                                    <optgroup label="Eastern Time Zone">
+                                        <option value="CT">Connecticut</option>
+                                        <option value="DE">Delaware</option>
+                                        <option value="WV">West Virginia</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">Commentaire (optionnel)</label>
+                            <div class="col-sm-9">
+                                <textarea rows="5" cols="5" class="form-control" placeholder="Enter your message here"></textarea>
+                            </div>
+                        </div>
+
+                       
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link" data-dismiss="modal">Annuler</button>
+                        <button type="submit" class="btn btn-primary">Valider</button>
+                    </div>
+                </form>
             </div>
 
         </div>

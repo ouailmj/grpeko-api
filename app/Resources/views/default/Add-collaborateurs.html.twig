@@ -22,13 +22,17 @@ content: none !important;
                     <div class="panel-heading">
                         <h6 class="panel-title">Gestion des collaborateurs<a class="heading-elements-toggle"><i class="icon-more"></i></a><a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
                         <div class="heading-elements">
-                            <a href="{{ path('collaborateurs')}}" class="btn btn-primary btn-xs  legitRipple"><b><i class="icon-loop3"></i></b> Retour à la liste</a>
+                            <ul class="icons-list">
+                                <li><a data-action="collapse"></a></li>
+                                <li><a data-action="reload"></a></li>
+                                <li><a data-action="close"></a></li>
+                            </ul>
                         </div>
                     </div>
                 <div class="panel-body">
                         <form class="form-horizontal" action="#">
                     <div class="row">
-                        <fieldset class="alert alert-info alert-styled-left alert-arrow-left alert-component">
+                        <fieldset class="alert alert-styled-left alert-arrow-left alert-component">
                             <div class="form-group">
                                 <label class="control-label col-lg-2">Nom</label>
                                 <div class="col-lg-10">
