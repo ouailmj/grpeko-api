@@ -1,0 +1,155 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+<br>
+    <div class="table-responsive">
+        <table border="1px solid black" style="background-color:#eef3fd !important;">
+            <thead>
+            <tr>
+                <th>NOM CLIENT &nbsp;</th>
+                <th>TEST EP2 &nbsp;</th>
+                <th rowspan="0" style="border-bottom-color:#eef3fd;width:80%;">
+                    <div align="center"><br>ETATS FINANCIERS</div>
+                </th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th>CODE CLIENT &nbsp;</th>
+                <th>EC0005 &nbsp;</th>
+                <th></th>
+            </tr>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <br><br>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-2">
+                Date d'arrété
+            </div>
+            <div class="col-xs-2">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="icon-calendar22"></i></span>
+                    <input type="text" class="form-control daterange-single" value="03/18/2013">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-2">
+                Bilan
+            </div>
+            <div class="col-xs-2">
+                <select data-placeholder="Simplifié" class="select select2-hidden-accessible col-md-6" tabindex="-1" aria-hidden="true" style="width: 100px">
+                    <option></option>
+                    <optgroup label="Central Time Zone">
+                        <option value="AL">Alabama</option>
+                        <option value="AR">Arkansas</option>
+                        <option value="KY">Kentucky</option>
+                    </optgroup>
+                    <optgroup label="Eastern Time Zone">
+                        <option value="CT">Connecticut</option>
+                        <option value="DE">Delaware</option>
+                        <option value="WV">West Virginia</option>
+                    </optgroup>
+                </select>
+            </div>
+        </div>
+
+<br>
+        <div class="row">
+            <div class="col-xs-2">
+                <button type="button" class="btn btn-info"> Calculer</button>
+            </div>
+            <div class="col-xs-2">
+                <button type="button" class="btn btn-info"> Créer le PDF</button>
+            </div>
+        </div>
+
+    </div>
+
+    <br>
+    <div class="table-responsive">
+        <table border="1px solid black" style="background-color:#eef3fd !important;">
+            <thead>
+            <tr>
+                <td style="border-right-color:#eef3fd"></td>
+                <td style="border-right-color:#eef3fd"></td>
+                <td></td>
+                <td colspan="3" style="text-align: center" style="border-right-color:#eef3fd">DETAILS DES COMPTES</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>Attestation &nbsp;</th>
+                <th>Bilan &nbsp;</th>
+                <th>Compte de résultat &nbsp;</th>
+                <th>Actif &nbsp;</th>
+                <th>Passif &nbsp;</th>
+                <th>Compte de résultat &nbsp;</th>
+                <th>Annexe &nbsp;</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th>
+                    <select data-placeholder="Oui" class="select select2-hidden-accessible col-md-6" tabindex="-1" aria-hidden="true" style="width: 100px">
+                            <option value="Non">Non</option>
+                            <option value="non">Non</option>
+                    </select>
+                </th>
+                <th>
+                    <select data-placeholder="Oui" class="select select2-hidden-accessible col-md-6" tabindex="-1" aria-hidden="true" style="width: 100px">
+                        <option value="oui">Oui</option>
+                        <option value="non">Non</option>
+                    </select>
+                </th>
+                <th>
+                    <select data-placeholder="Oui" class="select select2-hidden-accessible col-md-6" tabindex="-1" aria-hidden="true" style="width: 100px">
+                        <option value="oui">Oui</option>
+                        <option value="non">Non</option>
+                    </select>
+                </th>
+                <th>
+                    <select data-placeholder="Oui" class="select select2-hidden-accessible col-md-6" tabindex="-1" aria-hidden="true" style="width: 100px">
+                        <option value="oui">Oui</option>
+                        <option value="non">Non</option>
+                    </select>
+                </th>
+                <th>
+                    <select data-placeholder="Oui" class="select select2-hidden-accessible col-md-6" tabindex="-1" aria-hidden="true" style="width: 100px">
+                        <option value="oui">Oui</option>
+                        <option value="non">Non</option>
+                    </select>
+                </th>
+                <th>
+                    <select data-placeholder="Oui" class="select select2-hidden-accessible col-md-6" tabindex="-1" aria-hidden="true" style="width: 100px">
+                        <option value="oui">Oui</option>
+                        <option value="non">Non</option>
+                    </select>
+                </th>
+                <th>
+                    <select data-placeholder="Oui" class="select select2-hidden-accessible col-md-6" tabindex="-1" aria-hidden="true" style="width: 100px">
+                        <option value="oui">Base</option>
+                        <option value="non">Non</option>
+                    </select>
+                </th>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

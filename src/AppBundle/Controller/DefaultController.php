@@ -781,4 +781,34 @@ class DefaultController extends BaseController
     {
         return $this->render('default/gestion_comptabilité.html.twig');
     }
+
+    /**
+     * @Route("/client/grandlivre", name="grand_livre")
+     * @param Request $request
+     *  * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function grandLivre(Request $request)
+    {
+        return $this->render('default/grand_livre.html.twig');
+    }
+
+    /**
+     * @Route("/client/etatFinancier", name="etat_financier")
+     * @param Request $request
+     *  * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function etatFinancier(Request $request)
+    {
+        return $this->render('default/etats_financiers.html.twig');
+    }
+
+    /**
+     * @Route("/client/comptabilite1", name="comptablite_1")
+     * @param Request $request
+     *  * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function comptablite_1(Request $request)
+    {
+        return $this->render('default/comptablite_1.html.twig');
+    }
 }
