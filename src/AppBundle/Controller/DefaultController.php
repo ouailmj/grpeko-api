@@ -811,4 +811,14 @@ class DefaultController extends BaseController
     {
         return $this->render('default/comptablite_1.html.twig');
     }
+
+    /**
+     * @Route("/client/balancegeneral", name="balance_general")
+     * @param Request $request
+     *  * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function balance_general(Request $request)
+    {
+        return $this->render('default/balance_general.html.twig');
+    }
 }

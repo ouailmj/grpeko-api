@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
+    <br>
 <div class="table-responsive">
     <table border="1px solid black" style="background-color:#eef3fd !important;">
         <thead>
@@ -96,8 +97,9 @@
     </table>
 </div>
 
-    <div class="table-responsive">
-     <table class="table">
+<div class="tab-content panel panel-flat border-top-info">
+    <div class="tab-pane active" id="travaux">
+     <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
         <tbody>
             <tr>
                 <th>Compte </th>
@@ -133,6 +135,7 @@
             </tr>
         </tbody>
     </table>
+</div>
 </div>
 
 {% endblock %}

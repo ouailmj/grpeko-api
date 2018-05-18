@@ -3,6 +3,9 @@
 {% block content %}
 
 <br>
+
+    <div class="tab-content panel panel-flat border-top-info">
+        <div class="tab-pane active" id="travaux">
     <div class="table-responsive">
         <table border="1px solid black" style="background-color:#eef3fd !important;">
             <thead>
@@ -80,8 +83,9 @@
     </div>
 
     <br>
-    <div class="table-responsive">
-        <table border="1px solid black" style="background-color:#eef3fd !important;">
+
+
+        <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
             <thead>
             <tr>
                 <td style="border-right-color:#eef3fd"></td>
@@ -150,6 +154,15 @@
             </tr>
             </tbody>
         </table>
+
+        </div>
     </div>
+
+    <style>
+        th{
+            width: 150px;
+            text-align: center;
+        }
+    </style>
 
 {% endblock %}
