@@ -781,4 +781,68 @@ class DefaultController extends BaseController
     {
         return $this->render('default/gestion_comptabilité.html.twig');
     }
+
+      //kamal
+    /**
+     * @Route("/client/administratifNote", name="administratifNote")
+     * @param Request $request
+     *  * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function AdministratifNote(Request $request)
+    {
+        return $this->render('default/Administratif.html.twig');
+    }
+     //kamal
+    /**
+     * @Route("/client/lettredespense", name="lettredespense")
+     * @param Request $request
+     *  * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function LettreDespense(Request $request)
+    {
+        return $this->render('default/lettrededespense.html.twig');
+    }
+     //kamal
+    /**
+     * @Route("/client/attestationNonremu", name="attestationNonremu")
+     * @param Request $request
+     *  * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function AttestationNonRemu(Request $request)
+    {
+        return $this->render('default/attestationNonremuneration.html.twig');
+    }
+
+     //kamal
+    /**
+     * @Route("/client/attestationMiniprevisionel", name="attestationMiniprevisionel")
+     * @param Request $request
+     *  * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function AttestationMiniPrevisionel(Request $request)
+    {
+        return $this->render('default/attestationMiniprevisionel.html.twig');
+    }
+
+     //kamal
+    /**
+     * @Route("/client/fiscalite", name="fiscalite")
+     * @param Request $request
+     *  * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function Fiscalite(Request $request)
+    {
+        return $this->render('default/fiscalite.html.twig');
+    }
+
+    //kamal
+    /**
+     * @Route("/client/calculeis", name="calculeis")
+     * @param Request $request
+     *  * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function Calculeis(Request $request)
+    {
+        return $this->render('default/Fcalculeis.html.twig');
+    }
 }
