@@ -6411,8 +6411,6 @@ a.list-group-item-danger:focus {
 }
 .panel-heading {
   position: relative;
-  padding-top: 20px;
-  padding-bottom: 20px;
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
 }
