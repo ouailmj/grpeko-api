@@ -1,104 +1,120 @@
 {% extends 'base.html.twig' %}
-
+{% block body_attributes %}class="navbar-top sidebar-xs has-detached-left"{% endblock %}
 {% block content %}
-<br>
-    <div class="row" align="center">
-        <div class="col-sm-3">
-            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal"> PDF Balance en mouvements</button>
-        </div>
-        <div class="col-sm-3">
-            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal"> PDF Balance en solde</button>
-        </div>
-    </div>
-<br>
-    <div class="tab-content panel panel-flat border-top-info">
-        <div class="tab-pane active" id="travaux">
-
-        <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
-            <thead>
-            <tr>
-                <th>Compte &nbs</th>
-                <th>Libellé &nbsp</th>
-                <th>Débit</th>
-                <th>Crédit</th>
-                <th>Débit</th>
-                <th>Crédit</th>
-                <th>Notre Collaborateur</th>
-                <th>Notes Manager</th>
-            </tr>
-            <tr>
-                <td>.</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-
-
-    <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title" align="center">Balance</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-xs-4">
-                            <div class="input-group">
-                                Date D'arrété :
-                            </div>
+<div class="page-content">
+    {% block sidebar %}
+        {% include 'layout/_partials/sidebar.html.twig' %}
+    {% endblock %}
+    <div class="content-wrapper">
+        <div class="content">
+            {% include 'layout/_partials/sidebarseconder.html.twig' %}
+            <div class="container-detached">
+                <div class="content-detached">
+                    <div class="panel panel-flat">
+                        <div class="panel-heading">
+                        <h5 class="panel-title">Attestation de non remuneration</h5>
                         </div>
-                        <div class="col-xs-6">
-                            <div class="input-group" >
-                                <span class="input-group-addon"><i class="icon-calendar22"></i></span>
-                                <input type="text" class="form-control daterange-single" value="03/18/2013">
-                            </div>
+                        <div class="panel-body">
+                            <br>
+                                <div class="row" align="center">
+                                        <div class="col-sm-3">
+                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal"> PDF Balance en mouvements</button>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal"> PDF Balance en solde</button>
+                                        </div>
+                                    </div>
+                                <br>
+                                    <div class="tab-content panel panel-flat border-top-info">
+                                        <div class="tab-pane active" id="travaux">
+                                
+                                            <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
+                                                <thead>
+                                                <tr>
+                                                    <th>Compte &nbs</th>
+                                                    <th>Libellé &nbsp</th>
+                                                    <th>Débit</th>
+                                                    <th>Crédit</th>
+                                                    <th>Débit</th>
+                                                    <th>Crédit</th>
+                                                    <th>Notre Collaborateur</th>
+                                                    <th>Notes Manager</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>.</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                
+                                
+                                            <div id="myModal" class="modal fade" role="dialog">
+                                                <div class="modal-dialog">
+                                
+                                                    <!-- Modal content-->
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                            <h4 class="modal-title" align="center">Balance</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="row">
+                                                                <div class="col-xs-4">
+                                                                    <div class="input-group">
+                                                                        Date D'arrété :
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xs-6">
+                                                                    <div class="input-group" >
+                                                                        <span class="input-group-addon"><i class="icon-calendar22"></i></span>
+                                                                        <input type="text" class="form-control daterange-single" value="03/18/2013">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                
+                                                            <div class="row">
+                                                                <div class="col-xs-4">
+                                                                    Enregistrer le PDF sous
+                                                                </div>
+                                                                <div class="col-xs-6">
+                                                                    <textarea class="form-control">123456789.pdf</textarea>
+                                                                </div>
+                                                            </div>
+                                
+                                                            <div class="row">
+                                                                <br>
+                                                                <div class="col-sm-5">
+                                                                    <button type="button" class="btn btn-info"> Modifier la destination</button>
+                                                                </div>
+                                                                <div class="col-sm-5">
+                                                                    <button type="button" class="btn btn-info"> Enregistrer</button>
+                                                                </div>
+                                                            </div>
+                                
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                        </div>
+                                                    </div>
+                                
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div class="col-xs-4">
-                            Enregistrer le PDF sous
-                        </div>
-                        <div class="col-xs-6">
-                            <textarea class="form-control">123456789.pdf</textarea>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <br>
-                        <div class="col-sm-5">
-                            <button type="button" class="btn btn-info"> Modifier la destination</button>
-                        </div>
-                        <div class="col-sm-5">
-                            <button type="button" class="btn btn-info"> Enregistrer</button>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
                 </div>
             </div>
-
+            
         </div>
     </div>
-        </div>
-    </div>
-    <style>
-        th{
-            width: 150px;
-            text-align: center;
-        }
-    </style>
+</div>
 {% endblock %}

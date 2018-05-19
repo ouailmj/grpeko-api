@@ -784,7 +784,7 @@ class DefaultController extends BaseController
 
 
     /**
-     * @Route("/client/grandlivre", name="grand_livre")
+     * @Route("/client/grandlivre", name="grandlivre")
      * @param Request $request
      *  * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -794,7 +794,7 @@ class DefaultController extends BaseController
     }
 
     /**
-     * @Route("/client/etatFinancier", name="etat_financier")
+     * @Route("/client/etatFinancier", name="etatFinancier")
      * @param Request $request
      *  * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -804,7 +804,7 @@ class DefaultController extends BaseController
     }
 
     /**
-     * @Route("/client/comptabilite1", name="comptablite_1")
+     * @Route("/client/comptabilite1", name="comptabilite1")
      * @param Request $request
      *  * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -814,7 +814,7 @@ class DefaultController extends BaseController
     }
 
     /**
-     * @Route("/client/balancegeneral", name="balance_general")
+     * @Route("/client/balancegeneral", name="balancegeneral")
      * @param Request $request
      *  * @return \Symfony\Component\HttpFoundation\Response
      */
