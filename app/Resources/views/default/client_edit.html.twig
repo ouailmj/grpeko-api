@@ -2,100 +2,110 @@
 {#{% form_theme edit_form 'Form/fields.html.twig' %}#}
 
 {% block content %}
-    <div class="panel panel-flat">
-        <div class="panel-heading">
-            <h6 class="panel-title">Gestion des clients<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
-            <div class="heading-elements">
-                <a href="#" class="btn btn-primary btn-xs "><b><i class="icon-loop3"></i></b> Retour à la liste</a>
+<div class="page-content">
+    {% block sidebar %}
+           {% include 'layout/_partials/sidebar.html.twig' %}
+       {% endblock %}
+       <div class="content-wrapper">
+           <div class="content">
+                <div class="panel panel-flat">
+                    <div class="panel-heading">
+                        <h6 class="panel-title">Gestion des clients<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+                        <div class="heading-elements">
+                            <a href="#" class="btn btn-primary btn-xs "><b><i class="icon-loop3"></i></b> Retour à la liste</a>
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+                        <p class="content-group-lg"></p>
+
+                        <form name="appbundle_user" method="post" class="form-horizontal">
+                        <div id="appbundle_user">
+                            <div class="form-group">
+                            <label class="control-label col-lg-2 text-semibold control-label required" for="appbundle_user_firstName">Nom</label>
+                                <div class="col-lg-10">
+                                    <input type="text" id="appbundle_user_firstName" name="appbundle_user[firstName]" required="required" class="form-control" value="Adah" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                            <label class="control-label col-lg-2 text-semibold control-label required" for="appbundle_user_lastName">Description</label>
+                                <div class="col-lg-10">
+                                    <input type="text" id="appbundle_user_lastName" name="appbundle_user[lastName]" required="required" class="form-control" value="Reichel" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-2 text-semibold control-label required" for="appbundle_user_roless">Année de Création</label>
+                                <div class="col-lg-10">
+                                    <input value="2017" type="text" required maxlength="4" id="appbundle_user_roless" name="appbundle_user[roless]" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                            <label class="control-label col-lg-2 text-semibold control-label" for="appbundle_user_addressComplement">Code Naf</label>
+                                <div class="col-lg-10">
+                                    <input type="text" id="appbundle_user_addressComplement" name="appbundle_user[addressComplement]" class="form-control"  value="798564" />
+                                </div>
+                            </div>
+                            <div class="form-group"><label class="control-label col-lg-2 text-semibold control-label" for="appbundle_user_zipCode">Code Siret</label>
+                                <div class="col-lg-10">
+                                    <input type="text" id="appbundle_user_zipCode" name="appbundle_user[zipCode]" class="form-control" value="974934" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                            <label class="control-label col-lg-2 text-semibold control-label required" for="appbundle_user_city">Code Tva</label>
+                                <div class="col-lg-10">
+                                    <input type="text" id="appbundle_user_city" name="appbundle_user[city]" required="required" class="form-control" value="145767" />
+                                </div>
+                            </div>
+                            <!--<div class="form-group">
+                            <label class="control-label col-lg-2 text-semibold control-label" for="appbundle_user_phoneNumber">Sales type</label>
+                                <div class="col-lg-10">
+                                    <input type="text" id="appbundle_user_phoneNumber" name="appbundle_user[phoneNumber]" class="form-control" value="+3132735123202" />
+                                </div></div><div class="form-group">
+                                <label class="control-label col-lg-2 text-semibold control-label required" for="appbundle_user_roless">Rôles</label>
+                                <div class="col-lg-10">
+                                    <select id="appbundle_user_roless" name="appbundle_user[roless]" class="form-control">
+                                    <option value="SUPER_ADMIN">Super Administrateur</option>
+                                    <option value="ADMIN">Administrateur</option>
+                                    <option value="ADVISOR">Conseiller</option>
+                                    <option value="USER">Utilisateur</option>
+                                    </select>
+                                </div>
+                            </div>-->
+                            <div class="form-group">
+                                <label class="control-label col-lg-2 text-semibold control-label" for="appbundle_user_phoneNumber">Chiffre d'affaire</label>
+                                <div class="col-lg-10">
+                                    <select id="appbundle_user_roless" name="appbundle_user[roless]" class="form-control">
+                                        <option value="0 à 499k">0 à 499k</option>
+                                        <option value="500k à 1">500k à 1</option>
+                                        <option value="Plus de 1M">Plus de 1M</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-2 text-semibold control-label" for="appbundle_user_password_first">Nombre d'employés</label>
+                                <div class="col-lg-10">
+                                    <select id="appbundle_user_roless" name="appbundle_user[roless]" class="form-control">
+                                        <option value="0 à 499 salariés">0 à 499 salariés</option>
+                                        <option value="500 à 999 salariés">500 à 999 salariés</option>
+                                        <option value="Plus de 1000 salariés">Plus de 1000 salariés</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <input type="hidden" id="appbundle_user__token" name="appbundle_user[_token]" value="kiCkiLqcAbTrgyBCnyvXyhNm0CHHqrErjkmL3MgVsaU" />
+                </div>
+                            <div class="text-right">
+                                <div class="btn-group">
+                                    <button name="update" type="submit" class="btn btn-primary legitRipple">Mettre à jour<i class="icon-rotate-cw2 position-right"></i></button>
+                                    <button onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" name="delete" title="Supprimer cet utilisateur" type="submit" class="btn btn-danger legitRipple">Supprimer <i class="icon-trash-alt position-right"></i></button>
+                            </div>
+                            </div>
+                </form>
+                    </div>
+                </div>
             </div>
         </div>
+</div>
 
-        <div class="panel-body">
-            <p class="content-group-lg"></p>
-
-            <form name="appbundle_user" method="post" class="form-horizontal">
-            <div id="appbundle_user">
-                <div class="form-group">
-                <label class="control-label col-lg-2 text-semibold control-label required" for="appbundle_user_firstName">Nom</label>
-                    <div class="col-lg-10">
-                        <input type="text" id="appbundle_user_firstName" name="appbundle_user[firstName]" required="required" class="form-control" value="Adah" />
-                    </div>
-                </div>
-                <div class="form-group">
-                <label class="control-label col-lg-2 text-semibold control-label required" for="appbundle_user_lastName">Description</label>
-                    <div class="col-lg-10">
-                        <input type="text" id="appbundle_user_lastName" name="appbundle_user[lastName]" required="required" class="form-control" value="Reichel" />
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-lg-2 text-semibold control-label required" for="appbundle_user_roless">Année de Création</label>
-                    <div class="col-lg-10">
-                        <input value="2017" type="text" required maxlength="4" id="appbundle_user_roless" name="appbundle_user[roless]" class="form-control" />
-                    </div>
-                </div>
-                <div class="form-group">
-                <label class="control-label col-lg-2 text-semibold control-label" for="appbundle_user_addressComplement">Code Naf</label>
-                    <div class="col-lg-10">
-                        <input type="text" id="appbundle_user_addressComplement" name="appbundle_user[addressComplement]" class="form-control"  value="798564" />
-                    </div>
-                </div>
-                <div class="form-group"><label class="control-label col-lg-2 text-semibold control-label" for="appbundle_user_zipCode">Code Siret</label>
-                    <div class="col-lg-10">
-                        <input type="text" id="appbundle_user_zipCode" name="appbundle_user[zipCode]" class="form-control" value="974934" />
-                    </div>
-                </div>
-                <div class="form-group">
-                <label class="control-label col-lg-2 text-semibold control-label required" for="appbundle_user_city">Code Tva</label>
-                    <div class="col-lg-10">
-                        <input type="text" id="appbundle_user_city" name="appbundle_user[city]" required="required" class="form-control" value="145767" />
-                    </div>
-                </div>
-                <!--<div class="form-group">
-                <label class="control-label col-lg-2 text-semibold control-label" for="appbundle_user_phoneNumber">Sales type</label>
-                    <div class="col-lg-10">
-                        <input type="text" id="appbundle_user_phoneNumber" name="appbundle_user[phoneNumber]" class="form-control" value="+3132735123202" />
-                    </div></div><div class="form-group">
-                    <label class="control-label col-lg-2 text-semibold control-label required" for="appbundle_user_roless">Rôles</label>
-                    <div class="col-lg-10">
-                        <select id="appbundle_user_roless" name="appbundle_user[roless]" class="form-control">
-                        <option value="SUPER_ADMIN">Super Administrateur</option>
-                        <option value="ADMIN">Administrateur</option>
-                        <option value="ADVISOR">Conseiller</option>
-                        <option value="USER">Utilisateur</option>
-                        </select>
-                    </div>
-                </div>-->
-                <div class="form-group">
-                    <label class="control-label col-lg-2 text-semibold control-label" for="appbundle_user_phoneNumber">Chiffre d'affaire</label>
-                    <div class="col-lg-10">
-                        <select id="appbundle_user_roless" name="appbundle_user[roless]" class="form-control">
-                            <option value="0 à 499k">0 à 499k</option>
-                            <option value="500k à 1">500k à 1</option>
-                            <option value="Plus de 1M">Plus de 1M</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-lg-2 text-semibold control-label" for="appbundle_user_password_first">Nombre d'employés</label>
-                    <div class="col-lg-10">
-                        <select id="appbundle_user_roless" name="appbundle_user[roless]" class="form-control">
-                            <option value="0 à 499 salariés">0 à 499 salariés</option>
-                            <option value="500 à 999 salariés">500 à 999 salariés</option>
-                            <option value="Plus de 1000 salariés">Plus de 1000 salariés</option>
-                        </select>
-                    </div>
-                </div>
-
-                <input type="hidden" id="appbundle_user__token" name="appbundle_user[_token]" value="kiCkiLqcAbTrgyBCnyvXyhNm0CHHqrErjkmL3MgVsaU" />
-    </div>
-                <div class="text-right">
-                    <div class="btn-group">
-                        <button name="update" type="submit" class="btn btn-primary legitRipple">Mettre à jour<i class="icon-rotate-cw2 position-right"></i></button>
-                        <button onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" name="delete" title="Supprimer cet utilisateur" type="submit" class="btn btn-danger legitRipple">Supprimer <i class="icon-trash-alt position-right"></i></button>
-                   </div>
-                </div>
-    </form>
-        </div>
-    </div>
 {% endblock %}

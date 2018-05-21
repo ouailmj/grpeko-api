@@ -24,8 +24,9 @@
 
 <div class="navbar navbar-default navbar-fixed-top header-highlight">
     <div class="navbar-header text-center">
-         <a class="navbar-brand sidebar-control sidebar-main-toggle text-center" style="margin-left:8rem;font-size:20px;" href="/"><b style="color: #fff; text-align: center">Eko</b></a>
-
+         <!-- <a class="navbar-brand sidebar-control sidebar-main-toggle text-center" style="margin-left:8rem;font-size:20px;" href="/"></a> -->
+         <a class="navbar-brand text-centerb" href="/"><img class="img_logo" src="/assets/images/logo_eko.png" alt="Groupe Eko"></a>
+         <!-- <a class="navbar-brand" href="/"><img src="assets/images/logo_eko.png" alt=""></a> -->
          <ul class="nav navbar-nav pull-right visible-xs-block">
             <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
             <li><a class="sidebar-mobile-main-toggle"><i class="icon-paragraph-justify3"></i></a></li>
@@ -35,13 +36,12 @@
     <div class="navbar-collapse collapse" id="navbar-mobile">
         <ul class="nav navbar-nav">
             <li><a class="sidebar-control sidebar-main-toggle hidden-xs legitRipple"><i class="icon-paragraph-justify3"></i></a></li>
-            {% if app.request.get('_route') == 'gestion-cabinet' %}
-            
-            {% else %}
+           
+            {% if app.request.get('_route') == 'gestion_comptabilite' %}
             <li>
-                <a class="sidebar-control sidebar-detached-hide hidden-xs" data-popup="tooltip" title="" data-placement="bottom" data-container="body" data-original-title="Hide detached">
-                    <i class="icon-drag-left"></i>
-                </a>
+                    <a class="sidebar-control sidebar-detached-hide hidden-xs" data-popup="tooltip" title="" data-placement="bottom" data-container="body" data-original-title="Hide detached">
+                        <i class="icon-drag-left"></i>
+                    </a>
             </li>
             {% endif %}
             
