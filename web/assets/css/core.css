@@ -276,6 +276,11 @@ svg {
   font-size: 32px;
   top: 0;
 }
+.img_logo{
+ width: 13rem;
+ height:2rem;
+}
+
 .img-preview {
   max-height: 70px;
 }
@@ -3467,9 +3472,9 @@ select[multiple].input-group-xs > .input-group-btn > .btn {
     padding-left: 0;
     padding-right: 0;
     background-size: auto 26px;
+    background: url(../images/icon_eko.png) no-repeat center center;
     float: none;
     display: block;
-    margin-left: -0.4rem !important;
   }
   .sidebar-xs .header-highlight .navbar-header .navbar-brand > img {
     display: none;
@@ -6411,8 +6416,6 @@ a.list-group-item-danger:focus {
 }
 .panel-heading {
   position: relative;
-  padding-top: 20px;
-  padding-bottom: 20px;
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
 }

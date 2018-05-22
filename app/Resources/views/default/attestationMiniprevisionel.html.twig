@@ -1,0 +1,148 @@
+{% extends 'base.html.twig' %}
+{% block body_attributes %}class="navbar-top sidebar-xs has-detached-left"{% endblock %}
+{% block content %}
+<div class="page-content">
+    {% block sidebar %}
+        {% include 'layout/_partials/sidebar.html.twig' %}
+    {% endblock %}
+    <div class="content-wrapper">
+        <div class="content">
+        {% include 'layout/_partials/sidebarseconder.html.twig' %}
+
+            <div class="container-detached">
+                <div class="content-detached">
+            <div class="panel panel-flat">
+                <div class="panel-heading">
+                <h5 class="panel-title">Attestation mini previsionel</h5>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-bordered text-center alpha-blue" >
+                        <thead>
+                            <tr>
+                                <th class="text-center">Nom Client</th>
+                                <th class="text-center">Code Client</th>
+                                <th rowspan="2" class="text-center">Attestation mini previsionel</th>
+                            </tr>   
+                            <tr>
+                                <th class="text-center">Test EP</th>
+                                <th class="text-center">EC0001</th>
+                            </tr>   
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table><br>
+                       <form action="#" class="form-horizontal">
+                       <fieldset class="content-group">
+                            <table class="table table-bordered text-center alpha-blue" >
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Nom Client</th>
+                                        <th class="text-center">Code Client</th>
+                                        <th class="text-center">Attestation min</th>
+                                        <th class="text-center">Attestation min</th>
+                                    </tr>   
+                                    
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-center">Désgnation</td>
+                                        <td class="text-center">31/12/2016</td>
+                                        <td class="text-center">31/12/2017</td>
+                                        <td class="text-center">31/12/2018</td>
+                                    </tr>   
+                                    <tr>
+                                        <td class="text-center">Chiffre d'affires</td>
+                                        <td class="text-center">
+                                            <select data-placeholder="0" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                                <option>15%</option>
+                                                <option>25%</option>
+                                                <option>50%</option>
+                                                <option>75%</option>
+                                            </select>
+                                        </td>
+                                        <td class="text-center">
+                                            <select data-placeholder="0" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                                <option>15%</option>
+                                                <option>25%</option>
+                                                <option>50%</option>
+                                                <option>75%</option>
+                                            </select>
+                                        </td>
+                                        <td class="text-center">
+                                            <select data-placeholder="0" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                                <option>15%</option>
+                                                <option>25%</option>
+                                                <option>50%</option>
+                                                <option>75%</option>
+                                            </select>
+                                        </td>
+                                    </tr>   
+                                    <tr>
+                                        <td class="text-center">Frais Généraux</td>
+                                        <td class="text-center">
+                                            <select data-placeholder="15%" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                                <option>15%</option>
+                                                <option>25%</option>
+                                                <option>50%</option>
+                                                <option>75%</option>
+                                            </select>
+                                        </td>
+                                        <td class="text-center">
+                                            <select data-placeholder="15%" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                                <option>15%</option>
+                                                <option>25%</option>
+                                                <option>50%</option>
+                                                <option>75%</option>
+                                            </select>
+                                        </td>
+                                        <td class="text-center">
+                                            <select data-placeholder="15%" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                                <option>15%</option>
+                                                <option>25%</option>
+                                                <option>50%</option>
+                                                <option>75%</option>
+                                            </select>
+                                        </td>
+                                    </tr>   
+                                    <tr>
+                                        <td class="text-center">Impots et taxes</td>
+                                        <td class="text-center">
+                                            <select data-placeholder="0" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                                <option>15%</option>
+                                                <option>25%</option>
+                                                <option>50%</option>
+                                                <option>75%</option>
+                                            </select>
+                                        </td>
+                                        <td class="text-center">
+                                            <select data-placeholder="0" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                                <option>15%</option>
+                                                <option>25%</option>
+                                                <option>50%</option>
+                                                <option>75%</option>
+                                            </select>
+                                        </td>
+                                        <td class="text-center">
+                                            <select data-placeholder="0" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                                <option>15%</option>
+                                                <option>25%</option>
+                                                <option>50%</option>
+                                                <option>75%</option>
+                                            </select>
+                                        </td>
+                                    </tr>   
+                                </tbody>
+                            </table>
+                       </fieldset>
+                       <button type="button" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-block  bg-blue heading-btn">Crées le PDF</button>
+                    </form>
+                </div>
+            </div>
+            </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}
