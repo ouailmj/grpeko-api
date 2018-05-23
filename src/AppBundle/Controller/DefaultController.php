@@ -886,4 +886,37 @@ class DefaultController extends BaseController
     {
         return $this->render('default/Fcalculeis.html.twig');
     }
+
+    //kamal
+    /**
+     * @Route("/client/importcfonb", name="importcfonb")
+     * @param Request $request
+     *  * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function Importcfonb(Request $request)
+    {
+        return $this->render('default/importCFONB.html.twig');
+    }
+
+      //kamal
+    /**
+     * @Route("/client/suiviceb", name="suiviceb")
+     * @param Request $request
+     *  * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function Suiviceb(Request $request)
+    {
+        return $this->render('default/SuiviCEB.html.twig');
+    }
+
+    //kamal
+    /**
+     * @Route("/client/login", name="login")
+     * @param Request $request
+     *  * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function Login(Request $request)
+    {
+        return $this->render('default/login.html.twig');
+    }
 }

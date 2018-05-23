@@ -37,7 +37,7 @@
                                         <li><a href="#tab-demo4" data-toggle="tab">Comptes</a></li>
                                         <li><a href="#tab-demo5" data-toggle="tab">Journaux</a></li>
                                         <li><a href="#tab-demo6" data-toggle="tab">Import CFNOB</a></li>
-                                        <li><a href="#tab-demo7" data-toggle="tab">Suivi CEB</a></li>
+                                        <li><a href="{{ path('suiviceb') }}">Suivi CEB</a></li>
                                         <li><a href="#tab-demo8" data-toggle="tab">Facturation</a></li>
                                         <li><a href="#tab-demo9" data-toggle="tab">Remise Facturation</a></li>
                                         <li><a href="#tab-demo10" data-toggle="tab">Chiffre d'affaires</a></li>
@@ -190,11 +190,9 @@
 
                         </div>
                         <div class="tab-pane fade has-padding" id="tab-demo6">
-
+                            {% include 'default/importCFONB.html.twig' %}
                         </div>
-                        <div class="tab-pane fade has-padding" id="tab-demo7">
-
-                        </div>
+                        
                         <div class="tab-pane fade has-padding" id="tab-demo8">
                             {% include 'default/Facturation.html.twig' %}
                         </div>
