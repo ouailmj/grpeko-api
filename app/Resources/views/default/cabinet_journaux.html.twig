@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <!-- Highlighting rows and columns -->
+    <div class="panel panel-flat">
+        <div class="panel-body">
+            <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Code Journal</th>
+                        <th>Libellé </th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align: center"><a href="#"><i class="icon-trash" style="color: green;"></i> </a></td>
+                        <td>AA</td>
+                        <td>ACHATS</td>
+                        <td>
+                            <select data-placeholder="ACHATS" class="select select2-hidden-accessible" class="col-md-6" tabindex="-1" aria-hidden="true">
+                                <option></option>
+                                <optgroup label="Central Time Zone">
+                                    <option value="AL">Alabama</option>
+                                    <option value="AR">Arkansas</option>
+                                    <option value="KY">Kentucky</option>
+                                </optgroup>
+                                <optgroup label="Eastern Time Zone">
+                                    <option value="CT">Connecticut</option>
+                                    <option value="DE">Delaware</option>
+                                    <option value="WV">West Virginia</option>
+                                </optgroup>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center"><a href="#"><i class="icon-trash" style="color: green;"></i> </a></td>
+                        <td>BANQUE2</td>
+                        <td>BANQUE2</td>
+                        <td>
+                            <select data-placeholder="BANQUE" class="select select2-hidden-accessible" class="col-md-6" tabindex="-1" aria-hidden="true">
+                                <option></option>
+                                <optgroup label="Central Time Zone">
+                                    <option value="AL">Alabama</option>
+                                    <option value="AR">Arkansas</option>
+                                    <option value="KY">Kentucky</option>
+                                </optgroup>
+                                <optgroup label="Eastern Time Zone">
+                                    <option value="CT">Connecticut</option>
+                                    <option value="DE">Delaware</option>
+                                    <option value="WV">West Virginia</option>
+                                </optgroup>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center"><a href="#"><i class="icon-trash" style="color: green;"></i> </a></td>
+                        <td>AN</td>
+                        <td>A NOUVEAU</td>
+                        <td>
+                            <select data-placeholder="A NOUVEAU" class="select select2-hidden-accessible" class="col-md-6" tabindex="-1" aria-hidden="true">
+                                <option></option>
+                                <optgroup label="Central Time Zone">
+                                    <option value="AL">Alabama</option>
+                                    <option value="AR">Arkansas</option>
+                                    <option value="KY">Kentucky</option>
+                                </optgroup>
+                                <optgroup label="Eastern Time Zone">
+                                    <option value="CT">Connecticut</option>
+                                    <option value="DE">Delaware</option>
+                                    <option value="WV">West Virginia</option>
+                                </optgroup>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- /highlighting rows and columns -->
+
+{% endblock %}

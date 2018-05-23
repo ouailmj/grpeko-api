@@ -919,4 +919,23 @@ class DefaultController extends BaseController
     {
         return $this->render('default/login.html.twig');
     }
+    /**
+     * @Route("/client/cabinetcompte", name="cabinetcompte")
+     * @param Request $request
+     *  * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function Cabinetcompte(Request $request)
+    {
+        return $this->render('default/cabinet_compte.html.twig');
+    }
+
+    /**
+     * @Route("/client/cabinetjournaux", name="cabinetjournaux")
+     * @param Request $request
+     *  * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function Cabinetjournaux(Request $request)
+    {
+        return $this->render('default/cabinet_journaux.html.twig');
+    }
 }
