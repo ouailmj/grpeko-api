@@ -909,16 +909,6 @@ class DefaultController extends BaseController
         return $this->render('default/SuiviCEB.html.twig');
     }
 
-    //kamal
-    /**
-     * @Route("/client/login", name="login")
-     * @param Request $request
-     *  * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function Login(Request $request)
-    {
-        return $this->render('default/login.html.twig');
-    }
     /**
      * @Route("/client/cabinetcompte", name="cabinetcompte")
      * @param Request $request
@@ -937,5 +927,28 @@ class DefaultController extends BaseController
     public function Cabinetjournaux(Request $request)
     {
         return $this->render('default/cabinet_journaux.html.twig');
+    }
+
+    /**
+    * @Route("/conversationdetails", name="conversationdetails")
+    *
+    * @param Request $request
+    *
+    * @return \Symfony\Component\HttpFoundation\Response
+    */
+   public function detailconversation(Request $request)
+   {
+       return $this->render('default/conversation_details.html.twig');
+   }
+    /**
+    * @Route("/conversation", name="conversation")
+    *
+    * @param Request $request
+    *
+    * @return \Symfony\Component\HttpFoundation\Response
+    */
+    public function Conversation(Request $request)
+    {
+        return $this->render('default/conversation.html.twig');
     }
 }
