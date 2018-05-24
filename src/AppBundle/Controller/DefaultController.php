@@ -12,6 +12,7 @@
 
 namespace AppBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -600,7 +601,7 @@ class DefaultController extends BaseController
     }
 
     /**
-     * @Route("/conversationlist", name="conversation_list")
+     * @Route("/conversationlists", name="conversation_listss")
      *
      * @param Request $request
      *
@@ -612,7 +613,7 @@ class DefaultController extends BaseController
     }
 
     /**
-     * @Route("/conversationadd", name="conversation_add")
+     * @Route("/conversationadds", name="conversation_adds")
      *
      * @param Request $request
      *
@@ -928,18 +929,17 @@ class DefaultController extends BaseController
     {
         return $this->render('default/cabinet_journaux.html.twig');
     }
-
     /**
-    * @Route("/conversationdetails", name="conversationdetails")
-    *
-    * @param Request $request
-    *
-    * @return \Symfony\Component\HttpFoundation\Response
-    */
-   public function detailconversation(Request $request)
-   {
-       return $this->render('default/conversation_details.html.twig');
-   }
+     * @Route("/client/conversationsdetails", name="detail_conv")
+     * @param Request $request
+     *  * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function detailConversationAction(Request $request)
+    {
+        return $this->render('default/conversation_details.html.twig');
+    }
+
+
     /**
     * @Route("/conversation", name="conversation")
     *

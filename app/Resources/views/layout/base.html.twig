@@ -41,7 +41,7 @@
 
 <!-- Main navbar -->
 
-{% if app.request.get('_route') != 'login' %}
+{% if app.request.get('_route') not in ['login','conversation_list']  %}
     {% block navbar %}
         {% include 'layout/_partials/navbar.html.twig' %}
     {% endblock %}
