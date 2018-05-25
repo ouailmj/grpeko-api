@@ -1,0 +1,199 @@
+{% extends 'base.html.twig' %}
+{% block body_attributes %}class="navbar-top sidebar-xs has-detached-left"{% endblock %}
+{% block content %}
+<div class="page-content">
+    {% block sidebar %}
+        {% include 'layout/_partials/sidebar.html.twig' %}
+    {% endblock %}
+    <div class="content-wrapper">
+        <div class="content">
+            {% include 'layout/_partials/sidebarseconder.html.twig' %}
+       
+
+            <div class="container-detached">
+                <div class="content-detached">
+                    <div class="panel panel-flat">
+                        <div class="panel-heading">
+                        <h5 class="panel-title">ETATS FINANCIERS</h5>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table border="1px solid black" style="background-color:#eef3fd !important;" >
+                                    <thead>
+                                    <tr>
+                                        <th>NOM CLIENT &nbsp;</th>
+                                        <th>TEST EP &nbsp;</th>
+                                        <th rowspan="0" style="border-bottom-color:#eef3fd;width:80%;">
+                                            <div align="center"><br>CAPITAUX PROPRES ET EMPRUNTES</div>
+                                        </th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <th>CODE CLIENT &nbsp;</th>
+                                        <th>EC0001&nbsp;</th>
+                                        <th></th>
+                                    </tr>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="panel panel-flat">
+                                <div class="tabbale">
+                                    <div class="tab-content ">
+                                        <div class="tab-pane active" id="firsttab">
+                                            <div class="">
+                                                <ul class="nav nav-tabs nav-tabs-highlight">
+                                                    <li class="active"><a href="#travaux" data-toggle="tab" aria-expanded="true">Travaux</a></li>
+                                                    <li class=""><a href="#balance" data-toggle="tab" aria-expanded="false">Balance</a></li>
+                                                    <li class=""><a href="#grandlivre" data-toggle="tab" aria-expanded="false">Grand livre</a></li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="tab-content panel panel-flat border-top-info">
+                                                <div class="tab-pane active" id="travaux">
+
+                                                    <table border="1px solid black" class="table datatable-responsive table-bordered table-hover datatable-highlight">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Travaux &nbsp;</th>
+                                                            <th>O ou N ou NA &nbsp;</th>
+                                                            <th>Commentaires &nbsp;</th>
+                                                            <th>Justificatifs</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Capital social libéré ?</td>
+                                                                <td>
+                                                                    <select data-placeholder="Simplifié" class="select select2-hidden-accessible col-md-6" tabindex="-1" aria-hidden="true" style="width: 100px">
+                                                                        <option></option>
+                                                                        <optgroup label="Central Time Zone">
+                                                                            <option value="AL">Alabama</option>
+                                                                            <option value="AR">Arkansas</option>
+                                                                            <option value="KY">Kentucky</option>
+                                                                        </optgroup>
+                                                                        <optgroup label="Eastern Time Zone">
+                                                                            <option value="CT">Connecticut</option>
+                                                                            <option value="DE">Delaware</option>
+                                                                            <option value="WV">West Virginia</option>
+                                                                        </optgroup>
+                                                                    </select>
+                                                                </td>
+                                                                <td></td>
+                                                                <td>0  &nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-info">Voir</button> </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Les registres sont-ils tenus ?</td>
+                                                                <td>
+                                                                    <select data-placeholder="Simplifié" class="select select2-hidden-accessible col-md-6" tabindex="-1" aria-hidden="true" style="width: 100px">
+                                                                        <option></option>
+                                                                        <optgroup label="Central Time Zone">
+                                                                            <option value="AL">Alabama</option>
+                                                                            <option value="AR">Arkansas</option>
+                                                                            <option value="KY">Kentucky</option>
+                                                                        </optgroup>
+                                                                        <optgroup label="Eastern Time Zone">
+                                                                            <option value="CT">Connecticut</option>
+                                                                            <option value="DE">Delaware</option>
+                                                                            <option value="WV">West Virginia</option>
+                                                                        </optgroup>
+                                                                    </select>
+                                                                </td>
+                                                                <td></td>
+                                                                <td>0  &nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-info">Voir</button> </td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Rapprochement avec échéancier emprunt </td>
+                                                                <td>
+                                                                    <select data-placeholder="Simplifié" class="select select2-hidden-accessible col-md-6" tabindex="-1" aria-hidden="true" style="width: 100px">
+                                                                        <option></option>
+                                                                        <optgroup label="Central Time Zone">
+                                                                            <option value="AL">Alabama</option>
+                                                                            <option value="AR">Arkansas</option>
+                                                                            <option value="KY">Kentucky</option>
+                                                                        </optgroup>
+                                                                        <optgroup label="Eastern Time Zone">
+                                                                            <option value="CT">Connecticut</option>
+                                                                            <option value="DE">Delaware</option>
+                                                                            <option value="WV">West Virginia</option>
+                                                                        </optgroup>
+                                                                    </select>
+                                                                </td>
+                                                                <td></td>
+                                                                <td>0  &nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-info">Voir</button> </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Rapprochement capital social avec status</td>
+                                                                <td>
+                                                                    <select data-placeholder="Simplifié" class="select select2-hidden-accessible col-md-6" tabindex="-1" aria-hidden="true" style="width: 100px">
+                                                                        <option></option>
+                                                                        <optgroup label="Central Time Zone">
+                                                                            <option value="AL">Alabama</option>
+                                                                            <option value="AR">Arkansas</option>
+                                                                            <option value="KY">Kentucky</option>
+                                                                        </optgroup>
+                                                                        <optgroup label="Eastern Time Zone">
+                                                                            <option value="CT">Connecticut</option>
+                                                                            <option value="DE">Delaware</option>
+                                                                            <option value="WV">West Virginia</option>
+                                                                        </optgroup>
+                                                                    </select>
+                                                                </td>
+                                                                <td></td>
+                                                                <td>0  &nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-info">Voir</button> </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Rapprochement capital social avec status&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                                <td>
+                                                                    <select data-placeholder="Simplifié" class="select select2-hidden-accessible col-md-6" tabindex="-1" aria-hidden="true" style="width: 100px">
+                                                                        <option></option>
+                                                                        <optgroup label="Central Time Zone">
+                                                                            <option value="AL">Alabama</option>
+                                                                            <option value="AR">Arkansas</option>
+                                                                            <option value="KY">Kentucky</option>
+                                                                        </optgroup>
+                                                                        <optgroup label="Eastern Time Zone">
+                                                                            <option value="CT">Connecticut</option>
+                                                                            <option value="DE">Delaware</option>
+                                                                            <option value="WV">West Virginia</option>
+                                                                        </optgroup>
+                                                                    </select>
+                                                                </td>
+                                                                <td></td>
+                                                                <td>0  &nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-info">Voir</button> </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                </div>
+
+                                                <div class="tab-pane" id="balance">
+                                                </div>
+
+                                                <div class="tab-pane " id="grandlivre">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        
+{% endblock %}

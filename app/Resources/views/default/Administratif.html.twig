@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+{% block body_attributes %}class="navbar-top sidebar-xs has-detached-left"{% endblock %}
+
+{% block content %}
+<div class="page-content">
+    {% block sidebar %}
+        {% include 'layout/_partials/sidebar.html.twig' %}
+    {% endblock %}
+    <div class="content-wrapper">
+        <div class="content">
+            {% include 'layout/_partials/sidebarseconder.html.twig' %}
+            <div class="container-detached">
+                <div class="content-detached">
+                    <div class="panel panel-flat">
+                        <div class="panel-heading">
+                        <h5 class="panel-title">Notes</h5>
+                        </div>
+                        <div class="panel-body">
+                            <div>
+                            <table class="table table-bordered text-center alpha-blue" >
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Nom Client</th>
+                                        <th class="text-center">Code Client</th>
+                                        <th rowspan="2" class="text-center">Note</th>
+                                    </tr>   
+                                    <tr>
+                                        <th class="text-center">Test EP</th>
+                                        <th class="text-center">EC0001</th>
+                                    </tr>   
+                                </thead>
+                                <tbody>
+                                    
+                                </tbody>
+                            </table>
+                            </div>
+                            <div>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Risque d'audit</th>
+                                        <th>
+                                            <select multiple="multiple" class="form-control">
+                                                <option ></option>      
+                                                <option ></option>
+                                            </select>
+                                        </th>
+                                    </tr>   
+                                    <tr>
+                                        <th>3</th>
+                                        <th>
+                                            <select multiple="multiple" class="form-control">
+                                                <option ></option>      
+                                                <option ></option>
+                                            </select>
+                                        </th>
+                                    </tr>   
+                                </thead>
+                            </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+{% endblock %}

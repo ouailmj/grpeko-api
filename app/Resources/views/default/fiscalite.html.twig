@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+{% block body_attributes %}class="navbar-top sidebar-xs has-detached-left"{% endblock %}
+{% block content %}
+<div class="page-content">
+    {% block sidebar %}
+        {% include 'layout/_partials/sidebar.html.twig' %}
+    {% endblock %}
+    <div class="content-wrapper">
+        <div class="content">
+            {% include 'layout/_partials/sidebarseconder.html.twig' %}
+            <div class="container-detached">
+                <div class="content-detached">
+                    <div class="panel panel-flat">
+                        <div class="panel-heading">
+                        <h5 class="panel-title">Fiscalité</h5>
+                        </div>
+                        <div class="panel-body">
+                            <form action="#" class="form-horizontal">
+                                <fieldset class="content-group">
+                                    <div class="col-sm-2">
+                                        <button type="button" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-block  bg-blue heading-btn">Calculer</button>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <button type="button" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-block  bg-blue heading-btn">Crées le PDF</button>
+                                    </div>
+                                </fieldset>
+                                <fieldset class="content-group">
+                                    <div class="form-group">
+                                        <label class="radio-inline">
+                                            <div>
+                                                <span class="checked">
+                                                    <input type="radio" name="radio-inline-left" class="styled" checked="checked">
+                                                </span>
+                                            </div>
+                                            Fiscale
+                                        </label>
+
+                                        <label class="radio-inline">
+                                            <div >
+                                                <span>
+                                                    <input type="radio" name="radio-inline-left" class="styled">
+                                                </span>
+                                            </div>
+                                            IS
+                                        </label>
+
+                                        <label class="radio-inline">
+                                            <div>
+                                                <span class="checked">
+                                                    <input type="radio" name="radio-inline-left" class="styled" checked="checked">
+                                                </span>
+                                            </div>
+                                            TVA
+                                        </label>
+                                    </div>
+                                </fieldset>
+                                <fieldset class="content-group">
+                                    <div class="col-md-3">
+                                        <table class="table text-center alpha-blue" >
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center">Document</th>
+                                                    <th class="text-center">Séléctionner</th>
+                                                </tr>   
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-center">2033A</td>
+                                                    <td class="text-center"><input type="checkbox"></td>
+                                                </tr>  
+                                                <tr>
+                                                    <td class="text-center">2033B</td>
+                                                    <td class="text-center"><input type="checkbox"></td>
+                                                </tr>  
+                                                <tr>
+                                                    <td class="text-center">2033C</td>
+                                                    <td class="text-center"><input type="checkbox"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">2033A</td>
+                                                    <td class="text-center"><input type="checkbox"></td>
+                                                </tr>  
+                                                <tr>
+                                                    <td class="text-center">2033B</td>
+                                                    <td class="text-center"><input type="checkbox"></td>
+                                                </tr>  
+                                                <tr>
+                                                    <td class="text-center">2033C</td>
+                                                    <td class="text-center"><input type="checkbox"></td>
+                                                </tr>    
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

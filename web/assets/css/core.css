@@ -89,6 +89,12 @@ figure:hover figcaption {
 *  Latest update: Nov 25, 2015
 *
 * ---------------------------------------------------------------------------- */
+.bg-greenn
+{
+ background-color: #009688;
+ color:white;
+}
+
 h1,
 h2,
 h3,
@@ -270,6 +276,11 @@ svg {
   font-size: 32px;
   top: 0;
 }
+.img_logo{
+ width: 13rem;
+ height:2rem;
+}
+
 .img-preview {
   max-height: 70px;
 }
@@ -3461,6 +3472,7 @@ select[multiple].input-group-xs > .input-group-btn > .btn {
     padding-left: 0;
     padding-right: 0;
     background-size: auto 26px;
+    background: url(../images/icon_eko.png) no-repeat center center;
     float: none;
     display: block;
   }
@@ -6404,8 +6416,6 @@ a.list-group-item-danger:focus {
 }
 .panel-heading {
   position: relative;
-  padding-top: 20px;
-  padding-bottom: 20px;
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
 }
@@ -6413,7 +6423,9 @@ a.list-group-item-danger:focus {
   margin: 0;
 }
 .panel-flat > .panel-heading {
-  background-color: #fff;
+  background-color: #5d9d9c !important;
+  color: white;
+  margin-bottom: 1rem;
 }
 .panel-flat > .panel-heading > .panel-title {
   margin-top: 2px;
