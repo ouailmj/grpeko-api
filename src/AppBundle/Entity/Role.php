@@ -31,28 +31,21 @@ class Role extends BaseRole
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=50, unique=true)
      */
-    private $role;
+    protected $role;
 
     /**
      * @var string|null
      *
      * @ORM\Column(type="text", nullable=true)
      */
-    private $description;
-
-    /**
-     * @var User[]
-     *
-     * @ORM\ManyToMany(targetEntity="User", mappedBy="tableRoles")
-     */
-    protected $users;
+    protected $description;
 
     /**
      * Get id.
@@ -100,40 +93,6 @@ class Role extends BaseRole
         $this->description = $description;
 
         return $this;
-    }
-
-    /**
-     * Add user.
-     *
-     * @param \AppBundle\Entity\User $user
-     *
-     * @return Role
-     */
-    public function addUser(\AppBundle\Entity\User $user)
-    {
-        $this->users[] = $user;
-
-        return $this;
-    }
-
-    /**
-     * Remove user.
-     *
-     * @param \AppBundle\Entity\User $user
-     */
-    public function removeUser(User $user)
-    {
-        $this->users->removeElement($user);
-    }
-
-    /**
-     * Get users.
-     *
-     * @return ArrayCollection|User[]
-     */
-    public function getUsers()
-    {
-        return $this->users;
     }
 
     /**

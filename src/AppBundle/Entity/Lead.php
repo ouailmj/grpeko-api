@@ -1,11 +1,21 @@
 <?php
 
+/*
+ * This file is part of the Napier project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Developed by MIT <contact@mit-agency.com>
+ *
+ */
+
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Lead
+ * Lead Relationship.
  *
  * @ORM\Table(name="lead")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\LeadRepository")
@@ -19,8 +29,7 @@ class Lead
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
-
+    protected $id;
 
     /**
      * Get id.

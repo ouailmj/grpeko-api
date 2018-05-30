@@ -1,11 +1,21 @@
 <?php
 
+/*
+ * This file is part of the Napier project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Developed by MIT <contact@mit-agency.com>
+ *
+ */
+
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * FiscalYear
+ * FiscalYear.
  *
  * @ORM\Table(name="fiscal_year")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\FiscalYearRepository")
@@ -19,29 +29,35 @@ class FiscalYear
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="startDate", type="datetimetz")
      */
-    private $startDate;
+    protected $startDate;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="closeDate", type="datetimetz")
      */
-    private $closeDate;
+    protected $closeDate;
 
     /**
      * @var string
      *
      * @ORM\Column(name="status", type="string", length=10)
      */
-    private $status;
+    protected $status;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="integer")
+     */
+    protected $year;
 
     /**
      * Get id.

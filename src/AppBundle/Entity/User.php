@@ -91,16 +91,10 @@ class User extends BaseUser
 
     /**
      * @var string
-     * @ORM\Column( type="string", length=50, nullable=true)
+     *
+     * @ORM\Column(type="string", length=50, nullable=true)
      */
     protected $timezoneId;
-
-    /**
-     * @var Role[]|ArrayCollection
-     *
-     * @ORM\ManyToMany(targetEntity="\AppBundle\Entity\Role", inversedBy="users")
-     */
-    protected $tableRoles;
 
     // Transient Properties //
 
@@ -324,50 +318,5 @@ class User extends BaseUser
         $this->initials = $initials;
 
         return $this;
-    }
-
-    /**
-     * Add tableRole.
-     *
-     * @param Role $tableRole
-     *
-     * @return User
-     */
-    public function addTableRole(Role $tableRole)
-    {
-        $this->tableRoles[] = $tableRole;
-
-        return $this;
-    }
-
-    /**
-     * Remove tableRole.
-     *
-     * @param Role $tableRole
-     */
-    public function removeTableRole(Role $tableRole)
-    {
-        $this->tableRoles->removeElement($tableRole);
-    }
-
-    /**
-     * Get tableRoles.
-     *
-     * @return \Doctrine\Common\Collections\ArrayCollection|Role[]
-     */
-    public function getTableRoles()
-    {
-        return $this->tableRoles;
-    }
-
-    public function getRoles()
-    {
-        $roles = parent::getRoles();
-
-        foreach ($this->tableRoles as $role) {
-            $roles[] = $role->getRole();
-        }
-
-        return array_unique($roles);
     }
 }

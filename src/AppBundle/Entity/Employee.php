@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Relationship
+ * Employee
  *
- * @ORM\Table(name="relationship")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\RelationshipRepository")
+ * @ORM\Table(name="employee")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\EmployeeRepository")
  */
-class Relationship
+class Employee
 {
     /**
      * @var int
@@ -20,6 +20,13 @@ class Relationship
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @var JobPosition
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\JobPosition", inversedBy="employees")
+     */
+    private $jobPosition;
 
 
     /**

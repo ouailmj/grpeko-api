@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * CustomerStatus
+ * CustomerRelationship
  *
- * @ORM\Table(name="customer_status")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\CustomerStatusRepository")
+ * @ORM\Table(name="customer_relationship")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CustomerRelationshipRepository")
  */
-class CustomerStatus
+class CustomerRelationship
 {
     /**
      * @var int
