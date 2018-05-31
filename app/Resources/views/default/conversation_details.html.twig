@@ -1,134 +1,146 @@
 {% extends 'base.html.twig' %}
-
+{% block body_attributes %}class="navbar-top sidebar-xs has-detached-left"{% endblock %}
 {% block content %}
-
-
-    <div class="alert alert-warning text-center __web-inspector-hide-shortcut__">
-        Cette conversation est fermé Vous pouvez répondre pour la rouvrir.
-    </div>
-
-
-        <p>
-            <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1"
-               role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
-                <i class="fa fa-reply"></i>&nbsp;Répondre a cette conversation
-            </a>
-
-            <a class="btn btn-danger"
-               role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
-                <i class="fa fa-times"></i>&nbsp;Fermer cette conversation
-            </a>
-
-        </p>
-
-
-
-
-    <div class="row">
-        <div class="col">
-            <div class="collapse multi-collapse" id="multiCollapseExample1">
-
-
-
-                <div class="panel panel-flat">
-
-                    <div style="padding: 10px">
-                        <form id="myForm" method="post" class="form-horizontal" enctype="multipart/form-data">
-
-                            <div class="form-group">
-                                <label class="control-label col-lg-2 text-semibold control-label required">Message</label>
-                                <div class="col-lg-10">
-                                    <textarea rows="4" cols="50" class="form-control" placeholder="Ajouter un message" required></textarea>
-                                </div>
+<div class="page-content">
+    {% block sidebar %}
+        {% include 'layout/_partials/sidebar.html.twig' %}
+    {% endblock %}
+    
+    <div class="content-wrapper">
+        <div class="content">
+            <div class="sidebar-detached">
+                <div class="sidebar sidebar-default">
+                    <div class="sidebar-content">
+                        <div class="sidebar-category">
+                            <div class="category-title">
+                                <span>Ticket Information</span>
+                                <ul class="icons-list">
+                                    <li><a href="#" data-action="collapse" class=""></a></li>
+                                </ul>
                             </div>
 
-                            <div class="form-group">
-                                <label class="control-label col-lg-2 text-semibold control-label required">Joindre des fichiers</label>
-                                <div class="col-lg-10" id="attachment">
-                                    <a href="#" onclick="addMoreFiles()"><i class="fa fa-plus"></i> Ajouter plus</a>
-                                    <input type="file" name="files[]"  class="form-control">
+                            <div class="category-content" style="display: block;">
+                                <ul class="navigation navigation-alt navigation-accordion">
+                                    <li><a href="#"><i class="icon-collaboration"></i> Conference</a></li>
+                                    <li><a href="#"><i class="icon-user-plus"></i> Add users <span class="label label-success">32 online</span></a></li>
+                                    <li><a href="#"><i class="icon-users"></i> Create team</a></li>
+                                    <li class="navigation-divider"></li>
+                                    <li><a href="#"><i class="icon-files-empty"></i> All messages <span class="badge badge-danger">99+</span></a></li>
+                                    <li><a href="#"><i class="icon-file-plus"></i> Active discussions <span class="badge badge-default">32</span></a></li>
+                                    <li><a href="#"><i class="icon-file-locked"></i> Closed discussions</a></li>
+                                    <li class="navigation-header">Options</li>
+                                    <li><a href="#"><i class="icon-reading"></i> Message history</a></li>
+                                    <li><a href="#"><i class="icon-cog3"></i> Settings</a></li>
+                                </ul>
+                            </div>
+                            <div class="category-content">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <button class="btn bg-brown btn-rounded btn-block btn-xs" type="button"><i class="icon-forward"></i> <span>Reply</span></button>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <button class="btn bg-teal-400 btn-rounded btn-block btn-xs" type="button"><i class="icon-cross2"></i> <span>fermer</span></button>
+                                    </div>
                                 </div>
                             </div>
-
-                            <p class="text-center">
-                                <input type="submit" value="Valider" class="btn btn-primary">
-                            </p>
-                        </form>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-detached">
+                <div class="content-detached">
+                <div class="panel panel-default border-grey">
+                    <div class="panel-heading" style="background-color: #5d9d9c; color:white">
+                        <h6 class="panel-title">Mr Moaud<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+                        <div class="heading-elements">
+                            <ul class="icons-list">
+                                <li><a data-action="collapse"></a></li>
+                                <li><a data-action="reload"></a></li>
+                                <li><a data-action="close"></a></li>
+                            </ul>
+                        </div>
                     </div>
 
+                    <div class="panel-body">
+                        Bonjour,</br>
+
+                        Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
+                        Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
+                        Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
+                        Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
+                        Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
+                    </div>
                 </div>
+                   
+                <div class="panel panel-white">
 
+                    <!-- Mail toolbar -->
+                    <div class="panel-toolbar panel-toolbar-inbox">
+                        <div class="navbar navbar-default" style="background-color: #5d9d9c; color:white">
+                            <div class="panel-toolbar panel-toolbar-inbox" id="inbox-toolbar-toggle-single">
+                                <div class="btn-group navbar-btn">
+                                    <button type="button" class="btn btn-default"><i class="icon-plus2"></i> <span class="hidden-xs position-right">Save</span></button>
+                                    <button type="button" class="btn btn-default"><i class="icon-cross2"></i> <span class="hidden-xs position-right">Cancel</span></button>
 
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                            <i class="icon-menu7"></i>
+                                            <span class="caret"></span>
+                                        </button>
 
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li><a href="#">Action</a></li>
+                                            <li><a href="#">Another action</a></li>
+                                            <li><a href="#">Something else here</a></li>
+                                            <li><a href="#">One more line</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
 
+                                <div class="pull-right-lg">
+                                    <div class="btn-group navbar-btn">
+                                        <button type="button" class="btn btn-default"><i class="icon-printer"></i> <span class="hidden-xs position-right">Print</span></button>
+                                        <button type="button" class="btn btn-default"><i class="icon-new-tab2"></i> <span class="hidden-xs position-right">Share</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /mail toolbar -->
+                   
+                        <div class="panel-heading">
+                            <h6 class="panel-title">Moi<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+                            <div class="heading-elements">
+                                <ul class="icons-list">
+                                    <li><a data-action="collapse"></a></li>
+                                    <li><a data-action="reload"></a></li>
+                                    <li><a data-action="close"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="panel-body">
+                            <textarea rows="5" cols="5" class="form-control" placeholder="Enter your message here"></textarea>
+                            <br><br>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <ul class="icons-list icons-list-extended mt-10">
+                                        <li><a href="#" data-popup="tooltip" title="" data-container="body" data-original-title="Send photo"><i class="icon-file-picture"></i></a></li>
+                                        <li><a href="#" data-popup="tooltip" title="" data-container="body" data-original-title="Send video"><i class="icon-file-video"></i></a></li>
+                                        <li><a href="#" data-popup="tooltip" title="" data-container="body" data-original-title="Send file"><i class="icon-file-plus"></i></a></li>
+                                    </ul>
+                                </div>
+    
+                                <div class="col-xs-6 text-right">
+                                    <button type="button" class="btn bg-teal-400 btn-labeled btn-labeled-right"><b><i class="icon-circle-right2"></i></b>Envoyer</button>
+                                </div>
+                            </div>
+                        </div>
+                </div>
             </div>
+
         </div>
     </div>
-
-
-
-
-    <div class="panel">
-        <div class="panel-heading" style="background-color: #f2f9ff">
-
-            <div class="user">
-                <i class="fa fa-user fa-2x"></i>
-                <span class="name">&nbsp;Collaborateur</span>
-
-
-                <div class="date" style="float: right">
-                    <i class="fa fa-calendar fa-2x"></i>
-                    <span class="name">&nbsp; 13/10/2017</span>
-                </div>
-
-            </div>
-
-
-
-        </div>
-
-        <div class="panel-body">
-
-            Bonjour,</br>
-
-            Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
-            Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
-            Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
-            Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
-            Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
-        </div>
-    </div>
-
-    <div class="panel" style="margin-left: 20px ;">
-        <div class="panel-heading" style="background-color: #f2f9ff">
-
-            <div class="user">
-                <i class="fa fa-user fa-2x"></i>
-                <span class="name">&nbsp;Client</span>
-
-
-                <div class="date" style="float: right">
-                    <i class="fa fa-calendar fa-2x"></i>
-                    <span class="name">&nbsp; 13/10/2017</span>
-                </div>
-
-            </div>
-
-
-
-        </div>
-
-        <div class="panel-body">
-
-            Bonjour,</br>
-
-            Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
-            Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
-            Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
-            Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
-            Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
-        </div>
-    </div>
-
-
+</div>
 {% endblock %}

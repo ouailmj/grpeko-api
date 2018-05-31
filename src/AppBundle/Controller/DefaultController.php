@@ -951,4 +951,38 @@ class DefaultController extends BaseController
     {
         return $this->render('default/conversation.html.twig');
     }
+      /**
+    * @Route("/client/compteGeneraux", name="compteGeneraux")
+    *
+    * @param Request $request
+    *
+    * @return \Symfony\Component\HttpFoundation\Response
+    */
+    public function CompteGeneraux(Request $request)
+    {
+        return $this->render('default/Compte_generaux.html.twig');
+    }
+       /**
+    * @Route("/client/compteAuxiliaire", name="compteAuxiliaire")
+    *
+    * @param Request $request
+    *
+    * @return \Symfony\Component\HttpFoundation\Response
+    */
+    public function CompteAuxiliaire(Request $request)
+    {
+        return $this->render('default/compte_auxiliaire.html.twig');
+    }
+       /**
+    * @Route("/client/clientfacturation", name="clientfacturation")
+    *
+    * @param Request $request
+    *
+    * @return \Symfony\Component\HttpFoundation\Response
+    */
+    public function clientFacturation(Request $request)
+    {
+        return $this->render('default/client_facturation.html.twig');
+    }
 }
+
