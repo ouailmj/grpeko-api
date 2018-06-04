@@ -648,10 +648,11 @@ class DefaultController extends BaseController
         return $this->render('default/accueill.html.twig');
     }
 
-  //kamal
+    //kamal
+
     /**
      * @Route("/client/information_generale", name="information_generale")
-    
+
      *
      * @param Request $request
      *
@@ -661,10 +662,12 @@ class DefaultController extends BaseController
     {
         return $this->render('default/information_generale.html.twig');
     }
+
     //kamal
+
     /**
      * @Route("/client/parametrage_devis", name="parametrage_devis")
-    
+
      *
      * @param Request $request
      *
@@ -675,17 +678,20 @@ class DefaultController extends BaseController
         return $this->render('default/parametrages_devis.html.twig');
     }
 
-
     //kamal
+
     /**
      * @Route("/client/parametrage_commissions", name="commissions")
+     *
      * @param Request $request
+     *
      *  * @return \Symfony\Component\HttpFoundation\Response
      */
-      public function parametrageCommissions(Request $request)
+    public function parametrageCommissions(Request $request)
     {
         return $this->render('default/parametrages_commission.html.twig');
     }
+
     /**
      * @Route("/cabinetacess", name="cabinet_access")
      *
@@ -698,10 +704,13 @@ class DefaultController extends BaseController
         return $this->render('default/cabinet_access.html.twig');
     }
 
-        //kamal
+    //kamal
+
     /**
      * @Route("/client/parametrage_email", name="email")
+     *
      * @param Request $request
+     *
      *  * @return \Symfony\Component\HttpFoundation\Response
      */
     public function parametrageEmail(Request $request)
@@ -709,10 +718,13 @@ class DefaultController extends BaseController
         return $this->render('default/parametrages_emails.html.twig');
     }
 
-        //kamal
+    //kamal
+
     /**
      * @Route("/client/parametrage_internet", name="Sites_internet")
+     *
      * @param Request $request
+     *
      *  * @return \Symfony\Component\HttpFoundation\Response
      */
     public function parametrageInternet(Request $request)
@@ -720,40 +732,55 @@ class DefaultController extends BaseController
         return $this->render('default/parametrages_internetsite.html.twig');
     }
 
-     //kamal
+    //kamal
+
     /**
      * @Route("/client/parametrage_rendezvous", name="Rendez_vouz")
+     *
      * @param Request $request
+     *
      *  * @return \Symfony\Component\HttpFoundation\Response
      */
     public function parametrageRendezVous(Request $request)
     {
         return $this->render('default/parametrages_rendezvous.html.twig');
     }
-     //kamal
+
+    //kamal
+
     /**
      * @Route("/client/info-bancaire", name="InfoBancaire")
+     *
      * @param Request $request
+     *
      *  * @return \Symfony\Component\HttpFoundation\Response
      */
     public function InfoBancaire(Request $request)
     {
         return $this->render('default/Client_info_bancaires.html.twig');
     }
-             //kamal
+
+    //kamal
+
     /**
      * @Route("/client/formalites", name="formalites")
+     *
      * @param Request $request
+     *
      *  * @return \Symfony\Component\HttpFoundation\Response
      */
     public function Formalites(Request $request)
     {
         return $this->render('default/Formalités.html.twig');
     }
-     //kamal
+
+    //kamal
+
     /**
      * @Route("/client/parametrages", name="parametrages")
+     *
      * @param Request $request
+     *
      *  * @return \Symfony\Component\HttpFoundation\Response
      */
     public function Parametrages(Request $request)
@@ -761,20 +788,27 @@ class DefaultController extends BaseController
         return $this->render('default/Parametrages.html.twig');
     }
 
-     //kamal
+    //kamal
+
     /**
      * @Route("/client/affecctaionCollaborateurF", name="affecctaionCollaborateur")
+     *
      * @param Request $request
+     *
      *  * @return \Symfony\Component\HttpFoundation\Response
      */
     public function affecctaionCollaborateur(Request $request)
     {
         return $this->render('default/collaborateur_affectation.html.twig');
     }
-     //kamal
+
+    //kamal
+
     /**
      * @Route("/client/gestion_comptabilite", name="gestion_comptabilite")
+     *
      * @param Request $request
+     *
      *  * @return \Symfony\Component\HttpFoundation\Response
      */
     public function gestionComptabilite(Request $request)
@@ -782,10 +816,11 @@ class DefaultController extends BaseController
         return $this->render('default/gestion_comptabilité.html.twig');
     }
 
-
     /**
      * @Route("/client/grandlivre", name="grandlivre")
+     *
      * @param Request $request
+     *
      *  * @return \Symfony\Component\HttpFoundation\Response
      */
     public function grandLivre(Request $request)
@@ -795,7 +830,9 @@ class DefaultController extends BaseController
 
     /**
      * @Route("/client/etatFinancier", name="etatFinancier")
+     *
      * @param Request $request
+     *
      *  * @return \Symfony\Component\HttpFoundation\Response
      */
     public function etatFinancier(Request $request)
@@ -805,7 +842,9 @@ class DefaultController extends BaseController
 
     /**
      * @Route("/client/comptabilite1", name="comptabilite1")
+     *
      * @param Request $request
+     *
      *  * @return \Symfony\Component\HttpFoundation\Response
      */
     public function comptablite_1(Request $request)
@@ -815,7 +854,9 @@ class DefaultController extends BaseController
 
     /**
      * @Route("/client/balancegeneral", name="balancegeneral")
+     *
      * @param Request $request
+     *
      *  * @return \Symfony\Component\HttpFoundation\Response
      */
     public function balance_general(Request $request)
@@ -823,30 +864,41 @@ class DefaultController extends BaseController
         return $this->render('default/balance_general.html.twig');
     }
 
-      //kamal
+    //kamal
+
     /**
      * @Route("/client/administratifNote", name="administratifNote")
+     *
      * @param Request $request
+     *
      *  * @return \Symfony\Component\HttpFoundation\Response
      */
     public function AdministratifNote(Request $request)
     {
         return $this->render('default/Administratif.html.twig');
     }
-     //kamal
+
+    //kamal
+
     /**
      * @Route("/client/lettredespense", name="lettredespense")
+     *
      * @param Request $request
+     *
      *  * @return \Symfony\Component\HttpFoundation\Response
      */
     public function LettreDespense(Request $request)
     {
         return $this->render('default/lettrededespense.html.twig');
     }
-     //kamal
+
+    //kamal
+
     /**
      * @Route("/client/attestationNonremu", name="attestationNonremu")
+     *
      * @param Request $request
+     *
      *  * @return \Symfony\Component\HttpFoundation\Response
      */
     public function AttestationNonRemu(Request $request)
@@ -854,10 +906,13 @@ class DefaultController extends BaseController
         return $this->render('default/attestationNonremuneration.html.twig');
     }
 
-     //kamal
+    //kamal
+
     /**
      * @Route("/client/attestationMiniprevisionel", name="attestationMiniprevisionel")
+     *
      * @param Request $request
+     *
      *  * @return \Symfony\Component\HttpFoundation\Response
      */
     public function AttestationMiniPrevisionel(Request $request)
@@ -865,10 +920,13 @@ class DefaultController extends BaseController
         return $this->render('default/attestationMiniprevisionel.html.twig');
     }
 
-     //kamal
+    //kamal
+
     /**
      * @Route("/client/fiscalite", name="fiscalite")
+     *
      * @param Request $request
+     *
      *  * @return \Symfony\Component\HttpFoundation\Response
      */
     public function Fiscalite(Request $request)
@@ -877,9 +935,12 @@ class DefaultController extends BaseController
     }
 
     //kamal
+
     /**
      * @Route("/client/calculeis", name="calculeis")
+     *
      * @param Request $request
+     *
      *  * @return \Symfony\Component\HttpFoundation\Response
      */
     public function Calculeis(Request $request)
