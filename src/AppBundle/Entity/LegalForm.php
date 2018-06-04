@@ -12,17 +12,15 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\Role\Role as BaseRole;
 
 /**
- * Role.
+ * Forme juridique.
  *
- * @ORM\Table(name="role")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\RoleRepository")
+ * @ORM\Table(name="legal_form")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\LegalFormRepository")
  */
-class Role extends BaseRole
+class LegalForm
 {
     /**
      * @var int
@@ -36,14 +34,14 @@ class Role extends BaseRole
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=50, unique=true)
+     * @ORM\Column(name="name", type="string", length=255)
      */
-    protected $role;
+    protected $name;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     protected $description;
 
@@ -58,27 +56,27 @@ class Role extends BaseRole
     }
 
     /**
-     * Set role.
+     * Set name.
      *
-     * @param string $role
+     * @param string $name
      *
-     * @return Role
+     * @return LegalForm
      */
-    public function setRole($role)
+    public function setName($name)
     {
-        $this->role = $role;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get role.
+     * Get name.
      *
      * @return string
      */
-    public function getRole()
+    public function getName()
     {
-        return $this->role;
+        return $this->name;
     }
 
     /**
@@ -86,7 +84,7 @@ class Role extends BaseRole
      *
      * @param string|null $description
      *
-     * @return Role
+     * @return LegalForm
      */
     public function setDescription($description = null)
     {
@@ -103,12 +101,5 @@ class Role extends BaseRole
     public function getDescription()
     {
         return $this->description;
-    }
-
-    public function __construct(string $role)
-    {
-        parent::__construct($role);
-
-        $this->users = new ArrayCollection();
     }
 }

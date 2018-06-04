@@ -1,0 +1,152 @@
+{% extends 'base.html.twig' %}
+{% block body_attributes %}class="navbar-top sidebar-xs has-detached-left"{% endblock %}
+{% block content %}
+<div class="page-content">
+    {% block sidebar %}
+        {% include 'layout/_partials/sidebar.html.twig' %}
+    {% endblock %}
+    <div class="content-wrapper">
+        <div class="content">
+        {% include 'layout/_partials/sidebarseconder.html.twig' %}
+            <div class="container-detached">
+                <div class="content-detached">
+            <div class="panel panel-flat">
+                <div class="panel-heading">
+                <h5 class="panel-title">Compte Généraux</h5>
+                </div>
+                <div class="panel-body">
+                        <span title="Ajouter un nouvel Client" class="pull-right"><a href="{{ path('client_access1') }}" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-user-plus"></i></b> Ajouter</a></span>
+
+                    <div  class="datatable-scroll-wrap">
+                        <table class="table datatable-responsive table-bordered table-hover datatable-highlight" >
+                            <thead>
+                                <tr>
+                                    <th class="text-center">*</th>
+                                    <th class="text-center">Commum/Client</th>
+                                    <th class="text-center">Compte</th>
+                                    <th class="text-center">Libellé</th>
+                                    <th class="text-center">Taux TVA</th>
+                                    <th class="text-center">Type</th>
+                                    <th class="text-center">Nature Auxiliaire</th>
+                                    <th class="text-center">Catégorie</th>
+                                    <th class="text-center">Type TVA</th>
+                                    <th class="text-center">Référence</th>
+                                    <th class="text-center">Sens Normal</th>
+                                    <th class="text-center">Sens Anormale</th>
+                                    <th class="text-center">Attestation min</th>
+                                </tr>   
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center">Filter</td>
+                                   
+                                    <td class="text-center">
+                                        <select data-placeholder="0" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                            <option></option>
+                                            <option></option>
+                                            <option></option>
+                                            <option></option>
+                                        </select>
+                                    </td>
+                                    <td class="text-center">
+                                        <select data-placeholder="0" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                            <option></option>
+                                            <option></option>
+                                            <option></option>
+                                            <option></option>
+                                        </select>
+                                    </td>
+
+                                    <td class="text-center">
+                                        <select data-placeholder="0" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                            <option></option>
+                                            <option></option>
+                                            <option></option>
+                                            <option></option>
+                                        </select>
+                                    </td> 
+                                     <td class="text-center">
+                                        <select data-placeholder="0" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                            <option></option>
+                                            <option></option>
+                                            <option></option>
+                                            <option></option>
+                                        </select>
+                                    </td>
+                                    <td class="text-center">
+                                        <select data-placeholder="0" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                            <option></option>
+                                            <option></option>
+                                            <option></option>
+                                            <option></option>
+                                        </select>
+                                    </td>
+                                    <td class="text-center">
+                                        <select data-placeholder="0" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                            <option></option>
+                                            <option></option>
+                                            <option></option>
+                                            <option></option>
+                                        </select>
+                                    </td>
+                                    <td class="text-center">
+                                        <select data-placeholder="0" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                            <option></option>
+                                            <option></option>
+                                            <option></option>
+                                            <option></option>
+                                        </select>
+                                    </td>
+                                    <td class="text-center">
+                                        <select data-placeholder="0" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                            <option></option>
+                                            <option></option>
+                                            <option></option>
+                                            <option></option>
+                                        </select>
+                                    </td>
+                                    <td class="text-center">
+                                        <select data-placeholder="0" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                            <option></option>
+                                            <option></option>
+                                            <option></option>
+                                            <option></option>
+                                        </select>
+                                    </td>
+                                    <td class="text-center">
+                                        <select data-placeholder="0" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                            <option></option>
+                                            <option></option>
+                                            <option></option>
+                                            <option></option>
+                                        </select>
+                                    </td>
+                                    <td class="text-center">
+                                        <select data-placeholder="0" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                            <option></option>
+                                            <option></option>
+                                            <option></option>
+                                            <option></option>
+                                        </select>
+                                    </td>
+                                    <td class="text-center">
+                                        <select data-placeholder="0" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                            <option></option>
+                                            <option></option>
+                                            <option></option>
+                                            <option></option>
+                                        </select>
+                                    </td>
+                                </tr>   
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}
