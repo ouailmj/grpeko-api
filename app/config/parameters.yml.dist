@@ -37,3 +37,6 @@ parameters:
     # Google OAuth Access
     google_id: 'GoogleID'
     google_secret: 'GoogleSecret'
+
+    # Google Analytics
+    google_analytics_code: 'UA-XXXXXXXX-X'
