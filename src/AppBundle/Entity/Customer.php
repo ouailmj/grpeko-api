@@ -32,6 +32,13 @@ class Customer
     protected $id;
 
     /**
+     * @var Company
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Company" ,inversedBy="customerAccount" ,cascade={"persist", "remove"}))
+     */
+    protected $company;
+
+    /**
      * Get id.
      *
      * @return int
