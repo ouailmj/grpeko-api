@@ -527,17 +527,17 @@ class DefaultController extends BaseController
         return $this->render('default/Planning.html.twig');
     }
 
-    /**
-     * @Route("/client/gestion-cabinet", name="gestion-cabinet")
-     *
-     * @param Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function Gestion_cabinet(Request $request)
-    {
-        return $this->render('default/gestion-cabinet.html.twig');
-    }
+    // /**
+    //  * @Route("/client/gestion-cabinet", name="gestion-cabinet")
+    //  *
+    //  * @param Request $request
+    //  *
+    //  * @return \Symfony\Component\HttpFoundation\Response
+    //  */
+    // public function Gestion_cabinet(Request $request)
+    // {
+    //     return $this->render('default/gestion-cabinet.html.twig');
+    // }
 
     /**
      * @Route("/client/comptabilite", name="comptabilite")

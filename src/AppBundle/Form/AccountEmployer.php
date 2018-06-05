@@ -34,17 +34,13 @@ class AccountEmployer extends AbstractType
             'label' => 'Prénom'
         ))
 
-        ->add('adresse', TextType::class, array(
-            'label' => 'Adresse',
-            'required'  => false
-        ))
 
         ->add('phoneNumber', TextType::class, array(
             'required' => false,
             'label' => 'Téléphone'
         ))
 
-        ->add('user', UserType::class)
+        ->add('userAccount', UserType::class)
 
         ->add('Save', SubmitType::class,array(
             'attr' => array(

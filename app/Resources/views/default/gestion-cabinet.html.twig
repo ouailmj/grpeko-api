@@ -72,16 +72,21 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                           
+                                    {% for item in employers %}
                                     <tr role="row" class="">
                                         <td class="sorting_1"><a href="">2</a></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        
+                                        <td>{{ item.lastname}}</td>
+                                        <td>{{ item.firstName}}</td>
+                                       
+                                        <td>{{ item.userAccount.initials }}</td>
+                                        
+                                        <td>{{ item.userAccount.username }}</td>
                                         <td>
-                                            Expert Comptable
+                                            {{ item.userAccount.email }}
+                                        </td>
+                                        <td>
+                                            BIE
                                         </td>
                                         <td>
                                             BIE
@@ -89,13 +94,13 @@
                                         <td><span class="label label-danger">Inactif</span></td>
                                         <td class="text-center">
                                             <div class="">
-                                                <a title="Afficher les détails" href="{{ path('view-collaborateur') }}" class="text-primary legitRipple"><i class="icon-eye position-left"></i></a>
-                                                <a title="Modifier" href="{{ path('edit-collaborateur') }}" class="text-primary legitRipple"><i class="icon-pen position-left"></i></a>
+                                                <a title="Afficher les détails" href="{{ path('show-collaborateur', {'id': item.id}) }}" class="text-primary legitRipple"><i class="icon-eye position-left"></i></a>
+                                                <a title="Modifier" href="{{ path('edit-collaborateur', {'id': item.id}) }}" class="text-primary legitRipple"><i class="icon-pen position-left"></i></a>
                                             </div>
                                         </td>
                                     </tr>
-                                    
-                                    <tr role="row" class="">
+                                    {% endfor %}
+                                    <!-- <tr role="row" class="">
                                         <td class="sorting_1"><a href="">3</a></td>
                                         <td>Augustina</td>
                                         <td>Hardy</td>
@@ -136,7 +141,7 @@
                                                 <a title="Modifier" href="" class="text-primary legitRipple"><i class="icon-pen position-left"></i></a>
                                             </div>
                                         </td>
-                                    </tr>
+                                    </tr> -->
                                     </tbody>
                                 </table>
                             </div>

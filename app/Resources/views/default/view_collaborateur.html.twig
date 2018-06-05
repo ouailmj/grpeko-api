@@ -45,32 +45,32 @@ content: none !important;
                                     <tbody>
                                     <tr>
                                         <th>Nom</th>
-                                        <td>Virginie</td>
+                                        <td>{{ employer.firstName }}</td>
                                     </tr>
                                     <tr>
                                         <th>Prénom</th>
-                                        <td>Alves</td>
+                                        <td>{{ employer.lastName }}</td>
                                     </tr>
                                     <tr>
                                         <th>Adresse</th>
-                                        <td>45, impasse Océane</td>
+                                        <td>{{ employer.lastName }}</td>
                                     </tr>
                                     <tr>
                                         <th>Téléphone</th>
-                                        <td>+8692322616518</td>
+                                        <td>{{ employer.phoneNumber }}</td>
                                     </tr>
                                     <tr>
                                         <th>Initiales</th>
-                                        <td>MAY</td>
+                                        <td>{{ employer.userAccount.initials }}</td>
                                     </tr>
                         
                                     <tr>
                                         <th>Login </th>
-                                        <td>advisory</td>
+                                        <td>{{ employer.userAccount.username }}</td>
                                     </tr>
                                     <tr>
                                         <th>Adresse e-mail</th>
-                                        <td>advisory@test.com</td>
+                                        <td>{{ employer.userAccount.email }}</td>
                                     </tr>
                                     
                                     <tr>
