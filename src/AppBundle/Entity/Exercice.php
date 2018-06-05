@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * CustomerRelationship
+ * Exercice
  *
- * @ORM\Table(name="customer_relationship")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\CustomerRelationshipRepository")
+ * @ORM\Table(name="exercice")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ExerciceRepository")
  */
-class CustomerRelationship
+class Exercice
 {
     /**
      * @var int
@@ -21,6 +21,11 @@ class CustomerRelationship
      */
     private $id;
 
+    /**
+     * @var Mission
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Mission", inversedBy="exercices")
+     */
+    protected $mission;
 
     /**
      * Get id.
