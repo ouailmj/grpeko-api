@@ -57,44 +57,17 @@ class User extends BaseUser
 
     /**
      * @var string
-     * @ORM\Column( type="string", length=20, nullable=true)
-     */
-    protected $phoneNumber;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column( type="string", length=250, nullable=true)
-     */
-    protected $fullName;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=250, nullable=true)
-     */
-    protected $firstName;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=250, nullable=true)
-     */
-    protected $lastName;
-
-    /**
-     * @var string
      *
      * @ORM\Column(type="string", length=10, nullable=true)
      */
     protected $initials;
 
     /**
-     * @var string
+     * @var Person
      *
-     * @ORM\Column(type="string", length=50, nullable=true)
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Person" ,inversedBy="userAccount" ,cascade={"persist", "remove"})
      */
-    protected $timezoneId;
+    protected $person;
 
     // Transient Properties //
 
@@ -215,94 +188,6 @@ class User extends BaseUser
     /**
      * @return string
      */
-    public function getPhoneNumber()
-    {
-        return $this->phoneNumber;
-    }
-
-    /**
-     * @param string $phoneNumber
-     */
-    public function setPhoneNumber(string $phoneNumber)
-    {
-        $this->phoneNumber = $phoneNumber;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFullName()
-    {
-        return $this->fullName;
-    }
-
-    /**
-     * @param string $fullName
-     */
-    public function setFullName(string $fullName)
-    {
-        $this->fullName = $fullName;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTimezoneId()
-    {
-        return $this->timezoneId;
-    }
-
-    /**
-     * @param string $timezoneId
-     */
-    public function setTimezoneId(string $timezoneId)
-    {
-        $this->timezoneId = $timezoneId;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFirstName()
-    {
-        return $this->firstName;
-    }
-
-    /**
-     * @param string $firstName
-     *
-     * @return User
-     */
-    public function setFirstName(string $firstName)
-    {
-        $this->firstName = $firstName;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getLastName()
-    {
-        return $this->lastName;
-    }
-
-    /**
-     * @param string $lastName
-     *
-     * @return User
-     */
-    public function setLastName(string $lastName)
-    {
-        $this->lastName = $lastName;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
     public function getInitials()
     {
         return $this->initials;
@@ -319,4 +204,22 @@ class User extends BaseUser
 
         return $this;
     }
+
+    /**
+     * @return Person
+     */
+    public function getPerson(): Person
+    {
+        return $this->person;
+    }
+
+    /**
+     * @param Person $person
+     */
+    public function setPerson(Person $person)
+    {
+        $this->person = $person;
+    }
+
+
 }
