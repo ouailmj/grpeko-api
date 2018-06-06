@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -38,7 +39,10 @@ class CompanyType extends AbstractType
 
                ->add('siegeAddress', AdresseType::class)
 
-               ->add('oldAddresses', AdresseType::class)
+               ->add('oldAddresses', CollectionType::class,
+                   [
+
+                   ])
 
                ->add('apeCode', ChoiceType::class, array(
                     'label' => 'Code APE:',
@@ -66,6 +70,10 @@ class CompanyType extends AbstractType
                     'required'  => false
                 ))
                 ->add('capitalSocial', TextType::class, array(
+                    'label' => 'Capital social:',
+                    'required'  => false
+                ))
+                ->add('formerAccounant', FormerAccountantType::class, array(
                     'label' => 'Capital social:',
                     'required'  => false
                 ))

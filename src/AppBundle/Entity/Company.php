@@ -224,36 +224,11 @@ class Company extends LegalEntity
     protected $oldAddresses;
 
     /**
-     * @var Address
-     *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address")
-     *
-     * @ORM\JoinColumn(name="current_adresse_siege_id", referencedColumnName="id")
-     */
-    protected $siegeAddress;
-
-    /**
      * @var Contact[] | ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Contact" ,mappedBy="company" ,cascade={"persist", "remove"}))
      */
     protected $contacts;
-
-    /**
-     * @return Address
-     */
-    public function getSiegeAddress()
-    {
-        return $this->siegeAddress;
-    }
-
-    /**
-     * @param Address $siegeAddress
-     */
-    public function setSiegeAddress(Address $siegeAddress)
-    {
-        $this->siegeAddress = $siegeAddress;
-    }
 
     /**
      * @var FiscalYear[] | ArrayCollection
@@ -748,7 +723,7 @@ class Company extends LegalEntity
      */
     public function removeMission($missions)
     {
-       return $this->missions->removeElement($missions);
+        return $this->missions->removeElement($missions);
 
     }
 
