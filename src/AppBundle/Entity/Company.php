@@ -254,11 +254,10 @@ class Company extends LegalEntity
     /**
      * Ancien Expert-comptable
      *
-     * @var Company
+     * @var FormerAccountant
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Company")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\FormerAccountant", mappedBy="company")
      *
-     * @ORM\JoinColumn(name="former_accountant_id", referencedColumnName="id" , nullable=true)
      */
     protected $formerAccountant;
 
@@ -744,7 +743,7 @@ class Company extends LegalEntity
     }
 
     /**
-     * @return Company
+     * @return FormerAccountant
      */
     public function getFormerAccountant()
     {
@@ -752,9 +751,9 @@ class Company extends LegalEntity
     }
 
     /**
-     * @param Company $formerAccountant
+     * @param FormerAccountant $formerAccountant
      */
-    public function setFormerAccountant(Company $formerAccountant)
+    public function setFormerAccountant(FormerAccountant $formerAccountant)
     {
         $this->formerAccountant = $formerAccountant;
     }

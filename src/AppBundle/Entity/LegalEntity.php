@@ -15,7 +15,8 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\DiscriminatorMap({
  *     "legal_entity"="LegalEntity",
- *     "company"="Company"
+ *     "company"="Company",
+ *     "former_accountant"="FormerAccountant"
  * })
  *
  * @ORM\HasLifecycleCallbacks()

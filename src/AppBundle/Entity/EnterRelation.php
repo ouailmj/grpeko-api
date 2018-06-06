@@ -28,6 +28,14 @@ class EnterRelation
     private $company;
 
     /**
+     * @var TypeMission
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\TypeMission")
+     *
+     * @ORM\JoinColumn(name="type_mission_id", referencedColumnName="id")
+     */
+    private $typeMission;
+
+    /**
      * Apporteur
      *
      * @var Employee
@@ -76,6 +84,23 @@ class EnterRelation
     {
         $this->contributor = $contributor;
     }
+
+    /**
+     * @return TypeMission
+     */
+    public function getTypeMission()
+    {
+        return $this->typeMission;
+    }
+
+    /**
+     * @param TypeMission $typeMission
+     */
+    public function setTypeMission(TypeMission $typeMission)
+    {
+        $this->typeMission = $typeMission;
+    }
+
 
 
 }

@@ -1,0 +1,206 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * FormerAccountant
+ *
+ * @ORM\Table(name="former_accountant")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\FormerAccountantRepository")
+ */
+class FormerAccountant extends LegalEntity
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="civility", type="string", length=255)
+     */
+    private $civility;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="firstName", type="string", length=255)
+     */
+    private $firstName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lastName", type="string", length=255)
+     */
+    private $lastName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255)
+     */
+    private $email;
+
+    /**
+     * @var Company
+     *
+     *  @ORM\OneToOne(targetEntity="AppBundle\Entity\Company" ,inversedBy="formerAccountant" )
+     */
+    private $company;
+
+    /**
+     * @var Address
+     *
+     *  @ORM\OneToOne(targetEntity="AppBundle\Entity\Address")
+     * @ORM\JoinColumn(name="address_id", referencedColumnName="id")
+     */
+    private $address;
+
+    /**
+     * Get id.
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set civility.
+     *
+     * @param string $civility
+     *
+     * @return FormerAccountant
+     */
+    public function setCivility($civility)
+    {
+        $this->civility = $civility;
+
+        return $this;
+    }
+
+    /**
+     * Get civility.
+     *
+     * @return string
+     */
+    public function getCivility()
+    {
+        return $this->civility;
+    }
+
+    /**
+     * Set firstName.
+     *
+     * @param string $firstName
+     *
+     * @return FormerAccountant
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * Get firstName.
+     *
+     * @return string
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * Set lastName.
+     *
+     * @param string $lastName
+     *
+     * @return FormerAccountant
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    /**
+     * Get lastName.
+     *
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * Set email.
+     *
+     * @param string $email
+     *
+     * @return FormerAccountant
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email.
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @return Company
+     */
+    public function getCompany(): Company
+    {
+        return $this->company;
+    }
+
+    /**
+     * @param Company $company
+     */
+    public function setCompany(Company $company)
+    {
+        $this->company = $company;
+    }
+
+    /**
+     * @return Address
+     */
+    public function getAddress(): Address
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param Address $address
+     */
+    public function setAddress(Address $address)
+    {
+        $this->address = $address;
+    }
+
+
+}
