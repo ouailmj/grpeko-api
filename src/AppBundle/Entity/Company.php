@@ -254,11 +254,20 @@ class Company extends LegalEntity
     /**
      * Ancien Expert-comptable
      *
-     * @var FormerAccountant
+     * @var Company
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\FormerAccountant" ,mappedBy="company" ,cascade={"persist", "remove"}))
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Company")
+     *
+     * @ORM\JoinColumn(name="former_accountant_id", referencedColumnName="id" , nullable=true)
      */
     protected $formerAccountant;
+
+
+    /**
+     * @var EnterRelation
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\EnterRelation" ,mappedBy="company" ,cascade={"persist"})
+     */
+    private $enterRelation;
 
     /**
      * Get id.
@@ -273,7 +282,7 @@ class Company extends LegalEntity
     /**
      * @return string
      */
-    public function getLegalName(): string
+    public function getLegalName()
     {
         return $this->legalName;
     }
@@ -289,7 +298,7 @@ class Company extends LegalEntity
     /**
      * @return string
      */
-    public function getPhoneNumber(): string
+    public function getPhoneNumber()
     {
         return $this->phoneNumber;
     }
@@ -305,7 +314,7 @@ class Company extends LegalEntity
     /**
      * @return string
      */
-    public function getFaxNumber(): string
+    public function getFaxNumber()
     {
         return $this->faxNumber;
     }
@@ -321,7 +330,7 @@ class Company extends LegalEntity
     /**
      * @return array
      */
-    public function getOtherPhoneNumbers(): array
+    public function getOtherPhoneNumbers()
     {
         return $this->otherPhoneNumbers;
     }
@@ -337,7 +346,7 @@ class Company extends LegalEntity
     /**
      * @return string
      */
-    public function getPostalCode(): string
+    public function getPostalCode()
     {
         return $this->postalCode;
     }
@@ -353,7 +362,7 @@ class Company extends LegalEntity
     /**
      * @return string
      */
-    public function getTaxationRegime(): string
+    public function getTaxationRegime()
     {
         return $this->taxationRegime;
     }
@@ -369,7 +378,7 @@ class Company extends LegalEntity
     /**
      * @return string
      */
-    public function getVatSystem(): string
+    public function getVatSystem()
     {
         return $this->vatSystem;
     }
@@ -385,7 +394,7 @@ class Company extends LegalEntity
     /**
      * @return string
      */
-    public function getTaxSystem(): string
+    public function getTaxSystem()
     {
         return $this->taxSystem;
     }
@@ -401,7 +410,7 @@ class Company extends LegalEntity
     /**
      * @return string
      */
-    public function getLegalForm(): string
+    public function getLegalForm()
     {
         return $this->legalForm;
     }
@@ -417,7 +426,7 @@ class Company extends LegalEntity
     /**
      * @return string
      */
-    public function getMainActivity(): string
+    public function getMainActivity()
     {
         return $this->mainActivity;
     }
@@ -433,7 +442,7 @@ class Company extends LegalEntity
     /**
      * @return string
      */
-    public function getSocialReason(): string
+    public function getSocialReason()
     {
         return $this->socialReason;
     }
@@ -449,7 +458,7 @@ class Company extends LegalEntity
     /**
      * @return string
      */
-    public function getCode(): string
+    public function getCode()
     {
         return $this->code;
     }
@@ -465,7 +474,7 @@ class Company extends LegalEntity
     /**
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus()
     {
         return $this->status;
     }
@@ -481,7 +490,7 @@ class Company extends LegalEntity
     /**
      * @return string
      */
-    public function getRelation(): string
+    public function getRelation()
     {
         return $this->relation;
     }
@@ -497,7 +506,7 @@ class Company extends LegalEntity
     /**
      * @return int
      */
-    public function getApeCode(): int
+    public function getApeCode()
     {
         return $this->apeCode;
     }
@@ -513,7 +522,7 @@ class Company extends LegalEntity
     /**
      * @return int
      */
-    public function getSiretNumber(): int
+    public function getSiretNumber()
     {
         return $this->siretNumber;
     }
@@ -529,7 +538,7 @@ class Company extends LegalEntity
     /**
      * @return string
      */
-    public function getIntraCommunityVAT(): string
+    public function getIntraCommunityVAT()
     {
         return $this->intraCommunityVAT;
     }
@@ -545,7 +554,7 @@ class Company extends LegalEntity
     /**
      * @return string
      */
-    public function getSirenNumber(): string
+    public function getSirenNumber()
     {
         return $this->sirenNumber;
     }
@@ -561,7 +570,7 @@ class Company extends LegalEntity
     /**
      * @return int
      */
-    public function getNbActions(): int
+    public function getNbActions()
     {
         return $this->nbActions;
     }
@@ -577,7 +586,7 @@ class Company extends LegalEntity
     /**
      * @return int
      */
-    public function getCapitalSocial(): int
+    public function getCapitalSocial()
     {
         return $this->capitalSocial;
     }
@@ -593,7 +602,7 @@ class Company extends LegalEntity
     /**
      * @return Address
      */
-    public function getCurrentAddress(): Address
+    public function getCurrentAddress()
     {
         return $this->currentAddress;
     }
@@ -721,7 +730,7 @@ class Company extends LegalEntity
     /**
      * @return Customer
      */
-    public function getCustomerAccount(): Customer
+    public function getCustomerAccount()
     {
         return $this->customerAccount;
     }
@@ -735,20 +744,37 @@ class Company extends LegalEntity
     }
 
     /**
-     * @return FormerAccountant
+     * @return Company
      */
-    public function getFormerAccountant(): FormerAccountant
+    public function getFormerAccountant()
     {
         return $this->formerAccountant;
     }
 
     /**
-     * @param FormerAccountant $formerAccountant
+     * @param Company $formerAccountant
      */
-    public function setFormerAccountant(FormerAccountant $formerAccountant)
+    public function setFormerAccountant(Company $formerAccountant)
     {
         $this->formerAccountant = $formerAccountant;
     }
+
+    /**
+     * @return EnterRelation
+     */
+    public function getEnterRelation()
+    {
+        return $this->enterRelation;
+    }
+
+    /**
+     * @param EnterRelation $enterRelation
+     */
+    public function setEnterRelation(EnterRelation $enterRelation)
+    {
+        $this->enterRelation = $enterRelation;
+    }
+
 
 
 }

@@ -45,6 +45,12 @@ class Employee extends Person
      */
     private $manager;
 
+    /**
+     * @var EnterRelation [] | ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\EnterRelation", mappedBy="contributor")
+     */
+    private $enterRelations;
 
     /**
      * Get id.
@@ -116,6 +122,32 @@ class Employee extends Person
         $this->manager = $manager;
     }
 
+    /**
+     * @return EnterRelation[]|ArrayCollection
+     */
+    public function getEnterRelations()
+    {
+        return $this->enterRelations;
+    }
 
+    /**
+     * @param $enterRelation
+     * @return $this
+     */
+    public function addEnterRelation($enterRelation)
+    {
+        $this->enterRelations->add($enterRelation);
+        return $this;
+    }
+
+    /**
+     * @param $enterRelation
+     * @return bool
+     */
+    public function removeEnterRelation($enterRelation)
+    {
+        return  $this->enterRelations->removeElement($enterRelation);
+
+    }
 
 }
