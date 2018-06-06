@@ -77,11 +77,11 @@
                                                 </a>
 
                                                 <ul class="dropdown-menu dropdown-menu-right">
-                                                    <li class=""><a href="#mission" data-toggle="tab" aria-expanded="false"><i class="icon-users2 position-left"></i>Mission</a></li>
-                                                    <li class=""><a href="#Exercices" data-toggle="tab" aria-expanded="false"><i class="icon-users2 position-left"></i>Exercices</a></li>
-                                                    <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false"><i class="icon-users2 position-left"></i>Informations Bancaires</a></li>                    
+                                                    <li class=""><a href="#mission" data-toggle="tab" aria-expanded="false">Mission</a></li>
+                                                    <li class=""><a href="#Exercices" data-toggle="tab" aria-expanded="false">Exercices</a></li>
+                                                    <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Informations Bancaires</a></li>                    
                                                     <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Rapprochement CFONB - Mots clés</a></li>
-                                                    <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Facturation</a></li>
+                                                    <li class=""><a href="#Facturation" data-toggle="tab" aria-expanded="false">Facturation</a></li>
                                                     <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Codes accés espaces clients</a></li>
 
                                                 </ul>
@@ -433,6 +433,11 @@
                                 <div class="tab-pane" id="Exercices">
 
                                     {% include 'default/client_excercice.html.twig' %}
+
+                                </div>
+                                <div class="tab-pane" id="Facturation">
+
+                                    {% include 'default/client_facturation.html.twig' %}
 
                                 </div>
 

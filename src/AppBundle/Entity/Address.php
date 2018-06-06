@@ -1,5 +1,4 @@
 <?php
-
 /*
  * This file is part of the Napier project.
  *
@@ -9,11 +8,8 @@
  * Developed by MIT <contact@mit-agency.com>
  *
  */
-
 namespace AppBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Address.
  *
@@ -30,35 +26,30 @@ class Address
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-
     /**
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
      */
     protected $description;
-
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=10, nullable=true)
      */
     protected $postalCode;
-
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=150, nullable=true)
      */
     protected $city;
-
     /**
      * @var \DateTime
      *
      * @ORM\Column(type="datetimetz", nullable=true)
      */
     protected $leftAt = null;
-
     /**
      * Get id.
      *
@@ -68,7 +59,6 @@ class Address
     {
         return $this->id;
     }
-
     /**
      * @return string
      */
@@ -76,7 +66,6 @@ class Address
     {
         return $this->description;
     }
-
     /**
      * @param string $description
      * @return Address
@@ -86,7 +75,6 @@ class Address
         $this->description = $description;
         return $this;
     }
-
     /**
      * @return string
      */
@@ -94,7 +82,6 @@ class Address
     {
         return $this->postalCode;
     }
-
     /**
      * @param string $postalCode
      * @return Address
@@ -104,7 +91,6 @@ class Address
         $this->postalCode = $postalCode;
         return $this;
     }
-
     /**
      * @return string
      */
@@ -112,7 +98,6 @@ class Address
     {
         return $this->city;
     }
-
     /**
      * @param string $city
      * @return Address
@@ -122,7 +107,6 @@ class Address
         $this->city = $city;
         return $this;
     }
-
     /**
      * @return \DateTime
      */
@@ -130,7 +114,6 @@ class Address
     {
         return $this->leftAt;
     }
-
     /**
      * @param \DateTime $leftAt
      */

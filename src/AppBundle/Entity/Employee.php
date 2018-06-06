@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="employee")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EmployeeRepository")
  */
-class Employee
+class Employee extends Person   
 {
     /**
      * @var int
@@ -20,12 +20,13 @@ class Employee
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var JobPosition
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\JobPosition", inversedBy="employees")
+     * @ORM\JoinColumn(name="job_position_id", referencedColumnName="id", nullable=true)
      */
     private $jobPosition;
 
@@ -44,6 +45,12 @@ class Employee
      */
     private $manager;
 
+    /**
+     * @var EnterRelation [] | ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\EnterRelation", mappedBy="contributor")
+     */
+    private $enterRelations;
 
     /**
      * Get id.
@@ -58,7 +65,7 @@ class Employee
     /**
      * @return JobPosition
      */
-    public function getJobPosition(): JobPosition
+    public function getJobPosition()
     {
         return $this->jobPosition;
     }
@@ -102,7 +109,7 @@ class Employee
     /**
      * @return Employee
      */
-    public function getManager(): Employee
+    public function getManager()
     {
         return $this->manager;
     }
@@ -115,6 +122,32 @@ class Employee
         $this->manager = $manager;
     }
 
+    /**
+     * @return EnterRelation[]|ArrayCollection
+     */
+    public function getEnterRelations()
+    {
+        return $this->enterRelations;
+    }
 
+    /**
+     * @param $enterRelation
+     * @return $this
+     */
+    public function addEnterRelation($enterRelation)
+    {
+        $this->enterRelations->add($enterRelation);
+        return $this;
+    }
+
+    /**
+     * @param $enterRelation
+     * @return bool
+     */
+    public function removeEnterRelation($enterRelation)
+    {
+        return  $this->enterRelations->removeElement($enterRelation);
+
+    }
 
 }

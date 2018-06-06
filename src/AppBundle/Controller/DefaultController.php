@@ -527,17 +527,17 @@ class DefaultController extends BaseController
         return $this->render('default/Planning.html.twig');
     }
 
-    /**
-     * @Route("/client/gestion-cabinet", name="gestion-cabinet")
-     *
-     * @param Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function Gestion_cabinet(Request $request)
-    {
-        return $this->render('default/gestion-cabinet.html.twig');
-    }
+    // /**
+    //  * @Route("/client/gestion-cabinet", name="gestion-cabinet")
+    //  *
+    //  * @param Request $request
+    //  *
+    //  * @return \Symfony\Component\HttpFoundation\Response
+    //  */
+    // public function Gestion_cabinet(Request $request)
+    // {
+    //     return $this->render('default/gestion-cabinet.html.twig');
+    // }
 
     /**
      * @Route("/client/comptabilite", name="comptabilite")
@@ -947,4 +947,103 @@ class DefaultController extends BaseController
     {
         return $this->render('default/Fcalculeis.html.twig');
     }
+
+    //kamal
+    /**
+     * @Route("/client/importcfonb", name="importcfonb")
+     * @param Request $request
+     *  * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function Importcfonb(Request $request)
+    {
+        return $this->render('default/importCFONB.html.twig');
+    }
+
+      //kamal
+    /**
+     * @Route("/client/suiviceb", name="suiviceb")
+     * @param Request $request
+     *  * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function Suiviceb(Request $request)
+    {
+        return $this->render('default/SuiviCEB.html.twig');
+    }
+
+    /**
+     * @Route("/client/cabinetcompte", name="cabinetcompte")
+     * @param Request $request
+     *  * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function Cabinetcompte(Request $request)
+    {
+        return $this->render('default/cabinet_compte.html.twig');
+    }
+
+    /**
+     * @Route("/client/cabinetjournaux", name="cabinetjournaux")
+     * @param Request $request
+     *  * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function Cabinetjournaux(Request $request)
+    {
+        return $this->render('default/cabinet_journaux.html.twig');
+    }
+
+    /**
+    * @Route("/conversationdetails", name="conversationdetails")
+    *
+    * @param Request $request
+    *
+    * @return \Symfony\Component\HttpFoundation\Response
+    */
+   public function detailconversation(Request $request)
+   {
+       return $this->render('default/conversation_details.html.twig');
+   }
+    /**
+    * @Route("/conversation", name="conversation")
+    *
+    * @param Request $request
+    *
+    * @return \Symfony\Component\HttpFoundation\Response
+    */
+    public function Conversation(Request $request)
+    {
+        return $this->render('default/conversation.html.twig');
+    }
+      /**
+    * @Route("/client/compteGeneraux", name="compteGeneraux")
+    *
+    * @param Request $request
+    *
+    * @return \Symfony\Component\HttpFoundation\Response
+    */
+    public function CompteGeneraux(Request $request)
+    {
+        return $this->render('default/Compte_generaux.html.twig');
+    }
+       /**
+    * @Route("/client/compteAuxiliaire", name="compteAuxiliaire")
+    *
+    * @param Request $request
+    *
+    * @return \Symfony\Component\HttpFoundation\Response
+    */
+    public function CompteAuxiliaire(Request $request)
+    {
+        return $this->render('default/compte_auxiliaire.html.twig');
+    }
+       /**
+    * @Route("/client/clientfacturation", name="clientfacturation")
+    *
+    * @param Request $request
+    *
+    * @return \Symfony\Component\HttpFoundation\Response
+    */
+    public function clientFacturation(Request $request)
+    {
+        return $this->render('default/client_facturation.html.twig');
+    }
 }
+

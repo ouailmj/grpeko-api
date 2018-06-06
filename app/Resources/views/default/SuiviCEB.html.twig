@@ -1,0 +1,256 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<div class="page-content">
+  {% block sidebar %}
+        {% include 'layout/_partials/sidebar.html.twig' %}
+    {% endblock %}
+    <div class="content-wrapper">
+        <div class="content">
+            <div class="content-group tab-content-bordered navbar-component">
+                    <div class="navbar navbar-inverse " style="background-color: #5d9d9c; border-color: #5d9d9c; position: relative; z-index: 30;">
+                        <div class="navbar-header">
+                            <ul class="nav navbar-nav pull-right visible-xs-block">
+                                <li><a data-toggle="collapse" data-target="#demo1" class="legitRipple"><i class="icon-tree5"></i></a></li>
+                            </ul>
+                        </div>
+
+                        <div class="navbar-collapse collapse" id="demo1">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="#tab-demo1" data-toggle="tab" class="legitRipple" aria-expanded="false">Liste</a></li>
+
+                                <li class=""><a href="#tab-demo2" data-toggle="tab" class="legitRipple" aria-expanded="true">Paramétrage des banques</a></li>
+                                <li class=""><a href="#tab-demo3" data-toggle="tab" class="legitRipple" aria-expanded="true">Paramétrages des statuts</a></li>
+                             </ul>
+                        </div>
+                    </div>
+
+                    <div class="tab-content">
+                        <div class="tab-pane fade has-padding active in" id="tab-demo1">
+                            <div class="datatable-scroll-wrap">
+                                <table class="table datatable-responsive table-bordered table-hover datatable-highlight dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+                                    <thead>
+                                    <tr role="row">
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Code</th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Entité Juridique</th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Statut</th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >EKO</th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Banque</th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >CEB</th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Envoyé client</th>
+                                        <th class="text-center sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Date</th>
+                                        <th class="text-center sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Relance Client</th>
+                                        <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1">Date</th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Retour client</th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Date</th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Envoyé banque</th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Date</th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >RIB Actif</th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Date</th>
+                                    </tr>
+                                  
+                                    </thead>
+                                    <tbody>
+                                     <tr role="row">
+                                        <td >Code</td>
+                                        <td >Entité Juridique</td>
+                                        <td >
+                                            <select data-placeholder="TDA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                                <option></option>
+                                                <optgroup label="Central Time Zone">
+                                                    <option value="AL">Alabama</option>
+                                                    <option value="AR">Arkansas</option>
+                                                    <option value="KY">Kentucky</option>
+                                                </optgroup>
+                                                <optgroup label="Eastern Time Zone">
+                                                    <option value="CT">Connecticut</option>
+                                                    <option value="DE">Delaware</option>
+                                                    <option value="WV">West Virginia</option>
+                                                </optgroup>
+                                            </select>
+                                        </td>
+                                        <td >
+                                            <select data-placeholder="TDA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                                <option></option>
+                                                <optgroup label="Central Time Zone">
+                                                    <option value="AL">Alabama</option>
+                                                    <option value="AR">Arkansas</option>
+                                                    <option value="KY">Kentucky</option>
+                                                </optgroup>
+                                                <optgroup label="Eastern Time Zone">
+                                                    <option value="CT">Connecticut</option>
+                                                    <option value="DE">Delaware</option>
+                                                    <option value="WV">West Virginia</option>
+                                                </optgroup>
+                                            </select>
+                                        </td>
+                                        <td >
+                                            <select data-placeholder="TDA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                                <option></option>
+                                                <optgroup label="Central Time Zone">
+                                                    <option value="AL">Alabama</option>
+                                                    <option value="AR">Arkansas</option>
+                                                    <option value="KY">Kentucky</option>
+                                                </optgroup>
+                                                <optgroup label="Eastern Time Zone">
+                                                    <option value="CT">Connecticut</option>
+                                                    <option value="DE">Delaware</option>
+                                                    <option value="WV">West Virginia</option>
+                                                </optgroup>
+                                            </select>
+                                        </td>
+                                        <td >
+                                            <select data-placeholder="TDA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                                <option></option>
+                                                <optgroup label="Central Time Zone">
+                                                    <option value="AL">Alabama</option>
+                                                    <option value="AR">Arkansas</option>
+                                                    <option value="KY">Kentucky</option>
+                                                </optgroup>
+                                                <optgroup label="Eastern Time Zone">
+                                                    <option value="CT">Connecticut</option>
+                                                    <option value="DE">Delaware</option>
+                                                    <option value="WV">West Virginia</option>
+                                                </optgroup>
+                                            </select>
+                                        </td>
+                                        <td >
+                                            <select data-placeholder="TDA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                                <option></option>
+                                                <optgroup label="Central Time Zone">
+                                                    <option value="AL">Alabama</option>
+                                                    <option value="AR">Arkansas</option>
+                                                    <option value="KY">Kentucky</option>
+                                                </optgroup>
+                                                <optgroup label="Eastern Time Zone">
+                                                    <option value="CT">Connecticut</option>
+                                                    <option value="DE">Delaware</option>
+                                                    <option value="WV">West Virginia</option>
+                                                </optgroup>
+                                            </select>
+                                        </td>
+                                        <td >Date</td>
+                                        <td >
+                                            <select data-placeholder="TDA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                                <option></option>
+                                                <optgroup label="Central Time Zone">
+                                                    <option value="AL">Alabama</option>
+                                                    <option value="AR">Arkansas</option>
+                                                    <option value="KY">Kentucky</option>
+                                                </optgroup>
+                                                <optgroup label="Eastern Time Zone">
+                                                    <option value="CT">Connecticut</option>
+                                                    <option value="DE">Delaware</option>
+                                                    <option value="WV">West Virginia</option>
+                                                </optgroup>
+                                            </select>
+                                        </td>
+                                        <td >Date</td>
+                                        <td >
+                                            <select data-placeholder="TDA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                                <option></option>
+                                                <optgroup label="Central Time Zone">
+                                                    <option value="AL">Alabama</option>
+                                                    <option value="AR">Arkansas</option>
+                                                    <option value="KY">Kentucky</option>
+                                                </optgroup>
+                                                <optgroup label="Eastern Time Zone">
+                                                    <option value="CT">Connecticut</option>
+                                                    <option value="DE">Delaware</option>
+                                                    <option value="WV">West Virginia</option>
+                                                </optgroup>
+                                            </select>
+                                        </td>
+                                        <td >Date</td>
+                                        <td >
+                                            <select data-placeholder="TDA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                                <option></option>
+                                                <optgroup label="Central Time Zone">
+                                                    <option value="AL">Alabama</option>
+                                                    <option value="AR">Arkansas</option>
+                                                    <option value="KY">Kentucky</option>
+                                                </optgroup>
+                                                <optgroup label="Eastern Time Zone">
+                                                    <option value="CT">Connecticut</option>
+                                                    <option value="DE">Delaware</option>
+                                                    <option value="WV">West Virginia</option>
+                                                </optgroup>
+                                            </select>
+                                        </td>
+                                        <td >Date</td>
+                                        <td >
+                                            <select data-placeholder="TDA" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                                <option></option>
+                                                <optgroup label="Central Time Zone">
+                                                    <option value="AL">Alabama</option>
+                                                    <option value="AR">Arkansas</option>
+                                                    <option value="KY">Kentucky</option>
+                                                </optgroup>
+                                                <optgroup label="Eastern Time Zone">
+                                                    <option value="CT">Connecticut</option>
+                                                    <option value="DE">Delaware</option>
+                                                    <option value="WV">West Virginia</option>
+                                                </optgroup>
+                                            </select>
+                                        </td>
+                                        <td >Date</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade has-padding" id="tab-demo2">
+                            <div class="datatable-scroll-wrap">
+                                <table class="table datatable-responsive table-hover datatable-highlight dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+                                    <thead>
+                                    <tr role="row">
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" ></th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Code Banque</th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Banque</th>
+                                    </tr>
+                                  
+                                    </thead>
+                                    <tbody>
+                                        <tr role="row">
+                                            <td ><i class="glyphicon glyphicon-trash text-danger"></i></td>
+                                            <td >1OO57</td>
+                                            <td >Société bordelaise de crédit industriel en commerc</td>
+                                        </tr>
+                                        <tr role="row">
+                                            <td ><i class="glyphicon glyphicon-trash text-danger"></i></td>
+                                            <td >1OO57</td>
+                                            <td >Société bordelaise de crédit industriel en commerc</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div> 
+                        </div>
+                        <div class="tab-pane fade has-padding" id="tab-demo3">
+                            <div class="datatable-scroll-wrap">
+                                <table class="table datatable-responsive table-hover datatable-highlight dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+                                    <thead>
+                                    <tr role="row">
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" ></th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Statuts "Envoyé au client"</th>
+                                    </tr>
+                                  
+                                    </thead>
+                                    <tbody>
+                                        <tr role="row">
+                                            <td ><i class="glyphicon glyphicon-trash text-danger"></i></td>
+                                            <td >A faire</td>
+                                        </tr>
+                                        <tr role="row">
+                                            <td ><i class="glyphicon glyphicon-trash text-danger"></i></td>
+                                            <td >BNONP</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

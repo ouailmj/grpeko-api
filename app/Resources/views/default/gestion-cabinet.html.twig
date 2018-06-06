@@ -37,7 +37,7 @@
                                         <li><a href="#tab-demo4" data-toggle="tab">Comptes</a></li>
                                         <li><a href="#tab-demo5" data-toggle="tab">Journaux</a></li>
                                         <li><a href="#tab-demo6" data-toggle="tab">Import CFNOB</a></li>
-                                        <li><a href="#tab-demo7" data-toggle="tab">Suivi CEB</a></li>
+                                        <li><a href="{{ path('suiviceb') }}">Suivi CEB</a></li>
                                         <li><a href="#tab-demo8" data-toggle="tab">Facturation</a></li>
                                         <li><a href="#tab-demo9" data-toggle="tab">Remise Facturation</a></li>
                                         <li><a href="#tab-demo10" data-toggle="tab">Chiffre d'affaires</a></li>
@@ -59,28 +59,34 @@
                                 <table class="table datatable-responsive table-bordered table-hover datatable-highlight dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
                                     <thead>
                                     <tr role="row">
-                                        <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="#: activate to sort column descending">#</th>
-                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Prénom: activate to sort column ascending">Prénom</th>
-                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Nom: activate to sort column ascending">Nom</th>
-                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Téléphone: activate to sort column ascending">Initiales</th>
-                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Téléphone: activate to sort column ascending">Login</th>
-                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">Email</th>
-                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Rôles: activate to sort column ascending">Type</th>
-                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Statut: activate to sort column ascending">Supérieur</th>
-                                        <th class="text-center sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Actions: activate to sort column ascending">Statut</th>
-                                        <th class="text-center sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Actions: activate to sort column ascending">Action</th>
+                                        <th >#</th>
+                                        <th >Prénom</th>
+                                        <th >Nom</th>
+                                        <th >Initiales</th>
+                                        <th >Login</th>
+                                        <th>Email</th>
+                                        <th >Type</th>
+                                        <th >Supérieur</th>
+                                        <th >Statut</th>
+                                        <th >Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    {% for item in employers %}
                                     <tr role="row" class="">
                                         <td class="sorting_1"><a href="">2</a></td>
-                                        <td>Giraud</td>
-                                        <td>Roger</td>
-                                        <td>MAI</td>
-                                        <td>groger</td>
-                                        <td>groger@groupe-eko.fr</td>
+                                        
+                                        <td>{{ item.lastname}}</td>
+                                        <td>{{ item.firstName}}</td>
+                                       
+                                        <td>{{ item.userAccount.initials }}</td>
+                                        
+                                        <td>{{ item.userAccount.username }}</td>
                                         <td>
-                                            Expert Comptable
+                                            {{ item.userAccount.email }}
+                                        </td>
+                                        <td>
+                                            BIE
                                         </td>
                                         <td>
                                             BIE
@@ -88,12 +94,13 @@
                                         <td><span class="label label-danger">Inactif</span></td>
                                         <td class="text-center">
                                             <div class="">
-                                                <a title="Afficher les détails" href="{{ path('view-collaborateur') }}" class="text-primary legitRipple"><i class="icon-eye position-left"></i></a>
-                                                <a title="Modifier" href="{{ path('edit-collaborateur') }}" class="text-primary legitRipple"><i class="icon-pen position-left"></i></a>
+                                                <a title="Afficher les détails" href="{{ path('show-collaborateur', {'id': item.id}) }}" class="text-primary legitRipple"><i class="icon-eye position-left"></i></a>
+                                                <a title="Modifier" href="{{ path('edit-collaborateur', {'id': item.id}) }}" class="text-primary legitRipple"><i class="icon-pen position-left"></i></a>
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr role="row" class="">
+                                    {% endfor %}
+                                    <!-- <tr role="row" class="">
                                         <td class="sorting_1"><a href="">3</a></td>
                                         <td>Augustina</td>
                                         <td>Hardy</td>
@@ -114,6 +121,27 @@
                                             </div>
                                         </td>
                                     </tr>
+                                    <tr role="row" class="">
+                                        <td class="sorting_1"><a href="">4</a></td>
+                                        <td>AMAMI</td>
+                                        <td>Nesrine</td>
+                                        <td>NAM</td>
+                                        <td>namami</td>
+                                        <td>Nesrine@groupe-eko.fr</td>
+                                        <td>
+                                            Collaborateur
+                                        </td>
+                                        <td>
+                                            SFO
+                                        </td>
+                                        <td><span class="label label-success">Actif</span></td>
+                                        <td class="text-center">
+                                            <div class="">
+                                                <a title="Afficher les détails" href="" class="text-primary legitRipple"><i class="icon-eye position-left"></i></a>
+                                                <a title="Modifier" href="" class="text-primary legitRipple"><i class="icon-pen position-left"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr> -->
                                     </tbody>
                                 </table>
                             </div>
@@ -190,11 +218,9 @@
 
                         </div>
                         <div class="tab-pane fade has-padding" id="tab-demo6">
-
+                            {% include 'default/importCFONB.html.twig' %}
                         </div>
-                        <div class="tab-pane fade has-padding" id="tab-demo7">
-
-                        </div>
+                        
                         <div class="tab-pane fade has-padding" id="tab-demo8">
                             {% include 'default/Facturation.html.twig' %}
                         </div>

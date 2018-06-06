@@ -73,6 +73,13 @@ class Mission
 
 
     /**
+     * @var TypeMission
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\TypeMission" ,inversedBy="missions" ,cascade={"persist"})
+     */
+    private $typeMission;
+
+
+    /**
      * Get id.
      *
      * @return int
@@ -205,7 +212,7 @@ class Mission
     /**
      * @return Company
      */
-    public function getCompany(): Company
+    public function getCompany()
     {
         return $this->company;
     }
@@ -244,6 +251,22 @@ class Mission
     {
         return $this->exercices->removeElement($exercice);
 
+    }
+
+    /**
+     * @return TypeMission
+     */
+    public function getTypeMission()
+    {
+        return $this->typeMission;
+    }
+
+    /**
+     * @param TypeMission $typeMission
+     */
+    public function setTypeMission(TypeMission $typeMission)
+    {
+        $this->typeMission = $typeMission;
     }
 
 

@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+    
+{% block body_attributes %}class="login-container login-cover  pace-done"{% endblock %}
+
+{% block content %}
+
+<div class="page-container" style="min-height:637px">
+
+    <!-- Page content -->
+    <div class="page-content">
+
+        <!-- Main content -->
+        <div class="content-wrapper">
+
+            <!-- Content area -->
+            <div class="content pb-20">
+
+                <!-- Form with validation -->
+                <form action="index.html" class="form-validate" novalidate="novalidate">
+                    <div class="panel panel-body login-form">
+                        <div class="text-center">
+                            <div class="logo"></div>
+                            <h5 class="content-group">Espace de connexion <small class="display-block">Remplissez le formulaire ci-dessous</small></h5>
+                        </div>
+
+                        <div class="form-group has-feedback has-feedback-left">
+                            <input type="text" class="form-control" placeholder="Username" name="username" required="required" aria-required="true">
+                            <div class="form-control-feedback">
+                                <i class="icon-user text-muted"></i>
+                            </div>
+                        </div>
+
+                        <div class="form-group has-feedback has-feedback-left">
+                            <input type="password" class="form-control" placeholder="Password" name="password" required="required" aria-required="true">
+                            <div class="form-control-feedback">
+                                <i class="icon-lock2 text-muted"></i>
+                            </div>
+                        </div>
+
+                        <div class="form-group login-options">
+                            <div class="row">
+                                <div class="form-group login-options">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <label class="checkbox-inline">
+                                                <div class="checker" id="uniform-remember_me"><span class="checked"><input type="checkbox" id="remember_me" name="_remember_me" value="on" class="styled" checked="checked"></span></div>
+                                                Se souvenir de moi
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                              
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn bg-blue btn-block">Connexion  <i class="icon-arrow-right14 position-right"></i></button>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-12"><a href="/resetting/request">Mot de passe oublié ?</a></div>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                </form>
+                <!-- /form with validation -->
+
+            </div>
+            <!-- /content area -->
+
+        </div>
+        <!-- /main content -->
+
+    </div>
+    <!-- /page content -->
+
+</div>
+{% endblock %}

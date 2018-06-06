@@ -65,7 +65,7 @@ class User extends BaseUser
     /**
      * @var Person
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Person" ,inversedBy="userAccount" ,cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Person" ,mappedBy="userAccount" ,cascade={"persist", "remove"})
      */
     protected $person;
 
@@ -208,7 +208,7 @@ class User extends BaseUser
     /**
      * @return Person
      */
-    public function getPerson(): Person
+    public function getPerson()
     {
         return $this->person;
     }
