@@ -70,4 +70,35 @@ class JobPosition
     {
         return $this->name;
     }
+
+    /**
+     * @return Employee[]|ArrayCollection
+     */
+    public function getEmployees()
+    {
+        return $this->employees;
+    }
+
+    /**
+     * @param $employee
+     * @return $this
+     */
+    public function addEmployee($employee)
+    {
+        $this->employees->add($employee);
+        return $this;
+
+    }
+
+    /**
+     * @param $employee
+     * @return bool
+     */
+    public function removeEmployee($employee)
+    {
+        return  $this->employees->removeElement($employee);
+
+    }
+
+
 }

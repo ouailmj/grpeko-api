@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
+
+
+
 <div class="page-content">
         {% block sidebar %}
             {% include 'layout/_partials/sidebar.html.twig' %}
@@ -38,83 +41,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {#{% for item in users %}#}
-                        <tr>
-                            <td class="text-center">
-                                <div class="">
-                                    <a title="Modifier" href="{{ path('client_access1') }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
-                                </div>
-                            </td>
-                            <td>EC0020</td>
-                            <td>ELMO</td>
-                            <td>En cours</td>
-                            <td>EDA</td>
-                            <td>SARL</td>
-                            <td>12/12/2016</td>
-                            <td>
-                                12/12/2016
-                            </td>
-                            <td>
-                                Impot sur les sociétés
-                            </td>
-                            <td>
-                                TVA réel simplifié
-                            </td>
-                            <td>
-                                Conseil en informatique
-                            </td>
-                        </tr>
-                    <tr>
-                        <td class="text-center">
-                            <div class="">
-                                <a title="Modifier" href="{{ path('client_access1') }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
-                            </div>
-                        </td>
-                        <td>EC0020</td>
-                        <td>WEBCAM-PROFS.FR</td>
-                        <td>En cours</td>
-                        <td>EDA</td>
-                        <td>SARL</td>
-                        <td>12/12/2016</td>
-                        <td>
-                            12/12/2016
-                        </td>
-                        <td>
-                            Impot sur les sociétés
-                        </td>
-                        <td>
-                            TVA réel simplifié
-                        </td>
-                        <td>
-                            Conseil en informatique
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-center">
-                            <div class="">
-                                <a title="Modifier" href="{{ path('client_access1') }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
-                            </div>
-                        </td>
-                        <td>EC0020</td>
-                        <td>EMCPI</td>
-                        <td>En cours</td>
-                        <td>EDA</td>
-                        <td>SARL</td>
-                        <td>12/12/2016</td>
-                        <td>
-                            12/12/2016
-                        </td>
-                        <td>
-                            Impot sur les sociétés
-                        </td>
-                        <td>
-                            TVA réel simplifié
-                        </td>
-                        <td>
-                            Conseil en informatique
-                        </td>
-                    </tr>
-                    {#{% endfor %}#}
+
                     </tbody>
                 </table>
                 </div>
@@ -122,6 +49,7 @@
         </div>
     </div>
 </div>
+
 
 {% endblock %}
 

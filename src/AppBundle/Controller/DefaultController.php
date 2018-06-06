@@ -409,6 +409,15 @@ class DefaultController extends BaseController
     }
 
     /**
+     * @Route("/", name="homepage")
+     */
+    public function homeAction(Request $request)
+    {
+        return $this->render('base.html.twig');
+        // return $this->render('website/index.html.twig');
+    }
+
+    /**
      * @Route("/client/index", name="client_index")
      *
      * @param Request $request

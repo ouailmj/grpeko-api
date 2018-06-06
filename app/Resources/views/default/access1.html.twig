@@ -7,58 +7,11 @@
     {% endblock %}
     <div class="content-wrapper">
         <div class="content">
-            <!-- <div class="content-group border-top-lg border-top-primary">
-                <div class="page-header page-header-default" style="border-left: 1px solid #ddd; border-right: 1px solid #ddd;">
-                    <div class="page-header-content">
-                        <div class="page-title">
-                            <h5>
-                            <span class="text-semibold">EC0025</span>
-                            </h5>
-                            <a class="heading-elements-toggle"><i class="icon-more"></i></a>
-                        </div>
-
-                        <div class="heading-elements col-md-10 col-md-offset-1">
-                                <div class="col-md-1">
-                                    <div class="form-group ">
-                                        <label class="control-label col-lg-2">Entité Juridique</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-7">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" >
-                                    </div>
-                                </div>
-                                <div class="col-md-1">
-                                    <div class="form-group">
-                                        <label class="control-label col-lg-2">Status</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group ">
-                                        <select data-placeholder="En cours" class="select select2-hidden-accessible" class="col-md-6" tabindex="-1" aria-hidden="true">
-                                                <option></option>
-                                                <optgroup label="Central Time Zone">
-                                                    <option value="AL">Alabama</option>
-                                                    <option value="AR">Arkansas</option>
-                                                    <option value="KY">Kentucky</option>
-                                                </optgroup>
-                                                <optgroup label="Eastern Time Zone">
-                                                    <option value="CT">Connecticut</option>
-                                                    <option value="DE">Delaware</option>
-                                                    <option value="WV">West Virginia</option>
-                                                </optgroup>
-                                        </select>
-                                    </div>
-                                </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
             <div class="panel panel-flat">
                 <div class="tabbale">
                         <ul class="nav nav-tabs bg-teal-400 nav-justified">
-                            <li id="clikfirsttab" class="active"><a href="#firsttab" data-toggle="tab" aria-expanded="true">Prise de connaissance</a></li>
-                            <li class=""><a href="#secondtab" data-toggle="tab" aria-expanded="false">Fiche Client</a></li>
+                            <li id="clikfirsttab" class="active"><a href="#firsttab" data-toggle="tab" aria-expanded="true">Fiche Client</a></li>
+                            <li class=""><a href="#secondtab" data-toggle="tab" aria-expanded="false">Prise de connaissance</a></li>
                         </ul>
                     <div class="tab-content ">
                         <div class="tab-pane active" id="firsttab">
@@ -79,7 +32,7 @@
                                                 <ul class="dropdown-menu dropdown-menu-right">
                                                     <li class=""><a href="#mission" data-toggle="tab" aria-expanded="false">Mission</a></li>
                                                     <li class=""><a href="#Exercices" data-toggle="tab" aria-expanded="false">Exercices</a></li>
-                                                    <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Informations Bancaires</a></li>                    
+                                                    <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Informations Bancaires</a></li>
                                                     <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Rapprochement CFONB - Mots clés</a></li>
                                                     <li class=""><a href="#Facturation" data-toggle="tab" aria-expanded="false">Facturation</a></li>
                                                     <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Codes accés espaces clients</a></li>
@@ -97,227 +50,41 @@
                                         <form class="form-horizontal" action="/action_page.php">
                                             <fieldset class="content-group">
                                                 <legend class="text-bold">Informations générales</legend>
-                                                <div class="form-group">
-                                                    <label class="control-label col-sm-2" for="email">&nbsp;&nbsp;Raison Social:</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control colorback" id="email" placeholder="Entrer Raison Social" name="email">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="control-label col-sm-2" for="pwd">&nbsp;&nbsp;Forme Juridique:</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control" id="pwd" placeholder="Entrer Forme Juridique" name="pwd">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="control-label col-sm-2" for="pwd">&nbsp;&nbsp;Régime d'imposition:</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control"  placeholder="Entrer Forme Juridique" name="pwd">
-                                                    </div>
-                                                </div>
 
-                                                <div class="form-group">
-                                                    <label class="control-label col-sm-2" for="pwd">&nbsp;&nbsp;Régime de TVA:</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control" id="pwd" placeholder="Entrer Forme Juridique" name="pwd">
-                                                    </div>
-                                                </div>
+                                                    {{form_row(form1.socialReason)}}
+                                                    {{form_row(form1.legalForm)}}
+                                                    {{form_row(form1.taxationRegime)}}
+                                                    {{form_row(form1.vatSystem)}}
 
+                                                <b style="color: red;">* Ces Informations sont modifiables dans l'onglet Excercices</b>
+                                                <br><br>
 
-                                            <b style="color: red;">* Ces Informations sont modifiables dans l'onglet Excercices</b>
+                                                    {{form_row(form1.currentAddress.description)}}
+                                                    {{form_row(form1.currentAddress.postalCode)}}
+                                                    {{form_row(form1.currentAddress.city)}}
 
-                                            <br><br>
-
-                                                <div class="form-group">
-                                                    <label class="control-label col-sm-2" for="pwd">&nbsp;&nbsp;Adresse</label>
-                                                    <div class="col-sm-10">
-                                                        <textarea class="form-control colorback" rows="4" id="adresse" placeholder="Frankfort is the capital city of the Commonwealth of Kentucky and the seat of Franklin County. It is a home rule-class city in Kentucky; the "></textarea>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="control-label col-sm-2" for="pwd">&nbsp;&nbsp;CP:</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control colorback" id="pwd" placeholder="12232112" name="pwd">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="control-label col-sm-2" for="pwd">&nbsp;&nbsp;Ville:</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
-                                                    </div>
-                                                </div>
                                             </fieldset>
 
 
-                                            <div class="form-group">
-                                                <div class=" col-sm-12">
-
-                                                    <fieldset class="scheduler-border">
-
-                                                        <legend class="scheduler-border" style="text-transform: capitalize">Anciennes Adresse</legend>
-
-                                                        <table class="table datatable-responsive table-bordered table-hover datatable-highlight table-striped">
-                                                            <thead>
-                                                            <tr>
-                                                                <th class="text-center">Date de changement</th>
-                                                                <th>Ancienne adresse</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                            <tr>
-                                                                <td>wvwxv</td>
-                                                                <td>xvwxvw</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>wvwxv</td>
-                                                                <td>xvwxvw</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>wvwxv</td>
-                                                                <td>xvwxvw</td>
-                                                            </tr>
-                                                            </tbody>
-                                                        </table>
-
-                                                    </fieldset>
-
-                                                </div>
-                                            </div>
-
-
-                                            <div class="form-group">
-                                                <div class=" col-sm-12">
-
                                                     <fieldset class="scheduler-border">
                                                         <legend class="scheduler-border" style="text-transform: capitalize">Adresse du SIE</legend>
-
-                                                        <div class="form-group">
-                                                            <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;Adresse</label>
-                                                            <div class="col-sm-9">
-                                                                <textarea class="form-control colorback" rows="4" id="adresse" placeholder="Frankfort is the capital city of the Commonwealth"></textarea>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="form-group">
-                                                            <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;CP</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="form-group">
-                                                            <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;Ville</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="form-group">
-                                                            <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;Email</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="email" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
-                                                            </div>
-                                                        </div>
-
+                                                        {{form_row(form1.siegeAddress.description)}}
+                                                        {{form_row(form1.siegeAddress.postalCode)}}
+                                                        {{form_row(form1.siegeAddress.city)}}
+                                                        {{form_row(form1.siegeAddress.email)}}
                                                     </fieldset>
 
-                                                </div>
-                                            </div>
-
-
-                                            <div class="form-group">
-                                                <div class=" col-sm-12">
 
                                                     <fieldset class="scheduler-border">
                                                         <legend class="scheduler-border" style="text-transform: capitalize">aaaaa</legend>
-
-                                                        <div class="form-group">
-
-                                                            <div class="col-sm-12">
-                                                                <div class="dropdown">
-                                                                    <label class="control-label col-sm-3" for="pwd">Code APE:</label>
-
-                                                                    <div class="col-sm-9">
-                                                                        <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Tutorials
-                                                                            <span class="caret"></span></button>
-                                                                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                                                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
-                                                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
-                                                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
-                                                                            <li role="presentation" class="divider"></li>
-                                                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-
-
-                                                        <div class="form-group">
-
-                                                            <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;Activité principale:</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="form-group">
-
-
-                                                            <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;N° SIRET:</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="form-group">
-
-                                                            <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;N° SIREN:</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="form-group">
-
-                                                            <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;N° TVA Intra Communautaire</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="form-group">
-
-
-                                                            <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;Nombre d'actions ou parts socials</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="form-group">
-
-
-                                                            <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;Capital social</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
-                                                            </div>
-
-                                                        </div>
-
+                                                            {{form_row(form1.apeCode)}}
+                                                            {{form_row(form1.mainActivity)}}
+                                                            {{form_row(form1.siretNumber)}}
+                                                            {{form_row(form1.sirenNumber)}}
+                                                            {{form_row(form1.intraCommunityVAT)}}
+                                                            {{form_row(form1.nbActions)}}
+                                                            {{form_row(form1.capitalSocial)}}
                                                     </fieldset>
-
-                                                </div>
-                                            </div>
-
 
                                             <div class="form-group">
                                                 <div class=" col-sm-12">
@@ -410,6 +177,24 @@
                                                 </div>
                                             </div>
 
+
+                                            <div class="form-group">
+                                                <div class=" col-sm-12">
+
+                                                    <fieldset class="scheduler-border">
+
+                                                        <legend class="scheduler-border" style="text-transform: capitalize">Anciennes Adresse</legend>
+
+                                                        {{form_row(form1.oldAddresses.description)}}
+                                                        {{form_row(form1.oldAddresses.postalCode)}}
+                                                        {{form_row(form1.oldAddresses.city)}}
+                                                        {{form_row(form1.oldAddresses.email)}}
+
+                                                    </fieldset>
+
+                                                </div>
+                                            </div>
+
                                         </form>
                                     </div>
                                 </div>
@@ -448,11 +233,25 @@
                         <div class="tab-pane" id="secondtab">
                             <div class="">
                                 <ul class="nav nav-tabs nav-tabs-highlight">
-                                    <li class="active"><a href="#Contacts" data-toggle="tab" aria-expanded="true"><i class="icon-users position-left"></i>Entrée en relation</a></li>
-                                    <li class=""><a href="#Dossiers" data-toggle="tab" aria-expanded="false"><i class="icon-folder position-left"></i>Devis Client</a></li>
+                                    <li class="active"><a href="#relation" data-toggle="tab" aria-expanded="true"><i class="icon-users position-left"></i>Entrée en relation</a></li>
+                                    <li class=""><a href="#devisclient" data-toggle="tab" aria-expanded="false"><i class="icon-folder position-left"></i>Devis Client</a></li>
                                 </ul>
                             </div>
                             <div class="tab-content">
+
+
+                                <div class="tab-pane active" id="relation">
+
+                                    {% include 'default/client_entre_relation.html.twig' %}
+
+                                </div>
+
+                                <div class="tab-pane" id="devisclient">
+
+                                    {% include 'default/Devis_clients.html.twig' %}
+
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -487,6 +286,4 @@
     border-bottom-color: #4caf50 ;
   }
 </style>
-
-
 {% endblock %}

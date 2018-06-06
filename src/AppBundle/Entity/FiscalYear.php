@@ -53,11 +53,54 @@ class FiscalYear
     protected $status;
 
     /**
-     * @var string
+     * @var integer
      *
      * @ORM\Column(type="integer")
      */
     protected $year;
+
+    /**
+     * Regime d'imposition.
+     *
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $taxationRegime;
+
+    /**
+     * Regime TVA.
+     *
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $vatSystem;
+
+
+    /**
+     * Regime Fiscal
+     *
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     */
+    protected $taxSystem;
+
+    /**
+     * @var Company
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company" ,inversedBy="fiscalYears" ,cascade={"persist", "remove"}))
+     */
+    protected $company;
+
+    /**
+     * @var Assignment
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Assignment" ,inversedBy="fiscalYear" ,cascade={"persist", "remove"}))
+     */
+    protected $assignment;
 
     /**
      * Get id.
@@ -140,4 +183,103 @@ class FiscalYear
     {
         return $this->status;
     }
+
+    /**
+     * @return string
+     */
+    public function getTaxationRegime(): string
+    {
+        return $this->taxationRegime;
+    }
+
+    /**
+     * @param string $taxationRegime
+     */
+    public function setTaxationRegime(string $taxationRegime)
+    {
+        $this->taxationRegime = $taxationRegime;
+    }
+
+    /**
+     * @return string
+     */
+    public function getVatSystem(): string
+    {
+        return $this->vatSystem;
+    }
+
+    /**
+     * @param string $vatSystem
+     */
+    public function setVatSystem(string $vatSystem)
+    {
+        $this->vatSystem = $vatSystem;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTaxSystem(): string
+    {
+        return $this->taxSystem;
+    }
+
+    /**
+     * @param string $taxSystem
+     */
+    public function setTaxSystem(string $taxSystem)
+    {
+        $this->taxSystem = $taxSystem;
+    }
+
+    /**
+     * @return int
+     */
+    public function getYear(): int
+    {
+        return $this->year;
+    }
+
+    /**
+     * @param int $year
+     */
+    public function setYear(int $year)
+    {
+        $this->year = $year;
+    }
+
+    /**
+     * @return Company
+     */
+    public function getCompany(): Company
+    {
+        return $this->company;
+    }
+
+    /**
+     * @param Company $company
+     */
+    public function setCompany(Company $company)
+    {
+        $this->company = $company;
+    }
+
+    /**
+     * @return Assignment
+     */
+    public function getAssignment(): Assignment
+    {
+        return $this->assignment;
+    }
+
+    /**
+     * @param Assignment $assignment
+     */
+    public function setAssignment(Assignment $assignment)
+    {
+        $this->assignment = $assignment;
+    }
+
+
+
 }
