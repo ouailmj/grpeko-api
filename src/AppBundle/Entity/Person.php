@@ -38,7 +38,7 @@ class Person extends BasePerson
     /**
      * @var int
      *
-     * @ORM\Column(type="integer")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -112,7 +112,7 @@ class Person extends BasePerson
     /**
      * @var User
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User" ,mappedBy="person" ,cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User" ,inversedBy="person" ,cascade={"persist", "remove"})
      *
      */
     protected $userAccount;
@@ -120,7 +120,7 @@ class Person extends BasePerson
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }
@@ -128,7 +128,7 @@ class Person extends BasePerson
     /**
      * @return string
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->name;
     }
@@ -144,7 +144,7 @@ class Person extends BasePerson
     /**
      * @return string
      */
-    public function getFirstName(): string
+    public function getFirstName()
     {
         return $this->firstName;
     }
@@ -160,7 +160,7 @@ class Person extends BasePerson
     /**
      * @return string
      */
-    public function getLastName(): string
+    public function getLastName()
     {
         return $this->lastName;
     }
@@ -176,7 +176,7 @@ class Person extends BasePerson
     /**
      * @return \DateTime
      */
-    public function getBirthDate(): \DateTime
+    public function getBirthDate()
     {
         return $this->birthDate;
     }
@@ -192,7 +192,7 @@ class Person extends BasePerson
     /**
      * @return \DateTime
      */
-    public function getDeathDate(): \DateTime
+    public function getDeathDate()
     {
         return $this->deathDate;
     }
@@ -208,7 +208,7 @@ class Person extends BasePerson
     /**
      * @return string
      */
-    public function getPhoneNumber(): string
+    public function getPhoneNumber()
     {
         return $this->phoneNumber;
     }
@@ -224,7 +224,7 @@ class Person extends BasePerson
     /**
      * @return string
      */
-    public function getFaxNumber(): string
+    public function getFaxNumber()
     {
         return $this->faxNumber;
     }
@@ -240,7 +240,7 @@ class Person extends BasePerson
     /**
      * @return string
      */
-    public function getPostalCode(): string
+    public function getPostalCode()
     {
         return $this->postalCode;
     }
@@ -256,7 +256,7 @@ class Person extends BasePerson
     /**
      * @return Address
      */
-    public function getCurrentAddress(): Address
+    public function getCurrentAddress()
     {
         return $this->currentAddress;
     }
@@ -272,7 +272,7 @@ class Person extends BasePerson
     /**
      * @return User
      */
-    public function getUserAccount(): User
+    public function getUserAccount()
     {
         return $this->userAccount;
     }
