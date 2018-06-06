@@ -19,7 +19,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\VarDumper\VarDumper;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
-class AccountEmployer extends AbstractType
+class CompanyType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -27,38 +27,53 @@ class AccountEmployer extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('firstName', TextType::class, array(
-            'label' => 'Nom'
+        ->add('socialReason', TextType::class, array(
+            'label' => 'Raison sociale'
         ))
-        ->add('lastName', TextType::class, array(
-            'label' => 'Prénom'
+        ->add('legalForm', TextType::class, array(
+            'label' => 'Form juridique'
         ))
 
 
-        ->add('phoneNumber', TextType::class, array(
+        ->add('apeCode', TextType::class, array(
             'required' => false,
-            'label' => 'Téléphone'
+            'label' => 'Code APE'
         ))
 
-        ->add('manager', EntityType::class, array(
+        ->add('mainActivity', TextType::class, array(
             'required' => false,
-            'label' => 'Sipérieur',
-            'class' => 'AppBundle\Entity\Employee',
-            'choice_label' => function ($manager) {
-                return $manager->getUserAccount()->getInitials();
-            },
-            'choices_as_values' => true,
-            'required' => true,
+            'label' => 'Activité principale'
         ))
 
-        ->add('jobPosition', JobpositionType::class)
-
-        ->add('userAccount', UserType::class)
-
-        ->add('status', CheckboxType::class, array(
-            'label' => 'Activer ?',
-            'required'  => false
+        ->add('siretNumber', TextType::class, array(
+            'required' => false,
+            'label' => 'N SIRT'
         ))
+
+        ->add('sirenNumber', TextType::class, array(
+            'required' => false,
+            'label' => 'N SIREN'
+        ))
+
+        ->add('intraCommunityVAT', TextType::class, array(
+            'required' => false,
+            'label' => 'TVA'
+        ))
+
+        ->add('nbActions', TextType::class, array(
+            'required' => false,
+            'label' => 'Nombre action sociale'
+        ))
+
+        ->add('capitalSocial', TextType::class, array(
+            'required' => false,
+            'label' => 'Capitale social'
+        ))
+
+        ->add('Save', SubmitType::class,array(
+            'attr' => array(
+                'class' =>'btn btn-primary',
+         )))
         ;
     }
     
@@ -68,7 +83,7 @@ class AccountEmployer extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class'    => 'AppBundle\Entity\Employee',
+            'data_class'    => 'AppBundle\Entity\Company',
             'forEdit'       => false,
             'advisories'    => array()
         ));
@@ -79,7 +94,7 @@ class AccountEmployer extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_employe';
+        return 'appbundle_company';
     }
 
 

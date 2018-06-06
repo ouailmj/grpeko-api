@@ -19,7 +19,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\VarDumper\VarDumper;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
-class AccountEmployer extends AbstractType
+class CompanyType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -27,38 +27,20 @@ class AccountEmployer extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('firstName', TextType::class, array(
-            'label' => 'Nom'
+        ->add('postalCode', TextType::class, array(
+            'label' => 'Code postal'
         ))
-        ->add('lastName', TextType::class, array(
-            'label' => 'Prénom'
+        ->add('city', TextType::class, array(
+            'label' => 'ville'
         ))
 
 
-        ->add('phoneNumber', TextType::class, array(
+        ->add('description', TextType::class, array(
             'required' => false,
-            'label' => 'Téléphone'
+            'label' => 'Adresse'
         ))
 
-        ->add('manager', EntityType::class, array(
-            'required' => false,
-            'label' => 'Sipérieur',
-            'class' => 'AppBundle\Entity\Employee',
-            'choice_label' => function ($manager) {
-                return $manager->getUserAccount()->getInitials();
-            },
-            'choices_as_values' => true,
-            'required' => true,
-        ))
-
-        ->add('jobPosition', JobpositionType::class)
-
-        ->add('userAccount', UserType::class)
-
-        ->add('status', CheckboxType::class, array(
-            'label' => 'Activer ?',
-            'required'  => false
-        ))
+       
         ;
     }
     
@@ -68,7 +50,7 @@ class AccountEmployer extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class'    => 'AppBundle\Entity\Employee',
+            'data_class'    => 'AppBundle\Entity\Adress',
             'forEdit'       => false,
             'advisories'    => array()
         ));
@@ -79,7 +61,7 @@ class AccountEmployer extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_employe';
+        return 'appbundle_adress';
     }
 
 

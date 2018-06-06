@@ -25,7 +25,7 @@ class Employee extends Person
     /**
      * @var JobPosition
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\JobPosition", inversedBy="employees")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\JobPosition", inversedBy="employees",cascade={"persist"})
      * @ORM\JoinColumn(name="job_position_id", referencedColumnName="id", nullable=true)
      */
     private $jobPosition;
@@ -45,6 +45,11 @@ class Employee extends Person
      */
     private $manager;
 
+    /**
+     * @var status
+     * @ORM\Column(name="status", type="boolean", nullable=true, options={"default":true})
+     */
+    protected $status;
 
     /**
      * Get id.
@@ -116,6 +121,20 @@ class Employee extends Person
         $this->manager = $manager;
     }
 
+ /**
+     * @return bool
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
 
+    /**
+     * @param bool $Status
+     */
+    public function setStatus(bool $status)
+    {
+        $this->status = $status;
+    }
 
 }

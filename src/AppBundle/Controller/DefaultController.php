@@ -398,15 +398,14 @@ class DefaultController extends BaseController
         return $this->render('default/access1.html.twig');
     }
 
-    /**
-     * @Route("/", name="__homepage")
-     */
+ /**
+    * @Route("/", name="homepage")
+    */
     public function indexAction(Request $request)
     {
         return $this->render('base.html.twig');
         // return $this->render('website/index.html.twig');
     }
-
     /**
      * @Route("/client/index", name="client_index")
      *

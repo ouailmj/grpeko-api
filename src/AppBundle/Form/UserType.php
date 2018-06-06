@@ -43,9 +43,12 @@ class UserType extends AbstractType
             'required'  => false
         ))
 
-        ->add('password', TextType::class, array(
-            'label' => 'Password',
-            'required'  => false
+        ->add('password', RepeatedType::class, array(
+            'type' => PasswordType::class,
+            'invalid_message' => 'The password fields must match.',
+            'options' => array('attr' => array('class' => 'password-field')),
+            'first_options'  => array('label' => 'Mot de passe'),
+            'second_options' => array('label' => 'Confirmer le mot de passe'),
         ))
         ;
     }

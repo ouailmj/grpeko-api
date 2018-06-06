@@ -3,7 +3,7 @@
 namespace AppBundle\Form;
 
 use AppBundle\Entity\Role;
-use AppBundle\Entity\User;
+use AppBundle\Entity\JobPostion;
 use AppBundle\Repository\RoleRepository;
 use AppBundle\Repository\UserRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -19,7 +19,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\VarDumper\VarDumper;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
-class AccountEmployer extends AbstractType
+class JobpositionType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -27,37 +27,8 @@ class AccountEmployer extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('firstName', TextType::class, array(
-            'label' => 'Nom'
-        ))
-        ->add('lastName', TextType::class, array(
-            'label' => 'Prénom'
-        ))
-
-
-        ->add('phoneNumber', TextType::class, array(
-            'required' => false,
-            'label' => 'Téléphone'
-        ))
-
-        ->add('manager', EntityType::class, array(
-            'required' => false,
-            'label' => 'Sipérieur',
-            'class' => 'AppBundle\Entity\Employee',
-            'choice_label' => function ($manager) {
-                return $manager->getUserAccount()->getInitials();
-            },
-            'choices_as_values' => true,
-            'required' => true,
-        ))
-
-        ->add('jobPosition', JobpositionType::class)
-
-        ->add('userAccount', UserType::class)
-
-        ->add('status', CheckboxType::class, array(
-            'label' => 'Activer ?',
-            'required'  => false
+        ->add('name', TextType::class, array(
+            'label' => 'Type'
         ))
         ;
     }
@@ -68,7 +39,7 @@ class AccountEmployer extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class'    => 'AppBundle\Entity\Employee',
+            'data_class'    => 'AppBundle\Entity\JobPosition',
             'forEdit'       => false,
             'advisories'    => array()
         ));
@@ -79,7 +50,7 @@ class AccountEmployer extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_employe';
+        return 'appbundle_jobposition';
     }
 
 

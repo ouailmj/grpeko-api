@@ -30,15 +30,7 @@ content: none !important;
                         </div>
                     </div>
                 <div class="panel-body">
-                    <div class="row">
-                        <div class="col-sm-6 content-group">
-                            <img src="" class="content-group mt-10" alt="" style="width: 120px;">
-                            <ul class="list-condensed list-unstyled">
-                                <li>16 783 Alves Virginie</li>
-                                <li>+8692322616518</li>
-                            </ul>
-                        </div>
-                    </div>
+                    <legend class="text-semibold"><i class="icon-address-book"></i> Informations générale</legend>
                     <div class="row">
                             <div class="col-md-12 col-lg-12">
                                 <table class="table">
@@ -90,6 +82,18 @@ content: none !important;
                             </div>
                         </div>
                        
+                </div>
+                <div class="panel-footer"><a class="heading-elements-toggle"><i class="icon-more"></i></a>
+                    <div class="heading-elements pull-right">
+                        <div class="col-md-12">
+                            <div class="text-right">
+                                <div class="btn-group">
+                                    <a class="btn btn-primary legitRipple" href="{{ path('edit-collaborateur', {'id': employer.id}) }}">Modifier<i class="icon-arrow-right14 position-right"></i></a>
+                                    <button type="button" class="btn btn-danger legitRipple">Supprimer <i class="icon-trash-alt position-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
