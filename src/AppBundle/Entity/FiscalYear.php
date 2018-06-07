@@ -102,6 +102,13 @@ class FiscalYear
      */
     protected $assignment;
 
+
+    /**
+     * @var Mission
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Mission", inversedBy="exercices")
+     */
+    protected $mission;
+
     /**
      * Get id.
      *
