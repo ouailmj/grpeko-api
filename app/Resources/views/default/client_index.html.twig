@@ -22,8 +22,14 @@
                         </ul>
                     </div>
                 </div>
+
                 <div class="panel-body">
-                <span title="Ajouter un nouvel Client" class="pull-right"><a href="{{ path('client_access1') }}" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-user-plus"></i></b> Ajouter</a></span>
+                    {% for message in app.flashes('notice') %}
+                        <div class="alert alert-success" align="center">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                <span title="Ajouter un nouveau Client" class="pull-right"><a href="{{ path('company_new') }}" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-user-plus"></i></b> Ajouter</a></span>
                 <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
                     <thead>
                     <tr>
@@ -41,6 +47,35 @@
                     </tr>
                     </thead>
                     <tbody>
+
+                    {% for company in companys %}
+                    <tr>
+                        <td class="text-center">
+                            <div class="">
+                                <a title="Modifier" href="{{ path('company_edit', { 'id': company.id }) }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
+                            </div>
+
+                            {{ form_start(delete_form[loop.index-1]) }}
+                            <button type="submit" style="background: transparent;border: none">
+                              <a title="Modifier" class=" legitRipple"><i class="icon-trash position-left"></i></a>
+                            </button>
+                            {{ form_end(delete_form[loop.index-1]) }}
+
+                        </td>
+
+                        <td>{{company.code}}</td>
+                        <td>company.legal_form</td>
+                        <td>En cours</td>
+                        <td>CTX</td>
+                        <td>SARL</td>
+                        <td>31/12/2018</td>
+                        <td>31/12/2016</td>
+                        <td>Impôt sur les sociétés - réel normal</td>
+                        <td>TVA réel normal mensuel</td>
+                        <td>Logiciels informatiques</td>
+
+                    </tr>
+                    {% endfor %}
 
                     </tbody>
                 </table>

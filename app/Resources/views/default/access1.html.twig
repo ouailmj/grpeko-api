@@ -44,10 +44,17 @@
                                 </ul>
                             </div>
 
+
+
                             <div class="tab-content panel panel-flat border-top-info">
                                 <div class="tab-pane active" id="Contacts">
                                     <div class="panel-body">
-                                        <form class="form-horizontal" action="/action_page.php">
+                                        {% for message in app.flashes('notice') %}
+                                            <div class="alert alert-success" align="center">
+                                              {{ message }}
+                                            </div>
+                                        {% endfor %}
+                                        {{ form_start(form1, {'attr': {'class': 'form-horizontal'}}) }}
                                             <fieldset class="content-group">
                                                 <legend class="text-bold">Informations générales</legend>
 
@@ -55,10 +62,6 @@
                                                     {{form_row(form1.legalForm)}}
                                                     {{form_row(form1.taxationRegime)}}
                                                     {{form_row(form1.vatSystem)}}
-
-                                                <b style="color: red;">* Ces Informations sont modifiables dans l'onglet Excercices</b>
-                                                <br><br>
-
                                                     {{form_row(form1.currentAddress.description)}}
                                                     {{form_row(form1.currentAddress.postalCode)}}
                                                     {{form_row(form1.currentAddress.city)}}
@@ -68,10 +71,8 @@
 
                                                     <fieldset class="scheduler-border">
                                                         <legend class="scheduler-border" style="text-transform: capitalize">Adresse du SIE</legend>
-                                                        {{form_row(form1.siegeAddress.description)}}
-                                                        {{form_row(form1.siegeAddress.postalCode)}}
-                                                        {{form_row(form1.siegeAddress.city)}}
-                                                        {{form_row(form1.siegeAddress.email)}}
+                                                        {{form_row(form1.siegeAddress)}}
+
                                                     </fieldset>
 
 
@@ -92,85 +93,20 @@
                                                     <fieldset class="scheduler-border">
                                                         <legend class="scheduler-border" style="text-transform: capitalize">Ancien Expert-Comptable</legend>
 
-                                                        <div class="form-group">
-
-                                                            <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;Societé</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="form-group">
-
-                                                            <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;Civilité</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="form-group">
-
-                                                            <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;Prénom</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="form-group">
-
-                                                            <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;Nom</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="form-group">
-
-                                                            <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;Adresse</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="form-group">
-
-                                                            <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;CP</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="form-group">
-
-                                                            <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;Ville</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="form-group">
-
-                                                            <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;Email</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="email" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
-                                                            </div>
-
-                                                        </div>
-
+                                                        {{form_row(form1.formerAccountant.name)}}
+                                                        {{form_row(form1.formerAccountant.civility)}}
+                                                        {{form_row(form1.formerAccountant.firstName)}}
+                                                        {{form_row(form1.formerAccountant.lastName)}}
+                                                        {{form_row(form1.formerAccountant.address.description)}}
+                                                        {{form_row(form1.formerAccountant.address.postalCode)}}
+                                                        {{form_row(form1.formerAccountant.address.city)}}
+                                                        {{form_row(form1.formerAccountant.address.email)}}
 
                                                         <div class="form-group">
                                                             <div class="col-xs- col-md-5 pull-right" >
                                                                 <input type="button" class="form-control btn-info" id="pwd" value="&nbsp;Générer et envoyer la lettre de reprise de dossier&nbsp;" name="pwd">
                                                             </div>
                                                         </div>
-
 
                                                     </fieldset>
 
@@ -185,17 +121,19 @@
 
                                                         <legend class="scheduler-border" style="text-transform: capitalize">Anciennes Adresse</legend>
 
-                                                        {{form_row(form1.oldAddresses.description)}}
-                                                        {{form_row(form1.oldAddresses.postalCode)}}
-                                                        {{form_row(form1.oldAddresses.city)}}
-                                                        {{form_row(form1.oldAddresses.email)}}
+                                                        {{form_widget(form1.oldAddresses)}}
 
                                                     </fieldset>
 
                                                 </div>
                                             </div>
 
-                                        </form>
+
+                                            {{form_row(form1.Enregistrer)}}
+
+
+
+                                        {{ form_end(form1) }}
                                     </div>
                                 </div>
 
@@ -282,8 +220,31 @@
         color: #7b5d5a;
     }
 
-   input[type=text], textarea{
-    border-bottom-color: #4caf50 ;
-  }
+
 </style>
+    <style>
+        div[id^="appbundle_company_oldAddresses"] > label{
+            display : none!important;
+        }
+    </style>
+
+    {% block javascripts %}
+
+        <script src="{{ asset('assets/js/plugins/symfony_collectionjs/jquery.collection.js') }}"></script>
+        <script type="text/javascript">
+            $('.old-addresses-collection').collection({
+                    name_prefix: "{{ form1.oldAddresses.vars.full_name }}",
+                    add_at_the_end: true,
+                    hide_useless_buttons: true,
+                    add: '<a style="float:right" href="#" class="collection-action btn btn-success btn-small collection-rescue-add">Ajouter</a>',
+                    remove: '<a href="#" class="collection-remove btn btn-warning collection-action">Retirer</a>',
+                    allow_up: false,
+                    allow_down: false,
+                    init_with_n_elements: 0,
+                }
+            );
+
+        </script>
+
+    {% endblock javascripts %}
 {% endblock %}

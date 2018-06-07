@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Address;
 use AppBundle\Entity\Company;
+use AppBundle\Form\CompanyType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -43,7 +44,7 @@ class CompanyController extends BaseController
 
         return $this->render('default/client_index.html.twig', array(
             'companys'     => $companys,
-            'delete_forms'   => $listcompanys
+            'delete_form'   => $listcompanys
         ));
 
     }
@@ -66,15 +67,12 @@ class CompanyController extends BaseController
             $em = $this->getDoctrine()->getManager();
             $em->remove($company);
             $em->flush();
-        }
-        else{
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($company);
-            $em->flush();
-            $this->addSuccessFlash();
+            $this->addFlash(
+                'notice',
+                'Bien Supprimé !'
+            );
         }
 
-        $this->addSuccessFlash();
         return $this->redirectToRoute('company_index');
     }
 
@@ -87,6 +85,7 @@ class CompanyController extends BaseController
      */
     private function createDeleteForm(Company $company)
     {
+
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('company_delete', array('id' => $company->getId())))
             ->setMethod('DELETE')
@@ -96,15 +95,46 @@ class CompanyController extends BaseController
 
 
     /**
-     * @Route("/add", name="company_index")
+     * @Route("/add", name="company_new")
      *
      */
 
-    public function AddAction(Request $request)
+    public function newAction(Request $request)
     {
         $company = new Company();
         $form1 = $this->createForm('AppBundle\Form\CompanyType', $company);
         $form1->handleRequest($request);
+        if ($form1->isSubmitted() && $form1->isValid()) {
+         $this->getDoctrine()->getManager()->persist($company);
+         $this->getDoctrine()->getManager()->flush();
+         $this->addFlash(
+                'notice',
+                'Bien Ajouté !'
+            );
+        }
+
+        return $this->render('default/access1.html.twig',
+                            array('form1' => $form1->createView()));
+    }
+
+
+    /**
+     * @Route("/edit/{id}", name="company_edit")
+     *
+     */
+
+    public function editAction(Company $company, Request $request)
+    {
+
+        $form1 = $this->createForm('AppBundle\Form\CompanyType', $company);
+        $form1->handleRequest($request);
+        if ($form1->isSubmitted() && $form1->isValid()) {
+           $this->getDoctrine()->getManager()->flush();
+            $this->addFlash(
+                'notice',
+                'Bien Modifié !'
+            );
+        }
 
         return $this->render('default/access1.html.twig',
                             array('form1' => $form1->createView()));

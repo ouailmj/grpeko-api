@@ -9,7 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AdresseType extends AbstractType
+class FormerAccountantType extends AbstractType
 {
 
 
@@ -19,24 +19,25 @@ class AdresseType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('description', TextareaType::class, array(
-                'label' => 'Adresse:',
+            ->add('name', TextType::class, array(
+                'label' => 'Societe:',
                 'required'  => false
             ))
-            ->add('postalCode', TextType::class, array(
-                'label' => 'CP:',
+            ->add('civility', TextType::class, array(
+                'label' => 'Civilité:',
                 'required'  => false
             ))
-            ->add('city', TextType::class, array(
-                'label' => 'Ville:',
+            ->add('firstName', TextType::class, array(
+                'label' => 'Prénom:',
                 'required'  => false
             ))
-            ->add('email', EmailType::class, array(
-            'label' => 'Email:',
-            'required'  => false
+            ->add('lastName', TextType::class, array(
+                'label' => 'Nom:',
+                'required'  => false
+            ))
+            ->add('address', AdresseType::class)
+;
 
-                )
-            );
     }
 
     /**
@@ -45,11 +46,11 @@ class AdresseType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Address',
+            'data_class' => 'AppBundle\Entity\FormerAccountant',
             'require_password'  => true,
             'adresse'      => null
         ));
-    //    $resolver->setRequired('address');
+        //    $resolver->setRequired('address');
     }
 
     /**
@@ -57,7 +58,7 @@ class AdresseType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_Address';
+        return 'appbundle_formerAccountant';
     }
 
 

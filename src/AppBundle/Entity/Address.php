@@ -54,7 +54,7 @@ class Address
     /**
      * @return string
      */
-    public function getEmail(): string
+    public function getEmail()
     {
         return $this->email;
     }
@@ -85,7 +85,7 @@ class Address
     /**
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription()
     {
         return $this->description;
     }
@@ -93,7 +93,7 @@ class Address
      * @param string $description
      * @return Address
      */
-    public function setDescription(string $description): Address
+    public function setDescription(string $description)
     {
         $this->description = $description;
         return $this;
@@ -101,7 +101,7 @@ class Address
     /**
      * @return string
      */
-    public function getPostalCode(): string
+    public function getPostalCode()
     {
         return $this->postalCode;
     }
@@ -109,7 +109,7 @@ class Address
      * @param string $postalCode
      * @return Address
      */
-    public function setPostalCode(string $postalCode): Address
+    public function setPostalCode(string $postalCode)
     {
         $this->postalCode = $postalCode;
         return $this;
@@ -117,7 +117,7 @@ class Address
     /**
      * @return string
      */
-    public function getCity(): string
+    public function getCity()
     {
         return $this->city;
     }
@@ -125,7 +125,7 @@ class Address
      * @param string $city
      * @return Address
      */
-    public function setCity(string $city): Address
+    public function setCity(string $city)
     {
         $this->city = $city;
         return $this;
@@ -133,7 +133,7 @@ class Address
     /**
      * @return \DateTime
      */
-    public function getLeftAt(): \DateTime
+    public function getLeftAt()
     {
         return $this->leftAt;
     }

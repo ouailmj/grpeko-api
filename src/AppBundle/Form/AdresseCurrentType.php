@@ -9,7 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AdresseType extends AbstractType
+class AdresseCurrentType extends AbstractType
 {
 
 
@@ -31,12 +31,7 @@ class AdresseType extends AbstractType
                 'label' => 'Ville:',
                 'required'  => false
             ))
-            ->add('email', EmailType::class, array(
-            'label' => 'Email:',
-            'required'  => false
-
-                )
-            );
+            ;
     }
 
     /**
