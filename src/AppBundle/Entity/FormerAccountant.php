@@ -43,12 +43,6 @@ class FormerAccountant extends LegalEntity
     private $lastName;
 
 
-    /**
-     * @var Company
-     *
-     *  @ORM\OneToOne(targetEntity="AppBundle\Entity\Company" ,inversedBy="formerAccountant" )
-     */
-    private $company;
 
     /**
      * @var Address
@@ -141,21 +135,6 @@ class FormerAccountant extends LegalEntity
     }
 
 
-    /**
-     * @return Company
-     */
-    public function getCompany()
-    {
-        return $this->company;
-    }
-
-    /**
-     * @param Company $company
-     */
-    public function setCompany(Company $company)
-    {
-        $this->company = $company;
-    }
 
     /**
      * @return Address

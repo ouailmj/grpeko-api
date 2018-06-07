@@ -18,7 +18,6 @@ use Doctrine\ORM\Mapping as ORM;
  *     "company"="Company",
  *     "former_accountant"="FormerAccountant"
  * })
- *
  * @ORM\HasLifecycleCallbacks()
  *
  */
