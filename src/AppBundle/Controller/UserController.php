@@ -47,6 +47,7 @@ class UserController extends BaseController
         );
     }
 
+
     /**
      * @Route("/client/{id}/edit", name="edit-collaborateur")
      */

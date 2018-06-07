@@ -17,27 +17,24 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class CompanyController extends Controller
 {
-
      /**
      * @Route("/client/information_generale", name="add_company")
      */
-    public function createEmployerAction(Request $request)
+    public function createCompanyAction(Request $request)
     {
         $company = new Company();
-    
+
         $form = $this->createForm('AppBundle\Form\CompanyType', $company);
-        //    $form->handleRequest($request);
-         
-        //    if ($form->isSubmitted() && $form->isValid()) {
-        //     //Get data from the form
-        //       $emloyer= $form->getData();
-        //       $em = $this->getDoctrine()->getManager();
-        //       $em->persist($emloyer);
-        //       $em->flush();
-        //       $this->addFlash(
-        //         'notice',
-        //         'emloyer Added');
-        //    }
+        $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+             //Get data from the form
+               $company= $form->getData();
+               $em = $this->getDoctrine()->getManager();
+               $em->persist($company);
+               $em->flush();
+               $this->addSuccessFlash();
+            }
         return $this->render('default/information_generale.html.twig',[
            'form' => $form->createView(),
         ]

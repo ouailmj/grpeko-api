@@ -649,18 +649,18 @@ class DefaultController extends BaseController
 
     //kamal
 
-    /**
-     * @Route("/client/information_generale", name="information_generale")
-
-     *
-     * @param Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function informationGenerale(Request $request)
-    {
-        return $this->render('default/information_generale.html.twig');
-    }
+//    /**
+//     * @Route("/client/information_generale", name="information_generale")
+//
+//     *
+//     * @param Request $request
+//     *
+//     * @return \Symfony\Component\HttpFoundation\Response
+//     */
+//    public function informationGenerale(Request $request)
+//    {
+//        return $this->render('default/information_generale.html.twig');
+//    }
 
     //kamal
 

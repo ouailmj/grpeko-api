@@ -34,6 +34,14 @@ class CompanyType extends AbstractType
             'label' => 'Form juridique'
         ))
 
+        ->add('taxationRegime', TextType::class, array(
+            'label' => 'Regime d\'imposition',
+        ))
+
+        ->add('vatSystem', TextType::class, array(
+            'label' => 'Regime TVA',
+
+        ))
 
         ->add('apeCode', TextType::class, array(
             'required' => false,
@@ -72,10 +80,7 @@ class CompanyType extends AbstractType
             'label' => 'Capitale social'
         ))
 
-        ->add('Save', SubmitType::class,array(
-            'attr' => array(
-                'class' =>'btn btn-primary',
-         )))
+
         ;
     }
     
