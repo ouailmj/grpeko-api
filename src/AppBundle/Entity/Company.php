@@ -12,7 +12,6 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Model\LegalEntity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -256,7 +255,8 @@ class Company extends LegalEntity
      *
      * @var FormerAccountant
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\FormerAccountant", mappedBy="company")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\FormerAccountant")
+     * @ORM\JoinColumn(name="former_accountant_id", referencedColumnName="id")
      *
      */
     protected $formerAccountant;
