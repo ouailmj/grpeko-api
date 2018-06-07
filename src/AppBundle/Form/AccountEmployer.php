@@ -36,13 +36,13 @@ class AccountEmployer extends AbstractType
 
 
         ->add('phoneNumber', TextType::class, array(
-            'required' => false,
+           
             'label' => 'Téléphone'
         ))
 
         ->add('manager', EntityType::class, array(
-            'required' => false,
-            'label' => 'Sipérieur',
+           
+            'label' => 'Supérieur',
             'class' => 'AppBundle\Entity\Employee',
             'choice_label' => function ($manager) {
                 return $manager->getUserAccount()->getInitials();
@@ -57,7 +57,7 @@ class AccountEmployer extends AbstractType
 
         ->add('status', CheckboxType::class, array(
             'label' => 'Activer ?',
-            'required'  => false
+           
         ))
         ;
     }

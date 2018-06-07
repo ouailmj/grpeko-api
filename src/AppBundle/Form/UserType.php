@@ -29,19 +29,16 @@ class UserType extends AbstractType
         $builder
 
         ->add('initials', TextType::class, array(
-            'label' => 'Initials',
-            'required'  => false
+            'label' => 'initiales',
+            
         ))
 
         ->add('username', TextType::class, array(
             'label' => 'Login',
-            'required'  => false
+            
         ))
 
-        ->add('email', TextType::class, array(
-            'label' => 'Email',
-            'required'  => false
-        ))
+        ->add('email', EmailType::class)
 
         ->add('password', RepeatedType::class, array(
             'type' => PasswordType::class,
@@ -60,8 +57,7 @@ class UserType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class'    => 'AppBundle\Entity\User',
-            'forEdit'       => false,
-            'advisories'    => array()
+           
         ));
     }
 

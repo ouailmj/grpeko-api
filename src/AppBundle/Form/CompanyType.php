@@ -45,6 +45,8 @@ class CompanyType extends AbstractType
             'label' => 'Activité principale'
         ))
 
+        ->add('currentAddress', AddressType::class)
+
         ->add('siretNumber', TextType::class, array(
             'required' => false,
             'label' => 'N SIRT'

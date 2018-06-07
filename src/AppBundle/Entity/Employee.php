@@ -47,9 +47,15 @@ class Employee extends Person
 
     /**
      * @var status
-     * @ORM\Column(name="status", type="boolean", nullable=true, options={"default":true})
+     * @ORM\Column(name="status", type="boolean", nullable=true, options={"default":false})
      */
     protected $status;
+    /**
+     * @var EnterRelation [] | ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\EnterRelation", mappedBy="contributor")
+     */
+    private $enterRelations;
 
     /**
      * Get id.
@@ -121,7 +127,7 @@ class Employee extends Person
         $this->manager = $manager;
     }
 
- /**
+    /**
      * @return bool
      */
     public function getStatus()
@@ -135,6 +141,33 @@ class Employee extends Person
     public function setStatus(bool $status)
     {
         $this->status = $status;
+    }
+    /**
+     * @return EnterRelation[]|ArrayCollection
+     */
+    public function getEnterRelations()
+    {
+        return $this->enterRelations;
+    }
+
+    /**
+     * @param $enterRelation
+     * @return $this
+     */
+    public function addEnterRelation($enterRelation)
+    {
+        $this->enterRelations->add($enterRelation);
+        return $this;
+    }
+
+    /**
+     * @param $enterRelation
+     * @return bool
+     */
+    public function removeEnterRelation($enterRelation)
+    {
+        return  $this->enterRelations->removeElement($enterRelation);
+
     }
 
 }

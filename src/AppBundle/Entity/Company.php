@@ -256,9 +256,17 @@ class Company extends LegalEntity
      *
      * @var FormerAccountant
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\FormerAccountant" ,mappedBy="company" ,cascade={"persist", "remove"}))
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\FormerAccountant", mappedBy="company")
+     *
      */
     protected $formerAccountant;
+
+
+    /**
+     * @var EnterRelation
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\EnterRelation" ,mappedBy="company" ,cascade={"persist"})
+     */
+    private $enterRelation;
 
     /**
      * Get id.
@@ -465,7 +473,7 @@ class Company extends LegalEntity
     /**
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus()
     {
         return $this->status;
     }
@@ -749,6 +757,23 @@ class Company extends LegalEntity
     {
         $this->formerAccountant = $formerAccountant;
     }
+
+    /**
+     * @return EnterRelation
+     */
+    public function getEnterRelation()
+    {
+        return $this->enterRelation;
+    }
+
+    /**
+     * @param EnterRelation $enterRelation
+     */
+    public function setEnterRelation(EnterRelation $enterRelation)
+    {
+        $this->enterRelation = $enterRelation;
+    }
+
 
 
 }

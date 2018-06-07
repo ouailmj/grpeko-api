@@ -28,30 +28,28 @@
                         </ul>
                     </div>
                 </div>
-                <form class="form-horizontal" >
-                        <fieldset class="alert  alert-styled-left alert-arrow-left alert-component">
+                    <div class="panel-body">
+                        <p class="content-group-lg"></p>
+                        {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+                        <fieldset>
+                        <legend class="text-semibold"><i class="icon-address-book"></i> Informations générale</legend>
                             <div class="form-group">
-                                <div class="col-sm-10">
+                                <div class="col-sm-12">
                                     {{form_row(form.socialReason)}}
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-lg-2">Nom</label>
-                                <div class="col-lg-10">
-                                    <input type="text" class="form-control">
+                                <div class="col-lg-12">
+                                    {{form_row(form.legalForm)}}
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-lg-2">Nom</label>
-                                <div class="col-lg-10">
-                                    <input type="text" class="form-control">
+                                <div class="col-lg-12">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-lg-2">Nom</label>
-                                <div class="col-lg-10">
-                                    <input type="text" class="form-control">
+                                <div class="col-lg-12">
                                 </div>
                             </div>
 
@@ -61,23 +59,20 @@
                         <br><br>
 
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="pwd">&nbsp;&nbsp;Adresse</label>
-                                <div class="col-sm-10">
-                                    <textarea class="form-control colorback" rows="4" id="adresse" placeholder="Frankfort is the capital city of the Commonwealth of Kentucky and the seat of Franklin County. It is a home rule-class city in Kentucky; the "></textarea>
+                                <div class="col-lg-12">
+                                    {{form_row(form.currentAddress.description)}}
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="pwd">&nbsp;&nbsp;CP:</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control colorback" id="pwd" placeholder="12232112" name="pwd">
+                                <div class="col-lg-12">
+                                    {{form_row(form.currentAddress.postalCode)}}
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="pwd">&nbsp;&nbsp;Ville:</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
+                                <div class="col-lg-12">
+                                    {{form_row(form.currentAddress.city)}}
                                 </div>
                             </div>
 
@@ -125,92 +120,46 @@
                                     <legend class="scheduler-border" style="text-transform: capitalize"></legend>
 
                                     <div class="form-group">
-
-                                        <div class="col-sm-12">
-                                            <div class="dropdown">
-                                                <label class="control-label col-sm-3" for="pwd">Code APE:</label>
-
-                                                <div class="col-sm-9">
-                                                    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Tutorials
-                                                        <span class="caret"></span></button>
-                                                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
-                                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
-                                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
-                                                        <li role="presentation" class="divider"></li>
-                                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
+                                        <div class="col-lg-12">
+                                            {{form_row(form.apeCode)}}
                                         </div>
-
                                     </div>
-
-
                                     <div class="form-group">
-
-                                        <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;Activité principale:</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
+                                        <div class="col-lg-12">
+                                            {{form_row(form.mainActivity)}}
                                         </div>
-
-                                    </div>
-
+                                    </div>   
                                     <div class="form-group">
-
-
-                                        <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;N° SIRET:</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
+                                        <div class="col-lg-12">
+                                            {{form_row(form.siretNumber)}}
                                         </div>
-
-                                    </div>
-
+                                    </div>   
                                     <div class="form-group">
-
-                                        <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;N° SIREN:</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
+                                        <div class="col-lg-12">
+                                            {{form_row(form.sirenNumber)}}
                                         </div>
-
-                                    </div>
-
+                                    </div>   
+                
                                     <div class="form-group">
-
-                                        <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;N° TVA Intra Communautaire</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
+                                        <div class="col-lg-12">
+                                            {{form_row(form.intraCommunityVAT)}}
                                         </div>
-
-                                    </div>
-
+                                    </div>  
                                     <div class="form-group">
-
-
-                                        <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;Nombre d'actions ou parts socials</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
+                                        <div class="col-lg-12">
+                                            {{form_row(form.nbActions)}}
                                         </div>
-
                                     </div>
-
                                     <div class="form-group">
-
-
-                                        <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;Capital social</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
+                                        <div class="col-lg-12">
+                                            {{form_row(form.capitalSocial)}}
                                         </div>
-
-                                    </div>
-
+                                    </div> 
                                 </fieldset>
-
                             </div>
                         </div>
-
                     </fieldset>
-                </form>
+                </div>
             </div>
         </div>
     </div>

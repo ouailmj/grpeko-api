@@ -89,7 +89,11 @@
                                             {{ item.jobPosition.name }}
                                         </td>
                                         <td>
-                                         
+                                            {% if item.manager %}
+                                                
+                                            {% else %}
+                                               
+                                            {% endif %}
                                         </td>
                                         <td>
                                             {% if item.status %}
