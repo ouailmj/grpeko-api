@@ -67,10 +67,7 @@ class CompanyController extends BaseController
             $em = $this->getDoctrine()->getManager();
             $em->remove($company);
             $em->flush();
-            $this->addFlash(
-                'notice',
-                'Bien Supprimé !'
-            );
+            $this->addSuccessFlash();
         }
 
         return $this->redirectToRoute('company_index');
@@ -107,10 +104,8 @@ class CompanyController extends BaseController
         if ($form1->isSubmitted() && $form1->isValid()) {
          $this->getDoctrine()->getManager()->persist($company);
          $this->getDoctrine()->getManager()->flush();
-         $this->addFlash(
-                'notice',
-                'Bien Ajouté !'
-            );
+         $this->addSuccessFlash();
+         $this->redirectToRoute('company_new');
         }
 
         return $this->render('default/access1.html.twig',

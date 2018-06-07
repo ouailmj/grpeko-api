@@ -23,14 +23,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Company extends LegalEntity
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
 
     /**
      * @var string
@@ -204,16 +196,26 @@ class Company extends LegalEntity
     /**
      * @var Address
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address", cascade={"persist", "remove"})
      *
      * @ORM\JoinColumn(name="current_address_id", referencedColumnName="id")
      */
     protected $currentAddress;
 
+
+    /**
+     * @var Address
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address", cascade={"persist", "remove"})
+     *
+     * @ORM\JoinColumn(name="siege_address_id", referencedColumnName="id")
+     */
+    protected $siegeAddress;
+
     /**
      * @var Address[] | ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Address")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Address", cascade={"persist", "remove"})
      *
      * @ORM\JoinTable(name="company_address",
      *      joinColumns={@ORM\JoinColumn(name="company_id", referencedColumnName="id")},
@@ -255,7 +257,7 @@ class Company extends LegalEntity
      *
      * @var FormerAccountant
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\FormerAccountant")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\FormerAccountant", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="former_accountant_id", referencedColumnName="id")
      *
      */
@@ -269,14 +271,17 @@ class Company extends LegalEntity
     private $enterRelation;
 
     /**
-     * Get id.
-     *
-     * @return int
+     * Company constructor.
      */
-    public function getId()
+    public function __construct()
     {
-        return $this->id;
+        $this->missions = new ArrayCollection();
+        $this->oldAddresses = new ArrayCollection();
+        $this->fiscalYears = new ArrayCollection();
+        $this->contacts = new ArrayCollection();
+        $this->otherPhoneNumbers = new ArrayCollection();
     }
+
 
     /**
      * @return string
@@ -626,9 +631,9 @@ class Company extends LegalEntity
      * @param $oldAddresses
      * @return $this
      */
-    public function addOldAddresses($oldAddresses)
+    public function addOldAddress($oldAddress)
     {
-        $this->oldAddresses->add($oldAddresses);
+        $this->oldAddresses->add($oldAddress);
         return $this;
     }
 
@@ -636,9 +641,9 @@ class Company extends LegalEntity
      * @param $oldAddresses
      * @return bool
      */
-    public function removeOldAddresses($oldAddresses)
+    public function removeOldAddress($oldAddress)
     {
-        return $this->oldAddresses->removeElement($oldAddresses);
+        return $this->oldAddresses->removeElement($oldAddress);
 
     }
 
@@ -772,6 +777,22 @@ class Company extends LegalEntity
     public function setEnterRelation(EnterRelation $enterRelation)
     {
         $this->enterRelation = $enterRelation;
+    }
+
+    /**
+     * @return Address
+     */
+    public function getSiegeAddress()
+    {
+        return $this->siegeAddress;
+    }
+
+    /**
+     * @param Address $siegeAddress
+     */
+    public function setSiegeAddress(Address $siegeAddress)
+    {
+        $this->siegeAddress = $siegeAddress;
     }
 
 
