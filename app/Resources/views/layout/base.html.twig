@@ -36,12 +36,16 @@
     {% block stylesheets %}{% endblock %}
     <!-- /global stylesheets -->
 </head>
+
+
+
+
 {% block body %}
 <body {% block body_attributes %}class="navbar-top pace-done"{% endblock %}>
 
 <!-- Main navbar -->
 
-{% if app.request.get('_route') != 'login' %}
+{% if app.request.get('_route') not in ['login','conversation_list']  %}
     {% block navbar %}
         {% include 'layout/_partials/navbar.html.twig' %}
     {% endblock %}
@@ -52,10 +56,44 @@
 {% endif %}
 <!-- /main navbar -->
 
-
+<div class="row">
+    <div class="col-md-6">
+        {% if app.session.getFlashBag().has('warning') %}
+            {% for message in app.session.getFlashBag().get('warning') %}
+                <div class="alert alert-warning no-border">
+                    <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+                    <strong>Attention !</strong> {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% if app.session.getFlashBag().has('error') %}
+            {% for message in app.session.getFlashBag().get('error') %}
+                <div class="alert alert-danger no-border" role="alert">
+                    <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+                    <strong>Erreur !</strong> {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% if app.session.getFlashBag().has('info') %}
+            {% for message in app.session.getFlashBag().get('info') %}
+                <div class="alert alert-info no-border" role="alert">
+                    <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% if app.session.getFlashBag().has('success') %}
+            {% for message in app.session.getFlashBag().get('success') %}
+                <div class="alert alert-success no-border" role="alert">
+                    <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+                    <strong>{{ message }}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
 <!-- Page container -->
 <div class="page-container">
-
     <!-- Page content -->
     {% block content %}{% endblock %}
     <!-- /page content -->

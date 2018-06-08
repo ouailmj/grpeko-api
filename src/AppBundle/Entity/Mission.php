@@ -58,9 +58,9 @@ class Mission
     private $company;
 
     /**
-     * @var Exercice [] | ArrayCollection
+     * @var FiscalYear [] | ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Exercice", mappedBy="mission")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\FiscalYear", mappedBy="mission")
      */
     private $exercices;
 
@@ -226,7 +226,7 @@ class Mission
     }
 
     /**
-     * @return Exercice[]|ArrayCollection
+     * @return FiscalYear []|ArrayCollection
      */
     public function getExercices()
     {

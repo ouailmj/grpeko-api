@@ -34,7 +34,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Person extends BasePerson
 {
-    
+
     /**
      * @var int
      *
@@ -43,7 +43,7 @@ class Person extends BasePerson
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-    
+
     /**
      * @var string
      *
