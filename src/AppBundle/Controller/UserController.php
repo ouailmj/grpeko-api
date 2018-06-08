@@ -5,8 +5,15 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Employee;
 use AppBundle\Model\EmployeeManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
+
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 
 class UserController extends BaseController
@@ -34,19 +41,20 @@ class UserController extends BaseController
            $form->handleRequest($request);
          
            if ($form->isSubmitted() && $form->isValid()) {
+
              if (!empty($plainPassword = $form->get('password')->getData())){
                  $emloyer->getUserAccount()->setPlainPassword($plainPassword);
              }
+
              $employeeManager->createEmployee($emloyer);
+
              $this->addSuccessFlash();
-             $this->redirectToRoute('add-collaborateur');
            }
         return $this->render('default/Add-collaborateurs.html.twig',[
            'form' => $form->createView(),
         ]
         );
     }
-
 
     /**
      * @Route("/client/{id}/edit", name="edit-collaborateur")

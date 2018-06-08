@@ -204,7 +204,7 @@ class Company extends LegalEntity
     /**
      * @var Address
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address",cascade={"persist"})
      *
      * @ORM\JoinColumn(name="current_address_id", referencedColumnName="id")
      */
