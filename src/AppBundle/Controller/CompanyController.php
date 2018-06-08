@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Address;
 use AppBundle\Entity\Company;
+use AppBundle\Entity\EnterRelation;
 use AppBundle\Form\CompanyType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -98,9 +99,18 @@ class CompanyController extends BaseController
 
     public function newAction(Request $request)
     {
+        $em = $this->getDoctrine()->getEntityManager();
+        $companys = $em->getRepository('AppBundle:EnterRelation')->findAll();
+
         $company = new Company();
+      //  $relationentre = new EnterRelation();
+
         $form1 = $this->createForm('AppBundle\Form\CompanyType', $company);
+       // $form2 = $this->createForm('AppBundle\Form\EntreRelationType', $relationentre);
+
         $form1->handleRequest($request);
+        //$form2->handleRequest($request);
+
         if ($form1->isSubmitted() && $form1->isValid()) {
          $this->getDoctrine()->getManager()->persist($company);
          $this->getDoctrine()->getManager()->flush();
@@ -108,7 +118,7 @@ class CompanyController extends BaseController
          $this->redirectToRoute('company_new');
         }
 
-        return $this->render('default/access1.html.twig',
+        return $this->render('default/client_fiche.html.twig',
                             array('form1' => $form1->createView()));
     }
 
