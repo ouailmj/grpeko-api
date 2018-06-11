@@ -26,9 +26,9 @@ class UserController extends BaseController
     {
         $em = $this->getDoctrine()->getManager();
         $employers = $em->getRepository('AppBundle:Employee')->findAll();
-      
+
         return $this->render('default/gestion-cabinet.html.twig', array('employers' => $employers));
-        
+
     }
      /**
      * @Route("/client/add-collaborateur", name="add-collaborateur")

@@ -17,61 +17,12 @@ namespace AppBundle\Model;
 
 use AppBundle\Entity\Employee;
 use AppBundle\Entity\User;
-<<<<<<< HEAD
-use AppBundle\Mailer\Mailer;
-use Doctrine\ORM\EntityManager;
-use Symfony\Component\VarDumper\VarDumper;
-=======
+
 use Doctrine\ORM\EntityManagerInterface;
->>>>>>> 837075a85e2619f1b41efc2c5535aab40015b83a
 
 class EmployeeManager
 {
     /**
-<<<<<<< HEAD
-     * @var UserManager
-     */
-    private $userManager;
-
-
-    /**
-     * @var EntityManager
-     */
-    private $em;
-
-
-    /**
-     * UserManager constructor.
-     * @param UserManager $userManager
-     * @param EntityManager $em
-     */
-    public function __construct(UserManager $userManager,EntityManager $em)
-    {
-        $this->userManager = $userManager;
-        $this->em = $em;
-    }
-
-
-    /**
-     * Create new user in the database.
-     *
-     * @param Employee $employer
-     */
-    public function createEmployee(Employee $employer)
-    {
-       $this->userManager->createUser($employer->getUserAccount(), false);
-        $this->em->persist($employer);
-        $this->em->flush();
-    }
-
-
-
-  
-
-
- 
-}
-=======
      * @var EntityManagerInterface
      */
     private $em;
@@ -103,4 +54,4 @@ class EmployeeManager
 
     }
 }
->>>>>>> 837075a85e2619f1b41efc2c5535aab40015b83a
+

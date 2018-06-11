@@ -20,9 +20,7 @@ class CompanyType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('socialReason', TextType::class, array(
-            'label' => 'Raison sociale'
-        ))
+
 
         ->add('legalForm', TextType::class, array(
             'label' => 'Form juridique'

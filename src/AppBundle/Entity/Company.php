@@ -764,7 +764,7 @@ class Company extends LegalEntity
     /**
      * @return Address
      */
-    public function getSieAddress(): Address
+    public function getSieAddress()
     {
         return $this->sieAddress;
     }
