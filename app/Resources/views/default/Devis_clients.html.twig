@@ -1,38 +1,4 @@
-{% extends 'base.html.twig' %}
-
-{% block content %}
-<style>
-    @media (min-width: 1025px){
-.col-md-6 {
-    width: 50%;
-    margin-bottom: 2rem !important;
-}}
-input[type=text], textarea{
-    background-color:#eef3fd !important;
-   
-  }
-  .border-top-info {
-    border-top-color: #00bcd4;
-}
-/* th {
-    background-color:#eef3fd !important;
-} */
-tr.hide_all > td, td.hide_all{
-        border-style:hidden;
-      }
-tr.noBorder td {
-  border: 0;
-}
-.hide-border{
-  border: 0;
-}
-
-</style>
-<div class="page-content">
-    {% block sidebar %}
-        {% include 'layout/_partials/sidebar.html.twig' %}
-    {% endblock %}
-    <div class="content-wrapper">
+ <div class="content-wrapper">
         <div class="content">
             <form action="#">
                 <div class="panel panel-flat border-top-info ">
@@ -614,4 +580,3 @@ tr.noBorder td {
         </div>
     </div>
 </div>
-{% endblock %}

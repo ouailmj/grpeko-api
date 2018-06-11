@@ -42,18 +42,12 @@ class FormerAccountant extends LegalEntity
      */
     private $lastName;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=255)
-     */
-    private $email;
 
 
     /**
      * @var Address
      *
-     *  @ORM\OneToOne(targetEntity="AppBundle\Entity\Address")
+     *  @ORM\OneToOne(targetEntity="AppBundle\Entity\Address", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="address_id", referencedColumnName="id")
      */
     private $address;
@@ -140,35 +134,12 @@ class FormerAccountant extends LegalEntity
         return $this->lastName;
     }
 
-    /**
-     * Set email.
-     *
-     * @param string $email
-     *
-     * @return FormerAccountant
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email.
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
 
 
     /**
      * @return Address
      */
-    public function getAddress(): Address
+    public function getAddress()
     {
         return $this->address;
     }

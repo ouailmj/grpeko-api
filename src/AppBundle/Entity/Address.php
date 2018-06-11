@@ -45,6 +45,29 @@ class Address
      */
     protected $city;
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=250, nullable=true)
+     */
+    protected $email;
+
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     */
+    public function setEmail(string $email)
+    {
+        $this->email = $email;
+    }
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(type="datetimetz", nullable=true)

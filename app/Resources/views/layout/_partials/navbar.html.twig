@@ -88,14 +88,15 @@
                 <a class="dropdown-toggle legitRipple" data-toggle="dropdown">
                     <div id="ex4" style="margin-top: -5px">
                           <span class="p1 fa-stack fa-2x has-badge" title="Profil">
-                             <i class="p3 fa fa-user fa-stack-1x xfa-inverse" style="margin-top: -5px"></i>
+                             <i class="p3 fa fa-user fa-stack-1x xfa-inverse" style="margin-top: -5px"> </i>
                           </span>
                     </div>
                 </a>
 
                 <ul class="dropdown-menu dropdown-menu-right">
-                    <li><a href=""><i class="icon-user-plus"></i> Mon profil</a></li>
-                    <li class="divider"></li>
+
+                    <li><a href="{{ path('fos_user_profile_show') }}"><i class="icon-user-plus"></i> Mon profil</a></li>
+                    <li class="divider"> </li>
                     <li><a href="{{ path('fos_user_security_logout') }}"><i class="icon-switch2"></i> Déconnexion</a></li>
                 </ul>
             </li>

@@ -16,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\VarDumper\VarDumper;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
@@ -32,18 +33,22 @@ class UserType extends AbstractType
         ];
         $builder
 
+<<<<<<< HEAD
 
         ->add('initials', TextType::class, array(
             'label' => 'initiales',
 
         ))
 
+=======
+>>>>>>> 837075a85e2619f1b41efc2c5535aab40015b83a
         ->add('username', TextType::class, array(
             'label' => 'Login',
         ))
 
         ->add('email', EmailType::class)
 
+<<<<<<< HEAD
         ->add('new_password', RepeatedType::class, array(
             'mapped' => false,
             'type' => PasswordType::class,
@@ -51,6 +56,13 @@ class UserType extends AbstractType
             'options' => array('attr' => array('class' => 'password-field')),
             'first_options'  => array('label' => 'Mot de passe'),
             'second_options' => array('label' => 'Confirmer le mot de passe'),
+=======
+        ->add('password', RepeatedType::class, array(
+            'required'  => false,
+            'type'=> PasswordType::class,
+            'first_options'  => array('label' => 'Password'),
+            'second_options' => array('label' => 'Repeat Password')
+>>>>>>> 837075a85e2619f1b41efc2c5535aab40015b83a
         ))
 
         ->add('roles', ChoiceType::class, [

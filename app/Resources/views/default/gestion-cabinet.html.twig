@@ -1,8 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-
-
 <div class="page-content">
       
     {% block sidebar %}
@@ -79,7 +77,13 @@
                                         <td>{{ item.lastname}}</td>
                                         <td>{{ item.firstName}}</td>
 
+
                                         <td>{{ item.userAccount.initials }}</td>
+
+
+                                       
+                                        <td>{{ item.initials }}</td>
+                                        
 
                                         <td>{{ item.userAccount.username }}</td>
                                         <td>
