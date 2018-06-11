@@ -53,6 +53,13 @@ class Employee extends Person
     private $enterRelations;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=10, nullable=true)
+     */
+    protected $initials;
+
+    /**
      * Get id.
      *
      * @return int
@@ -150,4 +157,28 @@ class Employee extends Person
 
     }
 
+    /**
+     * @return string
+     */
+    public function getInitials()
+    {
+        return $this->initials;
+    }
+
+    /**
+     * @param string $initials
+     *
+     * @return Employee
+     */
+    public function setInitials(string $initials)
+    {
+        $this->initials = $initials;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->initials;
+    }
 }

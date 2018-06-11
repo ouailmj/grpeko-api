@@ -1,19 +1,64 @@
-AppBundle\Entity\Userr:
+AppBundle\Entity\JobPosition:
+    collaborateur:
+        name: 'Collaborateur'
+    ec:
+        name: 'Expert Comptable'
+    cc:
+        name: 'Commissaire aux comptes'
+
+AppBundle\Entity\Address:
+    addresscompany_{0..100}:
+        city: '<city()>'
+        postalCode: '<postcode()>'
+        description: '<address()>'
+        email: '<email()>'
+
+AppBundle\Entity\User:
     administrator:
         username: admin
         email: admin@ekoapp.fr
         password: '\$2y\$13\$X8i.jsXKdDib97tfshryNuTSLLWnYT8tnWY/vM7sOjtDBDdo7SYuO' # f%/R4Uk#](wUvM'V
         enabled: true
         roles: ['ROLE_SUPER_ADMIN']
-        birthDate: <dateTime('+18 years')>
-        firstName: 'EKO'
-        lastName: 'Admin'
     user:
         username: collaborateur
         email: collaborateur@ekoapp.fr
         password: '\$2y\$13\$X8i.jsXKdDib97tfshryNuTSLLWnYT8tnWY/vM7sOjtDBDdo7SYuO' # f%/R4Uk#](wUvM'V
         enabled: true
         roles: ['ROLE_USER']
-        birthDate: <dateTime('+18 years')>
-        firstName: 'Jean'
-        lastName: 'Dupont'
+    useraccount_{0..50}:
+        username (unique): <username()>
+        email (unique): <email()>
+        password: '\$2y\$13\$X8i.jsXKdDib97tfshryNuTSLLWnYT8tnWY/vM7sOjtDBDdo7SYuO' # f%/R4Uk#](wUvM'V
+        enabled: <randomElement([true, false])>
+        roles: ['ROLE_USER']
+
+AppBundle\Entity\Employee:
+    employeeadmin:
+        firstName: '<firstName()>'
+        lastName: '<lastName()>'
+        phoneNumber: '<e164PhoneNumber()>'
+        faxNumber: '<e164PhoneNumber()>'
+        postalCode: '<postcode()>'
+        userAccount: '@administrator'
+        initials: 'ADMIN'
+    employeeuser:
+        firstName: '<firstName()>'
+        lastName: '<lastName()>'
+        phoneNumber: '<e164PhoneNumber()>'
+        faxNumber: '<e164PhoneNumber()>'
+        postalCode: '<postcode()>'
+        userAccount: '@user'
+        manager: '@employeeadmin'
+        initials: 'COL'
+        jobPosition: '@collaborateur'
+    employee_{0..50}:
+        firstName: '<firstName()>'
+        lastName: '<lastName()>'
+        phoneNumber: '<e164PhoneNumber()>'
+        faxNumber: '<e164PhoneNumber()>'
+        postalCode: '<postcode()>'
+        userAccount: '@useraccount_<current()>'
+        manager: '@employee_*'
+        initials: '<word()>'
+        jobPosition: '@collaborateur'

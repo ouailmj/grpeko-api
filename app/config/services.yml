@@ -45,3 +45,4 @@ services:
         tags:
             - { name: knp_menu.menu_builder, method: createMainMenu, alias: main }
             - { name: knp_menu.menu_builder, method: createCustomerMenu, alias: customer }
+            - { name: knp_menu.menu_builder, method: createCabinetMenu, alias: cabinet }

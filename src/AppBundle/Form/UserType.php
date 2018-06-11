@@ -28,11 +28,6 @@ class UserType extends AbstractType
     {
         $builder
 
-        ->add('initials', TextType::class, array(
-            'label' => 'Initials',
-            'required'  => false
-        ))
-
         ->add('username', TextType::class, array(
             'label' => 'Login',
             'required'  => false
@@ -43,9 +38,11 @@ class UserType extends AbstractType
             'required'  => false
         ))
 
-        ->add('password', TextType::class, array(
-            'label' => 'Password',
-            'required'  => false
+        ->add('password', RepeatedType::class, array(
+            'required'  => false,
+            'type'=> PasswordType::class,
+            'first_options'  => array('label' => 'Password'),
+            'second_options' => array('label' => 'Repeat Password'),
         ))
         ;
     }

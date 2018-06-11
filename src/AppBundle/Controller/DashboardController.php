@@ -2,12 +2,22 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Model\EmployeeManager;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class DashboardController extends Controller
 {
-    public function indexAction($name)
+    /**
+     * @Route("/", name="homepage")
+     */
+    public function homeAction(Request $request, EmployeeManager $employeeManager)
     {
-        return $this->render('', array('name' => $name));
+        $employees = $employeeManager->findAllEmployees();
+
+        return $this->render('dashboard/home.html.twig', array(
+            'employees' => $employees
+        ));
     }
 }
