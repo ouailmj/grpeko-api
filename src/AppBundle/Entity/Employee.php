@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="employee")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EmployeeRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Employee extends Person   
 {
@@ -180,5 +181,19 @@ class Employee extends Person
     public function __toString()
     {
         return $this->initials;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     */
+    public function setInitialsValue()
+    {
+        if (empty($this->initials)){
+            $this->initials = strtoupper(substr($this->getFirstName(), 0, 4));
+        }
+
+        if (empty($this->initials)){
+            $this->initials = strtoupper(substr($this->getLastName(), 0, 4));
+        }
     }
 }
