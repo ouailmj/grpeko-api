@@ -41,7 +41,6 @@ class AccountEmployer extends AbstractType
         ))
 
         ->add('manager', EntityType::class, array(
-
             'label' => 'Supérieur',
             'class' => 'AppBundle\Entity\Employee',
             'choice_label' => function ($manager) {

@@ -42,7 +42,7 @@ class UserController extends BaseController
          
            if ($form->isSubmitted() && $form->isValid()) {
 
-             if (!empty($plainPassword = $form->get('password')->getData())){
+             if (!empty($plainPassword = $form->get('userAccount')->get('new_password')->getData())){
                  $emloyer->getUserAccount()->setPlainPassword($plainPassword);
              }
 

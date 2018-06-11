@@ -187,7 +187,7 @@ class FiscalYear
     /**
      * @return string
      */
-    public function getTaxationRegime(): string
+    public function getTaxationRegime()
     {
         return $this->taxationRegime;
     }

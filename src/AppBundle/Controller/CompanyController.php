@@ -15,8 +15,19 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 
-class CompanyController extends Controller
+class CompanyController extends BaseController
 {
+//    /**
+//     * @Route("/client/gestion-cabinet", name="liste-company")
+//     */
+//    public function listAction()
+//    {
+//        $em = $this->getDoctrine()->getManager();
+//        $company = $em->getRepository('AppBundle:Company')->findAll();
+//
+//        return $this->render('default/gestion-cabinet.html.twig', array('company' => $company));
+//
+//    }
      /**
      * @Route("/client/information_generale", name="add_company")
      */
@@ -33,7 +44,7 @@ class CompanyController extends Controller
                $em = $this->getDoctrine()->getManager();
                $em->persist($company);
                $em->flush();
-               $this->addSuccessFlash();
+              $this->addSuccessFlash();
             }
         return $this->render('default/information_generale.html.twig',[
            'form' => $form->createView(),

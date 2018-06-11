@@ -41,7 +41,6 @@ class UserManager
 
     /**
      * @param User $user
-     * @param bool $flush
      */
     public function createUser(User $user, $flush=true)
     {

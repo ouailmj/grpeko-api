@@ -30,6 +30,7 @@ class CompanyType extends AbstractType
         ->add('socialReason', TextType::class, array(
             'label' => 'Raison sociale'
         ))
+
         ->add('legalForm', TextType::class, array(
             'label' => 'Form juridique'
         ))

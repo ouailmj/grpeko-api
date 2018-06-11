@@ -7,7 +7,7 @@
       
     {% block sidebar %}
         {% include 'layout/_partials/sidebar.html.twig' %}
-        
+
     {% endblock %}
     <div class="content-wrapper">
         <div class="content">
@@ -75,12 +75,12 @@
                                     {% for item in employers %}
                                     <tr role="row" class="">
                                         <td class="sorting_1"><a href="">2</a></td>
-                                        
+
                                         <td>{{ item.lastname}}</td>
                                         <td>{{ item.firstName}}</td>
-                                       
+
                                         <td>{{ item.userAccount.initials }}</td>
-                                        
+
                                         <td>{{ item.userAccount.username }}</td>
                                         <td>
                                             {{ item.userAccount.email }}
@@ -90,9 +90,9 @@
                                         </td>
                                         <td>
                                             {% if item.manager %}
-                                                
+                                                <span class="label label-info"> {{ item.manager.userAccount.initials  }}</span>
                                             {% else %}
-                                               
+
                                             {% endif %}
                                         </td>
                                         <td>
