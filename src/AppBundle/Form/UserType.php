@@ -16,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\VarDumper\VarDumper;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
@@ -43,6 +44,9 @@ class UserType extends AbstractType
             'type'=> PasswordType::class,
             'first_options'  => array('label' => 'Password'),
             'second_options' => array('label' => 'Repeat Password'),
+            'constraints'   => array(
+                new NotBlank()
+            )
         ))
         ;
     }
