@@ -1,0 +1,19 @@
+AppBundle\Entity\Userr:
+    administrator:
+        username: admin
+        email: admin@ekoapp.fr
+        password: '\$2y\$13\$X8i.jsXKdDib97tfshryNuTSLLWnYT8tnWY/vM7sOjtDBDdo7SYuO' # f%/R4Uk#](wUvM'V
+        enabled: true
+        roles: ['ROLE_SUPER_ADMIN']
+        birthDate: <dateTime('+18 years')>
+        firstName: 'EKO'
+        lastName: 'Admin'
+    user:
+        username: collaborateur
+        email: collaborateur@ekoapp.fr
+        password: '\$2y\$13\$X8i.jsXKdDib97tfshryNuTSLLWnYT8tnWY/vM7sOjtDBDdo7SYuO' # f%/R4Uk#](wUvM'V
+        enabled: true
+        roles: ['ROLE_USER']
+        birthDate: <dateTime('+18 years')>
+        firstName: 'Jean'
+        lastName: 'Dupont'

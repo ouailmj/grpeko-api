@@ -13,6 +13,7 @@
 namespace AppBundle\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -25,25 +26,16 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\HasLifecycleCallbacks()
  * @UniqueEntity("email")
  * @UniqueEntity("username")
- * @ApiResource(
- *     itemOperations={
- *     "get",
- *     "put",
- *     "delete",
- *     "api_sign_up"={"route_name"="signUpAPI"},
- *     },
- *     collectionOperations= {
- *     "api_current_user"={
- *          "route_name"="currentUserAPI",
- *          "method"="GET"
- *      },
- *     "api_update_profile"={"route_name"="updateProfileAPI"},
- *     "api_change_password"={"route_name"="ChangePasswordAPI"},
- *     }
- *)
+ * @ApiResource()
  */
 class User extends BaseUser
 {
+    const ROLE_COLLABORATOR = 'ROLE_COLLABORATOR';
+
+    const ROLE_ACCOUNTANT = 'ROLE_ACCOUNTANT';
+
+    const ROLE_CUSTOMER = 'ROLE_CUSTOMER';
+
     /**
      * @var int
      *
@@ -58,32 +50,30 @@ class User extends BaseUser
      */
     protected $facebookId = '';
 
-    protected $facebookAccessToken;
-
     /**
      * @ORM\Column(name="google_id", type="string", length=255, nullable=true)
      */
     protected $googleId = '';
 
-    private $googleAccessToken;
-
     /**
      * @var string
-     * @ORM\Column( type="string", length=20, nullable=true)
+     *
+     * @ORM\Column(type="string", length=10, nullable=true)
      */
-    protected $phoneNumber;
+    protected $initials;
 
     /**
-     * @var string
-     * @ORM\Column( type="string", length=250, nullable=true)
+     * @var Person
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Person" ,mappedBy="userAccount" ,cascade={"persist", "remove"})
      */
-    protected $fullName;
+    protected $person;
 
-    /**
-     * @var string
-     * @ORM\Column( type="string", length=50, nullable=true)
-     */
-    protected $timezoneId;
+    // Transient Properties //
+
+    protected $facebookAccessToken;
+
+    protected $googleAccessToken;
 
     /**
      * Get id.
@@ -198,48 +188,38 @@ class User extends BaseUser
     /**
      * @return string
      */
-    public function getPhoneNumber()
+    public function getInitials()
     {
-        return $this->phoneNumber;
+        return $this->initials;
     }
 
     /**
-     * @param string $phoneNumber
+     * @param string $initials
+     *
+     * @return User
      */
-    public function setPhoneNumber(string $phoneNumber)
+    public function setInitials(string $initials)
     {
-        $this->phoneNumber = $phoneNumber;
+        $this->initials = $initials;
+
+        return $this;
     }
 
     /**
-     * @return string
+     * @return Person
      */
-    public function getFullName()
+    public function getPerson()
     {
-        return $this->fullName;
+        return $this->person;
     }
 
     /**
-     * @param string $fullName
+     * @param Person $person
      */
-    public function setFullName(string $fullName)
+    public function setPerson(Person $person)
     {
-        $this->fullName = $fullName;
+        $this->person = $person;
     }
 
-    /**
-     * @return string
-     */
-    public function getTimezoneId()
-    {
-        return $this->timezoneId;
-    }
 
-    /**
-     * @param string $timezoneId
-     */
-    public function setTimezoneId(string $timezoneId)
-    {
-        $this->timezoneId = $timezoneId;
-    }
 }

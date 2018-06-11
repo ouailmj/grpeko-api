@@ -1,0 +1,120 @@
+<?php
+
+namespace AppBundle\Form;
+
+use AppBundle\Entity\FormerAccountant;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+
+class CompanyType extends AbstractType
+{
+
+
+    /**
+     * {@inheritdoc}
+     */
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+               ->add('socialReason', TextType::class, array(
+                   'label' => 'Raison Sociale:',
+                   'required'  => true
+               ))
+               ->add('legalForm', ChoiceType::class, array(
+                   'label' => 'Forme Juridique:',
+                   'choices'  => array(
+                       'SARL' => 'SARL',
+                       'SA' => 'SA',
+                   ),
+
+               ))
+               ->add('taxationRegime', ChoiceType::class, array(
+                   'label' => 'Régime d\'imposition:',
+                   'required'  => true
+               ))
+               ->add('vatSystem', ChoiceType::class, array(
+                   'label' => 'Régime de TVA:',
+                   'required'  => true
+               ))
+               ->add('currentAddress', AdresseCurrentType::class)
+
+               ->add('siegeAddress', AdresseType::class,[
+                   'label' => false,
+               ])
+
+              ->add('oldAddresses', CollectionType::class,
+                   [
+                       'entry_type'   => AdresseType::class,
+                       'label'        => 'Souscriptions aux produits',
+                       'allow_add'    => true,
+                       'allow_delete' => true,
+                       'prototype'    => true,
+                       'required'     => false,
+                       'attr'         => [
+                           'class' => "old-addresses-collection",
+                       ],
+                   ])
+               ->add('apeCode', ChoiceType::class, array(
+                    'label' => 'Code APE:',
+                    'choices' => array('In Stock' => true, 'Out of Stock' => false),
+                    'required'  => true
+                ))
+               ->add('mainActivity', TextType::class, array(
+                   'label' => 'Activité principale:',
+                   'required'  => true
+               ))
+                ->add('siretNumber', NumberType::class, array(
+                    'label' => 'N° SIRET:',
+                    'required'  => true
+                ))
+                ->add('sirenNumber', NumberType::class, array(
+                    'label' => 'N° SIREN:',
+                    'required'  => true
+                ))
+                ->add('intraCommunityVAT', TextType::class, array(
+                    'label' => 'N° TVA Intra Communautaire',
+                    'required'  => true
+                ))
+                ->add('nbActions', NumberType::class, array(
+                    'label' => 'Nombre d\'actions ou parts socials',
+                    'required'  => true
+                ))
+                ->add('capitalSocial', NumberType::class, array(
+                    'label' => 'Capital social:',
+                    'required'  => true
+                ))
+              ->add('formerAccountant', FormerAccountantType::class)
+
+              ->add('Enregistrer', SubmitType::class, array('attr' => array('class' => 'btn-success','style' => 'float:right')))
+        ;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => 'AppBundle\Entity\Company',
+            'require_password'  => true,
+            'company'      => null
+        ));
+        $resolver->setRequired('company');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix()
+    {
+        return 'appbundle_company';
+    }
+
+
+}

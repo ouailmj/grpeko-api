@@ -1,0 +1,277 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="panel panel-flat" >
+            <div class="table-responsive">
+                <table class="table text-nowrap">
+                    <thead>
+                        <tr style="background-color: #F9F8F8">
+                            <th style="width: 50px">Date mis a jour</th>
+                            <th style="width: 250px;" >Client</th>
+                            <th>Message</th>
+                            <th>Statut</th>
+                            <th><button type="button" class="btn" data-toggle="modal" data-target="#modal_small" style="color:#fff;background-color: #4DB6AC">Créer Une Conversation</button></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td class="text-center">
+                                <h6 class="no-margin">12 /01/2018</h6>
+                            </td>
+                            <td>
+                                <div class="media-left media-middle">
+
+                                        <img src="{{asset('assets/images/avata.png')  }}" class="img-circle img-xs" alt="">
+
+                                </div>
+
+                                <div class="media-body" style="position: relative;top: 5px;">
+                                    <a href="#" class="display-inline-block text-default text-semibold letter-icon-title">Annabelle Doney</a>
+                                </div>
+                            </td>
+                            <td>
+                                <a href="#" class="text-default display-inline-block">
+                                    <span class="text-semibold">[#1183] Workaround for OS X selects printing bug</span>
+                                    <span class="display-block text-muted">Chrome fixed the bug several versions ago, thus rendering this...</span>
+                                </a>
+                            </td>
+                            <td>
+                                <span class="badge" style="background-color:green">Ouvert</span>
+                            </td>
+                            <td class="text-center">
+                                <ul class="icons-list">
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li><a href="{{ path("conversationdetails") }}"><i class="icon-history"></i>Details</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#"><i class="icon-checkmark3 text-success"></i>Ouvrir</a></li>
+                                            <li><a href="#"><i class="icon-cross2 text-danger"></i>Fermer</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">
+                                <h6 class="no-margin">12 /01/2018</h6>
+                            </td>
+                            <td>
+                                <div class="media-left media-middle">
+
+                                    <img src="{{asset('assets/images/avata.png')  }}" class="img-circle img-xs" alt="">
+
+                                </div>
+
+                                <div class="media-body" style="position: relative;top: 5px;">
+                                    <a href="#" class="display-inline-block text-default text-semibold letter-icon-title">Annabelle Doney</a>
+                                </div>
+                            </td>
+                            <td>
+                                <a href="#" class="text-default display-inline-block">
+                                    <span class="text-semibold">[#1183] Workaround for OS X selects printing bug</span>
+                                    <span class="display-block text-muted">Chrome fixed the bug several versions ago, thus rendering this...</span>
+                                </a>
+                            </td>
+                            <td>
+                                <span class="badge" style="background-color:red">Fermé</span>
+                            </td>
+                            <td class="text-center">
+                                <ul class="icons-list">
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li><a href="{{ path("conversationdetails") }}"><i class="icon-history"></i>Details</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#"><i class="icon-checkmark3 text-success"></i>Ouvrir</a></li>
+                                            <li><a href="#"><i class="icon-cross2 text-danger"></i>Fermer</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">
+                                <h6 class="no-margin">12 /01/2018</h6>
+                            </td>
+                            <td>
+                                <div class="media-left media-middle">
+
+                                    <img src="{{asset('assets/images/avata.png')  }}" class="img-circle img-xs" alt="">
+
+                                </div>
+
+                                <div class="media-body" style="position: relative;top: 5px;">
+                                    <a href="#" class="display-inline-block text-default text-semibold letter-icon-title">Annabelle Doney</a>
+                                </div>
+                            </td>
+                            <td>
+                                <a href="#" class="text-default display-inline-block">
+                                    <span class="text-semibold">[#1183] Workaround for OS X selects printing bug</span>
+                                    <span class="display-block text-muted">Chrome fixed the bug several versions ago, thus rendering this...</span>
+                                </a>
+                            </td>
+                            <td>
+                                <span class="badge" style="background-color:green">Ouvert</span>
+                            </td>
+                            <td class="text-center">
+                                <ul class="icons-list">
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li><a href="{{ path("conversationdetails") }}"><i class="icon-history"></i>Details</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#"><i class="icon-checkmark3 text-success"></i>Ouvrir</a></li>
+                                            <li><a href="#"><i class="icon-cross2 text-danger"></i>Fermer</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">
+                                <h6 class="no-margin">12 /01/2018</h6>
+                            </td>
+                            <td>
+                                <div class="media-left media-middle">
+
+                                    <img src="{{asset('assets/images/avata.png')  }}" class="img-circle img-xs" alt="">
+
+                                </div>
+
+                                <div class="media-body" style="position: relative;top: 5px;">
+                                    <a href="#" class="display-inline-block text-default text-semibold letter-icon-title">Annabelle Doney</a>
+                                </div>
+                            </td>
+                            <td>
+                                <a href="#" class="text-default display-inline-block">
+                                    <span class="text-semibold">[#1183] Workaround for OS X selects printing bug</span>
+                                    <span class="display-block text-muted">Chrome fixed the bug several versions ago, thus rendering this...</span>
+                                </a>
+                            </td>
+                            <td>
+                                <span class="badge" style="background-color:red">Fermé</span>
+                            </td>
+                            <td class="text-center">
+                                <ul class="icons-list">
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li><a href="{{ path("conversationdetails") }}"><i class="icon-history"></i>Details</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#"><i class="icon-checkmark3 text-success"></i>Ouvrir</a></li>
+                                            <li><a href="#"><i class="icon-cross2 text-danger"></i>Fermer</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">
+                                <h6 class="no-margin">12 /01/2018</h6>
+                            </td>
+                            <td>
+                                <div class="media-left media-middle">
+
+                                    <img src="{{asset('assets/images/avata.png')  }}" class="img-circle img-xs" alt="">
+
+                                </div>
+
+                                <div class="media-body" style="position: relative;top: 5px;">
+                                    <a href="#" class="display-inline-block text-default text-semibold letter-icon-title">Annabelle Doney</a>
+                                </div>
+                            </td>
+                            <td>
+                                <a href="#" class="text-default display-inline-block">
+                                    <span class="text-semibold">[#1183] Workaround for OS X selects printing bug</span>
+                                    <span class="display-block text-muted">Chrome fixed the bug several versions ago, thus rendering this...</span>
+                                </a>
+                            </td>
+                            <td>
+                                <span class="badge" style="background-color:green">Ouvert</span>
+                            </td>
+                            <td class="text-center">
+                                <ul class="icons-list">
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li><a href="{{ path("conversationdetails") }}"><i class="icon-history"></i>Details</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#"><i class="icon-checkmark3 text-success"></i>Ouvrir</a></li>
+                                            <li><a href="#"><i class="icon-cross2 text-danger"></i>Fermer</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="modal_small" class="modal fade">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header bg-teal-300">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h5 class="modal-title">Nouvelle Conversation</h5>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <form id="myForm" method="post" class="form-horizontal" enctype="multipart/form-data">
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4 text-semibold control-label required">Sujet</label>
+                                <div class="col-lg-8">
+                                  <input type="text" class="form-control" placeholder="Entrer le sujet du conversation">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4 text-semibold control-label required" >Client</label>
+                                <div class="col-lg-8">
+
+
+                                    <select  class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                        <option value="1" disabled selected> Choisir le client</option>
+                                        <option value="1">0 à 499 salariés</option>
+                                        <option value="2">500 à 999 salariés</option>
+                                        <option value="3">Plus de 1000 salariés</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4 text-semibold control-label required">Message</label>
+                                <div class="col-lg-8">
+                                    <textarea rows="4" cols="50" class="form-control" placeholder="Ajouter un message" required></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4 text-semibold control-label required">Joindre des fichiers</label>
+                                <div class="col-lg-8" id="attachment">
+                                    <a href="#" onclick="addMoreFiles()"><i class="fa fa-plus"></i> Ajouter plus</a>
+                                    <input type="file" name="files[]"  class="form-control">
+                                </div>
+                            </div>
+
+                            <p class="text-center">
+                                <input type="submit" value="Valider" class="btn btn-primary" style="background-color:#5d9d9c">
+                            </p>
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- /small modal -->
+
+    </div>
+{% endblock %}

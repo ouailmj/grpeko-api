@@ -1,0 +1,73 @@
+{% extends 'employee/employee.html.twig' %}
+
+{% block _content %}
+<div class="panel panel-flat">
+    <div class="panel-heading">
+        <h6 class="panel-title">Employee<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+        <div class="heading-elements">
+            <a href="{{ path('employee_index') }}" class="btn btn-primary btn-xs "><b><i class="icon-loop3"></i></b> Retour à la liste</a>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>Id</th>
+                                <td>{{ employee.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nom</th>
+                                <td>{{ employee.firstName }}</td>
+                        </tr>
+                        <tr>
+                            <th>Prénom</th>
+                                <td>{{ employee.lastName }}</td>
+                        </tr>
+                        <tr>
+                            <th>Initiales</th>
+                            <td>{{ employee.initials }}</td>
+                        </tr>
+                        <tr>
+                            <th>Login</th>
+                            <td>{{ employee.userAccount.username }}</td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>{{ employee.userAccount.email }}</td>
+                        </tr>
+                        <tr>
+                            <th>Téléphone</th>
+                                <td>{{ employee.phoneNumber }}</td>
+                        </tr>
+                        <tr>
+                            <th>Fax</th>
+                                <td>{{ employee.faxNumber }}</td>
+                        </tr>
+                        <tr>
+                            <th>Code postal</th>
+                            <td>{{ employee.postalCode }}</td>
+                        </tr>
+                        <tr>
+                            <th>Type</th>
+                            <td>{{ employee.jobPosition }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <div class="heading-elements pull-right">
+            <div class="col-md-12">
+                                <div class="text-right">
+    <div class="btn-group"><a class="btn btn-primary legitRipple" href="{{ path('employee_edit', { 'id': employee.id }) }}">Mettre à jour<i class="icon-rotate-cw2 position-right"></i></a>        <a onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');"  class="btn btn-danger legitRipple" href="{{ path('employee_delete', { 'id': employee.id }) }}">Supprimer <i class="icon-trash-alt position-right"></i></a>
+    </div>
+</div>
+</div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
