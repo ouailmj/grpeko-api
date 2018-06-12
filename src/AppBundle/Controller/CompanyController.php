@@ -105,7 +105,9 @@ class CompanyController extends BaseController
         $company = new Company();
       //  $relationentre = new EnterRelation();
 
-        $form1 = $this->createForm('AppBundle\Form\CompanyType', $company);
+        $form1 = $this->createForm('AppBundle\Form\CompanyType', $company, array(
+            'add_contact_data' => false,
+        ));
        // $form2 = $this->createForm('AppBundle\Form\EntreRelationType', $relationentre);
 
         $form1->handleRequest($request);

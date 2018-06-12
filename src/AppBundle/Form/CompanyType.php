@@ -27,7 +27,8 @@ class CompanyType extends AbstractType
                    'required'  => true
                ))
                ->add('legalForm', ChoiceType::class, array(
-                   'label' => 'Forme Juridique:',
+                 //  'label' => 'Forme Juridique:',
+                     'label' => false,
                    'choices'  => array(
                        'SARL' => 'SARL',
                        'SA' => 'SA',
@@ -66,7 +67,8 @@ class CompanyType extends AbstractType
                     'required'  => true
                 ))
                ->add('mainActivity', TextType::class, array(
-                   'label' => 'Activité principale:',
+                    'label' => false,
+                  // 'label' => 'Activité principale:',
                    'required'  => true
                ))
                 ->add('siretNumber', NumberType::class, array(
@@ -86,14 +88,38 @@ class CompanyType extends AbstractType
                     'required'  => true
                 ))
                 ->add('capitalSocial', NumberType::class, array(
-                    'label' => 'Capital social:',
+                   // 'label' => 'Capital social:',
+                     'label' => false,
                     'required'  => true
                 ))
-              ->add('formerAccountant', FormerAccountantType::class)
+                ->add('formerAccountant', FormerAccountantType::class)
 
-              ->add('Enregistrer', SubmitType::class, array('attr' => array('class' => 'btn-success','style' => 'float:right')))
-        ;
+                ->add('legalName', TextType::class,array(
+                    'label'=>false,
+                    'required'  => true
+                ))
+
+                ->add('Enregistrer', SubmitType::class, array('attr' => array('class' => 'btn-success','style' => 'float:right')));
+
+                if ($options['add_contact_data']){
+                    $builder
+                        ->add('contacts', CollectionType::class,
+                            [
+                                'entry_type'   => ContactType::class,
+                                'label'        => false,
+                                'allow_add'    => true,
+                                'allow_delete' => true,
+                                'prototype'    => true,
+                                'required'     => false,
+                                'attr'         => [
+                                    'class' => "add-contacts-collection",
+                                ],
+                            ]);
+
+                }
+
     }
+
 
     /**
      * {@inheritdoc}
@@ -102,10 +128,8 @@ class CompanyType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'AppBundle\Entity\Company',
-            'require_password'  => true,
-            'company'      => null
+            'add_contact_data'=>true,
         ));
-        $resolver->setRequired('company');
     }
 
     /**

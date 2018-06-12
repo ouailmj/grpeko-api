@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
  * @Route("/relation")
  */
 
-class EnterRelationController extends Controller
+class EnterRelationController extends BaseController
 {
 
     /**
@@ -23,16 +23,18 @@ class EnterRelationController extends Controller
     public function newAction(Request $request)
     {
 
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $relationentre = new EnterRelation();
 
         $form1 = $this->createForm('AppBundle\Form\EntreRelationType', $relationentre);
         $form1->handleRequest($request);
         $em->getRepository('AppBundle:Employee')->findAll();
         if ($form1->isSubmitted() && $form1->isValid()) {
+
             $this->getDoctrine()->getManager()->persist($relationentre);
             $this->getDoctrine()->getManager()->flush();
             $this->addSuccessFlash();
+
             $this->redirectToRoute('relation_new');
         }
 

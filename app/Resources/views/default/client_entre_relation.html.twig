@@ -1,7 +1,9 @@
 
 
+
 {% extends 'base.html.twig' %}
 {% block content %}
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css">
 	<div class="page-content">
         {% block sidebar %}
             {% include 'layout/_partials/sidebar.html.twig' %}
@@ -29,6 +31,9 @@
 									<div class="tab-pane active" id="relation">
 										<div class="panel panel-flat">
 											<div class="panel-body">
+
+												{{ form_start(form1) }}
+
 												<p class="content-group-lg">
 													Merci d'avoir accepté le RDV. je propose l'entretien en 4 étapes : la première, je pose des questions, ensuite je donne les conseils, je présente le mode de fonctionnement, et ensuite on parle budget.
 												</p>
@@ -37,42 +42,25 @@
 												</p>
 												<form name="appbundle_user" method="post" class="">
 													<div class="row">
-														<div class="form-group">
-															<label class="control-label col-lg-2 text-semibold control-label" for="apporteur">Apporteur</label>
-															<div class="col-lg-2">
-                                                                {{form_row(form1.contributor)}}
-															</div>
+                                                        {{ form_label(form1.contributor, 'Apporteur') }}
+														<div class="col-lg-2 col-md-2">
+                                                            {{form_row(form1.contributor)}}
 														</div>
-
-
-
-														<div class="form-group">
-															<label class="control-label col-lg-2 text-semibold control-label" for="type_mession">Type de Mission</label>
-															<div class="col-lg-2">
-																<select id="type_mession" name="" class="form-control">
-																	<option value="EC"></option>
-																</select>
-															</div>
+                                                        {{ form_label(form1.typeMission, 'Type de mission') }}
+														<div class="col-lg-2 col-md-2">
+                                                            {{form_row(form1.typeMission)}}
 														</div>
-
-														<div class="form-group">
-															<label class="control-label col-lg-2 text-semibold control-label" for="seciete_deja_cree">Société déja Créée</label>
-															<div class="col-lg-2">
-																<select id="seciete_deja_cree"">
-																	<option value="Oui"></option>
-																	<option value="Non"></option>
-																</select>
-															</div>
+                                                        {{ form_label(form1.societe_creer, 'Société déja Créée') }}
+														<div class="col-lg-2 col-md-2">
+                                                            {{form_row(form1.societe_creer)}}
 														</div>
 													</div>
-
 
 
 													<div class="panel-body">
 														<div class="col-lg-12 content-group-lg" style="background-color: #5d9d9c;color: #fff;font-size: 14px;text-align: center;margin: 10 0">
 															<h6 >Présentation du Cabinet</h6>
 														</div>
-														<br>
 
 														<p class="content-group-lg">
 															Je ne sais pas si l'apporteur a parlé de nous. Nous sommes un petit cabinet de 20 personnes, moi et 19 collaboratrices. Cabinet créé il y a 11 ans. Nouus avons environ 300 clients, <br />
@@ -83,137 +71,126 @@
 														<div class="col-lg-12 content-group-lg" style="background-color: #5d9d9c;color: #fff;font-size: 14px;text-align: center;margin: 10 0">
 															<h6 >Identité</h6>
 														</div>
-														<div class="row">
-															<div class="form-group">
-																<label class="control-label col-lg-1 text-semibold control-label" for="Nom">Nom de l'Entreprise </label>
-																<div class="col-lg-3">
-																	<input type="text" id="Nom" name="" class="form-control" value="ASSJJJ" />
-																</div>
-															</div>
 
-															<div class="form-group">
-																<label class="control-label col-lg-3 text-semibold control-label" for="entreprise">Si entreprise créée, quelle est la forme juridique :  </label>
-																<div class="col-lg-1">
-																	<select id="entreprise" name="" class="form-control">
-																		<option value=""></option>
-																	</select>
-																</div>
-															</div>
 
-															<div class="form-group">
-																<label class="control-label col-lg-3 text-semibold control-label" for="social">Si société créée, quel est le montant du capital social? </label>
-																<div class="col-lg-1">
-																	<input type="text" id="social" name="" class="form-control" value="0$" />
-																</div>
-															</div>
-														</div>
+
 														<div class="row">
 															<div class="form-group">
-																<label class="control-label col-lg-8 text-semibold control-label" for="integralite">Avez-vous libéré l'intégralité du capital social? car c'est indispensable pour bénéficier du taux réduit d'impots sur les sociétés :</label>
-																<div class="col-lg-1">
-																	<select id="integralite" name="" class="form-control">
-																		<option value=""></option>
-																	</select>
-																</div>
-															</div>
-														</div>
-														<div class="row">
-															<div class="form-group">
-																<label class="control-label col-lg-4 text-semibold control-label" for="creation">Si entreprise créée, à quelle date a-t-elle été créée?</label>
+                                                                {{ form_label(form1.company.legalName,"Nom de l'Entreprise") }}
 																<div class="col-lg-2">
-																	<input type="text" id="creation" name="" class="form-control" value="" />
+                                                                    {{  form_row(form1.company.legalName)}}
 																</div>
 															</div>
 
 															<div class="form-group">
-																<label class="control-label col-lg-2 text-semibold control-label" for="cloture">Quelle est la date de cloture?</label>
+                                                                {{ form_label(form1.company.legalName,"Si entreprise créée, quelle est la forme juridique :") }}
 																<div class="col-lg-2">
-																	<input type="text" id="cloture" name="" class="form-control" value="" />
+                                                                    {{  form_row(form1.company.legalForm)}}
 																</div>
 															</div>
+
+															<div class="form-group">
+                                                                {{ form_label(form1.company.capitalSocial,"Si société créée, quel est le montant du capital social ?") }}
+																<div class="col-lg-2">
+                                                                    {{  form_row(form1.company.capitalSocial)}}
+																</div>
+															</div>
+
 														</div>
+
 														<div class="row">
-															<div class="form-group">
-																<label class="control-label col-lg-10 text-semibold control-label" for="irpp">QuelleAvez-vous bénéficiez de la réduction IRPP pour souscription au capital de PME? (réduction de 25% avant 2011, 22% en 2011, et 18% depuis 2011)?</label>
-																<div class="col-lg-1">
-																	<select id="irpp" name="" class="form-control">
-																		<option value=""></option>
-																	</select>
-																</div>
+
+
+
+                                                                {{ form_label(form1.integralite,
+                                                                    "Avez-vous libéré l'intégralité du capital social? car c'est indispensable pour bénéficier du taux réduit d'impots sur les sociétés :",
+                                                                    { 'label_attr': {'style': '    width: 80% !important;'} }) }}
+
+
+															<div class="col-lg-2">
+                                                                {{  form_row(form1.integralite)}}
 															</div>
+
 														</div>
-														<div class="row col-lg-12">
-															<div class="form-group">
-																<label class="control-label col-lg-4 text-semibold control-label" for="dateACree">Si entreprise non créée, à quelle date souhaitez vous la créér?</label>
-																<div class="col-lg-1">
-																	<input type="text" id="dateACree" name="" class="form-control" value="" />
-																</div>
+<br>
+														<div class="class row">
+																{{ form_label(form1.date_creation,"Si entreprise créée, à quelle date a-t-elle été créée ?",
+																	{ 'label_attr': {'style': '    width: 32% !important;'} }) }}
+
+															<div class="col-lg-4">
+																{{  form_row(form1.date_creation)}}
 															</div>
-															<div class="form-group">
-																<label class="control-label col-lg-4 text-semibold control-label" for="france">La société est elle en zone franche ou vivez-vous en zone France?</label>
-																<div class="col-lg-1">
-																	<select id="france" name="" class="form-control">
-																		<option value="Oui"></option>
-																		<option value="Non"></option>
-																	</select>
-																</div>
+
+
+                                                            {{ form_label(form1.date_creation,"Quelle est la date de cloture ?") }}
+
+															<div class="col-lg-2">
+                                                                {{  form_row(form1.date_cloture)}}
 															</div>
+
+
 														</div>
+
+
+													</div><br>
+													<div class="row">
+
+                                                        {{ form_label(form1.IRPP,"Quelle Avez-vous bénéficiez de la réduction IRPP pour souscription au capital de PME? (réduction de 25% avant 2011, 22% en 2011, et 18% depuis 2011)?",
+															{ 'label_attr': {'style': '    width: 50% !important;'} }) }}
+
+														<div class="col-lg-2">
+                                                            {{  form_row(form1.IRPP)}}
+														</div>
+
+													</div>
+
+													<br><br>
+													<div class="row">
+
+                                                        {{ form_label(form1.date_creation_souhait,"Si entreprise non créée, à quelle date souhaitez vous la créér ?",
+                                                            { 'label_attr': {'style': '    width: 30% !important;'} }) }}
+
+														<div class="col-lg-2">
+                                                            {{  form_row(form1.date_creation_souhait)}}
+														</div>
+
+
+                                                        {{ form_label(form1.zone,"La société est elle en zone franche ou vivez-vous en zone France?",
+                                                            { 'label_attr': {'style': '    width: 30% !important;'} }) }}
+
+														<div class="col-lg-2">
+                                                            {{  form_row(form1.zone)}}
+														</div>
+
 													</div>
 
 
+
 													<div class="panel-body">
+
 														<div class="col-lg-12 content-group-lg" style="background-color: #5d9d9c;color: #fff;font-size: 14px;text-align: center;margin: 10 0">
 															<h6 >Contacts</h6>
 														</div>
 
-														<div class="panel-body">
-															<span class="pull-left"><a href="#" class="btn bg-green heading-btn"><b><i class="icon-plus3"></i></b></a></span>
+														<div class="row form-horizontal">
+
+                                                            {{  form_row(form1.company.contacts)}}
 														</div>
 
-														<table class="table">
-															<thead>
-															<tr>
-																<th class="text-center"></th>
-																<th>Civilité </th>
-																<th>Nom</th>
-																<th>Prénom</th>
-																<th>% de part</th>
-																<th>Mandataire social principala</th>
-																<th>Associé</th>
-															</tr>
-															</thead>
-															<tbody>
-															<tr>
-																<td colspan="2">
-																	<div class="text-right">
-																		<div class="btn-group">
-																			<a href="" class="btn btn-primary legitRipple"><b><i class="icon-pen"></i> </b></a>
-																			<a href="#" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" type="button" class="btn btn-danger legitRipple"><b><i class="icon-trash-alt"></i> </b></a>
-																		</div>
-																	</div>
-																</td>
-																<td>Madame</td>
-																<td>VAUCELLE</td>
-																<td>Marie-Laure</td>
-																<td>0%</td>
-																<td><input type="checkbox" name="" class="form-control" /></td>
-																<td><input type="checkbox" name="" class="form-control" /></td>
-															</tr>
-															</tbody>
-														</table>
+
 													</div>
 
 													<div class="panel-body">
 														<div class="col-lg-12 content-group-lg" style="background-color: #5d9d9c;color: #fff;font-size: 14px;text-align: center;margin: 10 0">
 															<h6 >Activité et données chiffrées</h6>
 														</div>
-														<div class="form-group">
-															<label class="control-label col-lg-2 text-semibold control-label" for="cloture">Activité de l'entreprise :</label>
-															<div class="col-lg-8">
-																<input type="text" id="cloture" name="" class="form-control" value="" />
-															</div>
+
+                                                        {{ form_label(form1.company.mainActivity,"Activité de l'entreprise :")}}
+
+														<div class="col-lg-10">
+                                                            {{  form_row(form1.company.mainActivity)}}
 														</div>
+
 
 														<div class="row">
 															<div class="col-lg-8">
@@ -235,38 +212,38 @@
 																	<tbody>
 																	<tr>
 																		<td>CA prévisionnel ?</td>
-																		<td></td>
-																		<td></td>
-																		<td></td>
-																		<td></td>
+																		<td><input type="text" class="form-control"></td>
+																		<td><input type="text" class="form-control"></td>
+																		<td><input type="text" class="form-control"></td>
+																		<td><input type="text" class="form-control"></td>
 																	</tr>
 																	<tr>
 																		<td>Achats et frais généraux prévisionnel</td>
-																		<td></td>
-																		<td></td>
-																		<td></td>
-																		<td></td>
+																		<td><input type="text" class="form-control"></td>
+																		<td><input type="text" class="form-control"></td>
+																		<td><input type="text" class="form-control"></td>
+																		<td><input type="text" class="form-control"></td>
 																	</tr>
 																	<tr>
 																		<td>Bénéfice prévisionnel ?</td>
-																		<td></td>
-																		<td></td>
-																		<td></td>
-																		<td></td>
+																		<td><input type="text" class="form-control"></td>
+																		<td><input type="text" class="form-control"></td>
+																		<td><input type="text" class="form-control"></td>
+																		<td><input type="text" class="form-control"></td>
 																	</tr>
 																	<tr>
 																		<td>Combien y-a-t-il de salariés ?</td>
-																		<td></td>
-																		<td></td>
-																		<td></td>
-																		<td></td>
+																		<td><input type="text" class="form-control"></td>
+																		<td><input type="text" class="form-control"></td>
+																		<td><input type="text" class="form-control"></td>
+																		<td><input type="text" class="form-control"></td>
 																	</tr>
 																	<tr>
 																		<td>Quelle rémuniration nette allez-vous prendre de l'entreprize?</td>
-																		<td></td>
-																		<td></td>
-																		<td></td>
-																		<td></td>
+																		<td><input type="text" class="form-control"></td>
+																		<td><input type="text" class="form-control"></td>
+																		<td><input type="text" class="form-control"></td>
+																		<td><input type="text" class="form-control"></td>
 																	</tr>
 																	</tbody>
 																</table>
@@ -282,45 +259,46 @@
 																	</thead>
 																	<tbody>
 																	<tr>
-																		<td>Le client veut il utiliser sa sociétéactuelle pour investir dans un petit bien immobilier?</td>
 																		<td>
-																			<select id="" name="" class="form-control">
-																				<option value="Oui"></option>
-																				<option value="Non"></option>
-																			</select>
+																			Le client veut il utiliser sa société actuelle pour investir dans un petit bien immobilier?
 																		</td>
-																		<td></td>
+																		<td style="width:50% !important;">  {{  form_row(form1.societeactuelle_date)}} </td>
+
+																		<td>{{  form_row(form1.societeactuelle_date)}} </td>
 																	</tr>
 																	<tr>
-																		<td>Le client veut il utiliser créeer une holding pour investir dans un bien immobilier important?</td>
+
 																		<td>
-																			<select id="" name="" class="form-control">
-																				<option value="Oui"></option>
-																				<option value="Non"></option>
-																			</select>
+																			Le client veut il utiliser créeer une holding pour investir dans un bien immobilier important?
 																		</td>
+																		<td style="width:50% !important;">  {{  form_row(form1.holding)}} </td>
+
 																		<td></td>
+
+
 																	</tr>
 																	<tr>
-																		<td>Le client veut il mettre en place l'épargne salariale?</td>
 																		<td>
-																			<select id="" name="" class="form-control">
-																				<option value="Oui"></option>
-																				<option value="Non"></option>
-																			</select>
+																			Le client veut il mettre en place l'épargne salariale?
 																		</td>
+																		<td style="width:50% !important;">  {{  form_row(form1.epargne)}} </td>
+
 																		<td></td>
+
 																	</tr>
 																	</tbody>
 																</table>
 															</div>
-
-														</div>
+									</div>
 
 													</div>
+													<br>
 
-												</form>
+													<button style="float: right" type="submit" class="form-control btn-success">Enregistrer</button>
 
+
+                                                    {{ form_widget(form1._token) }}
+													{{ form_end(form1, {'render_rest': false}) }}
 											</div>
 										</div>
 
@@ -343,7 +321,6 @@
 		</div>
 	</div>
 
-
 	<style>
 		fieldset.scheduler-border {
 			border: 1px groove #ddd !important;
@@ -362,7 +339,42 @@
 			border-bottom:none;
 			color: #7b5d5a;
 		}
-
-
 	</style>
+
+	<style>
+		div[id^="appbundle_EntreRelation_company_contacts"] > label{
+			display : none!important;
+		}
+	</style>
+
+	<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
+
+
+    {% block javascripts %}
+		<script>
+            $(document).ready(function() {
+                // you may need to change this code if you are not using Bootstrap Datepicker
+                $('.js-datepicker').datepicker({
+                    format: 'yyyy-mm-dd'
+                });
+            });
+		</script>
+		<script src="{{ asset('assets/js/plugins/symfony_collectionjs/jquery.collection.js') }}"></script>
+		<script type="text/javascript">
+            $('.add-contacts-collection').collection({
+                    name_prefix: "{{ form1.company.contacts.vars.full_name }}",
+                    add_at_the_end: true,
+                    hide_useless_buttons: true,
+                    add: '<a style="float:right" href="#" class="collection-action btn btn-success btn-small collection-rescue-add">Ajouter</a>',
+                    remove: '<a href="#" class="collection-remove btn btn-warning collection-action">Retirer</a>',
+                    allow_up: false,
+                    allow_down: false,
+                    init_with_n_elements: 0,
+                }
+            );
+
+		</script>
+
+    {% endblock javascripts %}
+
 {% endblock %}
