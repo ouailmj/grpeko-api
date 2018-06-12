@@ -15,7 +15,7 @@
             {{ form_start(edit_form, {'attr': {'class': 'form-horizontal'}}) }}
             {{ form_widget(edit_form) }}
             <div class="text-right">
-                <div class="btn-group">            <button class="btn btn-primary legitRipple" type="submit">Mettre à jour<i class="icon-rotate-cw2 position-right"></i></button>        <a onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');"  class="btn btn-danger legitRipple" href="">Supprimer <i class="icon-trash-alt position-right"></i></a>
+                <div class="btn-group">            <button class="btn btn-primary legitRipple" type="submit">Mettre à jour<i class="icon-rotate-cw2 position-right"></i></button>        <a onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');"  class="btn btn-danger legitRipple" href="{{ path('company_delete', { 'id': company.id }) }}">Supprimer <i class="icon-trash-alt position-right"></i></a>
                 </div>
             </div>
             {{ form_end(edit_form) }}

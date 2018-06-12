@@ -18,7 +18,6 @@ class EmployeeController extends BaseController
     /**
      * Lists all employee entities.
      *
-     * @Security("has_role('ROLE_ADVISORY')")
      *
      * @Route("/", name="employee_index")
      * @Method("GET")

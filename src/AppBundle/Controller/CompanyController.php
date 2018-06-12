@@ -71,6 +71,7 @@ class CompanyController extends BaseController
      */
     public function editAction(Request $request, Company $company)
     {
+        $deleteForm = $this->createDeleteForm($company);
         $editForm = $this->createForm('AppBundle\Form\CompanyType', $company);
         $editForm->handleRequest($request);
 
@@ -79,13 +80,56 @@ class CompanyController extends BaseController
             $this->addFlash('success', 'Votre opération a été exécutée avec succès');
 
         }
+        return $this->render('company/edit.html.twig', array(
+            'company' => $company,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
 
-        return $this->render('company/edit.html.twig',[
-                'edit_form' => $editForm->createView(),
-            ]
-        );
+    }
+    /**
+     * Deletes a company entity.
+     *
+     *
+     * @Route("/{id}", name="company_delete")
+     * @Method({"DELETE", "GET", "POST"})
+     */
+    public function deleteAction(Request $request, Company $company)
+    {
+
+        $form = $this->createDeleteForm($company);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($company);
+            $em->flush();
+        }
+        else{
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($company);
+            $em->flush();
+            $this->addFlash('success', 'Votre opération a été exécutée avec succès');
+        }
+
+        return $this->redirectToRoute('$company-index');
     }
 
+    /**
+     * Creates a form to delete a company entity.
+     *
+     * @param Company $company The company entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteForm(Company $company)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('company_delete', array('id' => $company->getId())))
+            ->setMethod('DELETE')
+            ->getForm()
+            ;
+    }
   
 }
 

@@ -41,7 +41,7 @@
     </div>
     <div class="tab-content">
 
-        <div class="tab-pane fade has-padding" id="tab3">
+        <div class="tab-pane fade has-padding active in" id="tab3">
             <div class="tab-pane fade has-padding active in" id="tab1">
                 <span title="Ajouter une nouvelle Entité " class="pull-right"><a href="{{ path('company_new') }}" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-user-plus"></i></b> Ajouter</a></span>
                 <div class="datatable-scroll-wrap">
@@ -67,7 +67,7 @@
                                 <td>{{ item.legalName}}</td>
                                 <td>{{ item.legalForm}}</td>
                                 <td>31/12/2018</td>
-                                <td><span class="label label-info">{{ item.taxSystem}}</span></td>
+                                <td><span class="label label-info">{{ item.taxationRegime}}</span></td>
                                 <td><span class="label label-info">{{ item.vatSystem}}</span></td>
                             </tr>
 
