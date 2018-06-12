@@ -23,7 +23,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Company extends LegalEntity
 {
-
     /**
      * @var string
      *
@@ -188,11 +187,7 @@ class Company extends LegalEntity
     /**
      * @var Address
      *
-<<<<<<< HEAD
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address",cascade={"persist"})
-=======
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address", cascade={"persist", "remove"})
->>>>>>> 837075a85e2619f1b41efc2c5535aab40015b83a
      *
      * @ORM\JoinColumn(name="current_address_id", referencedColumnName="id")
      */

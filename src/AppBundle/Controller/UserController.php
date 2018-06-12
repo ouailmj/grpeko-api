@@ -20,14 +20,14 @@ class UserController extends BaseController
 {
 
     /**
-     * @Route("/client/gestion-cabinet", name="liste")
+     * @Route("/client/gestion-collaborateur", name="liste-collaborateur")
      */
     public function listAction()
     {
         $em = $this->getDoctrine()->getManager();
         $employers = $em->getRepository('AppBundle:Employee')->findAll();
 
-        return $this->render('default/gestion-cabinet.html.twig', array('employers' => $employers));
+        return $this->render('default/gestion-collaborateur.html.twig', array('employers' => $employers));
 
     }
      /**
@@ -67,7 +67,7 @@ public function editAction(Employee $emloyee, Request $request) {
            $form->handleRequest($request);
            if ($form->isSubmitted() && $form->isValid()) {
             //Get data from the form
-              $emloyer= $form->getData();
+              $emloyee= $form->getData();
               $em = $this->getDoctrine()->getManager();
               $em->flush();
               $this->addFlash(

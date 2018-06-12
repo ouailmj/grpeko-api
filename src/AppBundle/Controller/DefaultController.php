@@ -692,6 +692,8 @@ class DefaultController extends BaseController
         return $this->render('default/parametrages_commission.html.twig');
     }
 
+
+
     /**
      * @Route("/cabinetacess", name="cabinet_access")
      *

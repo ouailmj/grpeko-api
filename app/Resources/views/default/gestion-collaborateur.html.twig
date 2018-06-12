@@ -19,7 +19,7 @@
                             </ul>
                         </div>
 
-                        <div class="navbar-collapse collapse">
+                        <div class="navbar-collapse collapse" id="demo1">
                             <ul class="nav navbar-nav">
                                 <li class="active"><a href="#tab-demo1" data-toggle="tab" class="legitRipple" aria-expanded="false">Collaborateurs</a></li>
 
@@ -79,21 +79,12 @@
                                             <td>{{ item.lastname}}</td>
                                             <td>{{ item.firstName}}</td>
 
-                                            <td>{{ item.userAccount.initials }}</td>
 
-                                            <td>{{ item.userAccount.username }}</td>
-                                            <td>
-                                                {{ item.userAccount.email }}
-                                            </td>
                                             <td>
                                                 {{ item.jobPosition.name }}
                                             </td>
                                             <td>
-                                                {% if item.manager %}
-                                                    <span class="label label-info"> {{ item.manager.userAccount.initials  }}</span>
-                                                {% else %}
 
-                                                {% endif %}
                                             </td>
                                             <td>
                                                 {% if item.status %}

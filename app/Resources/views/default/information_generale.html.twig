@@ -69,7 +69,11 @@
                         {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
                         <fieldset>
                         <legend class="text-semibold"><i class="icon-address-book"></i> Informations générale</legend>
-
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    {{form_row(form.legalName)}}
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <div class="col-lg-12">
                                     {{form_row(form.taxationRegime)}}
