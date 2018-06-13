@@ -1,7 +1,7 @@
-Napier Project
+EKO Project
 ========
 
-Extranet AXA.
+Groupe EKO.
 
 # Installation
 * Créer une base de données napier_db dans votre MySQL.
