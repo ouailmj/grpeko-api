@@ -792,17 +792,6 @@ class DefaultController extends BaseController
 
     //kamal
 
-    /**
-     * @Route("/client/affecctaionCollaborateurF", name="affecctaionCollaborateur")
-     *
-     * @param Request $request
-     *
-     *  * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function affecctaionCollaborateur(Request $request)
-    {
-        return $this->render('default/collaborateur_affectation.html.twig');
-    }
 
     //kamal
 

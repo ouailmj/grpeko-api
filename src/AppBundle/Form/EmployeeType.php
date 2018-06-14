@@ -50,6 +50,7 @@ class EmployeeType extends AbstractType
                 'class' => Employee::class,
                 'label' => 'Supérieur'
             ))
+
             ->add('userAccount', UserType::class, array(
                 'label' => 'Informations de connexion'
             ))

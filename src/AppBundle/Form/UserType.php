@@ -34,10 +34,7 @@ class UserType extends AbstractType
         $builder
 
 
-        ->add('initials', TextType::class, array(
-            'label' => 'initiales',
 
-        ))
 
         ->add('username', TextType::class, array(
             'label' => 'Login',
@@ -45,7 +42,7 @@ class UserType extends AbstractType
 
         ->add('email', EmailType::class)
 
-        ->add('new_password', RepeatedType::class, array(
+        ->add('password', RepeatedType::class, array(
             'mapped' => false,
             'type' => PasswordType::class,
             'invalid_message' => 'The password fields must match.',

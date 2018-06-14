@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Employee;
+use AppBundle\Model\EmployeeManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -36,23 +37,29 @@ class EmployeeController extends BaseController
     /**
      * Creates a new employee entity.
      *
-     * @Security("has_role('ROLE_ADVISORY')")
+     *
      *
      * @Route("/new", name="employee_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, EmployeeManager $employeeManager)
     {
         $employee = new Employee();
         $form = $this->createForm('AppBundle\Form\EmployeeType', $employee);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($employee);
-            $em->flush();
+
+            if (!empty($plainPassword = $form->get('userAccount')->get('password')->getData())){
+                $employee->getUserAccount()->setPlainPassword($plainPassword);
+            }
+
+
+            $employeeManager->createEmployee($employee);
+
+            $this->addSuccessFlash();
             $this->addFlash('success', 'Votre opération a été exécutée avec succès');
-            return $this->redirectToRoute('employee_show', array('id' => $employee->getId()));
+
         }
 
         return $this->render('employee/new.html.twig', array(
@@ -64,7 +71,7 @@ class EmployeeController extends BaseController
     /**
      * Finds and displays a employee entity.
      *
-     * @Security("has_role('ROLE_ADVISORY')")
+     *
      *
      * @Route("/{id}", name="employee_show")
      * @Method("GET")
@@ -78,11 +85,11 @@ class EmployeeController extends BaseController
             'delete_form' => $deleteForm->createView(),
         ));
     }
-
+//@Security("has_role('ROLE_ADVISORY')")
     /**
      * Displays a form to edit an existing employee entity.
      *
-     * @Security("has_role('ROLE_ADVISORY')")
+     *
      *
      * @Route("/{id}/edit", name="employee_edit")
      * @Method({"GET", "POST"})
@@ -109,7 +116,7 @@ class EmployeeController extends BaseController
     /**
      * Deletes a employee entity.
      *
-     * @Security("has_role('ROLE_ADMIN')")
+     *
      *
      * @Route("/{id}", name="employee_delete")
      * @Method({"DELETE", "GET", "POST"})

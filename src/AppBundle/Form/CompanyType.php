@@ -24,16 +24,27 @@ class CompanyType extends AbstractType
             'label' => 'Raison sociale'
         ))
 
-        ->add('legalForm', TextType::class, array(
-            'label' => 'Form juridique'
+        ->add('legalForm', ChoiceType::class, array(
+            'label' => 'Form juridique',
+                 'choices'  => array(
+                    'SARL' => 'SARL',
+                    'EURL' => 'EURL',
+                    'SELARL' => 'SELARL',
+                    'SA' => 'SA',
+                    'SAS' => 'SAS',
+                    'SASU' => 'SASU',
+                    'SARL' => 'SARL',
+                    'SNC' => 'SNC',
+                    'SCP' => 'SCP',
+            )
         ))
 
         ->add('taxationRegime', TextType::class, array(
-            'label' => 'Regime d\'imposition',
+            'label' => 'Régime d\'imposition',
         ))
 
         ->add('vatSystem', TextType::class, array(
-            'label' => 'Regime TVA',
+            'label' => 'Régime de TVA',
 
         ))
 
@@ -51,27 +62,27 @@ class CompanyType extends AbstractType
 
         ->add('siretNumber', TextType::class, array(
             'required' => false,
-            'label' => 'N SIRT'
+            'label' => 'N° SIRET'
         ))
 
         ->add('sirenNumber', TextType::class, array(
             'required' => false,
-            'label' => 'N SIREN'
+            'label' => 'N° SIREN'
         ))
 
         ->add('intraCommunityVAT', TextType::class, array(
             'required' => false,
-            'label' => 'TVA'
+            'label' => 'N° TVA Intra Communautaire'
         ))
 
         ->add('nbActions', TextType::class, array(
             'required' => false,
-            'label' => 'Nombre action sociale'
+            'label' => 'Nombre d\'action ou parts sociales'
         ))
 
         ->add('capitalSocial', TextType::class, array(
             'required' => false,
-            'label' => 'Capitale social'
+            'label' => 'Capitale Social'
         ))
 
 

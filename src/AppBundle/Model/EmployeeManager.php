@@ -27,12 +27,17 @@ class EmployeeManager
      */
     private $em;
 
+    /** @var  UserManager */
+    private $userManager;
+
     /**
      * EmployeeManager constructor.
+     * @param UserManager $userManager
      * @param EntityManagerInterface $em
      */
-    public function __construct(EntityManagerInterface $em)
+    public function __construct(EntityManagerInterface $em,  UserManager $userManager)
     {
+        $this->userManager = $userManager;
         $this->em = $em;
     }
 
@@ -43,7 +48,8 @@ class EmployeeManager
 
     public function createEmployee(Employee $employee, User $user = null)
     {
-        if ($user instanceof User) $employee->setUserAccount($user);
+        if ($employee->getUserAccount() instanceof User)
+            $this->userManager->createUser($employee->getUserAccount(), false);
 
         $this->em->persist($employee);
         $this->em->flush();

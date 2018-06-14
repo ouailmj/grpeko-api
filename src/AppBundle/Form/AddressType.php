@@ -28,10 +28,10 @@ class AddressType extends AbstractType
     {
         $builder
         ->add('postalCode', TextType::class, array(
-            'label' => 'Code postal'
+            'label' => 'CP'
         ))
         ->add('city', TextType::class, array(
-            'label' => 'ville'
+            'label' => 'Ville'
         ))
 
 
