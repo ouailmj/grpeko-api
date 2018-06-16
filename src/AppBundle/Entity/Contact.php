@@ -74,6 +74,29 @@ class Contact
     private $mandataire;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string",length=100))
+     */
+    private $email;
+
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     */
+    public function setEmail(string $email)
+    {
+        $this->email = $email;
+    }
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="associe", type="boolean"))

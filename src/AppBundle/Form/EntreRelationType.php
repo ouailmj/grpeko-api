@@ -6,6 +6,7 @@ use AppBundle\Entity\Company;
 use AppBundle\Entity\Contact;
 use AppBundle\Entity\Employee;
 use AppBundle\Entity\Mission;
+use AppBundle\Entity\TypeMission;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
@@ -39,8 +40,8 @@ class EntreRelationType extends AbstractType
                 'label' => false,
                 'attr' => ['class' => 'select-search'],
                 'class' => 'AppBundle:TypeMission',
-                'choice_label' => function (Mission $mission) {
-                    return $mission->getId();
+                'choice_label' => function (TypeMission $typemission) {
+                    return $typemission->getId();
                 },
                 'multiple' => false,
                 'expanded' => false,
@@ -76,8 +77,8 @@ class EntreRelationType extends AbstractType
             ))
             ->add('IRPP', ChoiceType::class, array(
                 'choices'  => array(
-                    'Oui' => true,
-                    'Non' => false,
+                    'Oui' => 1,
+                    'Non' => 0,
                 ),
                 'label' => false,
             ))
@@ -124,13 +125,14 @@ class EntreRelationType extends AbstractType
                 'attr' => array('class' => 'french_picker'),
                 'label' => false,
             ))
-            ->add('epargne', ChoiceType::class, array(
+            ->add('epargne_check', ChoiceType::class, array(
                 'choices'  => array(
                     'Oui' => true,
                     'Non' => false,
 
                 ),
                 'label' => false,
+                'mapped' => false,
             ))
             ->add('epargne_date', DateType::class, array(
                 'required' => true,
@@ -138,6 +140,7 @@ class EntreRelationType extends AbstractType
                 'widget' => 'single_text',
                 'attr' => array('class' => 'french_picker'),
                 'label' => false,
+                'mapped' => false,
             ))
             ->add('company', CompanyType::class,[
                 'label' => false,

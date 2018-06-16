@@ -114,7 +114,7 @@ class EnterRelation
     /**
      * @param \DateTime $date_creation
      */
-    public function setDateCreation(\DateTime $date_creation)
+    public function setDateCreation(\DateTime $date_creation= null)
     {
         $this->date_creation = $date_creation;
     }
@@ -130,7 +130,7 @@ class EnterRelation
     /**
      * @param \DateTime $date_cloture
      */
-    public function setDateCloture(\DateTime $date_cloture)
+    public function setDateCloture(\DateTime $date_cloture=null)
     {
         $this->date_cloture = $date_cloture;
     }
@@ -178,7 +178,7 @@ class EnterRelation
     /**
      * @param \DateTime $date_creation_souhait
      */
-    public function setDateCreationSouhait(\DateTime $date_creation_souhait)
+    public function setDateCreationSouhait(\DateTime $date_creation_souhait=null)
     {
         $this->date_creation_souhait = $date_creation_souhait;
     }
@@ -216,9 +216,9 @@ class EnterRelation
     private $holding;
 
     /**
-     * @var string
+     * @var array
      *
-     * @ORM\Column(name="epargne", type="string",length=10))
+     * @ORM\Column(type="array",length=10,nullable=TRUE))
      */
 
     private $epargne;
@@ -256,7 +256,7 @@ class EnterRelation
     }
 
     /**
-     * @return string
+     * @return array
      */
     public function getEpargne()
     {
@@ -264,9 +264,9 @@ class EnterRelation
     }
 
     /**
-     * @param string $epargne
+     * @param array $epargne
      */
-    public function setEpargne(string $epargne)
+    public function setEpargne(array $epargne)
     {
         $this->epargne = $epargne;
     }
@@ -282,7 +282,7 @@ class EnterRelation
     /**
      * @param \DateTime $societeactuelle_date
      */
-    public function setSocieteactuelleDate(\DateTime $societeactuelle_date)
+    public function setSocieteactuelleDate(\DateTime $societeactuelle_date=null)
     {
         $this->societeactuelle_date = $societeactuelle_date;
     }
@@ -298,25 +298,9 @@ class EnterRelation
     /**
      * @param \DateTime $holding_date
      */
-    public function setHoldingDate(\DateTime $holding_date)
+    public function setHoldingDate(\DateTime $holding_date=null)
     {
         $this->holding_date = $holding_date;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getEpargneDate()
-    {
-        return $this->epargne_date;
-    }
-
-    /**
-     * @param \DateTime $epargne_date
-     */
-    public function setEpargneDate(\DateTime $epargne_date)
-    {
-        $this->epargne_date = $epargne_date;
     }
 
     /**
@@ -334,14 +318,6 @@ class EnterRelation
      * @Assert\Date()
      */
     private $holding_date;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="epargne_date", type="date", nullable=true))
-     * @Assert\Date()
-     */
-    private $epargne_date;
 
     /**
      * Get id.

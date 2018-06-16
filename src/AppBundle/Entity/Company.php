@@ -14,6 +14,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Company.
@@ -63,7 +64,6 @@ class Company extends LegalEntity
      * Regime d'imposition.
      *
      * @var string
-     *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $taxationRegime;
@@ -108,7 +108,7 @@ class Company extends LegalEntity
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(type="string", length=255, nullable=true)
      *
      */

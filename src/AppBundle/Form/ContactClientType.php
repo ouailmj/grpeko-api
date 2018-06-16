@@ -10,7 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ContactType extends AbstractType
+class ContactClientType extends AbstractType
 {
 
 
@@ -20,32 +20,19 @@ class ContactType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('civility', TextType::class, array(
-                'label' => 'Civilité:',
-                'required'  => true
-            ))
             ->add('firstname', TextType::class, array(
-                'label' => 'firstname:',
+                'label' => 'Prénom:',
                 'required'  => true
             ))
             ->add('lastname', TextType::class, array(
-                'label' => 'lastname:',
+                'label' => 'Nom:',
                 'required'  => true
             ))
-            ->add('intermediate', TextType::class, array(
-                'label' => 'de part:',
-                'required'  => true
-            ))
-            ->add('mandataire', TextType::class, array(
-                    'label' => 'Mandataire social principal:',
-                    'required'  => true
-                ))
-            ->add('associe', CheckboxType::class, array(
-                    'label' => ' est Associé ?',
+            ->add('email', EmailType::class, array(
+                    'label' => 'Email : ',
                     'required'  => true
                 )
-
-    );
+            );
     }
 
     /**
@@ -65,7 +52,7 @@ class ContactType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_Contact';
+        return 'appbundle_ContactClient';
     }
 
 

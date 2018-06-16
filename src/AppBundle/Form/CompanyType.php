@@ -24,24 +24,24 @@ class CompanyType extends AbstractType
         $builder
                ->add('socialReason', TextType::class, array(
                    'label' => 'Raison Sociale:',
-                   'required'  => true
+                   'required'  => false
                ))
                ->add('legalForm', ChoiceType::class, array(
-                 //  'label' => 'Forme Juridique:',
-                     'label' => false,
+                   'label' => 'Forme Juridique:',
+                   //  'label' => false,
                    'choices'  => array(
                        'SARL' => 'SARL',
                        'SA' => 'SA',
                    ),
-
+                    'required'=>false
                ))
                ->add('taxationRegime', ChoiceType::class, array(
                    'label' => 'Régime d\'imposition:',
-                   'required'  => true
+                   'required'  => false
                ))
                ->add('vatSystem', ChoiceType::class, array(
                    'label' => 'Régime de TVA:',
-                   'required'  => true
+                   'required'  => false
                ))
                ->add('currentAddress', AdresseCurrentType::class)
 
@@ -64,59 +64,57 @@ class CompanyType extends AbstractType
                ->add('apeCode', ChoiceType::class, array(
                     'label' => 'Code APE:',
                     'choices' => array('In Stock' => true, 'Out of Stock' => false),
-                    'required'  => true
+                    'required'  => false
                 ))
                ->add('mainActivity', TextType::class, array(
                     'label' => false,
-                  // 'label' => 'Activité principale:',
-                   'required'  => true
+                    'label' => 'Activité principale:',
+                   'required'  => false
                ))
                 ->add('siretNumber', NumberType::class, array(
                     'label' => 'N° SIRET:',
-                    'required'  => true
+                    'required'  => false
                 ))
                 ->add('sirenNumber', NumberType::class, array(
                     'label' => 'N° SIREN:',
-                    'required'  => true
+                    'required'  => false
                 ))
                 ->add('intraCommunityVAT', TextType::class, array(
                     'label' => 'N° TVA Intra Communautaire',
-                    'required'  => true
+                    'required'  => false
                 ))
                 ->add('nbActions', NumberType::class, array(
                     'label' => 'Nombre d\'actions ou parts socials',
-                    'required'  => true
+                    'required'  => false
                 ))
                 ->add('capitalSocial', NumberType::class, array(
-                   // 'label' => 'Capital social:',
-                     'label' => false,
-                    'required'  => true
+                    'label' => 'Capital social:',
+                    'required'  => false
                 ))
                 ->add('formerAccountant', FormerAccountantType::class)
 
                 ->add('legalName', TextType::class,array(
                     'label'=>false,
-                    'required'  => true
+                    'required'  => false
                 ))
+                    ->add('Enregistrer', SubmitType::class, array('attr' => array('class' => 'btn-success','style' => 'float:right')))
 
-                ->add('Enregistrer', SubmitType::class, array('attr' => array('class' => 'btn-success','style' => 'float:right')));
-
-                if ($options['add_contact_data']){
-                    $builder
-                        ->add('contacts', CollectionType::class,
+              //  if ($options['add_contact_data']){
+                //    $builder
+                    ->add('contacts', CollectionType::class,
                             [
-                                'entry_type'   => ContactType::class,
+                                'entry_type'   => ContactClientType::class,
                                 'label'        => false,
                                 'allow_add'    => true,
                                 'allow_delete' => true,
                                 'prototype'    => true,
-                                'required'     => false,
+                                'required'     => true,
                                 'attr'         => [
                                     'class' => "add-contacts-collection",
                                 ],
                             ]);
 
-                }
+               // }
 
     }
 

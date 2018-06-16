@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\EnterRelation;
+use AppBundle\Entity\Mission;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -30,6 +31,23 @@ class EnterRelationController extends BaseController
         $form1->handleRequest($request);
         $em->getRepository('AppBundle:Employee')->findAll();
         if ($form1->isSubmitted() && $form1->isValid()) {
+
+           // $valus=$em->getRepository('AppBundle:Mission')->findAll();
+
+            $relationentre->setEpargne(
+                array(
+                   'epargne_date' => $form1->get('epargne_date')->getData(),
+                   'epargne_check' => $form1->get('epargne_check')->getData()
+                )
+           );
+
+           // $relationentre->getCompany()->addMission()
+            //$mission = new Mission();
+            // $mission->addExercice();
+            //$mission->addExercice();
+            //$mission->addExercice();
+
+            // ->getCompany()->addMission($mission)
 
             $this->getDoctrine()->getManager()->persist($relationentre);
             $this->getDoctrine()->getManager()->flush();

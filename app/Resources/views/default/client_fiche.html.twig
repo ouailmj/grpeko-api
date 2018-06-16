@@ -14,6 +14,8 @@
                             <li id="clikfirsttab" class="active"><a href="#firsttab" data-toggle="tab" aria-expanded="true">Fiche Client</a></li>
                             <li><a href="{{ path('relation_new') }}">Prise de connaissance</a></li>
                         </ul>
+
+
                         <div class="tab-content ">
                             <div class="tab-pane active" id="firsttab">
                                 <div class="">
@@ -75,6 +77,7 @@
 
                                             <fieldset class="scheduler-border">
                                                 <legend class="scheduler-border" style="text-transform: capitalize">aaaaa</legend>
+
                                                 {{form_row(form1.apeCode)}}
                                                 {{form_row(form1.mainActivity)}}
                                                 {{form_row(form1.siretNumber)}}
@@ -124,13 +127,28 @@
 
                                                 </div>
                                             </div>
+                                            <div class="form-group">
+                                                <div class=" col-sm-12">
+
+                                                    <fieldset class="scheduler-border">
+
+                                                        <legend class="scheduler-border" style="text-transform: capitalize">contacts</legend>
+
+                                                        {{form_widget(form1.contacts)}}
+
+                                                    </fieldset>
+
+                                                </div>
+                                            </div>
 
 
                                             {{form_row(form1.Enregistrer)}}
 
 
 
-                                            {{ form_end(form1) }}
+
+                                            {{ form_widget(form1._token) }}
+                                            {{ form_end(form1, {'render_rest': false}) }}
                                         </div>
                                     </div>
 
@@ -199,14 +217,40 @@
         div[id^="appbundle_company_oldAddresses"] > label{
             display : none!important;
         }
+        div[id^="appbundle_company_contacts"] > label{
+            display : none!important;
+        }
+
+        div[id^="appbundle_company_contacts"]:nth-child(3) {
+            display:none
+        }
     </style>
 
     {% block javascripts %}
 
+
+        <script>
+            $(document).ready(function() {
+              $('.collection-action').click();
+            });
+
+        </script>
         <script src="{{ asset('assets/js/plugins/symfony_collectionjs/jquery.collection.js') }}"></script>
         <script type="text/javascript">
             $('.old-addresses-collection').collection({
                     name_prefix: "{{ form1.oldAddresses.vars.full_name }}",
+                    add_at_the_end: true,
+                    hide_useless_buttons: true,
+                    add: '<a style="float:right" href="#" class="collection-action btn btn-success btn-small collection-rescue-add">Ajouter</a>',
+                    remove: '<a href="#" class="collection-remove btn btn-warning collection-action">Retirer</a>',
+                    allow_up: false,
+                    allow_down: false,
+                    init_with_n_elements: 0,
+
+                }
+            );
+            $('.add-contacts-collection').collection({
+                    name_prefix: "{{ form1.contacts.vars.full_name }}",
                     add_at_the_end: true,
                     hide_useless_buttons: true,
                     add: '<a style="float:right" href="#" class="collection-action btn btn-success btn-small collection-rescue-add">Ajouter</a>',

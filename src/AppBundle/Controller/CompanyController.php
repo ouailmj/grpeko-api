@@ -23,14 +23,13 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 /**
  * Class CompanyController
  * @package AppBundle\Controller
- * @Route("/company")
+ * @Route("/client")
  */
 class CompanyController extends BaseController
 {
 
     /**
-     * @Route("/index", name="company_index")
-     *
+     * @Route("/index", name="client_index")
      */
 
     public function indexAction(Request $request)
@@ -43,22 +42,19 @@ class CompanyController extends BaseController
             array_push($listcompanys, $this->createDeleteForm($company)->createView());
         }
 
-        return $this->render('default/client_index.html.twig', array(
+        return $this->render('client/show.html.twig', array(
             'companys'     => $companys,
             'delete_form'   => $listcompanys
         ));
 
     }
 
-
-
     /**
      * Deletes a Company entity.
-     *
-     *  @Route("/{id}/delete", name="company_delete")
+     *  @Route("/{id}/delete", name="client_delete")
      *  @Method("DELETE")
-     *
      */
+
     public function deleteAction(Request $request, Company $company)
     {
         $form = $this->createDeleteForm($company);
@@ -71,7 +67,7 @@ class CompanyController extends BaseController
             $this->addSuccessFlash();
         }
 
-        return $this->redirectToRoute('company_index');
+        return $this->redirectToRoute('client_index');
     }
 
     /**
@@ -81,6 +77,7 @@ class CompanyController extends BaseController
      *
      * @return \Symfony\Component\Form\Form The form
      */
+
     private function createDeleteForm(Company $company)
     {
 
@@ -93,57 +90,59 @@ class CompanyController extends BaseController
 
 
     /**
-     * @Route("/add", name="company_new")
+     * @Route("/new", name="client_new")
      *
      */
 
-    public function newAction(Request $request)
+    public function newAction(Request $request,\Swift_Mailer $mailer)
     {
-        $em = $this->getDoctrine()->getEntityManager();
-        $companys = $em->getRepository('AppBundle:EnterRelation')->findAll();
-
+        $em = $this->getDoctrine()->getManager();
         $company = new Company();
-      //  $relationentre = new EnterRelation();
-
         $form1 = $this->createForm('AppBundle\Form\CompanyType', $company, array(
             'add_contact_data' => false,
         ));
-       // $form2 = $this->createForm('AppBundle\Form\EntreRelationType', $relationentre);
 
         $form1->handleRequest($request);
-        //$form2->handleRequest($request);
 
         if ($form1->isSubmitted() && $form1->isValid()) {
-         $this->getDoctrine()->getManager()->persist($company);
-         $this->getDoctrine()->getManager()->flush();
-         $this->addSuccessFlash();
-         $this->redirectToRoute('company_new');
+
+               foreach ( $form1->get('contacts') as $data) {
+                   $message = \Swift_Message::newInstance()
+                            ->setSubject("Fiche Patrimoniale")
+                            ->setFrom('groupeekofr.dev@gmail.com')
+                            ->setTo($data->get("email")->getData())
+                            ->setBody("<html>Bonjour,<br><br>Afin de préparer ce rdv, merci de me retourner cette <a href='/app/relation/add'>fiche patrimoniale</a> remplie stp.</html>" , 'text/html');
+                   $this->get('mailer')->send($message);
+                   break;
+               }
+
+             $em->persist($company);
+             $em->flush();
+             $this->addSuccessFlash();
+             $this->redirectToRoute('client_new');
         }
 
-        return $this->render('default/client_fiche.html.twig',
+        return $this->render('client/new.html.twig',
                             array('form1' => $form1->createView()));
     }
 
 
     /**
-     * @Route("/edit/{id}", name="company_edit")
+     * @Route("/edit/{id}", name="client_edit")
      *
      */
 
     public function editAction(Company $company, Request $request)
     {
-
+        $em = $this->getDoctrine()->getManager();
         $form1 = $this->createForm('AppBundle\Form\CompanyType', $company);
         $form1->handleRequest($request);
         if ($form1->isSubmitted() && $form1->isValid()) {
-           $this->getDoctrine()->getManager()->flush();
-            $this->addFlash(
-                'notice',
-                'Bien Modifié !'
-            );
+            $em->flush();
+            $this->addSuccessFlash();
         }
 
-        return $this->render('default/access1.html.twig',
+        return $this->render('client/edit.html.twig',
                             array('form1' => $form1->createView()));
     }
 
