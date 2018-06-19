@@ -1,14 +1,7 @@
-{% extends 'base.html.twig' %}
-{% block content %}
+{% extends 'company/company.html.twig' %}
+{% block _content %}
 
-<div class="page-content">
-    {% block sidebar %}
-    {% include 'layout/_partials/sidebar.html.twig' %}
-    {% endblock %}
-
-    <div class="content-wrapper">
-        <div class="content">
-            <div class="panel panel-flat">
+    <div class="panel panel-flat">
                 <div class="tabbale">
                     <ul class="nav nav-tabs bg-teal-400 nav-justified">
                         <li id="clikfirsttab" class="active"><a href="#firsttab" data-toggle="tab" aria-expanded="true">Fiche Client</a></li>
@@ -187,9 +180,6 @@
 
                 </div>
             </div>
-        </div>
-    </div>
-</div>
 
 
 <style>

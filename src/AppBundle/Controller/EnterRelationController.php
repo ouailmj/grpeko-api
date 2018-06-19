@@ -96,14 +96,14 @@ class EnterRelationController extends BaseController
                 array('epargne_date' => $form1->get('epargne_date')->getData(), 'epargne_check' => $form1->get('epargne_check')->getData())
             );
 
-            $this->getDoctrine()->getManager()->persist($relationentre);
+            $em->persist($relationentre);
             $this->getDoctrine()->getManager()->flush();
             $this->addSuccessFlash();
 
             $this->redirectToRoute('relation_new');
         }
 
-        return $this->render('default/client_entre_relation.html.twig', array('form1' => $form1->createView()));
+        return $this->render('prisedeconnaissance/entree_relation/new.html.twig', array('form1' => $form1->createView()));
 
     }
 
@@ -112,11 +112,13 @@ class EnterRelationController extends BaseController
      *
      */
 
-    public function editAction(Request $request)
+    public function editAction(EnterRelation $relationentre,Request $request)
     {
 
+
         $em = $this->getDoctrine()->getManager();
-        $relationentre = new EnterRelation();
+
+
         $form1 = $this->createForm('AppBundle\Form\EntreRelationType', $relationentre);
         $form1->handleRequest($request);
 
@@ -125,11 +127,13 @@ class EnterRelationController extends BaseController
             $date1=$form1->get('date1')->getData();
             $date2=$form1->get('date2')->getData();
             $date3=$form1->get('date3')->getData();
+
             $comment1=$form1->get('comment1')->getData();
             $comment2=$form1->get('comment2')->getData();
             $comment3=$form1->get('comment3')->getData();
             $comment4=$form1->get('comment4')->getData();
             $comment5=$form1->get('comment5')->getData();
+
             $fiscal1=[
                 "Date1"=>$date1,
                 "CA"=>["Valeur"=>$form1->get('date1text1')->getData(),"Commentaire"=>$comment1],
@@ -173,7 +177,6 @@ class EnterRelationController extends BaseController
             $mission->setTypeMission($relationentre->getTypeMission());
             $relationentre->getCompany()->addMission($mission);
 
-
             $relationentre->setSocieteactuelle(
                 array('epargne_date' => $form1->get('epargne_date')->getData(), 'epargne_check' => $form1->get('epargne_check')->getData())
             );
@@ -186,12 +189,16 @@ class EnterRelationController extends BaseController
                 array('epargne_date' => $form1->get('epargne_date')->getData(), 'epargne_check' => $form1->get('epargne_check')->getData())
             );
 
-//dump($relationentre);
+           foreach ($relationentre->getCompany()->getContacts() as $contact )
+             {
+                $contact->setCompany($relationentre->getCompany());
+             }
             $em->flush();
             $this->addSuccessFlash();
+            return $this->redirectToRoute('relation_edit' , ['id' => $relationentre->getId()]);
         }
 
-        return $this->render('default/client_entre_relation.html.twig',
+        return $this->render('prisedeconnaissance/entree_relation/edit.html.twig',
                              array('form1' => $form1->createView()));
 
     }

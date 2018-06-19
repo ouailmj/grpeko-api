@@ -29,7 +29,7 @@ class CompanyController extends BaseController
 {
 
     /**
-     * @Route("/index", name="company_index")
+     * @Route("/list", name="company_index")
      */
 
     public function indexAction(Request $request)

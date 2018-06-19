@@ -266,7 +266,8 @@ class Company extends LegalEntity
 
     /**
      * @var EnterRelation
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\EnterRelation" ,mappedBy="company" ,cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\EnterRelation" ,mappedBy="company" ,cascade={"persist","remove"})
+     * onDelete="CASCADE"
      */
     private $enterRelation;
 

@@ -1,14 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends 'company/company.html.twig' %}
+{% block _content %}
 
-{% block content %}
-
-<div class="page-content">
-    {% block sidebar %}
-    {% include 'layout/_partials/sidebar.html.twig' %}
-    {% endblock %}
-    <div class="content-wrapper">
-        <div class="content">
-            <!-- Highlighting rows and columns -->
             <div class="panel panel-flat">
                 <div class="panel-heading">
                     <h5 class="panel-title">Clients - Access</h5>
@@ -86,8 +78,5 @@
                 </div>
                 <!-- /highlighting rows and columns -->
             </div>
-        </div>
-    </div>
-</div>
 
 {% endblock %}

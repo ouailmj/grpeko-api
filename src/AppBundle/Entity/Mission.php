@@ -237,7 +237,7 @@ class Mission
     }
 
     /**
-     * @return Exercice[]|ArrayCollection
+     * @return FiscalYear[]|ArrayCollection
      */
     public function getExercices()
     {
@@ -248,7 +248,7 @@ class Mission
      * @param $exercice
      * @return $this
      */
-    public function addExercice($exercice)
+    public function addExercice(FiscalYear $exercice)
     {
         $this->exercices->add($exercice);
         return $this;
@@ -275,10 +275,9 @@ class Mission
     /**
      * @param TypeMission $typeMission
      */
-    public function setTypeMission(TypeMission $typeMission)
+    public function setTypeMission(TypeMission $typeMission=null)
     {
         $this->typeMission = $typeMission;
     }
-
 
 }
