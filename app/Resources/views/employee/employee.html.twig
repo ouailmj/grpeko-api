@@ -1,4 +1,4 @@
-{% extends "base.html.twig" %}
+{% extends 'base.html.twig' %}
 
 {% block content %}
     <div class="page-content">
@@ -43,7 +43,9 @@
                 {% endif %}
 
                 <div class="content-group tab-content-bordered navbar-component">
-                    {% include "FOSUserBundle:ChangePassword:change_password_content.html.twig" %}
+                    {% block _content %}
+
+                    {% endblock %}
                 </div>
             </div>
         </div>

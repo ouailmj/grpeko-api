@@ -284,7 +284,4 @@ class Person extends BasePerson
     {
         $this->userAccount = $userAccount;
     }
-
-
-
 }

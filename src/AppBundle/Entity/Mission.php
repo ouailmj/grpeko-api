@@ -70,9 +70,8 @@ class Mission
 
     /**
      * @var FiscalYear [] | ArrayCollection
-     *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\FiscalYear", mappedBy="mission",cascade={"persist"})
-     */
+
     private $exercices;
 
     /**
@@ -236,9 +235,8 @@ class Mission
         $this->company = $company;
     }
 
-    /**
      * @return FiscalYear[]|ArrayCollection
-     */
+       
     public function getExercices()
     {
         return $this->exercices;

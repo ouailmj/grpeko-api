@@ -112,14 +112,6 @@ class Company extends LegalEntity
      * @ORM\Column(type="string", length=255, nullable=true)
      *
      */
-    protected $socialReason;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     *
-     */
     protected $code;
 
     /**
@@ -204,13 +196,15 @@ class Company extends LegalEntity
 
 
     /**
+     * Adresse du service des ipùots de l'entreprise.
+     *
      * @var Address
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address", cascade={"persist", "remove"})
      *
      * @ORM\JoinColumn(name="siege_address_id", referencedColumnName="id")
      */
-    protected $siegeAddress;
+    protected $sieAddress;
 
     /**
      * @var Address[] | ArrayCollection
@@ -442,22 +436,6 @@ class Company extends LegalEntity
     public function setMainActivity(string $mainActivity)
     {
         $this->mainActivity = $mainActivity;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSocialReason()
-    {
-        return $this->socialReason;
-    }
-
-    /**
-     * @param string $socialReason
-     */
-    public function setSocialReason(string $socialReason)
-    {
-        $this->socialReason = $socialReason;
     }
 
     /**
@@ -783,19 +761,16 @@ class Company extends LegalEntity
     /**
      * @return Address
      */
-    public function getSiegeAddress()
+    public function getSieAddress(): Address
     {
-        return $this->siegeAddress;
+        return $this->sieAddress;
     }
 
     /**
-     * @param Address $siegeAddress
+     * @param Address $sieAddress
      */
-    public function setSiegeAddress(Address $siegeAddress)
+    public function setSieAddress(Address $sieAddress)
     {
-        $this->siegeAddress = $siegeAddress;
+        $this->sieAddress = $sieAddress;
     }
-
-
-
 }

@@ -24,7 +24,7 @@ class BaseController extends Controller
 
     public function addErrorFlash()
     {
-        $this->addFlash('error', 'Votre opération n\' a pas pu être exécutée.');
+        $this->addFlash('error', 'Votre opération a échoué.');
     }
 
     public function addWarningFlash()

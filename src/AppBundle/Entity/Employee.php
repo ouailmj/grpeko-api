@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="employee")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EmployeeRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Employee extends Person   
 {
@@ -51,6 +52,13 @@ class Employee extends Person
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\EnterRelation", mappedBy="contributor")
      */
     private $enterRelations;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=10, nullable=true)
+     */
+    protected $initials;
 
     /**
      * Get id.
@@ -150,4 +158,42 @@ class Employee extends Person
 
     }
 
+    /**
+     * @return string
+     */
+    public function getInitials()
+    {
+        return $this->initials;
+    }
+
+    /**
+     * @param string $initials
+     *
+     * @return Employee
+     */
+    public function setInitials(string $initials)
+    {
+        $this->initials = $initials;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->initials;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     */
+    public function setInitialsValue()
+    {
+        if (empty($this->initials)){
+            $this->initials = strtoupper(substr($this->getFirstName(), 0, 4));
+        }
+
+        if (empty($this->initials)){
+            $this->initials = strtoupper(substr($this->getLastName(), 0, 4));
+        }
+    }
 }

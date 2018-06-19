@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-<div class="page-content">
-      
-    {% block sidebar %}
-        {% include 'layout/_partials/sidebar.html.twig' %}
-        
-    {% endblock %}
-    <div class="content-wrapper">
-        <div class="content">
-            <div class="content-group tab-content-bordered navbar-component">
+    <div class="page-content">
+
+        {% block sidebar %}
+            {% include 'layout/_partials/sidebar.html.twig' %}
+
+        {% endblock %}
+        <div class="content-wrapper">
+            <div class="content">
+                <div class="content-group tab-content-bordered navbar-component">
                     <div class="navbar navbar-inverse" style="background-color: #5d9d9c; border-color: #5d9d9c; position: relative; z-index: 30;">
                         <div class="navbar-header">
                             <ul class="nav navbar-nav pull-right visible-xs-block">
@@ -70,100 +70,58 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {% for item in employers %}
-                                    <tr role="row" class="">
-                                        <td class="sorting_1"><a href="">2</a></td>
-                                        
-                                        <td>{{ item.lastname}}</td>
-                                        <td>{{ item.firstName}}</td>
-                                       
-                                        <td>{{ item.initials }}</td>
-                                        
-                                        <td>{{ item.userAccount.username }}</td>
-                                        <td>
-                                            {{ item.userAccount.email }}
-                                        </td>
-                                        <td>
-                                            BIE
-                                        </td>
-                                        <td>
-                                            BIE
-                                        </td>
-                                        <td><span class="label label-danger">Inactif</span></td>
-                                        <td class="text-center">
-                                            <div class="">
-                                                <a title="Afficher les détails" href="{{ path('show-collaborateur', {'id': item.id}) }}" class="text-primary legitRipple"><i class="icon-eye position-left"></i></a>
-                                                <a title="Modifier" href="{{ path('edit-collaborateur', {'id': item.id}) }}" class="text-primary legitRipple"><i class="icon-pen position-left"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    {% for item in employees %}
+                                        <tr role="row" class="">
+                                            <td class="sorting_1"><a href="">2</a></td>
+
+                                            <td>{{ item.lastname}}</td>
+                                            <td>{{ item.firstName}}</td>
+
+                                            <td>{{ item.initials }}</td>
+
+                                            <td>{{ item.userAccount.username }}</td>
+                                            <td>
+                                                {{ item.userAccount.email }}
+                                            </td>
+                                            <td>
+                                                BIE
+                                            </td>
+                                            <td>
+                                                BIE
+                                            </td>
+                                            <td><span class="label label-danger">Inactif</span></td>
+                                            <td class="text-center">
+                                                <div class="">
+                                                    <a title="Afficher les détails" href="{{ path('show-collaborateur', {'id': item.id}) }}" class="text-primary legitRipple"><i class="icon-eye position-left"></i></a>
+                                                    <a title="Modifier" href="{{ path('edit-collaborateur', {'id': item.id}) }}" class="text-primary legitRipple"><i class="icon-pen position-left"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
                                     {% endfor %}
-                                    <!-- <tr role="row" class="">
-                                        <td class="sorting_1"><a href="">3</a></td>
-                                        <td>Augustina</td>
-                                        <td>Hardy</td>
-                                        <td>DAI</td>
-                                        <td>augustin</td>
-                                        <td>tjacques@groupe-eko.fr</td>
-                                        <td>
-                                            Collaborateur
-                                        </td>
-                                        <td>
-                                            JID
-                                        </td>
-                                        <td><span class="label label-success">Actif</span></td>
-                                        <td class="text-center">
-                                            <div class="">
-                                                <a title="Afficher les détails" href="" class="text-primary legitRipple"><i class="icon-eye position-left"></i></a>
-                                                <a title="Modifier" href="" class="text-primary legitRipple"><i class="icon-pen position-left"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr role="row" class="">
-                                        <td class="sorting_1"><a href="">4</a></td>
-                                        <td>AMAMI</td>
-                                        <td>Nesrine</td>
-                                        <td>NAM</td>
-                                        <td>namami</td>
-                                        <td>Nesrine@groupe-eko.fr</td>
-                                        <td>
-                                            Collaborateur
-                                        </td>
-                                        <td>
-                                            SFO
-                                        </td>
-                                        <td><span class="label label-success">Actif</span></td>
-                                        <td class="text-center">
-                                            <div class="">
-                                                <a title="Afficher les détails" href="" class="text-primary legitRipple"><i class="icon-eye position-left"></i></a>
-                                                <a title="Modifier" href="" class="text-primary legitRipple"><i class="icon-pen position-left"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr> -->
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                         <div class="tab-pane fade has-padding" id="tab-demo3">
-                                <span title="Ajouter un nouvel Sociétés" class="pull-right"><a href="{{ path('information_generale') }}" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-user-plus"></i></b> Ajouter</a></span>
-                                <div class="datatable-scroll-wrap">
-                                    <div class="datatable-header">
-                                        <div id="DataTables_Table_0_filter" class="dataTables_filter">
-                                            <label><span>Filtrer:</span> 
-                                                <input type="search" class="" placeholder="Tapez pour filtrer..." aria-controls="DataTables_Table_0">
-                                            </label>
-                                        </div>
-                                        <div class="dataTables_length" id="DataTables_Table_0_length">
-                                            <label><span>Afficher:</span> 
-                                                <select name="DataTables_Table_0_length" aria-controls="DataTables_Table_1" class="select2-hidden-accessible" tabindex="-1" aria-hidden="true">
-                                                    <option value="10">10</option>
-                                                    <option value="25">25</option>
-                                                    <option value="50">50</option>
-                                                    <option value="100">100</option>
-                                                </select>
-                                            </label>
-                                        </div>
+                            <span title="Ajouter un nouvel Sociétés" class="pull-right"><a href="{{ path('information_generale') }}" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-user-plus"></i></b> Ajouter</a></span>
+                            <div class="datatable-scroll-wrap">
+                                <div class="datatable-header">
+                                    <div id="DataTables_Table_0_filter" class="dataTables_filter">
+                                        <label><span>Filtrer:</span>
+                                            <input type="search" class="" placeholder="Tapez pour filtrer..." aria-controls="DataTables_Table_0">
+                                        </label>
                                     </div>
+                                    <div class="dataTables_length" id="DataTables_Table_0_length">
+                                        <label><span>Afficher:</span>
+                                            <select name="DataTables_Table_0_length" aria-controls="DataTables_Table_1" class="select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                                <option value="10">10</option>
+                                                <option value="25">25</option>
+                                                <option value="50">50</option>
+                                                <option value="100">100</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                </div>
                                 <table class="table dataTable " id="DataTables_Table_1">
                                     <thead>
                                     <tr>
@@ -204,13 +162,13 @@
                                     {#{% endfor %}#}
                                     </tbody>
                                 </table>
-                                </div>
+                            </div>
                         </div>
                         <div class="tab-pane fade has-padding" id="tab-demo2">
-                                {% include 'default/collaborateur_affectation.html.twig' %}
+                            {% include 'default/collaborateur_affectation.html.twig' %}
                         </div>
                         <div class="tab-pane fade has-padding" id="tab-demo4">
-                                
+
                         </div>
                         <div class="tab-pane fade has-padding" id="tab-demo5">
 
@@ -218,7 +176,7 @@
                         <div class="tab-pane fade has-padding" id="tab-demo6">
                             {% include 'default/importCFONB.html.twig' %}
                         </div>
-                        
+
                         <div class="tab-pane fade has-padding" id="tab-demo8">
                             {% include 'default/Facturation.html.twig' %}
                         </div>
@@ -226,14 +184,14 @@
                             {% include 'default/chiffer_affaire.html.twig' %}
                         </div>
                         <div class="tab-pane fade has-padding" id="tab-demo11">
-                                <div class="row">
-                                    <div class="col-md-6 col-md-offset-3">
-                                        <form action="#" class="form-horizontal">
+                            <div class="row">
+                                <div class="col-md-6 col-md-offset-3">
+                                    <form action="#" class="form-horizontal">
                                         <div class="form-group">
                                             <label class=" col-sm-2 control-label">Année</label>
                                             <div class="col-sm-3">
                                                 <input type="text" placeholder="2010" class="form-control">
-                                            </div>  
+                                            </div>
                                             <div class="form-group">
                                                 <label class="radio-inline">
                                                     <div class="choice">
@@ -250,13 +208,13 @@
                                                 </label>
                                             </div>
                                         </div>
-                                        </form>
-                                    </div>
+                                    </form>
                                 </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
     </div>
-</div>
 {% endblock %}
