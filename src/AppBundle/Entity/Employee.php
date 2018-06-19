@@ -48,7 +48,7 @@ class Employee extends Person
 
     /**
      * @var status
-     * @ORM\Column(name="status", type="boolean", nullable=true, options={"default":false})
+     * @ORM\Column(name="status", type="boolean", nullable=true)
      */
     protected $status;
     /**
@@ -64,6 +64,29 @@ class Employee extends Person
      * @ORM\Column(type="string", length=10, nullable=true)
      */
     protected $initials;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetimetz", nullable=true)
+     */
+    protected $entryDate;
+
+    /**
+     * @return \DateTime
+     */
+    public function getEntryDate()
+    {
+        return $this->entryDate;
+    }
+
+    /**
+     * @param \DateTime $entryDate
+     */
+    public function setEntryDate($entryDate)
+    {
+        $this->entryDate = $entryDate;
+    }
 
     /**
      * Get id.

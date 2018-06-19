@@ -52,13 +52,13 @@ class UserType extends AbstractType
 
         ))
 
-        ->add('roles', ChoiceType::class, [
-            'label' => 'user.new.role',
-            'choices' => $permissions,
-            'multiple' => false,
-            'expanded' => false,
-            'mapped' => false,
-        ])
+//        ->add('roles', ChoiceType::class, [
+//            'label' => 'user.new.role',
+//            'choices' => $permissions,
+//            'multiple' => false,
+//            'expanded' => false,
+//            'mapped' => false,
+//        ])
         ;
     }
     
