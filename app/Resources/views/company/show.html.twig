@@ -54,20 +54,30 @@
                                     <a title="Modifier" class=" legitRipple"><i class="icon-trash position-left"></i></a>
                                 </button>
                                 {{ form_end(delete_form[loop.index-1]) }}
-
                             </td>
 
                             <td>{{company.code}}</td>
-                            <td>company.legal_form</td>
-                            <td>En cours</td>
-                            <td>CTX</td>
-                            <td>SARL</td>
-                            <td>31/12/2018</td>
-                            <td>31/12/2016</td>
-                            <td>Impôt sur les sociétés - réel normal</td>
-                            <td>TVA réel normal mensuel</td>
-                            <td>Logiciels informatiques</td>
-
+                            <td>{{company.legalform}}</td>
+                            <td>{{company.status}}</td>
+                            <td>Null</td>
+                            <td>{{company.legalform}}</td>
+                            <td>
+                                {% for fiscalYear in company.fiscalYears %}
+                                    {{fiscalYear.closeDate |date('d/m/Y')}}
+                                {% endfor %}
+                            </td>
+                            <td>Null</td>
+                            <td>
+                                {% for fiscalYear in company.fiscalYears %}
+                                  {{fiscalYear.taxSystem}}
+                                {% endfor %}
+                            </td>
+                            <td>
+                                {% for fiscalYear in company.fiscalYears %}
+                                    {{fiscalYear.vatSystem}}
+                                {% endfor %}
+                            </td>
+                            <td>{{company.mainActivity}}</td>
                         </tr>
                         {% endfor %}
 

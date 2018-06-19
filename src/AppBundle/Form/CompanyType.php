@@ -52,7 +52,7 @@ class CompanyType extends AbstractType
               ->add('oldAddresses', CollectionType::class,
                    [
                        'entry_type'   => AdresseType::class,
-                       'label'        => 'Souscriptions aux produits',
+                       'label'        => 'old adresses',
                        'allow_add'    => true,
                        'allow_delete' => true,
                        'prototype'    => true,

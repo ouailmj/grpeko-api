@@ -23,17 +23,18 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 /**
  * Class CompanyController
  * @package AppBundle\Controller
- * @Route("/client")
+ * @Route("company")
  */
 class CompanyController extends BaseController
 {
 
     /**
-     * @Route("/index", name="client_index")
+     * @Route("/index", name="company_index")
      */
 
     public function indexAction(Request $request)
     {
+
         $em = $this->getDoctrine()->getManager();
         $companys = $em->getRepository('AppBundle:Company')->findAll();
         $listcompanys=[];
@@ -42,7 +43,7 @@ class CompanyController extends BaseController
             array_push($listcompanys, $this->createDeleteForm($company)->createView());
         }
 
-        return $this->render('client/show.html.twig', array(
+        return $this->render('company/show.html.twig', array(
             'companys'     => $companys,
             'delete_form'   => $listcompanys
         ));
@@ -51,7 +52,7 @@ class CompanyController extends BaseController
 
     /**
      * Deletes a Company entity.
-     *  @Route("/{id}/delete", name="client_delete")
+     *  @Route("/{id}/delete", name="company_delete")
      *  @Method("DELETE")
      */
 
@@ -67,7 +68,7 @@ class CompanyController extends BaseController
             $this->addSuccessFlash();
         }
 
-        return $this->redirectToRoute('client_index');
+        return $this->redirectToRoute('company_index');
     }
 
     /**
@@ -88,9 +89,8 @@ class CompanyController extends BaseController
             ;
     }
 
-
     /**
-     * @Route("/new", name="client_new")
+     * @Route("/new", name="company_new")
      *
      */
 
@@ -119,16 +119,16 @@ class CompanyController extends BaseController
              $em->persist($company);
              $em->flush();
              $this->addSuccessFlash();
-             $this->redirectToRoute('client_new');
+             $this->redirectToRoute('company_new');
         }
 
-        return $this->render('client/new.html.twig',
+        return $this->render('company/new.html.twig',
                             array('form1' => $form1->createView()));
     }
 
 
     /**
-     * @Route("/edit/{id}", name="client_edit")
+     * @Route("/edit/{id}", name="company_edit")
      *
      */
 
@@ -142,7 +142,7 @@ class CompanyController extends BaseController
             $this->addSuccessFlash();
         }
 
-        return $this->render('client/edit.html.twig',
+        return $this->render('company/edit.html.twig',
                             array('form1' => $form1->createView()));
     }
 

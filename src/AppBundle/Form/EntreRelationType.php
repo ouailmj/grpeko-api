@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -96,12 +97,40 @@ class EntreRelationType extends AbstractType
                 ),
                 'label' => false,
             ))
+            ->add('date1', DateType::class, array(
+                'required' => true,
+                'format' => 'd/M/y',
+                'widget' => 'single_text',
+                'attr' => array('class' => 'french_picker'),
+                'label' => false,
+                'mapped' => false,
+                'data' => new \DateTime(),
+            ))
+            ->add('date2', DateType::class, array(
+                'required' => true,
+                'format' => 'd/M/y',
+                'widget' => 'single_text',
+                'attr' => array('class' => 'french_picker'),
+                'label' => false,
+                'mapped' => false,
+                'data' => new \DateTime(),
+            ))
+            ->add('date3', DateType::class, array(
+                'required' => true,
+                'format' => 'd/M/y',
+                'widget' => 'single_text',
+                'attr' => array('class' => 'french_picker'),
+                'label' => false,
+                'mapped' => false,
+                'data' => new \DateTime(),
+            ))
             ->add('societeactuelle', ChoiceType::class, array(
                 'choices'  => array(
                     'Oui' => true,
                     'Non' => false,
                 ),
                 'label' => false,
+                'mapped' => false,
             ))
             ->add('societeactuelle_date', DateType::class, array(
                 'required' => true,
@@ -109,6 +138,8 @@ class EntreRelationType extends AbstractType
                 'widget' => 'single_text',
                 'attr' => array('class' => 'french_picker'),
                 'label' => false,
+                'mapped' => false,
+                'data' => new \DateTime(),
             ))
             ->add('holding', ChoiceType::class, array(
                 'choices'  => array(
@@ -117,6 +148,7 @@ class EntreRelationType extends AbstractType
 
                 ),
                 'label' => false,
+                'mapped' => false,
             ))
             ->add('holding_date', DateType::class, array(
                 'required' => true,
@@ -124,6 +156,8 @@ class EntreRelationType extends AbstractType
                 'widget' => 'single_text',
                 'attr' => array('class' => 'french_picker'),
                 'label' => false,
+                'mapped' => false,
+                'data' => new \DateTime(),
             ))
             ->add('epargne_check', ChoiceType::class, array(
                 'choices'  => array(
@@ -141,14 +175,37 @@ class EntreRelationType extends AbstractType
                 'attr' => array('class' => 'french_picker'),
                 'label' => false,
                 'mapped' => false,
+                'data' => new \DateTime(),
             ))
             ->add('company', CompanyType::class,[
                 'label' => false,
                 'required'  => true,
 
-            ])
+            ]);
 
-        ;
+        for ($i=1;$i<=5;$i++)
+        {
+            $builder ->add('date1text'.$i, TextType::class, array(
+                'label' => false,
+                'mapped' => false,
+                'required'=>false
+            ))
+            ->add('date2text'.$i, TextType::class, array(
+                'label' => false,
+                'mapped' => false,
+                'required'=>false
+            ))
+             ->add('date3text'.$i, TextType::class, array(
+                'label' => false,
+                'mapped' => false,
+                'required'=>false
+            ))
+            ->add('comment'.$i, TextType::class, array(
+                'label' => false,
+                'mapped' => false,
+                'required'=>false
+        ));
+        }
     }
 
     /**

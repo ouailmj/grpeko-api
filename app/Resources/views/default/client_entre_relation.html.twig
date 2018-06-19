@@ -85,14 +85,14 @@
 															<div class="form-group">
                                                                 {{ form_label(form1.company.legalName,"Si entreprise créée, quelle est la forme juridique :") }}
 																<div class="col-lg-2">
-                                                                    {{  form_row(form1.company.legalForm)}}
+                                                                    {{  form_row(form1.company.legalForm,{'label':false})}}
 																</div>
 															</div>
 
 															<div class="form-group">
                                                                 {{ form_label(form1.company.capitalSocial,"Si société créée, quel est le montant du capital social ?") }}
 																<div class="col-lg-2">
-                                                                    {{  form_row(form1.company.capitalSocial)}}
+                                                                    {{  form_row(form1.company.capitalSocial,{'label':false})}}
 																</div>
 															</div>
 
@@ -188,7 +188,7 @@
                                                         {{ form_label(form1.company.mainActivity,"Activité de l'entreprise :")}}
 
 														<div class="col-lg-10">
-                                                            {{  form_row(form1.company.mainActivity)}}
+                                                            {{  form_row(form1.company.mainActivity,{'label':false})}}
 														</div>
 
 
@@ -198,52 +198,52 @@
 																	<thead>
 																	<tr>
 																		<th style="border: 0px"></th>
-																		<th colspan="3">Exercices comptables</th>
+																		<th>Exercices comptables</th>
 																		<th style="border: 0px"></th>
 																	</tr>
 																	<tr>
 																		<th style="border: 0px"></th>
-																		<th >31/12/2099</th>
-																		<th >31/12/2100</th>
-																		<th >31/12/2101</th>
+																		<th width="25%" >{{  form_row(form1.date1)}}</th>
+																		<th width="25%" >{{  form_row(form1.date2)}}</th>
+																		<th width="25%" >{{  form_row(form1.date3)}}</th>
 																		<th >Commentaires</th>
 																	</tr>
 																	</thead>
 																	<tbody>
 																	<tr>
 																		<td>CA prévisionnel ?</td>
-																		<td><input type="text" class="form-control"></td>
-																		<td><input type="text" class="form-control"></td>
-																		<td><input type="text" class="form-control"></td>
-																		<td><input type="text" class="form-control"></td>
+																		<td>{{ form_row(form1.date1text1)}}</td>
+																		<td>{{ form_row(form1.date2text1)}}</td>
+																		<td>{{ form_row(form1.date3text1)}}</td>
+																		<td>{{ form_row(form1.comment1)}}</td>
 																	</tr>
 																	<tr>
 																		<td>Achats et frais généraux prévisionnel</td>
-																		<td><input type="text" class="form-control"></td>
-																		<td><input type="text" class="form-control"></td>
-																		<td><input type="text" class="form-control"></td>
-																		<td><input type="text" class="form-control"></td>
+																		<td>{{ form_row(form1.date1text2)}}</td>
+																		<td>{{ form_row(form1.date2text2)}}</td>
+																		<td>{{ form_row(form1.date3text2)}}</td>
+																		<td>{{ form_row(form1.comment2)}}</td>
 																	</tr>
 																	<tr>
 																		<td>Bénéfice prévisionnel ?</td>
-																		<td><input type="text" class="form-control"></td>
-																		<td><input type="text" class="form-control"></td>
-																		<td><input type="text" class="form-control"></td>
-																		<td><input type="text" class="form-control"></td>
+																		<td>{{ form_row(form1.date1text3)}}</td>
+																		<td>{{ form_row(form1.date2text3)}}</td>
+																		<td>{{ form_row(form1.date3text3)}}</td>
+																		<td>{{ form_row(form1.comment3)}}</td>
 																	</tr>
 																	<tr>
 																		<td>Combien y-a-t-il de salariés ?</td>
-																		<td><input type="text" class="form-control"></td>
-																		<td><input type="text" class="form-control"></td>
-																		<td><input type="text" class="form-control"></td>
-																		<td><input type="text" class="form-control"></td>
+																		<td>{{ form_row(form1.date1text4)}}</td>
+																		<td>{{ form_row(form1.date2text4)}}</td>
+																		<td>{{ form_row(form1.date3text4)}}</td>
+																		<td>{{ form_row(form1.comment4)}}</td>
 																	</tr>
 																	<tr>
 																		<td>Quelle rémuniration nette allez-vous prendre de l'entreprize?</td>
-																		<td><input type="text" class="form-control"></td>
-																		<td><input type="text" class="form-control"></td>
-																		<td><input type="text" class="form-control"></td>
-																		<td><input type="text" class="form-control"></td>
+																		<td>{{ form_row(form1.date1text5)}}</td>
+																		<td>{{ form_row(form1.date2text5)}}</td>
+																		<td>{{ form_row(form1.date3text5)}}</td>
+																		<td>{{ form_row(form1.comment5)}}</td>
 																	</tr>
 																	</tbody>
 																</table>

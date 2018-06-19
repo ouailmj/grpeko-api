@@ -4,12 +4,14 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * EnterRelation
  *
  * @ORM\Table(name="enter_relation")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EnterRelationRepository")
+ * @UniqueEntity("typeMission")
  */
 class EnterRelation
 {
@@ -31,7 +33,6 @@ class EnterRelation
     /**
      * @var TypeMission
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\TypeMission")
-     *
      * @ORM\JoinColumn(name="type_mission_id", referencedColumnName="id")
      */
     private $typeMission;
@@ -200,17 +201,17 @@ class EnterRelation
     }
 
     /**
-     * @var string
+     * @var array
      *
-     * @ORM\Column(name="societeactuelle", type="string",length=10))
+     * @ORM\Column(type="array",nullable=TRUE))
      */
 
      private $societeactuelle;
 
     /**
-     * @var string
+     * @var array
      *
-     * @ORM\Column(name="holding", type="string",length=10))
+     * @ORM\Column(type="array",nullable=TRUE))
      */
 
     private $holding;
@@ -218,13 +219,13 @@ class EnterRelation
     /**
      * @var array
      *
-     * @ORM\Column(type="array",length=10,nullable=TRUE))
+     * @ORM\Column(type="array",nullable=TRUE))
      */
 
     private $epargne;
 
     /**
-     * @return string
+     * @return array
      */
     public function getSocieteactuelle()
     {
@@ -232,15 +233,15 @@ class EnterRelation
     }
 
     /**
-     * @param string $societeactuelle
+     * @param array $societeactuelle
      */
-    public function setSocieteactuelle(string $societeactuelle)
+    public function setSocieteactuelle(array $societeactuelle)
     {
         $this->societeactuelle = $societeactuelle;
     }
 
     /**
-     * @return string
+     * @return array
      */
     public function getHolding()
     {
@@ -248,12 +249,13 @@ class EnterRelation
     }
 
     /**
-     * @param string $holding
+     * @param array $holding
      */
-    public function setHolding(string $holding)
+    public function setHolding(array $holding)
     {
         $this->holding = $holding;
     }
+
 
     /**
      * @return array

@@ -294,7 +294,7 @@ class Company extends LegalEntity
     /**
      * @param string $legalName
      */
-    public function setLegalName(string $legalName)
+    public function setLegalName(string $legalName=null)
     {
         $this->legalName = $legalName;
     }
@@ -687,7 +687,7 @@ class Company extends LegalEntity
      * @param $fiscalYears
      * @return $this
      */
-    public function addFiscalYears($fiscalYears)
+    public function addFiscalYear($fiscalYears)
     {
         $this->fiscalYears->add($fiscalYears);
         return $this;
@@ -697,7 +697,7 @@ class Company extends LegalEntity
      * @param $fiscalYears
      * @return bool
      */
-    public function removeFiscalYears($fiscalYears)
+    public function removeFiscalYear($fiscalYears)
     {
         return $this->fiscalYears->removeElement($fiscalYears);
 
