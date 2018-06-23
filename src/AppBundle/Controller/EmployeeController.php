@@ -18,7 +18,7 @@ class EmployeeController extends BaseController
 {
     /**
      * Lists all employee entities.
-     *
+     *@Security("has_role('ROLE_ADVISORY')")
      *
      * @Route("/", name="employee_index")
      * @Method("GET")
@@ -36,7 +36,7 @@ class EmployeeController extends BaseController
 
     /**
      * Creates a new employee entity.
-     *
+     *@Security("has_role('ROLE_ADVISORY')")
      *
      *
      * @Route("/new", name="employee_new")
@@ -71,7 +71,7 @@ class EmployeeController extends BaseController
     /**
      * Finds and displays a employee entity.
      *
-     *
+     *@Security("has_role('ROLE_ADVISORY')")
      *
      * @Route("/{id}", name="employee_show")
      * @Method("GET")
@@ -88,7 +88,7 @@ class EmployeeController extends BaseController
 //@Security("has_role('ROLE_ADVISORY')")
     /**
      * Displays a form to edit an existing employee entity.
-     *
+     *@Security("has_role('ROLE_ADVISORY')")
      *
      *
      * @Route("/{id}/edit", name="employee_edit")
