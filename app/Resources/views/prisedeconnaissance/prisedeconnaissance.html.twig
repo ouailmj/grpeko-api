@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="page-content">
+
+        {% block sidebar %}
+            {% include 'layout/_partials/sidebar.html.twig' %}
+        {% endblock %}
+        <div class="content-wrapper">
+            <div class="content">
+
+                {% if app.session.getFlashBag().has('warning') %}
+                    {% for message in app.session.getFlashBag().get('warning') %}
+                        <div class="alert alert-warning no-border">
+                            <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+                            <strong>Attention !</strong> {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                {% if app.session.getFlashBag().has('error') %}
+                    {% for message in app.session.getFlashBag().get('error') %}
+                        <div class="alert alert-danger no-border" role="alert">
+                            <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+                            <strong>Erreur !</strong> {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                {% if app.session.getFlashBag().has('info') %}
+                    {% for message in app.session.getFlashBag().get('info') %}
+                        <div class="alert alert-info no-border" role="alert">
+                            <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                {% if app.session.getFlashBag().has('success') %}
+                    {% for message in app.session.getFlashBag().get('success') %}
+                        <div class="alert alert-success no-border" role="alert">
+                            <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+                            <strong>{{ message }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                <div class="content-group tab-content-bordered navbar-component">
+                    {% block _content %}
+
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
