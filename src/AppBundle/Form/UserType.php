@@ -2,7 +2,6 @@
 
 namespace AppBundle\Form;
 
-use AppBundle\Entity\Role;
 use AppBundle\Entity\User;
 use AppBundle\Repository\RoleRepository;
 use AppBundle\Repository\UserRepository;

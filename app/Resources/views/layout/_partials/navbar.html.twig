@@ -1,96 +1,36 @@
-<style>
-    .dropdown-ticket > li > a {
-
-         width: 200px;
-    }
-    .fa-stack{
-         height:1.2em !important;
-     }
-    #ex4 .p1[data-count]:after{
-        position:absolute;
-        right:10%;
-        top:8%;
-        content: attr(data-count);
-        font-size:40%;
-        padding:.2em;
-        border-radius:50%;
-        line-height:1em;
-        color: white;
-        background:rgba(255,0,0,.85);
-        text-align:center;
-        min-width: 1em;
-    }
-</style>
-
 <div class="navbar navbar-default navbar-fixed-top header-highlight">
-    <div class="navbar-header text-center">
-         <!-- <a class="navbar-brand sidebar-control sidebar-main-toggle text-center" style="margin-left:8rem;font-size:20px;" href="/"></a> -->
+    <div class="navbar-header">
+        <!-- <a class="navbar-brand sidebar-control sidebar-main-toggle text-center" style="margin-left:8rem;font-size:20px;" href="/"></a> -->
 
-         <a class="navbar-brand text-centerb" href="/"><img class="img_logo" src="/assets/images/icon_eko.png" alt="Groupe Eko"></a>
+        <a class="navbar-brand" href="{{ path('dashboard') }}"><img src="{{ asset('assets/images/icon_eko.png') }}" alt="EKO"></a>
 
-         <!-- <a class="navbar-brand" href="/"><img src="assets/images/logo_eko.png" alt=""></a> -->
-         <ul class="nav navbar-nav pull-right visible-xs-block">
-            <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
-            <li><a class="sidebar-mobile-main-toggle"><i class="icon-paragraph-justify3"></i></a></li>
+        <!-- <a class="navbar-brand" href="/"><img src="assets/images/logo_eko.png" alt=""></a> -->
+        <ul class="nav navbar-nav pull-right visible-xs-block">
+            <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"> </i></a></li>
+            <li><a class="sidebar-mobile-main-toggle"><i class="icon-paragraph-justify3"> </i></a></li>
         </ul>
     </div>
 
     <div class="navbar-collapse collapse" id="navbar-mobile">
         <ul class="nav navbar-nav">
             <li><a class="sidebar-control sidebar-main-toggle hidden-xs legitRipple"><i class="icon-paragraph-justify3"></i></a></li>
-           
+
             {% if app.request.get('_route') == 'gestion_comptabilite' %}
-            <li>
+                <li>
                     <a class="sidebar-control sidebar-detached-hide hidden-xs" data-popup="tooltip" title="" data-placement="bottom" data-container="body" data-original-title="Hide detached">
                         <i class="icon-drag-left"></i>
                     </a>
-            </li>
+                </li>
             {% endif %}
-            
+
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-            <!-- <li class="dropdown dropdown-user">
-                <a class="dropdown-toggle legitRipple" data-toggle="dropdown">
-                    <div id="ex4" style="margin-top: -4px">
-                          <span class="p1 fa-stack fa-2x has-badge" data-count="9" title="Conversations">
-                             <i class="p3 fa fa-comments fa-stack-1x xfa-inverse" style="margin-top: -5px"></i>
-                          </span>
-                    </div>
-                </a>
-
-                <ul class="dropdown-menu dropdown-menu-right dropdown-ticket">
-
-                    <li><a href="/app/conversationlist"><i class="fa fa-list"></i>lister les conversations</a></li>
-
-                    <li><a href="/app/conversationadd"><i class="fa fa-plus-circle"></i> Créer une conversation</a></li>
-
-                </ul>
-            </li> -->
-            <!-- <li class="dropdown dropdown-user">
-                <a class="dropdown-toggle legitRipple" data-toggle="dropdown">
-                    <div id="ex4" style="margin-top: -4px">
-                          <span class="p1 fa-stack fa-2x has-badge" data-count="4" title="Notifications">
-                             <i class="p3 fa fa-bell fa-stack-1x xfa-inverse" style="margin-top: -5px"></i>
-                          </span>
-                    </div>
-                </a>
-
-                <ul class="dropdown-menu dropdown-menu-right">
-                    <li><a href=""> Des execrices sont a créer</a></li>
-                    <li class="divider"></li>
-                    <li><a href=""> Des execrices sont en anomalie</a></li>
-                    <li class="divider"></li>
-                    <li><a href=""> Anomalies Répetoires</a></li>
-                </ul>
-            </li> -->
             <li class="dropdown dropdown-user">
                 <a class="dropdown-toggle legitRipple" data-toggle="dropdown">
-                    <div id="ex4" style="margin-top: -5px">
-                          <span class="p1 fa-stack fa-2x has-badge" title="Profil">
-                             <i class="p3 fa fa-user fa-stack-1x xfa-inverse" style="margin-top: -5px"> </i>
-                          </span>
-                    </div>
+                    <img src="{{ asset('assets/images/avatar.png') }}" alt="">
+                    <span> </span>
+                    <i class="caret"> </i>
                 </a>
 
                 <ul class="dropdown-menu dropdown-menu-right">
@@ -99,7 +39,6 @@
                     <li><a href="{{ path('fos_user_security_logout') }}"><i class="icon-switch2"></i> Déconnexion</a></li>
                 </ul>
             </li>
-
         </ul>
     </div>
 </div>

@@ -20,4 +20,12 @@ class DashboardController extends Controller
             'employees' => $employees
         ));
     }
+
+    /**
+     * @Route("/dashboard", name="dashboard")
+     */
+    public function dashboardAction()
+    {
+        return $this->render('dashboard/dashboard_content.html.twig', array());
+    }
 }
