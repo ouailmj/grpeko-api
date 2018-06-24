@@ -235,8 +235,9 @@ class Mission
         $this->company = $company;
     }
 
+    /**
      * @return FiscalYear[]|ArrayCollection
-       
+     */
     public function getExercices()
     {
         return $this->exercices;

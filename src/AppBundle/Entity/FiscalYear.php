@@ -118,12 +118,6 @@ class FiscalYear
     protected $Exercices_comptables;
 
     /**
-     * @var Mission
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Mission", inversedBy="exercices")
-     */
-    protected $mission;
-
-    /**
      * @return Mission
      */
     public function getMission()

@@ -14,15 +14,13 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CompanyType extends AbstractType
 {
-
-
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-               ->add('socialReason', TextType::class, array(
+               ->add('legalName', TextType::class, array(
                    'label' => 'Raison Sociale:',
                    'required'  => false
                ))
@@ -45,7 +43,7 @@ class CompanyType extends AbstractType
                ))
                ->add('currentAddress', AdresseCurrentType::class)
 
-               ->add('siegeAddress', AdresseType::class,[
+               ->add('sieAddress', AdresseType::class,[
                    'label' => false,
                ])
 
