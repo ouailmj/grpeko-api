@@ -14,86 +14,82 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CompanyType extends AbstractType
 {
-
-
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-               ->add('socialReason', TextType::class, array(
-                   'label' => 'Raison Sociale:',
-                   'required'  => true
-               ))
-               ->add('legalForm', ChoiceType::class, array(
-                   'label' => 'Forme Juridique:',
-                   'choices'  => array(
-                       'SARL' => 'SARL',
-                       'SA' => 'SA',
-                   ),
+        ->add('legalName', TextType::class, array(
+            'label' => 'Raison sociale'
+        ))
 
-               ))
-               ->add('taxationRegime', ChoiceType::class, array(
-                   'label' => 'Régime d\'imposition:',
-                   'required'  => true
-               ))
-               ->add('vatSystem', ChoiceType::class, array(
-                   'label' => 'Régime de TVA:',
-                   'required'  => true
-               ))
-               ->add('currentAddress', AdresseCurrentType::class)
+        ->add('legalForm', ChoiceType::class, array(
+            'label' => 'Form juridique',
+                 'choices'  => array(
+                    'SARL' => 'SARL',
+                    'EURL' => 'EURL',
+                    'SELARL' => 'SELARL',
+                    'SA' => 'SA',
+                    'SAS' => 'SAS',
+                    'SASU' => 'SASU',
+                    'SARL' => 'SARL',
+                    'SNC' => 'SNC',
+                    'SCP' => 'SCP',
+            )
+        ))
 
-               ->add('siegeAddress', AdresseType::class,[
-                   'label' => false,
-               ])
+        ->add('taxationRegime', TextType::class, array(
+            'label' => 'Régime d\'imposition',
+        ))
 
-              ->add('oldAddresses', CollectionType::class,
-                   [
-                       'entry_type'   => AdresseType::class,
-                       'label'        => 'Souscriptions aux produits',
-                       'allow_add'    => true,
-                       'allow_delete' => true,
-                       'prototype'    => true,
-                       'required'     => false,
-                       'attr'         => [
-                           'class' => "old-addresses-collection",
-                       ],
-                   ])
-               ->add('apeCode', ChoiceType::class, array(
-                    'label' => 'Code APE:',
-                    'choices' => array('In Stock' => true, 'Out of Stock' => false),
-                    'required'  => true
-                ))
-               ->add('mainActivity', TextType::class, array(
-                   'label' => 'Activité principale:',
-                   'required'  => true
-               ))
-                ->add('siretNumber', NumberType::class, array(
-                    'label' => 'N° SIRET:',
-                    'required'  => true
-                ))
-                ->add('sirenNumber', NumberType::class, array(
-                    'label' => 'N° SIREN:',
-                    'required'  => true
-                ))
-                ->add('intraCommunityVAT', TextType::class, array(
-                    'label' => 'N° TVA Intra Communautaire',
-                    'required'  => true
-                ))
-                ->add('nbActions', NumberType::class, array(
-                    'label' => 'Nombre d\'actions ou parts socials',
-                    'required'  => true
-                ))
-                ->add('capitalSocial', NumberType::class, array(
-                    'label' => 'Capital social:',
-                    'required'  => true
-                ))
-              ->add('formerAccountant', FormerAccountantType::class)
+        ->add('vatSystem', TextType::class, array(
+            'label' => 'Régime de TVA',
 
-              ->add('Enregistrer', SubmitType::class, array('attr' => array('class' => 'btn-success','style' => 'float:right')))
+        ))
+
+        ->add('apeCode', TextType::class, array(
+            'required' => false,
+            'label' => 'Code APE'
+        ))
+
+        ->add('mainActivity', TextType::class, array(
+            'required' => false,
+            'label' => 'Activité principale'
+        ))
+
+        ->add('currentAddress', AddressType::class)
+
+        ->add('siretNumber', TextType::class, array(
+            'required' => false,
+            'label' => 'N° SIRET'
+        ))
+
+        ->add('sirenNumber', TextType::class, array(
+            'required' => false,
+            'label' => 'N° SIREN'
+        ))
+
+        ->add('intraCommunityVAT', TextType::class, array(
+            'required' => false,
+            'label' => 'N° TVA Intra Communautaire'
+        ))
+
+        ->add('nbActions', TextType::class, array(
+            'required' => false,
+            'label' => 'Nombre d\'action ou parts sociales'
+        ))
+
+        ->add('capitalSocial', TextType::class, array(
+            'required' => false,
+            'label' => 'Capitale Social'
+        ))
+
+
         ;
     }
+
+
 
     /**
      * {@inheritdoc}
@@ -101,11 +97,12 @@ class CompanyType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Company',
-            'require_password'  => true,
-            'company'      => null
+
+            'data_class'    => 'AppBundle\Entity\Company',
+            'forEdit'       => false,
+            'advisories'    => array()
         ));
-        $resolver->setRequired('company');
+
     }
 
     /**

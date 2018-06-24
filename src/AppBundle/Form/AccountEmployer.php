@@ -36,16 +36,28 @@ class AccountEmployer extends AbstractType
 
 
         ->add('phoneNumber', TextType::class, array(
-            'required' => false,
+           
             'label' => 'Téléphone'
         ))
 
+        ->add('manager', EntityType::class, array(
+
+            'label' => 'Supérieur',
+            'class' => 'AppBundle\Entity\Employee',
+            'choice_label' => function ($manager) {
+                return $manager->getUserAccount()->getInitials();
+            },
+            'choices_as_values' => true,
+            'required' => true,
+        ))
+
+        ->add('jobPosition', JobpositionType::class)
+
         ->add('userAccount', UserType::class)
 
-        ->add('Save', SubmitType::class,array(
-            'attr' => array(
-                'class' =>'btn btn-primary',
-         )))
+        ->add('status', CheckboxType::class, array(
+            'label' => 'Activer ?',
+        ))
         ;
     }
     

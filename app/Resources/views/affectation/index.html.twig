@@ -1,0 +1,190 @@
+{% extends 'company/company.html.twig' %}
+
+{% block _content %}
+    <div class="navbar navbar-inverse" style="background-color: #5d9d9c; border-color: #5d9d9c; position: relative; z-index: 30;">
+        <div class="navbar-header">
+            <ul class="nav navbar-nav pull-right visible-xs-block">
+                <li><a data-toggle="collapse" data-target="#demo1" class="legitRipple"><i class="icon-tree5"></i></a></li>
+            </ul>
+        </div>
+
+        <div class="navbar-collapse collapse" id="demo1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="{{ path('employee_index') }}">Collaborateurs</a></li>
+
+                <li class="active"><a href="{{ path('affectation_index') }}" data-toggle="tab" class="legitRipple" aria-expanded="true">Affectations</a></li>
+                <li class=""><a href="{{ path('company-index') }}">Gestion du cabinet</a></li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle legitRipple" data-toggle="dropdown" aria-expanded="false">
+                        <i class="icon-file-stats2 position-left"> </i>
+                        Autre
+                        <span class="caret"> </span>
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="#tab4" data-toggle="tab">Comptes</a></li>
+                        <li><a href="#tab5" data-toggle="tab">Journaux</a></li>
+                        <li><a href="#tab6" data-toggle="tab">Import CFNOB</a></li>
+                        <li><a href="#tab7" data-toggle="tab">Suivi CEB</a></li>
+                        <li><a href="#tab8" data-toggle="tab">Facturation</a></li>
+                        <li><a href="#tab9" data-toggle="tab">Remise Facturation</a></li>
+                        <li><a href="#tab10" data-toggle="tab">Chiffre d'affaires</a></li>
+                        <li><a href="#tab11" data-toggle="tab">Commissions</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{ path('parametrages') }}"><i class="icon-cog"> </i> Parametrages</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="tab-content">
+
+
+        <div class="tab-pane fade has-padding active in" id="tab2">
+                <div class="row">
+
+                    <div class="col-xs-6 col-md-4">
+                        <select data-placeholder="ANBDH" class="select select2-hidden-accessible class="col-md-6" tabindex="-1" aria-hidden="true">
+                        <option>MAR</option>
+                        <option>OPAM</option>
+                        <option>JUS</option>
+                        <option>OLSQ</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-md-4">
+                        <span title="Ajouter une nouvelle Entité " class="pull-right"><a href="" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-user-plus"></i></b>affecter à la sélection</a></span>
+                    </div>
+                    <div class="col-xs-6 col-md-4">
+                    </div>
+                </div>
+
+
+                <div class="datatable-scroll-wrap">
+                    <table class="table datatable-responsive table-bordered table-hover datatable-highlight dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+                        <thead>
+                        <tr role="row">
+                            <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="#: activate to sort column descending">Code</th>
+                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Prénom: activate to sort column ascending">Entité Juridique</th>
+                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Nom: activate to sort column ascending">Date d'ouverture</th>
+                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Téléphone: activate to sort column ascending">Date de cloture</th>
+                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Téléphone: activate to sort column ascending">Collaborateur actuel</th>
+                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">Collaborateur à affecter</th>
+                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Rôles: activate to sort column ascending">
+
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in company %}
+                        <tr role="row" class="">
+                            <td>
+                                <div class="">
+                                    <a title="Modifier" href="{{ path('company_edit', {'id': item.id}) }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
+                                </div>
+                            </td>
+                            <td>{{ item.legalName}}</td>
+                            <td>
+                                O1/01/2011
+                            </td>
+                            <td>
+                                31/12/2019
+                            </td>
+                            <td>
+                                <span class="label label-info">ANB</span>
+                            </td>
+                            <td>
+                                <select data-placeholder="ANBDH" class="select select2-hidden-accessible class="col-md-6" tabindex="-1" aria-hidden="true">
+                                <option>MAR</option>
+                                <option>OPAM</option>
+                                <option>JUS</option>
+                                <option>OLSQ</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="checkbox">
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        <tr role="row" class="">
+                            <td>
+                                <div class="">
+                                    <a title="Modifier" href="" class=" legitRipple"><i class="icon-pen position-left"></i></a>
+                                </div>
+                            </td>
+                            <td>WEBCAM-PROFS.FR</td>
+                            <td>01/01/2010</td>
+                            <td>31/12/2018</td>
+                            <td>
+                                <span class="label label-info">ANB</span>
+                            </td>
+                            <td>
+                                <select data-placeholder="ANBDH" class="select select2-hidden-accessible class="col-md-6" tabindex="-1" aria-hidden="true">
+                                <option>MAR</option>
+                                <option>OPAM</option>
+                                <option>JUS</option>
+                                <option>OLSQ</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="checkbox">
+                            </td>
+                        </tr>
+                        <tr role="row" class="">
+                            <td>
+                                <div class="">
+                                    <a title="Modifier" href="" class=" legitRipple"><i class="icon-pen position-left"></i></a>
+                                </div>
+                            </td>
+                            <td>IDIAL AUTO</td>
+                            <td>01/01/2013</td>
+                            <td>31/12/2017</td>
+                            <td>
+                                <span class="label label-info">ANB</span>
+                            </td>
+                            <td>
+                                <select data-placeholder="ANBDH" class="select select2-hidden-accessible class="col-md-6" tabindex="-1" aria-hidden="true">
+                                <option>MAR</option>
+                                <option>OPAM</option>
+                                <option>JUS</option>
+                                <option>OLSQ</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="checkbox">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        <div class="tab-pane fade has-padding" id="tab4">
+            <h1 class="text-center">Coming soon</h1>
+        </div>
+        <div class="tab-pane fade has-padding" id="tab5">
+            <h1 class="text-center">Coming soon</h1>
+        </div>
+        <div class="tab-pane fade has-padding" id="tab6">
+            <h1 class="text-center">Coming soon</h1>
+        </div>
+        <div class="tab-pane fade has-padding" id="tab7">
+            <h1 class="text-center">Coming soon</h1>
+        </div>
+
+        <div class="tab-pane fade has-padding" id="tab8">
+            <h1 class="text-center">Coming soon</h1>
+        </div>
+
+        <div class="tab-pane fade has-padding" id="tab9">
+            <h1 class="text-center">Coming soon</h1>
+        </div>
+        <div class="tab-pane fade has-padding" id="tab10">
+            <h1 class="text-center">Coming soon</h1>
+        </div>
+        <div class="tab-pane fade has-padding" id="tab11">
+            <h1 class="text-center">Coming soon</h1>
+        </div>
+    </div>
+{% endblock %}

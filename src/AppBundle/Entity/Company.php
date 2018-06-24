@@ -23,7 +23,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Company extends LegalEntity
 {
-
     /**
      * @var string
      *
@@ -760,7 +759,7 @@ class Company extends LegalEntity
     /**
      * @return Address
      */
-    public function getSieAddress(): Address
+    public function getSieAddress()
     {
         return $this->sieAddress;
     }

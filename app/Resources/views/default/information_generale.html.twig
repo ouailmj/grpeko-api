@@ -17,44 +17,77 @@
     {% endblock %}
     <div class="content-wrapper">
         <div class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    {% if app.session.getFlashBag().has('warning') %}
+                        {% for message in app.session.getFlashBag().get('warning') %}
+                            <div class="alert alert-warning no-border">
+                                <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+                                <strong>Attention !</strong> {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    {% if app.session.getFlashBag().has('error') %}
+                        {% for message in app.session.getFlashBag().get('error') %}
+                            <div class="alert alert-danger no-border" role="alert">
+                                <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+                                <strong>Erreur !</strong> {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    {% if app.session.getFlashBag().has('info') %}
+                        {% for message in app.session.getFlashBag().get('info') %}
+                            <div class="alert alert-info no-border" role="alert">
+                                <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    {% if app.session.getFlashBag().has('success') %}
+                        {% for message in app.session.getFlashBag().get('success') %}
+                            <div class="alert alert-success no-border" role="alert">
+                                <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+                                <strong>{{ message }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
             <div class="panel panel-flat">
                 <div class="panel-heading">
-                    <h6 class="panel-title">Information generale<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+                    <h6 class="panel-title">Information generales<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
                     <div class="heading-elements">
                         <ul class="icons-list">
-                            <li><a  href="{{ path('gestion-cabinet') }}"><i class="glyphicon glyphicon-arrow-left"></i></a></li>
                             <li><a data-action="collapse"></a></li>
                             <li><a data-action="reload"></a></li>
                             <li><a data-action="close"></a></li>
                         </ul>
                     </div>
                 </div>
-                <form class="form-horizontal" >
-                        <fieldset class="alert  alert-styled-left alert-arrow-left alert-component">
-                        
+                    <div class="panel-body">
+                        <p class="content-group-lg"></p>
+                        {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+                        <fieldset>
+                        <legend class="text-semibold"><i class="icon-address-book"></i> Informations générale</legend>
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="email">&nbsp;&nbsp;Raison Social:</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="email" placeholder="Entrer Raison Social" name="email">
+                                <div class="col-sm-12">
+                                    {{form_row(form.legalName)}}
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-lg-2">Nom</label>
-                                <div class="col-lg-10">
-                                    <input type="text" class="form-control">
+                                <div class="col-lg-12">
+                                    {{form_row(form.taxationRegime)}}
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-lg-2">Nom</label>
-                                <div class="col-lg-10">
-                                    <input type="text" class="form-control">
+                                <div class="col-lg-12">
+                                    {{form_row(form.vatSystem)}}
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-lg-2">Nom</label>
-                                <div class="col-lg-10">
-                                    <input type="text" class="form-control">
+                                <div class="col-lg-12">
+                                    {{form_row(form.legalForm)}}
                                 </div>
                             </div>
 
@@ -64,23 +97,20 @@
                         <br><br>
 
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="pwd">&nbsp;&nbsp;Adresse</label>
-                                <div class="col-sm-10">
-                                    <textarea class="form-control colorback" rows="4" id="adresse" placeholder="Frankfort is the capital city of the Commonwealth of Kentucky and the seat of Franklin County. It is a home rule-class city in Kentucky; the "></textarea>
+                                <div class="col-lg-12">
+                                    {{form_row(form.currentAddress.description)}}
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="pwd">&nbsp;&nbsp;CP:</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control colorback" id="pwd" placeholder="12232112" name="pwd">
+                                <div class="col-lg-12">
+                                    {{form_row(form.currentAddress.postalCode)}}
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="pwd">&nbsp;&nbsp;Ville:</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
+                                <div class="col-lg-12">
+                                    {{form_row(form.currentAddress.city)}}
                                 </div>
                             </div>
 
@@ -128,92 +158,50 @@
                                     <legend class="scheduler-border" style="text-transform: capitalize"></legend>
 
                                     <div class="form-group">
-
-                                        <div class="col-sm-12">
-                                            <div class="dropdown">
-                                                <label class="control-label col-sm-3" for="pwd">Code APE:</label>
-
-                                                <div class="col-sm-9">
-                                                    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Tutorials
-                                                        <span class="caret"></span></button>
-                                                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
-                                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
-                                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
-                                                        <li role="presentation" class="divider"></li>
-                                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
+                                        <div class="col-lg-12">
+                                            {{form_row(form.apeCode)}}
                                         </div>
-
                                     </div>
-
-
                                     <div class="form-group">
-
-                                        <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;Activité principale:</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
+                                        <div class="col-lg-12">
+                                            {{form_row(form.mainActivity)}}
                                         </div>
-
-                                    </div>
-
+                                    </div>   
                                     <div class="form-group">
-
-
-                                        <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;N° SIRET:</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
+                                        <div class="col-lg-12">
+                                            {{form_row(form.siretNumber)}}
                                         </div>
-
-                                    </div>
-
+                                    </div>   
                                     <div class="form-group">
-
-                                        <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;N° SIREN:</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
+                                        <div class="col-lg-12">
+                                            {{form_row(form.sirenNumber)}}
                                         </div>
-
-                                    </div>
-
+                                    </div>   
+                
                                     <div class="form-group">
-
-                                        <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;N° TVA Intra Communautaire</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
+                                        <div class="col-lg-12">
+                                            {{form_row(form.intraCommunityVAT)}}
                                         </div>
-
-                                    </div>
-
+                                    </div>  
                                     <div class="form-group">
-
-
-                                        <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;Nombre d'actions ou parts socials</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
+                                        <div class="col-lg-12">
+                                            {{form_row(form.nbActions)}}
                                         </div>
-
                                     </div>
-
                                     <div class="form-group">
-
-
-                                        <label class="control-label col-sm-3" for="pwd">&nbsp;&nbsp;Capital social</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
+                                        <div class="col-lg-12">
+                                            {{form_row(form.capitalSocial)}}
                                         </div>
-
-                                    </div>
-
+                                    </div> 
                                 </fieldset>
-
                             </div>
                         </div>
-
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-primary legitRipple">Envoyer <i class="icon-arrow-right14 position-right"></i></button>
+                            </div>
                     </fieldset>
-                </form>
+                        {{ form_end(form) }}
+                </div>
             </div>
         </div>
     </div>

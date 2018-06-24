@@ -103,11 +103,50 @@ class Person extends BasePerson
     /**
      * @var Address
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address" ,mappedBy="category", cascade={"persist", "remove"})
      *
      * @ORM\JoinColumn(name="current_address_id", referencedColumnName="id")
      */
     protected $currentAddress;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=25, nullable=true)
+     */
+    protected $FixeNumber;
+
+    /**
+     * @return string
+     */
+    public function getFixeNumber()
+    {
+        return $this->FixeNumber;
+    }
+
+    /**
+     * @param string $FixeNumber
+     */
+    public function setFixeNumber($FixeNumber)
+    {
+        $this->FixeNumber = $FixeNumber;
+    }
+
+    /**
+     * @return Address
+     */
+    public function getCurrentAddress()
+    {
+        return $this->currentAddress;
+    }
+
+    /**
+     * @param Address $currentAddress
+     */
+    public function setCurrentAddress($currentAddress)
+    {
+        $this->currentAddress = $currentAddress;
+    }
 
     /**
      * @var User
@@ -253,21 +292,7 @@ class Person extends BasePerson
         $this->postalCode = $postalCode;
     }
 
-    /**
-     * @return Address
-     */
-    public function getCurrentAddress()
-    {
-        return $this->currentAddress;
-    }
 
-    /**
-     * @param Address $currentAddress
-     */
-    public function setCurrentAddress(Address $currentAddress)
-    {
-        $this->currentAddress = $currentAddress;
-    }
 
     /**
      * @return User

@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Employee;
+use AppBundle\Model\EmployeeManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,24 +16,24 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 
-class UserController extends Controller
+class UserController extends BaseController
 {
 
     /**
-     * @Route("/client/gestion-cabinet", name="liste")
+     * @Route("/client/gestion-collaborateur", name="liste-collaborateur")
      */
     public function listAction()
     {
         $em = $this->getDoctrine()->getManager();
         $employers = $em->getRepository('AppBundle:Employee')->findAll();
-      
-        return $this->render('default/gestion-cabinet.html.twig', array('employers' => $employers));
-        
+
+        return $this->render('default/gestion-collaborateur.html.twig', array('employers' => $employers));
+
     }
      /**
      * @Route("/client/add-collaborateur", name="add-collaborateur")
      */
-    public function createEmployerAction(Request $request)
+    public function createEmployerAction(Request $request, EmployeeManager $employeeManager)
     {
         $emloyer = new Employee();
     
@@ -40,14 +41,14 @@ class UserController extends Controller
            $form->handleRequest($request);
          
            if ($form->isSubmitted() && $form->isValid()) {
-            //Get data from the form
-              $emloyer= $form->getData();
-              $em = $this->getDoctrine()->getManager();
-              $em->persist($emloyer);
-              $em->flush();
-              $this->addFlash(
-                'notice',
-                'emloyer Added');
+
+             if (!empty($plainPassword = $form->get('userAccount')->get('new_password')->getData())){
+                 $emloyer->getUserAccount()->setPlainPassword($plainPassword);
+             }
+
+             $employeeManager->createEmployee($emloyer);
+
+             $this->addSuccessFlash();
            }
         return $this->render('default/Add-collaborateurs.html.twig',[
            'form' => $form->createView(),
@@ -66,7 +67,7 @@ public function editAction(Employee $emloyee, Request $request) {
            $form->handleRequest($request);
            if ($form->isSubmitted() && $form->isValid()) {
             //Get data from the form
-              $emloyer= $form->getData();
+              $emloyee= $form->getData();
               $em = $this->getDoctrine()->getManager();
               $em->flush();
               $this->addFlash(

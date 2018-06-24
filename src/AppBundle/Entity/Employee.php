@@ -26,7 +26,7 @@ class Employee extends Person
     /**
      * @var JobPosition
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\JobPosition", inversedBy="employees")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\JobPosition", inversedBy="employees",cascade={"persist"})
      * @ORM\JoinColumn(name="job_position_id", referencedColumnName="id", nullable=true)
      */
     private $jobPosition;
@@ -47,6 +47,11 @@ class Employee extends Person
     private $manager;
 
     /**
+     * @var status
+     * @ORM\Column(name="status", type="boolean", nullable=true)
+     */
+    protected $status;
+    /**
      * @var EnterRelation [] | ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\EnterRelation", mappedBy="contributor")
@@ -59,6 +64,29 @@ class Employee extends Person
      * @ORM\Column(type="string", length=10, nullable=true)
      */
     protected $initials;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetimetz", nullable=true)
+     */
+    protected $entryDate;
+
+    /**
+     * @return \DateTime
+     */
+    public function getEntryDate()
+    {
+        return $this->entryDate;
+    }
+
+    /**
+     * @param \DateTime $entryDate
+     */
+    public function setEntryDate($entryDate)
+    {
+        $this->entryDate = $entryDate;
+    }
 
     /**
      * Get id.
@@ -130,6 +158,21 @@ class Employee extends Person
         $this->manager = $manager;
     }
 
+    /**
+     * @return bool
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param bool $Status
+     */
+    public function setStatus(bool $status)
+    {
+        $this->status = $status;
+    }
     /**
      * @return EnterRelation[]|ArrayCollection
      */

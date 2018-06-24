@@ -8,5 +8,14 @@
 actor: FunctionalTester
 modules:
     enabled:
-        # add a framework module here
-        - \Helper\Functional
+        - Symfony:
+            app_path: 'app'
+            var_path: 'var'
+            em_service: 'doctrine.orm.entity_manager'
+            environment: 'test'
+        - Doctrine2:
+            depends: Symfony
+            cleanup: true
+        - Asserts
+        - Sequence
+        # - \App\Tests\Helper\Functional
