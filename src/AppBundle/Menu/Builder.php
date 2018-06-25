@@ -60,7 +60,7 @@ class Builder implements ContainerAwareInterface
         ]);
 
         $menu->addChild('Clients', [
-            'uri' => '/app/client/index',
+            'route' => 'company_index',
             'label' => '<i class="icon-users4"> </i> <span>Clients</span>',
             'extras' => ['safe_label' => true],
         ]);
