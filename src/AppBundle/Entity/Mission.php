@@ -13,6 +13,17 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Mission
 {
+
+    /**
+     * Mission constructor.
+     * @param FiscalYear[]|ArrayCollection $exercices
+     */
+    public function __construct()
+    {
+        $this->exercices = new ArrayCollection();
+    }
+
+
     /**
      * @var int
      *
@@ -25,28 +36,28 @@ class Mission
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="startDate", type="datetime")
+     * @ORM\Column(name="startDate", type="datetime",nullable=true)
      */
     private $startDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="endDate", type="datetime")
+     * @ORM\Column(name="endDate", type="datetime",nullable=true)
      */
     private $endDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="closeDate", type="datetime")
+     * @ORM\Column(name="closeDate", type="datetime",nullable=true)
      */
     private $closeDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="firstExeciceStartDate", type="datetime")
+     * @ORM\Column(name="firstExeciceStartDate", type="datetime",nullable=true)
      */
     private $firstExeciceStartDate;
 
@@ -59,15 +70,14 @@ class Mission
 
     /**
      * @var FiscalYear [] | ArrayCollection
-     *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\FiscalYear", mappedBy="mission")
-     */
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\FiscalYear", mappedBy="mission",cascade={"persist"})
+
     private $exercices;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="lastExerciceEndDate", type="datetime")
+     * @ORM\Column(name="lastExerciceEndDate", type="datetime",nullable=true)
      */
     private $lastExerciceEndDate;
 
@@ -226,7 +236,7 @@ class Mission
     }
 
     /**
-     * @return FiscalYear []|ArrayCollection
+     * @return FiscalYear[]|ArrayCollection
      */
     public function getExercices()
     {
@@ -237,7 +247,7 @@ class Mission
      * @param $exercice
      * @return $this
      */
-    public function addExercice($exercice)
+    public function addExercice(FiscalYear $exercice)
     {
         $this->exercices->add($exercice);
         return $this;
@@ -264,10 +274,9 @@ class Mission
     /**
      * @param TypeMission $typeMission
      */
-    public function setTypeMission(TypeMission $typeMission)
+    public function setTypeMission(TypeMission $typeMission=null)
     {
         $this->typeMission = $typeMission;
     }
-
 
 }

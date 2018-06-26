@@ -34,28 +34,28 @@ class FiscalYear
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="startDate", type="datetimetz")
+     * @ORM\Column(name="startDate", type="datetime",nullable=true)
      */
     protected $startDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="closeDate", type="datetimetz")
+     * @ORM\Column(name="closeDate", type="datetime",nullable=true)
      */
     protected $closeDate;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="status", type="string", length=10)
+     * @ORM\Column(name="status", type="string", length=20,nullable=true)
      */
     protected $status;
 
     /**
      * @var integer
      *
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",nullable=true)
      */
     protected $year;
 
@@ -108,6 +108,46 @@ class FiscalYear
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Mission", inversedBy="exercices")
      */
     protected $mission;
+
+    /**
+     * @var array
+     *
+     * @ORM\Column(type="array",nullable=TRUE))
+     */
+
+    protected $Exercices_comptables;
+
+    /**
+     * @return Mission
+     */
+    public function getMission()
+    {
+        return $this->mission;
+    }
+
+    /**
+     * @param Mission $mission
+     */
+    public function setMission(Mission $mission)
+    {
+        $this->mission = $mission;
+    }
+
+    /**
+     * @return array
+     */
+    public function getExercicesComptables()
+    {
+        return $this->Exercices_comptables;
+    }
+
+    /**
+     * @param array $Exercices_comptables
+     */
+    public function setExercicesComptables(array $Exercices_comptables)
+    {
+        $this->Exercices_comptables = $Exercices_comptables;
+    }
 
     /**
      * Get id.
@@ -210,7 +250,7 @@ class FiscalYear
     /**
      * @return string
      */
-    public function getVatSystem(): string
+    public function getVatSystem()
     {
         return $this->vatSystem;
     }
@@ -226,7 +266,7 @@ class FiscalYear
     /**
      * @return string
      */
-    public function getTaxSystem(): string
+    public function getTaxSystem()
     {
         return $this->taxSystem;
     }
@@ -242,7 +282,7 @@ class FiscalYear
     /**
      * @return int
      */
-    public function getYear(): int
+    public function getYear()
     {
         return $this->year;
     }
@@ -258,7 +298,7 @@ class FiscalYear
     /**
      * @return Company
      */
-    public function getCompany(): Company
+    public function getCompany()
     {
         return $this->company;
     }
@@ -274,7 +314,7 @@ class FiscalYear
     /**
      * @return Assignment
      */
-    public function getAssignment(): Assignment
+    public function getAssignment()
     {
         return $this->assignment;
     }

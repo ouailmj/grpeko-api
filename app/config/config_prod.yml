@@ -1,11 +1,9 @@
 imports:
     - { resource: config.yml }
 
-#framework:
-#    validation:
-#        cache: validator.mapping.cache.doctrine.apc
-#    serializer:
-#        cache: serializer.mapping.cache.apc
+framework:
+    session:
+        gc_maxlifetime: 600
 
 #doctrine:
 #    orm:

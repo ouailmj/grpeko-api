@@ -14,6 +14,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Company.
@@ -62,7 +63,6 @@ class Company extends LegalEntity
      * Regime d'imposition.
      *
      * @var string
-     *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $taxationRegime;
@@ -107,7 +107,7 @@ class Company extends LegalEntity
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(type="string", length=255, nullable=true)
      *
      */
@@ -259,7 +259,8 @@ class Company extends LegalEntity
 
     /**
      * @var EnterRelation
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\EnterRelation" ,mappedBy="company" ,cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\EnterRelation" ,mappedBy="company" ,cascade={"persist","remove"})
+     * onDelete="CASCADE"
      */
     private $enterRelation;
 
@@ -287,7 +288,7 @@ class Company extends LegalEntity
     /**
      * @param string $legalName
      */
-    public function setLegalName(string $legalName)
+    public function setLegalName(string $legalName=null)
     {
         $this->legalName = $legalName;
     }
@@ -636,7 +637,7 @@ class Company extends LegalEntity
      * @param $contacts
      * @return $this
      */
-    public function addContacts($contacts)
+    public function addContact($contacts)
     {
         $this->contacts->add($contacts);
         return $this;
@@ -646,7 +647,7 @@ class Company extends LegalEntity
      * @param $contacts
      * @return bool
      */
-    public function removeContacts($contacts)
+    public function removeContact($contacts)
     {
         return $this->contacts->removeElement($contacts);
 
@@ -664,7 +665,7 @@ class Company extends LegalEntity
      * @param $fiscalYears
      * @return $this
      */
-    public function addFiscalYears($fiscalYears)
+    public function addFiscalYear($fiscalYears)
     {
         $this->fiscalYears->add($fiscalYears);
         return $this;
@@ -674,7 +675,7 @@ class Company extends LegalEntity
      * @param $fiscalYears
      * @return bool
      */
-    public function removeFiscalYears($fiscalYears)
+    public function removeFiscalYear($fiscalYears)
     {
         return $this->fiscalYears->removeElement($fiscalYears);
 
