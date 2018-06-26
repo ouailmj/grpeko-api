@@ -1,9 +1,12 @@
 <?php
 
+use Page\Login as LoginPage;
+
 class CreateUserCest
 {
     public function _before(AcceptanceTester $I)
     {
+
     }
 
     public function _after(AcceptanceTester $I)
@@ -11,39 +14,34 @@ class CreateUserCest
     }
 
     // tests
-    public function testSomeFeature(AcceptanceTester $I)
+    public function testSomeFeature(AcceptanceTester $I,$username = 'admin', $password = 'f%/R4Uk#](wUvM\'V')
     {
-        //Ajout d'un User
-        $I->amOnPage('/login');
-        $I->see('Espace de connexion');
-        $I->fillField('_username', 'admin');
-        $I->fillField('_password', "f%/R4Uk#](wUvM'V");
-        $I->click('_submit');
+        $I->amOnPage(LoginPage::$URL);
+        $I->fillField(LoginPage::$usernameField, $username);
+        $I->fillField(LoginPage::$passwordField, $password);
+        $I->click(LoginPage::$submitButton);
         $I->see('Dashboard');
         $I->amOnPage('/app/employee');
         $I->click('Ajouter');
-
         $I->amOnPage('/app/employee/new');
         $I->see('Employee creation');
-        $I->fillField( 'appbundle_employee[firstName]',"riad");
-        $I->fillField( 'appbundle_employee[lastName]',"Tarik");
-        $I->fillField( 'appbundle_employee[birthDate]',"23/23/2018");
-        $I->fillField( 'appbundle_employee[entryDate]',"23/23/2018");
-        $I->fillField( 'appbundle_employee[initials]',"KAZ");
-        $I->fillField( 'appbundle_employee[phoneNumber]',"0656602633");
-        $I->fillField( 'appbundle_employee[faxNumber]',"0656602633");
-        $I->fillField( 'appbundle_employee[FixeNumber]',"0656602633");
-        $I->fillField( 'appbundle_employee[currentAddress][postalCode]',"400000");
-        $I->fillField( 'appbundle_employee[currentAddress][description]',"sfsd okpoz noakzo pop");
-        $I->fillField( 'appbundle_employee[currentAddress][city]',"Marrakech");
-        $I->selectOption( 'appbundle_employee[jobPosition]',"Collaborateur");
-        $I->selectOption( 'appbundle_employee[manager]',"1");
-        $I->fillField('appbundle_employee[userAccount][username]','tarik.riad');
-        $I->fillField('appbundle_employee[userAccount][email]','tarik.riad@gmail.com');
-        $I->fillField('appbundle_employee[userAccount][password][first]','123456');
-        $I->fillField('appbundle_employee[userAccount][password][second]','123456');
-        $I->click('Ajouter');
-        $I->amOnPage('/app/employee/$id/show');
-        $I->see('employee');
+        $I->fillField( LoginPage::$firstNameField,LoginPage::$firstName);
+        $I->fillField( LoginPage::$lastNameField,LoginPage::$lastName);
+        $I->fillField( LoginPage::$birthDateField,LoginPage::$birthDate);
+        $I->fillField( LoginPage::$entryDateField,LoginPage::$entryDay);
+        $I->fillField( LoginPage::$initialsField,LoginPage::$initials);
+        $I->fillField( LoginPage::$FixenumbreField,LoginPage::$fixeNumber);
+        $I->fillField(LoginPage::$FaxField,LoginPage::$faxNumber);
+        $I->fillField( LoginPage::$phonenbrField,LoginPage::$phoneNumber);
+        $I->fillField( LoginPage::$postalcodeField,LoginPage::$postalCode);
+        $I->fillField( LoginPage::$descriptionField,LoginPage::$description);
+        $I->fillField( LoginPage::$cityField,LoginPage::$city);
+        $I->selectOption( LoginPage::$jobPositionField,LoginPage::$jobPosition);
+        $I->selectOption( LoginPage::$ManagerField,LoginPage::$manager);
+        $I->fillField(LoginPage::$usernameField_second,LoginPage::$username);
+        $I->fillField(LoginPage::$emailField,LoginPage::$email);
+        $I->fillField(LoginPage::$passwordField_first,LoginPage::$password_first);
+        $I->fillField(LoginPage::$passwordField_second,LoginPage::$password_second);
+
     }
 }
