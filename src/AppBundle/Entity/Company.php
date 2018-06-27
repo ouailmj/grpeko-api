@@ -14,7 +14,6 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Company.
@@ -64,6 +63,7 @@ class Company extends LegalEntity
      * Regime d'imposition.
      *
      * @var string
+     *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $taxationRegime;
@@ -105,14 +105,6 @@ class Company extends LegalEntity
      * @ORM\Column(type="text", nullable=true)
      */
     protected $mainActivity;
-
-    /**
-     * @var string
-     * @Assert\NotBlank()
-     * @ORM\Column(type="string", length=255, nullable=true)
-     *
-     */
-    protected $socialReason;
 
     /**
      * @var string
@@ -204,13 +196,15 @@ class Company extends LegalEntity
 
 
     /**
+     * Adresse du service des ipùots de l'entreprise.
+     *
      * @var Address
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address", cascade={"persist", "remove"})
      *
      * @ORM\JoinColumn(name="siege_address_id", referencedColumnName="id")
      */
-    protected $siegeAddress;
+    protected $sieAddress;
 
     /**
      * @var Address[] | ArrayCollection
@@ -267,7 +261,6 @@ class Company extends LegalEntity
     /**
      * @var EnterRelation
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\EnterRelation" ,mappedBy="company" ,cascade={"persist","remove"})
-     * onDelete="CASCADE"
      */
     private $enterRelation;
 
@@ -295,7 +288,7 @@ class Company extends LegalEntity
     /**
      * @param string $legalName
      */
-    public function setLegalName(string $legalName=null)
+    public function setLegalName(string $legalName)
     {
         $this->legalName = $legalName;
     }
@@ -442,22 +435,6 @@ class Company extends LegalEntity
     public function setMainActivity(string $mainActivity)
     {
         $this->mainActivity = $mainActivity;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSocialReason()
-    {
-        return $this->socialReason;
-    }
-
-    /**
-     * @param string $socialReason
-     */
-    public function setSocialReason(string $socialReason)
-    {
-        $this->socialReason = $socialReason;
     }
 
     /**
@@ -657,10 +634,18 @@ class Company extends LegalEntity
     }
 
     /**
+     * @param Contact[]|ArrayCollection $contacts
+     */
+    public function setContacts($contacts)
+    {
+        $this->contacts = $contacts;
+    }
+
+    /**
      * @param $contacts
      * @return $this
      */
-    public function addContact($contacts)
+    public function addContacts($contacts)
     {
         $this->contacts->add($contacts);
         return $this;
@@ -670,7 +655,7 @@ class Company extends LegalEntity
      * @param $contacts
      * @return bool
      */
-    public function removeContact($contacts)
+    public function removeContacts($contacts)
     {
         return $this->contacts->removeElement($contacts);
 
@@ -688,7 +673,7 @@ class Company extends LegalEntity
      * @param $fiscalYears
      * @return $this
      */
-    public function addFiscalYear($fiscalYears)
+    public function addFiscalYears($fiscalYears)
     {
         $this->fiscalYears->add($fiscalYears);
         return $this;
@@ -698,7 +683,7 @@ class Company extends LegalEntity
      * @param $fiscalYears
      * @return bool
      */
-    public function removeFiscalYear($fiscalYears)
+    public function removeFiscalYears($fiscalYears)
     {
         return $this->fiscalYears->removeElement($fiscalYears);
 
@@ -728,7 +713,7 @@ class Company extends LegalEntity
      */
     public function removeMission($missions)
     {
-       return $this->missions->removeElement($missions);
+        return $this->missions->removeElement($missions);
 
     }
 
@@ -783,19 +768,16 @@ class Company extends LegalEntity
     /**
      * @return Address
      */
-    public function getSiegeAddress()
+    public function getSieAddress()
     {
-        return $this->siegeAddress;
+        return $this->sieAddress;
     }
 
     /**
-     * @param Address $siegeAddress
+     * @param Address $sieAddress
      */
-    public function setSiegeAddress(Address $siegeAddress)
+    public function setSieAddress(Address $sieAddress)
     {
-        $this->siegeAddress = $siegeAddress;
+        $this->sieAddress = $sieAddress;
     }
-
-
-
 }

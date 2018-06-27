@@ -23,11 +23,11 @@
                     <tbody>
                     <tr>
                         <th>Nom</th>
-                        <td>{{ user.firstName }}</td>
+                        <td>{{ user.person.firstName }}</td>
                     </tr>
                     <tr>
                         <th>Prénom</th>
-                        <td>{{ user.lastName }}</td>
+                        <td>{{ user.person.lastName }}</td>
                     </tr>
                     <tr>
                         <th>{{  'profile.show.email'|trans }}</th>
@@ -38,44 +38,22 @@
                         <td>{{ user.username|default('') }}</td>
                     </tr>
                     <tr>
-                        <th>Adresse</th>
-                        <td>{{ user.address }}</td>
-                    </tr>
-                    <tr>
-                        <th>Complément adresse</th>
-                        <td>{{ user.addressComplement }}</td>
-                    </tr>
-                    <tr>
                         <th>Code postal</th>
-                        <td>{{ user.zipCode }}</td>
-                    </tr>
-                    <tr>
-                        <th>Ville</th>
-                        <td>{{ user.city }}</td>
+                        <td>{{ user.person.postalCode }}</td>
                     </tr>
                     <tr>
                         <th>Téléphone</th>
-                        <td>{{ user.phoneNumber }}</td>
+                        <td>{{ user.person.phoneNumber }}</td>
                     </tr>
                     <tr>
-                        <th>Rôles</th>
+                        <th>Type</th>
                         <td>
-                            {% for role in user.tableRoles %}
-                                <span class="label label-success">{{ role }}</span>
-                            {% endfor %}
+                            <span class="label label-success">{{ user.person.jobPosition }}</span>
                         </td>
                     </tr>
                     <tr>
-                        <th>Date de création</th>
-                        <td>{% if user.createdAt %}{{ user.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-                    </tr>
-                    <tr>
-                        <th>Dernière modification</th>
-                        <td>{% if user.updatedAt %}{{ user.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-                    </tr>
-                    <tr>
                         <th>Dernière connexion</th>
-                        <td>{% if user.updatedAt %}{{ user.lastLogin|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{% if user.lastLogin %}{{ user.lastLogin|date('Y-m-d H:i:s') }}{% endif %}</td>
                     </tr>
                     <tr>
                         <th>Statut</th>
@@ -98,7 +76,7 @@
         <div class="heading-elements pull-right">
             <div class="col-md-12">
                 <div class="btn-group">
-                    <a href="{{ path('fos_user_profile_edit')}}" class="btn btn-primary btn-labeled btn-xs legitRipple"><b><i class="icon-pencil"></i></b> Modifier</a>
+                    <a href="{{ path('employee_edit', {'id': user.person.id})}}" class="btn btn-primary btn-labeled btn-xs legitRipple"><b><i class="icon-pencil"></i></b> Modifier</a>
                     <a  href="{{ path('fos_user_change_password') }}" name="update_password" title="Modifier votre mot de passe" type="submit" class="btn bg-teal-400 btn-labeled btn-xs legitRipple"><b><i class="icon-key"></i></b> Modifier mot de passe </a>
                 </div>
             </div>

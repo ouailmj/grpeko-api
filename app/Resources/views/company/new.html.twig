@@ -50,7 +50,7 @@
                                         <fieldset class="content-group">
                                             <legend class="text-bold">Informations générales</legend>
 
-                                            {{form_row(form1.socialReason)}}
+                                            {{form_row(form1.legalName)}}
                                             {{form_row(form1.legalForm)}}
                                             {{form_row(form1.taxationRegime)}}
                                             {{form_row(form1.vatSystem)}}
@@ -63,7 +63,7 @@
 
                                         <fieldset class="scheduler-border">
                                             <legend class="scheduler-border" style="text-transform: capitalize">Adresse du SIE</legend>
-                                            {{form_row(form1.siegeAddress)}}
+                                            {{form_row(form1.SieAddress)}}
 
                                         </fieldset>
 
@@ -244,7 +244,7 @@
             name_prefix: "{{ form1.contacts.vars.full_name }}",
             add_at_the_end: true,
             hide_useless_buttons: true,
-            add: '<a style="float:right" href="#" class="collection-action btn btn-success btn-small collection-rescue-add">Ajouter</a>',
+            add: '<a style="float:right" href="#" class="collection-action btn btn-success btn-small collection-rescue-add ajoutercontact">Ajouter</a>',
             remove: '<a href="#" class="collection-remove btn btn-warning collection-action">Retirer</a>',
             allow_up: false,
             allow_down: false,

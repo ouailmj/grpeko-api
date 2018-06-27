@@ -54,7 +54,7 @@ class Builder implements ContainerAwareInterface
         ])->setAttribute('class', 'navigation-header');
 
         $menu->addChild('Clients', [
-            'uri' => '/app/client/index',
+            'uri' => '/app/company/list',
             'label' => '<i class="icon-users4"></i> <span>Clients</span>',
             'extras' => ['safe_label' => true],
         ]);
@@ -65,7 +65,7 @@ class Builder implements ContainerAwareInterface
         ]);
 
         $menu->addChild('Gestion du Cabinet', [
-            'uri' => '/app/client/gestion-cabinet',
+            'route' => 'employee_index',
             'label' => '<i class="icon-file-text3"></i> <span>Gestion du Cabinet</span>',
             'extras' => ['safe_label' => true],
         ]);
@@ -96,13 +96,13 @@ class Builder implements ContainerAwareInterface
         $menu->setChildrenAttribute('class', 'nav nav-tabs nav-tabs-highlight');
 
         $menu->addChild('Main', [
-         'uri' => '#',
-         'routeParameters' => [
-             'id' => $options['customerId'],
-         ],
-         'label' => '<i class="icon-user-tie position-left"></i>Détails du client',
-         'extras' => ['safe_label' => true],
-     ]);
+             'uri' => '#',
+             'routeParameters' => [
+                 'id' => $options['customerId'],
+             ],
+             'label' => '<i class="icon-user-tie position-left"> </i>Détails du client',
+             'extras' => ['safe_label' => true],
+         ]);
 
         if ($this->authorizationChecker->isGranted('ROLE_ADVISORY')) {
             $menu->addChild('Sinistres', [
@@ -110,7 +110,7 @@ class Builder implements ContainerAwareInterface
              'routeParameters' => [
                  'id' => $options['customerId'],
              ],
-             'label' => '<i class="icon-folder position-left"></i>Sinistres',
+             'label' => '<i class="icon-folder position-left"> </i>Sinistres',
              'extras' => ['safe_label' => true],
          ]);
 
@@ -119,7 +119,7 @@ class Builder implements ContainerAwareInterface
              'routeParameters' => [
                  'id' => $options['customerId'],
              ],
-             'label' => '<i class="icon-file-text3 position-left"></i>Contrats',
+             'label' => '<i class="icon-file-text3 position-left"> </i>Contrats',
              'extras' => ['safe_label' => true],
          ]);
             $menu->addChild('Relations client', [
@@ -127,7 +127,7 @@ class Builder implements ContainerAwareInterface
              'routeParameters' => [
                  'id' => $options['customerId'],
              ],
-             'label' => '<i class="icon-users4 position-left"></i>Relations client',
+             'label' => '<i class="icon-users4 position-left"> </i>Relations client',
              'extras' => ['safe_label' => true],
          ]);
         }
@@ -135,44 +135,48 @@ class Builder implements ContainerAwareInterface
         return $menu;
     }
 
-    // private function paramaetrageItem(ItemInterface $menu)
-    // {
-    //     $menu->addChild('Email', [
-    //      'uri' => '/app/client/parametrage_email',
-    //      'label' => '<i class="icon-arrow-right14"></i> <span>Email</span>',
-    //      'extras' => ['safe_label' => true],
-    //  ]);
-    //     $menu->addChild('Rendez-vos clients', [
-    //      'uri' => '/app/client/parametrage_rendezvous',
-    //      'label' => '<i class="icon-arrow-right14"></i> <span>Rendez-vos clients</span>',
-    //      'extras' => ['safe_label' => true],
-    //  ]);
-    //     /*$menu->addChild('Type de garanties', array(
-    //         'route' => 'warrantytype_index',
-    //         'label' => "<i class=\"icon-arrow-right14\"></i> <span>Type de garanties</span>",
-    //         'extras'    => array('safe_label' => true)
-    //     ));*/
-    //     $menu->addChild('Devis', [
-    //         'uri' => '/app/client/parametrage_devis',
-    //         'label' => '<i class="icon-arrow-right14"></i> <span>Devis</span>',
-    //         'extras' => ['safe_label' => true],
-    //     ]);
-    //     $menu->addChild('Commissions', [
-    //         'uri' => '/app/client/parametrage_commissions',
-    //         'label' => '<i class="icon-arrow-right14"></i> <span>Commissions</span>',
-    //         'extras' => ['safe_label' => true],
-    //     ]);
-    //     $menu->addChild('Sites internet', [
-    //         'uri' => '/app/client/parametrage_internet',
-    //         'label' => '<i class="icon-arrow-right14"></i> <span>Sites internet</span>',
-    //         'extras' => ['safe_label' => true],
-    //     ]);
+    public function createCabinetMenu(array $options)
+    {
+        $menu = $this->factory->createItem('root');
+        $menu->setChildrenAttribute('class', 'nav nav-tabs nav-tabs-highlight');
 
-    //     /*
-    //     $menu->addChild('Type Client', array(
-    //         'route' => 'client_index',
-    //         'label' => "<i class=\"icon-arrow-right14\"></i> <span>Type Client</span>",
-    //         'extras'    => array('safe_label' => true)
-    //     ));*/
-    // }
+        $menu->addChild('Main', [
+            'uri' => '#',
+            'routeParameters' => [
+                'id' => $options['customerId'],
+            ],
+            'label' => '<i class="icon-user-tie position-left"> </i>Détails du client',
+            'extras' => ['safe_label' => true],
+        ]);
+
+        if ($this->authorizationChecker->isGranted('ROLE_ADVISORY')) {
+            $menu->addChild('Sinistres', [
+                'uri' => '#',
+                'routeParameters' => [
+                    'id' => $options['customerId'],
+                ],
+                'label' => '<i class="icon-folder position-left"> </i>Sinistres',
+                'extras' => ['safe_label' => true],
+            ]);
+
+            $menu->addChild('Contrats', [
+                'uri' => '#',
+                'routeParameters' => [
+                    'id' => $options['customerId'],
+                ],
+                'label' => '<i class="icon-file-text3 position-left"> </i>Contrats',
+                'extras' => ['safe_label' => true],
+            ]);
+            $menu->addChild('Relations client', [
+                'uri' => '#',
+                'routeParameters' => [
+                    'id' => $options['customerId'],
+                ],
+                'label' => '<i class="icon-users4 position-left"> </i>Relations client',
+                'extras' => ['safe_label' => true],
+            ]);
+        }
+
+        return $menu;
+    }
 }

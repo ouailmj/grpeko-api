@@ -75,6 +75,8 @@ class EnterRelationController extends BaseController
 
 
             $mission=new Mission();
+
+
             $mission->addExercice($FiscalYear1);
             $mission->addExercice($FiscalYear2);
             $mission->addExercice($FiscalYear3);

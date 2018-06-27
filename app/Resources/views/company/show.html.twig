@@ -55,7 +55,7 @@
                             <td>{{company.legalform}}</td>
                             <td>
                                 {% for fiscalYear in company.fiscalYears %}
-                                    {{fiscalYear.closeDate |date('d/m/Y')}}
+                                    {{fiscalYear.closeDate |date(date_default_fromat)}}
                                 {% endfor %}
                             </td>
                             <td>Null</td>

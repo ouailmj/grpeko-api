@@ -50,7 +50,7 @@ class EntreRelationType extends AbstractType
             ->add('societe_creer', ChoiceType::class, array(
                 'choices'  => array(
                     'Oui' => true,
-                    'No' => false,
+                    'Non' => false,
                 ),
                 'label' => false,
             ))

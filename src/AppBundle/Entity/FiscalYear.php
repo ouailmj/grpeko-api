@@ -102,6 +102,13 @@ class FiscalYear
      */
     protected $assignment;
 
+
+    /**
+     * @var Mission
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Mission", inversedBy="exercices")
+     */
+    protected $mission;
+
     /**
      * @var array
      *
@@ -110,11 +117,6 @@ class FiscalYear
 
     protected $Exercices_comptables;
 
-    /**
-     * @var Mission
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Mission", inversedBy="exercices")
-     */
-    protected $mission;
 
     /**
      * @return Mission
