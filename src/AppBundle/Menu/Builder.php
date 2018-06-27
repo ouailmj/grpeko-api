@@ -49,43 +49,50 @@ class Builder implements ContainerAwareInterface
         $menu->setChildrenAttribute('class', 'navigation navigation-main navigation-accordion');
 
         $menu->addChild('Main', [
-            'label' => '<span>Menu</span> <i class="icon-menu" title="Main pages"></i>',
+            'label' => '<span>Menu</span> <i class="icon-menu" title="Main pages"> </i>',
             'extras' => ['safe_label' => true],
         ])->setAttribute('class', 'navigation-header');
 
-        $menu->addChild('Clients', [
-            'uri' => '/app/company/list',
-            'label' => '<i class="icon-users4"></i> <span>Clients</span>',
+        $menu->addChild('Dashboard', [
+            'route' => 'dashboard',
+            'label' => '<i class="icon-home5"> </i> <span>Dashboard</span>',
             'extras' => ['safe_label' => true],
         ]);
+
+        $menu->addChild('Clients', [
+            'route' => 'company_index',
+            'label' => '<i class="icon-users4"> </i> <span>Clients</span>',
+            'extras' => ['safe_label' => true],
+        ]);
+
         $menu->addChild('Plannings', [
             'uri' => '/app/client/planning',
-            'label' => '<i class="icon-users"></i> <span>Plannings</span>',
+            'label' => '<i class="icon-users"> </i> <span>Plannings</span>',
             'extras' => ['safe_label' => true],
         ]);
 
         $menu->addChild('Gestion du Cabinet', [
             'route' => 'employee_index',
-            'label' => '<i class="icon-file-text3"></i> <span>Gestion du Cabinet</span>',
+            'label' => '<i class="icon-file-text3"> </i> <span>Gestion du Cabinet</span>',
             'extras' => ['safe_label' => true],
         ]);
 
         $menu->addChild('Formalités', [
             'uri' => '/app/client/formalites',
-            'label' => '<i class="icon-books"></i> <span>Formalités</span>',
+            'label' => '<i class="icon-books"> </i> <span>Formalités</span>',
             'extras' => ['safe_label' => true],
         ]);
         $menu->addChild('Suivi de projet', [
             'uri' => '#',
-            'label' => '<i class="icon-home5"></i> <span>Suivi de projet</span>',
+            'label' => '<i class="icon-folder-open"> </i> <span>Suivi de projet</span>',
             'extras' => ['safe_label' => true],
         ]);
-        // $settings = $menu->addChild('Parametragee', [
-        //     'uri' => '#',
-        //     'label' => '<i class="icon-cog5"></i> <span>Parametragee</span>',
-        //     'extras' => ['safe_label' => true],
-        // ]);
-        // $this->paramaetrageItem($settings);
+        $settings = $menu->addChild('Settings', [
+            'uri' => '#',
+            'label' => '<i class="icon-cog5"> </i> <span>Paramètrages</span>',
+            'extras' => ['safe_label' => true],
+        ]);
+        $this->settingItem($settings);
 
         return $menu;
     }
@@ -178,5 +185,34 @@ class Builder implements ContainerAwareInterface
         }
 
         return $menu;
+    }
+
+    private function settingItem(ItemInterface $menu)
+    {
+        $menu->addChild('Planning', array(
+            'route' => 'setting_planning',
+            'label' => "<i class=\"icon-arrow-right14\"> </i> <span>Planning</span>",
+            'extras'    => array('safe_label' => true)
+        ));
+        $menu->addChild('Quotation', array(
+            'route' => 'setting_quotations',
+            'label' => "<i class=\"icon-arrow-right14\"> </i> <span>Devis</span>",
+            'extras'    => array('safe_label' => true)
+        ));
+        $menu->addChild('Emails', array(
+            'route' => 'setting_emails',
+            'label' => "<i class=\"icon-arrow-right14\"> </i> <span>Emails</span>",
+            'extras'    => array('safe_label' => true)
+        ));
+        $menu->addChild('Commissions', array(
+            'route' => 'setting_commissions',
+            'label' => "<i class=\"icon-arrow-right14\"> </i> <span>Commissions</span>",
+            'extras'    => array('safe_label' => true)
+        ));
+        $menu->addChild('Analytics', array(
+            'route' => 'setting_analytics',
+            'label' => "<i class=\"icon-arrow-right14\"> </i> <span>Catégories Analytiques</span>",
+            'extras'    => array('safe_label' => true)
+        ));
     }
 }

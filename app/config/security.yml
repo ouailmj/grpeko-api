@@ -58,5 +58,6 @@ security:
         - { path: ^/portail, role: ROLE_USER }
         - { path: ^/portal, role: ROLE_USER }
         - { path: ^/$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/, role: ROLE_ADMIN }
-
+        - { path: ^/admin/, role: ROLE_USER }
+        - { path: ^/app/, role: ROLE_USER }
+        - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }

@@ -13,6 +13,17 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Mission
 {
+
+    /**
+     * Mission constructor.
+     * @param FiscalYear[]|ArrayCollection $exercices
+     */
+    public function __construct()
+    {
+        $this->exercices = new ArrayCollection();
+    }
+
+
     /**
      * @var int
      *
@@ -59,7 +70,7 @@ class Mission
 
     /**
      * @var FiscalYear [] | ArrayCollection
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\FiscalYear", mappedBy="mission",cascade={"persist"}))
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\FiscalYear", mappedBy="mission",cascade={"persist"})
      */
     private $exercices;
 
@@ -76,16 +87,6 @@ class Mission
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\TypeMission" ,inversedBy="missions" ,cascade={"persist"})
      */
     private $typeMission;
-
-    /**
-     * Mission constructor.
-     * @param FiscalYear[]|ArrayCollection $exercices
-     */
-    public function __construct()
-    {
-        $this->exercices = new  ArrayCollection();
-    }
-
 
     /**
      * Get id.
@@ -234,7 +235,7 @@ class Mission
     }
 
     /**
-     * @return FiscalYear []|ArrayCollection
+     * @return FiscalYear[]|ArrayCollection
      */
     public function getExercices()
     {

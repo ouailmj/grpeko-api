@@ -23,7 +23,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Company extends LegalEntity
 {
-
     /**
      * @var string
      *

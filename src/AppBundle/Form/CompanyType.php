@@ -33,7 +33,7 @@ class CompanyType extends AbstractType
                        'SARL' => 'SARL',
                        'SA' => 'SA',
                    ),
-                    'required'=>false
+                    'required'=>true
                ))
                ->add('taxationRegime', ChoiceType::class, array(
                    'label' => 'Régime d\'imposition:',
