@@ -48,7 +48,7 @@ class Employee extends Person
 
     /**
      * @var status
-     * @ORM\Column(name="status", type="boolean", nullable=true)
+     * @ORM\Column(name="status", type="boolean", nullable=true,options={"default" : 0})
      */
     protected $status;
     /**

@@ -22,16 +22,17 @@ class EmployeeType extends AbstractType
         $builder
             ->add('firstName', TextType::class, array(
                 'label' => 'Nom',
+                'required' => true,
                 'attr' => array('style'=>'text-transform: uppercase' )
             ))
             ->add('lastName', TextType::class, array(
                 'label' => 'Prénom',
-                'attr' => array('style'=>'text-transform: capitalize' )
-
+                'attr' => array('style'=>'text-transform: capitalize' ),
+                'required' => true,
             ))
 
             ->add('birthDate',DateType::class,array(
-                'required'=>false,
+                'required'=>true,
                 'widget'=>'single_text',
                 'format'=>'dd/MM/yyyy',
                 'label' => 'Date de naissance',
@@ -41,10 +42,10 @@ class EmployeeType extends AbstractType
             ))
 
             ->add('entryDate',DateType::class,array(
-                'required'=>false,
+                'required'=>true,
                 'widget'=>'single_text',
                 'format'=>'dd/MM/yyyy',
-                'label' => 'Date Entrer',
+                'label' => 'Date d\'entrée',
                 'attr' => array(
                     'class' => 'french_picker'
                 )
@@ -90,22 +91,27 @@ class EmployeeType extends AbstractType
                 'required' => true,
             ))
 
-            ->add('userAccount', UserType::class, array(
-                'label' => false
-            ))
-
             ->add('status', CheckboxType::class, array(
                 'label' => 'Activer ?',
                 'required'  => false
-            ))
-        ;
-    }/**
+            ));
+             if ($options['user']){
+                 $builder
+                     ->add('userAccount', UserType::class, array(
+                         'label' => false
+                     ));
+            }
+
+    }
+     /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Employee'
+            'data_class' => 'AppBundle\Entity\Employee',
+            'required'  => true,
+            'user' =>true,
         ));
     }
 

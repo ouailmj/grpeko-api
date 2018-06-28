@@ -38,6 +38,7 @@
     {% endif %}
     <!-- /main navbar -->
 
+
     <!-- Page container -->
     <div class="page-container">
         <!-- Page content -->
@@ -98,6 +99,12 @@
         ga('send', 'pageview');
     </script>
     </body>
+    <style>
+        label.required:after {
+            content: "    * " !important;
+            color: red;
+        }
+    </style>
 
 {% endblock %}
 </html>

@@ -28,7 +28,8 @@ class AccountEmployer extends AbstractType
     {
         $builder
         ->add('firstName', TextType::class, array(
-            'label' => 'Nom'
+            'label' => 'Nom',
+            'required'  => false
         ))
         ->add('lastName', TextType::class, array(
             'label' => 'Prénom'
@@ -40,20 +41,13 @@ class AccountEmployer extends AbstractType
             'label' => 'Téléphone'
         ))
 
-        ->add('manager', EntityType::class, array(
 
-            'label' => 'Supérieur',
-            'class' => 'AppBundle\Entity\Employee',
-            'choice_label' => function ($manager) {
-                return $manager->getUserAccount()->getInitials();
-            },
-            'choices_as_values' => true,
-            'required' => true,
-        ))
 
         ->add('jobPosition', JobpositionType::class)
 
-        ->add('userAccount', UserType::class)
+        ->add('userAccount', UserType::class, array(
+        'label' => false,
+    ))
 
         ->add('status', CheckboxType::class, array(
             'label' => 'Activer ?',

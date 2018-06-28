@@ -42,6 +42,5 @@ class CreateUserCest
         $I->fillField(LoginPage::$emailField,LoginPage::$email);
         $I->fillField(LoginPage::$passwordField_first,LoginPage::$password_first);
         $I->fillField(LoginPage::$passwordField_second,LoginPage::$password_second);
-
     }
 }
