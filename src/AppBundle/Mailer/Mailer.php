@@ -12,7 +12,10 @@
 
 namespace AppBundle\Mailer;
 
+use AppBundle\Entity\Company;
+use AppBundle\Entity\Contact;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
+use AppBundle\Event\ClientCreatedEvent;
 
 class Mailer
 {
@@ -62,4 +65,26 @@ class Mailer
 
         $this->sendEmailMessage($body, $this->adminMail, 'Groupe EKO - Un message de contact');
     }
+
+
+    public function sendEmailCLient(ClientCreatedEvent $client)
+    {
+        $email=$client->getCompany()->getCustomerAccount()->getUserAccount()->getEmail();
+        $password=$client->getCompany()->getCustomerAccount()->getUserAccount()->getPlainPassword();
+        $name=$client->getCompany()->getCustomerAccount()->getName();
+
+        $message = (new \Swift_Message())
+            ->setSubject("Fiche Patrimoniale")
+            ->setFrom("groupeekofr.dev@gmail.com")
+            ->setTo($email)
+            ->setBody("
+            <html>Bonjour, $name <br><br>Afin de préparer ce rdv, merci de me retourner cette  <a href='/app/relation/add'>fiche patrimoniale</a> remplie stp.<br>
+            <h3>Authentification :</h3>
+               Email:$email<br>
+               Password:$password
+            </html>");
+
+        $this->mailer->send($message);
+    }
+
 }

@@ -11,7 +11,7 @@
  */
 
 namespace AppBundle\Entity;
-
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -219,7 +219,6 @@ class Company extends LegalEntity
 
     /**
      * @var Contact[] | ArrayCollection
-     *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Contact" ,mappedBy="company" ,cascade={"persist", "remove"}))
      */
     protected $contacts;
@@ -644,7 +643,7 @@ class Company extends LegalEntity
      * @param $contacts
      * @return $this
      */
-    public function addContacts($contacts)
+    public function addContact($contacts)
     {
         $this->contacts->add($contacts);
         return $this;
@@ -654,7 +653,7 @@ class Company extends LegalEntity
      * @param $contacts
      * @return bool
      */
-    public function removeContacts($contacts)
+    public function removeContact($contacts)
     {
         return $this->contacts->removeElement($contacts);
 

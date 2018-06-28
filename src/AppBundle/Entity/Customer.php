@@ -39,6 +39,22 @@ class Customer extends Person
     protected $company;
 
     /**
+     * @return Company
+     */
+    public function getCompany()
+    {
+        return $this->company;
+    }
+
+    /**
+     * @param Company $company
+     */
+    public function setCompany(Company $company)
+    {
+        $this->company = $company;
+    }
+
+    /**
      * Get id.
      *
      * @return int

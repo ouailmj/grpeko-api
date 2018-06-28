@@ -4,20 +4,18 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Address;
 use AppBundle\Entity\Company;
+use AppBundle\Entity\Contact;
+use AppBundle\Entity\Customer;
 use AppBundle\Entity\EnterRelation;
+use AppBundle\Entity\User;
 use AppBundle\Form\CompanyType;
+use AppBundle\Model\ClientManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\HttpFoundation\Response;
-
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-
+use AppBundle\Event\AppEvents;
+use AppBundle\Event\ClientCreatedEvent;
 
 
 /**
@@ -27,6 +25,15 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
  */
 class CompanyController extends BaseController
 {
+    private  $clientManager;
+    /**
+     * CompanyController constructor.
+     */
+    public function __construct(ClientManager $clientManager)
+    {
+        $this->clientManager= $clientManager;
+    }
+
 
     /**
      * @Route("/list", name="company_index")
@@ -35,8 +42,7 @@ class CompanyController extends BaseController
     public function indexAction(Request $request)
     {
 
-        $em = $this->getDoctrine()->getManager();
-        $companys = $em->getRepository('AppBundle:Company')->findAll();
+        $companys = $this->clientManager->findAllClients();
         $listcompanys=[];
         foreach ($companys as $company)
         {
@@ -50,6 +56,7 @@ class CompanyController extends BaseController
 
     }
 
+
     /**
      * Deletes a Company entity.
      *  @Route("/{id}/delete", name="company_delete")
@@ -62,9 +69,8 @@ class CompanyController extends BaseController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($company);
-            $em->flush();
+
+            $this->clientManager->deleteClient($company);
             $this->addSuccessFlash();
         }
 
@@ -94,36 +100,26 @@ class CompanyController extends BaseController
      *
      */
 
-    public function newAction(Request $request,\Swift_Mailer $mailer)
+    public function newAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
+
         $company = new Company();
-        $form1 = $this->createForm('AppBundle\Form\CompanyType', $company, array(
+        $formcompany = $this->createForm('AppBundle\Form\CompanyType', $company, array(
             'add_contact_data' => false,
         ));
 
-        $form1->handleRequest($request);
+        $formcompany->handleRequest($request);
 
-        if ($form1->isSubmitted() && $form1->isValid()) {
+        if ($formcompany->isSubmitted() && $formcompany->isValid()) {
 
-               foreach ( $form1->get('contacts') as $data) {
-                   $message = \Swift_Message::newInstance()
-                            ->setSubject("Fiche Patrimoniale")
-                            ->setFrom('groupeekofr.dev@gmail.com')
-                            ->setTo($data->get("email")->getData())
-                            ->setBody("<html>Bonjour,<br><br>Afin de préparer ce rdv, merci de me retourner cette <a href='/app/relation/add'>fiche patrimoniale</a> remplie stp.</html>" , 'text/html');
-                   $this->get('mailer')->send($message);
-                   break;
-               }
-
-             $em->persist($company);
-             $em->flush();
-             $this->addSuccessFlash();
-             $this->redirectToRoute('company_new');
+            $this->clientManager->createClient($company,$formcompany);
+            $this->get('event_dispatcher')->dispatch(AppEvents::CLIENT_CREATED, new ClientCreatedEvent($company));
+            $this->addSuccessFlash();
+            $this->redirectToRoute('company_new');
         }
 
         return $this->render('company/new.html.twig',
-                            array('form1' => $form1->createView()));
+                            array('formcompany' => $formcompany->createView()));
     }
 
 
@@ -134,16 +130,15 @@ class CompanyController extends BaseController
 
     public function editAction(Company $company, Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-        $form1 = $this->createForm('AppBundle\Form\CompanyType', $company);
-        $form1->handleRequest($request);
-        if ($form1->isSubmitted() && $form1->isValid()) {
-            $em->flush();
+        $formcompany = $this->createForm('AppBundle\Form\CompanyType', $company);
+        $formcompany->handleRequest($request);
+        if ($formcompany->isSubmitted() && $formcompany->isValid()) {
+            $this->clientManager->editClient();
             $this->addSuccessFlash();
         }
 
         return $this->render('company/edit.html.twig',
-                            array('form1' => $form1->createView()));
+                            array('formcompany' => $formcompany->createView()));
     }
 
 }
