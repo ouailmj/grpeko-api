@@ -58,6 +58,7 @@ jobs:
           name: Install npm dependencies
           command: |
             yarn install
+            yarn run encore dev
 
       - save_cache:
           key: dependency-cache-{{ checksum "yarn.lock" }}
@@ -79,6 +80,11 @@ jobs:
           command: |
             php bin/console server:start
             ./vendor/bin/codecept run --steps
+
+      - run:
+          name: javascript tests
+          command: |
+            yarn run test --coverage
 
       - run:
           name: Run Security Check
