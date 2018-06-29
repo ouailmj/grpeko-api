@@ -84,7 +84,7 @@ jobs:
       - run:
           name: javascript tests
           command: |
-            yarn test -coverage
+            yarn run test --coverage
 
       - run:
           name: Run Security Check
