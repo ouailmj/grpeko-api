@@ -6,7 +6,7 @@ parameters:
     database_port:     8889
     database_name:     groupeekoapi
     database_user:     root
-    database_password: root
+    database_password: groupeekoapi
 
     mailer_transport:  smtp
     mailer_host:       127.0.0.1
