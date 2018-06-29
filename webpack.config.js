@@ -16,6 +16,7 @@ Encore
     .setPublicPath('/build')
     .cleanupOutputBeforeBuild()
     .addEntry('website/js/script', websiteJS)
+    .addEntry('js/pages/demo', './front-app/pages/demo.js')
     .addStyleEntry('website/css/style', websiteCSS)
     .enableVersioning(false)
     // .enableSassLoader()
@@ -24,4 +25,14 @@ Encore
     // .addPlugin(new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/))
     .enableSourceMaps(!Encore.isProduction())
 ;
-module.exports = Encore.getWebpackConfig();
+
+module.exports = {
+    module: {
+        loaders: [
+            { test: /\.css$/, loader: "style-loader!css-loader" },
+            // ...
+        ]
+    }
+};
+
+let config = Encore.getWebpackConfig();
