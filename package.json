@@ -1,5 +1,5 @@
 {
-  "name": "sf3-skeleton",
+  "name": "groupeeko-api",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MedAhamada/trainingo.git"
+    "url": "git+https://github.com/multiinfo/groupeeko-api.git"
   },
   "author": "",
   "dependencies": {
