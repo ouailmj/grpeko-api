@@ -36,3 +36,6 @@ module.exports = {
 };
 
 let config = Encore.getWebpackConfig();
+
+
+module.exports = config;
