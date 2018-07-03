@@ -22,15 +22,15 @@ class ContactClientType extends AbstractType
         $builder
             ->add('firstname', TextType::class, array(
                 'label' => 'Prénom:',
-                'required'  => true
+                'required'  => false
             ))
             ->add('lastname', TextType::class, array(
                 'label' => 'Nom:',
-                'required'  => true
+                'required'  => false
             ))
             ->add('email', EmailType::class, array(
                     'label' => 'Email : ',
-                    'required'  => true,
+                    'required'  => false,
                 )
             );
     }
