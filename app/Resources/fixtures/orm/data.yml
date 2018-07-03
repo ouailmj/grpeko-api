@@ -61,3 +61,5 @@ AppBundle\Entity\Employee:
         userAccount: '@useraccount_<current()>'
         manager: '@employee_*'
         jobPosition: '@collaborateur'
+
+

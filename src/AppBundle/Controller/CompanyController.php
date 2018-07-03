@@ -1,10 +1,6 @@
 <?php
-
 namespace AppBundle\Controller;
-
-use AppBundle\Entity\Address;
 use AppBundle\Entity\Company;
-use AppBundle\Entity\EnterRelation;
 use AppBundle\Form\CompanyType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -12,138 +8,109 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Response;
-
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-
-
-
 /**
- * Class CompanyController
- * @package AppBundle\Controller
+ * Company controller.
+ *
  * @Route("company")
  */
 class CompanyController extends BaseController
 {
-
     /**
-     * @Route("/list", name="company_index")
+     * @Route("/", name="company_index")
      */
-
-    public function indexAction(Request $request)
+    public function listAction()
     {
-
         $em = $this->getDoctrine()->getManager();
-        $companys = $em->getRepository('AppBundle:Company')->findAll();
-        $listcompanys=[];
-        foreach ($companys as $company)
-        {
-            array_push($listcompanys, $this->createDeleteForm($company)->createView());
-        }
-
-        return $this->render('company/show.html.twig', array(
-            'companys'     => $companys,
-            'delete_form'   => $listcompanys
-        ));
-
+        $company = $em->getRepository('AppBundle:Company')->findAll();
+        return $this->render('company/index.html.twig', array('company' => $company));
     }
-
     /**
-     * Deletes a Company entity.
-     *  @Route("/{id}/delete", name="company_delete")
-     *  @Method("DELETE")
+     * Creates a new company entity.
+     *
+     *
+     * @Route("/new", name="company_new")
+     * @Method({"GET", "POST"})
      */
-
+    public function newAction(Request $request)
+    {
+        $company = new Company();
+        $form = $this->createForm('AppBundle\Form\CompanyType', $company);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($company);
+            $em->flush();
+            $this->addFlash('success', 'Votre opération a été exécutée avec succès');
+        }
+        return $this->render('Company/new.html.twig', array(
+            'company' => $company,
+            'form' => $form->createView(),
+        ));
+    }
+    /**
+     * Displays a form to edit an existing employee entity.
+     *
+     *
+     * @Route("/{id}/edit", name="company_edit")
+     * @Method({"GET", "POST"})
+     */
+    public function editAction(Request $request, Company $company)
+    {
+        $deleteForm = $this->createDeleteForm($company);
+        $editForm = $this->createForm('AppBundle\Form\CompanyType', $company);
+        $editForm->handleRequest($request);
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+            $this->addFlash('success', 'Votre opération a été exécutée avec succès');
+        }
+        return $this->render('company/edit.html.twig', array(
+            'company' => $company,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+    /**
+     * Deletes a company entity.
+     *
+     *
+     * @Route("/{id}", name="company_delete")
+     * @Method({"DELETE", "GET", "POST"})
+     */
     public function deleteAction(Request $request, Company $company)
     {
         $form = $this->createDeleteForm($company);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($company);
             $em->flush();
-            $this->addSuccessFlash();
         }
-
-        return $this->redirectToRoute('company_index');
+        else{
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($company);
+            $em->flush();
+            $this->addFlash('success', 'Votre opération a été exécutée avec succès');
+        }
+        return $this->redirectToRoute('$company-index');
     }
-
     /**
-     * Creates a form to delete a Company entity.
+     * Creates a form to delete a company entity.
      *
-     * @param Company $company The Company entity
+     * @param Company $company The company entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-
     private function createDeleteForm(Company $company)
     {
-
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('company_delete', array('id' => $company->getId())))
             ->setMethod('DELETE')
             ->getForm()
             ;
-    }
-
-    /**
-     * @Route("/new", name="company_new")
-     *
-     */
-
-    public function newAction(Request $request,\Swift_Mailer $mailer)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $company = new Company();
-        $form1 = $this->createForm('AppBundle\Form\CompanyType', $company, array(
-            'add_contact_data' => false,
-        ));
-
-        $form1->handleRequest($request);
-
-        if ($form1->isSubmitted() && $form1->isValid()) {
-
-               foreach ( $form1->get('contacts') as $data) {
-                   $message = \Swift_Message::newInstance()
-                            ->setSubject("Fiche Patrimoniale")
-                            ->setFrom('groupeekofr.dev@gmail.com')
-                            ->setTo($data->get("email")->getData())
-                            ->setBody("<html>Bonjour,<br><br>Afin de préparer ce rdv, merci de me retourner cette <a href='/app/relation/add'>fiche patrimoniale</a> remplie stp.</html>" , 'text/html');
-                   $this->get('mailer')->send($message);
-                   break;
-               }
-
-             $em->persist($company);
-             $em->flush();
-             $this->addSuccessFlash();
-             $this->redirectToRoute('company_new');
-        }
-
-        return $this->render('company/new.html.twig',
-                            array('form1' => $form1->createView()));
-    }
-
-
-    /**
-     * @Route("/edit/{id}", name="company_edit")
-     *
-     */
-
-    public function editAction(Company $company, Request $request)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $form1 = $this->createForm('AppBundle\Form\CompanyType', $company);
-        $form1->handleRequest($request);
-        if ($form1->isSubmitted() && $form1->isValid()) {
-            $em->flush();
-            $this->addSuccessFlash();
-        }
-
-        return $this->render('company/edit.html.twig',
-                            array('form1' => $form1->createView()));
     }
 
 }

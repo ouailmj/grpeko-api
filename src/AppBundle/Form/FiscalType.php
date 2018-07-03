@@ -33,10 +33,6 @@ class FiscalType extends AbstractType
             ->add('closeDate', TextType::class, array(
                 'label' => 'Date cloture'
             ))
-
-
-
-
         ;
     }
 

@@ -1,4 +1,5 @@
 {% extends 'company/company.html.twig' %}
+
 {% block _content %}
     <div class="navbar navbar-inverse" style="background-color: #5d9d9c; border-color: #5d9d9c; position: relative; z-index: 30;">
         <div class="navbar-header">
@@ -6,16 +7,21 @@
                 <li><a data-toggle="collapse" data-target="#demo1" class="legitRipple"><i class="icon-tree5"></i></a></li>
             </ul>
         </div>
+
         <div class="navbar-collapse collapse" id="demo1">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="{{ path('employee_index') }}">Collaborateurs</a></li>
+
                 <li class="active"><a href="{{ path('affectation_index') }}" data-toggle="tab" class="legitRipple" aria-expanded="true">Affectations</a></li>
+                <li class=""><a href="">Gestion du cabinet</a></li>
+
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle legitRipple" data-toggle="dropdown" aria-expanded="false">
                         <i class="icon-file-stats2 position-left"> </i>
                         Autre
                         <span class="caret"> </span>
                     </a>
+
                     <ul class="dropdown-menu dropdown-menu-right">
                         <li><a href="#tab4" data-toggle="tab">Comptes</a></li>
                         <li><a href="#tab5" data-toggle="tab">Journaux</a></li>
@@ -34,8 +40,11 @@
         </div>
     </div>
     <div class="tab-content">
+
+
         <div class="tab-pane fade has-padding active in" id="tab2">
             <div class="row">
+
                 <div class="col-xs-6 col-md-4">
                     <select data-placeholder="ANBDH" class="select select2-hidden-accessible class="col-md-6" tabindex="-1" aria-hidden="true">
                     <option>MAR</option>
@@ -50,8 +59,10 @@
                 <div class="col-xs-6 col-md-4">
                 </div>
             </div>
+
+
             <div class="datatable-scroll-wrap">
-                <table class="table datatable-responsive table-bordered table-hover datatable-highlight dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+                <table class="table mytable datatable-responsive table-bordered table-hover datatable-highlight dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
                     <thead>
                     <tr role="row">
                         <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="#: activate to sort column descending">Code</th>
@@ -61,41 +72,37 @@
                         <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Téléphone: activate to sort column ascending">Collaborateur actuel</th>
                         <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">Collaborateur à affecter</th>
                         <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Rôles: activate to sort column ascending">
+
                         </th>
                     </tr>
                     </thead>
                     <tbody>
-                    {% for item in company %}
-                        <tr role="row" class="testok" id="bjkhgjkgkgjkghkghkghk">
-                            <td>
-                                <div class="">
-                                    <a title="Modifier" href="{{ path('company_edit', {'id': item.id}) }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
-                                </div>
-                            </td>
-                            <td>{{ item.legalName}}</td>
-                            <td>
+
+                        <tr role="row" class="tablee">
+
+                            <td class="tablee">
                                 O1/01/2011
-                            </td>
-                            <td>
+                            </td >
+                            <td class="table">
                                 31/12/2019
                             </td>
-                            <td>
+                            <td class="table">
                                 <span class="label label-info">ANB</span>
                             </td>
-                            <td>
+                            <td class="table">
+
                                 <select data-placeholder="ANBDH" class="select select2-hidden-accessible class="col-md-6" tabindex="-1" aria-hidden="true">
-                                <option>MAR</option>
-                                <option>OPAM</option>
-                                <option>JUS</option>
-                                <option>OLSQ</option>
+                                {% for item in employee %}
+                                <option value>{{ item.lastname}}</option>
+                                {% endfor %}
                                 </select>
                             </td>
                             <td>
                                 <input type="checkbox">
                             </td>
                         </tr>
-                    {% endfor %}
-                    <tr role="row" class="testok">
+
+                    <tr role="row" class="">
                         <td>
                             <div class="">
                                 <a title="Modifier" href="" class=" legitRipple"><i class="icon-pen position-left"></i></a>
@@ -119,7 +126,7 @@
                             <input type="checkbox">
                         </td>
                     </tr>
-                    <tr role="row" class="testok">
+                    <tr role="row" class="">
                         <td>
                             <div class="">
                                 <a title="Modifier" href="" class=" legitRipple"><i class="icon-pen position-left"></i></a>
@@ -147,6 +154,7 @@
                 </table>
             </div>
         </div>
+
         <div class="tab-pane fade has-padding" id="tab4">
             <h1 class="text-center">Coming soon</h1>
         </div>
@@ -159,9 +167,11 @@
         <div class="tab-pane fade has-padding" id="tab7">
             <h1 class="text-center">Coming soon</h1>
         </div>
+
         <div class="tab-pane fade has-padding" id="tab8">
             <h1 class="text-center">Coming soon</h1>
         </div>
+
         <div class="tab-pane fade has-padding" id="tab9">
             <h1 class="text-center">Coming soon</h1>
         </div>
@@ -172,19 +182,5 @@
             <h1 class="text-center">Coming soon</h1>
         </div>
     </div>
-    {% block javascripts %}
-        <script>
-            $("tr.testok").click(function() {
-                var tableData = $(this).children("td").map(function() {
-                    return $(this).text();
-                }).get();
-               var name = $.trim(tableData[1]);
-                $.ajax({
-                    url:'{{path('affect')}}',
-                    method:"GET",
-                    data:{name:name},
-                });
-            });
-        </script>
-    {% endblock %}
+
 {% endblock %}

@@ -34,14 +34,42 @@ class affectationController extends BaseController
         $employee = new Employee();
         $em = $this->getDoctrine()->getManager();
         $form = $this->createForm('AppBundle\Form\EmployeeType', $employee);
-
+        $em = $this->getDoctrine()->getManager();
+        $employee = $em->getRepository('AppBundle:Employee')->findAll();
         $company = $em->getRepository('AppBundle:Company')->findAll();
 
         return $this->render('affectation/index.html.twig', array(
             'company' => $company,
+            'employee'     => $employee,
             'form' => $form->createView(),
         ));
     }
+
+    /**
+     * affectation all company entities.
+     *
+     * @Route("/affect", name="affect")
+     * @Method("GET")
+     */
+    public function affectationAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $id = $em->getRepository('AppBundle\Entity\Company')->find($id);
+
+        if (!$id) {
+            throw $this->createNotFoundException('Unable to find Demand entity.');
+        }
+
+        $id->setStatusstatus = ('20');
+        $em->persist($id);
+        $em->flush();
+        return $this->redirect($this->generateUrl('listing'));
+        $name=$request->query->get('name');
+        dump($name);die;
+
+    }
+
+
 
 
 }
