@@ -5,7 +5,7 @@
                 <div class="tabbale">
                     <ul class="nav nav-tabs bg-teal-400 nav-justified">
                         <li id="clikfirsttab" class="active"><a href="#firsttab" data-toggle="tab" aria-expanded="true">Fiche Client</a></li>
-                        <li><a href="{{ path('relation_new') }}">Prise de connaissance</a></li>
+                        <li><a href="{{ path('devis_new') }}">Prise de connaissance</a></li>
                     </ul>
 
 
@@ -46,24 +46,24 @@
                             <div class="tab-content panel panel-flat border-top-info">
                                 <div class="tab-pane active" id="Contacts">
                                     <div class="panel-body">
-                                        {{ form_start(form1, {'attr': {'class': 'form-horizontal'}}) }}
+                                        {{ form_start(formcompany, {'attr': {'class': 'form-horizontal'}}) }}
                                         <fieldset class="content-group">
                                             <legend class="text-bold">Informations générales</legend>
 
-                                            {{form_row(form1.legalName)}}
-                                            {{form_row(form1.legalForm)}}
-                                            {{form_row(form1.taxationRegime)}}
-                                            {{form_row(form1.vatSystem)}}
-                                            {{form_row(form1.currentAddress.description)}}
-                                            {{form_row(form1.currentAddress.postalCode)}}
-                                            {{form_row(form1.currentAddress.city)}}
+                                            {{form_row(formcompany.legalName)}}
+                                            {{form_row(formcompany.legalForm)}}
+                                            {{form_row(formcompany.taxationRegime)}}
+                                            {{form_row(formcompany.vatSystem)}}
+                                            {{form_row(formcompany.currentAddress.description)}}
+                                            {{form_row(formcompany.currentAddress.postalCode)}}
+                                            {{form_row(formcompany.currentAddress.city)}}
 
                                         </fieldset>
 
 
                                         <fieldset class="scheduler-border">
                                             <legend class="scheduler-border" style="text-transform: capitalize">Adresse du SIE</legend>
-                                            {{form_row(form1.sieAddress)}}
+                                            {{form_row(formcompany.SieAddress)}}
 
                                         </fieldset>
 
@@ -71,13 +71,13 @@
                                         <fieldset class="scheduler-border">
                                             <legend class="scheduler-border" style="text-transform: capitalize">aaaaa</legend>
 
-                                            {{form_row(form1.apeCode)}}
-                                            {{form_row(form1.mainActivity)}}
-                                            {{form_row(form1.siretNumber)}}
-                                            {{form_row(form1.sirenNumber)}}
-                                            {{form_row(form1.intraCommunityVAT)}}
-                                            {{form_row(form1.nbActions)}}
-                                            {{form_row(form1.capitalSocial)}}
+                                            {{form_row(formcompany.apeCode)}}
+                                            {{form_row(formcompany.mainActivity)}}
+                                            {{form_row(formcompany.siretNumber)}}
+                                            {{form_row(formcompany.sirenNumber)}}
+                                            {{form_row(formcompany.intraCommunityVAT)}}
+                                            {{form_row(formcompany.nbActions)}}
+                                            {{form_row(formcompany.capitalSocial)}}
                                         </fieldset>
 
                                         <div class="form-group">
@@ -86,14 +86,14 @@
                                                 <fieldset class="scheduler-border">
                                                     <legend class="scheduler-border" style="text-transform: capitalize">Ancien Expert-Comptable</legend>
 
-                                                    {{form_row(form1.formerAccountant.name)}}
-                                                    {{form_row(form1.formerAccountant.civility)}}
-                                                    {{form_row(form1.formerAccountant.firstName)}}
-                                                    {{form_row(form1.formerAccountant.lastName)}}
-                                                    {{form_row(form1.formerAccountant.address.description)}}
-                                                    {{form_row(form1.formerAccountant.address.postalCode)}}
-                                                    {{form_row(form1.formerAccountant.address.city)}}
-                                                    {{form_row(form1.formerAccountant.address.email)}}
+                                                    {{form_row(formcompany.formerAccountant.name)}}
+                                                    {{form_row(formcompany.formerAccountant.civility)}}
+                                                    {{form_row(formcompany.formerAccountant.firstName)}}
+                                                    {{form_row(formcompany.formerAccountant.lastName)}}
+                                                    {{form_row(formcompany.formerAccountant.address.description)}}
+                                                    {{form_row(formcompany.formerAccountant.address.postalCode)}}
+                                                    {{form_row(formcompany.formerAccountant.address.city)}}
+                                                    {{form_row(formcompany.formerAccountant.address.email)}}
 
                                                     <div class="form-group">
                                                         <div class="col-xs- col-md-5 pull-right" >
@@ -114,7 +114,7 @@
 
                                                     <legend class="scheduler-border" style="text-transform: capitalize">Anciennes Adresse</legend>
 
-                                                    {{form_widget(form1.oldAddresses)}}
+                                                    {{form_widget(formcompany.oldAddresses)}}
 
                                                 </fieldset>
 
@@ -127,7 +127,7 @@
 
                                                     <legend class="scheduler-border" style="text-transform: capitalize">contacts</legend>
 
-                                                    {{form_widget(form1.contacts)}}
+                                                    {{form_widget(formcompany.contacts)}}
 
                                                 </fieldset>
 
@@ -135,13 +135,13 @@
                                         </div>
 
 
-                                        {{form_row(form1.Enregistrer)}}
+                                        {{form_row(formcompany.Enregistrer)}}
 
 
 
 
-                                        {{ form_widget(form1._token) }}
-                                        {{ form_end(form1, {'render_rest': false}) }}
+                                        {{ form_widget(formcompany._token) }}
+                                        {{ form_end(formcompany, {'render_rest': false}) }}
                                     </div>
                                 </div>
 
@@ -181,47 +181,12 @@
                 </div>
             </div>
 
-
-<style>
-    fieldset.scheduler-border {
-        border: 1px groove #ddd !important;
-        padding: 0 1.4em 1.4em 1.4em !important;
-        margin: 0 0 1.5em 0 !important;
-        -webkit-box-shadow:  0px 0px 0px 0px #000;
-        box-shadow:  0px 0px 0px 0px #000;
-    }
-
-    legend.scheduler-border {
-        font-size: 1.2em !important;
-        font-weight: bold !important;
-        text-align: left !important;
-        width:auto;
-        padding:0 10px;
-        border-bottom:none;
-        color: #7b5d5a;
-    }
-
-
-</style>
-<style>
-    div[id^="appbundle_company_oldAddresses"] > label{
-        display : none!important;
-    }
-    div[id^="appbundle_company_contacts"] > label{
-        display : none!important;
-    }
-
-    div[id^="appbundle_company_contacts"]:nth-child(3) {
-        display:none
-    }
-</style>
-
 {% block javascripts %}
 
 <script src="{{ asset('assets/js/plugins/symfony_collectionjs/jquery.collection.js') }}"></script>
 <script type="text/javascript">
     $('.old-addresses-collection').collection({
-            name_prefix: "{{ form1.oldAddresses.vars.full_name }}",
+            name_prefix: "{{ formcompany.oldAddresses.vars.full_name }}",
             add_at_the_end: true,
             hide_useless_buttons: true,
             add: '<a style="float:right" href="#" class="collection-action btn btn-success btn-small collection-rescue-add">Ajouter</a>',
@@ -233,7 +198,7 @@
         }
     );
     $('.add-contacts-collection').collection({
-            name_prefix: "{{ form1.contacts.vars.full_name }}",
+            name_prefix: "{{ formcompany.contacts.vars.full_name }}",
             add_at_the_end: true,
             hide_useless_buttons: true,
             add: '<a style="float:right" href="#" class="collection-action btn btn-success btn-small collection-rescue-add">Ajouter</a>',

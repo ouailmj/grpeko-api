@@ -4,12 +4,14 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Contact
  *
  * @ORM\Table(name="contact")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ContactRepository")
+ * @UniqueEntity("email")
  */
 class Contact
 {
@@ -75,8 +77,8 @@ class Contact
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="email", type="string",length=100))
+     * @Assert\Valid
+     * @ORM\Column(name="email", type="string",length=100,unique=true)
      */
     private $email;
 

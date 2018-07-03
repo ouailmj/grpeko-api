@@ -22,7 +22,7 @@
                                         <div class="panel panel-flat">
                                             <div class="panel-body">
 
-                                                {{ form_start(form1) }}
+                                                {{ form_start(formrelation) }}
 
                                                 <p class="content-group-lg">
                                                     Merci d'avoir accepté le RDV. je propose l'entretien en 4 étapes : la première, je pose des questions, ensuite je donne les conseils, je présente le mode de fonctionnement, et ensuite on parle budget.
@@ -31,17 +31,17 @@
                                                     Attention, nous alions évoquer toutes les stratégies patrimoniales à mettre en place dés cet entretien afin de réduire les impositions fiscales et sociales. Sinon, il sera trop tard.
                                                 </p>
                                                     <div class="row">
-                                                        {{ form_label(form1.contributor, 'Apporteur') }}
+                                                        {{ form_label(formrelation.contributor, 'Apporteur') }}
                                                         <div class="col-lg-2 col-md-2">
-                                                            {{form_row(form1.contributor)}}
+                                                            {{form_row(formrelation.contributor)}}
                                                         </div>
-                                                        {{ form_label(form1.typeMission, 'Type de mission') }}
+                                                        {{ form_label(formrelation.typeMission, 'Type de mission') }}
                                                         <div class="col-lg-2 col-md-2">
-                                                            {{form_row(form1.typeMission)}}
+                                                            {{form_row(formrelation.typeMission)}}
                                                         </div>
-                                                        {{ form_label(form1.societe_creer, 'Société déja Créée') }}
+                                                        {{ form_label(formrelation.societe_creer, 'Société déja Créée') }}
                                                         <div class="col-lg-2 col-md-2">
-                                                            {{form_row(form1.societe_creer)}}
+                                                            {{form_row(formrelation.societe_creer)}}
                                                         </div>
                                                     </div>
 
@@ -65,23 +65,23 @@
 
                                                         <div class="row">
                                                             <div class="form-group">
-                                                                {{ form_label(form1.company.legalName,"Nom de l'Entreprise") }}
+                                                                {{ form_label(formrelation.company.legalName,"Nom de l'Entreprise") }}
                                                                 <div class="col-lg-2">
-                                                                    {{  form_row(form1.company.legalName)}}
+                                                                    {{  form_row(formrelation.company.legalName)}}
                                                                 </div>
                                                             </div>
 
                                                             <div class="form-group">
-                                                                {{ form_label(form1.company.legalName,"Si entreprise créée, quelle est la forme juridique :") }}
+                                                                {{ form_label(formrelation.company.legalName,"Si entreprise créée, quelle est la forme juridique :") }}
                                                                 <div class="col-lg-2">
-                                                                    {{  form_row(form1.company.legalForm,{'label':false})}}
+                                                                    {{  form_row(formrelation.company.legalForm,{'label':false})}}
                                                                 </div>
                                                             </div>
 
                                                             <div class="form-group">
-                                                                {{ form_label(form1.company.capitalSocial,"Si société créée, quel est le montant du capital social ?") }}
+                                                                {{ form_label(formrelation.company.capitalSocial,"Si société créée, quel est le montant du capital social ?") }}
                                                                 <div class="col-lg-2">
-                                                                    {{  form_row(form1.company.capitalSocial,{'label':false})}}
+                                                                    {{  form_row(formrelation.company.capitalSocial,{'label':false})}}
                                                                 </div>
                                                             </div>
 
@@ -91,30 +91,30 @@
 
 
 
-                                                            {{ form_label(form1.integralite,
+                                                            {{ form_label(formrelation.integralite,
                                                                 "Avez-vous libéré l'intégralité du capital social? car c'est indispensable pour bénéficier du taux réduit d'impots sur les sociétés :",
                                                                 { 'label_attr': {'style': '    width: 80% !important;'} }) }}
 
 
                                                             <div class="col-lg-2">
-                                                                {{  form_row(form1.integralite)}}
+                                                                {{  form_row(formrelation.integralite)}}
                                                             </div>
 
                                                         </div>
                                                         <br>
                                                         <div class="class row">
-                                                            {{ form_label(form1.date_creation,"Si entreprise créée, à quelle date a-t-elle été créée ?",
-                                                                { 'label_attr': {'style': '    width: 32% !important;'} }) }}
+                                                            {{ form_label(formrelation.date_creation,"Si entreprise créée, à quelle date a-t-elle été créée ?",
+                                                                { 'label_attr': {'style': '    width: 25% !important;'} }) }}
 
                                                             <div class="col-lg-4">
-                                                                {{  form_row(form1.date_creation)}}
+                                                                {{  form_row(formrelation.date_creation)}}
                                                             </div>
 
 
-                                                            {{ form_label(form1.date_creation,"Quelle est la date de cloture ?") }}
+                                                            {{ form_label(formrelation.date_creation,"Quelle est la date de cloture ?") }}
 
-                                                            <div class="col-lg-2">
-                                                                {{  form_row(form1.date_cloture)}}
+                                                            <div class="col-lg-3">
+                                                                {{  form_row(formrelation.date_cloture)}}
                                                             </div>
 
 
@@ -124,11 +124,11 @@
                                                     </div><br>
                                                     <div class="row">
 
-                                                        {{ form_label(form1.IRPP,"Quelle Avez-vous bénéficiez de la réduction IRPP pour souscription au capital de PME? (réduction de 25% avant 2011, 22% en 2011, et 18% depuis 2011)?",
+                                                        {{ form_label(formrelation.IRPP,"Quelle Avez-vous bénéficiez de la réduction IRPP pour souscription au capital de PME? (réduction de 25% avant 2011, 22% en 2011, et 18% depuis 2011)?",
                                                             { 'label_attr': {'style': '    width: 50% !important;'} }) }}
 
                                                         <div class="col-lg-2">
-                                                            {{  form_row(form1.IRPP)}}
+                                                            {{  form_row(formrelation.IRPP)}}
                                                         </div>
 
                                                     </div>
@@ -136,19 +136,19 @@
                                                     <br><br>
                                                     <div class="row">
 
-                                                        {{ form_label(form1.date_creation_souhait,"Si entreprise non créée, à quelle date souhaitez vous la créér ?",
-                                                            { 'label_attr': {'style': '    width: 30% !important;'} }) }}
+                                                        {{ form_label(formrelation.date_creation_souhait,"Si entreprise non créée, à quelle date souhaitez vous la créér ?",
+                                                            { 'label_attr': {'style': '    width: 20% !important;'} }) }}
 
-                                                        <div class="col-lg-2">
-                                                            {{  form_row(form1.date_creation_souhait)}}
+                                                        <div class="col-lg-3">
+                                                            {{  form_row(formrelation.date_creation_souhait)}}
                                                         </div>
 
 
-                                                        {{ form_label(form1.zone,"La société est elle en zone franche ou vivez-vous en zone France?",
+                                                        {{ form_label(formrelation.zone,"La société est elle en zone franche ou vivez-vous en zone France?",
                                                             { 'label_attr': {'style': '    width: 30% !important;'} }) }}
 
                                                         <div class="col-lg-2">
-                                                            {{  form_row(form1.zone)}}
+                                                            {{  form_row(formrelation.zone)}}
                                                         </div>
 
                                                     </div>
@@ -163,7 +163,7 @@
 
                                                         <div class="row form-horizontal">
 
-                                                            {{  form_row(form1.company.contacts)}}
+                                                            {{  form_row(formrelation.company.contacts)}}
                                                         </div>
 
 
@@ -174,10 +174,10 @@
                                                             <h6 >Activité et données chiffrées</h6>
                                                         </div>
 
-                                                        {{ form_label(form1.company.mainActivity,"Activité de l'entreprise :")}}
+                                                        {{ form_label(formrelation.company.mainActivity,"Activité de l'entreprise :")}}
 
                                                         <div class="col-lg-10">
-                                                            {{  form_row(form1.company.mainActivity,{'label':false})}}
+                                                            {{  form_row(formrelation.company.mainActivity,{'label':false})}}
                                                         </div>
 
 
@@ -192,47 +192,47 @@
                                                                     </tr>
                                                                     <tr>
                                                                         <th style="border: 0px"></th>
-                                                                        <th width="25%" >{{  form_row(form1.date1)}}</th>
-                                                                        <th width="25%" >{{  form_row(form1.date2)}}</th>
-                                                                        <th width="25%" >{{  form_row(form1.date3)}}</th>
+                                                                        <th width="25%" >{{  form_row(formrelation.date1)}}</th>
+                                                                        <th width="25%" >{{  form_row(formrelation.date2)}}</th>
+                                                                        <th width="25%" >{{  form_row(formrelation.date3)}}</th>
                                                                         <th >Commentaires</th>
                                                                     </tr>
                                                                     </thead>
                                                                     <tbody>
                                                                     <tr>
                                                                         <td>CA prévisionnel ?</td>
-                                                                        <td>{{ form_row(form1.date1text1)}}</td>
-                                                                        <td>{{ form_row(form1.date2text1)}}</td>
-                                                                        <td>{{ form_row(form1.date3text1)}}</td>
-                                                                        <td>{{ form_row(form1.comment1)}}</td>
+                                                                        <td>{{ form_row(formrelation.date1text1)}}</td>
+                                                                        <td>{{ form_row(formrelation.date2text1)}}</td>
+                                                                        <td>{{ form_row(formrelation.date3text1)}}</td>
+                                                                        <td>{{ form_row(formrelation.comment1)}}</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Achats et frais généraux prévisionnel</td>
-                                                                        <td>{{ form_row(form1.date1text2)}}</td>
-                                                                        <td>{{ form_row(form1.date2text2)}}</td>
-                                                                        <td>{{ form_row(form1.date3text2)}}</td>
-                                                                        <td>{{ form_row(form1.comment2)}}</td>
+                                                                        <td>{{ form_row(formrelation.date1text2)}}</td>
+                                                                        <td>{{ form_row(formrelation.date2text2)}}</td>
+                                                                        <td>{{ form_row(formrelation.date3text2)}}</td>
+                                                                        <td>{{ form_row(formrelation.comment2)}}</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Bénéfice prévisionnel ?</td>
-                                                                        <td>{{ form_row(form1.date1text3)}}</td>
-                                                                        <td>{{ form_row(form1.date2text3)}}</td>
-                                                                        <td>{{ form_row(form1.date3text3)}}</td>
-                                                                        <td>{{ form_row(form1.comment3)}}</td>
+                                                                        <td>{{ form_row(formrelation.date1text3)}}</td>
+                                                                        <td>{{ form_row(formrelation.date2text3)}}</td>
+                                                                        <td>{{ form_row(formrelation.date3text3)}}</td>
+                                                                        <td>{{ form_row(formrelation.comment3)}}</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Combien y-a-t-il de salariés ?</td>
-                                                                        <td>{{ form_row(form1.date1text4)}}</td>
-                                                                        <td>{{ form_row(form1.date2text4)}}</td>
-                                                                        <td>{{ form_row(form1.date3text4)}}</td>
-                                                                        <td>{{ form_row(form1.comment4)}}</td>
+                                                                        <td>{{ form_row(formrelation.date1text4)}}</td>
+                                                                        <td>{{ form_row(formrelation.date2text4)}}</td>
+                                                                        <td>{{ form_row(formrelation.date3text4)}}</td>
+                                                                        <td>{{ form_row(formrelation.comment4)}}</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Quelle rémuniration nette allez-vous prendre de l'entreprize?</td>
-                                                                        <td>{{ form_row(form1.date1text5)}}</td>
-                                                                        <td>{{ form_row(form1.date2text5)}}</td>
-                                                                        <td>{{ form_row(form1.date3text5)}}</td>
-                                                                        <td>{{ form_row(form1.comment5)}}</td>
+                                                                        <td>{{ form_row(formrelation.date1text5)}}</td>
+                                                                        <td>{{ form_row(formrelation.date2text5)}}</td>
+                                                                        <td>{{ form_row(formrelation.date3text5)}}</td>
+                                                                        <td>{{ form_row(formrelation.comment5)}}</td>
                                                                     </tr>
                                                                     </tbody>
                                                                 </table>
@@ -253,18 +253,18 @@
                                                                         <td>
                                                                             Le client veut il utiliser sa société actuelle pour investir dans un petit bien immobilier?
                                                                         </td>
-                                                                        <td>  {{  form_row(form1.societeactuelle)}} </td>
+                                                                        <td>  {{  form_row(formrelation.societeactuelle)}} </td>
 
-                                                                        <td>{{  form_row(form1.societeactuelle_date)}} </td>
+                                                                        <td>{{  form_row(formrelation.societeactuelle_date)}} </td>
                                                                     </tr>
                                                                     <tr>
 
                                                                         <td>
                                                                             Le client veut il utiliser créeer une holding pour investir dans un bien immobilier important?
                                                                         </td>
-                                                                        <td>  {{  form_row(form1.holding)}} </td>
+                                                                        <td>  {{  form_row(formrelation.holding)}} </td>
 
-                                                                        <td>{{  form_row(form1.holding_date)}} </td>
+                                                                        <td>{{  form_row(formrelation.holding_date)}} </td>
 
 
                                                                     </tr>
@@ -272,9 +272,9 @@
                                                                         <td>
                                                                             Le client veut il mettre en place l'épargne salariale?
                                                                         </td>
-                                                                        <td style="width:50% !important;">  {{  form_row(form1.epargne_check)}} </td>
+                                                                        <td style="width:50% !important;">  {{  form_row(formrelation.epargne_check)}} </td>
 
-                                                                        <td>{{  form_row(form1.epargne_date)}} </td>
+                                                                        <td>{{  form_row(formrelation.epargne_date)}} </td>
 
                                                                     </tr>
                                                                     </tbody>
@@ -285,11 +285,11 @@
                                                     </div>
                                                     <br>
 
-                                                    <button style="float: right" type="submit" class="form-control btn-success">Enregistrer</button>
+                                                    <button style="float: right" name="saveeditrelation" type="submit" class="form-control btn-success">Enregistrer</button>
 
 
-                                                    {{ form_widget(form1._token) }}
-                                                    {{ form_end(form1, {'render_rest': false})  }}
+                                                    {{ form_widget(formrelation._token) }}
+                                                    {{ form_end(formrelation, {'render_rest': false})  }}
                                             </div>
                                         </div>
 
@@ -308,37 +308,8 @@
 
                     </div>
                 </div>
-
-    <style>
-        fieldset.scheduler-border {
-            border: 1px groove #ddd !important;
-            padding: 0 1.4em 1.4em 1.4em !important;
-            margin: 0 0 1.5em 0 !important;
-            -webkit-box-shadow:  0px 0px 0px 0px #000;
-            box-shadow:  0px 0px 0px 0px #000;
-        }
-
-        legend.scheduler-border {
-            font-size: 1.2em !important;
-            font-weight: bold !important;
-            text-align: left !important;
-            width:auto;
-            padding:0 10px;
-            border-bottom:none;
-            color: #7b5d5a;
-        }
-    </style>
-
-    <style>
-        div[id^="appbundle_EntreRelation_company_contacts"] > label{
-            display : none!important;
-        }
-    </style>
-
-    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
-
-
     {% block javascripts %}
+        <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
         <script>
             $(document).ready(function() {
                 // you may need to change this code if you are not using Bootstrap Datepicker
@@ -350,7 +321,7 @@
         <script src="{{ asset('assets/js/plugins/symfony_collectionjs/jquery.collection.js') }}"></script>
         <script type="text/javascript">
             $('.add-contacts-collection').collection({
-                    name_prefix: "{{ form1.company.contacts.vars.full_name }}",
+                    name_prefix: "{{ formrelation.company.contacts.vars.full_name }}",
                     add_at_the_end: true,
                     hide_useless_buttons: true,
                     add: '<a style="float:right" href="#" class="collection-action btn btn-success btn-small collection-rescue-add">Ajouter</a>',

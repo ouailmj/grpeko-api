@@ -30,7 +30,7 @@ class ContactClientType extends AbstractType
             ))
             ->add('email', EmailType::class, array(
                     'label' => 'Email : ',
-                    'required'  => true
+                    'required'  => true,
                 )
             );
     }
