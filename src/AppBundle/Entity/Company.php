@@ -220,6 +220,7 @@ class Company extends LegalEntity
     /**
      * @var Contact[] | ArrayCollection
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Contact" ,mappedBy="company" ,cascade={"persist", "remove"}))
+     * @Assert\Valid
      */
     protected $contacts;
 

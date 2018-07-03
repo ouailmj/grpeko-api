@@ -2,293 +2,35 @@
 {% block _content %}
 
     <div class="panel panel-flat">
-        <div class="panel-heading">
-            <h5 class="panel-title">Entrée en relation<a class="heading-elements-toggle"><i class="icon-more"></i></a></h5>
-            <div class="heading-elements">
-                <ul class="icons-list">
-                    <li><a data-action="collapse"></a></li>
-                    <li><a data-action="reload"></a></li>
-                    <li><a data-action="close"></a></li>
-                </ul>
+        <div class="tabbale">
+            <ul class="nav nav-tabs bg-teal-400 nav-justified">
+                <li id="clikfirsttab"><a href="{{ path('company_new') }}">Fiche Client</a></li>
+                <li class="active"><a href="{{ path('devis_new') }}">Prise de connaissance</a></li>
+            </ul>
+            <div class="tab-content ">
+                <div class="tab-pane active" id="secondtab">
+                    <div class="">
+                        <ul class="nav nav-tabs nav-tabs-highlight">
+                            <li class="active"><a href="#devisclient" data-toggle="tab" aria-expanded="false"><i class="icon-folder position-left"></i>Devis Client</a></li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+
+                        <div class="tab-pane active" id="devisclient">
+
+                            {% include 'default/Devis_clients.html.twig' %}
+
+                        </div>
+
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="panel-body">
-
-                                    {{ form_start(formrelation) }}
-
-                                    <p class="content-group-lg">
-                                        Merci d'avoir accepté le RDV. je propose l'entretien en 4 étapes : la première, je pose des questions, ensuite je donne les conseils, je présente le mode de fonctionnement, et ensuite on parle budget.
-                                    </p>
-                                    <p class="content-group-lg">
-                                        Attention, nous alions évoquer toutes les stratégies patrimoniales à mettre en place dés cet entretien afin de réduire les impositions fiscales et sociales. Sinon, il sera trop tard.
-                                    </p>
-                                    <div class="row">
-                                        {{ form_label(formrelation.contributor, 'Apporteur') }}
-                                        <div class="col-lg-2 col-md-2">
-                                            {{form_row(formrelation.contributor)}}
-                                        </div>
-                                        {{ form_label(formrelation.typeMission, 'Type de mission') }}
-                                        <div class="col-lg-2 col-md-2">
-                                            {{form_row(formrelation.typeMission)}}
-                                        </div>
-                                        {{ form_label(formrelation.societe_creer, 'Société déja Créée') }}
-                                        <div class="col-lg-2 col-md-2">
-                                            {{form_row(formrelation.societe_creer)}}
-                                        </div>
-                                    </div>
-
-
-                                    <div class="panel-body">
-                                        <div class="col-lg-12 content-group-lg" style="background-color: #5d9d9c;color: #fff;font-size: 14px;text-align: center;margin: 10 0">
-                                            <h6 >Présentation du Cabinet</h6>
-                                        </div>
-
-                                        <p class="content-group-lg">
-                                            Je ne sais pas si l'apporteur a parlé de nous. Nous sommes un petit cabinet de 20 personnes, moi et 19 collaboratrices. Cabinet créé il y a 11 ans. Nouus avons environ 300 clients, <br />
-                                            essentiellement des freelances en informatiques, et nous avons une offre 2 fois moins cher que sur le marché.
-                                        </p>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="col-lg-12 content-group-lg" style="background-color: #5d9d9c;color: #fff;font-size: 14px;text-align: center;margin: 10 0">
-                                            <h6 >Identité</h6>
-                                        </div>
-
-
-
-                                        <div class="row">
-                                            <div class="form-group">
-                                                {{ form_label(formrelation.company.legalName,"Nom de l'Entreprise") }}
-                                                <div class="col-lg-2">
-                                                    {{  form_row(formrelation.company.legalName)}}
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                {{ form_label(formrelation.company.legalName,"Si entreprise créée, quelle est la forme juridique :") }}
-                                                <div class="col-lg-2">
-                                                    {{  form_row(formrelation.company.legalForm,{'label':false})}}
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                {{ form_label(formrelation.company.capitalSocial,"Si société créée, quel est le montant du capital social ?") }}
-                                                <div class="col-lg-2">
-                                                    {{  form_row(formrelation.company.capitalSocial,{'label':false})}}
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="row">
-
-
-
-                                            {{ form_label(formrelation.integralite,
-                                                "Avez-vous libéré l'intégralité du capital social? car c'est indispensable pour bénéficier du taux réduit d'impots sur les sociétés :",
-                                                { 'label_attr': {'style': '    width: 80% !important;'} }) }}
-
-
-                                            <div class="col-lg-2">
-                                                {{  form_row(formrelation.integralite)}}
-                                            </div>
-
-                                        </div>
-                                        <br>
-                                        <div class="class row">
-                                            {{ form_label(formrelation.date_creation,"Si entreprise créée, à quelle date a-t-elle été créée ?",
-                                                { 'label_attr': {'style': '    width: 32% !important;'} }) }}
-
-                                            <div class="col-lg-3">
-                                                {{  form_row(formrelation.date_creation)}}
-                                            </div>
-
-
-                                            {{ form_label(formrelation.date_creation,"Quelle est la date de cloture ?") }}
-
-                                            <div class="col-lg-3">
-                                                {{  form_row(formrelation.date_cloture)}}
-                                            </div>
-
-
-                                        </div>
-
-
-                                    </div><br>
-                                    <div class="row">
-
-                                        {{ form_label(formrelation.IRPP,"Quelle Avez-vous bénéficiez de la réduction IRPP pour souscription au capital de PME? (réduction de 25% avant 2011, 22% en 2011, et 18% depuis 2011)?",
-                                            { 'label_attr': {'style': '    width: 50% !important;'} }) }}
-
-                                        <div class="col-lg-2">
-                                            {{  form_row(formrelation.IRPP)}}
-                                        </div>
-
-                                    </div>
-
-                                    <br><br>
-                                    <div class="row">
-
-                                        {{ form_label(formrelation.date_creation_souhait,"Si entreprise non créée, à quelle date souhaitez vous la créér ?",
-                                            { 'label_attr': {'style': '    width: 30% !important;'} }) }}
-
-                                        <div class="col-lg-2">
-                                            {{  form_row(formrelation.date_creation_souhait)}}
-                                        </div>
-
-
-                                        {{ form_label(formrelation.zone,"La société est elle en zone franche ou vivez-vous en zone France?",
-                                            { 'label_attr': {'style': '    width: 30% !important;'} }) }}
-
-                                        <div class="col-lg-2">
-                                            {{  form_row(formrelation.zone)}}
-                                        </div>
-
-                                    </div>
-
-
-
-                                    <div class="panel-body">
-
-                                        <div class="col-lg-12 content-group-lg" style="background-color: #5d9d9c;color: #fff;font-size: 14px;text-align: center;margin: 10 0">
-                                            <h6 >Contacts</h6>
-                                        </div>
-
-                                        <div class="row form-horizontal">
-
-                                            {{  form_row(formrelation.company.contacts)}}
-                                        </div>
-
-
-                                    </div>
-
-                                    <div class="panel-body">
-                                        <div class="col-lg-12 content-group-lg" style="background-color: #5d9d9c;color: #fff;font-size: 14px;text-align: center;margin: 10 0">
-                                            <h6 >Activité et données chiffrées</h6>
-                                        </div>
-
-                                        {{ form_label(formrelation.company.mainActivity,"Activité de l'entreprise :")}}
-
-                                        <div class="col-lg-10">
-                                            {{  form_row(formrelation.company.mainActivity,{'label':false})}}
-                                        </div>
-
-
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <table class="table">
-                                                    <thead>
-                                                    <tr>
-                                                        <th style="border: 0px"></th>
-                                                        <th>Exercices comptables</th>
-                                                        <th style="border: 0px"></th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th style="border: 0px"></th>
-                                                        <th width="25%" >{{  form_row(formrelation.date1)}}</th>
-                                                        <th width="25%" >{{  form_row(formrelation.date2)}}</th>
-                                                        <th width="25%" >{{  form_row(formrelation.date3)}}</th>
-                                                        <th >Commentaires</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <td>CA prévisionnel ?</td>
-                                                        <td>{{ form_row(formrelation.date1text1)}}</td>
-                                                        <td>{{ form_row(formrelation.date2text1)}}</td>
-                                                        <td>{{ form_row(formrelation.date3text1)}}</td>
-                                                        <td>{{ form_row(formrelation.comment1)}}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Achats et frais généraux prévisionnel</td>
-                                                        <td>{{ form_row(formrelation.date1text2)}}</td>
-                                                        <td>{{ form_row(formrelation.date2text2)}}</td>
-                                                        <td>{{ form_row(formrelation.date3text2)}}</td>
-                                                        <td>{{ form_row(formrelation.comment2)}}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Bénéfice prévisionnel ?</td>
-                                                        <td>{{ form_row(formrelation.date1text3)}}</td>
-                                                        <td>{{ form_row(formrelation.date2text3)}}</td>
-                                                        <td>{{ form_row(formrelation.date3text3)}}</td>
-                                                        <td>{{ form_row(formrelation.comment3)}}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Combien y-a-t-il de salariés ?</td>
-                                                        <td>{{ form_row(formrelation.date1text4)}}</td>
-                                                        <td>{{ form_row(formrelation.date2text4)}}</td>
-                                                        <td>{{ form_row(formrelation.date3text4)}}</td>
-                                                        <td>{{ form_row(formrelation.comment4)}}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Quelle rémuniration nette allez-vous prendre de l'entreprise?</td>
-                                                        <td>{{ form_row(formrelation.date1text5)}}</td>
-                                                        <td>{{ form_row(formrelation.date2text5)}}</td>
-                                                        <td>{{ form_row(formrelation.date3text5)}}</td>
-                                                        <td>{{ form_row(formrelation.comment5)}}</td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <table class="table">
-                                                    <thead>
-                                                    <tr>
-                                                        <th class="col-lg-2"></th>
-                                                        <th >oui/non</th>
-                                                        <th class="col-lg-9">Quand ?</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            Le client veut il utiliser sa société actuelle pour investir dans un petit bien immobilier?
-                                                        </td>
-                                                        <td>  {{  form_row(formrelation.societeactuelle)}} </td>
-
-                                                        <td>{{  form_row(formrelation.societeactuelle_date)}} </td>
-                                                    </tr>
-                                                    <tr>
-
-                                                        <td>
-                                                            Le client veut il utiliser créeer une holding pour investir dans un bien immobilier important?
-                                                        </td>
-                                                        <td>  {{  form_row(formrelation.holding)}} </td>
-
-                                                        <td>{{  form_row(formrelation.holding_date)}} </td>
-
-
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Le client veut il mettre en place l'épargne salariale?
-                                                        </td>
-                                                        <td style="width:50% !important;">  {{  form_row(formrelation.epargne_check)}} </td>
-
-                                                        <td>{{  form_row(formrelation.epargne_date)}} </td>
-
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <br>
-
-                                    <button style="float: right" name="saveaddrelation" type="submit" class="form-control btn-success">Enregistrer</button>
-
-                                    {{ form_widget(formrelation._token) }}
-                                    {{ form_end(formrelation, {'render_rest': false}) }}
 
         </div>
     </div>
-
-
-
     {% block javascripts %}
+
+
         <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
         <script>
             $(document).ready(function() {
@@ -296,22 +38,11 @@
                 $('.js-datepicker').datepicker({
                     format: 'yyyy-mm-dd'
                 });
+
+                $("label").removeAttr("for");
             });
         </script>
         <script src="{{ asset('assets/js/plugins/symfony_collectionjs/jquery.collection.js') }}"></script>
-        <script type="text/javascript">
-            $('.add-contacts-collection').collection({
-                    name_prefix: "{{ formrelation.company.contacts.vars.full_name }}",
-                    add_at_the_end: true,
-                    hide_useless_buttons: true,
-                    add: '<a style="float:right" href="#" class="collection-action btn btn-success btn-small collection-rescue-add">Ajouter</a>',
-                    remove: '<a href="#" class="collection-remove btn btn-warning collection-action">Retirer</a>',
-                    allow_up: false,
-                    allow_down: false,
-                    init_with_n_elements: 0,
-                }
-            );
-        </script>
     {% endblock javascripts %}
 
 {% endblock %}

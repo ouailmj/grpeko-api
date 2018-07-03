@@ -16,7 +16,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Event\AppEvents;
 use AppBundle\Event\ClientCreatedEvent;
-
+use AppBundle\Event\RendezVousCreatedEvent;
 
 /**
  * Class CompanyController
@@ -113,7 +113,7 @@ class CompanyController extends BaseController
         if ($formcompany->isSubmitted() && $formcompany->isValid()) {
 
             $this->clientManager->createClient($company,$formcompany);
-            $this->get('event_dispatcher')->dispatch(AppEvents::CLIENT_CREATED, new ClientCreatedEvent($company));
+         //   $this->get('event_dispatcher')->dispatch(AppEvents::CLIENT_CREATED, new ClientCreatedEvent($company));
             $this->addSuccessFlash();
             $this->redirectToRoute('company_new');
         }

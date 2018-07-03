@@ -1,11 +1,20 @@
 {% extends 'company/company.html.twig' %}
 {% block _content %}
 
+    <style>
+        div[id^="appbundle_company_oldAddresses_"]:nth-child(1) {
+            border: 1px solid #43c6ac;
+            padding: 5px;
+            text-align: center;
+            margin: 12px;
+        }
+    </style>
+
     <div class="panel panel-flat">
         <div class="tabbale">
             <ul class="nav nav-tabs bg-teal-400 nav-justified">
                 <li id="clikfirsttab" class="active"><a href="#firsttab" data-toggle="tab" aria-expanded="true">Fiche Client</a></li>
-                <li><a href="{{ path('relation_new') }}">Prise de connaissance</a></li>
+                <li><a href="{{ path('devis_new') }}">Prise de connaissance</a></li>
             </ul>
 
 
@@ -39,6 +48,7 @@
                             </li>
                         </ul>
                     </div>
+
 
                     <div class="tab-content panel panel-flat border-top-info">
                         <div class="tab-pane active" id="Contacts">
@@ -171,6 +181,7 @@
 
         </div>
     </div>
+
     {% block javascripts %}
         <script>
             $(document).ready(function() {
@@ -194,10 +205,10 @@
             );
             $('.add-contacts-collection').collection({
                     name_prefix: "{{ formcompany.contacts.vars.full_name }}",
-                    add_at_the_end: true,
+                    add_at_the_end: false,
                     hide_useless_buttons: true,
                     add: '<a style="float:right" href="#" class="collection-action btn btn-success btn-small collection-rescue-add">Ajouter</a>',
-                    remove: '<a href="#" class="collection-remove btn btn-warning collection-action">Retirer</a>',
+                    remove: '<a href="#" class="collection-remove btn btn-warning collection-action removecontact">Retirer</a>',
                     allow_up: false,
                     allow_down: false,
                     init_with_n_elements: 0,

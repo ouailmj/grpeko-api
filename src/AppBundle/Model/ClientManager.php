@@ -50,27 +50,27 @@ class ClientManager
         $this->em->flush();
     }
 
-    public function createClient($company,$formcompany)
+    public function createClient(Company $prospect)
     {
-            $email = array_map(function($contacts) {
-                return $contacts->getEmail();
-            }, $formcompany->get('contacts')->getData()->toArray());
+          //  $email = array_map(function($contacts) {
+           //     return $contacts->getEmail();
+          //  }, $formcompany->get('contacts')->getData()->toArray());
 
-            $name = array_map(function($contacts) {
-                return $contacts->getFirstname();
-            }, $formcompany->get('contacts')->getData()->toArray());
+          //  $name = array_map(function($contacts) {
+           //     return $contacts->getFirstname();
+           // }, $formcompany->get('contacts')->getData()->toArray());
 
-            $password= rand(100000,1000000);
-            $company->setCustomerAccount(new Customer());
-            $company->getCustomerAccount()->setName($name[0]);
-            $company->getCustomerAccount()->setUserAccount(new User());
-            $company->getCustomerAccount()->getUserAccount()->setEmail($email[0]);
-            $company->getCustomerAccount()->getUserAccount()->setPlainPassword($password);
+        $password= rand(100000,1000000);
+        $prospect->setCustomerAccount(new Customer());
+        $prospect->getCustomerAccount()->setName($prospect->getContacts()[0]->getEmail());
+        $prospect->getCustomerAccount()->setUserAccount(new User());
+        $prospect->getCustomerAccount()->getUserAccount()->setEmail($prospect->getContacts()[0]->getEmail());
+        $prospect->getCustomerAccount()->getUserAccount()->setPlainPassword($password);
 
-            if ($company->getCustomerAccount()->getUserAccount() instanceof User)
-                $this->userManager->createUser($company->getCustomerAccount()->getUserAccount(), false);
-
-            $this->em->persist($company);
+        if ($prospect->getCustomerAccount()->getUserAccount() instanceof User)
+                $this->userManager->createUser($prospect->getCustomerAccount()->getUserAccount(), false);
+            $prospect->getCustomerAccount()->getUserAccount()->setRoles(array("ROLE_PROSPECT"));
+            $this->em->persist($prospect);
             $this->em->flush();
 
     }

@@ -14,6 +14,7 @@ namespace AppBundle\Mailer;
 
 use AppBundle\Entity\Company;
 use AppBundle\Entity\Contact;
+use AppBundle\Event\RendezVousCreatedEvent;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use AppBundle\Event\ClientCreatedEvent;
 
@@ -67,21 +68,33 @@ class Mailer
     }
 
 
-    public function sendEmailCLient(ClientCreatedEvent $client)
+
+    public function sendEmailCLient(RendezVousCreatedEvent $prospect)
     {
-        $email=$client->getCompany()->getCustomerAccount()->getUserAccount()->getEmail();
-        $password=$client->getCompany()->getCustomerAccount()->getUserAccount()->getPlainPassword();
-        $name=$client->getCompany()->getCustomerAccount()->getName();
+
+
+        $email=$prospect->getProspect()->getCustomerAccount()->getUserAccount()->getEmail();
+        $password=$prospect->getProspect()->getCustomerAccount()->getUserAccount()->getPlainPassword();
+        $name=$prospect->getProspect()->getContacts()[0]->getLastname();
+
+        $sujet=$prospect->getData()["sujet"];
+        $datedebut=$prospect->getData()["datedebut"];
+        $heuredebut=$prospect->getData()["heuredebut"];
+        $datefin=$prospect->getData()["datefin"];
+        $heurefin=$prospect->getData()["heurefin"];
 
         $message = (new \Swift_Message())
-            ->setSubject("Fiche Patrimoniale")
+            ->setSubject($sujet)
             ->setFrom("groupeekofr.dev@gmail.com")
             ->setTo($email)
-            ->setBody("
-            <html>Bonjour, $name <br><br>Afin de préparer ce rdv, merci de me retourner cette  <a href='/app/relation/add'>fiche patrimoniale</a> remplie stp.<br>
+            ->attach(\Swift_Attachment::fromPath("/Users/nejjarimouad/Sites/groupeeko-api/web/assets/fichiers/fiche_patrimoniale.xlsx"))
+            ->setBody("<html>Bonjour $name <br><br>Je fais suite a notre conversation et te confirme notre rdv téléphonique de $datedebut à $heuredebut <br>
+            Afin de préparer ce rdv, merci de me retourner cette <a href='http://localhost:8000/app/relation/uploadmodel'>fiche patrimoniale remplie stp.</a><br>
             <h3>Authentification :</h3>
                Email:$email<br>
                Password:$password
+               <br>
+               A bientot
             </html>");
 
         $this->mailer->send($message);

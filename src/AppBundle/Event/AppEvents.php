@@ -12,4 +12,5 @@ namespace AppBundle\Event;
 final class AppEvents
 {
     const CLIENT_CREATED = 'client.created';
+    const RENDEZVOUS_CREATED = 'rendezvous.created';
 }
