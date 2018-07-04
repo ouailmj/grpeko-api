@@ -68,35 +68,24 @@ class Mailer
     }
 
 
-
     public function sendEmailCLient(RendezVousCreatedEvent $prospect)
     {
-
-
         $email=$prospect->getProspect()->getCustomerAccount()->getUserAccount()->getEmail();
         $password=$prospect->getProspect()->getCustomerAccount()->getUserAccount()->getPlainPassword();
         $name=$prospect->getProspect()->getContacts()[0]->getLastname();
-
         $sujet=$prospect->getData()["sujet"];
         $datedebut=$prospect->getData()["datedebut"];
         $heuredebut=$prospect->getData()["heuredebut"];
-        $datefin=$prospect->getData()["datefin"];
-        $heurefin=$prospect->getData()["heurefin"];
 
-        $message = (new \Swift_Message())
-            ->setSubject($sujet)
-            ->setFrom("groupeekofr.dev@gmail.com")
-            ->setTo($email)
-            ->setBody("<html>Bonjour $name <br><br>Je fais suite a notre conversation et te confirme notre rdv téléphonique de $datedebut à $heuredebut <br>
-            Afin de préparer ce rdv, merci de me retourner cette <a href='http://localhost:8000/app/relation/uploadmodel'>fiche patrimoniale remplie stp.</a><br>
-            <h3>Authentification :</h3>
-               Email:$email<br>
-               Password:$password
-               <br>
-               A bientot
-            </html>");
+        $bodymessage = $this->templateEngine->render('mail/relation/rendezvous.html.twig', array(
+            'name'   => $name,
+            'datedebut'     => $datedebut,
+            'heuredebut'     => $heuredebut,
+            'email'  => $email,
+            'password'  => $password,
+        ));
 
-        $this->mailer->send($message);
+        $this->sendEmailMessage($bodymessage,$email,$sujet);
     }
 
 }
