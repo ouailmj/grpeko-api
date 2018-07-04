@@ -17,7 +17,8 @@ class ClientEditCest
 
     public function tryToTest(Login $I)
     {
-        $I->amOnPage(Clientedit::$UrlEdit);
+       // $I->amOnPage(Clientedit::$UrlEdit);
+        $I->amOnPage(Clientedit::$UrlAdd);
 
         $I->fillField(Clientedit::$legalNameField,  Clientedit::$legalName);
         $I->selectoption(Clientedit::$legalFormField,Clientedit::$legalForm);
