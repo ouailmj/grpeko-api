@@ -18,7 +18,8 @@ class ClientSupCest
     public function tryToTest(Login $I)
     {
         $I->amOnPage(Clientsup::$UrlListCLient);
-      //  $I->click(Clientsup::$buttonsupclient);
+        $I->click(Clientsup::$buttonsupclient);
+       // $I->seeCurrentUrlEquals(Clientsup::$UrlSUP);
       //  $I->see(Clientsup::$successmessage);
     }
 }

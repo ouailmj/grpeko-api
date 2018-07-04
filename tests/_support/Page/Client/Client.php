@@ -12,7 +12,8 @@ namespace Tests\_support\Page\Client;
 class Client
 {
     public static $UrlAdd ='/app/company/new';
-    public static $UrlEdit ='/app/company/edit/8';
+    public static $UrlEdit ='/app/company/edit/$id';
+    public static $UrlSUP ='/app/company/$id/delete';
     public static $UrlListCLient ='/app/company/list';
 
     public static $legalNameField    = 'appbundle_company[legalName]';
@@ -33,6 +34,10 @@ class Client
     public static $currentAddress_cityField      = 'appbundle_company[currentAddress][city]';
     public static $formerAccountant_nameField       = 'appbundle_company[formerAccountant][name]';
 
+    public static $contactFirstNameField       = 'appbundle_company[contacts][firstname]';
+    public static $contactLastNameField       = 'appbundle_company[contacts][lastname]';
+    public static $contactEmailField       = 'appbundle_company[contacts][email]';
+
     public static $legalName    = 'societe33';
     public static $legalForm     = 'SARL';
     public static $taxationRegime     = null;
@@ -50,10 +55,18 @@ class Client
     public static $currentAddress_postalCode      = '40000';
     public static $currentAddress_city     = 'Marrakech';
     public static $formerAccountant_name      = 'messi';
+
+    public static $contactFirstName= 'mouad';
+    public static $contactLastName= 'nejjari';
+    public static $contactEmail ='@gmail.com';
+
     public static $submitButton     = 'appbundle_company[Enregistrer]';
     public static $successmessage     = 'Votre opération a été exécutée avec succès';
-    public static $navigatelistclient    = 'div.sidebar.sidebar-main > div > div > div > ul > li:nth-child(2) > a';
+    public static $navigatelistclient    = 'div.sidebar.sidebar-main > div > div > div > ul > li:nth-child(3) > a';
     public static $clientAddedvalue     = 'SARL';
-    public static $buttonsupclient    = 'tbody > tr:nth-child(1) > td > form > button';
+    public static $ClientListedvalue= 'FIXER UN RENDEZ VOUS';
+    public static $buttonsupclient    = 'tr:nth-child(1) td form > button > a';
+    public static $buttoneditclient    = 'tr:nth-child(1) td div a[title=Modifier]';
+
 
 }

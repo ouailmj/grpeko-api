@@ -2,11 +2,13 @@
 {% block _content %}
 
     <style>
-        div[id^="appbundle_company_oldAddresses_"]:nth-child(1) {
-            border: 1px solid #43c6ac;
-            padding: 5px;
-            text-align: center;
-            margin: 12px;
+
+        div#appbundle_company_oldAddresses > .form-group{
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #d5d7d8;
+            border-radius: 2px;
+            box-shadow: 1px 1px gainsboro;
         }
     </style>
 
@@ -197,18 +199,6 @@
                     hide_useless_buttons: true,
                     add: '<a style="float:right" href="#" class="collection-action btn btn-success btn-small collection-rescue-add">Ajouter</a>',
                     remove: '<a href="#" class="collection-remove btn btn-warning collection-action">Retirer</a>',
-                    allow_up: false,
-                    allow_down: false,
-                    init_with_n_elements: 0,
-
-                }
-            );
-            $('.add-contacts-collection').collection({
-                    name_prefix: "{{ formcompany.contacts.vars.full_name }}",
-                    add_at_the_end: false,
-                    hide_useless_buttons: true,
-                    add: '<a style="float:right" href="#" class="collection-action btn btn-success btn-small collection-rescue-add">Ajouter</a>',
-                    remove: '<a href="#" class="collection-remove btn btn-warning collection-action removecontact">Retirer</a>',
                     allow_up: false,
                     allow_down: false,
                     init_with_n_elements: 0,

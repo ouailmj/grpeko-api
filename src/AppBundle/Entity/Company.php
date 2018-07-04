@@ -189,37 +189,37 @@ class Company extends LegalEntity
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address", cascade={"persist", "remove"})
      *
-     * @ORM\JoinColumn(name="current_address_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="current_address_id", referencedColumnName="id",onDelete="CASCADE")
      */
     protected $currentAddress;
 
 
     /**
-     * Adresse du service des ipùots de l'entreprise.
+     * Adresse du service des impots de l'entreprise.
      *
      * @var Address
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address", cascade={"persist", "remove"})
      *
-     * @ORM\JoinColumn(name="siege_address_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="siege_address_id", referencedColumnName="id",onDelete="CASCADE")
      */
     protected $sieAddress;
 
     /**
      * @var Address[] | ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Address", cascade={"persist", "remove"})
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Address", cascade={"persist", "remove"},orphanRemoval=true)
      *
      * @ORM\JoinTable(name="company_address",
-     *      joinColumns={@ORM\JoinColumn(name="company_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="address_id", referencedColumnName="id")}
+     *      joinColumns={@ORM\JoinColumn(name="company_id", referencedColumnName="id",onDelete="CASCADE")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="address_id", referencedColumnName="id",onDelete="CASCADE")}
      *      )
      */
     protected $oldAddresses;
 
     /**
-     * @var Contact[] | ArrayCollection
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Contact" ,mappedBy="company" ,cascade={"persist", "remove"}))
+     * @var Contact
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Contact" ,mappedBy="company" ,cascade={"persist", "remove"}))
      * @Assert\Valid
      */
     protected $contacts;
@@ -271,7 +271,7 @@ class Company extends LegalEntity
         $this->missions = new ArrayCollection();
         $this->oldAddresses = new ArrayCollection();
         $this->fiscalYears = new ArrayCollection();
-        $this->contacts = new ArrayCollection();
+       // $this->contacts = new ArrayCollection();
         $this->otherPhoneNumbers = new ArrayCollection();
     }
 
@@ -625,7 +625,7 @@ class Company extends LegalEntity
     }
 
     /**
-     * @return Contact[]|ArrayCollection
+     * @return Contact
      */
     public function getContacts()
     {
@@ -633,31 +633,11 @@ class Company extends LegalEntity
     }
 
     /**
-     * @param Contact[]|ArrayCollection $contacts
+     * @param Contact
      */
     public function setContacts($contacts)
     {
         $this->contacts = $contacts;
-    }
-
-    /**
-     * @param $contacts
-     * @return $this
-     */
-    public function addContact($contacts)
-    {
-        $this->contacts->add($contacts);
-        return $this;
-    }
-
-    /**
-     * @param $contacts
-     * @return bool
-     */
-    public function removeContact($contacts)
-    {
-        return $this->contacts->removeElement($contacts);
-
     }
 
     /**

@@ -27,7 +27,7 @@ class Contact
     /**
      * @var Company
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company" ,inversedBy="contacts" ,cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Company" ,inversedBy="contacts" ,cascade={"persist", "remove"})
      */
     protected $company;
 
@@ -43,7 +43,7 @@ class Contact
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="firstname", type="string", length=50, nullable=true))
      */
 
@@ -60,7 +60,6 @@ class Contact
 
     /**
      * @var string
-     *
      * @ORM\Column(name="intermediate", type="string", length=50, nullable=true))
      */
 

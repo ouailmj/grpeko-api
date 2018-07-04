@@ -197,19 +197,6 @@
 
         }
     );
-    $('.add-contacts-collection').collection({
-            name_prefix: "{{ formcompany.contacts.vars.full_name }}",
-            add_at_the_end: true,
-            hide_useless_buttons: true,
-            add: '<a style="float:right" href="#" class="collection-action btn btn-success btn-small collection-rescue-add">Ajouter</a>',
-            remove: '<a href="#" class="collection-remove btn btn-warning collection-action">Retirer</a>',
-            allow_up: false,
-            allow_down: false,
-            init_with_n_elements: 0,
-
-        }
-    );
-
 </script>
 
 {% endblock javascripts %}

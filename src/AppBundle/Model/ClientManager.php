@@ -62,9 +62,9 @@ class ClientManager
 
         $password= rand(100000,1000000);
         $prospect->setCustomerAccount(new Customer());
-        $prospect->getCustomerAccount()->setName($prospect->getContacts()[0]->getEmail());
+        $prospect->getCustomerAccount()->setName($prospect->getContacts()->getLastname());
         $prospect->getCustomerAccount()->setUserAccount(new User());
-        $prospect->getCustomerAccount()->getUserAccount()->setEmail($prospect->getContacts()[0]->getEmail());
+        $prospect->getCustomerAccount()->getUserAccount()->setEmail($prospect->getContacts()->getEmail());
         $prospect->getCustomerAccount()->getUserAccount()->setPlainPassword($password);
 
         if ($prospect->getCustomerAccount()->getUserAccount() instanceof User)

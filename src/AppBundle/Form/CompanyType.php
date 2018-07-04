@@ -97,18 +97,8 @@ class CompanyType extends AbstractType
 
               //  if ($options['add_contact_data']){
                 //    $builder
-                    ->add('contacts', CollectionType::class,
-                            [
-                                'entry_type'   => ContactClientType::class,
-                                'label'        => false,
-                                'allow_add'    => true,
-                                'allow_delete' => true,
-                                'prototype'    => true,
-                                'required'     => true,
-                                'attr'         => [
-                                    'class' => "add-contacts-collection",
-                                ],
-                            ]);
+                    ->add('contacts', ContactClientType::class,array(
+              ));
 
                // }
 
