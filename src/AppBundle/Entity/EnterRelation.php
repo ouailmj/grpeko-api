@@ -26,7 +26,7 @@ class EnterRelation
 
     /**
      * @var Company
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Company" ,inversedBy="enterRelation" ,cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Company" ,inversedBy="enterRelation" ,cascade={"persist", "remove"})
      */
     private $company;
 

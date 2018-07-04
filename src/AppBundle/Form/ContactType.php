@@ -22,27 +22,27 @@ class ContactType extends AbstractType
         $builder
             ->add('civility', TextType::class, array(
                 'label' => 'Civilité:',
-                'required'  => true
+                'required'  => false
             ))
             ->add('firstname', TextType::class, array(
                 'label' => 'firstname:',
-                'required'  => true
+                'required'  => false
             ))
             ->add('lastname', TextType::class, array(
                 'label' => 'lastname:',
-                'required'  => true
+                'required'  => false
             ))
             ->add('intermediate', TextType::class, array(
                 'label' => 'de part:',
-                'required'  => true
+                'required'  => false
             ))
             ->add('mandataire', TextType::class, array(
                     'label' => 'Mandataire social principal:',
-                    'required'  => true
+                    'required'  => false
                 ))
             ->add('associe', CheckboxType::class, array(
                     'label' => ' est Associé ?',
-                    'required'  => true
+                    'required'  => false
                 )
 
     );

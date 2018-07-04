@@ -15,7 +15,17 @@
 
                 <div class="panel-body">
 
-                    <span title="Ajouter un nouveau Client" class="pull-right"><a href="{{ path('company_new') }}" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-user-plus"></i></b> Ajouter</a></span>
+                        <div class="dropdown" style="float: right;">
+                            <button style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown"><b><i class="icon-user-plus"></i></b> Ajouter
+                                <span class="caret"></span></button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a  href="{{ path('company_new') }}">UN CLIENT</a></li>
+                                <li><a  href="{{ path('company_new') }}">UN PROSPECT</a></li>
+                            </ul>
+                        </div>
+
+                    <span title="Ajouter un nouveau Rendez vous" class="pull-left"><a href="{{ path('rendezvous_new') }}" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-user-plus"></i></b> Fixer Un Rendez Vous</a></span>
+
                     <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
                         <thead>
                         <tr>
@@ -55,7 +65,7 @@
                             <td>{{company.legalform}}</td>
                             <td>
                                 {% for fiscalYear in company.fiscalYears %}
-                                    {{fiscalYear.closeDate |date('d/m/Y')}}
+                                    {{fiscalYear.closeDate |date(date_default_fromat)}}
                                 {% endfor %}
                             </td>
                             <td>Null</td>

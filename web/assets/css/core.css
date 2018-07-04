@@ -3452,7 +3452,7 @@ select[multiple].input-group-xs > .input-group-btn > .btn {
   }
 }
 .header-highlight .navbar-header:not([class*=bg-]) {
-  background-color: #7b5d5a;
+  background-color: #5d9d9c;
 }
 .header-highlight .navbar-header > .navbar-nav > li > a {
   color: rgba(255, 255, 255, 0.9);

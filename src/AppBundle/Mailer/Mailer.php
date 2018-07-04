@@ -12,7 +12,11 @@
 
 namespace AppBundle\Mailer;
 
+use AppBundle\Entity\Company;
+use AppBundle\Entity\Contact;
+use AppBundle\Event\RendezVousCreatedEvent;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
+use AppBundle\Event\ClientCreatedEvent;
 
 class Mailer
 {
@@ -62,4 +66,26 @@ class Mailer
 
         $this->sendEmailMessage($body, $this->adminMail, 'Groupe EKO - Un message de contact');
     }
+
+
+    public function sendEmailCLient(RendezVousCreatedEvent $prospect)
+    {
+        $email=$prospect->getProspect()->getCustomerAccount()->getUserAccount()->getEmail();
+        $password=$prospect->getProspect()->getCustomerAccount()->getUserAccount()->getPlainPassword();
+        $name=$prospect->getProspect()->getContacts()[0]->getLastname();
+        $sujet=$prospect->getData()["sujet"];
+        $datedebut=$prospect->getData()["datedebut"];
+        $heuredebut=$prospect->getData()["heuredebut"];
+
+        $bodymessage = $this->templateEngine->render('mail/relation/rendezvous.html.twig', array(
+            'name'   => $name,
+            'datedebut'     => $datedebut,
+            'heuredebut'     => $heuredebut,
+            'email'  => $email,
+            'password'  => $password,
+        ));
+
+        $this->sendEmailMessage($bodymessage,$email,$sujet);
+    }
+
 }

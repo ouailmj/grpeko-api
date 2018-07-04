@@ -9,6 +9,8 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
+    files_directory: '%kernel.project_dir%/web/uploads/files'
+
 
 framework:
     #esi: ~
@@ -76,6 +78,7 @@ swiftmailer:
     transport: "%mailer_transport%"
     host:      "%mailer_host%"
     username:  "%mailer_user%"
+    delivery_addresses: [%mailer_user%]
     password:  "%mailer_password%"
     port: 25
     spool:     { type: memory }

@@ -45,6 +45,7 @@ class Builder implements ContainerAwareInterface
 
     public function createMainMenu(array $options)
     {
+
         $menu = $this->factory->createItem('root');
         $menu->setChildrenAttribute('class', 'navigation navigation-main navigation-accordion');
 
@@ -59,6 +60,17 @@ class Builder implements ContainerAwareInterface
             'extras' => ['safe_label' => true],
         ]);
 
+        if($this->authorizationChecker->isGranted('ROLE_PROSPECT'))
+        {
+            $menu->addChild('Télécharger le modèle', [
+                'route' => 'model_upload',
+                'label' => '<i class="icon-download"> </i> <span>Télécharger le modèle</span>',
+                'extras' => ['safe_label' => true],
+            ]);
+        }
+
+       if(!$this->authorizationChecker->isGranted('ROLE_PROSPECT'))
+       {
         $menu->addChild('Clients', [
             'route' => 'company_index',
             'label' => '<i class="icon-users4"> </i> <span>Clients</span>',
@@ -87,13 +99,15 @@ class Builder implements ContainerAwareInterface
             'label' => '<i class="icon-folder-open"> </i> <span>Suivi de projet</span>',
             'extras' => ['safe_label' => true],
         ]);
+
         $settings = $menu->addChild('Settings', [
             'uri' => '#',
             'label' => '<i class="icon-cog5"> </i> <span>Paramètrages</span>',
             'extras' => ['safe_label' => true],
         ]);
-        $this->settingItem($settings);
 
+        $this->settingItem($settings);
+       }
         return $menu;
     }
 

@@ -86,7 +86,21 @@
                 $("#attachment").append('<input type="file" name="files[]" class="form-control" />')
             }
         </script>
+
+        <script>
+
+
+
+        </script>
         <!-- /theme JS files -->
+        <!-- footer script -->
+            <script >
+                $(document).ready(function()
+                {
+                    $('.content').append('<div class="footer text-muted"> &copy; {{ "now"|date("Y") }}. <a href="http://127.0.0.1:8000" target="_blank"> EKO</a>| Powered by  <a href="http://www.agencemit.com">Agence MIT</a></div>' );
+                });
+            </script>
+        <!-- /footer script -->
     {% endblock %}
     {% block javascripts %} {% endblock %}
     <script>

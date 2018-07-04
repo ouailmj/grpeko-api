@@ -14,6 +14,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CompanyType extends AbstractType
 {
+
+
     /**
      * {@inheritdoc}
      */
@@ -22,7 +24,7 @@ class CompanyType extends AbstractType
         $builder
                ->add('legalName', TextType::class, array(
                    'label' => 'Raison Sociale:',
-                   'required'  => false
+                   'required'  => true
                ))
                ->add('legalForm', ChoiceType::class, array(
                    'label' => 'Forme Juridique:',
@@ -31,7 +33,7 @@ class CompanyType extends AbstractType
                        'SARL' => 'SARL',
                        'SA' => 'SA',
                    ),
-                    'required'=>false
+                    'required'=>true
                ))
                ->add('taxationRegime', ChoiceType::class, array(
                    'label' => 'Régime d\'imposition:',
@@ -43,7 +45,7 @@ class CompanyType extends AbstractType
                ))
                ->add('currentAddress', AdresseCurrentType::class)
 
-               ->add('sieAddress', AdresseType::class,[
+               ->add('SieAddress', AdresseType::class,[
                    'label' => false,
                ])
 
@@ -91,11 +93,7 @@ class CompanyType extends AbstractType
                 ))
                 ->add('formerAccountant', FormerAccountantType::class)
 
-                ->add('legalName', TextType::class,array(
-                    'label'=>false,
-                    'required'  => false
-                ))
-                    ->add('Enregistrer', SubmitType::class, array('attr' => array('class' => 'btn-success','style' => 'float:right')))
+                ->add('Enregistrer', SubmitType::class, array('attr' => array('class' => 'btn-success','style' => 'float:right')))
 
               //  if ($options['add_contact_data']){
                 //    $builder
