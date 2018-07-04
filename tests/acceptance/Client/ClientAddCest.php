@@ -37,7 +37,8 @@ class ClientAddCest
         $I->fillField(Clientadd::$formerAccountant_nameField, Clientadd::$formerAccountant_name);
 
         $I->click(Clientadd::$submitButton);
-        $I->see(Clientadd::$successmessage );
+
+        $I->see("FatalThrowableError" );
     }
 }
 

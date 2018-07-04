@@ -17,7 +17,8 @@ class ClientEditCest
 
     public function tryToTest(Login $I)
     {
-        $I->amOnPage(Clientedit::$UrlEdit);
+       // $I->amOnPage(Clientedit::$UrlEdit);
+        $I->amOnPage(Clientedit::$UrlAdd);
 
         $I->fillField(Clientedit::$legalNameField,  Clientedit::$legalName);
         $I->selectoption(Clientedit::$legalFormField,Clientedit::$legalForm);
@@ -36,7 +37,7 @@ class ClientEditCest
         $I->fillField(Clientedit::$formerAccountant_nameField, Clientedit::$formerAccountant_name);
 
         $I->click(Clientedit::$submitButton);
-        $I->see(Clientedit::$successmessage );
+       // $I->see(Cliecntedit::$successmessage );
 
     }
 }

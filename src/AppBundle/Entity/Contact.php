@@ -62,7 +62,6 @@ class Contact
      * @var string
      *
      * @ORM\Column(name="intermediate", type="string", length=50, nullable=true))
-     * @Assert\NotBlank()
      */
 
     private $intermediate;

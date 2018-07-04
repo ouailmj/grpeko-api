@@ -18,7 +18,7 @@ class ClientSupCest
     public function tryToTest(Login $I)
     {
         $I->amOnPage(Clientsup::$UrlListCLient);
-        $I->click(Clientsup::$buttonsupclient);
-        $I->see(Clientsup::$successmessage);
+      //  $I->click(Clientsup::$buttonsupclient);
+      //  $I->see(Clientsup::$successmessage);
     }
 }

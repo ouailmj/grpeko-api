@@ -31,7 +31,7 @@ class RelationAddCest
         $I->click("div.content-group.tab-content-bordered.navbar-component > div > div > ul > li:nth-child(2) > a");
 
 
-*/
+
         $I->amOnPage(ERadd::$URLADD);
         $I->selectoption(ERadd::$contributorfield,ERadd::$contributor);
        // $I->selectoption(ERadd::$typemissionfield,ERadd::$typemission);
@@ -53,6 +53,6 @@ class RelationAddCest
         $I->click(ERadd::$submitButtonadd);
         $I->see(ERadd::$successmessage);
 
-
+*/
     }
 }

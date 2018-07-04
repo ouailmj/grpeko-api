@@ -87,7 +87,6 @@ class Mailer
             ->setSubject($sujet)
             ->setFrom("groupeekofr.dev@gmail.com")
             ->setTo($email)
-            ->attach(\Swift_Attachment::fromPath("/Users/nejjarimouad/Sites/groupeeko-api/web/assets/fichiers/fiche_patrimoniale.xlsx"))
             ->setBody("<html>Bonjour $name <br><br>Je fais suite a notre conversation et te confirme notre rdv téléphonique de $datedebut à $heuredebut <br>
             Afin de préparer ce rdv, merci de me retourner cette <a href='http://localhost:8000/app/relation/uploadmodel'>fiche patrimoniale remplie stp.</a><br>
             <h3>Authentification :</h3>
