@@ -12,6 +12,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -101,6 +102,25 @@ class FiscalYear
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Assignment" ,inversedBy="fiscalYear" ,cascade={"persist", "remove"}))
      */
     protected $assignment;
+
+    /**
+     * @var Mission[] | ArrayCollection
+     * @ManyToMany(targetEntity="Mission")
+     * @JoinTable(name="fiscal_year_mission",
+     *      joinColumns={@JoinColumn(name="fiscal_year_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="mission_id", referencedColumnName="id", unique=true)}
+     *      )
+     */
+    protected $missions;
+
+    /**
+     * FiscalYear constructor.
+     */
+    public function __construct()
+    {
+        $this->missions = new ArrayCollection();
+    }
+
 
     /**
      * Get id.
@@ -280,6 +300,39 @@ class FiscalYear
         $this->assignment = $assignment;
     }
 
+    /**
+     * @return Mission[]
+     */
+    public function getMissions(): array
+    {
+        return $this->missions;
+    }
 
+    /**
+     * @param Mission[] $missions
+     */
+    public function setMissions(array $missions)
+    {
+        $this->missions = $missions;
+    }
+
+    /**
+     * @param Mission $mission
+     * @return $this
+     */
+    public function addMission(Mission $mission)
+    {
+        $this->missions->add($mission);
+        return $this;
+    }
+
+    /**
+     * @param Mission $mission
+     * @return bool
+     */
+    public function removeMission(Mission $mission)
+    {
+        return $this->missions->removeElement($mission);
+    }
 
 }

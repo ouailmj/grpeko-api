@@ -13,7 +13,7 @@
 namespace AppBundle\Entity;
 
 use AppBundle\Model\Address;
-use AppBundle\Model\Person as BasePerson;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -32,7 +32,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\HasLifecycleCallbacks()
  */
-class Person extends BasePerson
+class Person
 {
 
     /**
@@ -101,13 +101,13 @@ class Person extends BasePerson
     protected $postalCode;
 
     /**
-     * @var Address
-     *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address")
-     *
-     * @ORM\JoinColumn(name="current_address_id", referencedColumnName="id")
+     * @ManyToMany(targetEntity="AppBundle\Entity\Address")
+     * @JoinTable(name="person_address",
+     *      joinColumns={@JoinColumn(name="person_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="address_id", referencedColumnName="id", unique=true)}
+     *      )
      */
-    protected $currentAddress;
+    private $addresses;
 
     /**
      * @var User
@@ -116,6 +116,16 @@ class Person extends BasePerson
      *
      */
     protected $userAccount;
+
+    /**
+     * Person constructor.
+     * @param $addresses
+     */
+    public function __construct()
+    {
+        $this->addresses = new ArrayCollection();
+    }
+
 
     /**
      * @return int
@@ -254,22 +264,6 @@ class Person extends BasePerson
     }
 
     /**
-     * @return Address
-     */
-    public function getCurrentAddress()
-    {
-        return $this->currentAddress;
-    }
-
-    /**
-     * @param Address $currentAddress
-     */
-    public function setCurrentAddress(Address $currentAddress)
-    {
-        $this->currentAddress = $currentAddress;
-    }
-
-    /**
      * @return User
      */
     public function getUserAccount()
@@ -285,6 +279,39 @@ class Person extends BasePerson
         $this->userAccount = $userAccount;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getAddresses()
+    {
+        return $this->addresses;
+    }
 
+    /**
+     * @param mixed $addresses
+     */
+    public function setAddresses($addresses)
+    {
+        $this->addresses = $addresses;
+    }
+
+    /**
+     * @param Address $address
+     * @return $this
+     */
+    public function addAddress(Address $address){
+
+        $this->addresses->add($address);
+
+        return $this;
+    }
+
+    /**
+     * @param Address $address
+     * @return bool
+     */
+    public function removeAddress(Address $address){
+        return $this->addresses->removeElement($address);
+    }
 
 }
