@@ -19,7 +19,6 @@ class ClientSupCest
     {
         $I->amOnPage(Clientsup::$UrlListCLient);
         $I->click(Clientsup::$buttonsupclient);
-       // $I->seeCurrentUrlEquals(Clientsup::$UrlSUP);
-      //  $I->see(Clientsup::$successmessage);
+        $I->see(Clientsup::$successmessage);
     }
 }

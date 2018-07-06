@@ -48,7 +48,7 @@ class Assignment
     /**
      * @return FiscalYear
      */
-    public function getFiscalYear(): FiscalYear
+    public function getFiscalYear()
     {
         return $this->fiscalYear;
     }
@@ -64,7 +64,7 @@ class Assignment
     /**
      * @return Employee
      */
-    public function getEmployee(): Employee
+    public function getEmployee()
     {
         return $this->employee;
     }

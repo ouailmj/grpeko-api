@@ -40,10 +40,10 @@ class Client
 
     public static $legalName    = 'societe33';
     public static $legalForm     = 'SARL';
-    public static $taxationRegime     = null;
+    public static $taxationRegime     = 'réel normal';
 
     public static $vatSystem =null;
-    public static $apeCode ='Out of Stock';
+    public static $apeCode ='0114Z';
     public static $mainActivity ='export/import';
     public static $siretNumber =77;
     public static $sirenNumber =33;
@@ -65,7 +65,7 @@ class Client
     public static $navigatelistclient    = 'div.sidebar.sidebar-main > div > div > div > ul > li:nth-child(3) > a';
     public static $clientAddedvalue     = 'SARL';
     public static $ClientListedvalue= 'FIXER UN RENDEZ VOUS';
-    public static $buttonsupclient    = 'tr:nth-child(1) td form > button > a';
+    public static $buttonsupclient    = 'tr:nth-child(1) td form > button';
     public static $buttoneditclient    = 'tr:nth-child(1) td div a[title=Modifier]';
 
 

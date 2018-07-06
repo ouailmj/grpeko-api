@@ -130,7 +130,7 @@ class Company extends LegalEntity
     protected $relation;
 
     /**
-     * @var integer
+     * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      *
@@ -167,7 +167,7 @@ class Company extends LegalEntity
      * Nombre d'actions ou parts sociales
      *
      * @var integer
-     *
+     * @Assert\Type("integer")
      * @ORM\Column(type="integer", nullable=true)
      *
      */
@@ -251,7 +251,7 @@ class Company extends LegalEntity
      * @var FormerAccountant
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\FormerAccountant", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="former_accountant_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="former_accountant_id", referencedColumnName="id",onDelete="CASCADE")
      *
      */
     protected $formerAccountant;
@@ -485,7 +485,7 @@ class Company extends LegalEntity
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getApeCode()
     {
@@ -493,9 +493,9 @@ class Company extends LegalEntity
     }
 
     /**
-     * @param int $apeCode
+     * @param string $apeCode
      */
-    public function setApeCode(int $apeCode)
+    public function setApeCode(string $apeCode)
     {
         $this->apeCode = $apeCode;
     }

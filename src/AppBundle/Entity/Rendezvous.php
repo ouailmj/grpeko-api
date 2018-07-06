@@ -26,12 +26,32 @@ class Rendezvous
      */
     private $id;
 
+    /**
+     * @ORM\Column(type="string")
+     */
+
+    private $fichePatrimoniale;
 
     /**
      * @ORM\Column(type="string")
-     * @Assert\File(maxSize = "10M", mimeTypes={ "application/vnd.ms-excel","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" })
+
      */
-    private $fichePatrimoniale;
+
+    private $cin;
+
+    /**
+     * @return mixed
+     */
+    public function getCin()
+    {
+        return $this->cin;
+    }/**
+     * @param mixed $cin
+     */
+    public function setCin($cin)
+    {
+        $this->cin = $cin;
+    }
 
     /**
      * @return mixed

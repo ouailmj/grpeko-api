@@ -22,6 +22,7 @@ class RendezVousType extends AbstractType
     {
         $builder
             ->add('FichePatrimoniale', FileType::class, array('label' => false))
+            ->add('Cin', FileType::class, array('label' => false))
             ->add('Exporter', SubmitType::class, array('attr' => array('class' => 'btn-success')));
     }
 

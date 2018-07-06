@@ -13,6 +13,7 @@ use AppBundle\Model\EnterRelationManager;
 use AppBundle\Model\RendezVousManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use AppBundle\Event\AppEvents;
@@ -86,11 +87,29 @@ class EnterRelationController extends BaseController
         $formrendezvous = $this->createForm('AppBundle\Form\RendezVousType', $rendezvous);
         $formrendezvous->handleRequest($request);
 
-        if ($formrendezvous->isSubmitted() && $formrendezvous->isValid()) {
+        //TODO: Utiliser les mimetypes pour savoir les types des fichiers
 
-            $this->rendezVousManager->uploadFiles($rendezvous,$this->getParameter('files_directory'));
-            $this->addSuccessFlash();
-            $this->redirectToRoute('relation_new');
+        if ($formrendezvous->isSubmitted() && $formrendezvous->isValid()) {
+                $cpt=0;
+                $fiche = $rendezvous->getFichePatrimoniale();
+                $cin = $rendezvous->getCin();
+            if(!in_array($fiche->guessExtension(),["xlsx","xlsx"]) ){
+                $error = new FormError("merci d'exporter un fichier excel !");
+                $formrendezvous->get('FichePatrimoniale')->addError($error);
+                $cpt=1;
+            }
+            if(!in_array($cin->guessExtension(),["jpg","jpeg","png","pdf"]) ){
+                $error = new FormError("merci d'exporter une image ou un fichier pdf !");
+                $formrendezvous->get('Cin')->addError($error);
+                $cpt=1;
+            }
+            if($cpt==0)
+            {
+                $this->rendezVousManager->uploadFiles($rendezvous,$this->getParameter('files_directory'));
+                $this->addSuccessFlash();
+            }
+
+            $this->redirectToRoute('model_upload');
 
         }
 

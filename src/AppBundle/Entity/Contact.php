@@ -35,7 +35,7 @@ class Contact
     /**
      * @var string
      *
-     * @ORM\Column(name="civility", type="string", length=10, nullable=true))
+     * @ORM\Column(name="civility", type="string", length=10, nullable=true)
      */
 
     private $civility;
@@ -44,7 +44,7 @@ class Contact
     /**
      * @var string
      * @Assert\NotBlank()
-     * @ORM\Column(name="firstname", type="string", length=50, nullable=true))
+     * @ORM\Column(name="firstname", type="string", length=50, nullable=true)
      */
 
     private $firstname;
@@ -53,14 +53,14 @@ class Contact
     /**
      * @var string
      *
-     * @ORM\Column(name="lastname", type="string", length=50, nullable=true))
+     * @ORM\Column(name="lastname", type="string", length=50, nullable=true)
      */
 
     private $lastname;
 
     /**
      * @var string
-     * @ORM\Column(name="intermediate", type="string", length=50, nullable=true))
+     * @ORM\Column(name="intermediate", type="string", length=50, nullable=true)
      */
 
     private $intermediate;
@@ -68,7 +68,7 @@ class Contact
     /**
      * @var float
      *
-     * @ORM\Column(name="mandataire", type="float", nullable=true))
+     * @ORM\Column(name="mandataire", type="float", nullable=true)
      */
 
     private $mandataire;

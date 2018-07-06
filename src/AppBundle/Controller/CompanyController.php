@@ -109,8 +109,8 @@ class CompanyController extends BaseController
         ));
 
         $formcompany->handleRequest($request);
-
         if ($formcompany->isSubmitted() && $formcompany->isValid()) {
+
 
             $this->clientManager->createClient($company,$formcompany);
          //   $this->get('event_dispatcher')->dispatch(AppEvents::CLIENT_CREATED, new ClientCreatedEvent($company));
