@@ -39,8 +39,9 @@ class ClientManager
         return $this->em->getRepository('AppBundle:Company')->findAll();
     }
 
-    public function deleteClient($company)
+    public function deleteClient(Company $company)
     {
+
         $this->em->remove($company);
         $this->em->flush();
     }
@@ -62,14 +63,20 @@ class ClientManager
 
         $password= rand(100000,1000000);
         $prospect->setCustomerAccount(new Customer());
-        $prospect->getCustomerAccount()->setName($prospect->getContacts()[0]->getEmail());
+        $prospect->getCustomerAccount()->setName($prospect->getContacts()->getLastname());
         $prospect->getCustomerAccount()->setUserAccount(new User());
-        $prospect->getCustomerAccount()->getUserAccount()->setEmail($prospect->getContacts()[0]->getEmail());
+        $prospect->getCustomerAccount()->getUserAccount()->setEmail($prospect->getContacts()->getEmail());
         $prospect->getCustomerAccount()->getUserAccount()->setPlainPassword($password);
 
         if ($prospect->getCustomerAccount()->getUserAccount() instanceof User)
-                $this->userManager->createUser($prospect->getCustomerAccount()->getUserAccount(), false);
+
+            $this->userManager->createUser($prospect->getCustomerAccount()->getUserAccount(), false);
             $prospect->getCustomerAccount()->getUserAccount()->setRoles(array("ROLE_PROSPECT"));
+            $prospect->getContacts()->setCompany($prospect);
+
+        foreach ($prospect->getFiscalYears() as $fiscalYear) {
+            $fiscalYear->setCompany($prospect);
+         }
             $this->em->persist($prospect);
             $this->em->flush();
 

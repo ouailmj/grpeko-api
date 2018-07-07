@@ -44,7 +44,6 @@
 
                 <div class="content-group tab-content-bordered navbar-component">
                     {% block _content %}
-
                         {% block stylesheets %}
                             <style>
                                 fieldset.scheduler-border {
@@ -66,17 +65,21 @@
                                 div[id^="appbundle_company_oldAddresses"] > label{
                                     display : none!important;
                                 }
-                                div[id^="appbundle_company_contacts"] > label{
+                                div[id^="appbundle_company_fiscal"] > label{
                                     display : none!important;
                                 }
-                                div[id^="appbundle_company_contacts"]:nth-child(3) {
-                                    display:none
-                                }
-                                .removecontact{
-                                    display: none;
+
+                                div#appbundle_company_oldAddresses > .form-group{
+                                    padding: 10px;
+                                    width: 100%;
+                                    border: 1px solid #d5d7d8;
+                                    border-radius: 2px;
+                                    box-shadow: 1px 1px gainsboro;
                                 }
                             </style>
                         {% endblock %}
+
+                        {% block javascripts %}{% endblock javascripts %}
 
                     {% endblock %}
                 </div>

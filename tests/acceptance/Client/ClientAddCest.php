@@ -35,10 +35,13 @@ class ClientAddCest
         $I->fillField(Clientadd::$currentAddress_postalCodeField , Clientadd::$currentAddress_postalCode);
         $I->fillField(Clientadd::$currentAddress_cityField , Clientadd::$currentAddress_city);
         $I->fillField(Clientadd::$formerAccountant_nameField, Clientadd::$formerAccountant_name);
+        $I->fillField(Clientadd::$contactFirstNameField,Clientadd::$contactFirstName );
+        $I->fillField(Clientadd::$contactLastNameField,Clientadd::$contactLastName);
+        $I->fillField(Clientadd::$contactEmailField,uniqid().Clientadd::$contactEmail);
 
         $I->click(Clientadd::$submitButton);
 
-        $I->see("FatalThrowableError" );
+        $I->see(Clientadd::$successmessage);
     }
 }
 

@@ -31,16 +31,34 @@ class CompanyType extends AbstractType
                    //  'label' => false,
                    'choices'  => array(
                        'SARL' => 'SARL',
+                       'EURL' => 'EURL',
+                       'SELARL' => 'SELARL',
                        'SA' => 'SA',
+                       'SAS' => 'SAS',
+                       'SASU' => 'SASU',
+                       'SARL' => 'SARL',
+                       'SNC' => 'SNC',
+                       'SCP' => 'SCP',
                    ),
                     'required'=>true
                ))
                ->add('taxationRegime', ChoiceType::class, array(
                    'label' => 'Régime d\'imposition:',
+                   'choices'=>array(
+                       'micro-entreprise'=>'micro-entreprise',
+                       'l’auto-entreprise'=>'l’auto-entreprise',
+                       'réel simplifié'=>'réel simplifié',
+                       'réel normal'=>'réel normal',
+                   ),
                    'required'  => false
                ))
                ->add('vatSystem', ChoiceType::class, array(
                    'label' => 'Régime de TVA:',
+                   'choices'=>array(
+                       'le régime du réel normal de TVA '=>'le régime du réel normal de TVA ',
+                       'le régime simplifié d’imposition à la TVA'=>'le régime simplifié d’imposition à la TVA',
+                       'le régime de la franchise en base de TVA'=>'le régime de la franchise en base de TVA',
+                       ),
                    'required'  => false
                ))
                ->add('currentAddress', AdresseCurrentType::class)
@@ -63,7 +81,23 @@ class CompanyType extends AbstractType
                    ])
                ->add('apeCode', ChoiceType::class, array(
                     'label' => 'Code APE:',
-                    'choices' => array('In Stock' => true, 'Out of Stock' => false),
+                    'choices' => array(
+                        '0112Z'=>'0112Z',
+                        '0113Z'=>'0113Z',
+                        '0114Z'=>'0114Z',
+                        '0115Z'=>'0115Z',
+                        '0116Z'=>'0116Z',
+                        '0119Z'=>'0119Z',
+                        '0121Z'=>'0121Z',
+                        '0122Z'=>'0122Z',
+                        '0123Z'=>'0123Z',
+                        '0124Z'=>'0124Z',
+                        '0125Z'=>'0125Z',
+                        '0126Z'=>'0126Z',
+                        '0127Z'=>'0127Z',
+                        '0128Z'=>'0128Z',
+                        '...'=>'...'
+                    ),
                     'required'  => false
                 ))
                ->add('mainActivity', TextType::class, array(
@@ -93,22 +127,26 @@ class CompanyType extends AbstractType
                 ))
                 ->add('formerAccountant', FormerAccountantType::class)
 
-                ->add('Enregistrer', SubmitType::class, array('attr' => array('class' => 'btn-success','style' => 'float:right')))
 
               //  if ($options['add_contact_data']){
                 //    $builder
-                    ->add('contacts', CollectionType::class,
-                            [
-                                'entry_type'   => ContactClientType::class,
-                                'label'        => false,
-                                'allow_add'    => true,
-                                'allow_delete' => true,
-                                'prototype'    => true,
-                                'required'     => true,
-                                'attr'         => [
-                                    'class' => "add-contacts-collection",
-                                ],
-                            ]);
+                ->add('contacts', ContactClientType::class,array(
+              ))
+
+                ->add('fiscalYears', CollectionType::class,
+                [
+                    'entry_type'   => FiscalType::class,
+                    'label'        => false,
+                    'allow_add'    => true,
+                    'allow_delete' => true,
+                    'prototype'    => true,
+                    'required'     => true,
+                    'attr'         => [
+                        'class' => "add-fiscal-collection",
+                    ],
+                ])
+
+                ->add('Enregistrer', SubmitType::class, array('attr' => array('class' => 'btn-success','style' => 'float:right')));
 
                // }
 
