@@ -1,0 +1,208 @@
+{% extends 'dashboard/dashboard.html.twig' %}
+{% block '_content' %}
+<div class="content-group tab-content-bordered navbar-component">
+    <div class="navbar navbar-inverse" style="background-color: #5d9d9c; border-color: #5d9d9c; position: relative; z-index: 30;">
+        <div class="navbar-header">
+            <ul class="nav navbar-nav pull-right visible-xs-block">
+                <li><a data-toggle="collapse" data-target="#demo1" class="legitRipple"><i class="icon-tree5"></i></a></li>
+            </ul>
+        </div>
+
+        <div class="navbar-collapse collapse" id="demo1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#tab-demo1" data-toggle="tab" class="legitRipple" aria-expanded="false">Collaborateurs</a></li>
+
+                <li class=""><a href="#tab-demo2" data-toggle="tab" class="legitRipple" aria-expanded="true">Affectations</a></li>
+                <li class=""><a href="#tab-demo3" data-toggle="tab" class="legitRipple" aria-expanded="true">Gestion du cabinet</a></li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle legitRipple" data-toggle="dropdown" aria-expanded="false">
+                        <i class="icon-file-stats2 position-left"></i>
+                        Autre
+                        <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="#tab-demo4" data-toggle="tab">Comptes</a></li>
+                        <li><a href="#tab-demo5" data-toggle="tab">Journaux</a></li>
+                        <li><a href="#tab-demo6" data-toggle="tab">Import CFNOB</a></li>
+                        <li><a href="{{ path('suiviceb') }}">Suivi CEB</a></li>
+                        <li><a href="#tab-demo8" data-toggle="tab">Facturation</a></li>
+                        <li><a href="#tab-demo9" data-toggle="tab">Remise Facturation</a></li>
+                        <li><a href="#tab-demo10" data-toggle="tab">Chiffre d'affaires</a></li>
+                        <li><a href="#tab-demo11" data-toggle="tab">Commissions</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{ path('parametrages') }}"><i class="icon-cog"></i> Parametrages</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="tab-content">
+        <div class="tab-pane fade has-padding active in" id="tab-demo1">
+            <span title="Ajouter un nouvel collaborateur" class="pull-right"><a href="{{ path('add-collaborateur') }}" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-user-plus"></i></b> Ajouter</a></span>
+            <div class="datatable-scroll-wrap">
+                <table class="table datatable-responsive table-bordered table-hover datatable-highlight dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+                    <thead>
+                    <tr role="row">
+                        <th >#</th>
+                        <th >Prénom</th>
+                        <th >Nom</th>
+                        <th >Initiales</th>
+                        <th >Login</th>
+                        <th>Email</th>
+                        <th >Type</th>
+                        <th >Supérieur</th>
+                        <th >Statut</th>
+                        <th >Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in employees %}
+                        <tr role="row" class="">
+                            <td class="sorting_1"><a href="">2</a></td>
+
+                            <td>{{ item.lastname}}</td>
+                            <td>{{ item.firstName}}</td>
+
+                            <td>{{ item.initials }}</td>
+
+                            <td>{{ item.userAccount.username }}</td>
+                            <td>
+                                {{ item.userAccount.email }}
+                            </td>
+                            <td>
+                                BIE
+                            </td>
+                            <td>
+                                BIE
+                            </td>
+                            <td><span class="label label-danger">Inactif</span></td>
+                            <td class="text-center">
+                                <div class="">
+                                    <a title="Afficher les détails" href="{{ path('show-collaborateur', {'id': item.id}) }}" class="text-primary legitRipple"><i class="icon-eye position-left"></i></a>
+                                    <a title="Modifier" href="{{ path('edit-collaborateur', {'id': item.id}) }}" class="text-primary legitRipple"><i class="icon-pen position-left"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane fade has-padding" id="tab-demo3">
+            <span title="Ajouter un nouvel Sociétés" class="pull-right"><a href="{{ path('information_generale') }}" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-user-plus"></i></b> Ajouter</a></span>
+            <div class="datatable-scroll-wrap">
+                <div class="datatable-header">
+                    <div id="DataTables_Table_0_filter" class="dataTables_filter">
+                        <label><span>Filtrer:</span>
+                            <input type="search" class="" placeholder="Tapez pour filtrer..." aria-controls="DataTables_Table_0">
+                        </label>
+                    </div>
+                    <div class="dataTables_length" id="DataTables_Table_0_length">
+                        <label><span>Afficher:</span>
+                            <select name="DataTables_Table_0_length" aria-controls="DataTables_Table_1" class="select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+                <table class="table dataTable " id="DataTables_Table_1">
+                    <thead>
+                    <tr>
+                        <th class="text-center">Filtres</th>
+                        <th>Entité juridique</th>
+                        <th>Forme juridique</th>
+                        <th>Date de cloture</th>
+                        <th>Regime Fiscal</th>
+                        <th>Regime TVA</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {#{% for item in users %}#}
+                    <tr>
+                        <td class="text-center">
+                            <div class="">
+                                <a title="Modifier" href="{{ path('client_access1') }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
+                            </div>
+                        </td>
+                        <td>EKO</td>
+                        <td>EURL</td>
+                        <td>31/12/2018</td>
+                        <td><span class="label label-info">0 à 499k</span></td>
+                        <td><span class="label label-info">0 à 499k</span></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">
+                            <div class="">
+                                <a title="Modifier" href="{{ path('client_access1') }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
+                            </div>
+                        </td>
+                        <td>PITI CONSEIL</td>
+                        <td>EURL</td>
+                        <td>31/12/2018</td>
+                        <td><span class="label label-info">0 à 499k</span></td>
+                        <td><span class="label label-info">0 à 499k</span></td>
+                    </tr>
+                    {#{% endfor %}#}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane fade has-padding" id="tab-demo2">
+            {% include 'default/collaborateur_affectation.html.twig' %}
+        </div>
+        <div class="tab-pane fade has-padding" id="tab-demo4">
+
+        </div>
+        <div class="tab-pane fade has-padding" id="tab-demo5">
+
+        </div>
+        <div class="tab-pane fade has-padding" id="tab-demo6">
+            {% include 'default/importCFONB.html.twig' %}
+        </div>
+
+        <div class="tab-pane fade has-padding" id="tab-demo8">
+            {% include 'default/Facturation.html.twig' %}
+        </div>
+        <div class="tab-pane fade has-padding" id="tab-demo10">
+            {% include 'default/chiffer_affaire.html.twig' %}
+        </div>
+        <div class="tab-pane fade has-padding" id="tab-demo11">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <form action="#" class="form-horizontal">
+                        <div class="form-group">
+                            <label class=" col-sm-2 control-label">Année</label>
+                            <div class="col-sm-3">
+                                <input type="text" placeholder="2010" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="radio-inline">
+                                    <div class="choice">
+                                        <input type="radio" name="gender2" class="styled" checked="checked">
+                                    </div>
+                                    Par collaborateur
+                                </label>
+
+                                <label class="radio-inline">
+                                    <div class="choice">
+                                        <input type="radio" name="gender2" class="styled">
+                                    </div>
+                                    Par groupe
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

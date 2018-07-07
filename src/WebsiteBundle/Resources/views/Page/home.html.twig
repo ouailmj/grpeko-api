@@ -22,7 +22,11 @@
                                     <li class="nav-item"><a class="nav-link" href="#contact">CONTACT</a></li>
                                 </ul>
                                 <div class="sing-up-button d-lg-none">
-                                    <a href="#">SE CONNECTER</a>
+                                    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                                        <a href="{{ path('employee_index') }}">Dashboard</a>
+                                    {% else %}
+                                        <a href="{{ path('fos_user_security_login') }}">SE CONNECTER</a>
+                                    {% endif %}
                                 </div>
                             </div>
                         </nav>
@@ -31,7 +35,11 @@
                 <!-- Signup btn -->
                 <div class="col-12 col-lg-2">
                     <div class="sing-up-button d-none d-lg-block">
-                        <a href="#">SE CONNECTER</a>
+                        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                            <a href="{{ path('employee_index') }}">Dashboard</a>
+                        {% else %}
+                            <a href="{{ path('fos_user_security_login') }}">SE CONNECTER</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -136,10 +144,10 @@
                             La création d’entreprise est un parcours passionnant mais souvent complexe et toujours décisif pour votre avenir.
                             Lors de notre premier entretien, nous tâchons de :<br>
                             <ul>
-                            <li class="ilformat">Mesurer avec vous les points forts et les points faibles de votre projet</li>
-                            <li class="ilformat">Vous donner un avis professionnel et indépendant sur l’opportunité de poursuivre vos démarches</li>
-                            <li class="ilformat">Etablir avec vous un business plan, document fondateur qui démontre la viabilité de votre projet et trace votre route pour les années à venir.</li>
-                        </ul>
+                                <li class="ilformat">Mesurer avec vous les points forts et les points faibles de votre projet</li>
+                                <li class="ilformat">Vous donner un avis professionnel et indépendant sur l’opportunité de poursuivre vos démarches</li>
+                                <li class="ilformat">Etablir avec vous un business plan, document fondateur qui démontre la viabilité de votre projet et trace votre route pour les années à venir.</li>
+                            </ul>
                         </p>
                     </div>
                 </div>

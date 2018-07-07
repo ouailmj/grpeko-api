@@ -51,6 +51,15 @@ class Address
      */
     protected $email;
 
+
+    /**
+     * @var Person
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Person" ,inversedBy="currentAddress")
+     */
+   // protected $category;
+
+
     /**
      * @return string
      */
@@ -88,6 +97,22 @@ class Address
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * @return Person
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param Person $category
+     */
+    public function setCategory(Person $category)
+    {
+        $this->category = $category;
     }
     /**
      * @param string $description

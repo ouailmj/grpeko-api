@@ -1,14 +1,14 @@
-Napier Project
+EKO Project
 ========
 
-Extranet AXA.
+Groupe EKO.
 
 # Installation
 * Créer une base de données napier_db dans votre MySQL.
 
 * Cloner le projet dans votre répertoire de travail
 ```
- git clone https://github.com/multiinfo/napier-api.git
+ git clone https://github.com/multiinfo/groupeeko-api.git
 ```
 * Installer les dépendances
 ```
@@ -28,4 +28,4 @@ Extranet AXA.
 
 Vous pouvez maintenant accéder à l'application à l'adresse http://localhost:8000
 
-Si vous avez des problèmes vous pouvez créer un issue https://github.com/multiinfo/napier/issues/new pour expliquer votre problème.
+Si vous avez des problèmes vous pouvez créer un issue https://github.com/multiinfo/groupeeko-api/issues/new pour expliquer votre problème.

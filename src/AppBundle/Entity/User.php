@@ -22,7 +22,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * User.
  *
- * @ORM\Table(name="app_user")
+ * @ORM\Table(name="app__user")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  * @ORM\HasLifecycleCallbacks()
  * @UniqueEntity("email")
@@ -57,16 +57,9 @@ class User extends BaseUser
     protected $googleId = '';
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=10, nullable=true)
-     */
-    protected $initials;
-
-    /**
      * @var Person
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Person" ,mappedBy="userAccount" ,cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Person", mappedBy="userAccount", cascade={"persist", "remove"})
      */
     protected $person;
 
@@ -103,26 +96,6 @@ class User extends BaseUser
     }
 
     /**
-     * @return string
-     */
-    public function getInitials()
-    {
-        return $this->initials;
-    }
-
-    /**
-     * @param string $initials
-     *
-     * @return User
-     */
-    public function setInitials(string $initials)
-    {
-        $this->initials = $initials;
-
-        return $this;
-    }
-
-    /**
      * @return Person
      */
     public function getPerson()
@@ -137,6 +110,4 @@ class User extends BaseUser
     {
         $this->person = $person;
     }
-
-
 }

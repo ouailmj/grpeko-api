@@ -76,38 +76,6 @@
             <div class="content">
                 <div class="row">
                     <div class="col-md-12">
-                        {% if app.session.getFlashBag().has('warning') %}
-                            {% for message in app.session.getFlashBag().get('warning') %}
-                                <div class="alert alert-warning no-border">
-                                    <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
-                                    <strong>Attention !</strong> {{ message }}
-                                </div>
-                            {% endfor %}
-                        {% endif %}
-                        {% if app.session.getFlashBag().has('error') %}
-                            {% for message in app.session.getFlashBag().get('error') %}
-                                <div class="alert alert-danger no-border" role="alert">
-                                    <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
-                                    <strong>Erreur !</strong> {{ message }}
-                                </div>
-                            {% endfor %}
-                        {% endif %}
-                        {% if app.session.getFlashBag().has('info') %}
-                            {% for message in app.session.getFlashBag().get('info') %}
-                                <div class="alert alert-info no-border" role="alert">
-                                    <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
-                                    {{ message }}
-                                </div>
-                            {% endfor %}
-                        {% endif %}
-                        {% if app.session.getFlashBag().has('success') %}
-                            {% for message in app.session.getFlashBag().get('success') %}
-                                <div class="alert alert-success no-border" role="alert">
-                                    <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
-                                    <strong>{{ message }}</strong>
-                                </div>
-                            {% endfor %}
-                        {% endif %}
                     </div>
                 </div>
                 {% block content %}{% endblock %}

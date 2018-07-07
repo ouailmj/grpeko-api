@@ -22,36 +22,55 @@ class CompanyType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-               ->add('socialReason', TextType::class, array(
+               ->add('legalName', TextType::class, array(
                    'label' => 'Raison Sociale:',
                    'required'  => true
                ))
                ->add('legalForm', ChoiceType::class, array(
                    'label' => 'Forme Juridique:',
+                   //  'label' => false,
                    'choices'  => array(
                        'SARL' => 'SARL',
+                       'EURL' => 'EURL',
+                       'SELARL' => 'SELARL',
                        'SA' => 'SA',
+                       'SAS' => 'SAS',
+                       'SASU' => 'SASU',
+                       'SARL' => 'SARL',
+                       'SNC' => 'SNC',
+                       'SCP' => 'SCP',
                    ),
-
+                    'required'=>true
                ))
                ->add('taxationRegime', ChoiceType::class, array(
                    'label' => 'Régime d\'imposition:',
-                   'required'  => true
+                   'choices'=>array(
+                       'micro-entreprise'=>'micro-entreprise',
+                       'l’auto-entreprise'=>'l’auto-entreprise',
+                       'réel simplifié'=>'réel simplifié',
+                       'réel normal'=>'réel normal',
+                   ),
+                   'required'  => false
                ))
                ->add('vatSystem', ChoiceType::class, array(
                    'label' => 'Régime de TVA:',
-                   'required'  => true
+                   'choices'=>array(
+                       'le régime du réel normal de TVA '=>'le régime du réel normal de TVA ',
+                       'le régime simplifié d’imposition à la TVA'=>'le régime simplifié d’imposition à la TVA',
+                       'le régime de la franchise en base de TVA'=>'le régime de la franchise en base de TVA',
+                       ),
+                   'required'  => false
                ))
                ->add('currentAddress', AdresseCurrentType::class)
 
-               ->add('siegeAddress', AdresseType::class,[
+               ->add('SieAddress', AdresseType::class,[
                    'label' => false,
                ])
 
               ->add('oldAddresses', CollectionType::class,
                    [
                        'entry_type'   => AdresseType::class,
-                       'label'        => 'Souscriptions aux produits',
+                       'label'        => 'old adresses',
                        'allow_add'    => true,
                        'allow_delete' => true,
                        'prototype'    => true,
@@ -62,38 +81,77 @@ class CompanyType extends AbstractType
                    ])
                ->add('apeCode', ChoiceType::class, array(
                     'label' => 'Code APE:',
-                    'choices' => array('In Stock' => true, 'Out of Stock' => false),
-                    'required'  => true
+                    'choices' => array(
+                        '0112Z'=>'0112Z',
+                        '0113Z'=>'0113Z',
+                        '0114Z'=>'0114Z',
+                        '0115Z'=>'0115Z',
+                        '0116Z'=>'0116Z',
+                        '0119Z'=>'0119Z',
+                        '0121Z'=>'0121Z',
+                        '0122Z'=>'0122Z',
+                        '0123Z'=>'0123Z',
+                        '0124Z'=>'0124Z',
+                        '0125Z'=>'0125Z',
+                        '0126Z'=>'0126Z',
+                        '0127Z'=>'0127Z',
+                        '0128Z'=>'0128Z',
+                        '...'=>'...'
+                    ),
+                    'required'  => false
                 ))
                ->add('mainActivity', TextType::class, array(
-                   'label' => 'Activité principale:',
-                   'required'  => true
+                    'label' => false,
+                    'label' => 'Activité principale:',
+                   'required'  => false
                ))
                 ->add('siretNumber', NumberType::class, array(
                     'label' => 'N° SIRET:',
-                    'required'  => true
+                    'required'  => false
                 ))
                 ->add('sirenNumber', NumberType::class, array(
                     'label' => 'N° SIREN:',
-                    'required'  => true
+                    'required'  => false
                 ))
                 ->add('intraCommunityVAT', TextType::class, array(
                     'label' => 'N° TVA Intra Communautaire',
-                    'required'  => true
+                    'required'  => false
                 ))
                 ->add('nbActions', NumberType::class, array(
                     'label' => 'Nombre d\'actions ou parts socials',
-                    'required'  => true
+                    'required'  => false
                 ))
                 ->add('capitalSocial', NumberType::class, array(
                     'label' => 'Capital social:',
-                    'required'  => true
+                    'required'  => false
                 ))
-              ->add('formerAccountant', FormerAccountantType::class)
+                ->add('formerAccountant', FormerAccountantType::class)
 
-              ->add('Enregistrer', SubmitType::class, array('attr' => array('class' => 'btn-success','style' => 'float:right')))
-        ;
+
+              //  if ($options['add_contact_data']){
+                //    $builder
+                ->add('contacts', ContactClientType::class,array(
+              ))
+
+                ->add('fiscalYears', CollectionType::class,
+                [
+                    'entry_type'   => FiscalType::class,
+                    'label'        => false,
+                    'allow_add'    => true,
+                    'allow_delete' => true,
+                    'prototype'    => true,
+                    'required'     => true,
+                    'attr'         => [
+                        'class' => "add-fiscal-collection",
+                    ],
+                ])
+
+                ->add('Enregistrer', SubmitType::class, array('attr' => array('class' => 'btn-success','style' => 'float:right')));
+
+               // }
+
     }
+
 
     /**
      * {@inheritdoc}
@@ -102,10 +160,8 @@ class CompanyType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'AppBundle\Entity\Company',
-            'require_password'  => true,
-            'company'      => null
+            'add_contact_data'=>true,
         ));
-        $resolver->setRequired('company');
     }
 
     /**

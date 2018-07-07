@@ -3,6 +3,14 @@
 {% block form_label -%}
     {%- set label_attr = label_attr|merge({class: (label_attr.class|default('') ~ ' control-label col-lg-2 text-semibold')|trim}) -%}
     {{- parent() -}}
+    {% block stylesheets %}
+        <style>
+                label.required:after {
+                    content: "    * " !important;
+                    color: red;
+                }
+        </style>
+    {%- endblock %}
 {%- endblock form_label %}
 
 {% block form_row -%}
