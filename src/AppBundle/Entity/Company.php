@@ -123,12 +123,12 @@ class Company extends LegalEntity
     protected $code;
 
     /**
-     * @var string
+     * @var CustomerStatus
      *
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\CustomerStatus" ,mappedBy="company" ,cascade={"persist", "remove"}))
      *
      */
-    protected $status;
+    protected $customerStatus;
 
     /**
      * @var string
@@ -239,13 +239,6 @@ class Company extends LegalEntity
     protected $fiscalYears;
 
     /**
-     * @var Mission[] | ArrayCollection
-     *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Mission" ,mappedBy="company" ,cascade={"persist", "remove"}))
-     */
-    protected $missions;
-
-    /**
      * @var Customer
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Customer" ,mappedBy="company" ,cascade={"persist", "remove"}))
@@ -264,11 +257,6 @@ class Company extends LegalEntity
     protected $formerAccountant;
 
 
-    /**
-     * @var EnterRelation
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\EnterRelation" ,mappedBy="company" ,cascade={"persist"})
-     */
-    private $enterRelation;
 
     /**
      * Company constructor.
@@ -475,21 +463,7 @@ class Company extends LegalEntity
         $this->code = $code;
     }
 
-    /**
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
 
-    /**
-     * @param string $status
-     */
-    public function setStatus(string $status)
-    {
-        $this->status = $status;
-    }
 
     /**
      * @return string
@@ -763,21 +737,6 @@ class Company extends LegalEntity
         $this->formerAccountant = $formerAccountant;
     }
 
-    /**
-     * @return EnterRelation
-     */
-    public function getEnterRelation()
-    {
-        return $this->enterRelation;
-    }
-
-    /**
-     * @param EnterRelation $enterRelation
-     */
-    public function setEnterRelation(EnterRelation $enterRelation)
-    {
-        $this->enterRelation = $enterRelation;
-    }
 
     /**
      * @return Address
@@ -793,6 +752,22 @@ class Company extends LegalEntity
     public function setSiegeAddress(Address $siegeAddress)
     {
         $this->siegeAddress = $siegeAddress;
+    }
+
+    /**
+     * @return CustomerStatus
+     */
+    public function getCustomerStatus(): CustomerStatus
+    {
+        return $this->customerStatus;
+    }
+
+    /**
+     * @param CustomerStatus $customerStatus
+     */
+    public function setCustomerStatus(CustomerStatus $customerStatus)
+    {
+        $this->customerStatus = $customerStatus;
     }
 
 

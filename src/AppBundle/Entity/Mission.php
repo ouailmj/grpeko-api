@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="mission")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MissionRepository")
  */
-class Mission
+class Mission extends Product
 {
     /**
      * @var int
@@ -20,56 +20,14 @@ class Mission
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="startDate", type="datetime")
-     */
-    private $startDate;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="endDate", type="datetime")
-     */
-    private $endDate;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="closeDate", type="datetime")
-     */
-    private $closeDate;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="firstExeciceStartDate", type="datetime")
-     */
-    private $firstExeciceStartDate;
-
-    /**
-     * @var Company
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company", inversedBy="missions")
-     */
-    private $company;
+    protected $id;
 
     /**
      * @var FiscalYear [] | ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\FiscalYear", mappedBy="mission")
      */
-    private $exercices;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="lastExerciceEndDate", type="datetime")
-     */
-    private $lastExerciceEndDate;
+    private $fiscalYears;
 
 
     /**
@@ -90,166 +48,39 @@ class Mission
     }
 
     /**
-     * Set startDate.
-     *
-     * @param \DateTime $startDate
-     *
-     * @return Mission
+     * @return FiscalYear[]|ArrayCollection
      */
-    public function setStartDate($startDate)
+    public function getFiscalYears()
     {
-        $this->startDate = $startDate;
-
-        return $this;
+        return $this->fiscalYears;
     }
 
     /**
-     * Get startDate.
-     *
-     * @return \DateTime
+     * @param FiscalYear[]|ArrayCollection $fiscalYears
      */
-    public function getStartDate()
+    public function setFiscalYears($fiscalYears)
     {
-        return $this->startDate;
+        $this->fiscalYears = $fiscalYears;
     }
 
-    /**
-     * Set endDate.
-     *
-     * @param \DateTime $endDate
-     *
-     * @return Mission
-     */
-    public function setEndDate($endDate)
-    {
-        $this->endDate = $endDate;
-
-        return $this;
-    }
 
     /**
-     * Get endDate.
-     *
-     * @return \DateTime
-     */
-    public function getEndDate()
-    {
-        return $this->endDate;
-    }
-
-    /**
-     * Set closeDate.
-     *
-     * @param \DateTime $closeDate
-     *
-     * @return Mission
-     */
-    public function setCloseDate($closeDate)
-    {
-        $this->closeDate = $closeDate;
-
-        return $this;
-    }
-
-    /**
-     * Get closeDate.
-     *
-     * @return \DateTime
-     */
-    public function getCloseDate()
-    {
-        return $this->closeDate;
-    }
-
-    /**
-     * Set firstExeciceStartDate.
-     *
-     * @param \DateTime $firstExeciceStartDate
-     *
-     * @return Mission
-     */
-    public function setFirstExeciceStartDate($firstExeciceStartDate)
-    {
-        $this->firstExeciceStartDate = $firstExeciceStartDate;
-
-        return $this;
-    }
-
-    /**
-     * Get firstExeciceStartDate.
-     *
-     * @return \DateTime
-     */
-    public function getFirstExeciceStartDate()
-    {
-        return $this->firstExeciceStartDate;
-    }
-
-    /**
-     * Set lastExerciceEndDate.
-     *
-     * @param \DateTime $lastExerciceEndDate
-     *
-     * @return Mission
-     */
-    public function setLastExerciceEndDate($lastExerciceEndDate)
-    {
-        $this->lastExerciceEndDate = $lastExerciceEndDate;
-
-        return $this;
-    }
-
-    /**
-     * Get lastExerciceEndDate.
-     *
-     * @return \DateTime
-     */
-    public function getLastExerciceEndDate()
-    {
-        return $this->lastExerciceEndDate;
-    }
-
-    /**
-     * @return Company
-     */
-    public function getCompany()
-    {
-        return $this->company;
-    }
-
-    /**
-     * @param Company $company
-     */
-    public function setCompany(Company $company)
-    {
-        $this->company = $company;
-    }
-
-    /**
-     * @return FiscalYear []|ArrayCollection
-     */
-    public function getExercices()
-    {
-        return $this->exercices;
-    }
-
-    /**
-     * @param $exercice
+     * @param $fiscalYear
      * @return $this
      */
-    public function addExercice($exercice)
+    public function addFiscalYear($fiscalYear)
     {
-        $this->exercices->add($exercice);
+        $this->fiscalYears->add($fiscalYear);
         return $this;
     }
 
     /**
-     * @param $exercice
+     * @param $fiscalYear
      * @return bool
      */
-    public function removeExercice($exercice)
+    public function removeFiscalYear($fiscalYear)
     {
-        return $this->exercices->removeElement($exercice);
+        return $this->fiscalYears->removeElement($fiscalYear);
 
     }
 

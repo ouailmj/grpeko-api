@@ -27,7 +27,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\DiscriminatorMap({
  *     "person"="Person",
  *     "employee"="Employee",
- *     "customer"="Customer"
+ *     "customer"="Customer",
+ *     "contact"="Contact",
  * })
  *
  * @ORM\HasLifecycleCallbacks()
@@ -101,10 +102,10 @@ class Person
     protected $postalCode;
 
     /**
-     * @ManyToMany(targetEntity="AppBundle\Entity\Address")
-     * @JoinTable(name="person_address",
-     *      joinColumns={@JoinColumn(name="person_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="address_id", referencedColumnName="id", unique=true)}
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Address")
+     * @ORM\JoinTable(name="person_address",
+     *      joinColumns={@ORM\JoinColumn(name="person_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="address_id", referencedColumnName="id", unique=true)}
      *      )
      */
     private $addresses;

@@ -106,16 +106,16 @@ class FiscalYear
 
     /**
      * @var Mission
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Mission", inversedBy="exercices")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Mission", inversedBy="fiscalYears")
      */
     protected $mission;
 
     /**
      * @var Mission[] | ArrayCollection
-     * @ManyToMany(targetEntity="Mission")
-     * @JoinTable(name="fiscal_year_mission",
-     *      joinColumns={@JoinColumn(name="fiscal_year_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="mission_id", referencedColumnName="id", unique=true)}
+     * @ORM\ManyToMany(targetEntity="Mission")
+     * @ORM\JoinTable(name="fiscal_year_mission",
+     *      joinColumns={@ORM\JoinColumn(name="fiscal_year_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="mission_id", referencedColumnName="id", unique=true)}
      *      )
      */
     protected $missions;
