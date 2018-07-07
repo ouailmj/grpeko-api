@@ -10,6 +10,9 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="{{ path('employee_index') }}">Collaborateurs</a></li>
                 <li class="active"><a href="{{ path('affectation_index') }}" data-toggle="tab" class="legitRipple" aria-expanded="true">Affectations</a></li>
+                <li class="active"><a href="{{ path('company_index') }}" data-toggle="tab" class="legitRipple" aria-expanded="true">Gestion de cabinet</a></li>
+
+
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle legitRipple" data-toggle="dropdown" aria-expanded="false">
                         <i class="icon-file-stats2 position-left"> </i>
@@ -74,7 +77,7 @@
                             </td>
                             <td>{{ item.legalName}}</td>
                             <td>
-                                O1/01/2011
+                                {{ item.legalName}}
                             </td>
                             <td>
                                 31/12/2019
@@ -95,54 +98,6 @@
                             </td>
                         </tr>
                     {% endfor %}
-                    <tr role="row" class="testok">
-                        <td>
-                            <div class="">
-                                <a title="Modifier" href="" class=" legitRipple"><i class="icon-pen position-left"></i></a>
-                            </div>
-                        </td>
-                        <td>WEBCAM-PROFS.FR</td>
-                        <td>01/01/2010</td>
-                        <td>31/12/2018</td>
-                        <td>
-                            <span class="label label-info">ANB</span>
-                        </td>
-                        <td>
-                            <select data-placeholder="ANBDH" class="select select2-hidden-accessible class="col-md-6" tabindex="-1" aria-hidden="true">
-                            <option>MAR</option>
-                            <option>OPAM</option>
-                            <option>JUS</option>
-                            <option>OLSQ</option>
-                            </select>
-                        </td>
-                        <td>
-                            <input type="checkbox">
-                        </td>
-                    </tr>
-                    <tr role="row" class="testok">
-                        <td>
-                            <div class="">
-                                <a title="Modifier" href="" class=" legitRipple"><i class="icon-pen position-left"></i></a>
-                            </div>
-                        </td>
-                        <td>IDIAL AUTO</td>
-                        <td>01/01/2013</td>
-                        <td>31/12/2017</td>
-                        <td>
-                            <span class="label label-info">ANB</span>
-                        </td>
-                        <td>
-                            <select data-placeholder="ANBDH" class="select select2-hidden-accessible class="col-md-6" tabindex="-1" aria-hidden="true">
-                            <option>MAR</option>
-                            <option>OPAM</option>
-                            <option>JUS</option>
-                            <option>OLSQ</option>
-                            </select>
-                        </td>
-                        <td>
-                            <input type="checkbox">
-                        </td>
-                    </tr>
                     </tbody>
                 </table>
             </div>
@@ -183,6 +138,9 @@
                     url:'{{path('affect')}}',
                     method:"GET",
                     data:{name:name},
+                    success: function(json) {
+                        alert(JSON.stringify(console.log(json)));
+                    }
                 });
             });
         </script>

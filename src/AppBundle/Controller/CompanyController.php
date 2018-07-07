@@ -40,12 +40,13 @@ class CompanyController extends BaseController
         $company = new Company();
         $form = $this->createForm('AppBundle\Form\CompanyType', $company);
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() ) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($company);
             $em->flush();
             $this->addFlash('success', 'Votre opération a été exécutée avec succès');
         }
+
         return $this->render('Company/new.html.twig', array(
             'company' => $company,
             'form' => $form->createView(),
@@ -63,7 +64,7 @@ class CompanyController extends BaseController
         $deleteForm = $this->createDeleteForm($company);
         $editForm = $this->createForm('AppBundle\Form\CompanyType', $company);
         $editForm->handleRequest($request);
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
+        if ($editForm->isSubmitted() ) {
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success', 'Votre opération a été exécutée avec succès');
         }

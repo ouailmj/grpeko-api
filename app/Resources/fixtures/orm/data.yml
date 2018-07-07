@@ -62,4 +62,16 @@ AppBundle\Entity\Employee:
         manager: '@employee_*'
         jobPosition: '@collaborateur'
 
+AppBundle\Entity\Assignment:
+    assignment_{0..100}:
+        employee_: '@employee_*'
+        postalCode: '<postcode()>'
+        description: '<address()>'
+        email: '<email()>'
 
+AppBundle\Entity\FiscalYear:
+    assignment_{0..100}:
+        employee_: '@employee_*'
+        postalCode: '<postcode()>'
+        description: '<address()>'
+        email: '<email()>'

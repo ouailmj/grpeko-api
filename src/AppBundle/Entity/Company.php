@@ -227,7 +227,7 @@ class Company extends LegalEntity
     /**
      * @var FiscalYear[] | ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\FiscalYear" ,mappedBy="company" ,cascade={"persist", "remove"}))
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\FiscalYear" ,mappedBy="company" ,cascade={"persist", "remove"})
      */
     protected $fiscalYears;
 

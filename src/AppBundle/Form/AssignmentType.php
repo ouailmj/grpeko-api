@@ -2,24 +2,24 @@
 /**
  * Created by PhpStorm.
  * User: Bijotri
- * Date: 13/06/2018
- * Time: 10:55
+ * Date: 03/07/2018
+ * Time: 15:24
  */
 
 namespace AppBundle\Form;
 
-use AppBundle\Entity\Company;
-use AppBundle\Entity\FiscalYear;
+use AppBundle\Entity\Assignment;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class FiscalType extends AbstractType
+class AssignmentType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -27,20 +27,18 @@ class FiscalType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('vatSystem', TextType::class, array(
-                'label' => 'Régime d\'imposition'
-            ))
 
-            ->add('taxationRegime', TextType::class, array(
-                'label' => 'Régime de TVA'
-            ))
-
-            ->add('assignment', AssignmentType::class, array(
-                'label' => false
+            ->add('employee', EntityType::class, array(
+                'label' => 'Effectue un collaborateur',
+                'class' => 'AppBundle\Entity\Employee',
+                'choice_label' => function ($manager) {
+                    return $manager->getInitials().' '.$manager->getLastName().' '.$manager->getFirstName();
+                },
+                'choices_as_values' => true,
+                'required' => true,
             ))
         ;
     }
-
 
 
     /**
@@ -50,7 +48,7 @@ class FiscalType extends AbstractType
     {
         $resolver->setDefaults(array(
 
-            'data_class'    => 'AppBundle\Entity\FiscalYear',
+            'data_class'    => 'AppBundle\Entity\Assignment',
             'forEdit'       => false,
             'advisories'    => array()
         ));
@@ -62,7 +60,7 @@ class FiscalType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_fiscalyear';
+        return 'appbundle_assignment';
     }
 
 

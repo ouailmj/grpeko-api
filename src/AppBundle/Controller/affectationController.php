@@ -8,12 +8,15 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Company;
 use AppBundle\Entity\Employee;
+use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Model\EmployeeManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Affectation controller.
@@ -53,20 +56,43 @@ class affectationController extends BaseController
      */
     public function affectationAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-        $id = $em->getRepository('AppBundle\Entity\Company')->find($id);
 
-        if (!$id) {
-            throw $this->createNotFoundException('Unable to find Demand entity.');
-        }
-
-        $id->setStatusstatus = ('20');
-        $em->persist($id);
-        $em->flush();
-        return $this->redirect($this->generateUrl('listing'));
         $name=$request->query->get('name');
-        dump($name);die;
+//        $company = $this->getDoctrine()
+//            ->getRepository(Company::class)
+//            ->find($name);
+//
+//        if (!$company) {
+//            throw $this->createNotFoundException(
+//                'No product found for id '.$name
+//            );
+//        }
+//        return new JsonResponse($company->getLegalName());
+        $entityManager = $this->getDoctrine()->getManager();
+        $company = $entityManager->getRepository(Company::class)->find($name);
 
+        if (!$company) {
+            throw $this->createNotFoundException(
+                'No product found for id '.$name
+            );
+        }
+        $company->getFiscalYears()->getEmployee()->setLegalName();
+        $company->setLegalName('test');
+        $entityManager->flush();
+
+        return new Response("Dakchi mzn !!");
+
+        // return $this->redirect($this->generateUrl('listing'));
+//        $em = $this->getDoctrine()->getManager();
+//        $id = $em->getRepository('AppBundle\Entity\Company')->find($id);
+//
+//        if (!$id) {
+//            throw $this->createNotFoundException('Unable to find Demand entity.');
+//        }
+//
+//        $id->setStatusstatus = ('20');
+//        $em->persist($id);
+//        $em->flush();
     }
 
 
