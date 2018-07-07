@@ -145,7 +145,6 @@ class CompanyType extends AbstractType
                         'class' => "add-fiscal-collection",
                     ],
                 ])
-
                 ->add('Enregistrer', SubmitType::class, array('attr' => array('class' => 'btn-success','style' => 'float:right')));
 
                // }

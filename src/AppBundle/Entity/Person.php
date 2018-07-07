@@ -27,7 +27,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\DiscriminatorMap({
  *     "person"="Person",
  *     "employee"="Employee",
- *     "customer"="Customer"
+ *     "customer"="Customer",
+ *     "contact"="Contact",
  * })
  *
  * @ORM\HasLifecycleCallbacks()
