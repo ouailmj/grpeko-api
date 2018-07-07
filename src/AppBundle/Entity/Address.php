@@ -57,7 +57,7 @@ class Address
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Person" ,inversedBy="currentAddress")
      */
-    protected $category;
+   // protected $category;
 
 
     /**

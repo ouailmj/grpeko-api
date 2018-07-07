@@ -27,9 +27,23 @@ class Contact extends Person
     /**
      * @var Company
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Company" ,inversedBy="contacts" ,cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company" ,inversedBy="contacts" ,cascade={"persist", "remove"})
      */
     protected $company;
+
+    /**
+     * @var Child [] | ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Child",  mappedBy="contact")
+     */
+    private $children;
+
+    /**
+     * @var Wedding [] | ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Wedding", mappedBy="contact")
+     */
+    private $weddings;
 
 
     /**
@@ -185,90 +199,6 @@ class Contact extends Person
      */
     private $email;
 
-    /**
-     * @var Wedding [] | ArrayCollection
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Wedding", mappedBy="contact",cascade={"persist","remove"})
-     */
-    private $weddings;
-
-    /**
-     * @var child [] | ArrayCollection
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Child", mappedBy="contact",cascade={"persist","remove"})
-     */
-    private $childs;
-
-
-    /**
-     * @param $childs
-     * @return $this
-     */
-    public function addChild($child)
-    {
-        $this->childs->add($child);
-        return $this;
-    }
-
-    /**
-     * @param $childs
-     * @return bool
-     */
-    public function removeChild($child)
-    {
-        return $this->childs->removeElement($child);
-
-    }
-
-    /**
-     * @param $weddings
-     * @return $this
-     */
-    public function addWedding($wedding)
-    {
-        $this->weddings->add($wedding);
-        return $this;
-    }
-
-    /**
-     * @param $weddings
-     * @return bool
-     */
-    public function removeWedding($wedding)
-    {
-        return $this->weddings->removeElement($wedding);
-
-    }
-
-    /**
-     * @return ArrayCollection|Wedding[]
-     */
-    public function getWeddings()
-    {
-        return $this->weddings;
-    }
-
-    /**
-     * @param ArrayCollection|Wedding[] $weddings
-     */
-    public function setWeddings($weddings)
-    {
-        $this->weddings = $weddings;
-    }
-
-    /**
-     * @return ArrayCollection|child[]
-     */
-    public function getChilds()
-    {
-        return $this->childs;
-    }
-
-    /**
-     * @param ArrayCollection|child[] $childs
-     */
-    public function setChilds($childs)
-    {
-        $this->childs = $childs;
-    }
 
     /**
      * @return string
@@ -658,5 +588,60 @@ class Contact extends Person
         $this->company = $company;
     }
 
+    /**
+     * @return Child[]|ArrayCollection
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
+     * @param Child[]|ArrayCollection $children
+     */
+    public function setChildren($children)
+    {
+        $this->children = $children;
+    }
+
+
+    public function addChild(Child $child)
+    {
+        $this->children->add($child);
+        return $this;
+    }
+
+    public function removeChild(Child $child)
+    {
+        return $this->children->removeElement($child);
+    }
+
+    /**
+     * @return Wedding[]|ArrayCollection
+     */
+    public function getWeddings()
+    {
+        return $this->weddings;
+    }
+
+    /**
+     * @param Wedding[]|ArrayCollection $weddings
+     */
+    public function setWeddings($weddings)
+    {
+        $this->weddings = $weddings;
+    }
+
+
+    public function addWedding(Wedding $wedding)
+    {
+        $this->weddings->add($wedding);
+        return $this;
+    }
+
+    public function removeWedding(Wedding $wedding)
+    {
+        return $this->weddings->removeElement($wedding);
+    }
 
 }

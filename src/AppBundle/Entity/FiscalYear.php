@@ -12,6 +12,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -34,28 +35,28 @@ class FiscalYear
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="startDate", type="datetime",nullable=true)
+     * @ORM\Column(name="startDate", type="datetimetz")
      */
     protected $startDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="closeDate", type="datetime",nullable=true)
+     * @ORM\Column(name="closeDate", type="datetimetz")
      */
     protected $closeDate;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="status", type="string", length=20,nullable=true)
+     * @ORM\Column(name="status", type="string", length=10)
      */
     protected $status;
 
     /**
      * @var integer
      *
-     * @ORM\Column(type="integer",nullable=true)
+     * @ORM\Column(type="integer")
      */
     protected $year;
 
@@ -105,50 +106,28 @@ class FiscalYear
 
     /**
      * @var Mission
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Mission", inversedBy="exercices")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Mission", inversedBy="fiscalYears")
      */
     protected $mission;
 
     /**
-     * @var array
-     *
-     * @ORM\Column(type="array",nullable=TRUE))
+     * @var Mission[] | ArrayCollection
+     * @ORM\ManyToMany(targetEntity="Mission")
+     * @ORM\JoinTable(name="fiscal_year_mission",
+     *      joinColumns={@ORM\JoinColumn(name="fiscal_year_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="mission_id", referencedColumnName="id", unique=true)}
+     *      )
      */
-
-    protected $Exercices_comptables;
-
+    protected $missions;
 
     /**
-     * @return Mission
+     * FiscalYear constructor.
      */
-    public function getMission()
+    public function __construct()
     {
-        return $this->mission;
+        $this->missions = new ArrayCollection();
     }
 
-    /**
-     * @param Mission $mission
-     */
-    public function setMission(Mission $mission)
-    {
-        $this->mission = $mission;
-    }
-
-    /**
-     * @return array
-     */
-    public function getExercicesComptables()
-    {
-        return $this->Exercices_comptables;
-    }
-
-    /**
-     * @param array $Exercices_comptables
-     */
-    public function setExercicesComptables(array $Exercices_comptables)
-    {
-        $this->Exercices_comptables = $Exercices_comptables;
-    }
 
     /**
      * Get id.
@@ -235,7 +214,7 @@ class FiscalYear
     /**
      * @return string
      */
-    public function getTaxationRegime()
+    public function getTaxationRegime(): string
     {
         return $this->taxationRegime;
     }
@@ -251,7 +230,7 @@ class FiscalYear
     /**
      * @return string
      */
-    public function getVatSystem()
+    public function getVatSystem(): string
     {
         return $this->vatSystem;
     }
@@ -267,7 +246,7 @@ class FiscalYear
     /**
      * @return string
      */
-    public function getTaxSystem()
+    public function getTaxSystem(): string
     {
         return $this->taxSystem;
     }
@@ -283,7 +262,7 @@ class FiscalYear
     /**
      * @return int
      */
-    public function getYear()
+    public function getYear(): int
     {
         return $this->year;
     }
@@ -299,7 +278,7 @@ class FiscalYear
     /**
      * @return Company
      */
-    public function getCompany()
+    public function getCompany(): Company
     {
         return $this->company;
     }
@@ -315,7 +294,7 @@ class FiscalYear
     /**
      * @return Assignment
      */
-    public function getAssignment()
+    public function getAssignment(): Assignment
     {
         return $this->assignment;
     }
@@ -328,6 +307,39 @@ class FiscalYear
         $this->assignment = $assignment;
     }
 
+    /**
+     * @return Mission[]
+     */
+    public function getMissions(): array
+    {
+        return $this->missions;
+    }
 
+    /**
+     * @param Mission[] $missions
+     */
+    public function setMissions(array $missions)
+    {
+        $this->missions = $missions;
+    }
+
+    /**
+     * @param Mission $mission
+     * @return $this
+     */
+    public function addMission(Mission $mission)
+    {
+        $this->missions->add($mission);
+        return $this;
+    }
+
+    /**
+     * @param Mission $mission
+     * @return bool
+     */
+    public function removeMission(Mission $mission)
+    {
+        return $this->missions->removeElement($mission);
+    }
 
 }

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: nejjarimouad
- * Date: 7/6/18
- * Time: 21:58
- */
 
 namespace AppBundle\Entity;
 
@@ -16,61 +10,204 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="child")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ChildRepository")
  */
-
 class Child
 {
-
     /**
      * @var int
+     *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-
     private $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="lastName", type="string", length=255)
+     */
+    private $lastName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="firstName", type="string", length=255)
+     */
+    private $firstName;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="birthDate", type="datetime")
+     */
+    private $birthDate;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="deathDate", type="datetime")
+     */
+    private $deathDate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="age", type="string", length=255)
+     */
+    private $age;
+
+    /**
      * @var Contact
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Contact", inversedBy="child",cascade={"persist","remove"})
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Contact" ,inversedBy="children")
      */
-
-    protected $contact;
+    private $contact;
 
     /**
-     * @var string
-     * @ORM\Column(name="lastName" ,type="string", nullable=true)
+     * Get id.
+     *
+     * @return int
      */
-
-    protected $lastName;
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
-     * @var string
-     * @ORM\Column(name="firstName", type="string", nullable=true)
+     * Set lastName.
+     *
+     * @param string $lastName
+     *
+     * @return Child
      */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
 
-    protected $firstName;
+        return $this;
+    }
 
     /**
-     * @var \DateTime
-     * @ORM\Column(name="birthDate", type="datetime",nullable=true)
+     * Get lastName.
+     *
+     * @return string
      */
-
-    protected $birthDate;
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
 
     /**
-     * @var \DateTime
-     * @ORM\Column(name="deathDate", type="datetime",nullable=true)
+     * Set firstName.
+     *
+     * @param string $firstName
+     *
+     * @return Child
      */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
 
-    protected $deathDate;
+        return $this;
+    }
 
     /**
-     * @var integer
-     * @ORM\Column(name="age", type="integer",nullable=true)
+     * Get firstName.
+     *
+     * @return string
      */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
 
-    protected $age;
+    /**
+     * Set birthDate.
+     *
+     * @param \DateTime $birthDate
+     *
+     * @return Child
+     */
+    public function setBirthDate($birthDate)
+    {
+        $this->birthDate = $birthDate;
 
+        return $this;
+    }
+
+    /**
+     * Get birthDate.
+     *
+     * @return \DateTime
+     */
+    public function getBirthDate()
+    {
+        return $this->birthDate;
+    }
+
+    /**
+     * Set deathDate.
+     *
+     * @param \DateTime $deathDate
+     *
+     * @return Child
+     */
+    public function setDeathDate($deathDate)
+    {
+        $this->deathDate = $deathDate;
+
+        return $this;
+    }
+
+    /**
+     * Get deathDate.
+     *
+     * @return \DateTime
+     */
+    public function getDeathDate()
+    {
+        return $this->deathDate;
+    }
+
+    /**
+     * Set age.
+     *
+     * @param string $age
+     *
+     * @return Child
+     */
+    public function setAge($age)
+    {
+        $this->age = $age;
+
+        return $this;
+    }
+
+    /**
+     * Get age.
+     *
+     * @return string
+     */
+    public function getAge()
+    {
+        return $this->age;
+    }
+
+    /**
+     * @return Contact
+     */
+    public function getContact(): Contact
+    {
+        return $this->contact;
+    }
+
+    /**
+     * @param Contact $contact
+     */
+    public function setContact(Contact $contact)
+    {
+        $this->contact = $contact;
+    }
 
 
 }
