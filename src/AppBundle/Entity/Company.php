@@ -11,7 +11,7 @@
  */
 
 namespace AppBundle\Entity;
-use Symfony\Component\Validator\Constraints as Assert;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -23,6 +23,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Company extends LegalEntity
 {
+
     /**
      * @var string
      *
@@ -111,7 +112,7 @@ class Company extends LegalEntity
      * @ORM\Column(type="string", length=255, nullable=true)
      *
      */
-    protected $code;
+    protected $socialReason;
 
     /**
      * @var string
@@ -119,7 +120,15 @@ class Company extends LegalEntity
      * @ORM\Column(type="string", length=255, nullable=true)
      *
      */
-    protected $status;
+    protected $code;
+
+    /**
+     * @var CustomerStatus
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\CustomerStatus" ,mappedBy="company" ,cascade={"persist", "remove"}))
+     *
+     */
+    protected $customerStatus;
 
     /**
      * @var string
@@ -130,7 +139,7 @@ class Company extends LegalEntity
     protected $relation;
 
     /**
-     * @var string
+     * @var integer
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      *
@@ -138,9 +147,9 @@ class Company extends LegalEntity
     protected $apeCode;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      *
      */
     protected $siretNumber;
@@ -148,9 +157,9 @@ class Company extends LegalEntity
     /**
      * TVA intra communautaire
      *
-     * @var string
+     * @var float
      *
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="float", nullable=true)
      *
      */
     protected $intraCommunityVAT;
@@ -158,7 +167,7 @@ class Company extends LegalEntity
     /**
      * @var string
      *
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      *
      */
     protected $sirenNumber;
@@ -167,7 +176,7 @@ class Company extends LegalEntity
      * Nombre d'actions ou parts sociales
      *
      * @var integer
-     * @Assert\Type("integer")
+     *
      * @ORM\Column(type="integer", nullable=true)
      *
      */
@@ -189,38 +198,36 @@ class Company extends LegalEntity
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address", cascade={"persist", "remove"})
      *
-     * @ORM\JoinColumn(name="current_address_id", referencedColumnName="id",onDelete="CASCADE")
+     * @ORM\JoinColumn(name="current_address_id", referencedColumnName="id")
      */
     protected $currentAddress;
 
 
     /**
-     * Adresse du service des impots de l'entreprise.
-     *
      * @var Address
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address", cascade={"persist", "remove"})
      *
-     * @ORM\JoinColumn(name="siege_address_id", referencedColumnName="id",onDelete="CASCADE")
+     * @ORM\JoinColumn(name="siege_address_id", referencedColumnName="id")
      */
-    protected $sieAddress;
+    protected $siegeAddress;
 
     /**
      * @var Address[] | ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Address", cascade={"persist", "remove"},orphanRemoval=true)
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Address", cascade={"persist", "remove"})
      *
      * @ORM\JoinTable(name="company_address",
-     *      joinColumns={@ORM\JoinColumn(name="company_id", referencedColumnName="id",onDelete="CASCADE")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="address_id", referencedColumnName="id",onDelete="CASCADE")}
+     *      joinColumns={@ORM\JoinColumn(name="company_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="address_id", referencedColumnName="id")}
      *      )
      */
     protected $oldAddresses;
 
     /**
-     * @var Contact
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Contact" ,mappedBy="company" ,cascade={"persist", "remove"}))
-     * @Assert\Valid
+     * @var Contact[] | ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Contact" ,mappedBy="company" ,cascade={"persist", "remove"}))
      */
     protected $contacts;
 
@@ -230,13 +237,6 @@ class Company extends LegalEntity
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\FiscalYear" ,mappedBy="company" ,cascade={"persist", "remove"})
      */
     protected $fiscalYears;
-
-    /**
-     * @var Mission[] | ArrayCollection
-     *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Mission" ,mappedBy="company" ,cascade={"persist", "remove"}))
-     */
-    protected $missions;
 
     /**
      * @var Customer
@@ -251,17 +251,12 @@ class Company extends LegalEntity
      * @var FormerAccountant
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\FormerAccountant", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="former_accountant_id", referencedColumnName="id",onDelete="CASCADE")
+     * @ORM\JoinColumn(name="former_accountant_id", referencedColumnName="id")
      *
      */
     protected $formerAccountant;
 
 
-    /**
-     * @var EnterRelation
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\EnterRelation" ,mappedBy="company" ,cascade={"persist","remove"})
-     */
-    private $enterRelation;
 
     /**
      * Company constructor.
@@ -271,7 +266,7 @@ class Company extends LegalEntity
         $this->missions = new ArrayCollection();
         $this->oldAddresses = new ArrayCollection();
         $this->fiscalYears = new ArrayCollection();
-       // $this->contacts = new ArrayCollection();
+        $this->contacts = new ArrayCollection();
         $this->otherPhoneNumbers = new ArrayCollection();
     }
 
@@ -439,6 +434,22 @@ class Company extends LegalEntity
     /**
      * @return string
      */
+    public function getSocialReason()
+    {
+        return $this->socialReason;
+    }
+
+    /**
+     * @param string $socialReason
+     */
+    public function setSocialReason(string $socialReason)
+    {
+        $this->socialReason = $socialReason;
+    }
+
+    /**
+     * @return string
+     */
     public function getCode()
     {
         return $this->code;
@@ -452,21 +463,7 @@ class Company extends LegalEntity
         $this->code = $code;
     }
 
-    /**
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
 
-    /**
-     * @param string $status
-     */
-    public function setStatus(string $status)
-    {
-        $this->status = $status;
-    }
 
     /**
      * @return string
@@ -485,7 +482,7 @@ class Company extends LegalEntity
     }
 
     /**
-     * @return string
+     * @return int
      */
     public function getApeCode()
     {
@@ -493,9 +490,9 @@ class Company extends LegalEntity
     }
 
     /**
-     * @param string $apeCode
+     * @param int $apeCode
      */
-    public function setApeCode(string $apeCode)
+    public function setApeCode(int $apeCode)
     {
         $this->apeCode = $apeCode;
     }
@@ -625,7 +622,7 @@ class Company extends LegalEntity
     }
 
     /**
-     * @return Contact
+     * @return Contact[]|ArrayCollection
      */
     public function getContacts()
     {
@@ -633,11 +630,23 @@ class Company extends LegalEntity
     }
 
     /**
-     * @param Contact
+     * @param $contacts
+     * @return $this
      */
-    public function setContacts($contacts)
+    public function addContacts($contacts)
     {
-        $this->contacts = $contacts;
+        $this->contacts->add($contacts);
+        return $this;
+    }
+
+    /**
+     * @param $contacts
+     * @return bool
+     */
+    public function removeContacts($contacts)
+    {
+        return $this->contacts->removeElement($contacts);
+
     }
 
     /**
@@ -692,7 +701,7 @@ class Company extends LegalEntity
      */
     public function removeMission($missions)
     {
-        return $this->missions->removeElement($missions);
+       return $this->missions->removeElement($missions);
 
     }
 
@@ -728,35 +737,39 @@ class Company extends LegalEntity
         $this->formerAccountant = $formerAccountant;
     }
 
-    /**
-     * @return EnterRelation
-     */
-    public function getEnterRelation()
-    {
-        return $this->enterRelation;
-    }
-
-    /**
-     * @param EnterRelation $enterRelation
-     */
-    public function setEnterRelation(EnterRelation $enterRelation)
-    {
-        $this->enterRelation = $enterRelation;
-    }
 
     /**
      * @return Address
      */
-    public function getSieAddress()
+    public function getSiegeAddress()
     {
-        return $this->sieAddress;
+        return $this->siegeAddress;
     }
 
     /**
-     * @param Address $sieAddress
+     * @param Address $siegeAddress
      */
-    public function setSieAddress(Address $sieAddress)
+    public function setSiegeAddress(Address $siegeAddress)
     {
-        $this->sieAddress = $sieAddress;
+        $this->siegeAddress = $siegeAddress;
     }
+
+    /**
+     * @return CustomerStatus
+     */
+    public function getCustomerStatus(): CustomerStatus
+    {
+        return $this->customerStatus;
+    }
+
+    /**
+     * @param CustomerStatus $customerStatus
+     */
+    public function setCustomerStatus(CustomerStatus $customerStatus)
+    {
+        $this->customerStatus = $customerStatus;
+    }
+
+
+
 }

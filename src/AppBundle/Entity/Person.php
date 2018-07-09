@@ -13,7 +13,7 @@
 namespace AppBundle\Entity;
 
 use AppBundle\Model\Address;
-use AppBundle\Model\Person as BasePerson;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -27,12 +27,13 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\DiscriminatorMap({
  *     "person"="Person",
  *     "employee"="Employee",
- *     "customer"="Customer"
+ *     "customer"="Customer",
+ *     "contact"="Contact",
  * })
  *
  * @ORM\HasLifecycleCallbacks()
  */
-class Person extends BasePerson
+class Person
 {
 
     /**
@@ -101,52 +102,13 @@ class Person extends BasePerson
     protected $postalCode;
 
     /**
-     * @var Address
-     *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address" ,mappedBy="category", cascade={"persist", "remove"})
-     *
-     * @ORM\JoinColumn(name="current_address_id", referencedColumnName="id")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Address")
+     * @ORM\JoinTable(name="person_address",
+     *      joinColumns={@ORM\JoinColumn(name="person_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="address_id", referencedColumnName="id", unique=true)}
+     *      )
      */
-    protected $currentAddress;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=25, nullable=true)
-     */
-    protected $FixeNumber;
-
-    /**
-     * @return string
-     */
-    public function getFixeNumber()
-    {
-        return $this->FixeNumber;
-    }
-
-    /**
-     * @param string $FixeNumber
-     */
-    public function setFixeNumber($FixeNumber)
-    {
-        $this->FixeNumber = $FixeNumber;
-    }
-
-    /**
-     * @return Address
-     */
-    public function getCurrentAddress()
-    {
-        return $this->currentAddress;
-    }
-
-    /**
-     * @param Address $currentAddress
-     */
-    public function setCurrentAddress($currentAddress)
-    {
-        $this->currentAddress = $currentAddress;
-    }
+    private $addresses;
 
     /**
      * @var User
@@ -155,6 +117,16 @@ class Person extends BasePerson
      *
      */
     protected $userAccount;
+
+    /**
+     * Person constructor.
+     * @param $addresses
+     */
+    public function __construct()
+    {
+        $this->addresses = new ArrayCollection();
+    }
+
 
     /**
      * @return int
@@ -223,7 +195,7 @@ class Person extends BasePerson
     /**
      * @param \DateTime $birthDate
      */
-    public function setBirthDate(\DateTime $birthDate)
+    public function setBirthDate(\DateTime $birthDate=null)
     {
         $this->birthDate = $birthDate;
     }
@@ -292,8 +264,6 @@ class Person extends BasePerson
         $this->postalCode = $postalCode;
     }
 
-
-
     /**
      * @return User
      */
@@ -309,4 +279,40 @@ class Person extends BasePerson
     {
         $this->userAccount = $userAccount;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getAddresses()
+    {
+        return $this->addresses;
+    }
+
+    /**
+     * @param mixed $addresses
+     */
+    public function setAddresses($addresses)
+    {
+        $this->addresses = $addresses;
+    }
+
+    /**
+     * @param Address $addresses
+     * @return $this
+     */
+    public function addAddress($addresses){
+
+        $this->addresses->add($addresses);
+
+        return $this;
+    }
+
+    /**
+     * @param Address $addresses
+     * @return bool
+     */
+    public function removeAddress($addresses){
+        return $this->addresses->removeElement($addresses);
+    }
+
 }

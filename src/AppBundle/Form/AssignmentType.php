@@ -32,7 +32,7 @@ class AssignmentType extends AbstractType
                 'label' => 'Affecter un collaborateur',
                 'class' => 'AppBundle\Entity\Employee',
                 'choice_label' => function ($manager) {
-                    return $manager->getInitials().' '.$manager->getLastName().' '.$manager->getFirstName();
+                    return $manager->getLastName().' '.$manager->getFirstName();
                 },
                 'choices_as_values' => true,
                 'required' => true,

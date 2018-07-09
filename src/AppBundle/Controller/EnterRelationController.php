@@ -153,7 +153,7 @@ class EnterRelationController extends BaseController
      *
      */
 
-    public function editAction(EnterRelation $relationentre,Request $request)
+ /*   public function editAction(EnterRelation $relationentre,Request $request)
     {
 
         $formrelation = $this->createForm('AppBundle\Form\EntreRelationType', $relationentre);
@@ -169,6 +169,6 @@ class EnterRelationController extends BaseController
         return $this->render('prisedeconnaissance/entree_relation/edit.html.twig',
                              array('formrelation' => $formrelation->createView()));
 
-    }
+    }*/
 
 }
