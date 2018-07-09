@@ -30,6 +30,12 @@ class Employee extends Person
      */
     private $jobPosition;
 
+
+    /*
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $initials;
+
     /**
      * @var Assignment [] | ArrayCollection
      *
@@ -114,5 +120,23 @@ class Employee extends Person
     {
         $this->manager = $manager;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getInitials()
+    {
+        return $this->initials;
+    }
+
+    /**
+     * @param mixed $initials
+     */
+    public function setInitials($initials)
+    {
+        $this->initials = $initials;
+    }
+
+
 
 }
