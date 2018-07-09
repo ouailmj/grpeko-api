@@ -29,7 +29,7 @@ class AssignmentType extends AbstractType
         $builder
 
             ->add('employee', EntityType::class, array(
-                'label' => 'Effectue un collaborateur',
+                'label' => 'Affecter un collaborateur',
                 'class' => 'AppBundle\Entity\Employee',
                 'choice_label' => function ($manager) {
                     return $manager->getInitials().' '.$manager->getLastName().' '.$manager->getFirstName();
@@ -62,6 +62,5 @@ class AssignmentType extends AbstractType
     {
         return 'appbundle_assignment';
     }
-
 
 }

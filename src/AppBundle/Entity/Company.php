@@ -11,10 +11,9 @@
  */
 
 namespace AppBundle\Entity;
-
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Company.
@@ -63,6 +62,7 @@ class Company extends LegalEntity
      * Regime d'imposition.
      *
      * @var string
+     *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $taxationRegime;
@@ -107,7 +107,7 @@ class Company extends LegalEntity
 
     /**
      * @var string
-     * @Assert\NotBlank()
+     *
      * @ORM\Column(type="string", length=255, nullable=true)
      *
      */
@@ -130,7 +130,7 @@ class Company extends LegalEntity
     protected $relation;
 
     /**
-     * @var integer
+     * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      *
@@ -167,7 +167,7 @@ class Company extends LegalEntity
      * Nombre d'actions ou parts sociales
      *
      * @var integer
-     *
+     * @Assert\Type("integer")
      * @ORM\Column(type="integer", nullable=true)
      *
      */
@@ -189,38 +189,38 @@ class Company extends LegalEntity
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address", cascade={"persist", "remove"})
      *
-     * @ORM\JoinColumn(name="current_address_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="current_address_id", referencedColumnName="id",onDelete="CASCADE")
      */
     protected $currentAddress;
 
 
     /**
-     * Adresse du service des ipùots de l'entreprise.
+     * Adresse du service des impots de l'entreprise.
      *
      * @var Address
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address", cascade={"persist", "remove"})
      *
-     * @ORM\JoinColumn(name="siege_address_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="siege_address_id", referencedColumnName="id",onDelete="CASCADE")
      */
     protected $sieAddress;
 
     /**
      * @var Address[] | ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Address", cascade={"persist", "remove"})
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Address", cascade={"persist", "remove"},orphanRemoval=true)
      *
      * @ORM\JoinTable(name="company_address",
-     *      joinColumns={@ORM\JoinColumn(name="company_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="address_id", referencedColumnName="id")}
+     *      joinColumns={@ORM\JoinColumn(name="company_id", referencedColumnName="id",onDelete="CASCADE")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="address_id", referencedColumnName="id",onDelete="CASCADE")}
      *      )
      */
     protected $oldAddresses;
 
     /**
-     * @var Contact[] | ArrayCollection
-     *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Contact" ,mappedBy="company" ,cascade={"persist", "remove"}))
+     * @var Contact
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Contact" ,mappedBy="company" ,cascade={"persist", "remove"}))
+     * @Assert\Valid
      */
     protected $contacts;
 
@@ -251,7 +251,7 @@ class Company extends LegalEntity
      * @var FormerAccountant
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\FormerAccountant", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="former_accountant_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="former_accountant_id", referencedColumnName="id",onDelete="CASCADE")
      *
      */
     protected $formerAccountant;
@@ -260,7 +260,6 @@ class Company extends LegalEntity
     /**
      * @var EnterRelation
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\EnterRelation" ,mappedBy="company" ,cascade={"persist","remove"})
-     * onDelete="CASCADE"
      */
     private $enterRelation;
 
@@ -272,7 +271,7 @@ class Company extends LegalEntity
         $this->missions = new ArrayCollection();
         $this->oldAddresses = new ArrayCollection();
         $this->fiscalYears = new ArrayCollection();
-        $this->contacts = new ArrayCollection();
+       // $this->contacts = new ArrayCollection();
         $this->otherPhoneNumbers = new ArrayCollection();
     }
 
@@ -288,7 +287,7 @@ class Company extends LegalEntity
     /**
      * @param string $legalName
      */
-    public function setLegalName(string $legalName=null)
+    public function setLegalName(string $legalName)
     {
         $this->legalName = $legalName;
     }
@@ -486,7 +485,7 @@ class Company extends LegalEntity
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getApeCode()
     {
@@ -494,9 +493,9 @@ class Company extends LegalEntity
     }
 
     /**
-     * @param int $apeCode
+     * @param string $apeCode
      */
-    public function setApeCode(int $apeCode)
+    public function setApeCode(string $apeCode)
     {
         $this->apeCode = $apeCode;
     }
@@ -626,7 +625,7 @@ class Company extends LegalEntity
     }
 
     /**
-     * @return Contact[]|ArrayCollection
+     * @return Contact
      */
     public function getContacts()
     {
@@ -634,23 +633,11 @@ class Company extends LegalEntity
     }
 
     /**
-     * @param $contacts
-     * @return $this
+     * @param Contact
      */
-    public function addContact($contacts)
+    public function setContacts($contacts)
     {
-        $this->contacts->add($contacts);
-        return $this;
-    }
-
-    /**
-     * @param $contacts
-     * @return bool
-     */
-    public function removeContact($contacts)
-    {
-        return $this->contacts->removeElement($contacts);
-
+        $this->contacts = $contacts;
     }
 
     /**
@@ -665,7 +652,7 @@ class Company extends LegalEntity
      * @param $fiscalYears
      * @return $this
      */
-    public function addFiscalYear($fiscalYears)
+    public function addFiscalYears($fiscalYears)
     {
         $this->fiscalYears->add($fiscalYears);
         return $this;
@@ -675,7 +662,7 @@ class Company extends LegalEntity
      * @param $fiscalYears
      * @return bool
      */
-    public function removeFiscalYear($fiscalYears)
+    public function removeFiscalYears($fiscalYears)
     {
         return $this->fiscalYears->removeElement($fiscalYears);
 
@@ -705,7 +692,7 @@ class Company extends LegalEntity
      */
     public function removeMission($missions)
     {
-       return $this->missions->removeElement($missions);
+        return $this->missions->removeElement($missions);
 
     }
 

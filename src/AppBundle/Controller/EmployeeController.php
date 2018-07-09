@@ -7,7 +7,8 @@ use AppBundle\Model\EmployeeManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Employee controller.
@@ -52,8 +53,8 @@ class EmployeeController extends BaseController
                 $employee->getUserAccount()->setPlainPassword($plainPassword);
             }
 
-
             $employeeManager->createEmployee($employee);
+
 
             $this->addSuccessFlash();
             $this->addFlash('success', 'Votre opération a été exécutée avec succès');

@@ -10,7 +10,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Company;
 use AppBundle\Entity\Employee;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use AppBundle\Model\EmployeeManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -56,8 +56,8 @@ class affectationController extends BaseController
      */
     public function affectationAction(Request $request)
     {
-
-        $name=$request->query->get('name');
+        $id = 8;
+//        $name=$request->query->get('name');
 //        $company = $this->getDoctrine()
 //            ->getRepository(Company::class)
 //            ->find($name);
@@ -69,18 +69,25 @@ class affectationController extends BaseController
 //        }
 //        return new JsonResponse($company->getLegalName());
         $entityManager = $this->getDoctrine()->getManager();
-        $company = $entityManager->getRepository(Company::class)->find($name);
+        $company = $entityManager->getRepository(Company::class)->find($id);
 
         if (!$company) {
             throw $this->createNotFoundException(
-                'No product found for id '.$name
+                'No product found for id '.$id
             );
         }
-        $company->getFiscalYears()->getEmployee()->setLegalName();
-        $company->setLegalName('test');
-        $entityManager->flush();
+//        ->getAssignment()->getEmployee()
+        foreach ($company->getFiscalYears() as $coco){
+//        $reponse = $company->getFiscalYears()->getAssignment()->getEmployee();
+        dump(
+            $coco ->getAssignment()->getEmployee()
+        );
+            $entityManager->flush();
+        die;
+     }
+       $entityManager->flush();
 
-        return new Response("Dakchi mzn !!");
+        return new JsonResponse($reponse);
 
         // return $this->redirect($this->generateUrl('listing'));
 //        $em = $this->getDoctrine()->getManager();

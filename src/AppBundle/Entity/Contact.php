@@ -4,12 +4,14 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Contact
  *
  * @ORM\Table(name="contact")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ContactRepository")
+ * @UniqueEntity("email")
  */
 class Contact
 {
@@ -25,7 +27,7 @@ class Contact
     /**
      * @var Company
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company" ,inversedBy="contacts" ,cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Company" ,inversedBy="contacts" ,cascade={"persist", "remove"})
      */
     protected $company;
 
@@ -33,7 +35,7 @@ class Contact
     /**
      * @var string
      *
-     * @ORM\Column(name="civility", type="string", length=10, nullable=true))
+     * @ORM\Column(name="civility", type="string", length=10, nullable=true)
      */
 
     private $civility;
@@ -41,8 +43,8 @@ class Contact
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="firstname", type="string", length=50, nullable=true))
+     * @Assert\NotBlank()
+     * @ORM\Column(name="firstname", type="string", length=50, nullable=true)
      */
 
     private $firstname;
@@ -51,16 +53,14 @@ class Contact
     /**
      * @var string
      *
-     * @ORM\Column(name="lastname", type="string", length=50, nullable=true))
+     * @ORM\Column(name="lastname", type="string", length=50, nullable=true)
      */
 
     private $lastname;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="intermediate", type="string", length=50, nullable=true))
-     * @Assert\NotBlank()
+     * @ORM\Column(name="intermediate", type="string", length=50, nullable=true)
      */
 
     private $intermediate;
@@ -68,15 +68,15 @@ class Contact
     /**
      * @var float
      *
-     * @ORM\Column(name="mandataire", type="float", nullable=true))
+     * @ORM\Column(name="mandataire", type="float", nullable=true)
      */
 
     private $mandataire;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="email", type="string",length=100))
+     * @Assert\Valid
+     * @ORM\Column(name="email", type="string",length=100,unique=true)
      */
     private $email;
 

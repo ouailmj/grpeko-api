@@ -61,3 +61,4 @@ security:
         - { path: ^/admin/, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/app/, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/app/relation/uploadmodel, role: ROLE_PROSPECT }

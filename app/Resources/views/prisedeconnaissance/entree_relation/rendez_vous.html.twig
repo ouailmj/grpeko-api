@@ -1,0 +1,316 @@
+{% extends 'prisedeconnaissance/prisedeconnaissance.html.twig' %}
+{% block _content %}
+
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h5 class="panel-title">Rendez-vous prospect<a class="heading-elements-toggle"><i class="icon-more"></i></a></h5>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li><a data-action="collapse"></a></li>
+                    <li><a data-action="reload"></a></li>
+                    <li><a data-action="close"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="panel-body">
+<form method="post" action={{ path('rendezvous_new') }}>
+            <div class="panel-body">
+                <div class="col-lg-12 content-group-lg" style="background-color: #5d9d9c;color: #fff;font-size: 14px;text-align: center;margin: 10 0">
+                    <h6> Rendez-vous</h6>
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-lg-2" >
+                        Sujet
+                    </div>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control" name="sujet" required>
+                    </div>
+
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-2" >
+                        Heure de debut
+                    </div>
+                    <div class="col-lg-2" >
+                        <input type="text" required class="french_picker form-control picker__input picker__input--active" name="datedebut" required onchange="getdatestart(this)">
+                    </div>
+                    <div class="col-lg-1" >
+                        <input type="text" class="form-control"placeholder="09:00" name="heuredebut" required onchange="gethourstart(this)">
+                    </div>
+                    <div class="col-lg-2" >
+                        Heure de fin
+                    </div>
+                    <div class="col-lg-2" >
+                        <input type="text" class="french_picker form-control picker__input picker__input--active" name="datefin" required>
+                    </div>
+                    <div class="col-lg-1" >
+                        <input type="text" class="form-control"placeholder="09:00" name="heurefin" required>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="panel-body">
+                <div class="col-lg-12 content-group-lg" style="background-color: #5d9d9c;color: #fff;font-size: 14px;text-align: center;margin: 10 0">
+                    <h6>Description</h6>
+                </div>
+
+                <label>Bonjour, je fais suite a votre demande de contact.</label><br><br>
+
+                <div class="row">
+
+                    <div class="col-lg-5" >
+                        Vous etes a la recherche d'un expert-comptable, d'un commissaire aux comptes ou d'une autre mission?
+                    </div>
+                    <div class="col-lg-2">
+
+                        <select>
+                            <option>EC</option>
+                            <option>CAC</option>
+                            <option>GP</option>
+                        </select>
+
+                    </div>
+
+                    <div class="col-lg-3">
+                        L'entreprise est-elle créée?
+                    </div>
+                    <div class="col-lg-2">
+
+                        <select>
+                            <option>Oui</option>
+                            <option>Non</option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+<br>
+                <div class="row">
+
+                    <div class="col-lg-5" >
+                        Si oui, quel est le nom de l'entreprise? Si non, comment va-t-elle s'appeler?
+                    </div>
+                    <div class="col-lg-2">
+
+                       <input type="text" class="form-control">
+
+                    </div>
+
+                    <div class="col-lg-3">
+                        Si oui, quelle est la forme ?
+                    </div>
+                    <div class="col-lg-2">
+
+                        <select>
+                            <option>SARL</option>
+                            <option>EURL</option>
+                            <option>SELARL</option>
+                            <option>SA</option>
+                            <option>SAS</option>
+                            <option>SASU</option>
+                            <option>SARL</option>
+                            <option>SNC</option>
+                            <option>SCP</option>
+                        </select>
+
+                    </div>
+
+                </div>
+                <br>
+
+                <div class="row">
+
+                    <div class="col-lg-4" >
+                        Si oui,vous rechercher un prestataire pour quelle date de cloture?
+                    </div>
+                    <div class="col-lg-2">
+                        <input type="text" class="french_picker form-control picker__input picker__input--active">
+                    </div>
+
+                    <div class="col-lg-4" >
+                        Si non, vous souhaitez que la creation soit faite pour quand?
+                    </div>
+                    <div class="col-lg-2">
+                        <input type="text" class="french_picker form-control picker__input picker__input--active">
+                    </div>
+
+                </div>
+
+                <br>
+
+                <div class="row">
+
+                    <div class="col-lg-4" >
+                        Qu'elle est l'activité ou quelle va etre l'activité de la société
+                    </div>
+                    <div class="col-lg-2">
+                        <input type="text" class="form-control">
+                    </div>
+
+                    <div class="col-lg-6" >
+                        Je vous propose un rdv skype ou téléphone le <b id="daterendezvous"> </b> <b id="heurerendezvous"></b>
+                    </div>
+
+                </div>
+<br>
+                <div class="row">
+
+                    <div class="col-lg-2" >
+                        Quel est votre prénom svp?
+                    </div>
+                    <div class="col-lg-2">
+                        <input type="text" class="form-control">
+                    </div>
+
+                    <div class="col-lg-2" >
+                        Quel est votre nom svp?
+                    </div>
+
+                    <div class="col-lg-2">
+                        <input type="text" class="form-control"  name="lastname" required>
+                    </div>
+
+                    <div class="col-lg-2" >
+                        Civilité?
+                    </div>
+
+                    <div class="col-lg-2">
+                        <select>
+                            <option>Mr</option>
+                            <option>Mme</option>
+                            <option>Mlle</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <br>
+
+                <div class="row">
+
+                    <div class="col-lg-2" >
+                        Quelle est votre date de naissance
+                    </div>
+                    <div class="col-lg-2">
+                        <input type="text" class="french_picker form-control picker__input picker__input--active">
+                    </div>
+
+                    <div class="col-lg-2" >
+                       On se tutoi ?
+                    </div>
+
+                    <div class="col-lg-2" >
+                        <select>
+                            <option>Oui</option>
+                            <option>Non</option>
+                        </select>
+                    </div>
+
+                    <div class="col-lg-2" >
+                        Quel est ton numéro de telephone stp?
+                    </div>
+
+                    <div class="col-lg-2" >
+                        <input type="text" class="form-control">
+                    </div>
+
+                </div>
+<br>
+
+                <div class="row">
+
+                    <div class="col-lg-2" >
+                        Quel est ton email stp
+                    </div>
+                    <div class="col-lg-2">
+                        <input type="email" class="form-control" name="email" required>
+                    </div>
+
+                    <div class="col-lg-2" >
+                        Rappelez moi de la part de qui tu viens, stp?
+                    </div>
+
+
+                    <div class="col-lg-2">
+                        <input type="text" class="form-control">
+                    </div>
+
+                    <div class="col-lg-2" >
+                        Recherche par nom d'entreprise
+                    </div>
+
+                    <div class="col-lg-2" >
+                        <input type="text" class="form-control">
+                    </div>
+
+                </div>
+
+                <br>
+
+                <div class="row">
+
+                    <div class="col-lg-2" >
+                        Recherche par prénom / nom d'entreprise
+                    </div>
+
+                    <div class="col-lg-2" >
+                        <input type="text" class="form-control">
+                    </div>
+
+
+                    <div class="col-lg-2" >
+                        Commentaire
+                    </div>
+
+                    <div class="col-lg-6" >
+                        <textarea class="form-control"></textarea>
+                    </div>
+
+                </div>
+
+                <br>
+
+                <div class="row">
+
+                    <div class="col-lg-12" >
+
+                        <b>Je t'envoie une fiche client a remplir, Merci de me le remplir afin que je pousse avoir des informations prévisionnelles a jour, et que je pisse te conseiller au mieux, C'est vraiment très important.</b>
+                    </div>
+
+                </div>
+<br>
+                <div class="row">
+
+                    <div class="col-lg-3" style="float: right">
+
+                        <input type="submit" value="Valider" class="form-control btn-success" style="background-color: #5d9d9c">
+
+                    </div>
+
+                </div>
+
+            </div>
+</form>
+        </div>
+    </div>
+
+    {% block javascripts %}
+        <script>
+            function getdatestart(val)
+            {
+                document.getElementById("daterendezvous").innerHTML=val.value;
+            }
+            function gethourstart(val)
+            {
+                document.getElementById("heurerendezvous").innerHTML=" á "+val.value;
+            }
+        </script>
+    {% endblock javascripts %}
+
+{% endblock %}
