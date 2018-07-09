@@ -80,7 +80,7 @@
                                 {{ item.jobPosition }}
                             </td>
                             <td>
-                                {{ item.manager }}
+                                {{ item.manager.initials|default('Aucun') }}
                             </td>
                             <td>
                                 {% if item.userAccount.enabled %}
