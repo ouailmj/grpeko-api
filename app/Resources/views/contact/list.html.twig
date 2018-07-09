@@ -1,0 +1,100 @@
+{% extends 'company/company.html.twig' %}
+{% block _content %}
+    <div class="panel panel-flat">
+        <div class="tabbale">
+            <ul class="nav nav-tabs bg-teal-400 nav-justified">
+                <li id="clikfirsttab" class="active"><a href="#firsttab" data-toggle="tab" aria-expanded="true">Fiche Client</a></li>
+                <li><a href="{{ path('devis_new') }}">Prise de connaissance</a></li>
+            </ul>
+
+            <div class="tab-content ">
+                <div id="firsttab">
+                    <div class="">
+                        <ul class="nav nav-tabs nav-tabs-highlight">
+                            <li class=""><a href="{{ path('company_new') }}"><i class="icon-users position-left"></i>Informations générales</a></li>
+                            <li class=""><a href="#Dossiers" data-toggle="tab" aria-expanded="false"><i class="icon-folder position-left"></i>Rendez-vous</a></li>
+                            <li class="active"><a href="#Contrats" data-toggle="tab" aria-expanded="false"><i class="icon-address-book3 position-left"></i>Contacts</a></li>
+                            <li>
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="dropdown dropdown-user">
+                                        <a class="dropdown-toggle" data-toggle="dropdown">
+                                            <i class="icon-file-stats2 position-left"></i>
+                                            Autre
+                                            <span class="caret"></span>
+                                        </a>
+
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li class=""><a href="#mission" data-toggle="tab" aria-expanded="false">Mission</a></li>
+                                            <li class=""><a href="#Exercices" data-toggle="tab" aria-expanded="false">Exercices</a></li>
+                                            <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Informations Bancaires</a></li>
+                                            <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Rapprochement CFONB - Mots clés</a></li>
+                                            <li class=""><a href="#Facturation" data-toggle="tab" aria-expanded="false">Facturation</a></li>
+                                            <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Codes accés espaces clients</a></li>
+
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-content panel panel-flat border-top-info active">
+                        <div class="tab-pane active" id="Contrats">
+
+                            <div class="panel panel-flat">
+                                <div class="panel-body">
+
+                                    <div class="panel-body">
+                                        <span class="pull-left"><a href="{{ path('contact_new') }}" class="btn btn-primary heading-btn"><b><i class="icon-plus3"></i></b></a></span>
+                                    </div>
+
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-center">Actions</th>
+                                            <th>Civilité </th>
+                                            <th>Nom</th>
+                                            <th>Prénom</th>
+                                            <th>% de part </th>
+                                            <th>Mandataire social principal</th>
+                                            <th>Associé</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>
+
+                                                    <div class="btn-group">
+                                                        <a href="" class="btn btn-primary legitRipple"><b><i class="icon-pen"></i> </b></a>
+                                                        <a href="#" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" type="button" class="btn btn-danger legitRipple"><b><i class="icon-trash-alt"></i> </b></a>
+                                                    </div>
+
+                                            </td>
+                                            <td>Monsieur</td>
+                                            <td>DELANOE</td>
+                                            <td>Stéphan</td>
+                                            <td>33%</td>
+                                            <td>Oui</td>
+                                            <td>Oui</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    {% block javascripts %}
+
+    {% endblock %}
+
+{% endblock %}
+

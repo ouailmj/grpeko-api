@@ -195,7 +195,7 @@ class Person
     /**
      * @param \DateTime $birthDate
      */
-    public function setBirthDate(\DateTime $birthDate)
+    public function setBirthDate(\DateTime $birthDate=null)
     {
         $this->birthDate = $birthDate;
     }
@@ -300,7 +300,7 @@ class Person
      * @param \AppBundle\Entity\Address $address
      * @return $this
      */
-    public function addAddress(\AppBundle\Entity\Address $address){
+    public function addAddress(Address $address){
 
         $this->addresses->add($address);
 

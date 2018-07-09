@@ -147,9 +147,9 @@ class Company extends LegalEntity
     protected $apeCode;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      *
      */
     protected $siretNumber;
@@ -157,9 +157,9 @@ class Company extends LegalEntity
     /**
      * TVA intra communautaire
      *
-     * @var string
+     * @var float
      *
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="float", nullable=true)
      *
      */
     protected $intraCommunityVAT;
@@ -167,7 +167,7 @@ class Company extends LegalEntity
     /**
      * @var string
      *
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      *
      */
     protected $sirenNumber;
