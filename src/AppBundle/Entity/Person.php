@@ -297,10 +297,10 @@ class Person
     }
 
     /**
-     * @param Address $address
+     * @param \AppBundle\Entity\Address $address
      * @return $this
      */
-    public function addAddress(Address $address){
+    public function addAddress(\AppBundle\Entity\Address $address){
 
         $this->addresses->add($address);
 
@@ -308,10 +308,10 @@ class Person
     }
 
     /**
-     * @param Address $address
+     * @param \AppBundle\Entity\Address $address
      * @return bool
      */
-    public function removeAddress(Address $address){
+    public function removeAddress(\AppBundle\Entity\Address $address){
         return $this->addresses->removeElement($address);
     }
 
