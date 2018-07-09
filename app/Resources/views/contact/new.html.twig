@@ -8,8 +8,8 @@
                 <li><a href="{{ path('devis_new') }}">Prise de connaissance</a></li>
             </ul>
 
-            <div class="tab-content ">
-                <div id="firsttab">
+                <div class="tab-content" id="firsttab">
+
                     <div class="">
                         <ul class="nav nav-tabs nav-tabs-highlight">
                             <li class=""><a href="{{ path('company_new') }}"><i class="icon-users position-left"></i>Informations générales</a></li>
@@ -39,660 +39,596 @@
                         </ul>
                     </div>
 
-
-
                     {# add contact form #}
 
 
-                    <div class="panel panel-flat">
-                        <div class="panel-body">
+    {{ form_start(contact) }}
 
-                            <div class="col-lg-12 content-group-lg" style="background-color: #5d9d9c;color: #fff;font-size: 12px;text-align: center">
-                                <h6 >Contact client</h6>
-                            </div>
+    <div class="panel panel-flat">
 
-                            <form name="" method="post" class="">
+        <div class="col-lg-12 content-group-lg" style="background-color: #5d9d9c;color: #fff;font-size: 12px;text-align: center">
+            <h6 >Contact client</h6>
+        </div>
 
-                                <div class="panel-body">
 
-                                    <div class="col-lg-4" >
-                                        <div class="col-lg-12 content-group-lg" style="background-color: #5d9d9c;color: #fff;font-size: 14px;text-align: center;margin: 10px 0">
-                                            <h6 >Etat civil</h6>
-                                        </div>
+        <div class="panel-body">
 
-                                        <div class="form-group">
+            <div class="col-lg-4" >
+                <div class="col-lg-12 content-group-lg" style="background-color: #5d9d9c;color: #fff;font-size: 14px;text-align: center;margin: 10px 0">
+                    <h6 >Etat civil</h6>
+                </div>
 
-                                            <div class="dropdown">
-                                                <label class="control-label col-sm-5" for="pwd">Civilité</label>
+                <div class="form-group">
 
-                                                <div class="col-sm-7">
-                                                    {{form_widget(contact.civility)}}
-                                                </div>
-                                            </div>
+                    <div class="dropdown">
+                        <label class="control-label col-sm-5" >Civilité</label>
 
-                                        </div>
-
-                                        <div class="form-group">
-
-                                            <label class="control-label col-sm-5" for="pwd">Nom</label>
-                                            <div class="col-sm-7">
-                                                {{form_widget(contact.firstname)}}
-                                            </div>
-
-                                        </div>
-
-
-                                        <div class="form-group">
-
-                                            <label class="control-label col-sm-5" for="pwd">Nom Matiral</label>
-                                            <div class="col-sm-7">
-                                                <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
-                                            </div>
-
-                                        </div>
-
-                                        <div class="form-group">
-
-                                            <label class="control-label col-sm-5" for="pwd">Prénom</label>
-                                            <div class="col-sm-7">
-                                                {{form_widget(contact.lastname)}}
-                                            </div>
-
-                                        </div>
-
-                                        <div class="form-group">
-
-                                            <label class="control-label col-sm-5" for="pwd">Date de naissance</label>
-                                            <div class="col-sm-7">
-                                                    {{form_widget(contact.mook) }}
-                                            </div>
-
-                                        </div>
-
-                                        <div class="form-group">
-
-                                            <label class="control-label col-sm-5" for="pwd">Lieu de naissance</label>
-                                            <div class="col-sm-7">
-                                                {{form_widget(contact.birthPlace)}}
-                                            </div>
-
-                                        </div>
-
-                                        <div class="form-group">
-
-                                            <label class="control-label col-sm-5" for="pwd">Dept de naissance</label>
-                                            <div class="col-sm-7">
-                                                {{form_widget(contact.birthDept)}}
-                                            </div>
-
-                                        </div>
-
-                                        <div class="form-group">
-
-                                            <label class="control-label col-sm-5" for="pwd">Pays de naissance</label>
-                                            <div class="col-sm-7">
-                                                {{form_widget(contact.birthCountry)}}
-                                            </div>
-
-                                        </div>
-
-                                        <div class="form-group">
-
-                                            <label class="control-label col-sm-5" for="pwd">Nationalité</label>
-                                            <div class="col-sm-7">
-                                                {{form_widget(contact.nationality)}}
-                                            </div>
-
-                                        </div>
-
-
-                                    </div>
-                                    <div class="col-lg-4" >
-                                        <div class="col-lg-12 content-group-lg" style="background-color: #5d9d9c;color: #fff;font-size: 14px;text-align: center;margin: 10px 0">
-                                            <h6 >Statut</h6>
-                                        </div>
-
-                                        <div class="form-group">
-
-
-                                            <div class="dropdown">
-                                                <label class="control-label col-sm-6" for="pwd">Qualité Mandataire</label>
-
-                                                <div class="col-sm-6">
-                                                      {{form_widget(contact.mandaQuality)}}
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="dropdown">
-                                                <label class="control-label col-sm-7" for="pwd"> Mandataire social principal</label>
-
-                                                <div class="col-sm-5">
-
-                                                    {{form_widget(contact.mandaSocial)}}
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="dropdown">
-                                                <label class="control-label col-sm-7" for="pwd">Associé</label>
-
-                                                <div class="col-sm-5">
-                                                    {{form_widget(contact.associe)}}
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="control-label col-sm-7" for="pwd">Nombre Parts</label>
-                                            <div class="col-sm-5">
-                                                <div class="col-sm-7">
-                                                    {{form_widget(contact.partNumber)}}
-                                                </div>
-                                                <div class="col-sm-5">
-                                                    <div>
-                                                     {{form_widget(contact.partNumberPercent)}}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <div class="dropdown">
-                                                <label class="control-label col-sm-7" for="pwd">TNS</label>
-
-                                                <div class="col-sm-5">
-                                                    {{form_widget(contact.tns)}}
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="dropdown">
-                                                <label class="control-label col-sm-7" for="pwd">Autres sociétés</label>
-
-                                                <div class="col-sm-5">
-                                                    {{form_widget(contact.othercompany)}}
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                    <div class="col-lg-4" >
-                                        <div class="col-lg-12 content-group-lg" style="background-color: #5d9d9c;color: #fff;font-size: 14px;text-align: center;margin: 10px 0">
-                                            <h6 >Personne Morale</h6>
-                                        </div>
-
-
-
-                                        <div class="form-group">
-                                            <div class="dropdown">
-                                                <label class="control-label col-sm-6" for="pwd">Forme Juridique</label>
-
-                                                <div class="col-sm-6">
-                                                    {{form_widget(contact.legalForm)}}
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-
-                                        <div class="form-group">
-                                            <div class="dropdown">
-                                                <label class="control-label col-sm-6" for="pwd">Capital Social</label>
-
-                                                <div class="col-sm-6">
-                                                    {{form_widget(contact.socialCapital)}}
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-
-                                        <div class="form-group">
-                                            <div class="dropdown">
-                                                <label class="control-label col-sm-6" for="pwd">Représentant</label>
-
-                                                <div class="col-sm-6">
-                                                    {{form_widget(contact.representative)}}
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <div class="dropdown">
-                                                <label class="control-label col-sm-6" for="pwd">Qualité du représentant</label>
-
-                                                <div class="col-sm-6">
-                                                    {{form_widget(contact.representativeQuality)}}
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="control-label col-sm-6" for="pwd">Siren</label>
-                                            <div class="col-sm-6">
-                                                {{form_widget(contact.siren)}}
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-
-                                <div class="panel-body">
-
-                                    <div class="col-lg-12 content-group-lg" style="background-color: #5d9d9c;color: #fff;font-size: 14px;text-align: center;margin: 10px 0">
-                                        <h6 >Coordonnées</h6>
-                                    </div>
-
-
-
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-2" for="pwd">Téléphone Fixe</label>
-                                        <div class="col-sm-2">
-                                            <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-2" for="pwd">Téléphone Portable</label>
-                                        <div class="col-sm-2">
-                                            <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-1" for="pwd">Email</label>
-                                        <div class="col-sm-2">
-                                            <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="dropdown">
-                                            <label class="control-label col-sm-2" for="pwd">Réception des mails auto</label>
-
-                                            <div class="col-sm-2">
-                                                <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Tutorials
-                                                    <span class="caret"></span></button>
-                                                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
-                                                    <li role="presentation" class="divider"></li>
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-2" for="pwd">Adresse N°</label>
-                                        <div class="col-sm-1">
-                                            <input type="text" class="form-control colorback" id="pwd"  name="pwd">
-                                        </div>
-                                        <div class="col-sm-5">
-                                            <input type="text" class="form-control colorback" id="pwd"  name="pwd">
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-2" for="pwd">Code Postal</label>
-                                        <div class="col-sm-2">
-                                            <input type="text" class="form-control colorback" id="pwd"  name="pwd">
-                                        </div>
-                                        <label class="control-label col-sm-2" for="pwd">Ville</label>
-                                        <div class="col-sm-2">
-                                            <input type="text" class="form-control colorback" id="pwd"  name="pwd">
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-2" for="pwd">Pays</label>
-                                        <div class="col-sm-2">
-                                            <input type="text" class="form-control colorback" id="pwd"  name="pwd">
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group">
-                                        <div class="dropdown">
-                                            <label class="control-label col-sm-1" for="pwd">EkoNews</label>
-
-                                            <div class="col-sm-1">
-                                                <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">oui
-                                                    <span class="caret"></span></button>
-                                                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
-                                                    <li role="presentation" class="divider"></li>
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="dropdown">
-                                            <label class="control-label col-sm-1" for="pwd">EkoConseils</label>
-
-                                            <div class="col-sm-1">
-                                                <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">oui
-                                                    <span class="caret"></span></button>
-                                                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
-                                                    <li role="presentation" class="divider"></li>
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group">
-                                        <div class="dropdown">
-                                            <label class="control-label col-sm-1" for="pwd">Anniversaire</label>
-
-                                            <div class="col-sm-1">
-                                                <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">oui
-                                                    <span class="caret"></span></button>
-                                                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
-                                                    <li role="presentation" class="divider"></li>
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="dropdown">
-                                            <label class="control-label col-sm-1" for="pwd">Fetes</label>
-
-                                            <div class="col-sm-1">
-                                                <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">oui
-                                                    <span class="caret"></span></button>
-                                                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
-                                                    <li role="presentation" class="divider"></li>
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-
-
-
-                                <div class="panel-body">
-
-                                    <div class="col-lg-12 content-group-lg" style="background-color: #5d9d9c;color: #fff;font-size: 14px;text-align: center;margin: 10px 0">
-                                        <h6 >Informations sur les mandataires sociaux et associés</h6>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="dropdown">
-                                            <label class="control-label col-sm-4" for="pwd">Situation Maritale</label>
-
-                                            <div class="col-sm-2">
-                                                <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">choisir
-                                                    <span class="caret"></span></button>
-                                                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
-                                                    <li role="presentation" class="divider"></li>
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="dropdown">
-                                            <label class="control-label col-sm-4" for="pwd">
-                                                Souhaitez-vous que la société reste un bien propre?<br>
-                                            </label>
-
-                                            <div class="col-sm-2">
-                                                <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">choisir
-                                                    <span class="caret"></span></button>
-                                                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" >HTML</a></li>
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
-                                                    <li role="presentation" class="divider"></li>
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-4" for="pwd">Commentaire</label>
-                                        <div class="col-sm-2">
-                                            <input type="text" class="form-control colorback" id="pwd"  name="pwd">
-                                        </div>
-                                    </div>
-
-
-
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-4" for="pwd">Nombre d'enfant</label>
-                                        <div class="col-sm-2">
-                                            <input type="text" class="form-control colorback" id="pwd"  name="pwd" placeholder="0">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
-                                            <thead>
-                                            <tr>
-                                                <th></th>
-                                                <th class="text-center">Date de début de mariage</th>
-                                                <th>Date de fin de mariage</th>
-                                                <th>Régime matrimonial</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr>
-                                                <td>
-                                                    <a title="Modifier" href="{{ path('client_edit') }}" class=" legitRipple"><i class="icon-trash position-center" style="color: red"></i></a>
-                                                </td>
-                                                <td>IWEB Maroc</td>
-                                                <td>SAS</td>
-                                                <td>2010</td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <table class="table datatable-responsive table-bordered table-hover datatable-highlight">
-                                            <thead>
-                                            <tr>
-                                                <th></th>
-                                                <th class="text-center">Prénom</th>
-                                                <th>Nom</th>
-                                                <th>Date de naissance</th>
-                                                <th>Date de décés</th>
-                                                <th>Age</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr>
-                                                <td>
-                                                    <a title="Modifier" href="{{ path('client_edit') }}" class=" legitRipple"><i class="icon-trash position-center" style="color: red"></i></a>
-                                                </td>
-                                                <td>IWEB Maroc</td>
-                                                <td>SAS</td>
-                                                <td>2010</td>
-                                                <td>258963</td>
-                                                <td>325415</td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-
-
-
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-2" for="pwd">Revenue annuel net</label>
-                                        <div class="col-sm-1">
-                                            <input type="text" class="form-control colorback" id="pwd"  name="pwd" placeholder="0">
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group">
-                                        <div class="dropdown">
-                                            <label class="control-label col-sm-1" for="pwd">
-                                                Proprétaire<br>
-                                            </label>
-
-                                            <div class="col-sm-2">
-                                                <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">choisir
-                                                    <span class="caret"></span></button>
-                                                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" >HTML</a></li>
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
-                                                    <li role="presentation" class="divider"></li>
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-2" for="pwd">Métier du conjoint</label>
-                                        <div class="col-sm-4">
-                                            <input type="text" class="form-control colorback" id="pwd"  name="pwd" placeholder="0">
-                                        </div>
-                                    </div>
-
-                                    <br><br><br>
-
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-2" for="pwd">Actifs de placement</label>
-                                        <div class="col-sm-4">
-                                            <input type="text" class="form-control colorback" id="pwd"  name="pwd" placeholder="0">
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-2" for="pwd">Passifs</label>
-                                        <div class="col-sm-4">
-                                            <input type="text" class="form-control colorback" id="pwd"  name="pwd" placeholder="0">
-                                        </div>
-                                    </div>
-
-
-                                    <br><br><br>
-
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-2" for="pwd">Situation précédent</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control colorback" id="pwd"  name="pwd" placeholder="0">
-                                        </div>
-                                    </div>
-
-
-                                    <br><br>
-
-                                    <div class="form-group">
-                                        <div class="dropdown">
-                                            <label class="control-label col-sm-1" for="pwd">
-                                                ACCRE<br>
-                                            </label>
-
-                                            <div class="col-sm-2">
-                                                <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">choisir
-                                                    <span class="caret"></span></button>
-                                                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" >HTML</a></li>
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
-                                                    <li role="presentation" class="divider"></li>
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control colorback" id="pwd"  name="pwd">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <br><br>
-
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-2" for="pwd">Date début Pole Emploi</label>
-                                        <div class="col-sm-4">
-                                            <input type="text" class="form-control colorback" id="pwd"  name="pwd" placeholder="0">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-2" for="pwd">Date fin Pole Emploi</label>
-                                        <div class="col-sm-4">
-                                            <input type="text" class="form-control colorback" id="pwd"  name="pwd" placeholder="0">
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-2" for="pwd">ARCE ou ARE </label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control colorback" id="pwd"  name="pwd" placeholder="0">
-                                        </div>
-                                    </div>
-
-
-
-                                </div>
-
-                            </form>
+                        <div class="col-sm-7">
+                            {{form_widget(contact.civility)}}
                         </div>
                     </div>
 
-                    {# end contact form #}
+                </div>
 
+                <div class="form-group">
+
+                    <label class="control-label col-sm-5" >Nom <span class="requis">*</span></label>
+                    <div class="col-sm-7">
+                        {{form_widget(contact.firstname)}}
+                        {{form_errors(contact.firstname)}}
+                    </div>
 
 
                 </div>
 
+
+                <div class="form-group">
+
+                    <label class="control-label col-sm-5" >Nom Matiral</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label class="control-label col-sm-5" >Prénom</label>
+                    <div class="col-sm-7">
+                        {{form_widget(contact.lastname)}}
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label class="control-label col-sm-5" >Date de naissance</label>
+                    <div class="col-sm-7">
+                        {{form_widget(contact.birthDate) }}
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label class="control-label col-sm-5" >Lieu de naissance</label>
+                    <div class="col-sm-7">
+                        {{form_widget(contact.birthPlace)}}
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label class="control-label col-sm-5" >Dept de naissance</label>
+                    <div class="col-sm-7">
+                        {{form_widget(contact.birthDept)}}
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label class="control-label col-sm-5" >Pays de naissance</label>
+                    <div class="col-sm-7">
+                        {{form_widget(contact.birthCountry)}}
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label class="control-label col-sm-5" >Nationalité</label>
+                    <div class="col-sm-7">
+                        {{form_widget(contact.nationality)}}
+                    </div>
+
+                </div>
+
+
             </div>
+            <div class="col-lg-4" >
+                <div class="col-lg-12 content-group-lg" style="background-color: #5d9d9c;color: #fff;font-size: 14px;text-align: center;margin: 10px 0">
+                    <h6 >Statut</h6>
+                </div>
+
+                <div class="form-group">
+
+
+                    <div class="dropdown">
+                        <label class="control-label col-sm-6" >Qualité Mandataire</label>
+
+                        <div class="col-sm-6">
+                            {{form_widget(contact.mandaQuality)}}
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <div class="dropdown">
+                        <label class="control-label col-sm-7" > Mandataire social principal</label>
+
+                        <div class="col-sm-5">
+
+                            {{form_widget(contact.mandaSocial)}}
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <div class="dropdown">
+                        <label class="control-label col-sm-7" >Associé</label>
+
+                        <div class="col-sm-5">
+                            {{form_widget(contact.associe)}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-7" >Nombre Parts</label>
+                    <div class="col-sm-5">
+                        <div class="col-sm-7">
+                            {{form_widget(contact.partNumber)}}
+                        </div>
+                        <div class="col-sm-5">
+                            <div>
+                                {{form_widget(contact.partNumberPercent)}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="dropdown">
+                        <label class="control-label col-sm-7" >TNS</label>
+
+                        <div class="col-sm-5">
+                            {{form_widget(contact.tns)}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="dropdown">
+                        <label class="control-label col-sm-7" >Autres sociétés</label>
+
+                        <div class="col-sm-5">
+                            {{form_widget(contact.othercompany)}}
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-lg-4" >
+                <div class="col-lg-12 content-group-lg" style="background-color: #5d9d9c;color: #fff;font-size: 14px;text-align: center;margin: 10px 0">
+                    <h6 >Personne Morale</h6>
+                </div>
+
+
+
+                <div class="form-group">
+                    <div class="dropdown">
+                        <label class="control-label col-sm-6" >Forme Juridique</label>
+
+                        <div class="col-sm-6">
+                            {{form_widget(contact.legalForm)}}
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <div class="dropdown">
+                        <label class="control-label col-sm-6" >Capital Social</label>
+
+                        <div class="col-sm-6">
+                            {{form_widget(contact.socialCapital)}}
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <div class="dropdown">
+                        <label class="control-label col-sm-6" >Représentant</label>
+
+                        <div class="col-sm-6">
+                            {{form_widget(contact.representative)}}
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="dropdown">
+                        <label class="control-label col-sm-6" >Qualité du représentant</label>
+
+                        <div class="col-sm-6">
+                            {{form_widget(contact.representativeQuality)}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-6" >Siren</label>
+                    <div class="col-sm-6">
+                        {{form_widget(contact.siren)}}
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="panel-body">
+
+            <div class="col-lg-12 content-group-lg" style="background-color: #5d9d9c;color: #fff;font-size: 14px;text-align: center;margin: 10px 0">
+                <h6 >Coordonnées</h6>
+            </div>
+
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" >Téléphone Fixe</label>
+                <div class="col-sm-2">
+                    {{form_widget(contact.faxNumber)}}
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" >Téléphone Portable</label>
+                <div class="col-sm-2">
+                    {{form_widget(contact.phoneNumber)}}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-1" >Email</label>
+                <div class="col-sm-2">
+                    {{form_widget(contact.email)}}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="dropdown">
+                    <label class="control-label col-sm-2" >Réception des mails auto</label>
+
+                    <div class="col-sm-2">
+
+                        {{form_widget(contact.autoEmailReceipt)}}
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" >Adresse N°</label>
+                <div class="col-sm-1">
+                    {{form_widget(contact.adressenumber)}}
+                </div>
+                <div class="col-sm-5">
+                    {{form_widget(contact.adresse)}}
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" >Code Postal</label>
+                <div class="col-sm-2">
+                    {{form_widget(contact.postalCode)}}
+                </div>
+                <label class="control-label col-sm-1" >Ville</label>
+                <div class="col-sm-3">
+                    {{form_widget(contact.city)}}
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-1" >Pays</label>
+                <div class="col-sm-3">
+                    {{form_widget(contact.country)}}
+                </div>
+            </div>
+
+            <div style="margin-top:215px">
+
+                <div class="form-group" >
+                        <label class="control-label col-sm-1" >EkoNews</label>
+
+                        <div class="col-sm-2">
+                            {{form_widget(contact.ekoNews)}}
+                        </div>
+                </div>
+
+                <div class="form-group">
+                        <label class="control-label col-sm-1" >EkoConseils</label>
+
+                        <div class="col-sm-2">
+                            {{form_widget(contact.ekoConseils)}}
+
+                        </div>
+                </div>
+
+                <div class="form-group">
+                        <label class="control-label col-sm-1" >Anniversaire</label>
+
+                        <div class="col-sm-2">
+                            {{form_widget(contact.anniversaire)}}
+                        </div>
+                </div>
+
+                <div class="form-group">
+                        <label class="control-label col-sm-1">Fetes</label>
+
+                        <div class="col-sm-2">
+                            {{form_widget(contact.fetes)}}
+                        </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="panel-body">
+
+            <div class="col-lg-12 content-group-lg" style="background-color: #5d9d9c;color: #fff;font-size: 14px;text-align: center;margin: 10px 0">
+                <h6 >Informations sur les mandataires sociaux et associés</h6>
+            </div>
+
+            <div class="form-group">
+
+                    <label class="control-label col-sm-3">Situation Maritale</label>
+
+                    <div class="col-sm-3">
+                          {{form_widget(contact.maritalSituation)}}
+                    </div>
+
+            </div>
+
+            <div class="form-group">
+                <div class="dropdown">
+                    <label class="control-label col-sm-4">
+                        Souhaitez-vous que la société reste un bien propre?<br>
+                    </label>
+
+                    <div class="col-sm-2">
+                        {{form_widget(contact.propreSociety)}}
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-2">Commentaire</label>
+                <div class="col-sm-6">
+                    {{form_widget(contact.comment)}}
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-2">Nombre d'enfant</label>
+                <div class="col-sm-2">
+                    {{form_widget(contact.childrenNumber)}}
+                </div>
+            </div>
+
+
+
+
+
+                <div class="col-sm-12">
+
+                    <fieldset class="scheduler-border">
+
+                        <legend class="scheduler-border" style="text-transform: capitalize">Mariages</legend>
+
+                            {{form_widget(contact.weddings)}}
+
+
+                    </fieldset>
+
+                </div>
+
+            <div class="col-sm-12">
+
+                <fieldset class="scheduler-border">
+
+                    <legend class="scheduler-border" style="text-transform: capitalize">Enfants</legend>
+
+                    {{form_widget(contact.children)}}
+
+                </fieldset>
+
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" >Revenue annuel net</label>
+                <div class="col-sm-2">
+                    {{form_widget(contact.annualIncome)}}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="dropdown">
+                    <label class="control-label col-sm-1" >
+                        Proprétaire<br>
+                    </label>
+
+                    <div class="col-sm-2">
+
+                        {{form_widget(contact.owner)}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" >Métier du conjoint</label>
+                <div class="col-sm-3">
+                    {{form_widget(contact.husbandJob)}}
+                </div>
+            </div>
+
+            <br><br><br>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" >Actifs de placement</label>
+                <div class="col-sm-4">
+                    {{form_widget(contact.actifsPlacement)}}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" >Passifs</label>
+                <div class="col-sm-4">
+                    {{form_widget(contact.passifs)}}
+                </div>
+            </div>
+
+            <br><br><br>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" >Situation précédent</label>
+                <div class="col-sm-10">
+                    {{form_widget(contact.previousSituation)}}
+                </div>
+            </div>
+
+            <br><br>
+
+            <div class="form-group">
+                <div class="dropdown">
+                    <label class="control-label col-sm-2" >
+                        ACCRE<br>
+                    </label>
+
+                    <div class="col-sm-2">
+
+                        {{form_widget(contact.accre)}}
+                    </div>
+                    <div class="col-sm-8">
+                        {{form_widget(contact.accreDescription)}}
+
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 70px"></div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" >Date début Pole Emploi</label>
+                <div class="col-sm-4">
+                    {{form_widget(contact.dateStartJobPole)}}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" >Date fin Pole Emploi</label>
+                <div class="col-sm-4">
+                    {{form_widget(contact.dateEndJobPole)}}
+                </div>
+            </div>
+
+            <div style="margin-top: 120px"></div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" >ARCE ou ARE </label>
+                <div class="col-sm-10">
+                    {{form_widget(contact.ARCE_ARE)}}
+                </div>
+            </div>
+
+            <br><br><br>
+            {{form_row(contact.enregistrer)}}
+
+
+        </div>
+
+    </div>
+    {{ form_widget(contact._token) }}
+    {{ form_end(contact, {'render_rest': false}) }}
+
+
+
+                     {# end contact form #}
+
+                </div>
 
         </div>
     </div>
 
-    {% block javascripts %}
-
-    {% endblock %}
-
 {% endblock %}
+
+    {% block javascripts %}
+        <script src="{{ asset('assets/js/plugins/symfony_collectionjs/jquery.collection.js') }}"></script>
+        <script>
+            $('.add-wedding-collection').collection({
+                    name_prefix: "{{ contact.weddings.vars.full_name }}",
+                    add_at_the_end: true,
+                    hide_useless_buttons: true,
+                    add: '<a style="float:right" href="#" class="collection-action btn btn-success btn-small collection-rescue-add">Ajouter</a>',
+                    remove: '<a href="#" class="collection-remove btn btn-warning collection-action">Retirer</a>',
+                    allow_up: false,
+                    allow_down: false,
+                    init_with_n_elements: 0,
+                    after_add: function (collection, element) {
+                        french_picker();
+                        //$('select').select2();
+                        return true;
+                    }
+
+                }
+
+            );
+            $('.add-child-collection').collection({
+                    name_prefix: "{{ contact.vars.full_name }}",
+                    add_at_the_end: true,
+                    hide_useless_buttons: true,
+                    add: '<a style="float:right" href="#" class="collection-action btn btn-success btn-small collection-rescue-add">Ajouter</a>',
+                    remove: '<a href="#" class="collection-remove btn btn-warning collection-action">Retirer</a>',
+                    allow_up: false,
+                    allow_down: false,
+                    init_with_n_elements: 0,
+                    after_add: function (collection, element) {
+                        french_picker();
+                        //$('select').select2();
+                        return true;
+                    }
+                }
+
+            );
+        </script>
+    {% endblock %}

@@ -15,6 +15,18 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class Contact extends Person
 {
+
+    /**
+     * Contact constructor.
+     * @param int $id
+     */
+    public function __construct()
+    {
+        $this->weddings = new ArrayCollection();
+        $this->children = new ArrayCollection();
+    }
+
+
     /**
      * @var int
      *
@@ -198,6 +210,567 @@ class Contact extends Person
      * @ORM\Column(name="email", type="string",length=100,unique=true)
      */
     private $email;
+
+    /**
+     * @var string
+     * @Assert\Valid
+     * @ORM\Column(name="autoEmailReceipt", type="string",length=20)
+     */
+    private $autoEmailReceipt;
+
+    /**
+     * @var string
+     * @Assert\Valid
+     * @ORM\Column(name="adressenumber", type="string",length=20)
+     */
+    private $adressenumber;
+
+    /**
+     * @var string
+     * @Assert\Valid
+     * @ORM\Column(name="adresse", type="string",length=20)
+     */
+    private $adresse;
+
+    /**
+     * @var string
+     * @Assert\Valid
+     * @ORM\Column(name="city", type="string")
+     */
+
+    private $city;
+
+    /**
+     * @var string
+     * @Assert\Valid
+     * @ORM\Column(name="country", type="string")
+     */
+
+    private $country;
+
+    /**
+     * @var string
+     * @Assert\Valid
+     * @ORM\Column(name="ekoNews", type="string")
+     */
+
+    private $ekoNews;
+
+    /**
+     * @var string
+     * @Assert\Valid
+     * @ORM\Column(name="ekoConseils", type="string")
+     */
+
+    private $ekoConseils;
+
+    /**
+     * @var string
+     * @Assert\Valid
+     * @ORM\Column(name="anniversaire", type="string")
+     */
+
+    private $anniversaire;
+
+    /**
+     * @var string
+     * @Assert\Valid
+     * @ORM\Column(name="fetes", type="string")
+     */
+
+    private $fetes;
+
+    /**
+     * @var string
+     * @Assert\Valid
+     * @ORM\Column(name="maritalSituation", type="string")
+     */
+    private $maritalSituation;
+
+    /**
+     * @var string
+     * @Assert\Valid
+     * @ORM\Column(name="propreSociety", type="string")
+     */
+    private $propreSociety;
+
+    /**
+     * @var string
+     * @Assert\Valid
+     * @ORM\Column(name="comment", type="string")
+     */
+    private $comment;
+
+    /**
+     * @var integer
+     * @Assert\Valid
+     * @ORM\Column(name="childrenNumber", type="integer")
+     */
+    private $childrenNumber;
+
+    /**
+     * @var float
+     * @Assert\Valid
+     * @ORM\Column(name="annualIncome", type="float")
+     */
+    private $annualIncome;
+
+    /**
+     * @var string
+     * @Assert\Valid
+     * @ORM\Column(name="owner", type="string")
+     */
+    private $owner;
+
+    /**
+     * @var string
+     * @Assert\Valid
+     * @ORM\Column(name="husbandJob", type="string")
+     */
+    private $husbandJob;
+
+    /**
+     * @var string
+     * @Assert\Valid
+     * @ORM\Column(name="actifsPlacement", type="string")
+     */
+    private $actifsPlacement;
+
+    /**
+     * @var string
+     * @Assert\Valid
+     * @ORM\Column(name="passifs", type="string")
+     */
+    private $passifs;
+
+    /**
+     * @var string
+     * @Assert\Valid
+     * @ORM\Column(name="previousSituation", type="string")
+     */
+    private $previousSituation;
+
+    /**
+     * @var string
+     * @Assert\Valid
+     * @ORM\Column(name="accre", type="string")
+     */
+    private $accre;
+
+    /**
+     * @var string
+     * @Assert\Valid
+     * @ORM\Column(name="accreDescription", type="string")
+     */
+    private $accreDescription;
+
+    /**
+     * @var \DateTime
+     * @Assert\Valid
+     * @ORM\Column(name="dateStartJobPole", type="datetime")
+     */
+    private $dateStartJobPole;
+
+    /**
+     * @var \DateTime
+     * @Assert\Valid
+     * @ORM\Column(name="dateEndJobPole", type="datetime")
+     */
+    private $dateEndJobPole;
+
+    /**
+     * @var string
+     * @Assert\Valid
+     * @ORM\Column(name="ARCE_ARE", type="string")
+     */
+    private $ARCE_ARE;
+
+    /**
+     * @return float
+     */
+    public function getAnnualIncome()
+    {
+        return $this->annualIncome;
+    }
+
+    /**
+     * @param float $annualIncome
+     */
+    public function setAnnualIncome(float $annualIncome)
+    {
+        $this->annualIncome = $annualIncome;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOwner()
+    {
+        return $this->owner;
+    }
+
+    /**
+     * @param string $owner
+     */
+    public function setOwner(string $owner)
+    {
+        $this->owner = $owner;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHusbandJob()
+    {
+        return $this->husbandJob;
+    }
+
+    /**
+     * @param string $husbandJob
+     */
+    public function setHusbandJob(string $husbandJob)
+    {
+        $this->husbandJob = $husbandJob;
+    }
+
+    /**
+     * @return string
+     */
+    public function getActifsPlacement()
+    {
+        return $this->actifsPlacement;
+    }
+
+    /**
+     * @param string $actifsPlacement
+     */
+    public function setActifsPlacement(string $actifsPlacement)
+    {
+        $this->actifsPlacement = $actifsPlacement;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassifs()
+    {
+        return $this->passifs;
+    }
+
+    /**
+     * @param string $passifs
+     */
+    public function setPassifs(string $passifs)
+    {
+        $this->passifs = $passifs;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPreviousSituation()
+    {
+        return $this->previousSituation;
+    }
+
+    /**
+     * @param string $previousSituation
+     */
+    public function setPreviousSituation(string $previousSituation)
+    {
+        $this->previousSituation = $previousSituation;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAccre()
+    {
+        return $this->accre;
+    }
+
+    /**
+     * @param string $accre
+     */
+    public function setAccre(string $accre)
+    {
+        $this->accre = $accre;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAccreDescription()
+    {
+        return $this->accreDescription;
+    }
+
+    /**
+     * @param string $accreDescription
+     */
+    public function setAccreDescription(string $accreDescription)
+    {
+        $this->accreDescription = $accreDescription;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateStartJobPole()
+    {
+        return $this->dateStartJobPole;
+    }
+
+    /**
+     * @param \DateTime $dateStartJobPole
+     */
+    public function setDateStartJobPole(\DateTime $dateStartJobPole=null)
+    {
+        $this->dateStartJobPole = $dateStartJobPole;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateEndJobPole()
+    {
+        return $this->dateEndJobPole;
+    }
+
+    /**
+     * @param \DateTime $dateEndJobPole
+     */
+    public function setDateEndJobPole(\DateTime $dateEndJobPole=null)
+    {
+        $this->dateEndJobPole = $dateEndJobPole;
+    }
+
+    /**
+     * @return string
+     */
+    public function getARCEARE()
+    {
+        return $this->ARCE_ARE;
+    }
+
+    /**
+     * @param string $ARCE_ARE
+     */
+    public function setARCEARE(string $ARCE_ARE)
+    {
+        $this->ARCE_ARE = $ARCE_ARE;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getMaritalSituation()
+    {
+        return $this->maritalSituation;
+    }
+
+    /**
+     * @param string $maritalSituation
+     */
+    public function setMaritalSituation(string $maritalSituation)
+    {
+        $this->maritalSituation = $maritalSituation;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPropreSociety()
+    {
+        return $this->propreSociety;
+    }
+
+    /**
+     * @param string $propreSociety
+     */
+    public function setPropreSociety(string $propreSociety)
+    {
+        $this->propreSociety = $propreSociety;
+    }
+
+    /**
+     * @return string
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
+     * @param string $comment
+     */
+    public function setComment(string $comment)
+    {
+        $this->comment = $comment;
+    }
+
+    /**
+     * @return int
+     */
+    public function getChildrenNumber()
+    {
+        return $this->childrenNumber;
+    }
+
+    /**
+     * @param int $childrenNumber
+     */
+    public function setChildrenNumber(int $childrenNumber)
+    {
+        $this->childrenNumber = $childrenNumber;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEkoNews()
+    {
+        return $this->ekoNews;
+    }
+
+    /**
+     * @param string $ekoNews
+     */
+    public function setEkoNews(string $ekoNews)
+    {
+        $this->ekoNews = $ekoNews;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEkoConseils()
+    {
+        return $this->ekoConseils;
+    }
+
+    /**
+     * @param string $ekoConseils
+     */
+    public function setEkoConseils(string $ekoConseils)
+    {
+        $this->ekoConseils = $ekoConseils;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAnniversaire()
+    {
+        return $this->anniversaire;
+    }
+
+    /**
+     * @param string $anniversaire
+     */
+    public function setAnniversaire(string $anniversaire)
+    {
+        $this->anniversaire = $anniversaire;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFetes()
+    {
+        return $this->fetes;
+    }
+
+    /**
+     * @param string $fetes
+     */
+    public function setFetes(string $fetes)
+    {
+        $this->fetes = $fetes;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getAdressenumber()
+    {
+        return $this->adressenumber;
+    }
+
+    /**
+     * @param string $adressenumber
+     */
+    public function setAdressenumber(string $adressenumber)
+    {
+        $this->adressenumber = $adressenumber;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * @param string $adresse
+     */
+    public function setAdresse(string $adresse)
+    {
+        $this->adresse = $adresse;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param string $city
+     */
+    public function setCity(string $city)
+    {
+        $this->city = $city;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param string $country
+     */
+    public function setCountry(string $country)
+    {
+        $this->country = $country;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getAutoEmailReceipt()
+    {
+        return $this->autoEmailReceipt;
+    }
+
+    /**
+     * @param string $autoEmailReceipt
+     */
+    public function setAutoEmailReceipt(string $autoEmailReceipt)
+    {
+        $this->autoEmailReceipt = $autoEmailReceipt;
+    }
 
 
     /**
@@ -444,7 +1017,7 @@ class Contact extends Person
     /**
      * @return string
      */
-    public function getBirthDept(): string
+    public function getBirthDept()
     {
         return $this->birthDept;
     }

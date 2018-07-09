@@ -58,7 +58,7 @@
 
                                 <fieldset class="scheduler-border">
                                     <legend class="scheduler-border" style="text-transform: capitalize">Adresse du SIE</legend>
-                                    {{form_row(formcompany.SieAddress)}}
+                                    {{form_row(formcompany.siegeAddress)}}
 
                                 </fieldset>
 
@@ -189,13 +189,6 @@
     </div>
 {% endblock %}
     {% block javascripts %}
-        <script>
-            $(document).ready(function() {
-                $('.js-datepicker').datepicker({
-                    format:'dd/MM/yyyy'
-                });
-            });
-        </script>
         <script src="{{ asset('assets/js/plugins/symfony_collectionjs/jquery.collection.js') }}"></script>
         <script type="text/javascript">
             $('.old-addresses-collection').collection({
@@ -226,6 +219,19 @@
                         return true;
                     }
 
+                }
+            );
+
+
+            $('.add-contact-collection').collection({
+                    name_prefix: "{{ formcompany.contacts.vars.full_name }}",
+                    add_at_the_end: true,
+                    hide_useless_buttons: true,
+                    add: '<a style="float:right" href="#" class="collection-action btn btn-success btn-small collection-rescue-add">Ajouter</a>',
+                    remove: '<a href="#" class="collection-remove btn btn-warning collection-action">Retirer</a>',
+                    allow_up: false,
+                    allow_down: false,
+                    init_with_n_elements: 0,
                 }
             );
         </script>

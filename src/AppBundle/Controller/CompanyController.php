@@ -135,10 +135,20 @@ class CompanyController extends BaseController
     {
 
         $contact = new Contact();
-        $contact = $this->createForm('AppBundle\Form\ContactDetailsType');
-        $contact->handleRequest($request);
+        $formcontact = $this->createForm('AppBundle\Form\ContactDetailsType',$contact);
+        $formcontact->handleRequest($request);
+        if ($formcontact->isSubmitted() && $formcontact->isValid()) {
 
-        return $this->render('contact/new.html.twig',array('contact' => $contact->createView()));
+         //   $this->em->persist($contact);
+          //  $this->em->flush();
+          //  $this->clientManager->createClient($company,$formcompany);
+            //   $this->get('event_dispatcher')->dispatch(AppEvents::CLIENT_CREATED, new ClientCreatedEvent($company));
+           // $this->addSuccessFlash();
+            $this->redirectToRoute('contact_list');
+        }
+
+
+        return $this->render('contact/new.html.twig',array('contact' => $formcontact->createView()));
     }
 
     /**
@@ -150,7 +160,6 @@ class CompanyController extends BaseController
     {
         $contacts= $this->em->getRepository('AppBundle:Contact')->findAll();
 
-        dump($contacts);die;
         return $this->render('contact/list.html.twig',array("contacts"=>$contacts));
     }
 
