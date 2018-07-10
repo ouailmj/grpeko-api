@@ -156,14 +156,15 @@ $contacts=[ $formcompany->get("contacts")->get("firstname")->getData(),
 
         return $this->render('contact/new.html.twig',array('contact' => $formcontact->createView()));
     }
-
+///contact/list/{company}
     /**
-     * @Route("/contact/list", name="contact_list")
+     * @Route("/contact/list/ ", name="contact_list")
      *
      */
 
-    public function ListContactAction(Request $request)
+    public function ListContactAction(/*Company $company , */Request $request)
     {
+      //  dump($company);die;
         $contacts= $this->em->getRepository('AppBundle:Contact')->findAll();
 
         return $this->render('contact/list.html.twig',array("contacts"=>$contacts));
@@ -184,7 +185,10 @@ $contacts=[ $formcompany->get("contacts")->get("firstname")->getData(),
         }
 
         return $this->render('company/edit.html.twig',
-                            array('formcompany' => $formcompany->createView()));
+                            array(
+                                'formcompany' => $formcompany->createView(),
+                                'company' => $company
+                            ));
     }
 
 }

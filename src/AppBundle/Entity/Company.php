@@ -139,7 +139,7 @@ class Company extends LegalEntity
     protected $relation;
 
     /**
-     * @var integer
+     * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      *
@@ -481,7 +481,7 @@ class Company extends LegalEntity
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getApeCode()
     {
@@ -489,9 +489,9 @@ class Company extends LegalEntity
     }
 
     /**
-     * @param int $apeCode
+     * @param string $apeCode
      */
-    public function setApeCode(int $apeCode)
+    public function setApeCode(string $apeCode)
     {
         $this->apeCode = $apeCode;
     }
@@ -640,7 +640,7 @@ class Company extends LegalEntity
      * @param $contacts
      * @return $this
      */
-    public function addContacts(Contact $contacts)
+    public function addContact(Contact $contacts)
     {
         $this->contacts->add($contacts);
         return $this;
@@ -650,7 +650,7 @@ class Company extends LegalEntity
      * @param $contacts
      * @return bool
      */
-    public function removeContacts($contacts)
+    public function removeContact($contacts)
     {
         return $this->contacts->removeElement($contacts);
 

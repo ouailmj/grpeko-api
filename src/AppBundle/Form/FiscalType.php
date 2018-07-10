@@ -42,9 +42,9 @@ class FiscalType extends AbstractType
                 'label' => 'Date de fermeture'
             ))
 
-            ->add('status', TextType::class, array(
-                    'label' => false
-                ))
+          //  ->add('status', TextType::class, array(
+             //       'label' => false
+            //    ))
             ->add('assignment', AssignmentType::class, array(
                 'label' => false
             ))

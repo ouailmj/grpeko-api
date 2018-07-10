@@ -103,13 +103,6 @@ class FiscalYear
      */
     protected $assignment;
 
-
-    /**
-     * @var Mission
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Mission", inversedBy="fiscalYears")
-     */
-    protected $mission;
-
     /**
      * @var Mission[] | ArrayCollection
      * @ORM\ManyToMany(targetEntity="Mission")

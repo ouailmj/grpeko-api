@@ -27,12 +27,12 @@ class ContactType extends AbstractType
             ->add('firstname', TextType::class, array(
                 'label' => 'Nom:',
                 'required'  => true,
-                'mapped'=>false
+                'mapped'=>false,
             ))
             ->add('lastname', TextType::class, array(
                 'label' => 'Prénom:',
                 'required'  => true,
-                'mapped'=>false
+                'mapped'=>false,
             ))
             ->add('intermediate', TextType::class, array(
                 'label' => 'de part:',

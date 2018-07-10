@@ -52,9 +52,9 @@ class ClientManager
         $this->em->flush();
     }
 
-    public function createClient(Company $prospect,array $contacts)
+    public function createClient(Company $prospect,array $contacts = null )
     {
-          //  $email = array_map(function($contacts) {
+          //  $email = array_map(function($contacts){
            //     return $contacts->getEmail();
           //  }, $formcompany->get('contacts')->getData()->toArray());
 
@@ -64,16 +64,24 @@ class ClientManager
 
         $password= rand(100000,1000000);
         $prospect->setCustomerAccount(new Customer());
-        $prospect->getCustomerAccount()->setName($contacts[0]);
         $prospect->getCustomerAccount()->setUserAccount(new User());
-        $prospect->getCustomerAccount()->getUserAccount()->setEmail($contacts[2]);
         $prospect->getCustomerAccount()->getUserAccount()->setPlainPassword($password);
 
-        $contact=new Contact();
-        $contact->setFirstname($contacts[0]);
-        $contact->setLastname($contacts[1]);
-        $contact->setEmail($contacts[2]);
-        $prospect->addContacts($contact);
+
+        if($contacts != null )
+        {
+            $contact=new Contact();
+            $contact->setFirstname($contacts[0]);
+            $contact->setLastname($contacts[1]);
+            $contact->setEmail($contacts[2]);
+            $prospect->getCustomerAccount()->setName($contacts[0]);
+            $prospect->getCustomerAccount()->getUserAccount()->setEmail($contacts[2]);
+            $prospect->addContact($contact);
+        }else{
+
+            $prospect->getCustomerAccount()->getUserAccount()->setEmail($prospect->getContacts()->first()->getEmail());
+        }
+
 
         if ($prospect->getCustomerAccount()->getUserAccount() instanceof User)
 
