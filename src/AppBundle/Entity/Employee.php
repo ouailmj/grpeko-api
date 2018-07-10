@@ -10,7 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="employee")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EmployeeRepository")
- * @ORM\HasLifecycleCallbacks()
  */
 class Employee extends Person   
 {
@@ -26,10 +25,16 @@ class Employee extends Person
     /**
      * @var JobPosition
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\JobPosition", inversedBy="employees",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\JobPosition", inversedBy="employees")
      * @ORM\JoinColumn(name="job_position_id", referencedColumnName="id", nullable=true)
      */
     private $jobPosition;
+
+
+    /*
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $initials;
 
     /**
      * @var Assignment [] | ArrayCollection
@@ -45,48 +50,6 @@ class Employee extends Person
      * @ORM\JoinColumn(name="manager_id", referencedColumnName="id")
      */
     private $manager;
-
-    /**
-     * @var status
-     * @ORM\Column(name="status", type="boolean", nullable=true)
-     */
-    protected $status;
-    /**
-     * @var EnterRelation [] | ArrayCollection
-     *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\EnterRelation", mappedBy="contributor")
-     */
-    private $enterRelations;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=10, nullable=true)
-     */
-    protected $initials;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetimetz", nullable=true)
-     */
-    protected $entryDate;
-
-    /**
-     * @return \DateTime
-     */
-    public function getEntryDate()
-    {
-        return $this->entryDate;
-    }
-
-    /**
-     * @param \DateTime $entryDate
-     */
-    public function setEntryDate($entryDate)
-    {
-        $this->entryDate = $entryDate;
-    }
 
     /**
      * Get id.
@@ -159,50 +122,7 @@ class Employee extends Person
     }
 
     /**
-     * @return bool
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-    /**
-     * @param bool $Status
-     */
-    public function setStatus(bool $status)
-    {
-        $this->status = $status;
-    }
-    /**
-     * @return EnterRelation[]|ArrayCollection
-     */
-    public function getEnterRelations()
-    {
-        return $this->enterRelations;
-    }
-
-    /**
-     * @param $enterRelation
-     * @return $this
-     */
-    public function addEnterRelation($enterRelation)
-    {
-        $this->enterRelations->add($enterRelation);
-        return $this;
-    }
-
-    /**
-     * @param $enterRelation
-     * @return bool
-     */
-    public function removeEnterRelation($enterRelation)
-    {
-        return  $this->enterRelations->removeElement($enterRelation);
-
-    }
-
-    /**
-     * @return string
+     * @return mixed
      */
     public function getInitials()
     {
@@ -210,33 +130,13 @@ class Employee extends Person
     }
 
     /**
-     * @param string $initials
-     *
-     * @return Employee
+     * @param mixed $initials
      */
-    public function setInitials(string $initials)
+    public function setInitials($initials)
     {
         $this->initials = $initials;
-
-        return $this;
     }
 
-    public function __toString()
-    {
-        return $this->initials;
-    }
 
-    /**
-     * @ORM\PrePersist()
-     */
-    public function setInitialsValue()
-    {
-        if (empty($this->initials)){
-            $this->initials = strtoupper(substr($this->getFirstName(), 0, 4));
-        }
 
-        if (empty($this->initials)){
-            $this->initials = strtoupper(substr($this->getLastName(), 0, 4));
-        }
-    }
 }

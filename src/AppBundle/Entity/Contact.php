@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -13,7 +14,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ContactRepository")
  * @UniqueEntity("email")
  */
-class Contact
+class Contact extends Person
 {
     /**
      * @var int
@@ -22,14 +23,28 @@ class Contact
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var Company
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Company" ,inversedBy="contacts" ,cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company" ,inversedBy="contacts" ,cascade={"persist", "remove"})
      */
     protected $company;
+
+    /**
+     * @var Child [] | ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Child",  mappedBy="contact")
+     */
+    private $children;
+
+    /**
+     * @var Wedding [] | ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Wedding", mappedBy="contact")
+     */
+    private $weddings;
 
 
     /**
@@ -228,5 +243,60 @@ class Contact
         $this->company = $company;
     }
 
+    /**
+     * @return Child[]|ArrayCollection
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
+     * @param Child[]|ArrayCollection $children
+     */
+    public function setChildren($children)
+    {
+        $this->children = $children;
+    }
+
+
+    public function addChild(Child $child)
+    {
+        $this->children->add($child);
+        return $this;
+    }
+
+    public function removeChild(Child $child)
+    {
+        return $this->children->removeElement($child);
+    }
+
+    /**
+     * @return Wedding[]|ArrayCollection
+     */
+    public function getWeddings()
+    {
+        return $this->weddings;
+    }
+
+    /**
+     * @param Wedding[]|ArrayCollection $weddings
+     */
+    public function setWeddings($weddings)
+    {
+        $this->weddings = $weddings;
+    }
+
+
+    public function addWedding(Wedding $wedding)
+    {
+        $this->weddings->add($wedding);
+        return $this;
+    }
+
+    public function removeWedding(Wedding $wedding)
+    {
+        return $this->weddings->removeElement($wedding);
+    }
 
 }
