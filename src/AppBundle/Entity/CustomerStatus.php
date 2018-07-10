@@ -179,7 +179,7 @@ class CustomerStatus
     /**
      * @return Company
      */
-    public function getCompany(): Company
+    public function getCompany()
     {
         return $this->company;
     }

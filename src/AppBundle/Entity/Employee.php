@@ -51,12 +51,7 @@ class Employee extends Person
      * @ORM\Column(name="status", type="boolean", nullable=true)
      */
     protected $status = false;
-    /**
-     * @var EnterRelation [] | ArrayCollection
-     *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\EnterRelation", mappedBy="contributor")
-     */
-    private $enterRelations;
+
 
     /**
      * @var string

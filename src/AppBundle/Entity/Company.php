@@ -757,7 +757,7 @@ class Company extends LegalEntity
     /**
      * @return CustomerStatus
      */
-    public function getCustomerStatus(): CustomerStatus
+    public function getCustomerStatus()
     {
         return $this->customerStatus;
     }

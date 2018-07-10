@@ -214,7 +214,7 @@ class FiscalYear
     /**
      * @return string
      */
-    public function getTaxationRegime(): string
+    public function getTaxationRegime()
     {
         return $this->taxationRegime;
     }
@@ -230,7 +230,7 @@ class FiscalYear
     /**
      * @return string
      */
-    public function getVatSystem(): string
+    public function getVatSystem()
     {
         return $this->vatSystem;
     }
@@ -246,7 +246,7 @@ class FiscalYear
     /**
      * @return string
      */
-    public function getTaxSystem(): string
+    public function getTaxSystem()
     {
         return $this->taxSystem;
     }
@@ -262,7 +262,7 @@ class FiscalYear
     /**
      * @return int
      */
-    public function getYear(): int
+    public function getYear()
     {
         return $this->year;
     }
@@ -278,7 +278,7 @@ class FiscalYear
     /**
      * @return Company
      */
-    public function getCompany(): Company
+    public function getCompany()
     {
         return $this->company;
     }
@@ -294,7 +294,7 @@ class FiscalYear
     /**
      * @return Assignment
      */
-    public function getAssignment(): Assignment
+    public function getAssignment()
     {
         return $this->assignment;
     }

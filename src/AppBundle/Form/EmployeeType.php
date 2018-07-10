@@ -65,16 +65,19 @@ class EmployeeType extends AbstractType
                     'placeholder'   => 'Exp: +336234521'
                 )
             ))
-            ->add('FixeNumber', TextType::class, array(
-                'label' => 'Téléphone fixe',
-                'attr'  => array(
-                    'placeholder'   => 'Exp: +336234521'
-                )
-            ))
 
-            ->add('currentAddress', AddressType::class,array(
-                'label' => false
-            ))
+//            ->add('addresses', CollectionType::class,
+//                [
+//                    'entry_type'   => FiscalType::class,
+//                    'label'        => false,
+//                    'allow_add'    => true,
+//                    'allow_delete' => true,
+//                    'prototype'    => true,
+//                    'required'     => true,
+//                    'attr'         => [
+//                        'class' => "add-fiscal-collection",
+//                    ],
+//                ])
 
 
             ->add('jobPosition', EntityType::class, array(
@@ -90,11 +93,7 @@ class EmployeeType extends AbstractType
                 'choices_as_values' => true,
                 'required' => true,
             ))
-
-            ->add('status', CheckboxType::class, array(
-                'label' => 'Activer ?',
-                'required'  => false
-            ));
+           ;
              if ($options['user']){
                  $builder
                      ->add('userAccount', UserType::class, array(
