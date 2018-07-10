@@ -49,14 +49,14 @@ class FiscalYear
     /**
      * @var string
      *
-     * @ORM\Column(name="status", type="string", length=10)
+     * @ORM\Column(name="status", type="string", length=10,nullable=true)
      */
     protected $status;
 
     /**
      * @var integer
      *
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",nullable=true)
      */
     protected $year;
 
@@ -126,6 +126,22 @@ class FiscalYear
     public function __construct()
     {
         $this->missions = new ArrayCollection();
+    }
+
+    /**
+     * @return Mission
+     */
+    public function getMission()
+    {
+        return $this->mission;
+    }
+
+    /**
+     * @param Mission $mission
+     */
+    public function setMission(Mission $mission)
+    {
+        $this->mission = $mission;
     }
 
 
@@ -214,7 +230,7 @@ class FiscalYear
     /**
      * @return string
      */
-    public function getTaxationRegime(): string
+    public function getTaxationRegime()
     {
         return $this->taxationRegime;
     }
@@ -230,7 +246,7 @@ class FiscalYear
     /**
      * @return string
      */
-    public function getVatSystem(): string
+    public function getVatSystem()
     {
         return $this->vatSystem;
     }
@@ -246,7 +262,7 @@ class FiscalYear
     /**
      * @return string
      */
-    public function getTaxSystem(): string
+    public function getTaxSystem()
     {
         return $this->taxSystem;
     }
@@ -262,7 +278,7 @@ class FiscalYear
     /**
      * @return int
      */
-    public function getYear(): int
+    public function getYear()
     {
         return $this->year;
     }
@@ -278,7 +294,7 @@ class FiscalYear
     /**
      * @return Company
      */
-    public function getCompany(): Company
+    public function getCompany()
     {
         return $this->company;
     }
@@ -294,7 +310,7 @@ class FiscalYear
     /**
      * @return Assignment
      */
-    public function getAssignment(): Assignment
+    public function getAssignment()
     {
         return $this->assignment;
     }
@@ -310,7 +326,7 @@ class FiscalYear
     /**
      * @return Mission[]
      */
-    public function getMissions(): array
+    public function getMissions()
     {
         return $this->missions;
     }

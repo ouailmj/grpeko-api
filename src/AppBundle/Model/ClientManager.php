@@ -9,6 +9,7 @@
 namespace AppBundle\Model;
 
 use AppBundle\Entity\Company;
+use AppBundle\Entity\Contact;
 use AppBundle\Entity\User;
 use AppBundle\Entity\Customer;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
@@ -51,7 +52,7 @@ class ClientManager
         $this->em->flush();
     }
 
-    public function createClient(Company $prospect)
+    public function createClient(Company $prospect,array $contacts)
     {
           //  $email = array_map(function($contacts) {
            //     return $contacts->getEmail();
@@ -63,20 +64,30 @@ class ClientManager
 
         $password= rand(100000,1000000);
         $prospect->setCustomerAccount(new Customer());
-        $prospect->getCustomerAccount()->setName($prospect->getContacts()->getLastname());
+        $prospect->getCustomerAccount()->setName($contacts[0]);
         $prospect->getCustomerAccount()->setUserAccount(new User());
-        $prospect->getCustomerAccount()->getUserAccount()->setEmail($prospect->getContacts()->getEmail());
+        $prospect->getCustomerAccount()->getUserAccount()->setEmail($contacts[2]);
         $prospect->getCustomerAccount()->getUserAccount()->setPlainPassword($password);
+
+        $contact=new Contact();
+        $contact->setFirstname($contacts[0]);
+        $contact->setLastname($contacts[1]);
+        $contact->setEmail($contacts[2]);
+        $prospect->addContacts($contact);
 
         if ($prospect->getCustomerAccount()->getUserAccount() instanceof User)
 
             $this->userManager->createUser($prospect->getCustomerAccount()->getUserAccount(), false);
             $prospect->getCustomerAccount()->getUserAccount()->setRoles(array("ROLE_PROSPECT"));
-            $prospect->getContacts()->setCompany($prospect);
 
-        foreach ($prospect->getFiscalYears() as $fiscalYear) {
+        foreach ($prospect->getContacts() as $c) {
+            $c->setCompany($prospect);
+         }
+
+         foreach ($prospect->getFiscalYears() as $fiscalYear) {
             $fiscalYear->setCompany($prospect);
          }
+
             $this->em->persist($prospect);
             $this->em->flush();
 
