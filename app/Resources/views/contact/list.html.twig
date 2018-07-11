@@ -11,9 +11,8 @@
                 <div id="firsttab">
                     <div class="">
                         <ul class="nav nav-tabs nav-tabs-highlight">
-                            <li class=""><a href="{{ path('company_new') }}"><i class="icon-users position-left"></i>Informations générales</a></li>
-                            <li class=""><a href="#Dossiers" data-toggle="tab" aria-expanded="false"><i class="icon-folder position-left"></i>Rendez-vous</a></li>
-                            <li class="active"><a href="#Contrats" data-toggle="tab" aria-expanded="false"><i class="icon-address-book3 position-left"></i>Contacts</a></li>
+                            <li class=""><a href="{{ path('company_edit',{ 'id': app.request.get('id') } )}}"><i class="icon-users position-left"></i>Informations générales</a></li>
+                            {#<li class=""><a href="#Dossiers" data-toggle="tab" aria-expanded="false"><i class="icon-folder position-left"></i>Rendez-vous</a></li>#}                              <li class="active"><a href="#Contrats" data-toggle="tab" aria-expanded="false"><i class="icon-address-book3 position-left"></i>Contacts</a></li>
                             <li>
                                 <ul class="nav navbar-nav navbar-right">
                                     <li class="dropdown dropdown-user">
@@ -41,11 +40,11 @@
                     <div class="tab-content panel panel-flat border-top-info active">
                         <div class="tab-pane active" id="Contrats">
 
-                            <div class="panel panel-flat">
+                            <div class="">
                                 <div class="panel-body">
 
                                     <div class="panel-body">
-                                        <span class="pull-left"><a href="{{ path('contact_new') }}" class="btn btn-primary heading-btn"><b><i class="icon-plus3"></i></b></a></span>
+                                        <span class="pull-left"><a href="{{ path('contact_new',{ 'id': app.request.get('id') }) }}" class="btn btn-primary heading-btn"><b><i class="icon-plus3"></i></b></a></span>
                                     </div>
 
                                     <table class="table">
@@ -61,22 +60,28 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>
-
-                                                    <div class="btn-group">
-                                                        <a href="" class="btn btn-primary legitRipple"><b><i class="icon-pen"></i> </b></a>
-                                                        <a href="#" onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" type="button" class="btn btn-danger legitRipple"><b><i class="icon-trash-alt"></i> </b></a>
+                                        {% for contact in contacts %}
+                                            <tr>
+                                                <td class="text-center">
+                                                    <div class="">
+                                                      <a title="Modifier" href="{{ path('contact_edit', { 'id': contact.id }) }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
                                                     </div>
+                                                    {{ form_start(delete_form[loop.index-1]) }}
+                                                    <button type="submit" style="background: transparent;border: none">
+                                                        <a onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');"title="Modifier" class=" legitRipple"><i class="icon-trash position-left"></i></a>
+                                                    </button>
+                                                    {{ form_end(delete_form[loop.index-1]) }}
 
-                                            </td>
-                                            <td>Monsieur</td>
-                                            <td>DELANOE</td>
-                                            <td>Stéphan</td>
-                                            <td>33%</td>
-                                            <td>Oui</td>
-                                            <td>Oui</td>
-                                        </tr>
+                                                </td>
+
+                                                <td>{{ contact.civility }}</td>
+                                                <td>{{ contact.lastname }}</td>
+                                                <td>{{ contact.firstname }}</td>
+                                                <td>{{ contact.partNumberPercent }}%</td>
+                                                <td>{{ contact.mandaSocial }}</td>
+                                                <td>Oui</td>
+                                            </tr>
+                                        {% endfor %}
                                         </tbody>
                                     </table>
                                 </div>

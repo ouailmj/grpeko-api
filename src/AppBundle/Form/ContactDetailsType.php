@@ -7,9 +7,8 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -85,13 +84,13 @@ class ContactDetailsType extends AbstractType
                 ),
             ))
 
-            ->add('partNumber', TextType::class, array(  'required' => false,))
+            ->add('partNumber', TextType::class, array('required' => false))
 
             ->add('partNumberPercent', TextType::class, array('attr'=>array("placeholder"=>"% ") , 'required' => false,))
 
             ->add('tns', TextType::class, array(  'required' => false))
 
-            ->add('othercompany', TextType::class, array(  'required' => false,))
+            ->add('othercompany', TextType::class, array(  'required' => false))
 
             ->add('legalForm', ChoiceType::class, array(
                 'label' => 'Forme Juridique:',
@@ -140,11 +139,11 @@ class ContactDetailsType extends AbstractType
                 'Non' => 'Non',
             )))
 
-            ->add('adressenumber', NumberType::class, array('required' => false))
+            ->add('adressenumber', TextType::class, array('required' => false))
 
             ->add('adresse', TextType::class, array('required' => false))
 
-            ->add('postalCode', NumberType::class, array('required' => false))
+            ->add('postalCode', TextType::class, array('required' => false))
 
             ->add('city', TextType::class, array('required' => false))
 
@@ -224,12 +223,12 @@ class ContactDetailsType extends AbstractType
             ->add('husbandJob', TextType::class, array('required' => false))
             ->add('actifsPlacement', TextType::class, array('required' => false))
             ->add('passifs', TextType::class, array('required' => false))
-            ->add('previousSituation', TextType::class, array())
+            ->add('previousSituation', TextType::class, array('required' => false))
             ->add('accre',  ChoiceType::class, array('choices' => array(
                 'Oui' => 'Oui',
                 'Non' => 'Non',
             )))
-            ->add('accreDescription',  TextType::class, array())
+            ->add('accreDescription',  TextType::class, array('required' => false))
             ->add('dateStartJobPole',  DateType::class, array(
 
                 'required' => false,

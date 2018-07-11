@@ -24,35 +24,35 @@ class Child
     /**
      * @var string
      *
-     * @ORM\Column(name="lastName", type="string", length=255)
+     * @ORM\Column(name="lastName", type="string", length=255,nullable=true)
      */
     private $lastName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="firstName", type="string", length=255)
+     * @ORM\Column(name="firstName", type="string", length=255,nullable=true)
      */
     private $firstName;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="birthDate", type="datetime")
+     * @ORM\Column(name="birthDate", type="datetime",nullable=true)
      */
     private $birthDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="deathDate", type="datetime")
+     * @ORM\Column(name="deathDate", type="datetime",nullable=true)
      */
     private $deathDate;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="age", type="string", length=255)
+     * @ORM\Column(name="age", type="string", length=255,nullable=true)
      */
     private $age;
 
@@ -196,7 +196,7 @@ class Child
     /**
      * @return Contact
      */
-    public function getContact(): Contact
+    public function getContact()
     {
         return $this->contact;
     }

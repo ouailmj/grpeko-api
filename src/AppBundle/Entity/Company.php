@@ -13,6 +13,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -226,7 +227,7 @@ class Company extends LegalEntity
 
     /**
      * @var Contact[] | ArrayCollection
-     *
+     * @Assert\Valid
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Contact" ,mappedBy="company" ,cascade={"persist", "remove"}))
      */
     protected $contacts;
