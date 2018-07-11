@@ -13,8 +13,7 @@
                     <div class="">
                         <ul class="nav nav-tabs nav-tabs-highlight">
                             <li class="active"><a href="#Contacts" data-toggle="tab" aria-expanded="true"><i class="icon-users position-left"></i>Informations générales</a></li>
-                            <li class=""><a href="#Dossiers" data-toggle="tab" aria-expanded="false"><i class="icon-folder position-left"></i>Rendez-vous</a></li>
-                            <li class=""><a href="{{ path('contact_list') }}"><i class="icon-address-book3 position-left"></i>Contacts</a></li>
+                            {#   <li class=""><a href="#Dossiers" data-toggle="tab" aria-expanded="false"><i class="icon-folder position-left"></i>Rendez-vous</a></li>#}                            <li class=""><a href="{{ path('contact_list', { 'id': app.request.get('id') }) }}"><i class="icon-address-book3 position-left"></i>Contacts</a></li>
                             <li>
                                 <ul class="nav navbar-nav navbar-right">
                                     <li class="dropdown dropdown-user">

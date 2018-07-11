@@ -1,0 +1,636 @@
+
+{% extends 'company/company.html.twig' %}
+{% block _content %}
+    <div class="panel panel-flat">
+        <div class="tabbale">
+            <ul class="nav nav-tabs bg-teal-400 nav-justified">
+                <li id="clikfirsttab" class="active"><a href="#firsttab" data-toggle="tab" aria-expanded="true">Fiche Client</a></li>
+                <li><a href="{{ path('devis_new') }}">Prise de connaissance</a></li>
+            </ul>
+
+            <div class="tab-content" id="firsttab">
+
+                <div class="">
+                    <ul class="nav nav-tabs nav-tabs-highlight">
+                        <li class=""><a href="{{ path('company_edit',{'id': app.request.get('id') }) }}"><i class="icon-users position-left"></i>Informations générales</a></li>
+                        {# <li class=""><a href="#Dossiers" data-toggle="tab" aria-expanded="false"><i class="icon-folder position-left"></i>Rendez-vous</a></li> #}
+                        <li class="active"><a href="#Contrats" data-toggle="tab" aria-expanded="false"><i class="icon-address-book3 position-left"></i>Contacts</a></li>
+                        <li>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown dropdown-user">
+                                    <a class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="icon-file-stats2 position-left"></i>
+                                        Autre
+                                        <span class="caret"></span>
+                                    </a>
+
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li class=""><a href="#mission" data-toggle="tab" aria-expanded="false">Mission</a></li>
+                                        <li class=""><a href="#Exercices" data-toggle="tab" aria-expanded="false">Exercices</a></li>
+                                        <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Informations Bancaires</a></li>
+                                        <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Rapprochement CFONB - Mots clés</a></li>
+                                        <li class=""><a href="#Facturation" data-toggle="tab" aria-expanded="false">Facturation</a></li>
+                                        <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Codes accés espaces clients</a></li>
+
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                {# add contact form #}
+
+
+                {{ form_start(contact) }}
+
+                <div class="panel panel-flat">
+
+                    <div class="col-lg-12 content-group-lg" style="background-color: #5d9d9c;color: #fff;font-size: 12px;text-align: center">
+                        <h6 >Contact client</h6>
+                    </div>
+
+
+                    <div class="panel-body">
+
+                        <div class="col-lg-4" >
+                            <div class="col-lg-12 content-group-lg" style="background-color: #5d9d9c;color: #fff;font-size: 14px;text-align: center;margin: 10px 0">
+                                <h6 >Etat civil</h6>
+                            </div>
+
+                            <div class="form-group">
+
+                                <div class="dropdown">
+                                    <label class="control-label col-sm-5" >Civilité</label>
+
+                                    <div class="col-sm-7">
+                                        {{form_widget(contact.civility)}}
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label class="control-label col-sm-5" >Nom <span class="requis">*</span></label>
+                                <div class="col-sm-7">
+                                    {{form_widget(contact.firstname)}}
+                                    {{form_errors(contact.firstname)}}
+                                </div>
+
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label class="control-label col-sm-5" >Nom Matiral</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control colorback" id="pwd" placeholder="Frankfort" name="pwd">
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label class="control-label col-sm-5" >Prénom</label>
+                                <div class="col-sm-7">
+                                    {{form_widget(contact.lastname)}}
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label class="control-label col-sm-5" >Date de naissance</label>
+                                <div class="col-sm-7">
+                                    {{form_widget(contact.birthDate) }}
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label class="control-label col-sm-5" >Lieu de naissance</label>
+                                <div class="col-sm-7">
+                                    {{form_widget(contact.birthPlace)}}
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label class="control-label col-sm-5" >Dept de naissance</label>
+                                <div class="col-sm-7">
+                                    {{form_widget(contact.birthDept)}}
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label class="control-label col-sm-5" >Pays de naissance</label>
+                                <div class="col-sm-7">
+                                    {{form_widget(contact.birthCountry)}}
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label class="control-label col-sm-5" >Nationalité</label>
+                                <div class="col-sm-7">
+                                    {{form_widget(contact.nationality)}}
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-4" >
+                            <div class="col-lg-12 content-group-lg" style="background-color: #5d9d9c;color: #fff;font-size: 14px;text-align: center;margin: 10px 0">
+                                <h6 >Statut</h6>
+                            </div>
+
+                            <div class="form-group">
+
+
+                                <div class="dropdown">
+                                    <label class="control-label col-sm-6" >Qualité Mandataire</label>
+
+                                    <div class="col-sm-6">
+                                        {{form_widget(contact.mandaQuality)}}
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <div class="dropdown">
+                                    <label class="control-label col-sm-7" > Mandataire social principal</label>
+
+                                    <div class="col-sm-5">
+
+                                        {{form_widget(contact.mandaSocial)}}
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <div class="dropdown">
+                                    <label class="control-label col-sm-7" >Associé</label>
+
+                                    <div class="col-sm-5">
+                                        {{form_widget(contact.associe)}}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-7" >Nombre Parts</label>
+                                <div class="col-sm-5">
+                                    <div class="col-sm-7">
+                                        {{form_widget(contact.partNumber)}}
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <div>
+                                            {{form_widget(contact.partNumberPercent)}}
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="dropdown">
+                                    <label class="control-label col-sm-7" >TNS</label>
+
+                                    <div class="col-sm-5">
+                                        {{form_widget(contact.tns)}}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="dropdown">
+                                    <label class="control-label col-sm-7" >Autres sociétés</label>
+
+                                    <div class="col-sm-5">
+                                        {{form_widget(contact.othercompany)}}
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-4" >
+                            <div class="col-lg-12 content-group-lg" style="background-color: #5d9d9c;color: #fff;font-size: 14px;text-align: center;margin: 10px 0">
+                                <h6 >Personne Morale</h6>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <div class="dropdown">
+                                    <label class="control-label col-sm-6" >Forme Juridique</label>
+
+                                    <div class="col-sm-6">
+                                        {{form_widget(contact.legalForm)}}
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <div class="dropdown">
+                                    <label class="control-label col-sm-6" >Capital Social</label>
+
+                                    <div class="col-sm-6">
+                                        {{form_widget(contact.socialCapital)}}
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <div class="dropdown">
+                                    <label class="control-label col-sm-6" >Représentant</label>
+
+                                    <div class="col-sm-6">
+                                        {{form_widget(contact.representative)}}
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="dropdown">
+                                    <label class="control-label col-sm-6" >Qualité du représentant</label>
+
+                                    <div class="col-sm-6">
+                                        {{form_widget(contact.representativeQuality)}}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-6" >Siren</label>
+                                <div class="col-sm-6">
+                                    {{form_widget(contact.siren)}}
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+
+                        <div class="col-lg-12 content-group-lg" style="background-color: #5d9d9c;color: #fff;font-size: 14px;text-align: center;margin: 10px 0">
+                            <h6 >Coordonnées</h6>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" >Téléphone Fixe</label>
+                            <div class="col-sm-2">
+                                {{form_widget(contact.faxNumber)}}
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" >Téléphone Portable</label>
+                            <div class="col-sm-2">
+                                {{form_widget(contact.phoneNumber)}}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-1" >Email</label>
+                            <div class="col-sm-2">
+                                {{form_widget(contact.email)}}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="dropdown">
+                                <label class="control-label col-sm-2" >Réception des mails auto</label>
+
+                                <div class="col-sm-2">
+
+                                    {{form_widget(contact.autoEmailReceipt)}}
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" >Adresse N°</label>
+                            <div class="col-sm-1">
+                                {{form_widget(contact.adressenumber)}}
+                            </div>
+                            <div class="col-sm-5">
+                                {{form_widget(contact.adresse)}}
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" >Code Postal</label>
+                            <div class="col-sm-2">
+                                {{form_widget(contact.postalCode)}}
+                            </div>
+                            <label class="control-label col-sm-1" >Ville</label>
+                            <div class="col-sm-3">
+                                {{form_widget(contact.city)}}
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-1" >Pays</label>
+                            <div class="col-sm-3">
+                                {{form_widget(contact.country)}}
+                            </div>
+                        </div>
+
+                        <div style="margin-top:215px">
+
+                            <div class="form-group" >
+                                <label class="control-label col-sm-1" >EkoNews</label>
+
+                                <div class="col-sm-2">
+                                    {{form_widget(contact.ekoNews)}}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-1" >EkoConseils</label>
+
+                                <div class="col-sm-2">
+                                    {{form_widget(contact.ekoConseils)}}
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-1" >Anniversaire</label>
+
+                                <div class="col-sm-2">
+                                    {{form_widget(contact.anniversaire)}}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-1">Fetes</label>
+
+                                <div class="col-sm-2">
+                                    {{form_widget(contact.fetes)}}
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="panel-body">
+
+                        <div class="col-lg-12 content-group-lg" style="background-color: #5d9d9c;color: #fff;font-size: 14px;text-align: center;margin: 10px 0">
+                            <h6 >Informations sur les mandataires sociaux et associés</h6>
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="control-label col-sm-3">Situation Maritale</label>
+
+                            <div class="col-sm-3">
+                                {{form_widget(contact.maritalSituation)}}
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <div class="dropdown">
+                                <label class="control-label col-sm-4">
+                                    Souhaitez-vous que la société reste un bien propre?<br>
+                                </label>
+
+                                <div class="col-sm-2">
+                                    {{form_widget(contact.propreSociety)}}
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Commentaire</label>
+                            <div class="col-sm-6">
+                                {{form_widget(contact.comment)}}
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Nombre d'enfant</label>
+                            <div class="col-sm-2">
+                                {{form_widget(contact.childrenNumber)}}
+                            </div>
+                        </div>
+
+
+
+
+
+                        <div class="col-sm-12">
+
+                            <fieldset class="scheduler-border">
+
+                                <legend class="scheduler-border" style="text-transform: capitalize">Mariages</legend>
+
+                                {{form_widget(contact.weddings)}}
+
+
+                            </fieldset>
+
+                        </div>
+
+                        <div class="col-sm-12">
+
+                            <fieldset class="scheduler-border">
+
+                                <legend class="scheduler-border" style="text-transform: capitalize">Enfants</legend>
+
+                                {{form_widget(contact.children)}}
+
+                            </fieldset>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" >Revenue annuel net</label>
+                            <div class="col-sm-2">
+                                {{form_widget(contact.annualIncome)}}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="dropdown">
+                                <label class="control-label col-sm-1" >
+                                    Proprétaire<br>
+                                </label>
+
+                                <div class="col-sm-2">
+
+                                    {{form_widget(contact.owner)}}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" >Métier du conjoint</label>
+                            <div class="col-sm-3">
+                                {{form_widget(contact.husbandJob)}}
+                            </div>
+                        </div>
+
+                        <br><br><br>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" >Actifs de placement</label>
+                            <div class="col-sm-4">
+                                {{form_widget(contact.actifsPlacement)}}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" >Passifs</label>
+                            <div class="col-sm-4">
+                                {{form_widget(contact.passifs)}}
+                            </div>
+                        </div>
+
+                        <br><br><br>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" >Situation précédent</label>
+                            <div class="col-sm-10">
+                                {{form_widget(contact.previousSituation)}}
+                            </div>
+                        </div>
+
+                        <br><br>
+
+                        <div class="form-group">
+                            <div class="dropdown">
+                                <label class="control-label col-sm-2" >
+                                    ACCRE<br>
+                                </label>
+
+                                <div class="col-sm-2">
+
+                                    {{form_widget(contact.accre)}}
+                                </div>
+                                <div class="col-sm-8">
+                                    {{form_widget(contact.accreDescription)}}
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 70px"></div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" >Date début Pole Emploi</label>
+                            <div class="col-sm-4">
+                                {{form_widget(contact.dateStartJobPole)}}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" >Date fin Pole Emploi</label>
+                            <div class="col-sm-4">
+                                {{form_widget(contact.dateEndJobPole)}}
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 120px"></div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" >ARCE ou ARE </label>
+                            <div class="col-sm-10">
+                                {{form_widget(contact.ARCE_ARE)}}
+                            </div>
+                        </div>
+
+                        <br><br><br>
+                        {{form_row(contact.enregistrer)}}
+
+                    </div>
+
+
+
+                </div>
+                {{ form_widget(contact._token) }}
+                {{ form_end(contact, {'render_rest': false}) }}
+
+
+
+                {# end contact form #}
+
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+    {% block javascripts %}
+        <script src="{{ asset('assets/js/plugins/symfony_collectionjs/jquery.collection.js') }}"></script>
+        <script>
+            $('.add-wedding-collection').collection({
+                    name_prefix: "{{ contact.weddings.vars.full_name }}",
+                    add_at_the_end: true,
+                    hide_useless_buttons: true,
+                    add: '<a style="float:right" href="#" class="collection-action btn btn-success btn-small collection-rescue-add">Ajouter</a>',
+                    remove: '<a href="#" class="collection-remove btn btn-warning collection-action">Retirer</a>',
+                    allow_up: false,
+                    allow_down: false,
+                    init_with_n_elements: 0,
+                    after_add: function (collection, element) {
+                        french_picker();
+                        //$('select').select2();
+                        return true;
+                    }
+
+                }
+
+            );
+            $('.add-child-collection').collection({
+                    name_prefix: "{{ contact.vars.full_name }}",
+                    add_at_the_end: true,
+                    hide_useless_buttons: true,
+                    add: '<a style="float:right" href="#" class="collection-action btn btn-success btn-small collection-rescue-add">Ajouter</a>',
+                    remove: '<a href="#" class="collection-remove btn btn-warning collection-action">Retirer</a>',
+                    allow_up: false,
+                    allow_down: false,
+                    init_with_n_elements: 0,
+                    after_add: function (collection, element) {
+                        french_picker();
+                        //$('select').select2();
+                        return true;
+                    }
+                }
+
+            );
+        </script>
+    {% endblock %}

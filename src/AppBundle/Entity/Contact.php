@@ -18,14 +18,12 @@ class Contact extends Person
 
     /**
      * Contact constructor.
-     * @param int $id
      */
     public function __construct()
     {
         $this->weddings = new ArrayCollection();
         $this->children = new ArrayCollection();
     }
-
 
     /**
      * @var int
@@ -38,22 +36,21 @@ class Contact extends Person
 
     /**
      * @var Company
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company" ,inversedBy="contacts" ,cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company" ,inversedBy="contacts" ,cascade={"persist"})
      */
     protected $company;
 
     /**
      * @var Child [] | ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Child",  mappedBy="contact")
+     * @ORM\OneToMany(targetEntity="Child",  mappedBy="contact",cascade={"persist","remove"})
      */
     private $children;
 
     /**
      * @var Wedding [] | ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Wedding", mappedBy="contact")
+     * @ORM\OneToMany(targetEntity="Wedding", mappedBy="contact",cascade={"persist","remove"})
      */
     private $weddings;
 
@@ -66,10 +63,9 @@ class Contact extends Person
 
     private $civility;
 
-
+// * @Assert\NotBlank()
     /**
      * @var string
-     * @Assert\NotBlank()
      * @ORM\Column(name="firstname", type="string", length=50, nullable=true)
      */
 
@@ -109,42 +105,36 @@ class Contact extends Person
      * @var string
      * @ORM\Column(name="nationality", type="string", length=50, nullable=true)
      */
-
     private $nationality;
 
     /**
      * @var string
      * @ORM\Column(name="mandaQuality", type="string", length=50, nullable=true)
      */
-
     private $mandaQuality;
 
     /**
      * @var string
      * @ORM\Column(name="mandaSocial", type="string", length=50, nullable=true)
      */
-
     private $mandaSocial;
 
     /**
      * @var string
      * @ORM\Column(name="tns", type="string", length=50, nullable=true)
      */
-
     private $tns;
 
     /**
      * @var string
      * @ORM\Column(name="otherCompany", type="string", length=50, nullable=true)
      */
-
     private $otherCompany;
 
     /**
      * @var integer
      * @ORM\Column(name="partNumber", type="integer", nullable=true)
      */
-
     private $partNumber;
 
     /**
@@ -198,7 +188,6 @@ class Contact extends Person
 
     /**
      * @var float
-     *
      * @ORM\Column(name="mandataire", type="float", nullable=true)
      */
 
@@ -206,182 +195,151 @@ class Contact extends Person
 
     /**
      * @var string
-     * @Assert\Valid
-     * @ORM\Column(name="email", type="string",length=100,unique=true)
+     * @ORM\Column(name="email", type="string",length=100,unique=true, nullable=true)
      */
     private $email;
 
     /**
      * @var string
-     * @Assert\Valid
-     * @ORM\Column(name="autoEmailReceipt", type="string",length=20)
+     * @ORM\Column(name="autoEmailReceipt", type="string",length=20 ,nullable=true)
      */
     private $autoEmailReceipt;
 
     /**
      * @var string
-     * @Assert\Valid
-     * @ORM\Column(name="adressenumber", type="string",length=20)
+     * @ORM\Column(name="adressenumber", type="string",length=20 ,nullable=true)
      */
     private $adressenumber;
 
     /**
      * @var string
-     * @Assert\Valid
-     * @ORM\Column(name="adresse", type="string",length=20)
+     * @ORM\Column(name="adresse", type="string",length=20 ,nullable=true)
      */
     private $adresse;
 
     /**
      * @var string
-     * @Assert\Valid
-     * @ORM\Column(name="city", type="string")
+     * @ORM\Column(name="city", type="string" ,nullable=true)
      */
-
     private $city;
 
     /**
      * @var string
-     * @Assert\Valid
-     * @ORM\Column(name="country", type="string")
+     * @ORM\Column(name="country", type="string" ,nullable=true)
      */
-
     private $country;
 
     /**
      * @var string
-     * @Assert\Valid
-     * @ORM\Column(name="ekoNews", type="string")
+     * @ORM\Column(name="ekoNews", type="string" ,nullable=true)
      */
-
     private $ekoNews;
 
     /**
      * @var string
-     * @Assert\Valid
-     * @ORM\Column(name="ekoConseils", type="string")
+     * @ORM\Column(name="ekoConseils", type="string" ,nullable=true)
      */
-
     private $ekoConseils;
 
     /**
      * @var string
-     * @Assert\Valid
-     * @ORM\Column(name="anniversaire", type="string")
+     * @ORM\Column(name="anniversaire", type="string" ,nullable=true)
      */
-
     private $anniversaire;
 
     /**
      * @var string
-     * @Assert\Valid
-     * @ORM\Column(name="fetes", type="string")
+     * @ORM\Column(name="fetes", type="string" ,nullable=true)
      */
-
     private $fetes;
 
     /**
      * @var string
-     * @Assert\Valid
-     * @ORM\Column(name="maritalSituation", type="string")
+     * @ORM\Column(name="maritalSituation", type="string" ,nullable=true)
      */
     private $maritalSituation;
 
     /**
      * @var string
-     * @Assert\Valid
-     * @ORM\Column(name="propreSociety", type="string")
+     * @ORM\Column(name="propreSociety", type="string" ,nullable=true)
      */
     private $propreSociety;
 
     /**
      * @var string
-     * @Assert\Valid
-     * @ORM\Column(name="comment", type="string")
+     * @ORM\Column(name="comment", type="string" ,nullable=true)
      */
     private $comment;
 
     /**
      * @var integer
-     * @Assert\Valid
-     * @ORM\Column(name="childrenNumber", type="integer")
+     * @ORM\Column(name="childrenNumber", type="integer" ,nullable=true)
      */
     private $childrenNumber;
 
     /**
      * @var float
-     * @Assert\Valid
-     * @ORM\Column(name="annualIncome", type="float")
+     * @ORM\Column(name="annualIncome", type="float" ,nullable=true)
      */
     private $annualIncome;
 
     /**
      * @var string
-     * @Assert\Valid
-     * @ORM\Column(name="owner", type="string")
+     * @ORM\Column(name="owner", type="string" ,nullable=true)
      */
     private $owner;
 
     /**
      * @var string
-     * @Assert\Valid
-     * @ORM\Column(name="husbandJob", type="string")
+     * @ORM\Column(name="husbandJob", type="string" ,nullable=true)
      */
     private $husbandJob;
 
     /**
      * @var string
-     * @Assert\Valid
-     * @ORM\Column(name="actifsPlacement", type="string")
+     * @ORM\Column(name="actifsPlacement", type="string" ,nullable=true)
      */
     private $actifsPlacement;
 
     /**
      * @var string
-     * @Assert\Valid
-     * @ORM\Column(name="passifs", type="string")
+     * @ORM\Column(name="passifs", type="string" ,nullable=true)
      */
     private $passifs;
 
     /**
      * @var string
-     * @Assert\Valid
-     * @ORM\Column(name="previousSituation", type="string")
+     * @ORM\Column(name="previousSituation", type="string" ,nullable=true)
      */
     private $previousSituation;
 
     /**
      * @var string
-     * @Assert\Valid
-     * @ORM\Column(name="accre", type="string")
+     * @ORM\Column(name="accre", type="string" ,nullable=true)
      */
     private $accre;
 
     /**
      * @var string
-     * @Assert\Valid
-     * @ORM\Column(name="accreDescription", type="string")
+     * @ORM\Column(name="accreDescription", type="string" ,nullable=true)
      */
     private $accreDescription;
 
     /**
      * @var \DateTime
-     * @Assert\Valid
-     * @ORM\Column(name="dateStartJobPole", type="datetime")
+     * @ORM\Column(name="dateStartJobPole", type="datetime" ,nullable=true)
      */
     private $dateStartJobPole;
 
     /**
      * @var \DateTime
-     * @Assert\Valid
-     * @ORM\Column(name="dateEndJobPole", type="datetime")
+     * @ORM\Column(name="dateEndJobPole", type="datetime" ,nullable=true)
      */
     private $dateEndJobPole;
 
     /**
      * @var string
-     * @Assert\Valid
-     * @ORM\Column(name="ARCE_ARE", type="string")
+     * @ORM\Column(name="ARCE_ARE", type="string" ,nullable=true)
      */
     private $ARCE_ARE;
 
@@ -869,6 +827,15 @@ class Contact extends Person
         $this->otherCompany = $otherCompany;
     }
 
+
+    /**
+     * @return float
+     */
+    public function getPartNumberPercent()
+    {
+        return $this->partNumberPercent;
+    }
+
     /**
      * @return int
      */
@@ -883,14 +850,6 @@ class Contact extends Person
     public function setPartNumber(int $partNumber)
     {
         $this->partNumber = $partNumber;
-    }
-
-    /**
-     * @return float
-     */
-    public function getPartNumberPercent()
-    {
-        return $this->partNumberPercent;
     }
 
     /**
