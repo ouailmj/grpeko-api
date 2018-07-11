@@ -22,13 +22,6 @@ class Mission extends Product
      */
     protected $id;
 
-    /**
-     * @var FiscalYear [] | ArrayCollection
-     *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\FiscalYear", mappedBy="mission")
-     */
-    private $fiscalYears;
-
 
     /**
      * @var TypeMission

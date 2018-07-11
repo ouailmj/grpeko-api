@@ -35,14 +35,14 @@ class FiscalYear
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="startDate", type="datetimetz")
+     * @ORM\Column(name="startDate", type="datetimetz",nullable=true)
      */
     protected $startDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="closeDate", type="datetimetz")
+     * @ORM\Column(name="closeDate", type="datetimetz",nullable=true)
      */
     protected $closeDate;
 
@@ -122,20 +122,24 @@ class FiscalYear
     }
 
     /**
-     * @return Mission
+     * @return Mission[]|ArrayCollection
      */
-    public function getMission()
+    public function getMissions()
     {
-        return $this->mission;
+        return $this->missions;
     }
 
     /**
-     * @param Mission $mission
+     * @param Mission[]|ArrayCollection $missions
      */
-    public function setMission(Mission $mission)
+    public function setMissions($missions)
     {
-        $this->mission = $mission;
+        $this->missions = $missions;
     }
+
+
+
+
 
 
     /**
@@ -316,21 +320,6 @@ class FiscalYear
         $this->assignment = $assignment;
     }
 
-    /**
-     * @return Mission[]
-     */
-    public function getMissions()
-    {
-        return $this->missions;
-    }
-
-    /**
-     * @param Mission[] $missions
-     */
-    public function setMissions(array $missions)
-    {
-        $this->missions = $missions;
-    }
 
     /**
      * @param Mission $mission

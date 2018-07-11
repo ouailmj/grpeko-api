@@ -10,6 +10,7 @@ use AppBundle\Entity\EnterRelation;
 use AppBundle\Entity\User;
 use AppBundle\Form\CompanyType;
 use AppBundle\Model\ClientManager;
+use AppBundle\Model\ContactManager;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -27,25 +28,24 @@ use AppBundle\Event\RendezVousCreatedEvent;
 class CompanyController extends BaseController
 {
     private  $clientManager;
+    private  $contactManager;
     private $em;
     /**
      * CompanyController constructor.
      */
-    public function __construct(ClientManager $clientManager, EntityManager $em)
+    public function __construct(ClientManager $clientManager,ContactManager $contactManager, EntityManager $em)
     {
         $this->clientManager= $clientManager;
+        $this->contactManager= $contactManager;
         $this->em= $em;
 
     }
 
-
     /**
      * @Route("/list", name="company_index")
      */
-
     public function indexAction(Request $request)
     {
-
         $companys = $this->clientManager->findAllClients();
         $listcompanys=[];
         foreach ($companys as $company)
@@ -57,7 +57,6 @@ class CompanyController extends BaseController
             'companys'     => $companys,
             'delete_form'   => $listcompanys
         ));
-
     }
 
 
@@ -66,7 +65,6 @@ class CompanyController extends BaseController
      *  @Route("/{id}/delete", name="company_delete")
      *  @Method("DELETE")
      */
-
     public function deleteAction(Request $request, Company $company)
     {
         $form = $this->createDeleteForm($company);
@@ -88,7 +86,6 @@ class CompanyController extends BaseController
      *
      * @return \Symfony\Component\Form\Form The form
      */
-
     private function createDeleteForm(Company $company)
     {
 
@@ -101,27 +98,19 @@ class CompanyController extends BaseController
 
     /**
      * @Route("/new", name="company_new")
-     *
      */
-
     public function newAction(Request $request)
     {
-
         $company = new Company();
         $formcompany = $this->createForm('AppBundle\Form\CompanyType', $company, array(
             'add_contact_data' => false,
         ));
-
         $formcompany->handleRequest($request);
         if ($formcompany->isSubmitted() && $formcompany->isValid()) {
-
-$contacts=[ $formcompany->get("contacts")->get("firstname")->getData(),
-            $formcompany->get("contacts")->get("lastname")->getData(),
-            $formcompany->get("contacts")->get("email")->getData(),
-
-
-];
-
+            $contacts=[ $formcompany->get("contacts")->get("firstname")->getData(),
+                        $formcompany->get("contacts")->get("lastname")->getData(),
+                        $formcompany->get("contacts")->get("email")->getData(),
+             ];
             $this->clientManager->createClient($company,$contacts);
          //   $this->get('event_dispatcher')->dispatch(AppEvents::CLIENT_CREATED, new ClientCreatedEvent($company));
             $this->addSuccessFlash();
@@ -132,49 +121,11 @@ $contacts=[ $formcompany->get("contacts")->get("firstname")->getData(),
                             array('formcompany' => $formcompany->createView()));
     }
 
-    /**
-     * @Route("/contact/new", name="contact_new")
-     *
-     */
-
-    public function NewContactAction(Request $request)
-    {
-
-        $contact = new Contact();
-        $formcontact = $this->createForm('AppBundle\Form\ContactDetailsType',$contact);
-        $formcontact->handleRequest($request);
-        if ($formcontact->isSubmitted() && $formcontact->isValid()) {
-
-         //   $this->em->persist($contact);
-          //  $this->em->flush();
-          //  $this->clientManager->createClient($company,$formcompany);
-            //   $this->get('event_dispatcher')->dispatch(AppEvents::CLIENT_CREATED, new ClientCreatedEvent($company));
-           // $this->addSuccessFlash();
-            $this->redirectToRoute('contact_list');
-        }
-
-
-        return $this->render('contact/new.html.twig',array('contact' => $formcontact->createView()));
-    }
-///contact/list/{company}
-    /**
-     * @Route("/contact/list/ ", name="contact_list")
-     *
-     */
-
-    public function ListContactAction(/*Company $company , */Request $request)
-    {
-      //  dump($company);die;
-        $contacts= $this->em->getRepository('AppBundle:Contact')->findAll();
-
-        return $this->render('contact/list.html.twig',array("contacts"=>$contacts));
-    }
 
     /**
      * @Route("/edit/{id}", name="company_edit")
      *
      */
-
     public function editAction(Company $company, Request $request)
     {
         $formcompany = $this->createForm('AppBundle\Form\CompanyType', $company);
@@ -185,10 +136,104 @@ $contacts=[ $formcompany->get("contacts")->get("firstname")->getData(),
         }
 
         return $this->render('company/edit.html.twig',
-                            array(
-                                'formcompany' => $formcompany->createView(),
-                                'company' => $company
-                            ));
+            array(
+                'formcompany' => $formcompany->createView(),
+                'company' => $company
+            ));
+    }
+
+
+    /**
+     * @Route("/contact/new", name="contact_new")
+     *
+     */
+    public function NewContactAction(Request $request)
+    {
+        $idcompany=$request->query->get('id');
+        $company=$this->em->getRepository('AppBundle:Company')->find($idcompany);
+        $contact = new Contact();
+        $formcontact = $this->createForm('AppBundle\Form\ContactDetailsType',$contact);
+        $formcontact->handleRequest($request);
+        if ($formcontact->isSubmitted() && $formcontact->isValid()) {
+
+            $contact->setCompany($company);
+            $this->contactManager->createContact($contact);
+            $this->addSuccessFlash();
+           return $this->redirectToRoute('contact_list',["id"=>$idcompany]);
+        }
+        return $this->render('contact/new.html.twig',array('contact' => $formcontact->createView()));
+    }
+
+
+    /**
+     * @Route("/contact/list/{id}", name="contact_list")
+     *
+     */
+    public function ListContactAction(Company $company , Request $request)
+    {
+        $contacts=$company->getContacts();
+        $listcontacts=[];
+        foreach ($company->getContacts() as $contact)
+        {
+            array_push($listcontacts, $this->createContactDeleteForm($contact)->createView());
+        }
+        return $this->render('contact/list.html.twig',array("contacts"=>$contacts,'delete_form'   => $listcontacts));
+    }
+
+    /**
+     * @Route("/contact/edit/{id}", name="contact_edit")
+     *
+     */
+    public function editContactAction(Contact $contact, Request $request)
+    {
+        $formcontact = $this->createForm('AppBundle\Form\ContactDetailsType', $contact);
+        $formcontact->handleRequest($request);
+        if ($formcontact->isSubmitted() && $formcontact->isValid()) {
+            foreach ($contact->getChildren() as $c)
+            {
+                $c->setContact($contact);
+            }
+            foreach ($contact->getWeddings() as $w)
+            {
+                $w->setContact($contact);
+            }
+
+            $this->contactManager->editContact($contact);
+            $this->addSuccessFlash();
+        }
+        return $this->render('contact/edit.html.twig',
+            array(
+                'contact' => $formcontact->createView(),
+            ));
+    }
+
+    /**
+     *  Deletes a Contact entity.
+     *  @Route("/contact/{id}/delete", name="contact_delete")
+     *  @Method("DELETE")
+     */
+    public function deleteContactAction(Request $request, Contact $contact)
+    {
+        $idcompany=$contact->getCompany()->getId();
+        $form = $this->createContactDeleteForm($contact);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $this->contactManager->deleteContact($contact);
+            $this->addSuccessFlash();
+        }
+
+        return $this->redirectToRoute('contact_list',["id"=>$idcompany]);
+    }
+
+    private function createContactDeleteForm(Contact $contact)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('contact_delete', array('id' => $contact->getId())))
+            ->setMethod('DELETE')
+            ->getForm()
+            ;
     }
 
 }

@@ -12,8 +12,8 @@
 
                     <div class="">
                         <ul class="nav nav-tabs nav-tabs-highlight">
-                            <li class=""><a href="{{ path('company_new') }}"><i class="icon-users position-left"></i>Informations générales</a></li>
-                            <li class=""><a href="#Dossiers" data-toggle="tab" aria-expanded="false"><i class="icon-folder position-left"></i>Rendez-vous</a></li>
+                            <li class=""><a href="{{ path('company_edit',{ 'id': app.request.get('id') }) }}"><i class="icon-users position-left"></i>Informations générales</a></li>
+                           {# <li class=""><a href="#Dossiers" data-toggle="tab" aria-expanded="false"><i class="icon-folder position-left"></i>Rendez-vous</a></li> #}
                             <li class="active"><a href="#Contrats" data-toggle="tab" aria-expanded="false"><i class="icon-address-book3 position-left"></i>Contacts</a></li>
                             <li>
                                 <ul class="nav navbar-nav navbar-right">
@@ -446,10 +446,6 @@
                 </div>
             </div>
 
-
-
-
-
                 <div class="col-sm-12">
 
                     <fieldset class="scheduler-border">
@@ -460,7 +456,6 @@
 
 
                     </fieldset>
-
                 </div>
 
             <div class="col-sm-12">

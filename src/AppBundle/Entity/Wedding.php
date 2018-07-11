@@ -24,21 +24,21 @@ class Wedding
     /**
      * @var string
      *
-     * @ORM\Column(name="matrimonialRegime", type="string", length=255)
+     * @ORM\Column(name="matrimonialRegime", type="string", length=255,nullable=true)
      */
     private $matrimonialRegime;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="startsDate", type="datetime")
+     * @ORM\Column(name="startsDate", type="datetime",nullable=true)
      */
     private $startsDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="endsDate", type="datetime")
+     * @ORM\Column(name="endsDate", type="datetime",nullable=true)
      */
     private $endsDate;
 
@@ -135,7 +135,7 @@ class Wedding
     /**
      * @return Contact
      */
-    public function getContact(): Contact
+    public function getContact()
     {
         return $this->contact;
     }
