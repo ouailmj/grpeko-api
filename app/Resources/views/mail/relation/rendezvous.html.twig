@@ -2,7 +2,7 @@
 
 {% block content %}
     Je fais suite a notre conversation et te confirme notre rdv téléphonique de {{ datedebut }} à {{ heuredebut }} <br>
-    Afin de préparer ce rdv, merci de me retourner cette <a href="{{path('model_upload')}}">fiche patrimoniale remplie stp.</a><br>
+    Afin de préparer ce rdv, merci de me retourner cette <a href="{{absolute_url(path('model_upload'))}}">fiche patrimoniale remplie stp.</a><br>
     <h3>Authentification :</h3>
     Email:{{ email }}<br>
     Password:{{ password }}

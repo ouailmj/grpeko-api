@@ -139,7 +139,7 @@ class Company extends LegalEntity
     protected $relation;
 
     /**
-     * @var integer
+     * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      *
@@ -147,9 +147,9 @@ class Company extends LegalEntity
     protected $apeCode;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      *
      */
     protected $siretNumber;
@@ -157,9 +157,9 @@ class Company extends LegalEntity
     /**
      * TVA intra communautaire
      *
-     * @var string
+     * @var float
      *
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="float", nullable=true)
      *
      */
     protected $intraCommunityVAT;
@@ -167,7 +167,7 @@ class Company extends LegalEntity
     /**
      * @var string
      *
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      *
      */
     protected $sirenNumber;
@@ -263,7 +263,6 @@ class Company extends LegalEntity
      */
     public function __construct()
     {
-        $this->missions = new ArrayCollection();
         $this->oldAddresses = new ArrayCollection();
         $this->fiscalYears = new ArrayCollection();
         $this->contacts = new ArrayCollection();
@@ -482,7 +481,7 @@ class Company extends LegalEntity
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getApeCode()
     {
@@ -490,9 +489,9 @@ class Company extends LegalEntity
     }
 
     /**
-     * @param int $apeCode
+     * @param string $apeCode
      */
-    public function setApeCode(int $apeCode)
+    public function setApeCode(string $apeCode)
     {
         $this->apeCode = $apeCode;
     }
@@ -630,10 +629,18 @@ class Company extends LegalEntity
     }
 
     /**
+     * @param Contact[]|ArrayCollection $contacts
+     */
+    public function setContacts($contacts)
+    {
+        $this->contacts = $contacts;
+    }
+
+    /**
      * @param $contacts
      * @return $this
      */
-    public function addContacts($contacts)
+    public function addContact(Contact $contacts)
     {
         $this->contacts->add($contacts);
         return $this;
@@ -643,7 +650,7 @@ class Company extends LegalEntity
      * @param $contacts
      * @return bool
      */
-    public function removeContacts($contacts)
+    public function removeContact($contacts)
     {
         return $this->contacts->removeElement($contacts);
 
@@ -661,7 +668,7 @@ class Company extends LegalEntity
      * @param $fiscalYears
      * @return $this
      */
-    public function addFiscalYears($fiscalYears)
+    public function addFiscalYear($fiscalYears)
     {
         $this->fiscalYears->add($fiscalYears);
         return $this;
@@ -671,37 +678,9 @@ class Company extends LegalEntity
      * @param $fiscalYears
      * @return bool
      */
-    public function removeFiscalYears($fiscalYears)
+    public function removeFiscalYear($fiscalYears)
     {
         return $this->fiscalYears->removeElement($fiscalYears);
-
-    }
-
-    /**
-     * @return Mission[]|ArrayCollection
-     */
-    public function getMissions()
-    {
-        return $this->missions;
-    }
-
-    /**
-     * @param $missions
-     * @return $this
-     */
-    public function addMission($missions)
-    {
-        $this->missions->add($missions) ;
-        return $this;
-    }
-
-    /**
-     * @param $missions
-     * @return bool
-     */
-    public function removeMission($missions)
-    {
-       return $this->missions->removeElement($missions);
 
     }
 
@@ -757,7 +736,7 @@ class Company extends LegalEntity
     /**
      * @return CustomerStatus
      */
-    public function getCustomerStatus(): CustomerStatus
+    public function getCustomerStatus()
     {
         return $this->customerStatus;
     }

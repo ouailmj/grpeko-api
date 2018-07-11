@@ -30,23 +30,26 @@ class FiscalType extends AbstractType
             ->add('startDate', DateType::class, array(
                 'required' => true,
                 'format'=>'dd/MM/yyyy',
-                'widget' => 'text',
-               // 'attr' => array('class' => 'french_picker form-control'),
+                'widget' => 'single_text',
+                'attr' => array('class' => 'french_picker form-control'),
                 'label' => 'Date ouverture'
             ))
             ->add('closeDate', DateType::class, array(
                 'required' => true,
                 'format'=>'dd/MM/yyyy',
-                'widget' => 'text', //single_text
-               // 'attr' => array('class' => 'french_picker form-control'),
+                'widget' => 'single_text',
+                'attr' => array('class' => 'french_picker form-control'),
                 'label' => 'Date de fermeture'
             ))
+
+          //  ->add('status', TextType::class, array(
+             //       'label' => false
+            //    ))
             ->add('assignment', AssignmentType::class, array(
                 'label' => false
             ))
         ;
     }
-
 
 
     /**

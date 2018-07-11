@@ -10,6 +10,7 @@ use AppBundle\Entity\EnterRelation;
 use AppBundle\Entity\User;
 use AppBundle\Form\CompanyType;
 use AppBundle\Model\ClientManager;
+use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -26,12 +27,15 @@ use AppBundle\Event\RendezVousCreatedEvent;
 class CompanyController extends BaseController
 {
     private  $clientManager;
+    private $em;
     /**
      * CompanyController constructor.
      */
-    public function __construct(ClientManager $clientManager)
+    public function __construct(ClientManager $clientManager, EntityManager $em)
     {
         $this->clientManager= $clientManager;
+        $this->em= $em;
+
     }
 
 
@@ -111,8 +115,14 @@ class CompanyController extends BaseController
         $formcompany->handleRequest($request);
         if ($formcompany->isSubmitted() && $formcompany->isValid()) {
 
+$contacts=[ $formcompany->get("contacts")->get("firstname")->getData(),
+            $formcompany->get("contacts")->get("lastname")->getData(),
+            $formcompany->get("contacts")->get("email")->getData(),
 
-            $this->clientManager->createClient($company,$formcompany);
+
+];
+
+            $this->clientManager->createClient($company,$contacts);
          //   $this->get('event_dispatcher')->dispatch(AppEvents::CLIENT_CREATED, new ClientCreatedEvent($company));
             $this->addSuccessFlash();
             $this->redirectToRoute('company_new');
@@ -122,6 +132,43 @@ class CompanyController extends BaseController
                             array('formcompany' => $formcompany->createView()));
     }
 
+    /**
+     * @Route("/contact/new", name="contact_new")
+     *
+     */
+
+    public function NewContactAction(Request $request)
+    {
+
+        $contact = new Contact();
+        $formcontact = $this->createForm('AppBundle\Form\ContactDetailsType',$contact);
+        $formcontact->handleRequest($request);
+        if ($formcontact->isSubmitted() && $formcontact->isValid()) {
+
+         //   $this->em->persist($contact);
+          //  $this->em->flush();
+          //  $this->clientManager->createClient($company,$formcompany);
+            //   $this->get('event_dispatcher')->dispatch(AppEvents::CLIENT_CREATED, new ClientCreatedEvent($company));
+           // $this->addSuccessFlash();
+            $this->redirectToRoute('contact_list');
+        }
+
+
+        return $this->render('contact/new.html.twig',array('contact' => $formcontact->createView()));
+    }
+///contact/list/{company}
+    /**
+     * @Route("/contact/list/ ", name="contact_list")
+     *
+     */
+
+    public function ListContactAction(/*Company $company , */Request $request)
+    {
+      //  dump($company);die;
+        $contacts= $this->em->getRepository('AppBundle:Contact')->findAll();
+
+        return $this->render('contact/list.html.twig',array("contacts"=>$contacts));
+    }
 
     /**
      * @Route("/edit/{id}", name="company_edit")
@@ -138,7 +185,10 @@ class CompanyController extends BaseController
         }
 
         return $this->render('company/edit.html.twig',
-                            array('formcompany' => $formcompany->createView()));
+                            array(
+                                'formcompany' => $formcompany->createView(),
+                                'company' => $company
+                            ));
     }
 
 }

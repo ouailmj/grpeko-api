@@ -63,7 +63,7 @@ class CompanyType extends AbstractType
                ))
                ->add('currentAddress', AdresseCurrentType::class)
 
-               ->add('SieAddress', AdresseType::class,[
+               ->add('siegeAddress', AdresseType::class,[
                    'label' => false,
                ])
 
@@ -130,8 +130,12 @@ class CompanyType extends AbstractType
 
               //  if ($options['add_contact_data']){
                 //    $builder
-                ->add('contacts', ContactClientType::class,array(
+
+
+              ->add('contacts', ContactType::class,array(
+
               ))
+
 
                 ->add('fiscalYears', CollectionType::class,
                 [
@@ -145,6 +149,10 @@ class CompanyType extends AbstractType
                         'class' => "add-fiscal-collection",
                     ],
                 ])
+
+               ->add('customerStatus', CustomerStatusType::class)
+
+
 
                 ->add('Enregistrer', SubmitType::class, array('attr' => array('class' => 'btn-success','style' => 'float:right')));
 

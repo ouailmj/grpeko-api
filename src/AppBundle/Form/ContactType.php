@@ -22,27 +22,36 @@ class ContactType extends AbstractType
         $builder
             ->add('civility', TextType::class, array(
                 'label' => 'Civilité:',
-                'required'  => false
+                'required'  => true,
             ))
             ->add('firstname', TextType::class, array(
-                'label' => 'firstname:',
-                'required'  => false
+                'label' => 'Nom:',
+                'required'  => true,
+                'mapped'=>false,
             ))
             ->add('lastname', TextType::class, array(
-                'label' => 'lastname:',
-                'required'  => false
+                'label' => 'Prénom:',
+                'required'  => true,
+                'mapped'=>false,
             ))
             ->add('intermediate', TextType::class, array(
                 'label' => 'de part:',
                 'required'  => false
             ))
-            ->add('mandataire', TextType::class, array(
+            ->add('mandataire', EmailType::class, array(
                     'label' => 'Mandataire social principal:',
-                    'required'  => false
+                    'required'  => false,
+                    'mapped'=>false
                 ))
             ->add('associe', CheckboxType::class, array(
                     'label' => ' est Associé ?',
-                    'required'  => false
+                    'required'  => false,
+                    'mapped'=>false
+                ))
+            ->add('email', TextType::class, array(
+                    'label' => 'email',
+                    'required'  => true,
+                    'mapped'=>false,
                 )
 
     );
@@ -54,7 +63,7 @@ class ContactType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Contact',
+            'data_class' => null,
             //'require_password'  => true
         ));
         //    $resolver->setRequired('address');
