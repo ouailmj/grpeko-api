@@ -1,13 +1,23 @@
 <?php
 
+/*
+ * This file is part of the Moddus project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Developed by MIT <contact@mit-agency.com>
+ *
+ */
+
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * EnterRelation
+ * EnterRelation.
  *
  * @ORM\Table(name="enter_relation")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EnterRelationRepository")
@@ -38,7 +48,7 @@ class EnterRelation
     private $typeMission;
 
     /**
-     * Apporteur
+     * Apporteur.
      *
      * @var Employee
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Employee" ,inversedBy="enterRelations" )
@@ -50,8 +60,7 @@ class EnterRelation
      *
      * @ORM\Column(name="societe_creer", type="boolean", nullable=true))
      */
-
-     private $societe_creer;
+    private $societe_creer;
 
     /**
      * @var \DateTime
@@ -59,8 +68,7 @@ class EnterRelation
      * @ORM\Column(name="date_creation", type="date", nullable=true))
      * @Assert\Date()
      */
-
-     private $date_creation = null;
+    private $date_creation = null;
 
     /**
      * @var \DateTime
@@ -68,15 +76,13 @@ class EnterRelation
      * @ORM\Column(name="date_cloture", type="date", nullable=true))
      * @Assert\Date()
      */
-
-     private $date_cloture = null;
+    private $date_cloture = null;
 
     /**
      * @var string
      *
      * @ORM\Column(name="integralite", type="string"))
      */
-
     private $integralite;
 
     /**
@@ -84,7 +90,6 @@ class EnterRelation
      *
      * @ORM\Column(name="IRPP", type="string", length=10))
      */
-
     private $IRPP;
 
     /**
@@ -93,7 +98,6 @@ class EnterRelation
      * @ORM\Column(name="date_creation_souhaiter", type="date", nullable=true))
      * @Assert\Date()
      */
-
     private $date_creation_souhait = null;
 
     /**
@@ -101,8 +105,7 @@ class EnterRelation
      *
      * @ORM\Column(name="zone", type="string", length=10))
      */
-
-     private $zone;
+    private $zone;
 
     /**
      * @return \DateTime
@@ -115,7 +118,7 @@ class EnterRelation
     /**
      * @param \DateTime $date_creation
      */
-    public function setDateCreation(\DateTime $date_creation= null)
+    public function setDateCreation(\DateTime $date_creation = null)
     {
         $this->date_creation = $date_creation;
     }
@@ -131,7 +134,7 @@ class EnterRelation
     /**
      * @param \DateTime $date_cloture
      */
-    public function setDateCloture(\DateTime $date_cloture=null)
+    public function setDateCloture(\DateTime $date_cloture = null)
     {
         $this->date_cloture = $date_cloture;
     }
@@ -179,7 +182,7 @@ class EnterRelation
     /**
      * @param \DateTime $date_creation_souhait
      */
-    public function setDateCreationSouhait(\DateTime $date_creation_souhait=null)
+    public function setDateCreationSouhait(\DateTime $date_creation_souhait = null)
     {
         $this->date_creation_souhait = $date_creation_souhait;
     }
@@ -205,15 +208,13 @@ class EnterRelation
      *
      * @ORM\Column(type="array",nullable=TRUE))
      */
-
-     private $societeactuelle;
+    private $societeactuelle;
 
     /**
      * @var array
      *
      * @ORM\Column(type="array",nullable=TRUE))
      */
-
     private $holding;
 
     /**
@@ -221,7 +222,6 @@ class EnterRelation
      *
      * @ORM\Column(type="array",nullable=TRUE))
      */
-
     private $epargne;
 
     /**
@@ -256,7 +256,6 @@ class EnterRelation
         $this->holding = $holding;
     }
 
-
     /**
      * @return array
      */
@@ -284,7 +283,7 @@ class EnterRelation
     /**
      * @param \DateTime $societeactuelle_date
      */
-    public function setSocieteactuelleDate(\DateTime $societeactuelle_date=null)
+    public function setSocieteactuelleDate(\DateTime $societeactuelle_date = null)
     {
         $this->societeactuelle_date = $societeactuelle_date;
     }
@@ -300,7 +299,7 @@ class EnterRelation
     /**
      * @param \DateTime $holding_date
      */
-    public function setHoldingDate(\DateTime $holding_date=null)
+    public function setHoldingDate(\DateTime $holding_date = null)
     {
         $this->holding_date = $holding_date;
     }
@@ -394,7 +393,4 @@ class EnterRelation
     {
         $this->typeMission = $typeMission;
     }
-
-
-
 }

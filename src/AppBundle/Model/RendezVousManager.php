@@ -1,32 +1,35 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: nejjarimouad
- * Date: 7/2/18
- * Time: 15:59
+
+/*
+ * This file is part of the Moddus project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Developed by MIT <contact@mit-agency.com>
+ *
  */
 
 namespace AppBundle\Model;
 
-
-use Doctrine\ORM\EntityManagerInterface;
 use AppBundle\Entity\Rendezvous;
+use Doctrine\ORM\EntityManagerInterface;
 
 class RendezVousManager
 {
-
     private $em;
 
     /**
      * RendezVous constructor.
+     *
      * @param $uploader
      */
     public function __construct(EntityManagerInterface $em)
     {
         $this->em = $em;
-   }
+    }
 
-    public function uploadFiles(Rendezvous $rendezvous,String $path)
+    public function uploadFiles(Rendezvous $rendezvous, String $path)
     {
         $rendezvous->getFichePatrimoniale();
         $file = $rendezvous->getFichePatrimoniale();
@@ -36,7 +39,4 @@ class RendezVousManager
         $this->em->persist($rendezvous);
         $this->em->flush();
     }
-
-
-
 }

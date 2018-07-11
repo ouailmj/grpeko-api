@@ -1,26 +1,28 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Bijotri
- * Date: 13/06/2018
- * Time: 14:12
+
+/*
+ * This file is part of the Moddus project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Developed by MIT <contact@mit-agency.com>
+ *
  */
 
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Employee;
-use AppBundle\Model\EmployeeManager;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
  * Affectation controller.
  *
  * @Route("affectation")
  */
-class affectationController extends BaseController
+class AffectationController extends BaseController
 {
     /**
      * Lists all company entities.
@@ -37,11 +39,9 @@ class affectationController extends BaseController
 
         $company = $em->getRepository('AppBundle:Company')->findAll();
 
-        return $this->render('affectation/index.html.twig', array(
+        return $this->render('affectation/index.html.twig', [
             'company' => $company,
             'form' => $form->createView(),
-        ));
+        ]);
     }
-
-
 }

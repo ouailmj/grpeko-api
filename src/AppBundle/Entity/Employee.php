@@ -1,18 +1,28 @@
 <?php
 
+/*
+ * This file is part of the Moddus project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Developed by MIT <contact@mit-agency.com>
+ *
+ */
+
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Employee
+ * Employee.
  *
  * @ORM\Table(name="employee")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EmployeeRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class Employee extends Person   
+class Employee extends Person
 {
     /**
      * @var int
@@ -124,22 +134,24 @@ class Employee extends Person
 
     /**
      * @param $assignment
+     *
      * @return $this
      */
     public function addAssignments($assignment)
     {
         $this->assignments->add($assignment);
+
         return $this;
     }
 
     /**
      * @param $assignment
+     *
      * @return bool
      */
     public function removeAssignments($assignment)
     {
         return  $this->assignments->removeElement($assignment);
-
     }
 
     /**
@@ -153,7 +165,7 @@ class Employee extends Person
     /**
      * @param Employee $manager
      */
-    public function setManager(Employee $manager)
+    public function setManager(self $manager)
     {
         $this->manager = $manager;
     }
@@ -173,6 +185,7 @@ class Employee extends Person
     {
         $this->status = $status;
     }
+
     /**
      * @return EnterRelation[]|ArrayCollection
      */
@@ -183,22 +196,24 @@ class Employee extends Person
 
     /**
      * @param $enterRelation
+     *
      * @return $this
      */
     public function addEnterRelation($enterRelation)
     {
         $this->enterRelations->add($enterRelation);
+
         return $this;
     }
 
     /**
      * @param $enterRelation
+     *
      * @return bool
      */
     public function removeEnterRelation($enterRelation)
     {
         return  $this->enterRelations->removeElement($enterRelation);
-
     }
 
     /**
@@ -231,11 +246,11 @@ class Employee extends Person
      */
     public function setInitialsValue()
     {
-        if (empty($this->initials)){
+        if (empty($this->initials)) {
             $this->initials = strtoupper(substr($this->getFirstName(), 0, 4));
         }
 
-        if (empty($this->initials)){
+        if (empty($this->initials)) {
             $this->initials = strtoupper(substr($this->getLastName(), 0, 4));
         }
     }

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Napier project.
+ * This file is part of the Moddus project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -126,6 +126,7 @@ class SearchEngine
         if (!class_exists($className)) {
             throw new \InvalidArgumentException();
         }
+
         return $this->em->getClassMetadata($className)->getName();
     }
 

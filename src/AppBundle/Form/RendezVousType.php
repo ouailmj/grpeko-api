@@ -1,9 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: nejjarimouad
- * Date: 7/2/18
- * Time: 09:59
+
+/*
+ * This file is part of the Moddus project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Developed by MIT <contact@mit-agency.com>
+ *
  */
 
 namespace AppBundle\Form;
@@ -17,19 +21,17 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class RendezVousType extends AbstractType
 {
-
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('FichePatrimoniale', FileType::class, array('label' => false))
-            ->add('Exporter', SubmitType::class, array('attr' => array('class' => 'btn-success')));
+            ->add('FichePatrimoniale', FileType::class, ['label' => false])
+            ->add('Exporter', SubmitType::class, ['attr' => ['class' => 'btn-success']]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => Rendezvous::class,
-        ));
+        ]);
     }
-
 }

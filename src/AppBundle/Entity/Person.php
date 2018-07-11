@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Napier project.
+ * This file is part of the Moddus project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,7 +12,6 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Model\Address;
 use AppBundle\Model\Person as BasePerson;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -34,7 +33,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Person extends BasePerson
 {
-
     /**
      * @var int
      *
@@ -101,7 +99,7 @@ class Person extends BasePerson
     protected $postalCode;
 
     /**
-     * @var Address
+     * @var \AppBundle\Entity\Address
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address" ,mappedBy="category", cascade={"persist", "remove"})
      *
@@ -133,7 +131,7 @@ class Person extends BasePerson
     }
 
     /**
-     * @return Address
+     * @return \AppBundle\Entity\Address
      */
     public function getCurrentAddress()
     {
@@ -152,7 +150,6 @@ class Person extends BasePerson
      * @var User
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\User" ,inversedBy="person" ,cascade={"persist", "remove"})
-     *
      */
     protected $userAccount;
 
@@ -175,7 +172,7 @@ class Person extends BasePerson
     /**
      * @param string $name
      */
-    public function setName(string $name)
+    public function setName(string $name = null)
     {
         $this->name = $name;
     }
@@ -191,7 +188,7 @@ class Person extends BasePerson
     /**
      * @param string $firstName
      */
-    public function setFirstName(string $firstName)
+    public function setFirstName(string $firstName = null)
     {
         $this->firstName = $firstName;
     }
@@ -207,7 +204,7 @@ class Person extends BasePerson
     /**
      * @param string $lastName
      */
-    public function setLastName(string $lastName)
+    public function setLastName(string $lastName = null)
     {
         $this->lastName = $lastName;
     }
@@ -223,7 +220,7 @@ class Person extends BasePerson
     /**
      * @param \DateTime $birthDate
      */
-    public function setBirthDate(\DateTime $birthDate)
+    public function setBirthDate(\DateTime $birthDate = null)
     {
         $this->birthDate = $birthDate;
     }
@@ -239,7 +236,7 @@ class Person extends BasePerson
     /**
      * @param \DateTime $deathDate
      */
-    public function setDeathDate(\DateTime $deathDate)
+    public function setDeathDate(\DateTime $deathDate = null)
     {
         $this->deathDate = $deathDate;
     }
@@ -255,7 +252,7 @@ class Person extends BasePerson
     /**
      * @param string $phoneNumber
      */
-    public function setPhoneNumber(string $phoneNumber)
+    public function setPhoneNumber(string $phoneNumber = null)
     {
         $this->phoneNumber = $phoneNumber;
     }
@@ -271,7 +268,7 @@ class Person extends BasePerson
     /**
      * @param string $faxNumber
      */
-    public function setFaxNumber(string $faxNumber)
+    public function setFaxNumber(string $faxNumber = null)
     {
         $this->faxNumber = $faxNumber;
     }
@@ -287,12 +284,10 @@ class Person extends BasePerson
     /**
      * @param string $postalCode
      */
-    public function setPostalCode(string $postalCode)
+    public function setPostalCode(string $postalCode = null)
     {
         $this->postalCode = $postalCode;
     }
-
-
 
     /**
      * @return User
@@ -305,7 +300,7 @@ class Person extends BasePerson
     /**
      * @param User $userAccount
      */
-    public function setUserAccount(User $userAccount)
+    public function setUserAccount(User $userAccount = null)
     {
         $this->userAccount = $userAccount;
     }

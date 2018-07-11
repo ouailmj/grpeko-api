@@ -1,13 +1,23 @@
 <?php
 
+/*
+ * This file is part of the Moddus project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Developed by MIT <contact@mit-agency.com>
+ *
+ */
+
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Employee;
 use AppBundle\Model\EmployeeManager;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -19,6 +29,7 @@ class EmployeeController extends BaseController
 {
     /**
      * Lists all employee entities.
+     *
      *@Security("has_role('ROLE_ADVISORY')")
      *
      * @Route("/", name="employee_index")
@@ -30,13 +41,14 @@ class EmployeeController extends BaseController
 
         $employees = $em->getRepository('AppBundle:Employee')->findAll();
 
-        return $this->render('employee/index.html.twig', array(
+        return $this->render('employee/index.html.twig', [
             'employees' => $employees,
-        ));
+        ]);
     }
 
     /**
      * Creates a new employee entity.
+     *
      *@Security("has_role('ROLE_ADVISORY')")
      *
      *
@@ -50,23 +62,20 @@ class EmployeeController extends BaseController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
-            if (!empty($plainPassword = $form->get('userAccount')->get('password')->getData())){
+            if (!empty($plainPassword = $form->get('userAccount')->get('password')->getData())) {
                 $employee->getUserAccount()->setPlainPassword($plainPassword);
             }
 
             $employeeManager->createEmployee($employee);
 
-
             $this->addSuccessFlash();
             $this->addFlash('success', 'Votre opération a été exécutée avec succès');
-
         }
 
-        return $this->render('employee/new.html.twig', array(
+        return $this->render('employee/new.html.twig', [
             'employee' => $employee,
             'form' => $form->createView(),
-        ));
+        ]);
     }
 
     /**
@@ -81,14 +90,17 @@ class EmployeeController extends BaseController
     {
         $deleteForm = $this->createDeleteForm($employee);
 
-        return $this->render('employee/show.html.twig', array(
+        return $this->render('employee/show.html.twig', [
             'employee' => $employee,
             'delete_form' => $deleteForm->createView(),
-        ));
+        ]);
     }
-//@Security("has_role('ROLE_ADVISORY')")
+
+    //@Security("has_role('ROLE_ADVISORY')")
+
     /**
      * Displays a form to edit an existing employee entity.
+     *
      *@Security("has_role('ROLE_ADVISORY')")
      *
      *
@@ -104,14 +116,15 @@ class EmployeeController extends BaseController
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success', 'Votre opération a été exécutée avec succès');
-            return $this->redirectToRoute('employee_show', array('id' => $employee->getId()));
+
+            return $this->redirectToRoute('employee_show', ['id' => $employee->getId()]);
         }
 
-        return $this->render('employee/edit.html.twig', array(
+        return $this->render('employee/edit.html.twig', [
             'employee' => $employee,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+        ]);
     }
 
     /**
@@ -131,8 +144,7 @@ class EmployeeController extends BaseController
             $em = $this->getDoctrine()->getManager();
             $em->remove($employee);
             $em->flush();
-        }
-        else{
+        } else {
             $em = $this->getDoctrine()->getManager();
             $em->remove($employee);
             $em->flush();
@@ -152,7 +164,7 @@ class EmployeeController extends BaseController
     private function createDeleteForm(Employee $employee)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('employee_delete', array('id' => $employee->getId())))
+            ->setAction($this->generateUrl('employee_delete', ['id' => $employee->getId()]))
             ->setMethod('DELETE')
             ->getForm()
         ;

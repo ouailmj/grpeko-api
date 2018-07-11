@@ -1,13 +1,23 @@
 <?php
 
+/*
+ * This file is part of the Moddus project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Developed by MIT <contact@mit-agency.com>
+ *
+ */
+
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Contact
+ * Contact.
  *
  * @ORM\Table(name="contact")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ContactRepository")
@@ -31,31 +41,25 @@ class Contact
      */
     protected $company;
 
-
     /**
      * @var string
      *
      * @ORM\Column(name="civility", type="string", length=10, nullable=true))
      */
-
     private $civility;
-
 
     /**
      * @var string
      *
      * @ORM\Column(name="firstname", type="string", length=50, nullable=true))
      */
-
     private $firstname;
-
 
     /**
      * @var string
      *
      * @ORM\Column(name="lastname", type="string", length=50, nullable=true))
      */
-
     private $lastname;
 
     /**
@@ -63,7 +67,6 @@ class Contact
      *
      * @ORM\Column(name="intermediate", type="string", length=50, nullable=true))
      */
-
     private $intermediate;
 
     /**
@@ -71,7 +74,6 @@ class Contact
      *
      * @ORM\Column(name="mandataire", type="float", nullable=true))
      */
-
     private $mandataire;
 
     /**
@@ -98,11 +100,10 @@ class Contact
     }
 
     /**
-     * @var boolean
+     * @var bool
      *
      * @ORM\Column(name="associe", type="boolean"))
      */
-
     private $associe = false;
 
     /**
@@ -201,8 +202,6 @@ class Contact
         $this->associe = $associe;
     }
 
-
-
     /**
      * Get id.
      *
@@ -228,6 +227,4 @@ class Contact
     {
         $this->company = $company;
     }
-
-
 }

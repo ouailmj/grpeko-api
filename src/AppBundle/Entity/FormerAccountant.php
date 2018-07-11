@@ -1,11 +1,21 @@
 <?php
 
+/*
+ * This file is part of the Moddus project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Developed by MIT <contact@mit-agency.com>
+ *
+ */
+
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * FormerAccountant
+ * FormerAccountant.
  *
  * @ORM\Table(name="former_accountant")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\FormerAccountantRepository")
@@ -41,8 +51,6 @@ class FormerAccountant extends LegalEntity
      * @ORM\Column(name="lastName", type="string", length=255)
      */
     private $lastName;
-
-
 
     /**
      * @var Address
@@ -134,8 +142,6 @@ class FormerAccountant extends LegalEntity
         return $this->lastName;
     }
 
-
-
     /**
      * @return Address
      */
@@ -151,6 +157,4 @@ class FormerAccountant extends LegalEntity
     {
         $this->address = $address;
     }
-
-
 }

@@ -1,13 +1,22 @@
 <?php
 
+/*
+ * This file is part of the Moddus project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Developed by MIT <contact@mit-agency.com>
+ *
+ */
+
 namespace AppBundle\Form;
 
-use AppBundle\Entity\Employee;
 use AppBundle\Entity\JobPosition;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -20,67 +29,65 @@ class EmployeeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstName', TextType::class, array(
+            ->add('firstName', TextType::class, [
                 'label' => 'Nom',
-                'attr' => array('style'=>'text-transform: uppercase' )
-            ))
-            ->add('lastName', TextType::class, array(
+                'attr' => ['style' => 'text-transform: uppercase'],
+            ])
+            ->add('lastName', TextType::class, [
                 'label' => 'Prénom',
-                'attr' => array('style'=>'text-transform: capitalize' )
+                'attr' => ['style' => 'text-transform: capitalize'],
+            ])
 
-            ))
-
-            ->add('birthDate',DateType::class,array(
-                'required'=>false,
-                'widget'=>'single_text',
-                'format'=>'dd/MM/yyyy',
+            ->add('birthDate', DateType::class, [
+                'required' => false,
+                'widget' => 'single_text',
+                'format' => 'dd/MM/yyyy',
                 'label' => 'Date de naissance',
-                'attr' => array(
-                    'class' => 'french_picker'
-                )
-            ))
+                'attr' => [
+                    'class' => 'french_picker',
+                ],
+            ])
 
-            ->add('entryDate',DateType::class,array(
-                'required'=>false,
-                'widget'=>'single_text',
-                'format'=>'dd/MM/yyyy',
+            ->add('entryDate', DateType::class, [
+                'required' => false,
+                'widget' => 'single_text',
+                'format' => 'dd/MM/yyyy',
                 'label' => 'Date Entrer',
-                'attr' => array(
-                    'class' => 'french_picker'
-                )
-            ))
-            ->add('initials', TextType::class, array(
-                'label' => 'Code'
-            ))
-            ->add('phoneNumber', TextType::class, array(
+                'attr' => [
+                    'class' => 'french_picker',
+                ],
+            ])
+            ->add('initials', TextType::class, [
+                'label' => 'Code',
+            ])
+            ->add('phoneNumber', TextType::class, [
                 'label' => 'Téléphone',
-                'attr'  => array(
-                    'placeholder'   => 'Exp: +336234521'
-                )
-            ))
-            ->add('faxNumber', TextType::class, array(
+                'attr' => [
+                    'placeholder' => 'Exp: +336234521',
+                ],
+            ])
+            ->add('faxNumber', TextType::class, [
                 'label' => 'Fax',
-                'attr'  => array(
-                    'placeholder'   => 'Exp: +336234521'
-                )
-            ))
-            ->add('FixeNumber', TextType::class, array(
+                'attr' => [
+                    'placeholder' => 'Exp: +336234521',
+                ],
+            ])
+            ->add('FixeNumber', TextType::class, [
                 'label' => 'Téléphone fixe',
-                'attr'  => array(
-                    'placeholder'   => 'Exp: +336234521'
-                )
-            ))
+                'attr' => [
+                    'placeholder' => 'Exp: +336234521',
+                ],
+            ])
 
-            ->add('currentAddress', AddressType::class,array(
-                'label' => false
-            ))
+            ->add('currentAddress', AddressType::class, [
+                'label' => false,
+            ])
 
-
-            ->add('jobPosition', EntityType::class, array(
+            ->add('jobPosition', EntityType::class, [
                 'class' => JobPosition::class,
-                'label' => 'Type'
-            ))
-            ->add('manager', EntityType::class, array(
+                'label' => 'Type',
+            ])
+            ->add('manager', EntityType::class, [
                 'label' => 'Supérieur',
                 'class' => 'AppBundle\Entity\Employee',
                 'choice_label' => function ($manager) {
@@ -88,25 +95,27 @@ class EmployeeType extends AbstractType
                 },
                 'choices_as_values' => true,
                 'required' => true,
-            ))
+            ])
 
-            ->add('userAccount', UserType::class, array(
-                'label' => false
-            ))
+            ->add('userAccount', UserType::class, [
+                'label' => false,
+            ])
 
-            ->add('status', CheckboxType::class, array(
+            ->add('status', CheckboxType::class, [
                 'label' => 'Activer ?',
-                'required'  => false
-            ))
+                'required' => false,
+            ])
         ;
-    }/**
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Employee'
-        ));
+        $resolver->setDefaults([
+            'data_class' => 'AppBundle\Entity\Employee',
+        ]);
     }
 
     /**
@@ -116,6 +125,4 @@ class EmployeeType extends AbstractType
     {
         return 'appbundle_employee';
     }
-
-
 }

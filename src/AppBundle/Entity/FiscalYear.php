@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Napier project.
+ * This file is part of the Moddus project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -53,7 +53,7 @@ class FiscalYear
     protected $status;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(type="integer",nullable=true)
      */
@@ -77,14 +77,12 @@ class FiscalYear
      */
     protected $vatSystem;
 
-
     /**
-     * Regime Fiscal
+     * Regime Fiscal.
      *
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
-     *
      */
     protected $taxSystem;
 
@@ -102,7 +100,6 @@ class FiscalYear
      */
     protected $assignment;
 
-
     /**
      * @var Mission
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Mission", inversedBy="exercices")
@@ -114,9 +111,7 @@ class FiscalYear
      *
      * @ORM\Column(type="array",nullable=TRUE))
      */
-
     protected $Exercices_comptables;
-
 
     /**
      * @return Mission
@@ -327,7 +322,4 @@ class FiscalYear
     {
         $this->assignment = $assignment;
     }
-
-
-
 }

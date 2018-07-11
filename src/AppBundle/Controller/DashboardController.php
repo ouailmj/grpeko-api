@@ -1,5 +1,15 @@
 <?php
 
+/*
+ * This file is part of the Moddus project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Developed by MIT <contact@mit-agency.com>
+ *
+ */
+
 namespace AppBundle\Controller;
 
 use AppBundle\Model\EmployeeManager;
@@ -16,9 +26,9 @@ class DashboardController extends Controller
     {
         $employees = $employeeManager->findAllEmployees();
 
-        return $this->render('dashboard/home.html.twig', array(
-            'employees' => $employees
-        ));
+        return $this->render('dashboard/home.html.twig', [
+            'employees' => $employees,
+        ]);
     }
 
     /**
@@ -26,6 +36,6 @@ class DashboardController extends Controller
      */
     public function dashboardAction()
     {
-        return $this->render('dashboard/dashboard_content.html.twig', array());
+        return $this->render('dashboard/dashboard_content.html.twig', []);
     }
 }

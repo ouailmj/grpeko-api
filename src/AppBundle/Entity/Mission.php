@@ -1,28 +1,37 @@
 <?php
 
+/*
+ * This file is part of the Moddus project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Developed by MIT <contact@mit-agency.com>
+ *
+ */
+
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Mission
+ * Mission.
  *
  * @ORM\Table(name="mission")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MissionRepository")
  */
 class Mission
 {
-
     /**
      * Mission constructor.
+     *
      * @param FiscalYear[]|ArrayCollection $exercices
      */
     public function __construct()
     {
         $this->exercices = new ArrayCollection();
     }
-
 
     /**
      * @var int
@@ -80,7 +89,6 @@ class Mission
      * @ORM\Column(name="lastExerciceEndDate", type="datetime",nullable=true)
      */
     private $lastExerciceEndDate;
-
 
     /**
      * @var TypeMission
@@ -244,22 +252,24 @@ class Mission
 
     /**
      * @param $exercice
+     *
      * @return $this
      */
     public function addExercice($exercice)
     {
         $this->exercices->add($exercice);
+
         return $this;
     }
 
     /**
      * @param $exercice
+     *
      * @return bool
      */
     public function removeExercice($exercice)
     {
         return $this->exercices->removeElement($exercice);
-
     }
 
     /**
@@ -273,10 +283,8 @@ class Mission
     /**
      * @param TypeMission $typeMission
      */
-    public function setTypeMission(TypeMission $typeMission=null)
+    public function setTypeMission(TypeMission $typeMission = null)
     {
         $this->typeMission = $typeMission;
     }
-
-
 }
