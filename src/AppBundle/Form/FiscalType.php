@@ -38,11 +38,16 @@ class FiscalType extends AbstractType
                 'attr' => array('class' => 'french_picker form-control'),
                 'label' => 'Date de fermeture'
             ))
+
+            ->add('status', TextType::class, array(
+                    'label' => false
+                ))
             ->add('assignment', AssignmentType::class, array(
                 'label' => false
             ))
         ;
     }
+
     /**
      * {@inheritdoc}
      */

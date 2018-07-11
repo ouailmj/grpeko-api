@@ -263,7 +263,6 @@ class Company extends LegalEntity
      */
     public function __construct()
     {
-        $this->missions = new ArrayCollection();
         $this->oldAddresses = new ArrayCollection();
         $this->fiscalYears = new ArrayCollection();
         $this->contacts = new ArrayCollection();
@@ -630,10 +629,18 @@ class Company extends LegalEntity
     }
 
     /**
+     * @param Contact[]|ArrayCollection $contacts
+     */
+    public function setContacts($contacts)
+    {
+        $this->contacts = $contacts;
+    }
+
+    /**
      * @param $contacts
      * @return $this
      */
-    public function addContacts($contacts)
+    public function addContacts(Contact $contacts)
     {
         $this->contacts->add($contacts);
         return $this;
@@ -661,7 +668,7 @@ class Company extends LegalEntity
      * @param $fiscalYears
      * @return $this
      */
-    public function addFiscalYears($fiscalYears)
+    public function addFiscalYear($fiscalYears)
     {
         $this->fiscalYears->add($fiscalYears);
         return $this;
@@ -671,37 +678,9 @@ class Company extends LegalEntity
      * @param $fiscalYears
      * @return bool
      */
-    public function removeFiscalYears($fiscalYears)
+    public function removeFiscalYear($fiscalYears)
     {
         return $this->fiscalYears->removeElement($fiscalYears);
-
-    }
-
-    /**
-     * @return Mission[]|ArrayCollection
-     */
-    public function getMissions()
-    {
-        return $this->missions;
-    }
-
-    /**
-     * @param $missions
-     * @return $this
-     */
-    public function addMission($missions)
-    {
-        $this->missions->add($missions) ;
-        return $this;
-    }
-
-    /**
-     * @param $missions
-     * @return bool
-     */
-    public function removeMission($missions)
-    {
-       return $this->missions->removeElement($missions);
 
     }
 

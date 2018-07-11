@@ -58,7 +58,7 @@
 
                                 <fieldset class="scheduler-border">
                                     <legend class="scheduler-border" style="text-transform: capitalize">Adresse du SIE</legend>
-                                    {{form_row(formcompany.SieAddress)}}
+                                    {{form_row(formcompany.siegeAddress)}}
 
                                 </fieldset>
 
@@ -141,6 +141,15 @@
                                             {{form_errors(formcompany.fiscalYears)}}
 
                                         </fieldset>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class=" col-sm-6">
+
+                                        {{form_widget(formcompany.customerStatus)}}
+                                        {{form_errors(formcompany.customerStatus)}}
 
                                     </div>
                                 </div>

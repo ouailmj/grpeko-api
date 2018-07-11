@@ -40,15 +40,15 @@
         <div class="tab-pane fade has-padding active in" id="tab2">
             <div class="row">
                 <div class="col-xs-6 col-md-4">
-                    <select data-placeholder="ANBDH" class="select select2-hidden-accessible class="col-md-6" tabindex="-1" aria-hidden="true">
-                    <option>MAR</option>
-                    <option>OPAM</option>
-                    <option>JUS</option>
-                    <option>OLSQ</option>
+                    <select data-placeholder="ANBDH" id="selectbox" class="select select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                    {% for item in employee %}
+                        <option value="{{ item.id}}">{{ item.firstName}}</option>
+                    {% endfor %}
                     </select>
                 </div>
                 <div class="col-xs-6 col-md-4">
-                    <span title="Ajouter une nouvelle Entité " class="pull-right"><a href="" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-user-plus"></i></b>affecter à la sélection</a></span>
+                    <button type="button" name="add" id="save" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-user-plus"></i></b>affecter à la sélection</button>
+
                 </div>
                 <div class="col-xs-6 col-md-4">
                 </div>
@@ -62,7 +62,6 @@
                         <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Nom: activate to sort column ascending">Date d'ouverture</th>
                         <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Téléphone: activate to sort column ascending">Date de cloture</th>
                         <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Téléphone: activate to sort column ascending">Collaborateur actuel</th>
-                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">Collaborateur à affecter</th>
                         <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Rôles: activate to sort column ascending">
                         </th>
                     </tr>
@@ -75,26 +74,27 @@
                                     <a title="Modifier" href="{{ path('company_edit', {'id': item.id}) }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
                                 </div>
                             </td>
-                            <td>{{ item.id}}</td>
+                            <td> {{ item.legalName}}</td>
                             <td>
-                                {{ item.legalName}}
+                                {% for fiscalYear in item.fiscalYears %}
+                                    {{fiscalYear.startDate |date(date_default_fromat)}}
+                                {% endfor %}
                             </td>
                             <td>
-                                31/12/2019
+                                {% for fiscalYear in item.fiscalYears %}
+                                    {{fiscalYear.closeDate |date(date_default_fromat)}}
+                                {% endfor %}
                             </td>
                             <td>
-                                <span class="label label-info">ANB</span>
+                                 {% for fiscalYear in item.fiscalYears %}
+                                        <span class="label label-info">
+                                            {{fiscalYear.assignment.employee.firstName}}
+                                        </span>
+                                 {% endfor %}
                             </td>
+
                             <td>
-                                <select data-placeholder="ANBDH" class="select select2-hidden-accessible class="col-md-6" tabindex="-1" aria-hidden="true">
-                                <option>MAR</option>
-                                <option>OPAM</option>
-                                <option>JUS</option>
-                                <option>OLSQ</option>
-                                </select>
-                            </td>
-                            <td>
-                                <input type="checkbox">
+                                <input type="checkbox" class="sub_chk" data-id="{{ item.id}}">
                             </td>
                         </tr>
                     {% endfor %}
@@ -129,20 +129,34 @@
     </div>
     {% block javascripts %}
         <script>
-            $("tr.testok").click(function() {
-                var tableData = $(this).children("td").map(function() {
-                    return $(this).text();
-                }).get();
-               var name = $.trim(tableData[1]);
+            $('#save').click(function(){
+                var id = $('#selectbox').find("option:selected").val();
+//                var id =  $(".sub_chk:checked").attr('data-id');
+
+                var allVals = [];
+                $(".sub_chk:checked").each(function() {
+                    allVals.push($(this).attr('data-id'));
+                });
+//                //alert(allVals.length); return false;
+//                if(allVals.length <=0)
+//                {
+//                    alert("Please select row.");
+//                }
+
                 $.ajax({
                     url:'{{path('affect')}}',
                     method:"GET",
-                    data:{name:name},
+                    data:{id:id,allVals:allVals},
                     success: function(json) {
-                        alert(JSON.stringify(console.log(json)));
+                        alert(json);
                     }
+                    })
                 });
-            });
+//////////////////////////////////////////////////////////
+
+
+
+
         </script>
     {% endblock %}
 {% endblock %}

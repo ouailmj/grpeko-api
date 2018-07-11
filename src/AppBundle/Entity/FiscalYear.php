@@ -49,14 +49,14 @@ class FiscalYear
     /**
      * @var string
      *
-     * @ORM\Column(name="status", type="string", length=10)
+     * @ORM\Column(name="status", type="string", length=10,nullable=true)
      */
     protected $status;
 
     /**
      * @var integer
      *
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",nullable=true)
      */
     protected $year;
 
@@ -126,6 +126,22 @@ class FiscalYear
     public function __construct()
     {
         $this->missions = new ArrayCollection();
+    }
+
+    /**
+     * @return Mission
+     */
+    public function getMission()
+    {
+        return $this->mission;
+    }
+
+    /**
+     * @param Mission $mission
+     */
+    public function setMission(Mission $mission)
+    {
+        $this->mission = $mission;
     }
 
 
@@ -310,7 +326,7 @@ class FiscalYear
     /**
      * @return Mission[]
      */
-    public function getMissions(): array
+    public function getMissions()
     {
         return $this->missions;
     }

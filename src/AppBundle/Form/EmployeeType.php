@@ -53,6 +53,11 @@ class EmployeeType extends AbstractType
             ->add('initials', TextType::class, array(
                 'label' => 'Code'
             ))
+
+            ->add('currentAddress', AddressType::class, array(
+                'label' => false,
+            ))
+
             ->add('phoneNumber', TextType::class, array(
                 'label' => 'Téléphone',
                 'attr'  => array(
@@ -65,6 +70,8 @@ class EmployeeType extends AbstractType
                     'placeholder'   => 'Exp: +336234521'
                 )
             ))
+
+
 
 //            ->add('addresses', CollectionType::class,
 //                [

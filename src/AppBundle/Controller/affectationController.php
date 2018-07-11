@@ -56,53 +56,51 @@ class affectationController extends BaseController
      */
     public function affectationAction(Request $request)
     {
-        $id = 8;
-//        $name=$request->query->get('name');
-//        $company = $this->getDoctrine()
-//            ->getRepository(Company::class)
-//            ->find($name);
-//
-//        if (!$company) {
-//            throw $this->createNotFoundException(
-//                'No product found for id '.$name
-//            );
-//        }
-//        return new JsonResponse($company->getLegalName());
-        $entityManager = $this->getDoctrine()->getManager();
-        $company = $entityManager->getRepository(Company::class)->find($id);
+      $id=$request->query->get('id');
 
-        if (!$company) {
-            throw $this->createNotFoundException(
-                'No product found for id '.$id
-            );
+      $allvals=$request->query->get('allVals');
+
+      $employeeManager = $this->getDoctrine()->getManager();
+
+    $employee = $employeeManager->getRepository(Employee::class)->findById($id);
+    $employeeManager->flush();
+
+
+    $entityManager = $this->getDoctrine()->getManager();
+    $companys = $entityManager->getRepository(Company::class)->findById($allvals);
+
+    /**
+     * @var $coco Company
+     */
+        foreach ($companys as $coco){
+            $coco->getFiscalYears()->last()->getAssignment()->setEmployee($employee[0]);
         }
-//        ->getAssignment()->getEmployee()
-        foreach ($company->getFiscalYears() as $coco){
-//        $reponse = $company->getFiscalYears()->getAssignment()->getEmployee();
-        dump(
-            $coco ->getAssignment()->getEmployee()
-        );
-            $entityManager->flush();
-        die;
-     }
+
        $entityManager->flush();
 
-        return new JsonResponse($reponse);
+      return new JsonResponse("Votre opération a été exécutée avec succès");
 
-        // return $this->redirect($this->generateUrl('listing'));
-//        $em = $this->getDoctrine()->getManager();
-//        $id = $em->getRepository('AppBundle\Entity\Company')->find($id);
-//
-//        if (!$id) {
-//            throw $this->createNotFoundException('Unable to find Demand entity.');
-//        }
-//
-//        $id->setStatusstatus = ('20');
-//        $em->persist($id);
-//        $em->flush();
     }
 
+    /**
+     * Lists all company entities.
+     *
+     *
+     * @Route("/chiffer", name="chiffer_index")
+     * @Method("GET")
+     */
+    public function chifferAction()
+    {
+        $repository = $this->getDoctrine()
+            ->getRepository(Company::class);
 
-
-
+        $query = $repository->createQueryBuilder('c')
+                ->getQuery();
+                $companys = $query->getResult();
+                dump($companys);
+                die;
+        return $this->render('affectadtion/chiffer_affaire.html.twig', array(
+            'companys' => $companys,
+        ));
+    }
 }

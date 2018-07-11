@@ -75,21 +75,20 @@ class CompanyType extends AbstractType
             ->add('apeCode', ChoiceType::class, array(
                 'label' => 'Code APE:',
                 'choices' => array(
-                    '0112Z'=>'0112Z',
-                    '0113Z'=>'0113Z',
-                    '0114Z'=>'0114Z',
-                    '0115Z'=>'0115Z',
-                    '0116Z'=>'0116Z',
-                    '0119Z'=>'0119Z',
-                    '0121Z'=>'0121Z',
-                    '0122Z'=>'0122Z',
-                    '0123Z'=>'0123Z',
-                    '0124Z'=>'0124Z',
-                    '0125Z'=>'0125Z',
-                    '0126Z'=>'0126Z',
-                    '0127Z'=>'0127Z',
-                    '0128Z'=>'0128Z',
-                    '...'=>'...'
+                    '0112'=>'0112',
+                    '0113'=>'0113',
+                    '0114'=>'0114',
+                    '0115'=>'0115',
+                    '0116'=>'0116',
+                    '0119'=>'0119',
+                    '0121'=>'0121',
+                    '0122'=>'0122',
+                    '0123'=>'0123',
+                    '0124'=>'0124',
+                    '0125'=>'0125',
+                    '0126'=>'0126',
+                    '0127'=>'0127',
+                    '0128'=>'0128'
                 ),
                 'required'  => false
             ))
@@ -121,18 +120,8 @@ class CompanyType extends AbstractType
             ->add('formerAccountant', FormerAccountantType::class)
             //  if ($options['add_contact_data']){
             //    $builder
-            ->add('contacts', CollectionType::class,
-                [
-                    'entry_type'   => ContactType::class,
-                    'label'        => 'old adresses',
-                    'allow_add'    => true,
-                    'allow_delete' => true,
-                    'prototype'    => true,
-                    'required'     => false,
-                    'attr'         => [
-                        'class' => "add-contact-collection",
-                    ],
-                ])
+            ->add('contacts', ContactType::class,array(
+            ))
             ->add('fiscalYears', CollectionType::class,
                 [
                     'entry_type'   => FiscalType::class,
@@ -145,6 +134,7 @@ class CompanyType extends AbstractType
                         'class' => "add-fiscal-collection",
                     ],
                 ])
+            ->add('customerStatus', CustomerStatusType::class)
             ->add('Enregistrer', SubmitType::class, array('attr' => array('class' => 'btn-success','style' => 'float:right')));
         // }
     }

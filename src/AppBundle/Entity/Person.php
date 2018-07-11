@@ -111,6 +111,30 @@ class Person
     private $addresses;
 
     /**
+     * @var Address
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address", cascade={"persist", "remove"})
+     *
+     * @ORM\JoinColumn(name="current_address_id", referencedColumnName="id")
+     */
+    protected $currentAddress;
+
+    /**
+     * @return Address
+     */
+    public function getCurrentAddress()
+    {
+        return $this->currentAddress;
+    }
+
+    /**
+     * @param Address $currentAddress
+     */
+    public function setCurrentAddress($currentAddress)
+    {
+        $this->currentAddress = $currentAddress;
+    }
+    /**
      * @var User
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\User" ,inversedBy="person" ,cascade={"persist", "remove"})
