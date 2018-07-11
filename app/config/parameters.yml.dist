@@ -19,7 +19,7 @@ parameters:
     bugsnag_key:        ThisIsAFakeKey
 
     # Admin
-    mail_admin: superadmin@testme.com
+    mail_admin: noreply@moddus.fr
 
     cors_allow_origin: http://localhost
 
