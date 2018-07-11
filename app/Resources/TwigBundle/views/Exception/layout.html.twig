@@ -4,7 +4,7 @@
 
     <div class="navbar navbar-inverse">
         <div class="navbar-header">
-            <a class="navbar-brand" href="{{ path('homepage') }}"><img src="{{ asset('assets/images/logo_axa.png') }}" alt="Extranet AXA"></a>
+            <a class="navbar-brand" href="{{ path('homepage') }}"><img src="{{ asset('assets/images/logo_eko.png') }}" alt="Extranet AXA"></a>
             <ul class="nav navbar-nav pull-right visible-xs-block">
                 <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
             </ul>
@@ -45,6 +45,6 @@
 
 {% block footer %}
     <div class="footer text-muted text-center">
-        &copy; {{ 'now'|date('Y') }}. <a href="http://www.jdg-assurances.fr" target="_blank">JDG Assurances</a>
+        &copy; {{ 'now'|date('Y') }}. <a href="{{ url('website_page_home') }}" target="_blank">EKO</a>
     </div>
 {% endblock %}

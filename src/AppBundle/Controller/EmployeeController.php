@@ -110,7 +110,7 @@ class EmployeeController extends BaseController
     public function editAction(Request $request, Employee $employee)
     {
         $deleteForm = $this->createDeleteForm($employee);
-        $editForm = $this->createForm('AppBundle\Form\EmployeeType', $employee);
+        $editForm = $this->createForm('AppBundle\Form\EmployeeType', $employee, ['user' => false]);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -152,6 +152,33 @@ class EmployeeController extends BaseController
         }
 
         return $this->redirectToRoute('employee_index');
+    }
+
+    /**
+     * Displays a form to edit an existing employee entity.
+     *
+     *
+     * @Route("/{id}/password-edit", name="employeePassword_edit")
+     * @Method({"GET", "POST"})
+     */
+    public function editPasswordAction(Request $request, Employee $employee)
+    {
+        $deleteForm = $this->createDeleteForm($employee);
+        $editForm = $this->createForm('AppBundle\Form\EmployePasswordType', $employee);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+            $this->addFlash('success', 'Votre opération a été exécutée avec succès');
+
+            return $this->redirectToRoute('employee_show', ['id' => $employee->getId()]);
+        }
+
+        return $this->render('employee/edit-password.html.twig', [
+            'employee' => $employee,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ]);
     }
 
     /**

@@ -1,17 +1,28 @@
 <?php
 
+/*
+ * This file is part of the Moddus project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Developed by MIT <contact@mit-agency.com>
+ *
+ */
+
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Employee
+ * Employee.
  *
  * @ORM\Table(name="employee")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EmployeeRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
-class Employee extends Person   
+class Employee extends Person
 {
     /**
      * @var int
@@ -25,16 +36,10 @@ class Employee extends Person
     /**
      * @var JobPosition
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\JobPosition", inversedBy="employees")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\JobPosition", inversedBy="employees",cascade={"persist"})
      * @ORM\JoinColumn(name="job_position_id", referencedColumnName="id", nullable=true)
      */
     private $jobPosition;
-
-
-    /*
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $initials;
 
     /**
      * @var Assignment [] | ArrayCollection
@@ -50,6 +55,42 @@ class Employee extends Person
      * @ORM\JoinColumn(name="manager_id", referencedColumnName="id")
      */
     private $manager;
+
+    /**
+     * @var status
+     * @ORM\Column(name="status", type="boolean", nullable=true)
+     */
+    protected $status = false;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=10, nullable=true)
+     */
+    protected $initials;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetimetz", nullable=true)
+     */
+    protected $entryDate;
+
+    /**
+     * @return \DateTime
+     */
+    public function getEntryDate()
+    {
+        return $this->entryDate;
+    }
+
+    /**
+     * @param \DateTime $entryDate
+     */
+    public function setEntryDate($entryDate)
+    {
+        $this->entryDate = $entryDate;
+    }
 
     /**
      * Get id.
@@ -87,22 +128,24 @@ class Employee extends Person
 
     /**
      * @param $assignment
+     *
      * @return $this
      */
     public function addAssignments($assignment)
     {
         $this->assignments->add($assignment);
+
         return $this;
     }
 
     /**
      * @param $assignment
+     *
      * @return bool
      */
     public function removeAssignments($assignment)
     {
         return  $this->assignments->removeElement($assignment);
-
     }
 
     /**
@@ -116,7 +159,7 @@ class Employee extends Person
     /**
      * @param Employee $manager
      */
-    public function setManager(Employee $manager)
+    public function setManager(self $manager)
     {
         $this->manager = $manager;
     }
@@ -136,7 +179,4 @@ class Employee extends Person
     {
         $this->initials = $initials;
     }
-
-
-
 }

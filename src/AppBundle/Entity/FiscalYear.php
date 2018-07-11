@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Napier project.
+ * This file is part of the Moddus project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -78,21 +78,19 @@ class FiscalYear
      */
     protected $vatSystem;
 
-
     /**
-     * Regime Fiscal
+     * Regime Fiscal.
      *
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
-     *
      */
     protected $taxSystem;
 
     /**
      * @var Company
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company" ,inversedBy="fiscalYears" ,cascade={"persist", "remove"}))
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company" ,inversedBy="fiscalYears" ,cascade={"persist", "remove"})
      */
     protected $company;
 
@@ -136,11 +134,6 @@ class FiscalYear
     {
         $this->missions = $missions;
     }
-
-
-
-
-
 
     /**
      * Get id.
@@ -320,24 +313,25 @@ class FiscalYear
         $this->assignment = $assignment;
     }
 
-
     /**
      * @param Mission $mission
+     *
      * @return $this
      */
     public function addMission(Mission $mission)
     {
         $this->missions->add($mission);
+
         return $this;
     }
 
     /**
      * @param Mission $mission
+     *
      * @return bool
      */
     public function removeMission(Mission $mission)
     {
         return $this->missions->removeElement($mission);
     }
-
 }

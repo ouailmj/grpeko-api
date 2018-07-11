@@ -1,12 +1,22 @@
 <?php
 
+/*
+ * This file is part of the Moddus project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Developed by MIT <contact@mit-agency.com>
+ *
+ */
+
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Mission
+ * Mission.
  *
  * @ORM\Table(name="mission")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MissionRepository")
@@ -22,13 +32,11 @@ class Mission extends Product
      */
     protected $id;
 
-
     /**
      * @var TypeMission
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\TypeMission" ,inversedBy="missions" ,cascade={"persist"})
      */
     private $typeMission;
-
 
     /**
      * Get id.
@@ -56,25 +64,26 @@ class Mission extends Product
         $this->fiscalYears = $fiscalYears;
     }
 
-
     /**
      * @param $fiscalYear
+     *
      * @return $this
      */
     public function addFiscalYear($fiscalYear)
     {
         $this->fiscalYears->add($fiscalYear);
+
         return $this;
     }
 
     /**
      * @param $fiscalYear
+     *
      * @return bool
      */
     public function removeFiscalYear($fiscalYear)
     {
         return $this->fiscalYears->removeElement($fiscalYear);
-
     }
 
     /**
@@ -92,6 +101,4 @@ class Mission extends Product
     {
         $this->typeMission = $typeMission;
     }
-
-
 }

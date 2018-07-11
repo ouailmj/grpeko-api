@@ -50,4 +50,14 @@ class UserManager
 
         $user->setPlainPassword($plainPassword);
     }
+
+    /**
+     * @param $username
+     *
+     * @return \FOS\UserBundle\Model\UserInterface|User|null
+     */
+    public function findUserByUsernameOrEmail($username)
+    {
+        return $this->fosUserManager->findUserByUsernameOrEmail($username);
+    }
 }

@@ -1,13 +1,24 @@
 <?php
 
+/*
+ * This file is part of the Moddus project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Developed by MIT <contact@mit-agency.com>
+ *
+ */
+
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
- * Contact
+ * Contact.
  *
  * @ORM\Table(name="contact")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ContactRepository")
@@ -15,7 +26,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class Contact extends Person
 {
-
     /**
      * Contact constructor.
      */
@@ -54,51 +64,43 @@ class Contact extends Person
      */
     private $weddings;
 
-
     /**
      * @var string
      *
      * @ORM\Column(name="civility", type="string", length=10, nullable=true)
      */
-
     private $civility;
 
-// * @Assert\NotBlank()
+    // * @Assert\NotBlank()
     /**
      * @var string
      * @ORM\Column(name="firstname", type="string", length=50, nullable=true)
      */
-
     private $firstname;
-
 
     /**
      * @var string
      *
      * @ORM\Column(name="lastname", type="string", length=50, nullable=true)
      */
-
     private $lastname;
 
     /**
      * @var string
      * @ORM\Column(name="birthPlace", type="string", length=50, nullable=true)
      */
-
     private $birthPlace;
 
     /**
      * @var string
      * @ORM\Column(name="birthDept", type="string", length=50, nullable=true)
      */
-
     private $birthDept;
 
     /**
      * @var string
      * @ORM\Column(name="birthCountry", type="string", length=50, nullable=true)
      */
-
     private $birthCountry;
 
     /**
@@ -141,56 +143,48 @@ class Contact extends Person
      * @var float
      * @ORM\Column(name="partNumberPercent", type="float", nullable=true)
      */
-
     private $partNumberPercent;
 
     /**
      * @var string
      * @ORM\Column(name="legalForm", type="string", nullable=true)
      */
-
     private $legalForm;
 
     /**
      * @var string
      * @ORM\Column(name="socialCapital", type="string", nullable=true)
      */
-
     private $socialCapital;
 
     /**
      * @var string
      * @ORM\Column(name="representative", type="string", nullable=true)
      */
-
     private $representative;
 
     /**
      * @var string
      * @ORM\Column(name="representativeQuality", type="string", nullable=true)
      */
-
     private $representativeQuality;
 
     /**
      * @var string
      * @ORM\Column(name="siren", type="string", nullable=true)
      */
-
     private $siren;
 
     /**
      * @var string
      * @ORM\Column(name="intermediate", type="string", length=50, nullable=true)
      */
-
     private $intermediate;
 
     /**
      * @var float
      * @ORM\Column(name="mandataire", type="float", nullable=true)
      */
-
     private $mandataire;
 
     /**
@@ -482,7 +476,7 @@ class Contact extends Person
     /**
      * @param \DateTime $dateStartJobPole
      */
-    public function setDateStartJobPole(\DateTime $dateStartJobPole=null)
+    public function setDateStartJobPole(\DateTime $dateStartJobPole = null)
     {
         $this->dateStartJobPole = $dateStartJobPole;
     }
@@ -498,7 +492,7 @@ class Contact extends Person
     /**
      * @param \DateTime $dateEndJobPole
      */
-    public function setDateEndJobPole(\DateTime $dateEndJobPole=null)
+    public function setDateEndJobPole(\DateTime $dateEndJobPole = null)
     {
         $this->dateEndJobPole = $dateEndJobPole;
     }
@@ -518,7 +512,6 @@ class Contact extends Person
     {
         $this->ARCE_ARE = $ARCE_ARE;
     }
-
 
     /**
      * @return string
@@ -648,7 +641,6 @@ class Contact extends Person
         $this->fetes = $fetes;
     }
 
-
     /**
      * @return string
      */
@@ -713,7 +705,6 @@ class Contact extends Person
         $this->country = $country;
     }
 
-
     /**
      * @return string
      */
@@ -729,7 +720,6 @@ class Contact extends Person
     {
         $this->autoEmailReceipt = $autoEmailReceipt;
     }
-
 
     /**
      * @return string
@@ -826,7 +816,6 @@ class Contact extends Person
     {
         $this->otherCompany = $otherCompany;
     }
-
 
     /**
      * @return float
@@ -956,7 +945,6 @@ class Contact extends Person
         $this->associe = $associe;
     }
 
-
     /**
      * @return string
      */
@@ -1010,7 +998,6 @@ class Contact extends Person
      *
      * @ORM\Column(name="associe", type="string"))
      */
-
     private $associe = false;
 
     /**
@@ -1093,7 +1080,6 @@ class Contact extends Person
         $this->mandataire = $mandataire;
     }
 
-
     /**
      * Get id.
      *
@@ -1136,10 +1122,10 @@ class Contact extends Person
         $this->children = $children;
     }
 
-
     public function addChild(Child $child)
     {
         $this->children->add($child);
+
         return $this;
     }
 
@@ -1164,10 +1150,10 @@ class Contact extends Person
         $this->weddings = $weddings;
     }
 
-
     public function addWedding(Wedding $wedding)
     {
         $this->weddings->add($wedding);
+
         return $this;
     }
 
@@ -1175,5 +1161,4 @@ class Contact extends Person
     {
         return $this->weddings->removeElement($wedding);
     }
-
 }

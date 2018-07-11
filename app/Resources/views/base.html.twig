@@ -4,7 +4,7 @@
     {% set base_template = 'layout/base.html.twig' %}
 {% endif %}
 
-{% extends base_template %}
+{% extends 'layout/base.html.twig' %}
 
 {% if form is defined and form %}
     {% form_theme form 'Form/fields.html.twig' %}

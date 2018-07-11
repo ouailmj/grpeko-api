@@ -13,7 +13,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Table(name="rendezvous")
@@ -33,14 +32,11 @@ class Rendezvous
     /**
      * @ORM\Column(type="string")
      */
-
     private $fichePatrimoniale;
 
     /**
      * @ORM\Column(type="string")
-
      */
-
     private $cin;
 
     /**
@@ -49,7 +45,9 @@ class Rendezvous
     public function getCin()
     {
         return $this->cin;
-    }/**
+    }
+
+    /**
      * @param mixed $cin
      */
     public function setCin($cin)

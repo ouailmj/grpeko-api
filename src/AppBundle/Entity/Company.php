@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Napier project.
+ * This file is part of the Moddus project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -13,8 +13,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Company.
@@ -24,7 +24,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Company extends LegalEntity
 {
-
     /**
      * @var string
      *
@@ -78,14 +77,12 @@ class Company extends LegalEntity
      */
     protected $vatSystem;
 
-
     /**
-     * Regime Fiscal
+     * Regime Fiscal.
      *
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
-     *
      */
     protected $taxSystem;
 
@@ -111,7 +108,6 @@ class Company extends LegalEntity
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
-     *
      */
     protected $socialReason;
 
@@ -119,7 +115,6 @@ class Company extends LegalEntity
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
-     *
      */
     protected $code;
 
@@ -127,7 +122,6 @@ class Company extends LegalEntity
      * @var CustomerStatus
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\CustomerStatus" ,mappedBy="company" ,cascade={"persist", "remove"}))
-     *
      */
     protected $customerStatus;
 
@@ -135,7 +129,6 @@ class Company extends LegalEntity
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
-     *
      */
     protected $relation;
 
@@ -143,7 +136,6 @@ class Company extends LegalEntity
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
-     *
      */
     protected $apeCode;
 
@@ -151,17 +143,15 @@ class Company extends LegalEntity
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
-     *
      */
     protected $siretNumber;
 
     /**
-     * TVA intra communautaire
+     * TVA intra communautaire.
      *
      * @var float
      *
      * @ORM\Column(type="float", nullable=true)
-     *
      */
     protected $intraCommunityVAT;
 
@@ -169,30 +159,26 @@ class Company extends LegalEntity
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
-     *
      */
     protected $sirenNumber;
 
     /**
-     * Nombre d'actions ou parts sociales
+     * Nombre d'actions ou parts sociales.
      *
      * @var integer
      *
      * @ORM\Column(type="integer", nullable=true)
-     *
      */
     protected $nbActions;
 
     /**
-     * capital social
+     * capital social.
      *
      * @var integer
      *
      * @ORM\Column(type="integer", nullable=true)
-     *
      */
     protected $capitalSocial;
-
 
     /**
      * @var Address
@@ -202,7 +188,6 @@ class Company extends LegalEntity
      * @ORM\JoinColumn(name="current_address_id", referencedColumnName="id")
      */
     protected $currentAddress;
-
 
     /**
      * @var Address
@@ -235,7 +220,7 @@ class Company extends LegalEntity
     /**
      * @var FiscalYear[] | ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\FiscalYear" ,mappedBy="company" ,cascade={"persist", "remove"}))
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\FiscalYear" ,mappedBy="company" ,cascade={"persist", "remove"})
      */
     protected $fiscalYears;
 
@@ -247,17 +232,14 @@ class Company extends LegalEntity
     protected $customerAccount;
 
     /**
-     * Ancien Expert-comptable
+     * Ancien Expert-comptable.
      *
      * @var FormerAccountant
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\FormerAccountant", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="former_accountant_id", referencedColumnName="id")
-     *
      */
     protected $formerAccountant;
-
-
 
     /**
      * Company constructor.
@@ -269,7 +251,6 @@ class Company extends LegalEntity
         $this->contacts = new ArrayCollection();
         $this->otherPhoneNumbers = new ArrayCollection();
     }
-
 
     /**
      * @return string
@@ -463,8 +444,6 @@ class Company extends LegalEntity
         $this->code = $code;
     }
 
-
-
     /**
      * @return string
      */
@@ -603,22 +582,24 @@ class Company extends LegalEntity
 
     /**
      * @param $oldAddresses
+     *
      * @return $this
      */
     public function addOldAddress($oldAddress)
     {
         $this->oldAddresses->add($oldAddress);
+
         return $this;
     }
 
     /**
      * @param $oldAddresses
+     *
      * @return bool
      */
     public function removeOldAddress($oldAddress)
     {
         return $this->oldAddresses->removeElement($oldAddress);
-
     }
 
     /**
@@ -639,22 +620,24 @@ class Company extends LegalEntity
 
     /**
      * @param $contacts
+     *
      * @return $this
      */
     public function addContact(Contact $contacts)
     {
         $this->contacts->add($contacts);
+
         return $this;
     }
 
     /**
      * @param $contacts
+     *
      * @return bool
      */
     public function removeContact($contacts)
     {
         return $this->contacts->removeElement($contacts);
-
     }
 
     /**
@@ -667,22 +650,24 @@ class Company extends LegalEntity
 
     /**
      * @param $fiscalYears
+     *
      * @return $this
      */
     public function addFiscalYear($fiscalYears)
     {
         $this->fiscalYears->add($fiscalYears);
+
         return $this;
     }
 
     /**
      * @param $fiscalYears
+     *
      * @return bool
      */
     public function removeFiscalYear($fiscalYears)
     {
         return $this->fiscalYears->removeElement($fiscalYears);
-
     }
 
     /**
@@ -717,7 +702,6 @@ class Company extends LegalEntity
         $this->formerAccountant = $formerAccountant;
     }
 
-
     /**
      * @return Address
      */
@@ -749,7 +733,4 @@ class Company extends LegalEntity
     {
         $this->customerStatus = $customerStatus;
     }
-
-
-
 }

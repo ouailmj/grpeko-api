@@ -12,7 +12,6 @@
 
 namespace AppBundle\Form;
 
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -29,6 +28,7 @@ class AccountEmployer extends AbstractType
         $builder
         ->add('firstName', TextType::class, [
             'label' => 'Nom',
+            'required' => false,
         ])
         ->add('lastName', TextType::class, [
             'label' => 'Prénom',
@@ -38,19 +38,11 @@ class AccountEmployer extends AbstractType
             'label' => 'Téléphone',
         ])
 
-        ->add('manager', EntityType::class, [
-            'label' => 'Supérieur',
-            'class' => 'AppBundle\Entity\Employee',
-            'choice_label' => function ($manager) {
-                return $manager->getUserAccount()->getInitials();
-            },
-            'choices_as_values' => true,
-            'required' => true,
-        ])
-
         ->add('jobPosition', JobpositionType::class)
 
-        ->add('userAccount', UserType::class)
+        ->add('userAccount', UserType::class, [
+        'label' => false,
+    ])
 
         ->add('status', CheckboxType::class, [
             'label' => 'Activer ?',

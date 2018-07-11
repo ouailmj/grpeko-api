@@ -15,7 +15,6 @@ namespace AppBundle\Form;
 use AppBundle\Entity\JobPosition;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -31,15 +30,17 @@ class EmployeeType extends AbstractType
         $builder
             ->add('firstName', TextType::class, [
                 'label' => 'Nom',
+                'required' => true,
                 'attr' => ['style' => 'text-transform: uppercase'],
             ])
             ->add('lastName', TextType::class, [
                 'label' => 'Prénom',
                 'attr' => ['style' => 'text-transform: capitalize'],
+                'required' => true,
             ])
 
             ->add('birthDate', DateType::class, [
-                'required' => false,
+                'required' => true,
                 'widget' => 'single_text',
                 'format' => 'dd/MM/yyyy',
                 'label' => 'Date de naissance',
@@ -49,10 +50,10 @@ class EmployeeType extends AbstractType
             ])
 
             ->add('entryDate', DateType::class, [
-                'required' => false,
+                'required' => true,
                 'widget' => 'single_text',
                 'format' => 'dd/MM/yyyy',
-                'label' => 'Date Entrer',
+                'label' => 'Date d\'entrée',
                 'attr' => [
                     'class' => 'french_picker',
                 ],
@@ -60,6 +61,11 @@ class EmployeeType extends AbstractType
             ->add('initials', TextType::class, [
                 'label' => 'Code',
             ])
+
+            ->add('currentAddress', AddressType::class, [
+                'label' => false,
+            ])
+
             ->add('phoneNumber', TextType::class, [
                 'label' => 'Téléphone',
                 'attr' => [
@@ -72,13 +78,19 @@ class EmployeeType extends AbstractType
                     'placeholder' => 'Exp: +336234521',
                 ],
             ])
-            ->add('FixeNumber', TextType::class, [
-                'label' => 'Téléphone fixe',
-                'attr' => [
-                    'placeholder' => 'Exp: +336234521',
-                ],
-            ])
 
+//            ->add('addresses', CollectionType::class,
+//                [
+//                    'entry_type'   => FiscalType::class,
+//                    'label'        => false,
+//                    'allow_add'    => true,
+//                    'allow_delete' => true,
+//                    'prototype'    => true,
+//                    'required'     => true,
+//                    'attr'         => [
+//                        'class' => "add-fiscal-collection",
+//                    ],
+//                ])
             ->add('currentAddress', AddressType::class, [
                 'label' => false,
             ])
@@ -96,16 +108,13 @@ class EmployeeType extends AbstractType
                 'choices_as_values' => true,
                 'required' => true,
             ])
-
-            ->add('userAccount', UserType::class, [
-                'label' => false,
-            ])
-
-            ->add('status', CheckboxType::class, [
-                'label' => 'Activer ?',
-                'required' => false,
-            ])
-        ;
+           ;
+        if ($options['user']) {
+            $builder
+                     ->add('userAccount', UserType::class, [
+                         'label' => false,
+                     ]);
+        }
     }
 
     /**
@@ -115,6 +124,8 @@ class EmployeeType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => 'AppBundle\Entity\Employee',
+            'required' => true,
+            'user' => true,
         ]);
     }
 

@@ -1,0 +1,2 @@
+tests\acceptance\CreateUserCest.php:testSomeFeature
+tests\acceptance\LoginCest.php:TestLogin

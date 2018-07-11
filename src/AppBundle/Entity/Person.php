@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Napier project.
+ * This file is part of the Moddus project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -35,7 +35,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Person
 {
-
     /**
      * @var int
      *
@@ -111,22 +110,46 @@ class Person
     private $addresses;
 
     /**
+     * @var Address
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address", cascade={"persist", "remove"})
+     *
+     * @ORM\JoinColumn(name="current_address_id", referencedColumnName="id")
+     */
+    protected $currentAddress;
+
+    /**
+     * @return Address
+     */
+    public function getCurrentAddress()
+    {
+        return $this->currentAddress;
+    }
+
+    /**
+     * @param Address $currentAddress
+     */
+    public function setCurrentAddress($currentAddress)
+    {
+        $this->currentAddress = $currentAddress;
+    }
+
+    /**
      * @var User
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\User" ,inversedBy="person" ,cascade={"persist", "remove"})
-     *
      */
     protected $userAccount;
 
     /**
      * Person constructor.
+     *
      * @param $addresses
      */
     public function __construct()
     {
         $this->addresses = new ArrayCollection();
     }
-
 
     /**
      * @return int
@@ -195,7 +218,7 @@ class Person
     /**
      * @param \DateTime $birthDate
      */
-    public function setBirthDate(\DateTime $birthDate=null)
+    public function setBirthDate(\DateTime $birthDate = null)
     {
         $this->birthDate = $birthDate;
     }
@@ -297,22 +320,24 @@ class Person
     }
 
     /**
-     * @param Address $addresses
+     * @param \AppBundle\Entity\Address $address
+     *
      * @return $this
      */
-    public function addAddress($addresses){
-
-        $this->addresses->add($addresses);
+    public function addAddress(\AppBundle\Entity\Address $address)
+    {
+        $this->addresses->add($address);
 
         return $this;
     }
 
     /**
-     * @param Address $addresses
+     * @param \AppBundle\Entity\Address $address
+     *
      * @return bool
      */
-    public function removeAddress($addresses){
-        return $this->addresses->removeElement($addresses);
+    public function removeAddress(\AppBundle\Entity\Address $address)
+    {
+        return $this->addresses->removeElement($address);
     }
-
 }

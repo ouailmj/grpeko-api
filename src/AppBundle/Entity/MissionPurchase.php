@@ -1,12 +1,22 @@
 <?php
 
+/*
+ * This file is part of the Moddus project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Developed by MIT <contact@mit-agency.com>
+ *
+ */
+
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * MissionPurchase
+ * MissionPurchase.
  *
  * @ORM\Table(name="mission_purchase")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MissionPurchaseRepository")
@@ -73,7 +83,6 @@ class MissionPurchase
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Quotation" ,inversedBy="missionPurchase")
      */
     protected $quotation;
-
 
     /**
      * Get id.
@@ -223,21 +232,23 @@ class MissionPurchase
 
     /**
      * @param Mission $mission
+     *
      * @return $this
      */
     public function addMission(Mission $mission)
     {
         $this->missions->add($mission);
+
         return $this;
     }
 
     /**
      * @param $mission
+     *
      * @return bool
      */
     public function removeMission($mission)
     {
         return $this->missions->removeElement($mission);
     }
-
 }

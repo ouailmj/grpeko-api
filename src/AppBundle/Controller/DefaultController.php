@@ -349,6 +349,18 @@ class DefaultController extends BaseController
     }
 
     /**
+     * @Route("/client/test", name="test")
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function TestAction(Request $request)
+    {
+        return $this->render('default/test.html.twig');
+    }
+
+    /**
      * @Route("/contract/edit", name="_contract_edit")
      *
      * @param Request $request

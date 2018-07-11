@@ -17,7 +17,7 @@ use AppBundle\Event\RendezVousCreatedEvent;
 use AppBundle\Mailer;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-class RendezVousLIstener implements EventSubscriberInterface
+class RendezVousListener implements EventSubscriberInterface
 {
     private $mailer;
 

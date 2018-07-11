@@ -1,6 +1,6 @@
 parameters:
-   from_email: "%mailer_user%"
-   from_name: "EKO"
+   from_email: "%mail_noreply%"
+   from_name: "MODDUS"
 
 services:
      # default configuration for services in *this* file

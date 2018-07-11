@@ -18,6 +18,12 @@
         <link href="{{ asset('assets/css/colors.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('bundles/app/css/custom.css') }}" rel="stylesheet" type="text/css">
         <link href=" https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <style>
+            label.required:after {
+                content: "    * " !important;
+                color: red;
+            }
+        </style>
     {% endblock %}
     <!-- /global stylesheets -->
     {% block stylesheets %}{% endblock %}
@@ -37,6 +43,7 @@
         {% endblock %}
     {% endif %}
     <!-- /main navbar -->
+
 
     <!-- Page container -->
     <div class="page-container">
@@ -86,18 +93,12 @@
                 $("#attachment").append('<input type="file" name="files[]" class="form-control" />')
             }
         </script>
-
-        <script>
-
-
-
-        </script>
         <!-- /theme JS files -->
         <!-- footer script -->
             <script >
                 $(document).ready(function()
                 {
-                    $('.content').append('<div class="footer text-muted"> &copy; {{ "now"|date("Y") }}. <a href="http://127.0.0.1:8000" target="_blank"> EKO</a>| Powered by  <a href="http://www.agencemit.com">Agence MIT</a></div>' );
+                    $('.content').append('<div class="footer text-muted"> &copy; {{ "now"|date("Y") }}. <a href="{{ url('website_page_home') }}" target="_blank"> EKO </a></div>' );
                 });
             </script>
         <!-- /footer script -->
@@ -112,6 +113,5 @@
         ga('send', 'pageview');
     </script>
     </body>
-
 {% endblock %}
 </html>
