@@ -105,28 +105,10 @@ class FiscalYear
 
 
     /**
-     * @var Mission
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Mission", inversedBy="fiscalYears")
+     * @var MissionPurchase
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\MissionPurchase", inversedBy="fiscalYears")
      */
-    protected $mission;
-
-    /**
-     * @var Mission[] | ArrayCollection
-     * @ORM\ManyToMany(targetEntity="Mission")
-     * @ORM\JoinTable(name="fiscal_year_mission",
-     *      joinColumns={@ORM\JoinColumn(name="fiscal_year_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="mission_id", referencedColumnName="id", unique=true)}
-     *      )
-     */
-    protected $missions;
-
-    /**
-     * FiscalYear constructor.
-     */
-    public function __construct()
-    {
-        $this->missions = new ArrayCollection();
-    }
+    protected $missionPurchase;
 
 
     /**
@@ -294,7 +276,7 @@ class FiscalYear
     /**
      * @return Assignment
      */
-    public function getAssignment(): Assignment
+    public function getAssignment()
     {
         return $this->assignment;
     }
@@ -308,38 +290,22 @@ class FiscalYear
     }
 
     /**
-     * @return Mission[]
+     * @return MissionPurchase
      */
-    public function getMissions(): array
+    public function getMissionPurchase(): MissionPurchase
     {
-        return $this->missions;
+        return $this->missionPurchase;
     }
 
     /**
-     * @param Mission[] $missions
+     * @param MissionPurchase $missionPurchase
      */
-    public function setMissions(array $missions)
+    public function setMissionPurchase(MissionPurchase $missionPurchase)
     {
-        $this->missions = $missions;
+        $this->missionPurchase = $missionPurchase;
     }
 
-    /**
-     * @param Mission $mission
-     * @return $this
-     */
-    public function addMission(Mission $mission)
-    {
-        $this->missions->add($mission);
-        return $this;
-    }
 
-    /**
-     * @param Mission $mission
-     * @return bool
-     */
-    public function removeMission(Mission $mission)
-    {
-        return $this->missions->removeElement($mission);
-    }
+
 
 }

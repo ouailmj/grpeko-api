@@ -50,6 +50,22 @@ class Quotation
      */
     private $quotationLines;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+    private $nbPurchaseInvoicPerYear;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+    private $nbSalesInvoicesPerYear;
+
+
+
 
 
     /**

@@ -12,9 +12,9 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Model\Address;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PersonRepository")
@@ -30,7 +30,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     "customer"="Customer",
  *     "contact"="Contact",
  * })
- *
+ * @ApiResource()
  * @ORM\HasLifecycleCallbacks()
  */
 class Person
@@ -300,7 +300,7 @@ class Person
      * @param \AppBundle\Entity\Address $address
      * @return $this
      */
-    public function addAddress(Address $address){
+    public function addAddress(\AppBundle\Entity\Address $address){
 
         $this->addresses->add($address);
 

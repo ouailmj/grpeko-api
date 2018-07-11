@@ -12,6 +12,7 @@
 
 namespace AppBundle\Entity;
 
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use ApiPlatform\Core\Annotation\ApiResource;
 use AppBundle\AppBundle;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -58,7 +59,7 @@ class User extends BaseUser
 
     /**
      * @var Person
-     *
+     *@ApiSubResource
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Person", mappedBy="userAccount", cascade={"persist", "remove"})
      */
     protected $person;

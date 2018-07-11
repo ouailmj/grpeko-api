@@ -4,12 +4,14 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * Employee
  *
  * @ORM\Table(name="employee")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EmployeeRepository")
+ *  @ApiResource()
  */
 class Employee extends Person   
 {
@@ -44,12 +46,24 @@ class Employee extends Person
     private $assignments;
 
     /**
-     * @var Employee
-     *
-     * @ORM\OneToOne(targetEntity="Employee")
-     * @ORM\JoinColumn(name="manager_id", referencedColumnName="id")
+     * @ORM\OneToMany(targetEntity="Employee", mappedBy="manager")
+     */
+    private $staffs;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Employee", inversedBy="staffs")
+     * @ORM\JoinColumn(name="manager_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $manager;
+
+    /**
+     * Employee constructor.
+     */
+    public function __construct()
+    {
+        $this->staffs = new ArrayCollection();
+    }
+
 
     /**
      * Get id.
@@ -137,6 +151,33 @@ class Employee extends Person
         $this->initials = $initials;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getStaffs()
+    {
+        return $this->staffs;
+    }
 
+    /**
+     * @param mixed $staffs
+     */
+    public function setStaffs($staffs)
+    {
+        $this->staffs = $staffs;
+    }
+
+
+    public function addStaff(Employee $employee)
+    {
+        $this->staffs->add($employee);
+        return $this;
+    }
+
+    public function removeStaff(Employee $employee)
+    {
+        return $this->staffs->removeElement($employee);
+
+    }
 
 }
