@@ -31,11 +31,16 @@ class RendezVousManager
 
     public function uploadFiles(Rendezvous $rendezvous, String $path)
     {
-        $rendezvous->getFichePatrimoniale();
         $file = $rendezvous->getFichePatrimoniale();
         $fileName = md5(uniqid()).'.'.$file->guessExtension();
         $file->move($path, $fileName);
         $rendezvous->setFichePatrimoniale($fileName);
+
+        $file = $rendezvous->getCin();
+        $fileName = md5(uniqid()).'.'.$file->guessExtension();
+        $file->move($path, $fileName);
+        $rendezvous->setCin($fileName);
+
         $this->em->persist($rendezvous);
         $this->em->flush();
     }

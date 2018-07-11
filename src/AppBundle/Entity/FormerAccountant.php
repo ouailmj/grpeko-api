@@ -56,7 +56,7 @@ class FormerAccountant extends LegalEntity
      * @var Address
      *
      *  @ORM\OneToOne(targetEntity="AppBundle\Entity\Address", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="address_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="address_id", referencedColumnName="id",onDelete="CASCADE")
      */
     private $address;
 

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Moddus project.
+ * This file is part of the Napier project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,6 +12,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -34,26 +35,26 @@ class FiscalYear
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="startDate", type="datetime",nullable=true)
+     * @ORM\Column(name="startDate", type="datetimetz")
      */
     protected $startDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="closeDate", type="datetime",nullable=true)
+     * @ORM\Column(name="closeDate", type="datetimetz")
      */
     protected $closeDate;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="status", type="string", length=20,nullable=true)
+     * @ORM\Column(name="status", type="string", length=10,nullable=true)
      */
     protected $status;
 
     /**
-     * @var int
+     * @var integer
      *
      * @ORM\Column(type="integer",nullable=true)
      */
@@ -77,12 +78,14 @@ class FiscalYear
      */
     protected $vatSystem;
 
+
     /**
-     * Regime Fiscal.
+     * Regime Fiscal
      *
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
      */
     protected $taxSystem;
 
@@ -101,17 +104,22 @@ class FiscalYear
     protected $assignment;
 
     /**
-     * @var Mission
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Mission", inversedBy="exercices")
+     * @var Mission[] | ArrayCollection
+     * @ORM\ManyToMany(targetEntity="Mission")
+     * @ORM\JoinTable(name="fiscal_year_mission",
+     *      joinColumns={@ORM\JoinColumn(name="fiscal_year_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="mission_id", referencedColumnName="id", unique=true)}
+     *      )
      */
-    protected $mission;
+    protected $missions;
 
     /**
-     * @var array
-     *
-     * @ORM\Column(type="array",nullable=TRUE))
+     * FiscalYear constructor.
      */
-    protected $Exercices_comptables;
+    public function __construct()
+    {
+        $this->missions = new ArrayCollection();
+    }
 
     /**
      * @return Mission
@@ -129,21 +137,6 @@ class FiscalYear
         $this->mission = $mission;
     }
 
-    /**
-     * @return array
-     */
-    public function getExercicesComptables()
-    {
-        return $this->Exercices_comptables;
-    }
-
-    /**
-     * @param array $Exercices_comptables
-     */
-    public function setExercicesComptables(array $Exercices_comptables)
-    {
-        $this->Exercices_comptables = $Exercices_comptables;
-    }
 
     /**
      * Get id.
@@ -322,4 +315,40 @@ class FiscalYear
     {
         $this->assignment = $assignment;
     }
+
+    /**
+     * @return Mission[]
+     */
+    public function getMissions()
+    {
+        return $this->missions;
+    }
+
+    /**
+     * @param Mission[] $missions
+     */
+    public function setMissions(array $missions)
+    {
+        $this->missions = $missions;
+    }
+
+    /**
+     * @param Mission $mission
+     * @return $this
+     */
+    public function addMission(Mission $mission)
+    {
+        $this->missions->add($mission);
+        return $this;
+    }
+
+    /**
+     * @param Mission $mission
+     * @return bool
+     */
+    public function removeMission(Mission $mission)
+    {
+        return $this->missions->removeElement($mission);
+    }
+
 }

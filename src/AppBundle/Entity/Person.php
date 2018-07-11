@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Moddus project.
+ * This file is part of the Napier project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,7 +12,8 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Model\Person as BasePerson;
+use AppBundle\Model\Address;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -26,13 +27,15 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\DiscriminatorMap({
  *     "person"="Person",
  *     "employee"="Employee",
- *     "customer"="Customer"
+ *     "customer"="Customer",
+ *     "contact"="Contact",
  * })
  *
  * @ORM\HasLifecycleCallbacks()
  */
-class Person extends BasePerson
+class Person
 {
+
     /**
      * @var int
      *
@@ -99,59 +102,31 @@ class Person extends BasePerson
     protected $postalCode;
 
     /**
-     * @var \AppBundle\Entity\Address
-     *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address" ,mappedBy="category", cascade={"persist", "remove"})
-     *
-     * @ORM\JoinColumn(name="current_address_id", referencedColumnName="id")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Address")
+     * @ORM\JoinTable(name="person_address",
+     *      joinColumns={@ORM\JoinColumn(name="person_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="address_id", referencedColumnName="id", unique=true)}
+     *      )
      */
-    protected $currentAddress;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=25, nullable=true)
-     */
-    protected $FixeNumber;
-
-    /**
-     * @return string
-     */
-    public function getFixeNumber()
-    {
-        return $this->FixeNumber;
-    }
-
-    /**
-     * @param string $FixeNumber
-     */
-    public function setFixeNumber($FixeNumber)
-    {
-        $this->FixeNumber = $FixeNumber;
-    }
-
-    /**
-     * @return \AppBundle\Entity\Address
-     */
-    public function getCurrentAddress()
-    {
-        return $this->currentAddress;
-    }
-
-    /**
-     * @param Address $currentAddress
-     */
-    public function setCurrentAddress($currentAddress)
-    {
-        $this->currentAddress = $currentAddress;
-    }
+    private $addresses;
 
     /**
      * @var User
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\User" ,inversedBy="person" ,cascade={"persist", "remove"})
+     *
      */
     protected $userAccount;
+
+    /**
+     * Person constructor.
+     * @param $addresses
+     */
+    public function __construct()
+    {
+        $this->addresses = new ArrayCollection();
+    }
+
 
     /**
      * @return int
@@ -172,7 +147,7 @@ class Person extends BasePerson
     /**
      * @param string $name
      */
-    public function setName(string $name = null)
+    public function setName(string $name)
     {
         $this->name = $name;
     }
@@ -188,7 +163,7 @@ class Person extends BasePerson
     /**
      * @param string $firstName
      */
-    public function setFirstName(string $firstName = null)
+    public function setFirstName(string $firstName)
     {
         $this->firstName = $firstName;
     }
@@ -204,7 +179,7 @@ class Person extends BasePerson
     /**
      * @param string $lastName
      */
-    public function setLastName(string $lastName = null)
+    public function setLastName(string $lastName)
     {
         $this->lastName = $lastName;
     }
@@ -220,7 +195,7 @@ class Person extends BasePerson
     /**
      * @param \DateTime $birthDate
      */
-    public function setBirthDate(\DateTime $birthDate = null)
+    public function setBirthDate(\DateTime $birthDate=null)
     {
         $this->birthDate = $birthDate;
     }
@@ -236,7 +211,7 @@ class Person extends BasePerson
     /**
      * @param \DateTime $deathDate
      */
-    public function setDeathDate(\DateTime $deathDate = null)
+    public function setDeathDate(\DateTime $deathDate)
     {
         $this->deathDate = $deathDate;
     }
@@ -252,7 +227,7 @@ class Person extends BasePerson
     /**
      * @param string $phoneNumber
      */
-    public function setPhoneNumber(string $phoneNumber = null)
+    public function setPhoneNumber(string $phoneNumber)
     {
         $this->phoneNumber = $phoneNumber;
     }
@@ -268,7 +243,7 @@ class Person extends BasePerson
     /**
      * @param string $faxNumber
      */
-    public function setFaxNumber(string $faxNumber = null)
+    public function setFaxNumber(string $faxNumber)
     {
         $this->faxNumber = $faxNumber;
     }
@@ -284,7 +259,7 @@ class Person extends BasePerson
     /**
      * @param string $postalCode
      */
-    public function setPostalCode(string $postalCode = null)
+    public function setPostalCode(string $postalCode)
     {
         $this->postalCode = $postalCode;
     }
@@ -300,8 +275,44 @@ class Person extends BasePerson
     /**
      * @param User $userAccount
      */
-    public function setUserAccount(User $userAccount = null)
+    public function setUserAccount(User $userAccount)
     {
         $this->userAccount = $userAccount;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getAddresses()
+    {
+        return $this->addresses;
+    }
+
+    /**
+     * @param mixed $addresses
+     */
+    public function setAddresses($addresses)
+    {
+        $this->addresses = $addresses;
+    }
+
+    /**
+     * @param Address $addresses
+     * @return $this
+     */
+    public function addAddress($addresses){
+
+        $this->addresses->add($addresses);
+
+        return $this;
+    }
+
+    /**
+     * @param Address $addresses
+     * @return bool
+     */
+    public function removeAddress($addresses){
+        return $this->addresses->removeElement($addresses);
+    }
+
 }

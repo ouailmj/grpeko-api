@@ -44,7 +44,6 @@
 
                 <div class="content-group tab-content-bordered navbar-component">
                     {% block _content %}
-
                         {% block stylesheets %}
                             <style>
                                 fieldset.scheduler-border {
@@ -66,14 +65,29 @@
                                 div[id^="appbundle_company_oldAddresses"] > label{
                                     display : none!important;
                                 }
+                                div[id^="appbundle_company_fiscal"] > label{
+                                    display : none!important;
+                                }
+
+                                div#appbundle_company_oldAddresses > .form-group{
+                                    padding: 10px;
+                                    width: 100%;
+                                    border: 1px solid #d5d7d8;
+                                    border-radius: 2px;
+                                    box-shadow: 1px 1px gainsboro;
+                                }
+                                div[id^="appbundle_ContactDetails_weddings"] > label{
+                                    display : none!important;
+                                }
+                                div[id^="appbundle_ContactDetails_child"] > label{
+                                    display : none!important;
+                                }
                                 div[id^="appbundle_company_contacts"] > label{
                                     display : none!important;
                                 }
-                                div[id^="appbundle_company_contacts"]:nth-child(3) {
-                                    display:none
-                                }
-                                .removecontact{
-                                    display: none;
+
+                                .requis {
+                                    color: red;
                                 }
                             </style>
                         {% endblock %}
@@ -84,3 +98,4 @@
         </div>
     </div>
 {% endblock %}
+{% block javascripts %}{% endblock javascripts %}

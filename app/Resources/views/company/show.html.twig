@@ -58,9 +58,11 @@
                                 {{ form_end(delete_form[loop.index-1]) }}
                             </td>
 
+
                             <td>{{company.code}}</td>
                             <td>{{company.legalform}}</td>
-                            <td>{{company.status}}</td>
+
+                            <td>{{company.getCustomerStatus()}}</td>
                             <td>Null</td>
                             <td>{{company.legalform}}</td>
                             <td>

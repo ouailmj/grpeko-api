@@ -1,15 +1,5 @@
 {% extends 'company/company.html.twig' %}
 {% block _content %}
-
-    <style>
-        div[id^="appbundle_company_oldAddresses_"]:nth-child(1) {
-            border: 1px solid #43c6ac;
-            padding: 5px;
-            text-align: center;
-            margin: 12px;
-        }
-    </style>
-
     <div class="panel panel-flat">
         <div class="tabbale">
             <ul class="nav nav-tabs bg-teal-400 nav-justified">
@@ -24,7 +14,7 @@
                         <ul class="nav nav-tabs nav-tabs-highlight">
                             <li class="active"><a href="#Contacts" data-toggle="tab" aria-expanded="true"><i class="icon-users position-left"></i>Informations générales</a></li>
                             <li class=""><a href="#Dossiers" data-toggle="tab" aria-expanded="false"><i class="icon-folder position-left"></i>Rendez-vous</a></li>
-                            <li class=""><a href="#Contrats" data-toggle="tab" aria-expanded="false"><i class="icon-address-book3 position-left"></i>Contacts</a></li>
+                            <li class=""><a href="{{ path('contact_list') }}"><i class="icon-address-book3 position-left"></i>Contacts</a></li>
                             <li>
                                 <ul class="nav navbar-nav navbar-right">
                                     <li class="dropdown dropdown-user">
@@ -55,7 +45,6 @@
                             <div class="panel-body">
                                 {{ form_start(formcompany, {'attr': {'class': 'form-horizontal'}}) }}
                                 <fieldset class="content-group">
-                                    <legend class="text-bold">Informations générales</legend>
 
                                             {{form_row(formcompany.legalName)}}
                                             {{form_row(formcompany.legalForm)}}
@@ -69,7 +58,7 @@
 
                                 <fieldset class="scheduler-border">
                                     <legend class="scheduler-border" style="text-transform: capitalize">Adresse du SIE</legend>
-                                    {{form_row(formcompany.SieAddress)}}
+                                    {{form_row(formcompany.siegeAddress)}}
 
                                 </fieldset>
 
@@ -101,11 +90,12 @@
                                             {{form_row(formcompany.formerAccountant.address.city)}}
                                             {{form_row(formcompany.formerAccountant.address.email)}}
 
-                                            <div class="form-group">
-                                                <div class="col-xs- col-md-5 pull-right" >
-                                                    <input type="button" class="form-control btn-info" id="pwd" value="&nbsp;Générer et envoyer la lettre de reprise de dossier&nbsp;" name="pwd">
-                                                </div>
-                                            </div>
+                                            {#   <div class="form-group">
+                                                     <div class="col-xs- col-md-5 pull-right" >
+                                                         <input type="button" class="form-control btn-info" id="pwd" value="&nbsp;Générer et envoyer la lettre de reprise de dossier&nbsp;" name="pwd">
+                                                     </div>
+                                                 </div>
+                                             #}
 
                                         </fieldset>
 
@@ -118,7 +108,7 @@
 
                                         <fieldset class="scheduler-border">
 
-                                            <legend class="scheduler-border" style="text-transform: capitalize">Anciennes Adresse</legend>
+                                            <legend class="scheduler-border" style="text-transform: capitalize">Anciennes Adresses</legend>
 
                                             {{form_widget(formcompany.oldAddresses)}}
 
@@ -133,14 +123,42 @@
 
                                             <legend class="scheduler-border" style="text-transform: capitalize">contacts</legend>
 
-                                            {{form_widget(formcompany.contacts)}}
+                                            {{form_row(formcompany.contacts.firstname)}}
+                                            {{form_row(formcompany.contacts.lastname)}}
+                                            {{form_row(formcompany.contacts.email)}}
 
                                         </fieldset>
 
                                     </div>
                                 </div>
 
+
+                                <div class="form-group">
+                                    <div class=" col-sm-12">
+
+                                        <fieldset class="scheduler-border">
+
+                                            <legend class="scheduler-border" style="text-transform: capitalize">Exercice Fiscale Annuelle</legend>
+
+                                            {{form_widget(formcompany.fiscalYears)}}
+                                            {{form_errors(formcompany.fiscalYears)}}
+
+                                        </fieldset>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class=" col-sm-6">
+
+                                            {{form_widget(formcompany.customerStatus)}}
+                                            {{form_errors(formcompany.customerStatus)}}
+
+                                    </div>
+                                </div>
+
                                 {{form_row(formcompany.Enregistrer)}}
+
                                 {{ form_widget(formcompany._token) }}
                                 {{ form_end(formcompany, {'render_rest': false}) }}
                             </div>
@@ -181,14 +199,8 @@
 
         </div>
     </div>
-
+{% endblock %}
     {% block javascripts %}
-        <script>
-            $(document).ready(function() {
-                $('.collection-action').click();
-            });
-
-        </script>
         <script src="{{ asset('assets/js/plugins/symfony_collectionjs/jquery.collection.js') }}"></script>
         <script type="text/javascript">
             $('.old-addresses-collection').collection({
@@ -203,19 +215,39 @@
 
                 }
             );
-            $('.add-contacts-collection').collection({
-                    name_prefix: "{{ formcompany.contacts.vars.full_name }}",
-                    add_at_the_end: false,
+
+            $('.add-fiscal-collection').collection({
+                    name_prefix: "{{ formcompany.fiscalYears.vars.full_name }}",
+                    add_at_the_end: true,
                     hide_useless_buttons: true,
                     add: '<a style="float:right" href="#" class="collection-action btn btn-success btn-small collection-rescue-add">Ajouter</a>',
-                    remove: '<a href="#" class="collection-remove btn btn-warning collection-action removecontact">Retirer</a>',
+                    remove: '<a href="#" class="collection-remove btn btn-warning collection-action">Retirer</a>',
                     allow_up: false,
                     allow_down: false,
                     init_with_n_elements: 0,
+                    after_add: function (collection, element) {
+                        french_picker();
+                        //$('select').select2();
+                        return true;
+                    }
 
                 }
             );
+
+/*
+            $('.add-contact-collection').collection({
+                   // name_prefix: ,
+                    add_at_the_end: true,
+                    hide_useless_buttons: true,
+                    add: '<a style="float:right" href="#" class="collection-action btn btn-success btn-small collection-rescue-add">Ajouter</a>',
+                    remove: '<a href="#" class="collection-remove btn btn-warning collection-action">Retirer</a>',
+                    allow_up: false,
+                    allow_down: false,
+                    init_with_n_elements: 0,
+                }
+            );
+            */
         </script>
-    {% endblock javascripts %}
-{% endblock %}
+    {% endblock %}
+
 
