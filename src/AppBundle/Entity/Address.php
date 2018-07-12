@@ -1,6 +1,7 @@
 <?php
+
 /*
- * This file is part of the Napier project.
+ * This file is part of the Moddus project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -8,8 +9,11 @@
  * Developed by MIT <contact@mit-agency.com>
  *
  */
+
 namespace AppBundle\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Address.
  *
@@ -51,14 +55,12 @@ class Address
      */
     protected $email;
 
-
     /**
      * @var Person
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Person" ,inversedBy="currentAddress")
      */
-   // protected $category;
-
+    // protected $category;
 
     /**
      * @return string
@@ -82,6 +84,7 @@ class Address
      * @ORM\Column(type="datetimetz", nullable=true)
      */
     protected $leftAt = null;
+
     /**
      * Get id.
      *
@@ -91,6 +94,7 @@ class Address
     {
         return $this->id;
     }
+
     /**
      * @return string
      */
@@ -114,15 +118,19 @@ class Address
     {
         $this->category = $category;
     }
+
     /**
      * @param string $description
+     *
      * @return Address
      */
     public function setDescription(string $description)
     {
         $this->description = $description;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -130,15 +138,19 @@ class Address
     {
         return $this->postalCode;
     }
+
     /**
      * @param string $postalCode
+     *
      * @return Address
      */
     public function setPostalCode(string $postalCode)
     {
         $this->postalCode = $postalCode;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -146,15 +158,19 @@ class Address
     {
         return $this->city;
     }
+
     /**
      * @param string $city
+     *
      * @return Address
      */
     public function setCity(string $city)
     {
         $this->city = $city;
+
         return $this;
     }
+
     /**
      * @return \DateTime
      */
@@ -162,6 +178,7 @@ class Address
     {
         return $this->leftAt;
     }
+
     /**
      * @param \DateTime $leftAt
      */

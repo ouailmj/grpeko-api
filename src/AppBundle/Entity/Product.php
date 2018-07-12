@@ -1,13 +1,22 @@
 <?php
 
+/*
+ * This file is part of the Moddus project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Developed by MIT <contact@mit-agency.com>
+ *
+ */
+
 namespace AppBundle\Entity;
 
-use DeepCopy\f006\A;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Product
+ * Product.
  *
  * @ORM\Table(name="product")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ProductRepository")
@@ -54,7 +63,6 @@ class Product
     {
         $this->quotationLines = new ArrayCollection();
     }
-
 
     /**
      * Get id.
@@ -109,6 +117,7 @@ class Product
     public function addQuotationLine(QuotationLine $quotationLines)
     {
         $this->quotationLines->add($quotationLines);
+
         return $this;
     }
 
@@ -116,6 +125,4 @@ class Product
     {
         return $this->quotationLines->removeElement($quotationLines);
     }
-
-
 }

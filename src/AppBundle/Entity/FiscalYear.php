@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Napier project.
+ * This file is part of the Moddus project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -78,9 +78,8 @@ class FiscalYear
      */
     protected $vatSystem;
 
-
     /**
-     * Regime Fiscal
+     * Regime Fiscal.
      *
      * @var string
      *
@@ -315,24 +314,25 @@ class FiscalYear
         $this->assignment = $assignment;
     }
 
-
     /**
      * @param Mission $mission
+     *
      * @return $this
      */
     public function addMission(Mission $mission)
     {
         $this->missions->add($mission);
+
         return $this;
     }
 
     /**
      * @param Mission $mission
+     *
      * @return bool
      */
     public function removeMission(Mission $mission)
     {
         return $this->missions->removeElement($mission);
     }
-
 }

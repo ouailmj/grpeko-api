@@ -278,7 +278,7 @@ class CompanyController extends BaseController
     }
 
     /**
-     * @Route("/excercice/edit/{id}", name="contact_edit")
+     * @Route("/excercice/edit/{id}", name="excercice_edit")
      *
      */
     public function editExcerciceAction(Request $request,FiscalYear $fiscalYear)

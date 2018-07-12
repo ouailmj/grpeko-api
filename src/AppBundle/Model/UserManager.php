@@ -1,18 +1,19 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: mohamed
- * Date: 03/08/17
- * Time: 09:27 م
+
+/*
+ * This file is part of the Moddus project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Developed by MIT <contact@mit-agency.com>
+ *
  */
 
 namespace AppBundle\Model;
 
-
 use AppBundle\Entity\User;
-use AppBundle\Mailer\Mailer;
 use Doctrine\ORM\EntityManager;
-use Symfony\Component\VarDumper\VarDumper;
 
 class UserManager
 {
@@ -21,7 +22,6 @@ class UserManager
      */
     private $fosUserManager;
 
-
     /**
      * @var EntityManager
      */
@@ -29,20 +29,20 @@ class UserManager
 
     /**
      * UserManager constructor.
+     *
      * @param \FOS\UserBundle\Doctrine\UserManager $fosUserManager
-     * @param EntityManager $em
+     * @param EntityManager                        $em
      */
-    public function __construct(\FOS\UserBundle\Doctrine\UserManager $fosUserManager,EntityManager $em)
+    public function __construct(\FOS\UserBundle\Doctrine\UserManager $fosUserManager, EntityManager $em)
     {
         $this->fosUserManager = $fosUserManager;
         $this->em = $em;
     }
 
-
     /**
      * @param User $user
      */
-    public function createUser(User $user, $flush=true)
+    public function createUser(User $user, $flush = true)
     {
         $plainPassword = $user->getPlainPassword();
 
@@ -51,10 +51,13 @@ class UserManager
         $user->setPlainPassword($plainPassword);
     }
 
-
-
-  
-
-
- 
+    /**
+     * @param $username
+     *
+     * @return \FOS\UserBundle\Model\UserInterface|User|null
+     */
+    public function findUserByUsernameOrEmail($username)
+    {
+        return $this->fosUserManager->findUserByUsernameOrEmail($username);
+    }
 }

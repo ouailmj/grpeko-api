@@ -1,0 +1,30 @@
+<table>
+    <thead>
+    <tr class="ui-widget-header ">
+        <th>Name/Nr.</th>
+        <th>Street</th>
+        <th>Town</th>
+        <th>Postcode</th>
+        <th>Country</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="koulo">
+        <td><span>50</span>
+        </td>
+        <td>Some Street 1</td>
+        <td>Glasgow</td>
+        <td>G0 0XX</td>
+        <td>United Kingdom</td>
+    </tr>
+    </tbody>
+</table>
+<script>
+    $(".koulo").click(function() {
+        var $row = $(this).closest("tr");    // Find the row
+        var $text = $row.find("td").text(); // Find the text
+
+// Let's test it out
+        alert($text);
+    });
+</script>

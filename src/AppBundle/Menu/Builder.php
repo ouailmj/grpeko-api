@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Napier project.
+ * This file is part of the Moddus project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -45,7 +45,6 @@ class Builder implements ContainerAwareInterface
 
     public function createMainMenu(array $options)
     {
-
         $menu = $this->factory->createItem('root');
         $menu->setChildrenAttribute('class', 'navigation navigation-main navigation-accordion');
 
@@ -60,8 +59,7 @@ class Builder implements ContainerAwareInterface
             'extras' => ['safe_label' => true],
         ]);
 
-        if($this->authorizationChecker->isGranted('ROLE_PROSPECT'))
-        {
+        if ($this->authorizationChecker->isGranted('ROLE_PROSPECT')) {
             $menu->addChild('Télécharger le modèle', [
                 'route' => 'model_upload',
                 'label' => '<i class="icon-download"> </i> <span>Télécharger le modèle</span>',
@@ -69,45 +67,45 @@ class Builder implements ContainerAwareInterface
             ]);
         }
 
-       if(!$this->authorizationChecker->isGranted('ROLE_PROSPECT'))
-       {
-        $menu->addChild('Clients', [
+        if (!$this->authorizationChecker->isGranted('ROLE_PROSPECT')) {
+            $menu->addChild('Clients', [
             'route' => 'company_index',
             'label' => '<i class="icon-users4"> </i> <span>Clients</span>',
             'extras' => ['safe_label' => true],
         ]);
 
-        $menu->addChild('Plannings', [
+            $menu->addChild('Plannings', [
             'uri' => '/app/client/planning',
             'label' => '<i class="icon-users"> </i> <span>Plannings</span>',
             'extras' => ['safe_label' => true],
         ]);
 
-        $menu->addChild('Gestion du Cabinet', [
+            $menu->addChild('Gestion du Cabinet', [
             'route' => 'employee_index',
             'label' => '<i class="icon-file-text3"> </i> <span>Gestion du Cabinet</span>',
             'extras' => ['safe_label' => true],
         ]);
 
-        $menu->addChild('Formalités', [
+            $menu->addChild('Formalités', [
             'uri' => '/app/client/formalites',
             'label' => '<i class="icon-books"> </i> <span>Formalités</span>',
             'extras' => ['safe_label' => true],
         ]);
-        $menu->addChild('Suivi de projet', [
+            $menu->addChild('Suivi de projet', [
             'uri' => '#',
             'label' => '<i class="icon-folder-open"> </i> <span>Suivi de projet</span>',
             'extras' => ['safe_label' => true],
         ]);
 
-        $settings = $menu->addChild('Settings', [
+            $settings = $menu->addChild('Settings', [
             'uri' => '#',
             'label' => '<i class="icon-cog5"> </i> <span>Paramètrages</span>',
             'extras' => ['safe_label' => true],
         ]);
 
-        $this->settingItem($settings);
-       }
+            $this->settingItem($settings);
+        }
+
         return $menu;
     }
 
@@ -203,30 +201,30 @@ class Builder implements ContainerAwareInterface
 
     private function settingItem(ItemInterface $menu)
     {
-        $menu->addChild('Planning', array(
+        $menu->addChild('Planning', [
             'route' => 'setting_planning',
-            'label' => "<i class=\"icon-arrow-right14\"> </i> <span>Planning</span>",
-            'extras'    => array('safe_label' => true)
-        ));
-        $menu->addChild('Quotation', array(
+            'label' => '<i class="icon-arrow-right14"> </i> <span>Planning</span>',
+            'extras' => ['safe_label' => true],
+        ]);
+        $menu->addChild('Quotation', [
             'route' => 'setting_quotations',
-            'label' => "<i class=\"icon-arrow-right14\"> </i> <span>Devis</span>",
-            'extras'    => array('safe_label' => true)
-        ));
-        $menu->addChild('Emails', array(
+            'label' => '<i class="icon-arrow-right14"> </i> <span>Devis</span>',
+            'extras' => ['safe_label' => true],
+        ]);
+        $menu->addChild('Emails', [
             'route' => 'setting_emails',
-            'label' => "<i class=\"icon-arrow-right14\"> </i> <span>Emails</span>",
-            'extras'    => array('safe_label' => true)
-        ));
-        $menu->addChild('Commissions', array(
+            'label' => '<i class="icon-arrow-right14"> </i> <span>Emails</span>',
+            'extras' => ['safe_label' => true],
+        ]);
+        $menu->addChild('Commissions', [
             'route' => 'setting_commissions',
-            'label' => "<i class=\"icon-arrow-right14\"> </i> <span>Commissions</span>",
-            'extras'    => array('safe_label' => true)
-        ));
-        $menu->addChild('Analytics', array(
+            'label' => '<i class="icon-arrow-right14"> </i> <span>Commissions</span>',
+            'extras' => ['safe_label' => true],
+        ]);
+        $menu->addChild('Analytics', [
             'route' => 'setting_analytics',
-            'label' => "<i class=\"icon-arrow-right14\"> </i> <span>Catégories Analytiques</span>",
-            'extras'    => array('safe_label' => true)
-        ));
+            'label' => '<i class="icon-arrow-right14"> </i> <span>Catégories Analytiques</span>',
+            'extras' => ['safe_label' => true],
+        ]);
     }
 }

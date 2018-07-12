@@ -1,12 +1,22 @@
 <?php
 
+/*
+ * This file is part of the Moddus project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Developed by MIT <contact@mit-agency.com>
+ *
+ */
+
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * JobPosition
+ * JobPosition.
  *
  * @ORM\Table(name="job_position")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\JobPositionRepository")
@@ -35,7 +45,6 @@ class JobPosition
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Employee", mappedBy="jobPosition")
      */
     private $employees;
-
 
     /**
      * Get id.
@@ -81,23 +90,24 @@ class JobPosition
 
     /**
      * @param $employee
+     *
      * @return $this
      */
     public function addEmployee($employee)
     {
         $this->employees->add($employee);
-        return $this;
 
+        return $this;
     }
 
     /**
      * @param $employee
+     *
      * @return bool
      */
     public function removeEmployee($employee)
     {
         return  $this->employees->removeElement($employee);
-
     }
 
     public function __toString()

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Napier project.
+ * This file is part of the Moddus project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -14,7 +14,6 @@ namespace AppBundle\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use AppBundle\AppBundle;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -36,6 +35,8 @@ class User extends BaseUser
     const ROLE_ACCOUNTANT = 'ROLE_ACCOUNTANT';
 
     const ROLE_CUSTOMER = 'ROLE_CUSTOMER';
+
+    const ROLE_PROSPECT = 'ROLE_PROSPECT';
 
     /**
      * @var int
