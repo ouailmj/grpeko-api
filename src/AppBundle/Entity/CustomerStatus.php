@@ -200,4 +200,9 @@ class CustomerStatus
     {
         $this->company = $company;
     }
+
+    public function __toString()
+    {
+        return (empty($this->status)) ? "" : $this->status;
+    }
 }

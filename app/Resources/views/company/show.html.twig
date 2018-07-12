@@ -60,9 +60,9 @@
 
 
                             <td>{{company.code}}</td>
-                            <td>{{company.legalform}}</td>
+                            <td>{{company.legalName}}</td>
 
-                            <td>{{company.getCustomerStatus()}}</td>
+                            <td>{{company.customerStatus|default('En cours')}}</td>
                             <td>Null</td>
                             <td>{{company.legalform}}</td>
                             <td>

@@ -50,7 +50,7 @@
                         <th >Action</th>
                         <th >Prénom</th>
                         <th >Nom</th>
-                        <th >Initiales</th>
+                        <th >Code</th>
                         <th >Login</th>
                         <th>Email</th>
                         <th >Type</th>
@@ -68,7 +68,7 @@
                             </td>
 
                             <td class="sorting_1">{{ item.lastname}}</td>
-                            <td>{{ item.firstName}}</td>
+                            <td>{{ item.firstName|upper}}</td>
 
                             <td>{{ item.initials }}</td>
 
