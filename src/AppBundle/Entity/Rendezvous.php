@@ -40,6 +40,13 @@ class Rendezvous
     private $cin;
 
     /**
+     * @var Company
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Company", inversedBy="rendezvous")
+     *
+     */
+    private $company;
+
+    /**
      * @return mixed
      */
     public function getCin()
@@ -70,4 +77,21 @@ class Rendezvous
     {
         $this->fichePatrimoniale = $fichePatrimoniale;
     }
+
+    /**
+     * @return Company
+     */
+    public function getCompany(): Company
+    {
+        return $this->company;
+    }
+
+    /**
+     * @param Company $company
+     */
+    public function setCompany(Company $company)
+    {
+        $this->company = $company;
+    }
+
 }

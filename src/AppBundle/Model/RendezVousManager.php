@@ -12,6 +12,7 @@
 
 namespace AppBundle\Model;
 
+use AppBundle\Entity\Company;
 use AppBundle\Entity\Rendezvous;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -29,7 +30,7 @@ class RendezVousManager
         $this->em = $em;
     }
 
-    public function uploadFiles(Rendezvous $rendezvous, String $path)
+    public function uploadFiles(Company $company, Rendezvous $rendezvous, String $path)
     {
         $file = $rendezvous->getFichePatrimoniale();
         $fileName = md5(uniqid()).'.'.$file->guessExtension();
@@ -40,6 +41,8 @@ class RendezVousManager
         $fileName = md5(uniqid()).'.'.$file->guessExtension();
         $file->move($path, $fileName);
         $rendezvous->setCin($fileName);
+        $company->setRendezvous($rendezvous);
+        $rendezvous->setCompany($company);
 
         $this->em->persist($rendezvous);
         $this->em->flush();

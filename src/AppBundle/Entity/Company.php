@@ -241,6 +241,14 @@ class Company extends LegalEntity
      */
     protected $formerAccountant;
 
+
+    /**
+     * @var Rendezvous
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Rendezvous", mappedBy="company", cascade={"persist", "remove"})
+     *
+     */
+    private $rendezvous;
+
     /**
      * Company constructor.
      */
@@ -733,4 +741,21 @@ class Company extends LegalEntity
     {
         $this->customerStatus = $customerStatus;
     }
+
+    /**
+     * @return Rendezvous
+     */
+    public function getRendezvous()
+    {
+        return $this->rendezvous;
+    }
+
+    /**
+     * @param Rendezvous $rendezvous
+     */
+    public function setRendezvous(Rendezvous $rendezvous)
+    {
+        $this->rendezvous = $rendezvous;
+    }
+
 }
