@@ -73,9 +73,9 @@ class EnterRelationController extends BaseController
     }
 
     /**
-     *  @Route("/uploadmodel", name="model_upload")
+     *  @Route("/uploadmodel/{company}", name="model_upload")
      */
-    public function uploadmodel(Request $request)
+    public function uploadmodel(Company $company, Request $request)
     {
         $rendezvous = new Rendezvous();
         $formrendezvous = $this->createForm('AppBundle\Form\RendezVousType', $rendezvous);
@@ -98,11 +98,11 @@ class EnterRelationController extends BaseController
                 $cpt = 1;
             }
             if (0 === $cpt) {
-                $this->rendezVousManager->uploadFiles($rendezvous, $this->getParameter('files_directory'));
+                $this->rendezVousManager->uploadFiles($company, $rendezvous, $this->getParameter('files_directory'));
                 $this->addSuccessFlash();
             }
 
-            $this->redirectToRoute('model_upload');
+            $this->redirectToRoute('model_upload', ['company'=>$company->getId()]);
         }
 
         return $this->render('prisedeconnaissance/entree_relation/upload_model.html.twig', ['rendezvous' => $formrendezvous->createView()]);
