@@ -13,6 +13,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Employee;
+use AppBundle\Form\EmployeeType;
 use AppBundle\Model\EmployeeManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -110,12 +111,12 @@ class EmployeeController extends BaseController
     public function editAction(Request $request, Employee $employee)
     {
         $deleteForm = $this->createDeleteForm($employee);
-        $editForm = $this->createForm('AppBundle\Form\EmployeeType', $employee, ['user' => false]);
+        $editForm = $this->createForm(EmployeeType::class, $employee, ['user' => false]);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-            $this->addFlash('success', 'Votre opération a été exécutée avec succès');
+            $this->addSuccessFlash();
 
             return $this->redirectToRoute('employee_show', ['id' => $employee->getId()]);
         }
