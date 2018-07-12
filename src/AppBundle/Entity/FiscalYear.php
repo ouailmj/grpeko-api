@@ -92,7 +92,7 @@ class FiscalYear
     /**
      * @var Company
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company" ,inversedBy="fiscalYears" ,cascade={"persist", "remove"}))
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company" ,inversedBy="fiscalYears" ,cascade={"persist"}))
      */
     protected $company;
 
@@ -136,11 +136,6 @@ class FiscalYear
     {
         $this->missions = $missions;
     }
-
-
-
-
-
 
     /**
      * Get id.

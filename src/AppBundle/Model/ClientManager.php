@@ -47,8 +47,12 @@ class ClientManager
         $this->em->flush();
     }
 
-    public function editClient()
+    public function editClient(Company $company)
     {
+        foreach ($company->getFiscalYears() as $fiscal)
+        {
+            $fiscal->setCompany($company);
+        }
         $this->em->flush();
     }
 

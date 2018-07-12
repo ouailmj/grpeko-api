@@ -7,8 +7,11 @@ use AppBundle\Entity\Company;
 use AppBundle\Entity\Contact;
 use AppBundle\Entity\Customer;
 use AppBundle\Entity\EnterRelation;
+use AppBundle\Entity\FiscalYear;
 use AppBundle\Entity\User;
 use AppBundle\Form\CompanyType;
+use AppBundle\Form\FiscalDetailsType;
+use AppBundle\Form\FiscalType;
 use AppBundle\Model\ClientManager;
 use AppBundle\Model\ContactManager;
 use Doctrine\ORM\EntityManager;
@@ -131,7 +134,8 @@ class CompanyController extends BaseController
         $formcompany = $this->createForm('AppBundle\Form\CompanyType', $company);
         $formcompany->handleRequest($request);
         if ($formcompany->isSubmitted() && $formcompany->isValid()) {
-            $this->clientManager->editClient();
+
+            $this->clientManager->editClient($company);
             $this->addSuccessFlash();
         }
 
@@ -235,5 +239,94 @@ class CompanyController extends BaseController
             ->getForm()
             ;
     }
+
+    /**
+     * @Route("/excercice/new", name="excercice_new")
+     *
+     */
+    public function newExcerciceAction(Request $request)
+    {
+        $excercice=new FiscalYear();
+        $idcompany=$request->query->get('id');
+        $company=$this->em->getRepository('AppBundle:Company')->find($idcompany);
+        $formexcercice = $this->createForm('AppBundle\Form\FiscalDetailsType',$excercice);
+        $formexcercice->handleRequest($request);
+        if ($formexcercice->isSubmitted() && $formexcercice->isValid()) {
+             $excercice->setCompany($company);
+             $this->em->persist($excercice);
+             $this->em->flush();
+          //  $this->contactManager->createContact($excercice);
+            $this->addSuccessFlash();
+            return $this->redirectToRoute('excerice_list',["id"=>$idcompany]);
+        }
+        return $this->render('excercice/new.html.twig',array('formexcercice' => $formexcercice->createView()));
+    }
+
+    /**
+     * @Route("/excerice/list/{id}", name="excerice_list")
+     *
+     */
+    public function listExcericeAction(Company $company ,Request $request)
+    {
+        $excercices=$company->getFiscalYears();
+        $listexcercice=[];
+        foreach ($company->getFiscalYears() as $excercice)
+        {
+            array_push($listexcercice, $this->createExcerciceDeleteForm($excercice)->createView());
+        }
+        return $this->render('excercice/list.html.twig',array("excercices"=>$excercices,'delete_form'=> $listexcercice));
+    }
+
+    /**
+     * @Route("/excercice/edit/{id}", name="contact_edit")
+     *
+     */
+    public function editExcerciceAction(Request $request,FiscalYear $fiscalYear)
+    {
+         $idCompany=$fiscalYear->getCompany()->getId();
+
+        $formexcercice = $this->createForm(FiscalDetailsType::class, $fiscalYear);
+        $formexcercice->handleRequest($request);
+        if ($formexcercice->isSubmitted() && $formexcercice->isValid()) {
+
+            $this->em->flush();
+            //$this->contactManager->editContact($contact);
+
+            $this->addSuccessFlash();
+        }
+        return $this->render('excercice/edit.html.twig',
+            array(
+                'formexcercice' => $formexcercice->createView(),
+                'idCompany'=>$idCompany
+            ));
+    }
+    /**
+     *  Deletes a FiscalYear entity.
+     *  @Route("/excercice/{id}/delete", name="excercice_delete")
+     *  @Method("DELETE")
+     */
+    public function deleteExcerciceAction(Request $request, FiscalYear $fiscalYear)
+    {
+        $idcompany=$fiscalYear->getCompany()->getId();
+        $form = $this->createExcerciceDeleteForm($fiscalYear);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->em->remove($fiscalYear);
+            $this->em->flush();
+            $this->addSuccessFlash();
+        }
+        return $this->redirectToRoute('excerice_list',["id"=>$idcompany]);
+    }
+
+    private function createExcerciceDeleteForm(FiscalYear $fiscalYear)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('excercice_delete', array('id' => $fiscalYear->getId())))
+            ->setMethod('DELETE')
+            ->getForm()
+            ;
+    }
+
 
 }
