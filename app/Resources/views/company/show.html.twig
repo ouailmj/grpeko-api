@@ -3,7 +3,7 @@
 
             <div class="panel panel-flat">
                 <div class="panel-heading">
-                    <h5 class="panel-title">Clients - Access</h5>
+                    <h5 class="panel-title">Clients - Modus</h5>
                     <div class="heading-elements">
                         <ul class="icons-list">
                             <li><a data-action="collapse"></a></li>
@@ -50,19 +50,15 @@
                                 <div class="">
                                     <a title="Modifier" href="{{ path('company_edit', { 'id': company.id }) }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
                                 </div>
-
                                 {{ form_start(delete_form[loop.index-1]) }}
                                 <button type="submit" style="background: transparent;border: none">
-                                    <a title="Modifier" class=" legitRipple"><i class="icon-trash position-left"></i></a>
+                                    <a onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" title="Supprimer" class=" legitRipple"><i class="icon-trash position-left"></i></a>
                                 </button>
                                 {{ form_end(delete_form[loop.index-1]) }}
                             </td>
-
-
                             <td>{{company.code}}</td>
-                            <td>{{company.legalName}}</td>
-
-                            <td>{{company.customerStatus|default('En cours')}}</td>
+                            <td>{{company.legalform}}</td>
+                            <td>{{company.getCustomerStatus()}}</td>
                             <td>Null</td>
                             <td>{{company.legalform}}</td>
                             <td>
@@ -72,14 +68,10 @@
                             </td>
                             <td>Null</td>
                             <td>
-                                {% for fiscalYear in company.fiscalYears %}
-                                  {{fiscalYear.taxSystem}}
-                                {% endfor %}
+                                {{company.taxSystem}}
                             </td>
                             <td>
-                                {% for fiscalYear in company.fiscalYears %}
-                                    {{fiscalYear.vatSystem}}
-                                {% endfor %}
+                                {{company.vatSystem}}
                             </td>
                             <td>{{company.mainActivity}}</td>
                         </tr>

@@ -13,7 +13,8 @@
                     <div class="">
                         <ul class="nav nav-tabs nav-tabs-highlight">
                             <li class="active"><a href="#Contacts" data-toggle="tab" aria-expanded="true"><i class="icon-users position-left"></i>Informations générales</a></li>
-                            {#   <li class=""><a href="#Dossiers" data-toggle="tab" aria-expanded="false"><i class="icon-folder position-left"></i>Rendez-vous</a></li>#}                            <li class=""><a href="{{ path('contact_list', { 'id': app.request.get('id') }) }}"><i class="icon-address-book3 position-left"></i>Contacts</a></li>
+                            {#   <li class=""><a href="#Dossiers" data-toggle="tab" aria-expanded="false"><i class="icon-folder position-left"></i>Rendez-vous</a></li>#}
+                            <li class=""><a href="{{ path('contact_list', { 'id': app.request.get('id') }) }}"><i class="icon-address-book3 position-left"></i>Contacts</a></li>
                             <li>
                                 <ul class="nav navbar-nav navbar-right">
                                     <li class="dropdown dropdown-user">
@@ -25,7 +26,7 @@
 
                                         <ul class="dropdown-menu dropdown-menu-right">
                                             <li class=""><a href="#mission" data-toggle="tab" aria-expanded="false">Mission</a></li>
-                                            <li class=""><a href="#Exercices" data-toggle="tab" aria-expanded="false">Exercices</a></li>
+                                            <li class=""><a href="{{ path('excerice_list',{'id': app.request.get('id') }) }}">Exercices</a></li>
                                             <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Informations Bancaires</a></li>
                                             <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Rapprochement CFONB - Mots clés</a></li>
                                             <li class=""><a href="#Facturation" data-toggle="tab" aria-expanded="false">Facturation</a></li>
@@ -115,28 +116,28 @@
 
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                {#<div class="form-group">
                                     <div class=" col-sm-12">
-
                                         <fieldset class="scheduler-border">
-
                                             <legend class="scheduler-border" style="text-transform: capitalize">contacts</legend>
-
                                             {% if company.contacts[0].firstname is defined %}
                                                 {{form_row(formcompany.contacts.firstname,  { 'value': company.contacts[0].firstname })}}
+                                            {% else %}
+                                                {{form_row(formcompany.contacts.firstname)}}
                                             {% endif %}
-
-                                            {% if company.contacts[1].lastname is defined %}
-                                                {{form_row(formcompany.contacts.lastname,  { 'value': company.contacts[0].lastname })}}                                            {% endif %}
-
-                                            {% if company.contacts[2].email is defined %}
+                                            {% if company.contacts[0].lastname is defined %}
+                                                {{form_row(formcompany.contacts.lastname,  { 'value': company.contacts[0].lastname })}}
+                                            {% else %}
+                                                {{form_row(formcompany.contacts.lastname)}}
+                                            {% endif %}
+                                            {% if company.contacts[0].email is defined %}
                                                 {{form_row(formcompany.contacts.email,  { 'value': company.contacts[0].email })}}
+                                            {% else %}
+                                                {{form_row(formcompany.contacts.email)}}
                                             {% endif %}
-
                                         </fieldset>
-
                                     </div>
-                                </div>
+                                </div>#}
 
 
                                 <div class="form-group">

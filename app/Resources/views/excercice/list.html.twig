@@ -1,0 +1,90 @@
+{% extends 'company/company.html.twig' %}
+{% block _content %}
+    <div class="panel panel-flat">
+        <div class="tabbale">
+            <ul class="nav nav-tabs bg-teal-400 nav-justified">
+                <li id="clikfirsttab" class="active"><a href="#firsttab" data-toggle="tab" aria-expanded="true">Fiche Client</a></li>
+                <li><a href="{{ path('devis_new') }}">Prise de connaissance</a></li>
+            </ul>
+            <div class="tab-content ">
+                <div class="tab-pane active" id="firsttab">
+                    <div class="">
+                        <ul class="nav nav-tabs nav-tabs-highlight">
+                            <li class=""><a href="{{ path('company_edit',{ 'id': app.request.get('id') } )}}"><i class="icon-users position-left"></i>Informations générales</a></li>
+                            {#   <li class=""><a href="#Dossiers" data-toggle="tab" aria-expanded="false"><i class="icon-folder position-left"></i>Rendez-vous</a></li> #}
+                            <li class=""><a href="{{ path('contact_list', { 'id': app.request.get('id') }) }}"><i class="icon-address-book3 position-left"></i>Contacts</a></li>
+                             <li>
+                                 <ul class="nav navbar-nav navbar-right">
+                                     <li class="dropdown dropdown-user">
+                                         <a class="dropdown-toggle" data-toggle="dropdown">
+                                             <i class="icon-file-stats2 position-left"></i>
+                                             Autre
+                                             <span class="caret"></span>
+                                         </a>
+                                         <ul class="dropdown-menu dropdown-menu-right">
+                                             <li class=""><a href="#mission" data-toggle="tab" aria-expanded="false">Mission</a></li>
+                                             <li class=""><a href="#Exercices" data-toggle="tab" aria-expanded="false">Exercices</a></li>
+                                             <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Informations Bancaires</a></li>
+                                             <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Rapprochement CFONB - Mots clés</a></li>
+                                             <li class=""><a href="#Facturation" data-toggle="tab" aria-expanded="false">Facturation</a></li>
+                                             <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Codes accés espaces clients</a></li>
+                                         </ul>
+                                     </li>
+                                 </ul>
+                             </li>
+                         </ul>
+
+                        <span title="Ajouter un nouveau Excercice" class="pull-right"><a href="{{ path('excercice_new', {'id':app.request.get('id')})}}" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-file-plus"></i></b> Ajouter un nouveau Excercice</a></span>
+
+                    </div>
+
+                    <div class="tab-content panel panel-flat border-top-info">
+                            <div class="tab-pane active" id="Exercices">
+
+                                <table class="table datatable-responsive table-bordered table-hover datatable-highlight" style=" border:none !important;">
+                                    <thead>
+                                    <tr>
+                                        <th>Filtres</th>
+                                        <th>Date de début</th>
+                                        <th>Date de fin </th>
+                                        <th>Collaborateur</th>
+                                        <th>Statut</th>
+                                        <th>Régime impot </th>
+                                        <th>Régime TVA </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    {% for excercice in excercices %}
+                                        {% set employe= excercice.Assignment.Employee %}
+                                        <tr>
+                                            <td class="text-center">
+                                                <div class="">
+                                                    <a title="Modifier" href="{{ path('excercice_edit', { 'id': excercice.id }) }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
+                                                </div>
+                                              {{ form_start(delete_form[loop.index-1]) }}
+                                                <button type="submit" style="background: transparent;border: none">
+                                                    <a onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" title="Supprimer" class="legitRipple"><i class="icon-trash position-left" style="color: red"></i></a>
+                                                </button>
+                                              {{ form_end(delete_form[loop.index-1]) }}
+                                            </td>
+                                            <td>{{ excercice.startDate |date(date_default_fromat) }}</td>
+                                            <td>{{ excercice.closeDate |date(date_default_fromat) }}</td>
+                                            <td>{{ employe.lastname~" "~employe.firstname }}</td>
+                                            <td>{{ excercice.status }}</td>
+                                            <td>{{ excercice.taxationRegime }}</td>
+                                            <td>{{ excercice.vatSystem }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+{% endblock %}

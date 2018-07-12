@@ -84,13 +84,14 @@ class FiscalYear
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
      */
     protected $taxSystem;
 
     /**
      * @var Company
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company" ,inversedBy="fiscalYears" ,cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company" ,inversedBy="fiscalYears" ,cascade={"persist"}))
      */
     protected $company;
 
