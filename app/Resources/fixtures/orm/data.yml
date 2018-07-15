@@ -275,7 +275,6 @@ AppBundle\Entity\MissionPurchase:
         startDate: <dateTime('+1 years')>
         lastFiscalEndDate: <dateTime('+3 years')>
         firstFiscalStartDate: <dateTime('+1 years')>
-        typeMissions: ['@mission_comptable', '@mission_fiscale', '@teledeclaration' , '@mission_juridique' ]
         fiscalYears: ['@fiscal_year_0']
     mission_purchase_1:
         closeDate: <dateTime('+6 years')>
@@ -283,7 +282,6 @@ AppBundle\Entity\MissionPurchase:
         startDate: <dateTime('+2 years')>
         lastFiscalEndDate: <dateTime('+6 years')>
         firstFiscalStartDate: <dateTime('+2 years')>
-        typeMissions: ['@mission_comptable', '@mission_fiscale', '@mission_juridique' ]
 
 AppBundle\Entity\CustomerStatus:
     customer_status_0:
@@ -328,4 +326,4 @@ AppBundle\Entity\FiscalYear:
 AppBundle\Entity\Assignment:
     assignment_0:
         employee: '@employeeadmin'
-        fiscalYear: '@fiscal_year_0'
+        mainFiscalYear: '@fiscal_year_0'

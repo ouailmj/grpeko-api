@@ -294,7 +294,7 @@ class Employee extends Person
     /**
      * @return Group
      */
-    public function getGroup(): Group
+    public function getGroup()
     {
         return $this->group;
     }

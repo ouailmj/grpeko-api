@@ -362,7 +362,7 @@ class FiscalYear
     /**
      * @return Invoice[]
      */
-    public function getInvoices(): array
+    public function getInvoices()
     {
         return $this->invoices;
     }
