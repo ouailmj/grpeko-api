@@ -98,9 +98,16 @@ class FiscalYear
     /**
      * @var Assignment
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Assignment" ,inversedBy="fiscalYear" ,cascade={"persist", "remove"}))
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Assignment" ,inversedBy="mainFiscalYear" ,cascade={"persist", "remove"}))
      */
-    protected $assignment;
+    protected $mainAssignment;
+
+    /**
+     * @var Assignment [] | ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Assignment" ,mappedBy="secondaryFiscalYear" ,cascade={"persist", "remove"}))
+     */
+    protected $secondaryAssignments;
 
 
     /**
@@ -108,6 +115,22 @@ class FiscalYear
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\MissionPurchase", inversedBy="fiscalYears")
      */
     protected $missionPurchase;
+
+    /**
+     * @var Invoice []
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Invoice", mappedBy="fiscalYear")
+     */
+    protected $invoices;
+
+    /**
+     * FiscalYear constructor.
+     *
+     */
+    public function __construct()
+    {
+        $this->secondaryAssignments = new ArrayCollection();
+        $this->invoices = new ArrayCollection();
+    }
 
 
     /**
@@ -277,7 +300,7 @@ class FiscalYear
      */
     public function getAssignment()
     {
-        return $this->assignment;
+        return $this->mainAssignment;
     }
 
     /**
@@ -285,7 +308,7 @@ class FiscalYear
      */
     public function setAssignment(Assignment $assignment)
     {
-        $this->assignment = $assignment;
+        $this->mainAssignment = $assignment;
     }
 
     /**
@@ -304,7 +327,77 @@ class FiscalYear
         $this->missionPurchase = $missionPurchase;
     }
 
+    /**
+     * @return Assignment
+     */
+    public function getMainAssignment(): Assignment
+    {
+        return $this->mainAssignment;
+    }
 
+    /**
+     * @param Assignment $mainAssignment
+     */
+    public function setMainAssignment(Assignment $mainAssignment)
+    {
+        $this->mainAssignment = $mainAssignment;
+    }
+
+    /**
+     * @return Assignment[]|ArrayCollection
+     */
+    public function getSecondaryAssignments()
+    {
+        return $this->secondaryAssignments;
+    }
+
+    /**
+     * @param Assignment[]|ArrayCollection $secondaryAssignments
+     */
+    public function setScondaryAssignments($secondaryAssignments)
+    {
+        $this->secondaryAssignments = $secondaryAssignments;
+    }
+
+    /**
+     * @return Invoice[]
+     */
+    public function getInvoices(): array
+    {
+        return $this->invoices;
+    }
+
+    /**
+     * @param Invoice[] $invoices
+     */
+    public function setInvoices($invoices)
+    {
+        $this->invoices = $invoices;
+    }
+
+    public function addInvoice(Invoice $invoice)
+    {
+        $this->invoices->add($invoice);
+
+        return $this;
+    }
+
+    public function removeInvoice(Invoice $invoice)
+    {
+        return $this->invoices->removeElement($invoice);
+    }
+
+    public function addSecondaryAssignment(Assignment $assignment)
+    {
+        $this->secondaryAssignments->add($assignment);
+
+        return $this;
+    }
+
+    public function removeSecondaryAssignment(Assignment $assignment)
+    {
+        return $this->secondaryAssignments->removeElement($assignment);
+    }
 
 
 }

@@ -40,10 +40,10 @@ class Quotation
     private $missionPurchase;
 
     /**
-     * @var CustomerStatus
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CustomerStatus", inversedBy="quotations")
+     * @var Company
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company", inversedBy="quotations")
      */
-    private $customerStatus;
+    private $company;
 
     /**
      * @var TransmissionMode
@@ -101,22 +101,6 @@ class Quotation
     }
 
     /**
-     * @return CustomerStatus
-     */
-    public function getCustomerStatus(): CustomerStatus
-    {
-        return $this->customerStatus;
-    }
-
-    /**
-     * @param CustomerStatus $customerStatus
-     */
-    public function setCustomerStatus(CustomerStatus $customerStatus)
-    {
-        $this->customerStatus = $customerStatus;
-    }
-
-    /**
      * @return TransmissionMode
      */
     public function getTransmissionMode(): TransmissionMode
@@ -159,4 +143,54 @@ class Quotation
     {
         return $this->quotationLines->removeElement($quotationLines);
     }
+
+    /**
+     * @return Company
+     */
+    public function getCompany()
+    {
+        return $this->company;
+    }
+
+    /**
+     * @param Company $company
+     */
+    public function setCompany(Company $company)
+    {
+        $this->company = $company;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNbPurchaseInvoicPerYear()
+    {
+        return $this->nbPurchaseInvoicPerYear;
+    }
+
+    /**
+     * @param string $nbPurchaseInvoicPerYear
+     */
+    public function setNbPurchaseInvoicPerYear(string $nbPurchaseInvoicPerYear)
+    {
+        $this->nbPurchaseInvoicPerYear = $nbPurchaseInvoicPerYear;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNbSalesInvoicesPerYear()
+    {
+        return $this->nbSalesInvoicesPerYear;
+    }
+
+    /**
+     * @param string $nbSalesInvoicesPerYear
+     */
+    public function setNbSalesInvoicesPerYear(string $nbSalesInvoicesPerYear)
+    {
+        $this->nbSalesInvoicesPerYear = $nbSalesInvoicesPerYear;
+    }
+
+
 }

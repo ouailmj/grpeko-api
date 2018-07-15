@@ -68,16 +68,6 @@ class MissionPurchase
     private $firstFiscalStartDate;
 
     /**
-     * @var TypeMission [] | ArrayCollection
-     * @ORM\ManyToMany(targetEntity="TypeMission")
-     * @ORM\JoinTable(name="type_mission_purchase_mission",
-     *      joinColumns={@ORM\JoinColumn(name="mission_purchase_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="type_mission_id", referencedColumnName="id")}
-     *      )
-     */
-    protected $typeMissions;
-
-    /**
      * @var Quotation
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Quotation" ,inversedBy="missionPurchase")
@@ -96,7 +86,6 @@ class MissionPurchase
      */
     public function __construct()
     {
-        $this->typeMissions = new ArrayCollection();
         $this->fiscalYears = new ArrayCollection();
     }
 
@@ -263,42 +252,6 @@ class MissionPurchase
     public function removeFiscalYear(FiscalYear $fiscalYear)
     {
         return $this->fiscalYears->removeElement($fiscalYear);
-    }
-
-
-    /**
-     * @param TypeMission $typeMission
-     * @return $this
-     */
-    public function addTypeMission(TypeMission $typeMission)
-    {
-        $this->typeMissions->add($typeMission);
-        return $this;
-    }
-
-    /**
-     * @param TypeMission $typeMission
-     * @return bool
-     */
-    public function removeTypeMission(TypeMission $typeMission)
-    {
-        return $this->typeMissions->removeElement($typeMission);
-    }
-
-    /**
-     * @return TypeMission[]|ArrayCollection
-     */
-    public function getTypeMissions()
-    {
-        return $this->typeMissions;
-    }
-
-    /**
-     * @param TypeMission[]|ArrayCollection $typeMissions
-     */
-    public function setTypeMissions($typeMissions)
-    {
-        $this->typeMissions = $typeMissions;
     }
 
     /**

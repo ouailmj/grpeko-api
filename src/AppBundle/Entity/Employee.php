@@ -82,11 +82,28 @@ class Employee extends Person
     protected $entryDate;
 
     /**
+     * @var CommissionRate [] | ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\CommissionRate", mappedBy="employee")
+     */
+    private $commissionRates;
+
+    /**
+     * @var Group
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Group", inversedBy="employees")
+     */
+    private $group;
+
+    /**
      * Employee constructor.
      */
     public function __construct()
     {
+        parent::__construct();
+
         $this->staffs = new ArrayCollection();
+        $this->commissionRates = new ArrayCollection();
     }
 
     /**
@@ -221,5 +238,74 @@ class Employee extends Person
         return $this->staffs->removeElement($employee);
 
     }
+
+    /**
+     * @return bool
+     */
+    public function isStatus(): bool
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param bool $status
+     */
+    public function setStatus(bool $status)
+    {
+        $this->status = $status;
+    }
+
+    /**
+     * @return CommissionRate[]|ArrayCollection
+     */
+    public function getCommissionRates()
+    {
+        return $this->commissionRates;
+    }
+
+    /**
+     * @param CommissionRate[]|ArrayCollection $commissionRates
+     */
+    public function setCommissionRates($commissionRates)
+    {
+        $this->commissionRates = $commissionRates;
+    }
+
+
+    /**
+     * @param CommissionRate $commissionRate
+     * @return $this
+     */
+    public function addCommissionRate(CommissionRate $commissionRate)
+    {
+        $this->commissionRates->add($commissionRate);
+        return $this;
+    }
+
+    /**
+     * @param CommissionRate $commissionRate
+     * @return bool
+     */
+    public function removeEmployee(CommissionRate $commissionRate)
+    {
+        return $this->commissionRates->removeElement($commissionRate);
+    }
+
+    /**
+     * @return Group
+     */
+    public function getGroup(): Group
+    {
+        return $this->group;
+    }
+
+    /**
+     * @param Group $group
+     */
+    public function setGroupe(Group $group)
+    {
+        $this->group = $group;
+    }
+
 
 }
