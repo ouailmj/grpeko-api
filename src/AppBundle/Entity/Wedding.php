@@ -1,11 +1,21 @@
 <?php
 
+/*
+ * This file is part of the Moddus project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Developed by MIT <contact@mit-agency.com>
+ *
+ */
+
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Wedding
+ * Wedding.
  *
  * @ORM\Table(name="wedding")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\WeddingRepository")
@@ -24,24 +34,23 @@ class Wedding
     /**
      * @var string
      *
-     * @ORM\Column(name="matrimonialRegime", type="string", length=255)
+     * @ORM\Column(name="matrimonialRegime", type="string", length=255,nullable=true)
      */
     private $matrimonialRegime;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="startsDate", type="datetime")
+     * @ORM\Column(name="startsDate", type="datetime",nullable=true)
      */
     private $startsDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="endsDate", type="datetime")
+     * @ORM\Column(name="endsDate", type="datetime",nullable=true)
      */
     private $endsDate;
-
 
     /**
      * @var Contact
@@ -135,7 +144,7 @@ class Wedding
     /**
      * @return Contact
      */
-    public function getContact(): Contact
+    public function getContact()
     {
         return $this->contact;
     }
@@ -147,6 +156,4 @@ class Wedding
     {
         $this->contact = $contact;
     }
-
-
 }

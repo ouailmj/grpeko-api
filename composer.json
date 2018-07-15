@@ -55,7 +55,7 @@
         "nelmio/alice": "^3.0@beta",
         "phpstan/phpstan": "^0.9.2",
         "sensio/generator-bundle": "^3.0",
-        "symfony/phpunit-bridge": "^4.1",
+        "symfony/phpunit-bridge": "^3.0",
         "theofidry/alice-data-fixtures": "^1.0@beta"
     },
     "scripts": {

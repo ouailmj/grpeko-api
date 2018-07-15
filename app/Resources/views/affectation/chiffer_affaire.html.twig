@@ -1,0 +1,141 @@
+{% extends 'company/company.html.twig' %}
+{% block _content %}
+<div class="datatable-scroll-wrap">
+    <table class="table datatable-responsive table-bordered table-hover datatable-highlight dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+        <thead>
+        <tr role="row">
+            <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="#: activate to sort column descending">#</th>
+            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Prénom: activate to sort column ascending">Code</th>
+            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Nom: activate to sort column ascending">Entité Juridique</th>
+            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Téléphone: activate to sort column ascending">Statut</th>
+            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Téléphone: activate to sort column ascending">2016</th>
+            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">2017</th>
+            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Rôles: activate to sort column ascending">2018</th>
+            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Statut: activate to sort column ascending">2019</th>
+            <th class="text-center sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Actions: activate to sort column ascending">2020</th>
+            <th class="text-center sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Actions: activate to sort column ascending">Total 2016-2020</th>
+            <th class="text-center sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Actions: activate to sort column ascending">Total</th>
+        </tr>
+        </thead>
+        <tbody>
+    {% for item in companys %}
+        <tr role="row" class="testok" id="bjkhgjkgkgjkghkghkghk">
+            <td> {{ item.legalName}}</td>
+            <td>
+               ACONITER
+            </td>
+            <td>
+                <select data-placeholder="EN COUR" class="select select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                        <option>Dead</option>
+                        <option></option>
+                        <option></option>
+                        <option></option>
+                </select>
+            </td>
+            <td>
+                0
+            </td>
+            <td>
+                0
+            </td>
+            <td>
+               345
+            </td>
+            <td>
+               12354
+            </td>
+            <td>
+                2341
+            </td>
+            <td>
+                2117
+            </td>
+            <td>
+                  900
+            </td>
+        </tr>
+    {% endfor %}
+        <tr role="row" class="">
+            <td>
+                <div class="">
+                    <a title="Modifier" href="" class="text-primary legitRipple"><i class="icon-pen position-left"></i></a>
+                </div>
+            </td>
+            <td>CC0002</td>
+            <td>
+               ELMO
+            </td>
+            <td>
+                <select data-placeholder="EN COUR" class="select select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                        <option>Dead</option>
+                        <option></option>
+                        <option></option>
+                        <option></option>
+                </select>
+            </td>
+            <td>
+                0
+            </td>
+            <td>
+                0
+            </td>
+            <td>
+               345
+            </td>
+            <td>
+               12354
+            </td>
+            <td>
+                2341
+            </td>
+            <td>
+                2117
+            </td>
+            <td>
+                  900
+            </td>
+        </tr>
+        <tr role="row" class="">
+            <td>
+                <div class="">
+                    <a title="Modifier" href="" class="text-primary legitRipple"><i class="icon-pen position-left"></i></a>
+                </div>
+            </td>
+            <td>CC0003</td>
+            <td>
+               WEBCAM-PROFS.FR
+            </td>
+            <td>
+                <select data-placeholder="EN COUR" class="select select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                        <option>Dead</option>
+                        <option></option>
+                        <option></option>
+                        <option></option>
+                </select>
+            </td>
+            <td>
+                0
+            </td>
+            <td>
+                0
+            </td>
+            <td>
+               345
+            </td>
+            <td>
+               12354
+            </td>
+            <td>
+                2341
+            </td>
+            <td>
+                2117
+            </td>
+            <td>
+                  900
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

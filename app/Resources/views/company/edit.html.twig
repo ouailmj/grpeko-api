@@ -1,201 +1,213 @@
 {% extends 'company/company.html.twig' %}
 {% block _content %}
-
     <div class="panel panel-flat">
-                <div class="tabbale">
-                    <ul class="nav nav-tabs bg-teal-400 nav-justified">
-                        <li id="clikfirsttab" class="active"><a href="#firsttab" data-toggle="tab" aria-expanded="true">Fiche Client</a></li>
-                        <li><a href="{{ path('devis_new') }}">Prise de connaissance</a></li>
-                    </ul>
+        <div class="tabbale">
+            <ul class="nav nav-tabs bg-teal-400 nav-justified">
+                <li id="clikfirsttab" class="active"><a href="#firsttab" data-toggle="tab" aria-expanded="true">Fiche Client</a></li>
+                <li><a href="{{ path('devis_new') }}">Prise de connaissance</a></li>
+            </ul>
 
-                    <div class="tab-content ">
-                        <div class="tab-pane active" id="firsttab">
-                            <div class="">
-                                <ul class="nav nav-tabs nav-tabs-highlight">
-                                    <li class="active"><a href="#Contacts" data-toggle="tab" aria-expanded="true"><i class="icon-users position-left"></i>Informations générales</a></li>
-                                    <li class=""><a href="#Dossiers" data-toggle="tab" aria-expanded="false"><i class="icon-folder position-left"></i>Rendez-vous</a></li>
-                                    <li class=""><a href="#Contrats" data-toggle="tab" aria-expanded="false"><i class="icon-address-book3 position-left"></i>Contacts</a></li>
-                                    <li>
-                                        <ul class="nav navbar-nav navbar-right">
-                                            <li class="dropdown dropdown-user">
-                                                <a class="dropdown-toggle" data-toggle="dropdown">
-                                                    <i class="icon-file-stats2 position-left"></i>
-                                                    Autre
-                                                    <span class="caret"></span>
-                                                </a>
 
-                                                <ul class="dropdown-menu dropdown-menu-right">
-                                                    <li class=""><a href="#mission" data-toggle="tab" aria-expanded="false">Mission</a></li>
-                                                    <li class=""><a href="#Exercices" data-toggle="tab" aria-expanded="false">Exercices</a></li>
-                                                    <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Informations Bancaires</a></li>
-                                                    <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Rapprochement CFONB - Mots clés</a></li>
-                                                    <li class=""><a href="#Facturation" data-toggle="tab" aria-expanded="false">Facturation</a></li>
-                                                    <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Codes accés espaces clients</a></li>
+            <div class="tab-content ">
+                <div class="tab-pane active" id="firsttab">
+                    <div class="">
+                        <ul class="nav nav-tabs nav-tabs-highlight">
+                            <li class="active"><a href="#Contacts" data-toggle="tab" aria-expanded="true"><i class="icon-users position-left"></i>Informations générales</a></li>
+                            {#   <li class=""><a href="#Dossiers" data-toggle="tab" aria-expanded="false"><i class="icon-folder position-left"></i>Rendez-vous</a></li>#}
+                            <li class=""><a href="{{ path('contact_list', { 'id': app.request.get('id') }) }}"><i class="icon-address-book3 position-left"></i>Contacts</a></li>
+                            <li>
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="dropdown dropdown-user">
+                                        <a class="dropdown-toggle" data-toggle="dropdown">
+                                            <i class="icon-file-stats2 position-left"></i>
+                                            Autre
+                                            <span class="caret"></span>
+                                        </a>
 
-                                                </ul>
-                                            </li>
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li class=""><a href="#mission" data-toggle="tab" aria-expanded="false">Mission</a></li>
+                                            <li class=""><a href="{{ path('excerice_list',{'id': app.request.get('id') }) }}">Exercices</a></li>
+                                            <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Informations Bancaires</a></li>
+                                            <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Rapprochement CFONB - Mots clés</a></li>
+                                            <li class=""><a href="#Facturation" data-toggle="tab" aria-expanded="false">Facturation</a></li>
+                                            <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Codes accés espaces clients</a></li>
+
                                         </ul>
                                     </li>
                                 </ul>
-                            </div>
+                            </li>
+                        </ul>
+                    </div>
 
-                            <div class="tab-content panel panel-flat border-top-info">
-                                <div class="tab-pane active" id="Contacts">
-                                    <div class="panel-body">
-                                        {{ form_start(formcompany, {'attr': {'class': 'form-horizontal'}}) }}
-                                        <fieldset class="content-group">
 
-                                            {{form_row(formcompany.legalName)}}
-                                            {{form_row(formcompany.legalForm)}}
-                                            {{form_row(formcompany.taxationRegime)}}
-                                            {{form_row(formcompany.vatSystem)}}
-                                            {{form_row(formcompany.currentAddress.description)}}
-                                            {{form_row(formcompany.currentAddress.postalCode)}}
-                                            {{form_row(formcompany.currentAddress.city)}}
+                    <div class="tab-content panel panel-flat border-top-info">
+                        <div class="tab-pane active" id="Contacts">
+                            <div class="panel-body">
+                                {{ form_start(formcompany, {'attr': {'class': 'form-horizontal'}}) }}
+                                <fieldset class="content-group">
 
-                                        </fieldset>
+                                    {{form_row(formcompany.legalName)}}
+                                    {{form_row(formcompany.legalForm)}}
+                                    {{form_row(formcompany.taxationRegime)}}
+                                    {{form_row(formcompany.vatSystem)}}
+                                    {{form_row(formcompany.currentAddress.description)}}
+                                    {{form_row(formcompany.currentAddress.postalCode)}}
+                                    {{form_row(formcompany.currentAddress.city)}}
 
+                                </fieldset>
+
+                                <fieldset class="scheduler-border">
+                                    <legend class="scheduler-border" style="text-transform: capitalize">Adresse du SIE</legend>
+                                    {{form_row(formcompany.siegeAddress)}}
+
+                                </fieldset>
+
+
+                                <fieldset class="scheduler-border">
+                                    <legend class="scheduler-border" style="text-transform: capitalize">aaaaa</legend>
+
+                                    {{form_row(formcompany.apeCode)}}
+                                    {{form_row(formcompany.mainActivity)}}
+                                    {{form_row(formcompany.siretNumber)}}
+                                    {{form_row(formcompany.sirenNumber)}}
+                                    {{form_row(formcompany.intraCommunityVAT)}}
+                                    {{form_row(formcompany.nbActions)}}
+                                    {{form_row(formcompany.capitalSocial)}}
+                                </fieldset>
+
+                                <div class="form-group">
+                                    <div class="col-sm-12">
 
                                         <fieldset class="scheduler-border">
-                                            <legend class="scheduler-border" style="text-transform: capitalize">Adresse du SIE</legend>
-                                            {{form_row(formcompany.SieAddress)}}
+                                            <legend class="scheduler-border" style="text-transform: capitalize">Ancien Expert-Comptable</legend>
+
+                                            {{form_row(formcompany.formerAccountant.name)}}
+                                            {{form_row(formcompany.formerAccountant.civility)}}
+                                            {{form_row(formcompany.formerAccountant.firstName)}}
+                                            {{form_row(formcompany.formerAccountant.lastName)}}
+                                            {{form_row(formcompany.formerAccountant.address.description)}}
+                                            {{form_row(formcompany.formerAccountant.address.postalCode)}}
+                                            {{form_row(formcompany.formerAccountant.address.city)}}
+                                            {{form_row(formcompany.formerAccountant.address.email)}}
+
+                                            {#   <div class="form-group">
+                                                     <div class="col-xs- col-md-5 pull-right" >
+                                                         <input type="button" class="form-control btn-info" id="pwd" value="&nbsp;Générer et envoyer la lettre de reprise de dossier&nbsp;" name="pwd">
+                                                     </div>
+                                                 </div>
+                                             #}
 
                                         </fieldset>
 
-
-                                        <fieldset class="scheduler-border">
-                                            <legend class="scheduler-border" style="text-transform: capitalize">aaaaa</legend>
-
-                                            {{form_row(formcompany.apeCode)}}
-                                            {{form_row(formcompany.mainActivity)}}
-                                            {{form_row(formcompany.siretNumber)}}
-                                            {{form_row(formcompany.sirenNumber)}}
-                                            {{form_row(formcompany.intraCommunityVAT)}}
-                                            {{form_row(formcompany.nbActions)}}
-                                            {{form_row(formcompany.capitalSocial)}}
-                                        </fieldset>
-
-                                        <div class="form-group">
-                                            <div class=" col-sm-12">
-
-                                                <fieldset class="scheduler-border">
-                                                    <legend class="scheduler-border" style="text-transform: capitalize">Ancien Expert-Comptable</legend>
-
-                                                    {{form_row(formcompany.formerAccountant.name)}}
-                                                    {{form_row(formcompany.formerAccountant.civility)}}
-                                                    {{form_row(formcompany.formerAccountant.firstName)}}
-                                                    {{form_row(formcompany.formerAccountant.lastName)}}
-                                                    {{form_row(formcompany.formerAccountant.address.description)}}
-                                                    {{form_row(formcompany.formerAccountant.address.postalCode)}}
-                                                    {{form_row(formcompany.formerAccountant.address.city)}}
-                                                    {{form_row(formcompany.formerAccountant.address.email)}}
-
-                                                 {#   <div class="form-group">
-                                                        <div class="col-xs- col-md-5 pull-right" >
-                                                            <input type="button" class="form-control btn-info" id="pwd" value="&nbsp;Générer et envoyer la lettre de reprise de dossier&nbsp;" name="pwd">
-                                                        </div>
-                                                    </div>
-                                                  #}
-
-                                                </fieldset>
-
-                                            </div>
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <div class=" col-sm-12">
-
-                                                <fieldset class="scheduler-border">
-
-                                                    <legend class="scheduler-border" style="text-transform: capitalize">Anciennes Adresses</legend>
-
-                                                    {{form_widget(formcompany.oldAddresses)}}
-
-                                                </fieldset>
-
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class=" col-sm-12">
-
-                                                <fieldset class="scheduler-border">
-
-                                                    <legend class="scheduler-border" style="text-transform: capitalize">contacts</legend>
-
-                                                    {{form_widget(formcompany.contacts)}}
-
-                                                </fieldset>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class=" col-sm-12">
-
-                                                <fieldset class="scheduler-border">
-
-                                                    <legend class="scheduler-border" style="text-transform: capitalize">Exercice Fiscale Annuelle</legend>
-
-                                                    {{form_widget(formcompany.fiscalYears)}}
-                                                    {{form_errors(formcompany.fiscalYears)}}
-
-                                                </fieldset>
-
-                                            </div>
-                                        </div>
-
-                                        {{form_row(formcompany.Enregistrer)}}
-
-                                        {{ form_widget(formcompany._token) }}
-                                        {{ form_end(formcompany, {'render_rest': false}) }}
                                     </div>
                                 </div>
 
-                                <div class="tab-pane" id="Dossiers">
 
-                                    {% include 'default/rdvs.html.twig' %}
+                                <div class="form-group">
+                                    <div class=" col-sm-12">
 
+                                        <fieldset class="scheduler-border">
+
+                                            <legend class="scheduler-border" style="text-transform: capitalize">Anciennes Adresses</legend>
+
+                                            {{form_widget(formcompany.oldAddresses)}}
+
+                                        </fieldset>
+
+                                    </div>
+                                </div>
+                                {#<div class="form-group">
+                                    <div class=" col-sm-12">
+                                        <fieldset class="scheduler-border">
+                                            <legend class="scheduler-border" style="text-transform: capitalize">contacts</legend>
+                                            {% if company.contacts[0].firstname is defined %}
+                                                {{form_row(formcompany.contacts.firstname,  { 'value': company.contacts[0].firstname })}}
+                                            {% else %}
+                                                {{form_row(formcompany.contacts.firstname)}}
+                                            {% endif %}
+                                            {% if company.contacts[0].lastname is defined %}
+                                                {{form_row(formcompany.contacts.lastname,  { 'value': company.contacts[0].lastname })}}
+                                            {% else %}
+                                                {{form_row(formcompany.contacts.lastname)}}
+                                            {% endif %}
+                                            {% if company.contacts[0].email is defined %}
+                                                {{form_row(formcompany.contacts.email,  { 'value': company.contacts[0].email })}}
+                                            {% else %}
+                                                {{form_row(formcompany.contacts.email)}}
+                                            {% endif %}
+                                        </fieldset>
+                                    </div>
+                                </div>#}
+
+
+                                <div class="form-group">
+                                    <div class=" col-sm-12">
+
+                                        <fieldset class="scheduler-border">
+
+                                            <legend class="scheduler-border" style="text-transform: capitalize">Exercice Fiscale Annuelle</legend>
+
+                                            {{form_widget(formcompany.fiscalYears)}}
+                                            {{form_errors(formcompany.fiscalYears)}}
+
+                                        </fieldset>
+
+                                    </div>
                                 </div>
 
-                                <div class="tab-pane " id="Contrats">
+                                <div class="form-group">
+                                    <div class=" col-sm-6">
 
-                                    {% include 'default/client_contact.html.twig' %}
+                                        {{form_widget(formcompany.customerStatus)}}
+                                        {{form_errors(formcompany.customerStatus)}}
 
-                                </div>
-                                <div class="tab-pane" id="mission">
-
-                                    {% include 'default/mission.html.twig' %}
-
-                                </div>
-                                <div class="tab-pane" id="Exercices">
-
-                                    {% include 'default/client_excercice.html.twig' %}
-
-                                </div>
-                                <div class="tab-pane" id="Facturation">
-
-                                    {% include 'default/client_facturation.html.twig' %}
-
+                                    </div>
                                 </div>
 
+                                {{form_row(formcompany.Enregistrer)}}
+
+                                {{ form_widget(formcompany._token) }}
+                                {{ form_end(formcompany, {'render_rest': false}) }}
                             </div>
                         </div>
 
+                        <div class="tab-pane" id="Dossiers">
+
+                            {% include 'default/rdvs.html.twig' %}
+
+                        </div>
+
+                        <div class="tab-pane " id="Contrats">
+
+                            {% include 'default/client_contact.html.twig' %}
+
+                        </div>
+                        <div class="tab-pane" id="mission">
+
+                            {% include 'default/mission.html.twig' %}
+
+                        </div>
+                        <div class="tab-pane" id="Exercices">
+
+                            {% include 'default/client_excercice.html.twig' %}
+
+                        </div>
+                        <div class="tab-pane" id="Facturation">
+
+                            {% include 'default/client_facturation.html.twig' %}
+
+                        </div>
 
                     </div>
-
                 </div>
+
+
             </div>
 
+        </div>
+    </div>
+{% endblock %}
     {% block javascripts %}
-        <script>
-            $(document).ready(function() {
-                $('.js-datepicker').datepicker({
-                    format:'dd/MM/yyyy'
-                });
-            });
-        </script>
         <script src="{{ asset('assets/js/plugins/symfony_collectionjs/jquery.collection.js') }}"></script>
         <script type="text/javascript">
             $('.old-addresses-collection').collection({
@@ -220,10 +232,27 @@
                     allow_up: false,
                     allow_down: false,
                     init_with_n_elements: 0,
+                    after_add: function (collection, element) {
+                        french_picker();
+                        //$('select').select2();
+                        return true;
+                    }
 
                 }
             );
+
+            /*
+                        $('.add-contact-collection').collection({
+                               // name_prefix: ,
+                                add_at_the_end: true,
+                                hide_useless_buttons: true,
+                                add: '<a style="float:right" href="#" class="collection-action btn btn-success btn-small collection-rescue-add">Ajouter</a>',
+                                remove: '<a href="#" class="collection-remove btn btn-warning collection-action">Retirer</a>',
+                                allow_up: false,
+                                allow_down: false,
+                                init_with_n_elements: 0,
+                            }
+                        );
+                        */
         </script>
     {% endblock %}
-
-{% endblock %}

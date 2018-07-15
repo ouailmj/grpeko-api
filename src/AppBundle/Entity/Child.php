@@ -1,11 +1,21 @@
 <?php
 
+/*
+ * This file is part of the Moddus project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Developed by MIT <contact@mit-agency.com>
+ *
+ */
+
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Child
+ * Child.
  *
  * @ORM\Table(name="child")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ChildRepository")
@@ -24,35 +34,35 @@ class Child
     /**
      * @var string
      *
-     * @ORM\Column(name="lastName", type="string", length=255)
+     * @ORM\Column(name="lastName", type="string", length=255,nullable=true)
      */
     private $lastName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="firstName", type="string", length=255)
+     * @ORM\Column(name="firstName", type="string", length=255,nullable=true)
      */
     private $firstName;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="birthDate", type="datetime")
+     * @ORM\Column(name="birthDate", type="datetime",nullable=true)
      */
     private $birthDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="deathDate", type="datetime")
+     * @ORM\Column(name="deathDate", type="datetime",nullable=true)
      */
     private $deathDate;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="age", type="string", length=255)
+     * @ORM\Column(name="age", type="string", length=255,nullable=true)
      */
     private $age;
 
@@ -196,7 +206,7 @@ class Child
     /**
      * @return Contact
      */
-    public function getContact(): Contact
+    public function getContact()
     {
         return $this->contact;
     }
@@ -208,6 +218,4 @@ class Child
     {
         $this->contact = $contact;
     }
-
-
 }

@@ -1,12 +1,22 @@
 <?php
 
+/*
+ * This file is part of the Moddus project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Developed by MIT <contact@mit-agency.com>
+ *
+ */
+
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * CustomerStatus
+ * CustomerStatus.
  *
  * @ORM\Table(name="customer_status")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CustomerStatusRepository")
@@ -56,7 +66,6 @@ class CustomerStatus
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Company" ,inversedBy="customerStatus" ,cascade={"persist", "remove"}))
      */
     private $company;
-
 
     /**
      * Get id.
@@ -108,10 +117,10 @@ class CustomerStatus
         $this->quotations = $quotations;
     }
 
-
     public function addQuotation(Quotation $quotation)
     {
         $this->quotations->add($quotation);
+
         return $this;
     }
 
@@ -136,10 +145,10 @@ class CustomerStatus
         $this->quotationLines = $quotationLines;
     }
 
-
     public function addQuotationLine(QuotationLine $quotationLines)
     {
         $this->quotationLines->add($quotationLines);
+
         return $this;
     }
 
@@ -164,10 +173,10 @@ class CustomerStatus
         $this->invoices = $invoices;
     }
 
-
     public function addInvoice(Invoice $invoice)
     {
         $this->invoices->add($invoice);
+
         return $this;
     }
 
@@ -179,7 +188,7 @@ class CustomerStatus
     /**
      * @return Company
      */
-    public function getCompany(): Company
+    public function getCompany()
     {
         return $this->company;
     }
@@ -192,5 +201,8 @@ class CustomerStatus
         $this->company = $company;
     }
 
-
+    public function __toString()
+    {
+        return (empty($this->status)) ? "" : $this->status;
+    }
 }

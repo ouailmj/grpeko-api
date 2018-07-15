@@ -1,14 +1,20 @@
 <?php
 
+/*
+ * This file is part of the Moddus project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Developed by MIT <contact@mit-agency.com>
+ *
+ */
+
 namespace AppBundle\Form;
 
 use AppBundle\Entity\Role;
 use AppBundle\Entity\User;
-use AppBundle\Repository\RoleRepository;
-use AppBundle\Repository\UserRepository;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -16,9 +22,6 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\VarDumper\VarDumper;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class UserType extends AbstractType
 {
@@ -33,24 +36,20 @@ class UserType extends AbstractType
         ];
         $builder
 
-
-
-
-        ->add('username', TextType::class, array(
+        ->add('username', TextType::class, [
             'label' => 'Login',
-        ))
+        ])
 
         ->add('email', EmailType::class)
 
-        ->add('password', RepeatedType::class, array(
+        ->add('password', RepeatedType::class, [
             'mapped' => false,
             'type' => PasswordType::class,
             'invalid_message' => 'The password fields must match.',
-            'options' => array('attr' => array('class' => 'password-field')),
-            'first_options'  => array('label' => 'Mot de passe'),
-            'second_options' => array('label' => 'Confirmer le mot de passe'),
-
-        ))
+            'options' => ['attr' => ['class' => 'password-field']],
+            'first_options' => ['label' => 'Mot de passe'],
+            'second_options' => ['label' => 'Confirmer le mot de passe'],
+        ])
 
 //        ->add('roles', ChoiceType::class, [
 //            'label' => 'user.new.role',
@@ -61,16 +60,15 @@ class UserType extends AbstractType
 //        ])
         ;
     }
-    
-       /**
+
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class'    => 'AppBundle\Entity\User',
-           
-        ));
+        $resolver->setDefaults([
+            'data_class' => 'AppBundle\Entity\User',
+        ]);
     }
 
     /**
@@ -80,6 +78,4 @@ class UserType extends AbstractType
     {
         return 'appbundle_user';
     }
-
-
 }

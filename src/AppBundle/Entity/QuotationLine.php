@@ -1,11 +1,21 @@
 <?php
 
+/*
+ * This file is part of the Moddus project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Developed by MIT <contact@mit-agency.com>
+ *
+ */
+
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * QuotationLine
+ * QuotationLine.
  *
  * @ORM\Table(name="quotation_line")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\QuotationLineRepository")
@@ -29,7 +39,7 @@ class QuotationLine
 
     /**
      * @var Quotation
-     *  @ORM\ManyToOne(targetEntity="Quotation", inversedBy="quotationLines")
+     * @ORM\ManyToOne(targetEntity="Quotation", inversedBy="quotationLines")
      */
     private $quotation;
 
@@ -38,7 +48,6 @@ class QuotationLine
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CustomerStatus",inversedBy="quotationLines")
      */
     private $customerStatus;
-
 
     /**
      * Get id.
@@ -97,7 +106,4 @@ class QuotationLine
     {
         $this->customerStatus = $customerStatus;
     }
-
-
-
 }

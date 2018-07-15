@@ -82,8 +82,44 @@
                                 div[id^="appbundle_ContactDetails_child"] > label{
                                     display : none!important;
                                 }
+                                div[id^="appbundle_company_contacts"] > label{
+                                    display : none!important;
+                                }
+
                                 .requis {
                                     color: red;
+                                }
+
+                                [id^=appbundle_ContactDetails_weddings] > .form-group{
+                                    padding: 0;
+                                    border: 1px solid black;
+                                    margin: 20px auto;
+                                    float: left;
+                                    width: 100%;
+                                    min-height: 100%;
+                                }
+
+                                [id^=appbundle_ContactDetails_weddings] > .form-group div{
+                                    border: none;
+                                }
+
+                                [id^=appbundle_ContactDetails_children] > .form-group{
+                                    padding: 0;
+                                    border: 1px solid black;
+                                    margin: 20px auto;
+                                    float: left;
+                                    width: 100%;
+                                    min-height: 100%;
+                                }
+
+                                [id^=appbundle_ContactDetails_children] > .form-group div{
+                                    border: none;
+                                }
+
+                                .collection-remove{
+                                    float: right;
+                                    margin-top: 15%;
+                                    margin-right: 10px;
                                 }
                             </style>
                         {% endblock %}

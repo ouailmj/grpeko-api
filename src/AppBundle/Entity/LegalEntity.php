@@ -1,11 +1,21 @@
 <?php
 
+/*
+ * This file is part of the Moddus project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Developed by MIT <contact@mit-agency.com>
+ *
+ */
+
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * LegalEntity
+ * LegalEntity.
  *
  * @ORM\Table(name="legal_entity")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\LegalEntityRepository")
@@ -19,7 +29,6 @@ use Doctrine\ORM\Mapping as ORM;
  *     "former_accountant"="FormerAccountant"
  * })
  * @ORM\HasLifecycleCallbacks()
- *
  */
 class LegalEntity
 {
@@ -38,7 +47,6 @@ class LegalEntity
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
     private $name;
-
 
     /**
      * Get id.

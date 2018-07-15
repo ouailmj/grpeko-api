@@ -11,31 +11,30 @@
             <div class="tab-content ">
                 <div class="tab-pane active" id="firsttab">
                     <div class="">
-                        <ul class="nav nav-tabs nav-tabs-highlight">
-                            <li class="active"><a href="#Contacts" data-toggle="tab" aria-expanded="true"><i class="icon-users position-left"></i>Informations générales</a></li>
-                            <li class=""><a href="#Dossiers" data-toggle="tab" aria-expanded="false"><i class="icon-folder position-left"></i>Rendez-vous</a></li>
-                            <li class=""><a href="{{ path('contact_list') }}"><i class="icon-address-book3 position-left"></i>Contacts</a></li>
-                            <li>
-                                <ul class="nav navbar-nav navbar-right">
-                                    <li class="dropdown dropdown-user">
-                                        <a class="dropdown-toggle" data-toggle="dropdown">
-                                            <i class="icon-file-stats2 position-left"></i>
-                                            Autre
-                                            <span class="caret"></span>
-                                        </a>
+                       <ul class="nav nav-tabs nav-tabs-highlight">
+                           <li class="active"><a href="#Contacts" data-toggle="tab" aria-expanded="true"><i class="icon-users position-left"></i>Informations générales</a></li>
+                           {#   <li class=""><a href="#Dossiers" data-toggle="tab" aria-expanded="false"><i class="icon-folder position-left"></i>Rendez-vous</a></li>
+                             <li>
+                                 <ul class="nav navbar-nav navbar-right">
+                                     <li class="dropdown dropdown-user">
+                                         <a class="dropdown-toggle" data-toggle="dropdown">
+                                             <i class="icon-file-stats2 position-left"></i>
+                                             Autre
+                                             <span class="caret"></span>
+                                         </a>
 
-                                        <ul class="dropdown-menu dropdown-menu-right">
-                                            <li class=""><a href="#mission" data-toggle="tab" aria-expanded="false">Mission</a></li>
-                                            <li class=""><a href="#Exercices" data-toggle="tab" aria-expanded="false">Exercices</a></li>
-                                            <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Informations Bancaires</a></li>
-                                            <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Rapprochement CFONB - Mots clés</a></li>
-                                            <li class=""><a href="#Facturation" data-toggle="tab" aria-expanded="false">Facturation</a></li>
-                                            <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Codes accés espaces clients</a></li>
+                                       <ul class="dropdown-menu dropdown-menu-right">
+                                             <li class=""><a href="#mission" data-toggle="tab" aria-expanded="false">Mission</a></li>
+                                             <li class=""><a href="#Exercices" data-toggle="tab" aria-expanded="false">Exercices</a></li>
+                                             <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Informations Bancaires</a></li>
+                                             <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Rapprochement CFONB - Mots clés</a></li>
+                                             <li class=""><a href="#Facturation" data-toggle="tab" aria-expanded="false">Facturation</a></li>
+                                             <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Codes accés espaces clients</a></li>
 
-                                        </ul>
+                                         </ul>
                                     </li>
                                 </ul>
-                            </li>
+                            </li>#}
                         </ul>
                     </div>
 
@@ -46,13 +45,13 @@
                                 {{ form_start(formcompany, {'attr': {'class': 'form-horizontal'}}) }}
                                 <fieldset class="content-group">
 
-                                            {{form_row(formcompany.legalName)}}
-                                            {{form_row(formcompany.legalForm)}}
-                                            {{form_row(formcompany.taxationRegime)}}
-                                            {{form_row(formcompany.vatSystem)}}
-                                            {{form_row(formcompany.currentAddress.description)}}
-                                            {{form_row(formcompany.currentAddress.postalCode)}}
-                                            {{form_row(formcompany.currentAddress.city)}}
+                                    {{form_row(formcompany.legalName)}}
+                                    {{form_row(formcompany.legalForm)}}
+                                    {{form_row(formcompany.taxationRegime)}}
+                                    {{form_row(formcompany.vatSystem)}}
+                                    {{form_row(formcompany.currentAddress.description)}}
+                                    {{form_row(formcompany.currentAddress.postalCode)}}
+                                    {{form_row(formcompany.currentAddress.city)}}
 
                                 </fieldset>
 
@@ -123,7 +122,9 @@
 
                                             <legend class="scheduler-border" style="text-transform: capitalize">contacts</legend>
 
-                                            {{form_widget(formcompany.contacts)}}
+                                            {{form_row(formcompany.contacts.firstname)}}
+                                            {{form_row(formcompany.contacts.lastname)}}
+                                            {{form_row(formcompany.contacts.email)}}
 
                                         </fieldset>
 
@@ -145,6 +146,16 @@
 
                                     </div>
                                 </div>
+
+                                <div class="form-group">
+                                    <div class=" col-sm-6">
+
+                                        {{form_widget(formcompany.customerStatus)}}
+                                        {{form_errors(formcompany.customerStatus)}}
+
+                                    </div>
+                                </div>
+
                                 {{form_row(formcompany.Enregistrer)}}
 
                                 {{ form_widget(formcompany._token) }}
@@ -200,10 +211,8 @@
                     allow_up: false,
                     allow_down: false,
                     init_with_n_elements: 0,
-
                 }
             );
-
             $('.add-fiscal-collection').collection({
                     name_prefix: "{{ formcompany.fiscalYears.vars.full_name }}",
                     add_at_the_end: true,
@@ -218,23 +227,20 @@
                         //$('select').select2();
                         return true;
                     }
-
                 }
             );
-
-
-            $('.add-contact-collection').collection({
-                    name_prefix: "{{ formcompany.contacts.vars.full_name }}",
-                    add_at_the_end: true,
-                    hide_useless_buttons: true,
-                    add: '<a style="float:right" href="#" class="collection-action btn btn-success btn-small collection-rescue-add">Ajouter</a>',
-                    remove: '<a href="#" class="collection-remove btn btn-warning collection-action">Retirer</a>',
-                    allow_up: false,
-                    allow_down: false,
-                    init_with_n_elements: 0,
-                }
-            );
+            /*
+             $('.add-contact-collection').collection({
+             // name_prefix: ,
+             add_at_the_end: true,
+             hide_useless_buttons: true,
+             add: '<a style="float:right" href="#" class="collection-action btn btn-success btn-small collection-rescue-add">Ajouter</a>',
+             remove: '<a href="#" class="collection-remove btn btn-warning collection-action">Retirer</a>',
+             allow_up: false,
+             allow_down: false,
+             init_with_n_elements: 0,
+             }
+             );
+             */
         </script>
     {% endblock %}
-
-

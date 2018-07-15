@@ -12,7 +12,97 @@
             <p class="content-group-lg"></p>
 
             {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
-            {{ form_widget(form) }}
+            <div class="form-group">
+                <div class="col-lg-12">
+                    {{form_row(form.firstName)}}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-12">
+                    {{form_row(form.lastName)}}
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-lg-12">
+                    {{form_row(form.birthDate)}}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-12">
+                    {{form_row(form.entryDate)}}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-12">
+                    {{form_row(form.initials)}}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-12">
+                    {{form_row(form.phoneNumber)}}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-12">
+                    {{form_row(form.faxNumber)}}
+                </div>
+            </div>
+
+            {#<div class="form-group">#}
+                {#<div class="col-lg-12">#}
+                    {#{{form_row(form.FixeNumber)}}#}
+                {#</div>#}
+            {#</div>#}
+
+            <div class="form-group">
+                <div class="col-lg-12">
+                    {{form_row(form.currentAddress)}}
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-lg-12">
+                    {{form_row(form.jobPosition)}}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-12">
+                    {{form_row(form.manager)}}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-12">
+                    {{form_row(form.userAccount.username)}}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-12">
+                    {{form_row(form.userAccount.email)}}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-12">
+                    {{form_row(form.userAccount.password)}}
+                </div>
+            </div>
+
+            {#<div class="form-group">#}
+                {#<div class="col-lg-12">#}
+                    {#{{form_row(form.status)}}#}
+                {#</div>#}
+            {#</div>#}
             <div class="text-right">
                 <button type="submit" name="Ajouter" id="Ajouter" class="btn btn-primary legitRipple">ENREGISTRER<i class="icon-arrow-right14 position-right"></i></button>
             </div>

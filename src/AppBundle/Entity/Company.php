@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Napier project.
+ * This file is part of the Moddus project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -14,6 +14,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Company.
@@ -23,7 +24,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Company extends LegalEntity
 {
-
     /**
      * @var string
      *
@@ -77,14 +77,12 @@ class Company extends LegalEntity
      */
     protected $vatSystem;
 
-
     /**
-     * Regime Fiscal
+     * Regime Fiscal.
      *
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
-     *
      */
     protected $taxSystem;
 
@@ -110,7 +108,6 @@ class Company extends LegalEntity
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
-     *
      */
     protected $socialReason;
 
@@ -118,7 +115,6 @@ class Company extends LegalEntity
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
-     *
      */
     protected $code;
 
@@ -126,7 +122,6 @@ class Company extends LegalEntity
      * @var CustomerStatus
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\CustomerStatus" ,mappedBy="company" ,cascade={"persist", "remove"}))
-     *
      */
     protected $customerStatus;
 
@@ -134,15 +129,13 @@ class Company extends LegalEntity
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
-     *
      */
     protected $relation;
 
     /**
-     * @var integer
+     * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
-     *
      */
     protected $apeCode;
 
@@ -150,17 +143,15 @@ class Company extends LegalEntity
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
-     *
      */
     protected $siretNumber;
 
     /**
-     * TVA intra communautaire
+     * TVA intra communautaire.
      *
      * @var float
      *
      * @ORM\Column(type="float", nullable=true)
-     *
      */
     protected $intraCommunityVAT;
 
@@ -168,30 +159,26 @@ class Company extends LegalEntity
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
-     *
      */
     protected $sirenNumber;
 
     /**
-     * Nombre d'actions ou parts sociales
+     * Nombre d'actions ou parts sociales.
      *
      * @var integer
      *
      * @ORM\Column(type="integer", nullable=true)
-     *
      */
     protected $nbActions;
 
     /**
-     * capital social
+     * capital social.
      *
      * @var integer
      *
      * @ORM\Column(type="integer", nullable=true)
-     *
      */
     protected $capitalSocial;
-
 
     /**
      * @var Address
@@ -201,7 +188,6 @@ class Company extends LegalEntity
      * @ORM\JoinColumn(name="current_address_id", referencedColumnName="id")
      */
     protected $currentAddress;
-
 
     /**
      * @var Address
@@ -226,7 +212,7 @@ class Company extends LegalEntity
 
     /**
      * @var Contact[] | ArrayCollection
-     *
+     * @Assert\Valid
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Contact" ,mappedBy="company" ,cascade={"persist", "remove"}))
      */
     protected $contacts;
@@ -234,7 +220,7 @@ class Company extends LegalEntity
     /**
      * @var FiscalYear[] | ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\FiscalYear" ,mappedBy="company" ,cascade={"persist", "remove"}))
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\FiscalYear" ,mappedBy="company" ,cascade={"persist", "remove"})
      */
     protected $fiscalYears;
 
@@ -246,30 +232,33 @@ class Company extends LegalEntity
     protected $customerAccount;
 
     /**
-     * Ancien Expert-comptable
+     * Ancien Expert-comptable.
      *
      * @var FormerAccountant
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\FormerAccountant", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="former_accountant_id", referencedColumnName="id")
-     *
      */
     protected $formerAccountant;
 
 
+    /**
+     * @var Rendezvous
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Rendezvous", mappedBy="company", cascade={"persist", "remove"})
+     *
+     */
+    private $rendezvous;
 
     /**
      * Company constructor.
      */
     public function __construct()
     {
-        $this->missions = new ArrayCollection();
         $this->oldAddresses = new ArrayCollection();
         $this->fiscalYears = new ArrayCollection();
         $this->contacts = new ArrayCollection();
         $this->otherPhoneNumbers = new ArrayCollection();
     }
-
 
     /**
      * @return string
@@ -463,8 +452,6 @@ class Company extends LegalEntity
         $this->code = $code;
     }
 
-
-
     /**
      * @return string
      */
@@ -482,7 +469,7 @@ class Company extends LegalEntity
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getApeCode()
     {
@@ -490,9 +477,9 @@ class Company extends LegalEntity
     }
 
     /**
-     * @param int $apeCode
+     * @param string $apeCode
      */
-    public function setApeCode(int $apeCode)
+    public function setApeCode(string $apeCode)
     {
         $this->apeCode = $apeCode;
     }
@@ -603,22 +590,24 @@ class Company extends LegalEntity
 
     /**
      * @param $oldAddresses
+     *
      * @return $this
      */
     public function addOldAddress($oldAddress)
     {
         $this->oldAddresses->add($oldAddress);
+
         return $this;
     }
 
     /**
      * @param $oldAddresses
+     *
      * @return bool
      */
     public function removeOldAddress($oldAddress)
     {
         return $this->oldAddresses->removeElement($oldAddress);
-
     }
 
     /**
@@ -630,23 +619,33 @@ class Company extends LegalEntity
     }
 
     /**
+     * @param Contact[]|ArrayCollection $contacts
+     */
+    public function setContacts($contacts)
+    {
+        $this->contacts = $contacts;
+    }
+
+    /**
      * @param $contacts
+     *
      * @return $this
      */
-    public function addContacts($contacts)
+    public function addContact(Contact $contacts)
     {
         $this->contacts->add($contacts);
+
         return $this;
     }
 
     /**
      * @param $contacts
+     *
      * @return bool
      */
-    public function removeContacts($contacts)
+    public function removeContact($contacts)
     {
         return $this->contacts->removeElement($contacts);
-
     }
 
     /**
@@ -659,50 +658,24 @@ class Company extends LegalEntity
 
     /**
      * @param $fiscalYears
+     *
      * @return $this
      */
-    public function addFiscalYears($fiscalYears)
+    public function addFiscalYear($fiscalYears)
     {
         $this->fiscalYears->add($fiscalYears);
+
         return $this;
     }
 
     /**
      * @param $fiscalYears
+     *
      * @return bool
      */
-    public function removeFiscalYears($fiscalYears)
+    public function removeFiscalYear($fiscalYears)
     {
         return $this->fiscalYears->removeElement($fiscalYears);
-
-    }
-
-    /**
-     * @return Mission[]|ArrayCollection
-     */
-    public function getMissions()
-    {
-        return $this->missions;
-    }
-
-    /**
-     * @param $missions
-     * @return $this
-     */
-    public function addMission($missions)
-    {
-        $this->missions->add($missions) ;
-        return $this;
-    }
-
-    /**
-     * @param $missions
-     * @return bool
-     */
-    public function removeMission($missions)
-    {
-       return $this->missions->removeElement($missions);
-
     }
 
     /**
@@ -737,7 +710,6 @@ class Company extends LegalEntity
         $this->formerAccountant = $formerAccountant;
     }
 
-
     /**
      * @return Address
      */
@@ -757,7 +729,7 @@ class Company extends LegalEntity
     /**
      * @return CustomerStatus
      */
-    public function getCustomerStatus(): CustomerStatus
+    public function getCustomerStatus()
     {
         return $this->customerStatus;
     }
@@ -770,6 +742,20 @@ class Company extends LegalEntity
         $this->customerStatus = $customerStatus;
     }
 
+    /**
+     * @return Rendezvous
+     */
+    public function getRendezvous()
+    {
+        return $this->rendezvous;
+    }
 
+    /**
+     * @param Rendezvous $rendezvous
+     */
+    public function setRendezvous(Rendezvous $rendezvous)
+    {
+        $this->rendezvous = $rendezvous;
+    }
 
 }

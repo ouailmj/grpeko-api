@@ -1,12 +1,22 @@
 <?php
 
+/*
+ * This file is part of the Moddus project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Developed by MIT <contact@mit-agency.com>
+ *
+ */
+
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Quotation
+ * Quotation.
  *
  * @ORM\Table(name="quotation")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\QuotationRepository")
@@ -28,7 +38,6 @@ class Quotation
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\MissionPurchase" ,mappedBy="quotation")
      */
     private $missionPurchase;
-
 
     /**
      * @var CustomerStatus
@@ -63,9 +72,6 @@ class Quotation
      * @ORM\Column(type="string")
      */
     private $nbSalesInvoicesPerYear;
-
-
-
 
 
     /**
@@ -145,6 +151,7 @@ class Quotation
     public function addQuotationLine(QuotationLine $quotationLines)
     {
         $this->quotationLines->add($quotationLines);
+
         return $this;
     }
 
@@ -152,5 +159,4 @@ class Quotation
     {
         return $this->quotationLines->removeElement($quotationLines);
     }
-
 }
