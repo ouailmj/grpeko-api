@@ -93,6 +93,7 @@ class EmployeeType extends AbstractType
 //                ])
             ->add('currentAddress', AddressType::class, [
                 'label' => false,
+                'mapped' => false,
             ])
 
             ->add('jobPosition', EntityType::class, [

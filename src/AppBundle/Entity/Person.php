@@ -101,7 +101,7 @@ class Person
     protected $postalCode;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Address")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Address", cascade={"persist"})
      * @ORM\JoinTable(name="person_address",
      *      joinColumns={@ORM\JoinColumn(name="person_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="address_id", referencedColumnName="id", unique=true)}

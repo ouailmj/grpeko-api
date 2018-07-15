@@ -30,7 +30,6 @@ class CreateUserCest
         $I->fillField( LoginPage::$birthDateField,LoginPage::$birthDate);
         $I->fillField( LoginPage::$entryDateField,LoginPage::$entryDay);
         $I->fillField( LoginPage::$initialsField,LoginPage::$initials);
-        $I->fillField( LoginPage::$FixenumbreField,LoginPage::$fixeNumber);
         $I->fillField(LoginPage::$FaxField,LoginPage::$faxNumber);
         $I->fillField( LoginPage::$phonenbrField,LoginPage::$phoneNumber);
         $I->fillField( LoginPage::$postalcodeField,LoginPage::$postalCode);

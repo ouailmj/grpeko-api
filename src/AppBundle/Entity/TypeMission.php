@@ -56,6 +56,13 @@ class TypeMission
      */
     private $missions;
 
+
+    /**
+     * @var Category
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Category" ,inversedBy="typeMissions" ,cascade={"persist"})
+     */
+    private $category;
+
     /**
      * Get id.
      *
@@ -110,6 +117,22 @@ class TypeMission
     public function setType(string $type)
     {
         $this->type = $type;
+    }
+
+    /**
+     * @return Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param Category $category
+     */
+    public function setCategory(Category $category)
+    {
+        $this->category = $category;
     }
 
 

@@ -43,7 +43,7 @@ class Client
     public static $taxationRegime     = 'réel normal';
 
     public static $vatSystem =null;
-    public static $apeCode ='0114Z';
+    public static $apeCode ='0114';
     public static $mainActivity ='export/import';
     public static $siretNumber =77;
     public static $sirenNumber =33;
