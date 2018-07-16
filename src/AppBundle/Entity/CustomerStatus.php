@@ -39,26 +39,6 @@ class CustomerStatus
      */
     private $status;
 
-    /**
-     * @var Quotation [] | ArrayCollection
-     *
-     * @ORM\OneToMany(targetEntity="Quotation", mappedBy="customerStatus")
-     */
-    private $quotations;
-
-    /**
-     * @var QuotationLine [] | ArrayCollection
-     *
-     * @ORM\OneToMany(targetEntity="QuotationLine",  mappedBy="customerStatus")
-     */
-    private $quotationLines;
-
-    /**
-     * @var Invoice [] | ArrayCollection
-     *
-     * @ORM\OneToMany(targetEntity="Invoice", mappedBy="customerStatus")
-     */
-    private $invoices;
 
     /**
      * @var Company
@@ -101,89 +81,6 @@ class CustomerStatus
         return $this->status;
     }
 
-    /**
-     * @return Quotation[]|ArrayCollection
-     */
-    public function getQuotations()
-    {
-        return $this->quotations;
-    }
-
-    /**
-     * @param Quotation[]|ArrayCollection $quotations
-     */
-    public function setQuotations($quotations)
-    {
-        $this->quotations = $quotations;
-    }
-
-    public function addQuotation(Quotation $quotation)
-    {
-        $this->quotations->add($quotation);
-
-        return $this;
-    }
-
-    public function removeQuotation(Quotation $quotation)
-    {
-        return $this->quotations->removeElement($quotation);
-    }
-
-    /**
-     * @return QuotationLine[]|ArrayCollection
-     */
-    public function getQuotationLines()
-    {
-        return $this->quotationLines;
-    }
-
-    /**
-     * @param QuotationLine[]|ArrayCollection $quotationLines
-     */
-    public function setQuotationLines($quotationLines)
-    {
-        $this->quotationLines = $quotationLines;
-    }
-
-    public function addQuotationLine(QuotationLine $quotationLines)
-    {
-        $this->quotationLines->add($quotationLines);
-
-        return $this;
-    }
-
-    public function removeQuotationLine(QuotationLine $quotationLines)
-    {
-        return $this->quotationLines->removeElement($quotationLines);
-    }
-
-    /**
-     * @return Invoice[]|ArrayCollection
-     */
-    public function getInvoices()
-    {
-        return $this->invoices;
-    }
-
-    /**
-     * @param Invoice[]|ArrayCollection $invoices
-     */
-    public function setInvoices($invoices)
-    {
-        $this->invoices = $invoices;
-    }
-
-    public function addInvoice(Invoice $invoice)
-    {
-        $this->invoices->add($invoice);
-
-        return $this;
-    }
-
-    public function removeInvoice(Invoice $invoice)
-    {
-        return $this->invoices->removeElement($invoice);
-    }
 
     /**
      * @return Company

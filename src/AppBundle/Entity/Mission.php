@@ -14,12 +14,15 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Mission.
  *
  * @ORM\Table(name="mission")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MissionRepository")
+ * @ApiResource
  */
 class Mission extends Product
 {
@@ -32,6 +35,7 @@ class Mission extends Product
      */
     protected $id;
 
+
     /**
      * @var TypeMission
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\TypeMission" ,inversedBy="missions" ,cascade={"persist"})
@@ -39,52 +43,18 @@ class Mission extends Product
     private $typeMission;
 
     /**
-     * Get id.
-     *
-     * @return int
+     * @var string
+     * @ORM\Column(type = "string")
+     *  @Groups({"type_mission"})
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $title;
 
     /**
-     * @return FiscalYear[]|ArrayCollection
+     * @var double
+     * @ORM\Column(type = "float")
+     * @Groups({"type_mission"})
      */
-    public function getFiscalYears()
-    {
-        return $this->fiscalYears;
-    }
-
-    /**
-     * @param FiscalYear[]|ArrayCollection $fiscalYears
-     */
-    public function setFiscalYears($fiscalYears)
-    {
-        $this->fiscalYears = $fiscalYears;
-    }
-
-    /**
-     * @param $fiscalYear
-     *
-     * @return $this
-     */
-    public function addFiscalYear($fiscalYear)
-    {
-        $this->fiscalYears->add($fiscalYear);
-
-        return $this;
-    }
-
-    /**
-     * @param $fiscalYear
-     *
-     * @return bool
-     */
-    public function removeFiscalYear($fiscalYear)
-    {
-        return $this->fiscalYears->removeElement($fiscalYear);
-    }
+    private $time;
 
     /**
      * @return TypeMission
@@ -100,5 +70,37 @@ class Mission extends Product
     public function setTypeMission(TypeMission $typeMission)
     {
         $this->typeMission = $typeMission;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string $title
+     */
+    public function setTitle(string $title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @return float
+     */
+    public function getTime(): float
+    {
+        return $this->time;
+    }
+
+    /**
+     * @param float $time
+     */
+    public function setTime(float $time)
+    {
+        $this->time = $time;
     }
 }
