@@ -3,7 +3,7 @@
 
             <div class="panel panel-flat">
                 <div class="panel-heading">
-                    <h5 class="panel-title">Clients - Modus</h5>
+                    <h5 class="panel-title">CLIENTS - Moddus</h5>
                     <div class="heading-elements">
                         <ul class="icons-list">
                             <li><a data-action="collapse"></a></li>
@@ -76,9 +76,20 @@
                                 {{company.vatSystem}}
                             </td>
                             <td>{{company.mainActivity}}</td>
-                            <td><a href="{{ asset('/uploads/files/' ~ company.rendezvous.fichePatrimoniale) }}" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-file-download"></i></b>Fiche Patrimoniale</a></td>
-                            <td><a href="{{ asset('/uploads/files/' ~ company.rendezvous.cin) }}" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-file-download"></i></b>Fiche CIN</a></td>
-                            </tr>
+                            <td>
+                                {% if company.rendezvous != null %}
+                                <a href="{{ asset('/uploads/files/' ~ company.rendezvous.fichePatrimoniale) }}" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-file-download"></i></b>Fiche Patrimoniale</a>
+                            {% else %}
+                                Aucun
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if company.rendezvous != null %}
+                                <a href="{{ asset('/uploads/files/' ~ company.rendezvous.cin) }}" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-file-download"></i></b>Fiche CIN</a></td>
+                        {% else %}
+                            Aucun
+                            {% endif %}
+                        </tr>
                         {% endfor %}
 
                         </tbody>

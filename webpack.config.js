@@ -17,6 +17,7 @@ Encore
     .cleanupOutputBeforeBuild()
     .addEntry('website/js/script', websiteJS)
     .addEntry('js/pages/demo', './front-app/pages/demo.js')
+    .addEntry('js/pages/quotation', './front-app/pages/quotation-page.js')
     .addStyleEntry('website/css/style', websiteCSS)
     .enableVersioning(false)
     // .enableSassLoader()

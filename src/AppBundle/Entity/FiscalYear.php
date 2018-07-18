@@ -98,43 +98,40 @@ class FiscalYear
     /**
      * @var Assignment
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Assignment" ,inversedBy="fiscalYear" ,cascade={"persist", "remove"}))
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Assignment" ,inversedBy="mainFiscalYear" ,cascade={"persist", "remove"}))
      */
-    protected $assignment;
+    protected $mainAssignment;
 
     /**
-     * @var Mission[] | ArrayCollection
-     * @ORM\ManyToMany(targetEntity="Mission")
-     * @ORM\JoinTable(name="fiscal_year_mission",
-     *      joinColumns={@ORM\JoinColumn(name="fiscal_year_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="mission_id", referencedColumnName="id", unique=true)}
-     *      )
+     * @var Assignment [] | ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Assignment" ,mappedBy="secondaryFiscalYear" ,cascade={"persist", "remove"}))
      */
-    protected $missions;
+    protected $secondaryAssignments;
+
+
+    /**
+     * @var MissionPurchase
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\MissionPurchase", inversedBy="fiscalYears")
+     */
+    protected $missionPurchase;
+
+    /**
+     * @var Invoice []
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Invoice", mappedBy="fiscalYear")
+     */
+    protected $invoices;
 
     /**
      * FiscalYear constructor.
+     *
      */
     public function __construct()
     {
-        $this->missions = new ArrayCollection();
+        $this->secondaryAssignments = new ArrayCollection();
+        $this->invoices = new ArrayCollection();
     }
 
-    /**
-     * @return Mission[]|ArrayCollection
-     */
-    public function getMissions()
-    {
-        return $this->missions;
-    }
-
-    /**
-     * @param Mission[]|ArrayCollection $missions
-     */
-    public function setMissions($missions)
-    {
-        $this->missions = $missions;
-    }
 
     /**
      * Get id.
@@ -303,7 +300,7 @@ class FiscalYear
      */
     public function getAssignment()
     {
-        return $this->assignment;
+        return $this->mainAssignment;
     }
 
     /**
@@ -311,28 +308,96 @@ class FiscalYear
      */
     public function setAssignment(Assignment $assignment)
     {
-        $this->assignment = $assignment;
+        $this->mainAssignment = $assignment;
     }
 
     /**
-     * @param Mission $mission
-     *
-     * @return $this
+     * @return MissionPurchase
      */
-    public function addMission(Mission $mission)
+    public function getMissionPurchase(): MissionPurchase
     {
-        $this->missions->add($mission);
+        return $this->missionPurchase;
+    }
+
+    /**
+     * @param MissionPurchase $missionPurchase
+     */
+    public function setMissionPurchase(MissionPurchase $missionPurchase)
+    {
+        $this->missionPurchase = $missionPurchase;
+    }
+
+    /**
+     * @return Assignment
+     */
+    public function getMainAssignment(): Assignment
+    {
+        return $this->mainAssignment;
+    }
+
+    /**
+     * @param Assignment $mainAssignment
+     */
+    public function setMainAssignment(Assignment $mainAssignment)
+    {
+        $this->mainAssignment = $mainAssignment;
+    }
+
+    /**
+     * @return Assignment[]|ArrayCollection
+     */
+    public function getSecondaryAssignments()
+    {
+        return $this->secondaryAssignments;
+    }
+
+    /**
+     * @param Assignment[]|ArrayCollection $secondaryAssignments
+     */
+    public function setScondaryAssignments($secondaryAssignments)
+    {
+        $this->secondaryAssignments = $secondaryAssignments;
+    }
+
+    /**
+     * @return Invoice[]
+     */
+    public function getInvoices()
+    {
+        return $this->invoices;
+    }
+
+    /**
+     * @param Invoice[] $invoices
+     */
+    public function setInvoices($invoices)
+    {
+        $this->invoices = $invoices;
+    }
+
+    public function addInvoice(Invoice $invoice)
+    {
+        $this->invoices->add($invoice);
 
         return $this;
     }
 
-    /**
-     * @param Mission $mission
-     *
-     * @return bool
-     */
-    public function removeMission(Mission $mission)
+    public function removeInvoice(Invoice $invoice)
     {
-        return $this->missions->removeElement($mission);
+        return $this->invoices->removeElement($invoice);
     }
+
+    public function addSecondaryAssignment(Assignment $assignment)
+    {
+        $this->secondaryAssignments->add($assignment);
+
+        return $this;
+    }
+
+    public function removeSecondaryAssignment(Assignment $assignment)
+    {
+        return $this->secondaryAssignments->removeElement($assignment);
+    }
+
+
 }
