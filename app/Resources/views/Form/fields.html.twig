@@ -1,7 +1,7 @@
 {% extends 'bootstrap_3_layout.html.twig' %}
 
 {% block form_label -%}
-    {%- set label_attr = label_attr|merge({class: (label_attr.class|default('') ~ ' control-label col-lg-2 text-semibold')|trim}) -%}
+    {%- set label_attr = label_attr|merge({class: (label_attr.class|default('') ~ ' control-label text-semibold')|trim}) -%}
     {{- parent() -}}
     {% block stylesheets %}
         <style>

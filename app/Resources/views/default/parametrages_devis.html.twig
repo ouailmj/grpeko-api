@@ -1,77 +1,43 @@
 
-<!-- <div class="page-content">
-    <div class="content-wrapper">
-        <div class="content">   
-            <div class="panel panel-flat">
-                <div class="panel-heading">
-                    <h5 class="panel-title">Mobile and desktop<a class="heading-elements-toggle"><i class="icon-more"></i></a></h5>
-                    <div class="heading-elements">
-                        <ul class="icons-list">
-                            <li><a data-action="collapse"></a></li>
-                            <li><a data-action="reload"></a></li>
-                            <li><a data-action="close"></a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="panel-body"> -->
                     <div class="row">
-                        <div class="col-xs-6 col-md-4">
+                        <div class="col-xs-6 col-md-6 mb-20 ">
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
                                     <tr>
-                                        <th colspan="2" style="text-align: center; background-color: #eef3fd;">Modes de transmission de piéces</th>
+                                        <th colspan="4" style="text-align: center; background-color: #eef3fd;"> Modes de transmission de piéces</th>
                                     </tr>
                                     <tr>
-                                        <th></th>
+                                        <th><a data-toggle="modal" data-target="#myModal" href="#"><i class="glyphicon glyphicon-plus-sign text-success"></i></a></th>
                                         <th>Mode de transmission</th>
+                                        <th >à partir du</th>
+                                        <th>taux horaire</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td><i class="glyphicon glyphicon-trash text-danger"></i></td>
-                                        <td>Fichies Excel</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                    <tr>
-                                        <th style="text-align: center; background-color: #eef3fd;"></th>
-                                        <th style="text-align: center; background-color: #eef3fd;">Mode de transmission</th>
-                                        <th style="text-align: center; background-color: #eef3fd;">à partir du</th>
-                                        <th style="text-align: center; background-color: #eef3fd;">taux horaire</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td><i class="glyphicon glyphicon-trash text-danger"></i></td>
+                                        {% for m in mode %}
+
+                                        <tr>
                                         <td>
-                                            <select data-placeholder="Mission comptable" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
-                                            <option></option>
-                                            <optgroup label="Central Time Zone">
-                                                <option value="AL">Alabama</option>
-                                                <option value="AR">Arkansas</option>
-                                                <option value="KY">Kentucky</option>
-                                            </optgroup>
-                                            <optgroup label="Eastern Time Zone">
-                                                <option value="CT">Connecticut</option>
-                                                <option value="DE">Delaware</option>
-                                                <option value="WV">West Virginia</option>
-                                            </optgroup>
-                                            </select>
+
+                                            {{ form_start(delete_forms[loop.index-1], {'attr': {'id':'formid'~loop.index} } ) }}
+                                            {{ form_widget(delete_forms[loop.index-1]) }}
+                                            {% set  confirm =  'Êtes-vous sûr ? Cette action est irréversible.' %}
+                                            <a title="Delete" onclick="send=confirm(' {{ confirm }}');if(send)document.getElementById('formid{{  loop.index}}').submit();"     class="text-primary legitRipple"  ><i class="glyphicon glyphicon-trash text-danger"></i></a>
+
+                                            {{ form_end(delete_forms[loop.index-1]) }}
+
                                         </td>
-                                        <td>01/01/2018</td>
-                                        <td>23.12 €</td>
-                                    </tr>
+                                        <td>{{ m.mode }}</td>
+                                        <td>{{ m.validDate|date("m/d/Y") }}</td>
+                                        <td>{{ m.price }} €</td>
+                                        </tr>
+                                        {% endfor %}
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                        <div class="col-xs-12 col-md-8">
+                        <div class="col-xs-12 col-md-12">
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -93,40 +59,26 @@
                                     <tr>
                                         <td><i class="glyphicon glyphicon-trash text-danger"></i></td>
                                         <td>
-                                            <select data-placeholder="Mission comptable" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
-                                            <option></option>
-                                            <optgroup label="Central Time Zone">
+                                            <select data-placeholder="Mission comptable" class="select select2-hidden-accessible col-md-6" tabindex="-1" aria-hidden="true">
+                                                <option></option>
                                                 <option value="AL">Alabama</option>
                                                 <option value="AR">Arkansas</option>
                                                 <option value="KY">Kentucky</option>
-                                            </optgroup>
-                                            <optgroup label="Eastern Time Zone">
-                                                <option value="CT">Connecticut</option>
-                                                <option value="DE">Delaware</option>
-                                                <option value="WV">West Virginia</option>
-                                            </optgroup>
                                             </select>
                                         </td>
                                         <td>
                                             Saisie des piéces
                                         </td>
                                         <td>
-                                            <select data-placeholder="Scan" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
-                                            <option></option>
-                                            <optgroup label="Central Time Zone">
+                                            <select data-placeholder="Scan" class="select select2-hidden-accessible col-md-6" tabindex="-1" aria-hidden="true">
+                                                <option></option>
                                                 <option value="AL">Alabama</option>
                                                 <option value="AR">Arkansas</option>
                                                 <option value="KY">Kentucky</option>
-                                            </optgroup>
-                                            <optgroup label="Eastern Time Zone">
-                                                <option value="CT">Connecticut</option>
-                                                <option value="DE">Delaware</option>
-                                                <option value="WV">West Virginia</option>
-                                            </optgroup>
                                             </select>
                                         </td>
                                         <td>
-                                            <input type="radio"></td>
+                                            <input type="checkbox"></td>
                                         <td>
                                             0
                                         </td>
@@ -161,7 +113,7 @@
                                     <tr>
                                         <td>Attestation</td>
                                         <td>
-                                            <select data-placeholder="Mission comptable" class="select select2-hidden-accessible class="col-md-6"" tabindex="-1" aria-hidden="true">
+                                            <select data-placeholder="Mission comptable" class="select select2-hidden-accessible col-md-6" tabindex="-1" aria-hidden="true">
                                             <option></option>
                                             <optgroup label="Central Time Zone">
                                                 <option value="AL">Alabama</option>
@@ -193,8 +145,52 @@
 
                         </div>
                     </div>
-                <!-- </div>
-            </div>
-        </div>
-    </div>
-</div> -->
+
+
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header bg-teal-400">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Ajout d'une nouvelle tache</h4>
+                                </div>
+
+                                {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            {{ form_label(form.mode, null, { 'label_attr': {'class': 'col-lg-4'} }) }}
+                                            <div class="col-sm-8">
+                                                {{ form_widget(form.mode) }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form_label(form.validDate, null, { 'label_attr': {'class': 'col-lg-4'} }) }}
+                                            <div class="col-sm-8">
+                                                {{ form_widget(form.validDate) }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form_label(form.price, null, { 'label_attr': {'class': 'col-lg-4'} }) }}
+                                            <div class="col-sm-8">
+                                                {{ form_widget(form.price) }}
+                                            </div>
+                                        </div>
+                                        {{ form_rest(form) }}
+
+
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-link" data-dismiss="modal">Annuler</button>
+                                        <button type="submit" class="btn btn-primary">Valider</button>
+                                    </div>
+                                    {{ form_end(form) }}
+                            </div>
+
+                        </div>
+                    </div>

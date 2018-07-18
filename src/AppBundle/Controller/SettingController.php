@@ -12,8 +12,11 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\TransmissionMode;
+use AppBundle\Form\TransmissionModeType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class SettingController.
@@ -21,7 +24,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
  *
  * @Route("/setting")
  */
-class SettingController extends Controller
+class SettingController extends BaseController
 {
     /**
      * @Route("/planning", name="setting_planning")
@@ -56,12 +59,56 @@ class SettingController extends Controller
     /**
      * @Route("/quotations", name="setting_quotations")
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function quotationsAction()
+    public function quotationsAction(Request $request)
     {
-        return $this->render('setting/coming_soon.html.twig');
+        $modeTransmission = new TransmissionMode();
+        $em =  $this->getDoctrine()->getManager();
+        $modes =$em->getRepository(TransmissionMode::class)->findAll();
+        $delete_forms= array();
+        foreach ($modes as $mode)
+        {
+            $delete_forms [] = $this->createFormBuilder()
+                ->setAction($this->generateUrl('mode_delete', ['id' => $mode->getId()]))
+                ->setMethod('DELETE')
+                ->getForm()->createView()
+                ;
+        }
+        $form = $this->createForm(TransmissionModeType::class, $modeTransmission);
+        $form->handleRequest($request);
+        if ($form->isValid() && $form->isSubmitted()) {
+            $em->persist($modeTransmission);
+            $em->flush();
+            $this->addSuccessFlash();
+            return $this->redirectToRoute('setting_quotations');
+        }
+
+        return $this->render('setting/quotations.html.twig',[
+            'mode'=>$modes,
+            'form'=> $form->createView(),
+            'delete_forms' => $delete_forms,
+        ]);
     }
+
+    /**
+     * @Route("/delete/mode-transmission/{id}", name="mode_delete")
+     * @Method("DELETE")
+     *
+     * @param Request $request
+     * @param TransmissionMode $mode
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function deleteTransmissionModeAction(Request $request,  TransmissionMode $mode)
+    {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($mode);
+            $em->flush();
+            $this->addSuccessFlash();
+            return $this->redirectToRoute('setting_quotations');
+    }
+
 
     /**
      * @Route("/analytics", name="setting_analytics")

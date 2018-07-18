@@ -314,7 +314,7 @@ class FiscalYear
     /**
      * @return MissionPurchase
      */
-    public function getMissionPurchase(): MissionPurchase
+    public function getMissionPurchase()
     {
         return $this->missionPurchase;
     }
@@ -330,7 +330,7 @@ class FiscalYear
     /**
      * @return Assignment
      */
-    public function getMainAssignment(): Assignment
+    public function getMainAssignment()
     {
         return $this->mainAssignment;
     }

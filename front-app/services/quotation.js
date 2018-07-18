@@ -18,5 +18,15 @@ export default class  QuotationService {
             })
             .catch((err) => console.error(err))
     }
+
+    getTransmissionMode(callback){
+        console.log(QuotationRoutes.apiTransmissionMode)
+        this.http
+            .get(QuotationRoutes.apiTransmissionMode)
+            .then((response)=>{
+                if (callback) callback(response.data);
+            })
+            .catch((err) => console.error(err))
+    }
     
 }
