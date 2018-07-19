@@ -10,19 +10,29 @@
  *
  */
 
+
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
- * CustomerStatus.
+ * Class CustomerStatus
+ * @package AppBundle\Entity
+ *
  *
  * @ORM\Table(name="customer_status")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CustomerStatusRepository")
+ *
+ * @ORM\HasLifecycleCallbacks()
+ *
  */
 class CustomerStatus
 {
+
+
+
     /**
      * @var int
      *
@@ -30,26 +40,15 @@ class CustomerStatus
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="status", type="string", length=255)
+     * @var Customer [] | ArrayCollection
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Customer", mappedBy="customerStatus")
      */
-    private $status;
-
-
-    /**
-     * @var Company
-     *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Company" ,inversedBy="customerStatus" ,cascade={"persist", "remove"}))
-     */
-    private $company;
+    private $customers;
 
     /**
-     * Get id.
-     *
      * @return int
      */
     public function getId()
@@ -57,49 +56,41 @@ class CustomerStatus
         return $this->id;
     }
 
-    /**
-     * Set status.
-     *
-     * @param string $status
-     *
-     * @return CustomerStatus
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
 
+
+    /**
+     * @return Customer[]|ArrayCollection
+     */
+    public function getCustomers()
+    {
+        return $this->customers;
+    }
+
+    /**
+     * @param Customer[]|ArrayCollection $customers
+     */
+    public function setCustomers($customers)
+    {
+        $this->customers = $customers;
+    }
+
+    /**
+     * @param Customer $customer
+     * @return $this
+     */
+    public function addCustomer(Customer $customer)
+    {
+        $this->customers->add($customer);
         return $this;
     }
 
     /**
-     * Get status.
-     *
-     * @return string
+     * @param Customer $customer
+     * @return $this
      */
-    public function getStatus()
+    public function removeCustomer(Customer $customer)
     {
-        return $this->status;
+        return $this->customers->removeElement($customer);
     }
 
-
-    /**
-     * @return Company
-     */
-    public function getCompany()
-    {
-        return $this->company;
-    }
-
-    /**
-     * @param Company $company
-     */
-    public function setCompany(Company $company)
-    {
-        $this->company = $company;
-    }
-
-    public function __toString()
-    {
-        return (empty($this->status)) ? "" : $this->status;
-    }
 }

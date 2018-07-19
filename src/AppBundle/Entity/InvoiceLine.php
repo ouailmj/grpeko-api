@@ -1,18 +1,34 @@
 <?php
 
-namespace AppBundle\Entity;
+/*
+ * This file is part of the Moddus project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Developed by MIT <contact@mit-agency.com>
+ *
+ */
 
-use Doctrine\Common\Collections\ArrayCollection;
+namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
+
+
 /**
- * InvoiceLine
+ * Class InvoiceLine
+ * @package AppBundle\Entity
+ *
  *
  * @ORM\Table(name="invoice_line")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\InvoiceLineRepository")
+ *
+ * @ORM\HasLifecycleCallbacks()
  */
 class InvoiceLine
 {
+
+
     /**
      * @var int
      *
@@ -20,45 +36,15 @@ class InvoiceLine
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="price", type="float")
-     */
-    private $price;
-
-    /**
-     * @var TypeMission [] | ArrayCollection
-     *
-     * @ORM\ManyToMany(targetEntity="TypeMission")
-     * @ORM\JoinTable(name="type_mission_invoice_line",
-     *      joinColumns={@ORM\JoinColumn(name="invoice_line_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="type_mission_id", referencedColumnName="id")}
-     *      )
-     */
-    private $typeMissions;
+    protected $id;
 
     /**
      * @var Invoice
-     *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Invoice", inversedBy="invoiceLines")
      */
     private $invoice;
 
     /**
-     * InvoiceLine constructor.
-     */
-    public function __construct()
-    {
-        $this->typeMissions = new ArrayCollection();
-    }
-
-
-    /**
-     * Get id.
-     *
      * @return int
      */
     public function getId()
@@ -66,34 +52,11 @@ class InvoiceLine
         return $this->id;
     }
 
-    /**
-     * Set price.
-     *
-     * @param float $price
-     *
-     * @return InvoiceLine
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
-    /**
-     * Get price.
-     *
-     * @return float
-     */
-    public function getPrice()
-    {
-        return $this->price;
-    }
 
     /**
      * @return Invoice
      */
-    public function getInvoice(): Invoice
+    public function getInvoice()
     {
         return $this->invoice;
     }
@@ -105,45 +68,6 @@ class InvoiceLine
     {
         $this->invoice = $invoice;
     }
-
-    /**
-     * @return TypeMission[]|ArrayCollection
-     */
-    public function getTypeMissions()
-    {
-        return $this->typeMissions;
-    }
-
-    /**
-     * @param TypeMission[]|ArrayCollection $typeMissions
-     */
-    public function setTypeMissions($typeMissions)
-    {
-        $this->typeMissions = $typeMissions;
-    }
-
-    /**
-     * @param TypeMission $typeMission
-     * @return $this
-     */
-    public function addTypeMission(TypeMission $typeMission)
-    {
-        $this->typeMissions->add($typeMission);
-        return $this;
-    }
-
-    /**
-     * @param TypeMission $typeMission
-     * @return bool
-     */
-    public function removeTypeMission(TypeMission $typeMission)
-    {
-        return $this->typeMissions->removeElement($typeMission);
-    }
-
-
-
-
 
 
 }

@@ -10,19 +10,26 @@
  *
  */
 
+
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * FiscalYear.
+ * Class FiscalYear
+ * @package AppBundle\Entity
+ *
  *
  * @ORM\Table(name="fiscal_year")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\FiscalYearRepository")
+ *
+ * @ORM\HasLifecycleCallbacks()
  */
 class FiscalYear
 {
+
+
     /**
      * @var int
      *
@@ -33,109 +40,73 @@ class FiscalYear
     protected $id;
 
     /**
-     * @var \DateTime
+     * @var Mode
      *
-     * @ORM\Column(name="startDate", type="datetimetz",nullable=true)
+     * @ORM\OneToOne(targetEntity="Mode")
+     * @ORM\JoinColumn(name="mode_id", referencedColumnName="id")
      */
-    protected $startDate;
+    private $mode;
 
     /**
-     * @var \DateTime
+     * @var LegalForm
+     * @ORM\ManyToOne(targetEntity="LegalForm", inversedBy="fiscalYears")
      *
-     * @ORM\Column(name="closeDate", type="datetimetz",nullable=true)
      */
-    protected $closeDate;
+    private $legalForm;
 
     /**
-     * @var string
+     * @var TaxSystem
+     * @ORM\ManyToOne(targetEntity="TaxSystem", inversedBy="fiscalYears")
      *
-     * @ORM\Column(name="status", type="string", length=10,nullable=true)
      */
-    protected $status;
+    private $taxSystem;
 
     /**
-     * @var integer
+     * @var VatSystem
+     * @ORM\ManyToOne(targetEntity="VatSystem", inversedBy="fiscalYears")
      *
-     * @ORM\Column(type="integer",nullable=true)
      */
-    protected $year;
+    private $vatSystem;
 
     /**
-     * Regime d'imposition.
+     * @var Address
      *
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\ManyToOne(targetEntity="Address")
+     * @ORM\JoinColumn(name="address_id", referencedColumnName="id")
      */
-    protected $taxationRegime;
+    private $address;
 
     /**
-     * Regime TVA.
-     *
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $vatSystem;
-
-    /**
-     * Regime Fiscal.
-     *
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @var Customer
+     * @ORM\ManyToOne(targetEntity="Customer", inversedBy="fiscalYears")
      *
      */
-    protected $taxSystem;
-
-    /**
-     * @var Company
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company" ,inversedBy="fiscalYears" ,cascade={"persist"}))
-     */
-    protected $company;
+    private $customer;
 
     /**
      * @var Assignment
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Assignment", inversedBy="mainFiscalYear")
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Assignment" ,inversedBy="mainFiscalYear" ,cascade={"persist", "remove"}))
      */
-    protected $mainAssignment;
+    private $mainAssignment;
 
     /**
      * @var Assignment [] | ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Assignment" ,mappedBy="secondaryFiscalYear" ,cascade={"persist", "remove"}))
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Assignment", mappedBy="secondaryFiscalYear")
+     *
      */
-    protected $secondaryAssignments;
-
-
-    /**
-     * @var MissionPurchase
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\MissionPurchase", inversedBy="fiscalYears")
-     */
-    protected $missionPurchase;
-
-    /**
-     * @var Invoice []
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Invoice", mappedBy="fiscalYear")
-     */
-    protected $invoices;
+    private $secondaryAssignments;
 
     /**
      * FiscalYear constructor.
-     *
      */
     public function __construct()
     {
         $this->secondaryAssignments = new ArrayCollection();
-        $this->invoices = new ArrayCollection();
     }
 
-
     /**
-     * Get id.
-     *
      * @return int
      */
     public function getId()
@@ -143,112 +114,57 @@ class FiscalYear
         return $this->id;
     }
 
-    /**
-     * Set startDate.
-     *
-     * @param \DateTime $startDate
-     *
-     * @return FiscalYear
-     */
-    public function setStartDate($startDate)
-    {
-        $this->startDate = $startDate;
 
-        return $this;
+    /**
+     * @return Mode
+     */
+    public function getMode()
+    {
+        return $this->mode;
     }
 
     /**
-     * Get startDate.
-     *
-     * @return \DateTime
+     * @param Mode $mode
      */
-    public function getStartDate()
+    public function setMode(Mode $mode)
     {
-        return $this->startDate;
+        $this->mode = $mode;
     }
 
     /**
-     * Set closeDate.
-     *
-     * @param \DateTime $closeDate
-     *
-     * @return FiscalYear
+     * @return LegalForm
      */
-    public function setCloseDate($closeDate)
+    public function getLegalForm()
     {
-        $this->closeDate = $closeDate;
-
-        return $this;
+        return $this->legalForm;
     }
 
     /**
-     * Get closeDate.
-     *
-     * @return \DateTime
+     * @param LegalForm $legalForm
      */
-    public function getCloseDate()
+    public function setLegalForm(LegalForm $legalForm)
     {
-        return $this->closeDate;
+        $this->legalForm = $legalForm;
     }
 
     /**
-     * Set status.
-     *
-     * @param string $status
-     *
-     * @return FiscalYear
+     * @return Address
      */
-    public function setStatus($status)
+    public function getAddress()
     {
-        $this->status = $status;
-
-        return $this;
+        return $this->address;
     }
 
     /**
-     * Get status.
-     *
-     * @return string
+     * @param Address $address
      */
-    public function getStatus()
+    public function setAddress(Address $address)
     {
-        return $this->status;
+        $this->address = $address;
     }
 
     /**
-     * @return string
-     */
-    public function getTaxationRegime()
-    {
-        return $this->taxationRegime;
-    }
-
-    /**
-     * @param string $taxationRegime
-     */
-    public function setTaxationRegime(string $taxationRegime)
-    {
-        $this->taxationRegime = $taxationRegime;
-    }
-
-    /**
-     * @return string
-     */
-    public function getVatSystem()
-    {
-        return $this->vatSystem;
-    }
-
-    /**
-     * @param string $vatSystem
-     */
-    public function setVatSystem(string $vatSystem)
-    {
-        $this->vatSystem = $vatSystem;
-    }
-
-    /**
-     * @return string
+     * @return TaxSystem
      */
     public function getTaxSystem()
     {
@@ -256,75 +172,43 @@ class FiscalYear
     }
 
     /**
-     * @param string $taxSystem
+     * @param TaxSystem $taxSystem
      */
-    public function setTaxSystem(string $taxSystem)
+    public function setTaxSystem(TaxSystem $taxSystem)
     {
         $this->taxSystem = $taxSystem;
     }
 
     /**
-     * @return int
+     * @return VatSystem
      */
-    public function getYear()
+    public function getVatSystem()
     {
-        return $this->year;
+        return $this->vatSystem;
     }
 
     /**
-     * @param int $year
+     * @param VatSystem $vatSystem
      */
-    public function setYear(int $year)
+    public function setVatSystem(VatSystem $vatSystem)
     {
-        $this->year = $year;
+        $this->vatSystem = $vatSystem;
     }
 
     /**
-     * @return Company
+     * @return Customer
      */
-    public function getCompany()
+    public function getCustomer()
     {
-        return $this->company;
+        return $this->customer;
     }
 
     /**
-     * @param Company $company
+     * @param Customer $customer
      */
-    public function setCompany(Company $company)
+    public function setCustomer(Customer $customer)
     {
-        $this->company = $company;
-    }
-
-    /**
-     * @return Assignment
-     */
-    public function getAssignment()
-    {
-        return $this->mainAssignment;
-    }
-
-    /**
-     * @param Assignment $assignment
-     */
-    public function setAssignment(Assignment $assignment)
-    {
-        $this->mainAssignment = $assignment;
-    }
-
-    /**
-     * @return MissionPurchase
-     */
-    public function getMissionPurchase()
-    {
-        return $this->missionPurchase;
-    }
-
-    /**
-     * @param MissionPurchase $missionPurchase
-     */
-    public function setMissionPurchase(MissionPurchase $missionPurchase)
-    {
-        $this->missionPurchase = $missionPurchase;
+        $this->customer = $customer;
     }
 
     /**
@@ -354,50 +238,33 @@ class FiscalYear
     /**
      * @param Assignment[]|ArrayCollection $secondaryAssignments
      */
-    public function setScondaryAssignments($secondaryAssignments)
+    public function setSecondaryAssignments($secondaryAssignments)
     {
         $this->secondaryAssignments = $secondaryAssignments;
     }
 
     /**
-     * @return Invoice[]
+     * @param Assignment $secondaryAssignment
+     * @return $this
      */
-    public function getInvoices()
+    public function addSecondaryAssignment(Assignment $secondaryAssignment)
     {
-        return $this->invoices;
+        $this->secondaryAssignments->add($secondaryAssignment);
+        return $this;
     }
 
     /**
-     * @param Invoice[] $invoices
+     * @param Assignment $secondaryAssignment
+     * @return bool
      */
-    public function setInvoices($invoices)
+    public function removeSecondaryAssignment(Assignment $secondaryAssignment)
     {
-        $this->invoices = $invoices;
+        return $this->secondaryAssignments->removeElement($secondaryAssignment);
     }
 
-    public function addInvoice(Invoice $invoice)
-    {
-        $this->invoices->add($invoice);
 
-        return $this;
-    }
 
-    public function removeInvoice(Invoice $invoice)
-    {
-        return $this->invoices->removeElement($invoice);
-    }
 
-    public function addSecondaryAssignment(Assignment $assignment)
-    {
-        $this->secondaryAssignments->add($assignment);
-
-        return $this;
-    }
-
-    public function removeSecondaryAssignment(Assignment $assignment)
-    {
-        return $this->secondaryAssignments->removeElement($assignment);
-    }
 
 
 }

@@ -10,18 +10,24 @@
  *
  */
 
+
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * QuotationLine.
+ * Class QuotationLine
+ * @package AppBundle\Entity
  *
  * @ORM\Table(name="quotation_line")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\QuotationLineRepository")
+ *
+ * @ORM\HasLifecycleCallbacks()
  */
 class QuotationLine
 {
+
+
     /**
      * @var int
      *
@@ -29,29 +35,22 @@ class QuotationLine
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
-     * @var Product
-     * @ORM\ManyToOne(targetEntity="Product", inversedBy="quotationLines")
+     * @var ECQuotation
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ECQuotation", inversedBy="quotationLines")
      */
-    private $product;
+    private $ecQuotation;
 
     /**
-     * @var Quotation
-     * @ORM\ManyToOne(targetEntity="Quotation", inversedBy="quotationLines")
+     * @var Mission
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Mission")
+     * @ORM\JoinColumn(name="mission_id", referencedColumnName="id")
      */
-    private $quotation;
+    private $mission;
 
     /**
-     * @var Company
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company",inversedBy="quotationLines")
-     */
-    private $company;
-
-    /**
-     * Get id.
-     *
      * @return int
      */
     public function getId()
@@ -59,52 +58,42 @@ class QuotationLine
         return $this->id;
     }
 
+
     /**
-     * @return Product
+     * @return ECQuotation
      */
-    public function getProduct(): Product
+    public function getEcQuotation()
     {
-        return $this->product;
+        return $this->ecQuotation;
     }
 
     /**
-     * @param Product $product
+     * @param ECQuotation $ecQuotation
      */
-    public function setProduct(Product $product)
+    public function setEcQuotation(ECQuotation $ecQuotation)
     {
-        $this->product = $product;
+        $this->ecQuotation = $ecQuotation;
     }
 
     /**
-     * @return Quotation
+     * @return Mission
      */
-    public function getQuotation(): Quotation
+    public function getMission()
     {
-        return $this->quotation;
+        return $this->mission;
     }
 
     /**
-     * @param Quotation $quotation
+     * @param Mission $mission
      */
-    public function setQuotation(Quotation $quotation)
+    public function setMission(Mission $mission)
     {
-        $this->quotation = $quotation;
+        $this->mission = $mission;
     }
 
-    /**
-     * @return Company
-     */
-    public function getCompany(): Company
-    {
-        return $this->company;
-    }
 
-    /**
-     * @param Company $company
-     */
-    public function setCompany(Company $company)
-    {
-        $this->company = $company;
-    }
+
+
+
 
 }
