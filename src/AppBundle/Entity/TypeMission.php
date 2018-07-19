@@ -10,28 +10,26 @@
  *
  */
 
+
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use ApiPlatform\Core\Annotation\ApiResource;
-use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * TypeMission.
+ * Class TypeMission
+ * @package AppBundle\Entity
+ *
  *
  * @ORM\Table(name="type_mission")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\TypeMissionRepository")
  *
- * @ApiResource(
- *
- *  attributes ={
- *     "normalization_context"={"groups"={"type_mission"}},
- *}
- *     )
+ * @ORM\HasLifecycleCallbacks()
  */
 class TypeMission
 {
+
+
     /**
      * @var int
      *
@@ -39,39 +37,39 @@ class TypeMission
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
-
-    /**
-     * @var string
-     * @ORM\Column(type="string")
-     * @Groups({"type_mission"})
-     */
-    private $type;
+    protected $id;
 
     /**
      * @var Mission [] | ArrayCollection
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Mission" ,mappedBy="typeMission" ,cascade={"persist", "remove"})
      *
-     * @Groups({"type_mission"})
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Mission", mappedBy="typeMission")
      */
     private $missions;
 
-
     /**
-     * @var Category
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Category" ,inversedBy="typeMissions" ,cascade={"persist"})
+     * @var Assignment [] | ArrayCollection
+     * @ORM\ManyToMany(targetEntity="Assignment", mappedBy="typeMissions")
      */
-    private $category;
+    private $assignments;
 
     /**
-     * Get id.
-     *
+     * TypeMission constructor.
+     */
+    public function __construct()
+    {
+        $this->missions = new ArrayCollection();
+        $this->assignments = new ArrayCollection();
+    }
+
+    /**
      * @return int
      */
     public function getId()
     {
         return $this->id;
     }
+
+
 
     /**
      * @return Mission[]|ArrayCollection
@@ -82,57 +80,65 @@ class TypeMission
     }
 
     /**
-     * @param $mission
-     *
+     * @param Mission[]|ArrayCollection $missions
+     */
+    public function setMissions($missions)
+    {
+        $this->missions = $missions;
+    }
+
+    /**
+     * @param Mission $mission
      * @return $this
      */
-    public function addMission($mission)
+    public function addMission(Mission $mission)
     {
         $this->missions->add($mission);
-
         return $this;
     }
 
     /**
-     * @param $mission
-     *
+     * @param Mission $mission
      * @return bool
      */
-    public function removeMission($mission)
+    public function removeMission(Mission $mission)
     {
         return $this->missions->removeElement($mission);
     }
 
     /**
-     * @return string
+     * @return Assignment[]|ArrayCollection
      */
-    public function getType(): string
+    public function getAssignments()
     {
-        return $this->type;
+        return $this->assignments;
     }
 
     /**
-     * @param string $type
+     * @param Assignment[]|ArrayCollection $assignments
      */
-    public function setType(string $type)
+    public function setAssignments($assignments)
     {
-        $this->type = $type;
+        $this->assignments = $assignments;
     }
 
     /**
-     * @return Category
+     * @param Assignment $assignment
+     * @return $this
      */
-    public function getCategory()
+    public function addAssignment(Assignment $assignment)
     {
-        return $this->category;
+        $this->assignments->add($assignment);
+        return $this;
     }
 
     /**
-     * @param Category $category
+     * @param Assignment $assignment
+     * @return bool
      */
-    public function setCategory(Category $category)
+    public function removeAssignment(Assignment $assignment)
     {
-        $this->category = $category;
+        return $this->assignments->removeElement($assignment);
     }
 
 

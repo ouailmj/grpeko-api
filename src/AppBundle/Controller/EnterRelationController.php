@@ -39,8 +39,8 @@ class EnterRelationController extends BaseController
      */
     public function __construct(RendezVousManager $rendezVousManager, ClientManager $clientManager)
     {
-        $this->rendezVousManager = $rendezVousManager;
-        $this->clientManager = $clientManager;
+       // $this->rendezVousManager = $rendezVousManager;
+     //   $this->clientManager = $clientManager;
     }
 
     /**
@@ -48,7 +48,7 @@ class EnterRelationController extends BaseController
      */
     public function rendezVousAction(Request $request)
     {
-        if ($request->isMethod('POST')) {
+       /* if ($request->isMethod('POST')) {
             $nom = $request->get('lastname');
             $email = $request->get('email');
 
@@ -69,7 +69,7 @@ class EnterRelationController extends BaseController
         }
 
         return $this->render('prisedeconnaissance/entree_relation/rendez_vous.html.twig', [
-        ]);
+        ]);*/
     }
 
     /**
@@ -77,7 +77,7 @@ class EnterRelationController extends BaseController
      */
     public function uploadmodel(Company $company, Request $request)
     {
-        $rendezvous = new Rendezvous();
+      /*  $rendezvous = new Rendezvous();
         $formrendezvous = $this->createForm('AppBundle\Form\RendezVousType', $rendezvous);
         $formrendezvous->handleRequest($request);
 
@@ -106,14 +106,15 @@ class EnterRelationController extends BaseController
         }
 
         return $this->render('prisedeconnaissance/entree_relation/upload_model.html.twig', ['rendezvous' => $formrendezvous->createView()]);
-    }
+    */
+      }
 
     /**
      * @Route("/devis", name="devis_new")
      */
     public function newAction(Request $request)
     {
-        $rendezvous = new Rendezvous();
+        /*$rendezvous = new Rendezvous();
         $formrendezvous = $this->createForm('AppBundle\Form\RendezVousType', $rendezvous);
         $formrendezvous->handleRequest($request);
 
@@ -122,12 +123,13 @@ class EnterRelationController extends BaseController
         }
 
         return $this->render('prisedeconnaissance/entree_relation/new.html.twig', ['rendezvous' => $formrendezvous->createView()]);
-    }
+    */
+        }
 
-    public function move(Rendezvous $rendezvous, string $fileName)
+  /*  public function move(Rendezvous $rendezvous, string $fileName)
     {
         $rendezvous->getFichePatrimoniale()->move($this->getParameter('files_directory'), $fileName);
-    }
+    }*/
 
     /*
      * @Route("/edit/{id}", name="relation_edit")

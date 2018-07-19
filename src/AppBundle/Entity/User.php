@@ -58,13 +58,6 @@ class User extends BaseUser
      */
     protected $googleId = '';
 
-    /**
-     * @var Person
-     *@ApiSubResource
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Person", mappedBy="userAccount", cascade={"persist", "remove"})
-     */
-    protected $person;
-
     // Transient Properties //
 
     /**

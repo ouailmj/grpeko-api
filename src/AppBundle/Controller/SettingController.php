@@ -12,6 +12,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Mode;
 use AppBundle\Entity\TransmissionMode;
 use AppBundle\Form\TransmissionModeType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -100,7 +101,7 @@ class SettingController extends BaseController
      * @param TransmissionMode $mode
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function deleteTransmissionModeAction(Request $request,  TransmissionMode $mode)
+    public function deleteTransmissionModeAction(Request $request,  Mode $mode)
     {
             $em = $this->getDoctrine()->getManager();
             $em->remove($mode);

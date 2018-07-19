@@ -10,18 +10,26 @@
  *
  */
 
+
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
- * FormerAccountant.
+ * Class FormerAccountant
+ * @package AppBundle\Entity
  *
  * @ORM\Table(name="former_accountant")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\FormerAccountantRepository")
+ *
+ * @ORM\HasLifecycleCallbacks()
  */
-class FormerAccountant extends LegalEntity
+class FormerAccountant
 {
+
+
     /**
      * @var int
      *
@@ -29,40 +37,15 @@ class FormerAccountant extends LegalEntity
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="civility", type="string", length=255)
+     * @var Customer [] | ArrayCollection
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Customer", mappedBy="formerAccountant")
      */
-    private $civility;
+    private $customers;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="firstName", type="string", length=255)
-     */
-    private $firstName;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="lastName", type="string", length=255)
-     */
-    private $lastName;
-
-    /**
-     * @var Address
-     *
-     *  @ORM\OneToOne(targetEntity="AppBundle\Entity\Address", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="address_id", referencedColumnName="id",onDelete="CASCADE")
-     */
-    private $address;
-
-    /**
-     * Get id.
-     *
      * @return int
      */
     public function getId()
@@ -70,91 +53,40 @@ class FormerAccountant extends LegalEntity
         return $this->id;
     }
 
-    /**
-     * Set civility.
-     *
-     * @param string $civility
-     *
-     * @return FormerAccountant
-     */
-    public function setCivility($civility)
-    {
-        $this->civility = $civility;
 
+    /**
+     * @return Customer[]|ArrayCollection
+     */
+    public function getCustomers()
+    {
+        return $this->customers;
+    }
+
+    /**
+     * @param Customer[]|ArrayCollection $customers
+     */
+    public function setCustomers($customers)
+    {
+        $this->customers = $customers;
+    }
+
+    /**
+     * @param Customer $customer
+     * @return $this
+     */
+    public function addCustomer(Customer $customer)
+    {
+        $this->customers->add($customer);
         return $this;
     }
 
     /**
-     * Get civility.
-     *
-     * @return string
+     * @param Customer $customer
+     * @return $this
      */
-    public function getCivility()
+    public function removeCustomer(Customer $customer)
     {
-        return $this->civility;
+        return $this->customers->removeElement($customer);
     }
 
-    /**
-     * Set firstName.
-     *
-     * @param string $firstName
-     *
-     * @return FormerAccountant
-     */
-    public function setFirstName($firstName)
-    {
-        $this->firstName = $firstName;
-
-        return $this;
-    }
-
-    /**
-     * Get firstName.
-     *
-     * @return string
-     */
-    public function getFirstName()
-    {
-        return $this->firstName;
-    }
-
-    /**
-     * Set lastName.
-     *
-     * @param string $lastName
-     *
-     * @return FormerAccountant
-     */
-    public function setLastName($lastName)
-    {
-        $this->lastName = $lastName;
-
-        return $this;
-    }
-
-    /**
-     * Get lastName.
-     *
-     * @return string
-     */
-    public function getLastName()
-    {
-        return $this->lastName;
-    }
-
-    /**
-     * @return Address
-     */
-    public function getAddress()
-    {
-        return $this->address;
-    }
-
-    /**
-     * @param Address $address
-     */
-    public function setAddress(Address $address)
-    {
-        $this->address = $address;
-    }
 }

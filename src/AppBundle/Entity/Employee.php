@@ -10,22 +10,26 @@
  *
  */
 
+
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
- * Employee.
+ * Class Employee
+ * @package AppBundle\Entity
+ *
  *
  * @ORM\Table(name="employee")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EmployeeRepository")
- * @ApiResource()
+ *
  * @ORM\HasLifecycleCallbacks()
  */
-class Employee extends Person
+class Employee
 {
+
+
     /**
      * @var int
      *
@@ -36,95 +40,42 @@ class Employee extends Person
     protected $id;
 
     /**
-     * @var JobPosition
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\JobPosition", inversedBy="employees",cascade={"persist"})
-     * @ORM\JoinColumn(name="job_position_id", referencedColumnName="id", nullable=true)
-     */
-    private $jobPosition;
-
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $initials;
-
-    /**
      * @var Assignment [] | ArrayCollection
-     *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Assignment", mappedBy="employee")
      */
     private $assignments;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Employee", mappedBy="manager")
-     */
-    private $staffs;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Employee", inversedBy="staffs")
-     * @ORM\JoinColumn(name="manager_id", referencedColumnName="id", onDelete="SET NULL")
+     * @var Employee  [] | ArrayCollection
+     * @ORM\OneToMany(targetEntity="Employee", mappedBy="manager")
+     */
+    private $staff;
+
+    /**
+     * @var Employee
+     * @ORM\ManyToOne(targetEntity="Employee", inversedBy="staff")
+     * @ORM\JoinColumn(name="manager_id", referencedColumnName="id")
      */
     private $manager;
 
     /**
-     * @var boolean
-     * @ORM\Column(name="status", type="boolean", nullable=true)
+     * @var JobPosition  [] | ArrayCollection
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\JobPosition", inversedBy="employees")
      */
-    protected $status = false;
-
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetimetz", nullable=true)
-     */
-    protected $entryDate;
-
-    /**
-     * @var CommissionRate [] | ArrayCollection
-     *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\CommissionRate", mappedBy="employee")
-     */
-    private $commissionRates;
-
-    /**
-     * @var Group
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Group", inversedBy="employees")
-     */
-    private $group;
+    private $jobPositions;
 
     /**
      * Employee constructor.
      */
     public function __construct()
     {
-        parent::__construct();
-
-        $this->staffs = new ArrayCollection();
-        $this->commissionRates = new ArrayCollection();
+        $this->assignments = new ArrayCollection();
+        $this->staff = new ArrayCollection();
+        $this->jobPositions = new ArrayCollection();
     }
 
     /**
-     * @return \DateTime
-     */
-    public function getEntryDate()
-    {
-        return $this->entryDate;
-    }
-
-    /**
-     * @param \DateTime $entryDate
-     */
-    public function setEntryDate($entryDate)
-    {
-        $this->entryDate = $entryDate;
-    }
-
-    /**
-     * Get id.
-     *
      * @return int
      */
     public function getId()
@@ -132,21 +83,6 @@ class Employee extends Person
         return $this->id;
     }
 
-    /**
-     * @return JobPosition
-     */
-    public function getJobPosition()
-    {
-        return $this->jobPosition;
-    }
-
-    /**
-     * @param JobPosition $jobPosition
-     */
-    public function setJobPosition(JobPosition $jobPosition)
-    {
-        $this->jobPosition = $jobPosition;
-    }
 
     /**
      * @return Assignment[]|ArrayCollection
@@ -157,25 +93,31 @@ class Employee extends Person
     }
 
     /**
-     * @param $assignment
-     *
+     * @param Assignment[]|ArrayCollection $assignments
+     */
+    public function setAssignments($assignments)
+    {
+        $this->assignments = $assignments;
+    }
+
+
+    /**
+     * @param Assignment $assignment
      * @return $this
      */
-    public function addAssignments($assignment)
+    public function addAssignment(Assignment $assignment)
     {
         $this->assignments->add($assignment);
-
         return $this;
     }
 
     /**
-     * @param $assignment
-     *
+     * @param Assignment $assignment
      * @return bool
      */
-    public function removeAssignments($assignment)
+    public function removeAssignment(Assignment $assignment)
     {
-        return  $this->assignments->removeElement($assignment);
+        return $this->assignments->removeElement($assignment);
     }
 
     /**
@@ -195,117 +137,76 @@ class Employee extends Person
     }
 
     /**
-     * @return mixed
+     * @return Employee[]|ArrayCollection
      */
-    public function getInitials()
+    public function getStaff()
     {
-        return $this->initials;
+        return $this->staff;
     }
 
     /**
-     * @param mixed $initials
+     * @param Employee[]|ArrayCollection $staff
      */
-    public function setInitials($initials)
+    public function setStaff($staff)
     {
-        $this->initials = $initials;
+        $this->staff = $staff;
     }
 
     /**
-     * @return mixed
-     */
-    public function getStaffs()
-    {
-        return $this->staffs;
-    }
-
-    /**
-     * @param mixed $staffs
-     */
-    public function setStaffs($staffs)
-    {
-        $this->staffs = $staffs;
-    }
-
-
-    public function addStaff(Employee $employee)
-    {
-        $this->staffs->add($employee);
-        return $this;
-    }
-
-    public function removeStaff(Employee $employee)
-    {
-        return $this->staffs->removeElement($employee);
-
-    }
-
-    /**
-     * @return bool
-     */
-    public function isStatus(): bool
-    {
-        return $this->status;
-    }
-
-    /**
-     * @param bool $status
-     */
-    public function setStatus(bool $status)
-    {
-        $this->status = $status;
-    }
-
-    /**
-     * @return CommissionRate[]|ArrayCollection
-     */
-    public function getCommissionRates()
-    {
-        return $this->commissionRates;
-    }
-
-    /**
-     * @param CommissionRate[]|ArrayCollection $commissionRates
-     */
-    public function setCommissionRates($commissionRates)
-    {
-        $this->commissionRates = $commissionRates;
-    }
-
-
-    /**
-     * @param CommissionRate $commissionRate
+     * @param Employee $employee
      * @return $this
      */
-    public function addCommissionRate(CommissionRate $commissionRate)
+    public function addStaff(Employee $employee)
     {
-        $this->commissionRates->add($commissionRate);
+        $this->staff->add($employee);
         return $this;
     }
 
     /**
-     * @param CommissionRate $commissionRate
+     * @param Employee $employee
      * @return bool
      */
-    public function removeEmployee(CommissionRate $commissionRate)
+    public function removeStaff(Employee $employee)
     {
-        return $this->commissionRates->removeElement($commissionRate);
+        return  $this->staff->removeElement($employee);
     }
 
     /**
-     * @return Group
+     * @return JobPosition[]|ArrayCollection
      */
-    public function getGroup()
+    public function getJobPositions()
     {
-        return $this->group;
+        return $this->jobPositions;
     }
 
     /**
-     * @param Group $group
+     * @param JobPosition[]|ArrayCollection $jobPositions
      */
-    public function setGroupe(Group $group)
+    public function setJobPositions($jobPositions)
     {
-        $this->group = $group;
+        $this->jobPositions = $jobPositions;
     }
+
+
+    /**
+     * @param JobPosition $jobPosition
+     * @return $this
+     */
+    public function addJobPosition(JobPosition $jobPosition)
+    {
+        $this->jobPositions->add($jobPosition);
+        return $this;
+    }
+
+    /**
+     * @param JobPosition $jobPosition
+     * @return bool
+     */
+    public function removeJobPosition(JobPosition $jobPosition)
+    {
+        return  $this->jobPositions->removeElement($jobPosition);
+    }
+
 
 
 }

@@ -10,19 +10,28 @@
  *
  */
 
+
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
- * JobPosition.
+ * Class JobPosition
+ * @package AppBundle\Entity
+ *
  *
  * @ORM\Table(name="job_position")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\JobPositionRepository")
+ *
+ * @ORM\HasLifecycleCallbacks()
  */
 class JobPosition
 {
+
+
+
     /**
      * @var int
      *
@@ -30,25 +39,23 @@ class JobPosition
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255)
-     */
-    private $name;
-
-    /**
-     * @var ArrayCollection | Employee[]
-     *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Employee", mappedBy="jobPosition")
+     * @var Employee  [] | ArrayCollection
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Employee", mappedBy="jobPositions")
      */
     private $employees;
 
     /**
-     * Get id.
-     *
+     * JobPosition constructor.
+     */
+    public function __construct()
+    {
+        $this->employees = new ArrayCollection;
+    }
+
+    /**
      * @return int
      */
     public function getId()
@@ -56,29 +63,6 @@ class JobPosition
         return $this->id;
     }
 
-    /**
-     * Set name.
-     *
-     * @param string $name
-     *
-     * @return JobPosition
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name.
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
 
     /**
      * @return Employee[]|ArrayCollection
@@ -89,29 +73,32 @@ class JobPosition
     }
 
     /**
-     * @param $employee
-     *
+     * @param Employee[]|ArrayCollection $employees
+     */
+    public function setEmployees($employees)
+    {
+        $this->employees = $employees;
+    }
+
+    /**
+     * @param Employee $employee
      * @return $this
      */
-    public function addEmployee($employee)
+    public function addEmployee(Employee $employee)
     {
         $this->employees->add($employee);
-
         return $this;
     }
 
     /**
-     * @param $employee
-     *
+     * @param Employee $employee
      * @return bool
      */
-    public function removeEmployee($employee)
+    public function removeEmployee(Employee $employee)
     {
-        return  $this->employees->removeElement($employee);
+        return $this->employees->removeElement($employee);
     }
 
-    public function __toString()
-    {
-        return $this->name;
-    }
+
+
 }

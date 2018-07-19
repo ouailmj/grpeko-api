@@ -16,13 +16,19 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Invoice.
+ * Class Invoice
+ * @package AppBundle\Entity
+ *
  *
  * @ORM\Table(name="invoice")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\InvoiceRepository")
+ *
+ * @ORM\HasLifecycleCallbacks()
  */
 class Invoice
 {
+
+
     /**
      * @var int
      *
@@ -30,19 +36,28 @@ class Invoice
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
-     * @var Company
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company", inversedBy="invoices")
+     * @var Address
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address")
+     * @ORM\JoinColumn(name="address_id", referencedColumnName="id")
      */
-    private $company;
+    private $address;
 
     /**
-     * @var FiscalYear
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\FiscalYear", inversedBy="invoices")
+     * @var Own [] | ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Own", mappedBy="invoice")
      */
-    private $fiscalYear;
+    private $owns;
+
+    /**
+     * @var Payment [] | ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Payment", mappedBy="invoice")
+     */
+    private $payments;
 
     /**
      * @var InvoiceLine [] | ArrayCollection
@@ -56,13 +71,12 @@ class Invoice
      */
     public function __construct()
     {
-        $this->invoiceLines = new ArrayCollection;
+        $this->owns = new ArrayCollection();
+        $this->payments = new ArrayCollection();
+        $this->invoiceLines = new ArrayCollection();
     }
 
-
     /**
-     * Get id.
-     *
      * @return int
      */
     public function getId()
@@ -70,36 +84,40 @@ class Invoice
         return $this->id;
     }
 
+
     /**
-     * @return Company
+     * @return Own[]|ArrayCollection
      */
-    public function getCompany()
+    public function getOwns()
     {
-        return $this->company;
+        return $this->owns;
     }
 
     /**
-     * @param Company $company
+     * @param Own[]|ArrayCollection $owns
      */
-    public function setCompany(Company $company)
+    public function setOwns($owns)
     {
-        $this->company = $company;
+        $this->owns = $owns;
     }
 
     /**
-     * @return FiscalYear
+     * @param Own $own
+     * @return $this
      */
-    public function getFiscalYear(): FiscalYear
+    public function addOwn(Own $own)
     {
-        return $this->fiscalYear;
+        $this->owns->add($own);
+        return $this;
     }
 
     /**
-     * @param FiscalYear $fiscalYear
+     * @param Own $own
+     * @return bool
      */
-    public function setFiscalYear(FiscalYear $fiscalYear)
+    public function removeOwn(Own $own)
     {
-        $this->fiscalYear = $fiscalYear;
+       return $this->owns->removeElement($own);
     }
 
     /**
@@ -118,6 +136,7 @@ class Invoice
         $this->invoiceLines = $invoiceLines;
     }
 
+
     /**
      * @param InvoiceLine $invoiceLine
      * @return $this
@@ -134,7 +153,59 @@ class Invoice
      */
     public function removeInvoiceLine(InvoiceLine $invoiceLine)
     {
-        return $this->invoiceLines->removeElement($invoiceLine);
+       return $this->invoiceLines->removeElement($invoiceLine);
+    }
+
+    /**
+     * @return Payment[]|ArrayCollection
+     */
+    public function getPayments()
+    {
+        return $this->payments;
+    }
+
+    /**
+     * @param Payment[]|ArrayCollection $payments
+     */
+    public function setPayments($payments)
+    {
+        $this->payments = $payments;
+    }
+
+
+    /**
+     * @param Payment $payment
+     * @return $this
+     */
+    public function addPayment(Payment $payment)
+    {
+        $this->payments->add($payment);
+        return $this;
+    }
+
+    /**
+     * @param Payment $payment
+     * @return bool
+     */
+    public function removePayment(Payment $payment)
+    {
+        return $this->payments->removeElement($payment);
+    }
+
+    /**
+     * @return Address
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param Address $address
+     */
+    public function setAddress(Address $address)
+    {
+        $this->address = $address;
     }
 
 
