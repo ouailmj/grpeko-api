@@ -13,17 +13,20 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
- * Class Contact
+ * Class TaxSystem
  * @package AppBundle\Entity
  *
  *
- * @ORM\Table(name="contact")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ContactRepository")
+ *
+ * @ORM\Table(name="tax_system")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TaxSystemRepository")
  *
  * @ORM\HasLifecycleCallbacks()
  */
-class Contact
+class TaxSystem
 {
 
 }

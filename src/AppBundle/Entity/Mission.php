@@ -10,51 +10,51 @@
  *
  */
 
+
 namespace AppBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use ApiPlatform\Core\Annotation\ApiResource;
-use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
- * Mission.
+ * Class Mission
+ * @package AppBundle\Entity
+ *
  *
  * @ORM\Table(name="mission")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MissionRepository")
- * @ApiResource
+ *
+ * @ORM\HasLifecycleCallbacks()
  */
-class Mission extends Product
+class Mission
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @var Mode
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Mode", inversedBy="missions")
      */
-    protected $id;
-
+    private $mode;
 
     /**
      * @var TypeMission
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\TypeMission" ,inversedBy="missions" ,cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\TypeMission", inversedBy="missions")
      */
     private $typeMission;
 
     /**
-     * @var string
-     * @ORM\Column(type = "string")
-     *  @Groups({"type_mission"})
+     * @return Mode
      */
-    private $title;
+    public function getMode()
+    {
+        return $this->mode;
+    }
 
     /**
-     * @var double
-     * @ORM\Column(type = "float")
-     * @Groups({"type_mission"})
+     * @param Mode $mode
      */
-    private $time;
+    public function setMode(Mode $mode)
+    {
+        $this->mode = $mode;
+    }
 
     /**
      * @return TypeMission
@@ -72,35 +72,5 @@ class Mission extends Product
         $this->typeMission = $typeMission;
     }
 
-    /**
-     * @return string
-     */
-    public function getTitle(): string
-    {
-        return $this->title;
-    }
 
-    /**
-     * @param string $title
-     */
-    public function setTitle(string $title)
-    {
-        $this->title = $title;
-    }
-
-    /**
-     * @return float
-     */
-    public function getTime(): float
-    {
-        return $this->time;
-    }
-
-    /**
-     * @param float $time
-     */
-    public function setTime(float $time)
-    {
-        $this->time = $time;
-    }
 }

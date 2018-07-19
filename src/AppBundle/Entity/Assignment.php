@@ -10,130 +10,76 @@
  *
  */
 
+
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
- * Assignment.
+ * Class Assignment
+ * @package AppBundle\Entity
+ *
+ *
  *
  * @ORM\Table(name="assignment")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AssignmentRepository")
+ *
+ * @ORM\HasLifecycleCallbacks()
  */
 class Assignment
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @var TypeMission [] | ArrayCollection
+     * @ORM\ManyToMany(targetEntity="TypeMission", inversedBy="assignments")
      */
-    private $id;
+    private $typeMissions;
 
     /**
-     * @var FiscalYear
-     *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\FiscalYear" ,mappedBy="mainAssignment"))
+     * Assignment constructor.
      */
-    protected $mainFiscalYear;
-
-    /**
-     * @var FiscalYear
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\FiscalYear" ,inversedBy="secondaryAssignments"))
-     */
-    protected $secondaryFiscalYear;
-
-    /**
-     * @var Employee
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Employee" ,inversedBy="assignments"))
-     */
-    protected $employee;
-
-    /**
-     * @var TypeMission
-     *
-     * @ORM\ManyToOne(targetEntity="TypeMission")
-     * @ORM\JoinColumn(name="type_mission_id", referencedColumnName="id")
-     */
-    private $typeMission;
-
-    /**
-     * Get id.
-     *
-     * @return int
-     */
-    public function getId()
+    public function __construct()
     {
-        return $this->id;
+        $this->typeMissions = new ArrayCollection();
     }
 
     /**
-     * @return FiscalYear
+     * @return TypeMission[]|ArrayCollection
      */
-    public function getMainFiscalYear()
+    public function getTypeMissions()
     {
-        return $this->mainFiscalYear;
+        return $this->typeMissions;
     }
 
     /**
-     * @param FiscalYear $mainFiscalYear
+     * @param TypeMission[]|ArrayCollection $typeMissions
      */
-    public function setMainFiscalYear(FiscalYear $mainFiscalYear)
+    public function setTypeMissions($typeMissions)
     {
-        $this->mainFiscalYear = $mainFiscalYear;
+        $this->typeMissions = $typeMissions;
     }
 
     /**
-     * @return FiscalYear
+     * @param TypeMission $typeMission
+     * @return $this
      */
-    public function getSecondaryFiscalYear()
+    public function addTypeMission(TypeMission $typeMission)
     {
-        return $this->secondaryFiscalYear;
+        $this->typeMissions->add($typeMission);
+        return $this;
     }
 
     /**
-     * @param FiscalYear $secondaryFiscalYear
+     * @param TypeMission $typeMission
+     * @return $this
      */
-    public function setSecondaryFiscalYear(FiscalYear $secondaryFiscalYear)
+    public function removeTypeMission(TypeMission $typeMission)
     {
-        $this->secondaryFiscalYear = $secondaryFiscalYear;
+        return  $this->typeMissions->removeElement($typeMission);
     }
 
 
-    /**
-     * @return Employee
-     */
-    public function getEmployee()
-    {
-        return $this->employee;
-    }
-
-    /**
-     * @param Employee $employee
-     */
-    public function setEmployee(Employee $employee)
-    {
-        $this->employee = $employee;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTypeMission()
-    {
-        return $this->typeMission;
-    }
-
-    /**
-     * @param mixed $typeMission
-     */
-    public function setTypeMission($typeMission)
-    {
-        $this->typeMission = $typeMission;
-    }
 
 
 }

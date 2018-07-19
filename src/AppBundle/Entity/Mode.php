@@ -16,38 +16,33 @@ namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
- * Class TypeMission
+ * Class Mode
  * @package AppBundle\Entity
  *
  *
- * @ORM\Table(name="type_mission")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\TypeMissionRepository")
+ *
+ * @ORM\Table(name="mode")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ModeRepository")
  *
  * @ORM\HasLifecycleCallbacks()
  */
-class TypeMission
+class Mode
 {
     /**
      * @var Mission [] | ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Mission", mappedBy="typeMission")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Mission", mappedBy="mode")
      */
     private $missions;
 
     /**
-     * @var Assignment [] | ArrayCollection
-     * @ORM\ManyToMany(targetEntity="Assignment", mappedBy="typeMissions")
-     */
-    private $assignments;
-
-    /**
-     * TypeMission constructor.
+     * Mode constructor.
      */
     public function __construct()
     {
         $this->missions = new ArrayCollection();
-        $this->assignments = new ArrayCollection();
     }
 
 
@@ -84,41 +79,6 @@ class TypeMission
     public function removeMission(Mission $mission)
     {
         return $this->missions->removeElement($mission);
-    }
-
-    /**
-     * @return Assignment[]|ArrayCollection
-     */
-    public function getAssignments()
-    {
-        return $this->assignments;
-    }
-
-    /**
-     * @param Assignment[]|ArrayCollection $assignments
-     */
-    public function setAssignments($assignments)
-    {
-        $this->assignments = $assignments;
-    }
-
-    /**
-     * @param Assignment $assignment
-     * @return $this
-     */
-    public function addAssignment(Assignment $assignment)
-    {
-        $this->assignments->add($assignment);
-        return $this;
-    }
-
-    /**
-     * @param Assignment $assignment
-     * @return bool
-     */
-    public function removeAssignment(Assignment $assignment)
-    {
-        return $this->assignments->removeElement($assignment);
     }
 
 

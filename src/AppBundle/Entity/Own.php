@@ -11,26 +11,27 @@
  */
 
 namespace AppBundle\Entity;
+
+
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-
-
 /**
- * Class InvoiceLine
+ * Class Own
  * @package AppBundle\Entity
  *
  *
- * @ORM\Table(name="invoice_line")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\InvoiceLineRepository")
+ * @ORM\Table(name="own")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\OwnRepository")
  *
  * @ORM\HasLifecycleCallbacks()
  */
-class InvoiceLine
+class Own
 {
 
     /**
      * @var Invoice
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Invoice", inversedBy="inviceLines")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Invoice", inversedBy="owns")
      */
     private $invoice;
 
@@ -49,6 +50,9 @@ class InvoiceLine
     {
         $this->invoice = $invoice;
     }
+
+
+
 
 
 }

@@ -13,17 +13,20 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
- * Class Contact
+ * Class APECode
  * @package AppBundle\Entity
  *
  *
- * @ORM\Table(name="contact")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ContactRepository")
+ * @ORM\Table(name="ape_code")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\APECodeRepository")
  *
  * @ORM\HasLifecycleCallbacks()
  */
-class Contact
+class APECode
 {
+
 
 }

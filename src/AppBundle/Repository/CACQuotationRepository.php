@@ -14,7 +14,9 @@
 namespace AppBundle\Repository;
 
 
-class CompanyRepository extends BaseRepository
+use AppBundle\Entity\JobQuotation;
+
+class CACQuotationRepository extends JobQuotation
 {
 
 }

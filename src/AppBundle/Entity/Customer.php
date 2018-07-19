@@ -10,57 +10,65 @@
  *
  */
 
+
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
- * Customer.
+ * Class Customer
+ * @package AppBundle\Entity
  *
- * @ORM\Table(name="customer")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CustomerRepository")
+ *
+ * @ORM\HasLifecycleCallbacks()
  */
-class Customer extends Person
+class Customer extends Company
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
 
     /**
-     * @var Company
-     *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Company" ,inversedBy="customerAccount" ,cascade={"persist", "remove"}))
+     * @var JobQuotation
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\JobQuotation", inversedBy="customer")
      */
-    protected $company;
+    private $jobQuotation;
 
     /**
-     * @return Company
+     * @var Calendar
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Calendar", inversedBy="customer")
      */
-    public function getCompany()
+    private $calendar;
+
+    /**
+     * @return JobQuotation
+     */
+    public function getJobQuotation()
     {
-        return $this->company;
+        return $this->jobQuotation;
     }
 
     /**
-     * @param Company $company
+     * @param JobQuotation $jobQuotation
      */
-    public function setCompany(Company $company)
+    public function setJobQuotation(JobQuotation $jobQuotation)
     {
-        $this->company = $company;
+        $this->jobQuotation = $jobQuotation;
     }
 
     /**
-     * Get id.
-     *
-     * @return int
+     * @return Calendar
      */
-    public function getId()
+    public function getCalendar()
     {
-        return $this->id;
+        return $this->calendar;
     }
+
+    /**
+     * @param Calendar $calendar
+     */
+    public function setCalendar(Calendar $calendar)
+    {
+        $this->calendar = $calendar;
+    }
+
+
+
+
 }

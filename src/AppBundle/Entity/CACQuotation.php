@@ -13,17 +13,19 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
+
 /**
- * Class Contact
+ * Class CACQuotation
  * @package AppBundle\Entity
  *
  *
- * @ORM\Table(name="contact")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ContactRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CACQuotationRepository")
  *
  * @ORM\HasLifecycleCallbacks()
  */
-class Contact
+class CACQuotation extends JobQuotation
 {
 
 }

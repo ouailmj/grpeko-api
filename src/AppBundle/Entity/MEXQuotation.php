@@ -13,17 +13,17 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
- * Class Contact
+ * Class MEXQuotation
  * @package AppBundle\Entity
  *
- *
- * @ORM\Table(name="contact")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ContactRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\MEXQuotationRepository")
  *
  * @ORM\HasLifecycleCallbacks()
  */
-class Contact
+class MEXQuotation extends JobQuotation
 {
 
 }

@@ -13,17 +13,21 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
+
 /**
- * Class Contact
+ * Class VatSystem
  * @package AppBundle\Entity
  *
  *
- * @ORM\Table(name="contact")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ContactRepository")
+ *
+ * @ORM\Table(name="vat_system")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\VatSystemRepository")
  *
  * @ORM\HasLifecycleCallbacks()
  */
-class Contact
+class VatSystem
 {
 
 }

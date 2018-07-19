@@ -14,7 +14,7 @@
 namespace AppBundle\Repository;
 
 
-class CompanyRepository extends BaseRepository
+class OwnRepository extends BaseRepository
 {
 
 }

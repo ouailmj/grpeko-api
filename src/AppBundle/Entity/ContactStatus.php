@@ -14,16 +14,16 @@
 namespace AppBundle\Entity;
 
 /**
- * Class Contact
+ * Class ContactStatus
  * @package AppBundle\Entity
  *
  *
- * @ORM\Table(name="contact")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ContactRepository")
+ * @ORM\Table(name="contact_status")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ContactStatusRepository")
  *
  * @ORM\HasLifecycleCallbacks()
  */
-class Contact
+class ContactStatus
 {
 
 }
