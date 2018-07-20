@@ -14,6 +14,7 @@ use AppBundle\Form\FiscalDetailsType;
 use AppBundle\Form\FiscalType;
 use AppBundle\Model\ClientManager;
 use AppBundle\Model\ContactManager;
+use AppBundle\Model\Invoice;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -328,5 +329,44 @@ class CompanyController extends BaseController
             ;
     }
 
+    /**
+     * @Route("/invoice/list", name="invoice_list")
+     *
+     */
+    public function listInvoiceAction(Invoice $invoice ,Request $request)
+    {
+
+        return $this->render('invoices/list.html.twig');
+    }
+
+    /**
+     * @Route("/invoice/new", name="invoice_new")
+     *
+     */
+    public function newInvoiceAction(Invoice $invoice ,Request $request)
+    {
+
+        return $this->render('invoices/new.html.twig');
+    }
+
+    /**
+     * @Route("/invoice/edit/{id}", name="invoice_edit")
+     *
+     */
+    public function editInvoiceAction(Invoice $invoice ,Request $request)
+    {
+
+        return $this->render('invoices/edit.html.twig');
+    }
+
+    /**
+     * @Route("/invoice/avoir/new", name="avoir_new")
+     *
+     */
+    public function newAvoirAction(Invoice $invoice ,Request $request)
+    {
+
+        return $this->render('invoices/avoir.html.twig');
+    }
 
 }

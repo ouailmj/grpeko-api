@@ -1,0 +1,123 @@
+{% extends 'company/company.html.twig' %}
+{% block _content %}
+
+
+
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h5 class="panel-title">Création d'un avoir<a class="heading-elements-toggle"><i class="icon-more"></i></a></h5>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li><a data-action="collapse"></a></li>
+                    <li><a data-action="reload"></a></li>
+                    <li><a data-action="close"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="panel-body">
+            <form method="post" action={{ path('rendezvous_new') }}>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-2" >
+                            Client
+                        </div>
+                        <div class="col-lg-5">
+                            <select>
+                                <option>CC0001 ACONITER</option>
+                                <option>CC0002 ELMO</option>
+                                <option>CC0003 SGEI</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-2" >
+                            Facture
+                        </div>
+                        <div class="col-lg-5">
+                            <select>
+                                <option>01/01/2016-31/12/2016</option>
+                                <option>01/01/2017-31/12/2017</option>
+                                <option>01/01/2018-31/12/2018</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-2" >
+                            Date de cloture
+                        </div>
+                        <div class="col-lg-5">
+                            <input type="text" class="french_picker form-control picker__input picker__input--active" name="datefin" placeholder="16/07/2018" required>
+
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-2" >
+                            Date de l'avoir
+                        </div>
+                        <div class="col-lg-5">
+                            <input type="text" class="french_picker form-control picker__input picker__input--active" name="datefin" placeholder="16/07/2018" required>
+
+                        </div>
+                    </div>
+                    <br>
+
+                    <fieldset class="scheduler-border">
+
+                        <legend class="scheduler-border" style="text-transform: capitalize">Détail (indiquer les montants en négatif)</legend>
+
+                        <div class="row">
+                            <div class="col-lg-2" >
+                                Libellé
+                            </div>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" value="Avoir sur facture n° 01/01/2016-31/12/2016">
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-lg-2" >
+                                Catégorie
+                            </div>
+                            <div class="col-lg-5">
+                                <select>
+                                    <option>ADMIN</option>
+                                    <option>CAC</option>
+                                    <option>COMPTA</option>
+                                    <option>CONSEIL</option>
+                                    <option>DOM</option>
+                                    <option>JURID</option>
+                                    <option>MEX</option>
+                                    <option>REDUC</option>
+                                    <option>REVST</option>
+                                    <option>SOCIAL</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-2" >
+                                Montant HT
+                            </div>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" value="-2254,40€">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <div class="form-group" style="float: right">
+                        <div class="row">
+                            <button type="submit" class="btn-success btn legitRipple">Annuler<span class="legitRipple-ripple"></span></button>
+                            <button type="submit" class="btn-success btn legitRipple">Valider<span class="legitRipple-ripple"></span></button>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
