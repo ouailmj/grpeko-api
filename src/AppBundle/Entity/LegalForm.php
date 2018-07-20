@@ -29,27 +29,15 @@ class LegalForm
 {
 
     /**
-     * LegalForm constructor.
-     */
-    public function __construct()
-    {
-        $this->fiscalYears = new  ArrayCollection();
-    }
-
-    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255, nullable=true)
-     */
-    private $name;
+    protected $id;
+
+
     /**
      * @var FiscalYear [] | ArrayCollection
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\FiscalYear", mappedBy="legalForm")
@@ -57,35 +45,64 @@ class LegalForm
     private $fiscalYears;
 
     /**
+     * @var Company [] | ArrayCollection
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Company", mappedBy="legalForm")
+     */
+    private $companies;
+
+
+    /**
+     * LegalForm constructor.
+     */
+    public function __construct()
+    {
+        $this->companies = new ArrayCollection();
+        $this->fiscalYears = new  ArrayCollection();
+    }
+
+    /**
      * @return int
      */
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }
 
+
+
     /**
-     * @param int $id
+     * @return Company[]|ArrayCollection
      */
-    public function setId(int $id)
+    public function getCompanies()
     {
-        $this->id = $id;
+        return $this->companies;
     }
 
     /**
-     * @return string
+     * @param Company[]|ArrayCollection $companies
      */
-    public function getName(): string
+    public function setCompanies($companies)
     {
-        return $this->name;
+        $this->companies = $companies;
     }
 
     /**
-     * @param string $name
+     * @param Company $company
+     * @return $this
      */
-    public function setName(string $name)
+    public function addCompany(Company $company)
     {
-        $this->name = $name;
+        $this->companies->add($company);
+        return $this;
+    }
+
+    /**
+     * @param Company $company
+     * @return bool
+     */
+    public function removeCompany(Company $company)
+    {
+        return $this->companies->removeElement($company);
     }
 
     /**
@@ -122,7 +139,5 @@ class LegalForm
     {
         return $this->fiscalYears->removeElement($fiscalYear);
     }
-
-
 
 }

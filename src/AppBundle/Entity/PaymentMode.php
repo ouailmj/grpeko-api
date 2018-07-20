@@ -24,6 +24,17 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class PaymentMode
 {
+
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
     /**
      * @var Payment [] | ArrayCollection
      *
@@ -39,11 +50,18 @@ class PaymentMode
         $this->payments = new ArrayCollection();
     }
 
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * @return Payment[]|ArrayCollection
      */
-    public function getPayment()
+    public function getPayments()
     {
         return $this->payments;
     }
@@ -51,7 +69,7 @@ class PaymentMode
     /**
      * @param Payment[]|ArrayCollection $payment
      */
-    public function setPayment($payment)
+    public function setPayments($payment)
     {
         $this->payments = $payment;
     }

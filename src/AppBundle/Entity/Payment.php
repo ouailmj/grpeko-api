@@ -27,6 +27,17 @@ use Doctrine\ORM\Mapping as ORM;
 class Payment
 {
 
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+
     /**
      * @var Invoice
      *
@@ -37,9 +48,18 @@ class Payment
     /**
      * @var PaymentMode
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\PaymentMode", inversedBy="paymentMode")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\PaymentMode", inversedBy="payments")
      */
     private $paymentMode;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
 
     /**
      * @return Invoice
@@ -72,9 +92,5 @@ class Payment
     {
         $this->paymentMode = $paymentMode;
     }
-
-
-
-
 
 }

@@ -28,15 +28,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Invoice
 {
 
-    /**
-     * Invoice constructor.
-     */
-    public function __construct()
-    {
-        $this->owns = new ArrayCollection();
-        $this->payments = new ArrayCollection();
-        $this->invoiceLines = new ArrayCollection();
-    }
 
     /**
      * @var int
@@ -45,7 +36,8 @@ class Invoice
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
+
     /**
      * @var Address
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address")
@@ -75,19 +67,21 @@ class Invoice
     private $invoiceLines;
 
     /**
-     * @return int
+     * Invoice constructor.
      */
-    public function getId(): int
+    public function __construct()
     {
-        return $this->id;
+        $this->owns = new ArrayCollection();
+        $this->payments = new ArrayCollection();
+        $this->invoiceLines = new ArrayCollection();
     }
 
     /**
-     * @param int $id
+     * @return int
      */
-    public function setId(int $id)
+    public function getId()
     {
-        $this->id = $id;
+        return $this->id;
     }
 
 

@@ -12,6 +12,7 @@
 
 
 namespace AppBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class ContactStatus
@@ -25,6 +26,8 @@ namespace AppBundle\Entity;
  */
 class ContactStatus
 {
+
+
     /**
      * @var int
      *
@@ -32,34 +35,29 @@ class ContactStatus
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
+
+    /**
+     * @var Contact
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Contact", mappedBy="contactStatus")
+     */
+    private $contact;
+
+    /**
+     * @var Customer
+     * @ORM\ManyToOne(targetEntity="Customer", inversedBy="contactsStatus")
+     */
+    private $customer;
     /**
      * @var string
      *
      * @ORM\Column(name="status", type="string", length=255)
      */
     private $status;
-
-    /**
-     * @return int
-     */
-    public function getId(): int
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId(int $id)
-    {
-        $this->id = $id;
-    }
-
     /**
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus()
     {
         return $this->status;
     }
@@ -70,6 +68,47 @@ class ContactStatus
     public function setStatus(string $status)
     {
         $this->status = $status;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+
+    /**
+     * @return Contact
+     */
+    public function getContact()
+    {
+        return $this->contact;
+    }
+
+    /**
+     * @param Contact $contact
+     */
+    public function setContact(Contact $contact)
+    {
+        $this->contact = $contact;
+    }
+
+    /**
+     * @return Customer
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
+    }
+
+    /**
+     * @param Customer $customer
+     */
+    public function setCustomer(Customer $customer)
+    {
+        $this->customer = $customer;
     }
 
 

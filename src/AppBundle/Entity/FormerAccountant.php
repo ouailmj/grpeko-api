@@ -13,23 +13,21 @@
 
 namespace AppBundle\Entity;
 
-
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
- * Class JobType
+ * Class FormerAccountant
  * @package AppBundle\Entity
  *
- *
- * @ORM\Table(name="job_type")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\JobTypeRepository")
+ * @ORM\Table(name="former_accountant")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\FormerAccountantRepository")
  *
  * @ORM\HasLifecycleCallbacks()
  */
-class JobType
+class FormerAccountant
 {
-
 
 
     /**
@@ -42,18 +40,10 @@ class JobType
     protected $id;
 
     /**
-     * @var Job [] | ArrayCollection
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Job", mappedBy="jobType")
+     * @var Customer [] | ArrayCollection
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Customer", mappedBy="formerAccountant")
      */
-    private $jobs;
-
-    /**
-     * JobType constructor.
-     */
-    public function __construct()
-    {
-        $this->jobs = new ArrayCollection();
-    }
+    private $customers;
 
     /**
      * @return int
@@ -64,40 +54,39 @@ class JobType
     }
 
 
-
     /**
-     * @return Job[]|ArrayCollection
+     * @return Customer[]|ArrayCollection
      */
-    public function getJobs()
+    public function getCustomers()
     {
-        return $this->jobs;
+        return $this->customers;
     }
 
     /**
-     * @param Job $jobs
+     * @param Customer[]|ArrayCollection $customers
      */
-    public function setJobs(Job $jobs)
+    public function setCustomers($customers)
     {
-        $this->jobs = $jobs;
+        $this->customers = $customers;
     }
 
     /**
-     * @param Job $job
+     * @param Customer $customer
      * @return $this
      */
-    public function addJob(Job $job)
+    public function addCustomer(Customer $customer)
     {
-        $this->jobs->add($job);
+        $this->customers->add($customer);
         return $this;
     }
 
     /**
-     * @param Job $job
-     * @return bool
+     * @param Customer $customer
+     * @return $this
      */
-    public function removeJob(Job $job)
+    public function removeCustomer(Customer $customer)
     {
-        return $this->jobs->removeElement($job);
+        return $this->customers->removeElement($customer);
     }
 
 }

@@ -26,6 +26,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class QuotationLine
 {
+
+
     /**
      * @var int
      *
@@ -33,7 +35,8 @@ class QuotationLine
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
+
     /**
      * @var ECQuotation
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ECQuotation", inversedBy="quotationLines")
@@ -46,6 +49,15 @@ class QuotationLine
      * @ORM\JoinColumn(name="mission_id", referencedColumnName="id")
      */
     private $mission;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
 
     /**
      * @return ECQuotation

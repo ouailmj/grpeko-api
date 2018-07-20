@@ -13,21 +13,21 @@
 
 namespace AppBundle\Entity;
 
-
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class JobType
+ * Class Journal
  * @package AppBundle\Entity
  *
  *
- * @ORM\Table(name="job_type")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\JobTypeRepository")
+ *
+ * @ORM\Table(name="journal")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\JournalRepository")
  *
  * @ORM\HasLifecycleCallbacks()
  */
-class JobType
+class Journal
 {
 
 
@@ -42,17 +42,17 @@ class JobType
     protected $id;
 
     /**
-     * @var Job [] | ArrayCollection
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Job", mappedBy="jobType")
+     * @var BankAccount [] | ArrayCollection
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\BankAccount", mappedBy="journal")
      */
-    private $jobs;
+    private $bankAccounts;
 
     /**
-     * JobType constructor.
+     * Bank constructor.
      */
     public function __construct()
     {
-        $this->jobs = new ArrayCollection();
+        $this->bankAccounts = new ArrayCollection();
     }
 
     /**
@@ -64,40 +64,39 @@ class JobType
     }
 
 
-
     /**
-     * @return Job[]|ArrayCollection
+     * @return BankAccount[]|ArrayCollection
      */
-    public function getJobs()
+    public function getBankAccounts()
     {
-        return $this->jobs;
+        return $this->bankAccounts;
     }
 
     /**
-     * @param Job $jobs
+     * @param BankAccount[]|ArrayCollection $bankAccounts
      */
-    public function setJobs(Job $jobs)
+    public function setBankAccounts($bankAccounts)
     {
-        $this->jobs = $jobs;
+        $this->bankAccounts = $bankAccounts;
     }
 
     /**
-     * @param Job $job
+     * @param BankAccount $bankAccount
      * @return $this
      */
-    public function addJob(Job $job)
+    public function addBankAccount(BankAccount $bankAccount)
     {
-        $this->jobs->add($job);
+        $this->bankAccounts->add($bankAccount);
         return $this;
     }
 
     /**
-     * @param Job $job
+     * @param BankAccount $bankAccount
      * @return bool
      */
-    public function removeJob(Job $job)
+    public function removeBankAccount(BankAccount $bankAccount)
     {
-        return $this->jobs->removeElement($job);
+        return $this->bankAccounts->removeElement($bankAccount);
     }
 
 }

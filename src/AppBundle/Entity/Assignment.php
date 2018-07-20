@@ -30,11 +30,42 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Assignment
 {
+
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
     /**
      * @var TypeMission [] | ArrayCollection
      * @ORM\ManyToMany(targetEntity="TypeMission", inversedBy="assignments")
      */
     private $typeMissions;
+
+    /**
+     * @var FiscalYear
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\FiscalYear", mappedBy="mainAssignment")
+     */
+    private $mainFiscalYear;
+
+    /**
+     * @var FiscalYear
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\FiscalYear", inversedBy="secondaryAssignments")
+     *
+     */
+    private $secondaryFiscalYear;
+
+    /**
+     * @var Employee
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Employee", inversedBy="assignments")
+     */
+    private $employee;
 
     /**
      * Assignment constructor.
@@ -43,41 +74,15 @@ class Assignment
     {
         $this->typeMissions = new ArrayCollection();
     }
+
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
-    /**
-     * @var FiscalYear
-     *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\FiscalYear" ,mappedBy="mainAssignment"))
-     */
-    protected $mainFiscalYear;
-    /**
-     * @var FiscalYear
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\FiscalYear" ,inversedBy="secondaryAssignments"))
-     */
-    protected $secondaryFiscalYear;
-    /**
-     * @var Employee
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Employee" ,inversedBy="assignments"))
-     */
-    protected $employee;
-    /**
-     * Get id.
-     *
      * @return int
      */
     public function getId()
     {
         return $this->id;
     }
+
 
     /**
      * @return TypeMission[]|ArrayCollection
@@ -94,48 +99,7 @@ class Assignment
     {
         $this->typeMissions = $typeMissions;
     }
-    /**
-     * @return FiscalYear
-     */
-    public function getMainFiscalYear()
-    {
-        return $this->mainFiscalYear;
-    }
-    /**
-     * @param FiscalYear $mainFiscalYear
-     */
-    public function setMainFiscalYear(FiscalYear $mainFiscalYear)
-    {
-        $this->mainFiscalYear = $mainFiscalYear;
-    }
-    /**
-     * @return FiscalYear
-     */
-    public function getSecondaryFiscalYear()
-    {
-        return $this->secondaryFiscalYear;
-    }
-    /**
-     * @param FiscalYear $secondaryFiscalYear
-     */
-    public function setSecondaryFiscalYear(FiscalYear $secondaryFiscalYear)
-    {
-        $this->secondaryFiscalYear = $secondaryFiscalYear;
-    }
-    /**
-     * @return Employee
-     */
-    public function getEmployee()
-    {
-        return $this->employee;
-    }
-    /**
-     * @param Employee $employee
-     */
-    public function setEmployee(Employee $employee)
-    {
-        $this->employee = $employee;
-    }
+
     /**
      * @param TypeMission $typeMission
      * @return $this
@@ -154,4 +118,56 @@ class Assignment
     {
         return  $this->typeMissions->removeElement($typeMission);
     }
+
+    /**
+     * @return FiscalYear
+     */
+    public function getMainFiscalYear()
+    {
+        return $this->mainFiscalYear;
+    }
+
+    /**
+     * @param FiscalYear $mainFiscalYear
+     */
+    public function setMainFiscalYear(FiscalYear $mainFiscalYear)
+    {
+        $this->mainFiscalYear = $mainFiscalYear;
+    }
+
+    /**
+     * @return FiscalYear
+     */
+    public function getSecondaryFiscalYear()
+    {
+        return $this->secondaryFiscalYear;
+    }
+
+    /**
+     * @param FiscalYear $secondaryFiscalYear
+     */
+    public function setSecondaryFiscalYear(FiscalYear $secondaryFiscalYear)
+    {
+        $this->secondaryFiscalYear = $secondaryFiscalYear;
+    }
+
+    /**
+     * @return Employee
+     */
+    public function getEmployee()
+    {
+        return $this->employee;
+    }
+
+    /**
+     * @param Employee $employee
+     */
+    public function setEmployee(Employee $employee)
+    {
+        $this->employee = $employee;
+    }
+
+
+
+
 }

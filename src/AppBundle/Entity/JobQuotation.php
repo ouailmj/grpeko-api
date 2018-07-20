@@ -26,7 +26,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\DiscriminatorColumn(name="discr", type="string")
  * @ORM\DiscriminatorMap({
  *     "job_quotation"="JobQuotation",
- *     "ec_quotation"="ECbQuotation",
+ *     "ec_quotation"="ECQuotation",
  *     "mex_quotation"="MEXQuotation",
  *     "cac_quotation"="CACQuotation",
  *     })
@@ -35,6 +35,17 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class JobQuotation
 {
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+
     /**
      * @var Job
      *
@@ -44,9 +55,19 @@ class JobQuotation
 
     /**
      * @var Customer
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Customer", mappedBy="jobQuotation")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Customer", inversedBy="jobQuotations")
      */
     private $customer;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+
 
     /**
      * @return Job

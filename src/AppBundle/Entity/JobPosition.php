@@ -16,18 +16,20 @@ namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
- * Class APECode
+ * Class JobPosition
  * @package AppBundle\Entity
  *
  *
- * @ORM\Table(name="ape_code")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\APECodeRepository")
+ * @ORM\Table(name="job_position")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\JobPositionRepository")
  *
  * @ORM\HasLifecycleCallbacks()
  */
-class APECode
+class JobPosition
 {
+
 
 
     /**
@@ -40,17 +42,17 @@ class APECode
     protected $id;
 
     /**
-     * @var Company [] | ArrayCollection
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Company", mappedBy="apeCode")
+     * @var Employee  [] | ArrayCollection
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Employee", mappedBy="jobPositions")
      */
-    private $companies;
+    private $employees;
 
     /**
-     * APECode constructor.
+     * JobPosition constructor.
      */
     public function __construct()
     {
-        $this->companies = new ArrayCollection();
+        $this->employees = new ArrayCollection;
     }
 
     /**
@@ -62,39 +64,41 @@ class APECode
     }
 
 
-
     /**
-     * @return Company[]|ArrayCollection
+     * @return Employee[]|ArrayCollection
      */
-    public function getCompanies()
+    public function getEmployees()
     {
-        return $this->companies;
+        return $this->employees;
     }
 
     /**
-     * @param Company[]|ArrayCollection $companies
+     * @param Employee[]|ArrayCollection $employees
      */
-    public function setCompanies($companies)
+    public function setEmployees($employees)
     {
-        $this->companies = $companies;
+        $this->employees = $employees;
     }
 
     /**
-     * @param Company $company
+     * @param Employee $employee
      * @return $this
      */
-    public function addCompany(Company $company)
+    public function addEmployee(Employee $employee)
     {
-        $this->companies->add($company);
+        $this->employees->add($employee);
         return $this;
     }
 
     /**
-     * @param Company $company
+     * @param Employee $employee
      * @return bool
      */
-    public function removeCompany(Company $company)
+    public function removeEmployee(Employee $employee)
     {
-        return $this->companies->removeElement($company);
+        return $this->employees->removeElement($employee);
     }
+
+
+
 }

@@ -29,11 +29,31 @@ use Doctrine\ORM\Mapping as ORM;
 class Own
 {
 
+
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
     /**
      * @var Invoice
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Invoice", inversedBy="owns")
      */
     private $invoice;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
 
     /**
      * @return Invoice
@@ -50,9 +70,5 @@ class Own
     {
         $this->invoice = $invoice;
     }
-
-
-
-
 
 }

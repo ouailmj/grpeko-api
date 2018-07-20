@@ -17,16 +17,16 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class APECode
+ * Class Bank
  * @package AppBundle\Entity
  *
  *
- * @ORM\Table(name="ape_code")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\APECodeRepository")
+ * @ORM\Table(name="bank")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\BankRepository")
  *
  * @ORM\HasLifecycleCallbacks()
  */
-class APECode
+class Bank
 {
 
 
@@ -40,17 +40,17 @@ class APECode
     protected $id;
 
     /**
-     * @var Company [] | ArrayCollection
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Company", mappedBy="apeCode")
+     * @var BankAccount [] | ArrayCollection
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\BankAccount", mappedBy="bank")
      */
-    private $companies;
+    private $bankAccounts;
 
     /**
-     * APECode constructor.
+     * Bank constructor.
      */
     public function __construct()
     {
-        $this->companies = new ArrayCollection();
+        $this->bankAccounts = new ArrayCollection();
     }
 
     /**
@@ -61,40 +61,41 @@ class APECode
         return $this->id;
     }
 
-
-
     /**
-     * @return Company[]|ArrayCollection
+     * @return BankAccount[]|ArrayCollection
      */
-    public function getCompanies()
+    public function getBankAccounts()
     {
-        return $this->companies;
+        return $this->bankAccounts;
     }
 
     /**
-     * @param Company[]|ArrayCollection $companies
+     * @param BankAccount[]|ArrayCollection $bankAccounts
      */
-    public function setCompanies($companies)
+    public function setBankAccounts($bankAccounts)
     {
-        $this->companies = $companies;
+        $this->bankAccounts = $bankAccounts;
     }
 
     /**
-     * @param Company $company
+     * @param BankAccount $bankAccount
      * @return $this
      */
-    public function addCompany(Company $company)
+    public function addBankAccount(BankAccount $bankAccount)
     {
-        $this->companies->add($company);
+        $this->bankAccounts->add($bankAccount);
         return $this;
     }
 
     /**
-     * @param Company $company
+     * @param BankAccount $bankAccount
      * @return bool
      */
-    public function removeCompany(Company $company)
+    public function removeBankAccount(BankAccount $bankAccount)
     {
-        return $this->companies->removeElement($company);
+       return $this->bankAccounts->removeElement($bankAccount);
     }
+
+
+
 }
