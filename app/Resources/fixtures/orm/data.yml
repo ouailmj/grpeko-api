@@ -250,7 +250,7 @@ AppBundle\Entity\Mission:
         title: 'Conseils'
         time: 1.00
 
-AppBundle\Entity\TransmissionMode:
+AppBundle\Entity\Mode:
     transmission_mode_0:
         price: 50
         mode: Papier

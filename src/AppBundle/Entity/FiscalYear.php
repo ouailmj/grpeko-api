@@ -38,7 +38,9 @@ class FiscalYear
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
     /**
+     * @var Mode
      * @var \DateTime
      *
      * @ORM\Column(name="startDate", type="datetimetz",nullable=true)
@@ -58,15 +60,32 @@ class FiscalYear
      */
     private $mode;
 
-    protected $status;
     /**
      * @var LegalForm
      * @ORM\ManyToOne(targetEntity="LegalForm", inversedBy="fiscalYears")
      *
      */
     private $legalForm;
-
-    protected $year;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer",nullable=true)
+     */
+    private $year;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="status", type="string", length=10,nullable=true)
+     */
+    private $status;
+    /**
+     * Regime d'imposition.
+     *
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $taxationRegime;
     /**
      * @var TaxSystem
      * @ORM\ManyToOne(targetEntity="TaxSystem", inversedBy="fiscalYears")
@@ -74,7 +93,6 @@ class FiscalYear
      */
     private $taxSystem;
 
-    protected $taxationRegime;
     /**
      * @var VatSystem
      * @ORM\ManyToOne(targetEntity="VatSystem", inversedBy="fiscalYears")
@@ -275,6 +293,7 @@ class FiscalYear
     {
         return $this->secondaryAssignments->removeElement($secondaryAssignment);
     }
+
 
 
 

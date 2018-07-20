@@ -28,6 +28,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Address
 {
+
     /**
      * @var int
      *
@@ -36,6 +37,7 @@ class Address
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
     /**
      * @var string
      *
@@ -95,6 +97,8 @@ class Address
     {
         return $this->id;
     }
+
+
     /**
      * @return string
      */

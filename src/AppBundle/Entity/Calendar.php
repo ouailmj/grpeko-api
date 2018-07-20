@@ -29,6 +29,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Calendar
 {
+
+
     /**
      * @var int
      *
@@ -36,7 +38,13 @@ class Calendar
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
+
+    /**
+     * @var Customer
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Customer", mappedBy="calendar")
+     */
+    private $customer;
 
     /**
      * @return int
@@ -45,20 +53,6 @@ class Calendar
     {
         return $this->id;
     }
-
-    /**
-     * @param int $id
-     */
-    public function setId(int $id)
-    {
-        $this->id = $id;
-    }
-    /**
-     * @var Customer
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Customer", mappedBy="calendar")
-     */
-
-    private $customer;
 
     /**
      * @return Customer

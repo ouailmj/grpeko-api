@@ -52,17 +52,16 @@ class Mission
      */
     private $title;
     /**
+     * @var TypeMission
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\TypeMission", inversedBy="missions")
+     */
+    private $typeMission;
+    /**
      * @var double
      * @ORM\Column(type = "float")
      * @Groups({"type_mission"})
      */
     private $time;
-    /**
-     * @var TypeMission
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\TypeMission", inversedBy="missions")
-     */
-    private $typeMission;
-
     /**
      * @return int
      */
@@ -103,6 +102,7 @@ class Mission
     {
         $this->typeMission = $typeMission;
     }
+
 
     /**
      * @return float

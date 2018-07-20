@@ -13,6 +13,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 
@@ -35,19 +36,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Company
 {
 
-    /**
-     * Company constructor.
-     */
-    public function __construct()
-    {
-        $this->oldAddresses = new ArrayCollection();
-        $this->fiscalYears = new ArrayCollection();
-        $this->contacts = new ArrayCollection();
-        $this->otherPhoneNumbers = new ArrayCollection();
-        $this->quotations = new ArrayCollection();
-        $this->quotationLines = new ArrayCollection();
-        $this->invoices = new ArrayCollection();
-    }
+
 
     /**
      * @var int
@@ -56,52 +45,81 @@ class Company
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var APECode
-     * @ORM\ManyToOne(targetEntity="APECode")
-     * @ORM\JoinColumn(name="ape_code_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="APECode", inversedBy="companies")
      */
     private $apeCode;
+
     /**
      * @var LegalForm
-     * @ORM\ManyToOne(targetEntity="LegalForm")
-     * @ORM\JoinColumn(name="legal_form_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="LegalForm", inversedBy="companies")
      */
     private $legalForm;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @var TaxSystem
+     * @ORM\ManyToOne(targetEntity="TaxSystem", inversedBy="companies")
      */
-    protected $legalName;
+    private $taxSystem;
+
     /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @var VatSystem
+     * @ORM\ManyToOne(targetEntity="VatSystem", inversedBy="companies")
      */
-    protected $phoneNumber;
+    private $vatSystem;
+
+    /**
+     * @var Address [] | ArrayCollection
+     * @ORM\ManyToMany(targetEntity="Address")
+     * @ORM\JoinTable(name="company_address",
+     *      joinColumns={@ORM\JoinColumn(name="company_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="address_id", referencedColumnName="id", unique=true)}
+     *      )
+     */
+    private $oldAddresses;
+
+    /**
+     * @var Address
+     *
+     * @ORM\OneToOne(targetEntity="Address")
+     * @ORM\JoinColumn(name="current_address_id", referencedColumnName="id")
+     */
+    private $currentAddress;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    protected $faxNumber;
+    private $legalName;
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $phoneNumber;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $faxNumber;
     /**
      * @var array
      *
      * @ORM\Column(type="array", nullable=true)
      */
-    protected $otherPhoneNumbers = [];
+    private $otherPhoneNumbers = [];
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=10, nullable=true)
      */
-    protected $postalCode;
+    private $postalCode;
     /**
      * Regime d'imposition.
      *
@@ -109,23 +127,8 @@ class Company
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    protected $taxationRegime;
-    /**
-     * Regime TVA.
-     *
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $vatSystem;
-    /**
-     * Regime Fiscal.
-     *
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $taxSystem;
+    private $taxationRegime;
+
     /**
      * Activite principale.
      *
@@ -133,37 +136,37 @@ class Company
      *
      * @ORM\Column(type="text", nullable=true)
      */
-    protected $mainActivity;
+    private $mainActivity;
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    protected $socialReason;
+    private $socialReason;
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    protected $code;
+    private $code;
     /**
      * @var CustomerStatus
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\CustomerStatus" ,mappedBy="company" ,cascade={"persist", "remove"}))
      */
-    protected $customerStatus;
+    private $customerStatus;
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    protected $relation;
+    private $relation;
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      */
-    protected $siretNumber;
+    private $siretNumber;
     /**
      * TVA intra communautaire.
      *
@@ -171,13 +174,13 @@ class Company
      *
      * @ORM\Column(type="float", nullable=true)
      */
-    protected $intraCommunityVAT;
+    private $intraCommunityVAT;
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      */
-    protected $sirenNumber;
+    private $sirenNumber;
     /**
      * Nombre d'actions ou parts sociales.
      *
@@ -185,7 +188,7 @@ class Company
      *
      * @ORM\Column(type="integer", nullable=true)
      */
-    protected $nbActions;
+    private $nbActions;
     /**
      * capital social.
      *
@@ -193,85 +196,23 @@ class Company
      *
      * @ORM\Column(type="integer", nullable=true)
      */
-    protected $capitalSocial;
+    private $capitalSocial;
     /**
-     * @var Address
-     *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address", cascade={"persist", "remove"})
-     *
-     * @ORM\JoinColumn(name="current_address_id", referencedColumnName="id")
+     * Company constructor.
      */
-    protected $currentAddress;
+    public function __construct()
+    {
+        $this->oldAddresses = new ArrayCollection();
+    }
+
     /**
-     * @var Address
-     *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address", cascade={"persist", "remove"})
-     *
-     * @ORM\JoinColumn(name="siege_address_id", referencedColumnName="id")
+     * @return int
      */
-    protected $siegeAddress;
-    /**
-     * @var Address[] | ArrayCollection
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Address", cascade={"persist", "remove"})
-     *
-     * @ORM\JoinTable(name="company_address",
-     *      joinColumns={@ORM\JoinColumn(name="company_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="address_id", referencedColumnName="id")}
-     *      )
-     */
-    protected $oldAddresses;
-    /**
-     * @var Contact[] | ArrayCollection
-     * @Assert\Valid
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Contact" ,mappedBy="company" ,cascade={"persist", "remove"}))
-     */
-    protected $contacts;
-    /**
-     * @var FiscalYear[] | ArrayCollection
-     *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\FiscalYear" ,mappedBy="company" ,cascade={"persist", "remove"})
-     */
-    protected $fiscalYears;
-    /**
-     * @var Customer
-     *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Customer" ,mappedBy="company" ,cascade={"persist", "remove"}))
-     */
-    protected $customerAccount;
-    /**
-     * Ancien Expert-comptable.
-     *
-     * @var FormerAccountant
-     *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\FormerAccountant", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="former_accountant_id", referencedColumnName="id")
-     */
-    protected $formerAccountant;
-    /**
-     * @var Rendezvous
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Rendezvous", mappedBy="company", cascade={"persist", "remove"})
-     *
-     */
-    private $rendezvous;
-    /**
-     * @var Quotation [] | ArrayCollection
-     *
-     * @ORM\OneToMany(targetEntity="Quotation", mappedBy="company")
-     */
-    private $quotations;
-    /**
-     * @var QuotationLine [] | ArrayCollection
-     *
-     * @ORM\OneToMany(targetEntity="QuotationLine",  mappedBy="company")
-     */
-    private $quotationLines;
-    /**
-     * @var Invoice [] | ArrayCollection
-     *
-     * @ORM\OneToMany(targetEntity="Invoice", mappedBy="company")
-     */
-    private $invoices;
+    public function getId()
+    {
+        return $this->id;
+    }
+
 
     /**
      * @return APECode
@@ -306,307 +247,38 @@ class Company
     }
 
     /**
-     * @return int
+     * @return Address[]|ArrayCollection
      */
-    public function getId()
+    public function getOldAddresses()
     {
-        return $this->id;
+        return $this->oldAddresses;
     }
 
     /**
-     * @param int $id
+     * @param Address[]|ArrayCollection $oldAddresses
      */
-    public function setId(int $id)
+    public function setOldAddresses($oldAddresses)
     {
-        $this->id = $id;
+        $this->oldAddresses = $oldAddresses;
     }
 
     /**
-     * @return string
+     * @param Address $oldAddress
+     * @return $this
      */
-    public function getLegalName()
+    public function addOldAddress(Address $oldAddress)
     {
-        return $this->legalName;
+        $this->oldAddresses->add($oldAddress);
+        return $this;
     }
 
     /**
-     * @param string $legalName
+     * @param Address $oldAddress
+     * @return bool
      */
-    public function setLegalName(string $legalName)
+    public function removeOldAddress(Address $oldAddress)
     {
-        $this->legalName = $legalName;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPhoneNumber()
-    {
-        return $this->phoneNumber;
-    }
-
-    /**
-     * @param string $phoneNumber
-     */
-    public function setPhoneNumber(string $phoneNumber)
-    {
-        $this->phoneNumber = $phoneNumber;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFaxNumber()
-    {
-        return $this->faxNumber;
-    }
-
-    /**
-     * @param string $faxNumber
-     */
-    public function setFaxNumber(string $faxNumber)
-    {
-        $this->faxNumber = $faxNumber;
-    }
-
-    /**
-     * @return array
-     */
-    public function getOtherPhoneNumbers()
-    {
-        return $this->otherPhoneNumbers;
-    }
-
-    /**
-     * @param array $otherPhoneNumbers
-     */
-    public function setOtherPhoneNumbers(array $otherPhoneNumbers)
-    {
-        $this->otherPhoneNumbers = $otherPhoneNumbers;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPostalCode()
-    {
-        return $this->postalCode;
-    }
-
-    /**
-     * @param string $postalCode
-     */
-    public function setPostalCode(string $postalCode)
-    {
-        $this->postalCode = $postalCode;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTaxationRegime()
-    {
-        return $this->taxationRegime;
-    }
-
-    /**
-     * @param string $taxationRegime
-     */
-    public function setTaxationRegime(string $taxationRegime)
-    {
-        $this->taxationRegime = $taxationRegime;
-    }
-
-    /**
-     * @return string
-     */
-    public function getVatSystem()
-    {
-        return $this->vatSystem;
-    }
-
-    /**
-     * @param string $vatSystem
-     */
-    public function setVatSystem(string $vatSystem)
-    {
-        $this->vatSystem = $vatSystem;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTaxSystem()
-    {
-        return $this->taxSystem;
-    }
-
-    /**
-     * @param string $taxSystem
-     */
-    public function setTaxSystem(string $taxSystem)
-    {
-        $this->taxSystem = $taxSystem;
-    }
-
-    /**
-     * @return string
-     */
-    public function getMainActivity()
-    {
-        return $this->mainActivity;
-    }
-
-    /**
-     * @param string $mainActivity
-     */
-    public function setMainActivity(string $mainActivity)
-    {
-        $this->mainActivity = $mainActivity;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSocialReason()
-    {
-        return $this->socialReason;
-    }
-
-    /**
-     * @param string $socialReason
-     */
-    public function setSocialReason(string $socialReason)
-    {
-        $this->socialReason = $socialReason;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCode()
-    {
-        return $this->code;
-    }
-
-    /**
-     * @param string $code
-     */
-    public function setCode(string $code)
-    {
-        $this->code = $code;
-    }
-
-    /**
-     * @return CustomerStatus
-     */
-    public function getCustomerStatus()
-    {
-        return $this->customerStatus;
-    }
-
-    /**
-     * @param CustomerStatus $customerStatus
-     */
-    public function setCustomerStatus(CustomerStatus $customerStatus)
-    {
-        $this->customerStatus = $customerStatus;
-    }
-
-    /**
-     * @return string
-     */
-    public function getRelation()
-    {
-        return $this->relation;
-    }
-
-    /**
-     * @param string $relation
-     */
-    public function setRelation(string $relation)
-    {
-        $this->relation = $relation;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSiretNumber()
-    {
-        return $this->siretNumber;
-    }
-
-    /**
-     * @param string $siretNumber
-     */
-    public function setSiretNumber(string $siretNumber)
-    {
-        $this->siretNumber = $siretNumber;
-    }
-
-    /**
-     * @return float
-     */
-    public function getIntraCommunityVAT()
-    {
-        return $this->intraCommunityVAT;
-    }
-
-    /**
-     * @param float $intraCommunityVAT
-     */
-    public function setIntraCommunityVAT(float $intraCommunityVAT)
-    {
-        $this->intraCommunityVAT = $intraCommunityVAT;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSirenNumber()
-    {
-        return $this->sirenNumber;
-    }
-
-    /**
-     * @param string $sirenNumber
-     */
-    public function setSirenNumber(string $sirenNumber)
-    {
-        $this->sirenNumber = $sirenNumber;
-    }
-
-    /**
-     * @return int
-     */
-    public function getNbActions()
-    {
-        return $this->nbActions;
-    }
-
-    /**
-     * @param int $nbActions
-     */
-    public function setNbActions(int $nbActions)
-    {
-        $this->nbActions = $nbActions;
-    }
-
-    /**
-     * @return int
-     */
-    public function getCapitalSocial()
-    {
-        return $this->capitalSocial;
-    }
-
-    /**
-     * @param int $capitalSocial
-     */
-    public function setCapitalSocial(int $capitalSocial)
-    {
-        $this->capitalSocial = $capitalSocial;
+        return $this->oldAddresses->removeElement($oldAddress);
     }
 
     /**
@@ -626,163 +298,37 @@ class Company
     }
 
     /**
-     * @return Address
+     * @return TaxSystem
      */
-    public function getSiegeAddress()
+    public function getTaxSystem()
     {
-        return $this->siegeAddress;
+        return $this->taxSystem;
     }
 
     /**
-     * @param Address $siegeAddress
+     * @param TaxSystem $taxSystem
      */
-    public function setSiegeAddress(Address $siegeAddress)
+    public function setTaxSystem(TaxSystem $taxSystem)
     {
-        $this->siegeAddress = $siegeAddress;
+        $this->taxSystem = $taxSystem;
     }
 
     /**
-     * @return Address[]|ArrayCollection
+     * @return VatSystem
      */
-    public function getOldAddresses()
+    public function getVatSystem()
     {
-        return $this->oldAddresses;
+        return $this->vatSystem;
     }
 
     /**
-     * @param Address[]|ArrayCollection $oldAddresses
+     * @param VatSystem $vatSystem
      */
-    public function setOldAddresses($oldAddresses)
+    public function setVatSystem(VatSystem $vatSystem)
     {
-        $this->oldAddresses = $oldAddresses;
+        $this->vatSystem = $vatSystem;
     }
 
-    /**
-     * @return ArrayCollection|Contact[]
-     */
-    public function getContacts()
-    {
-        return $this->contacts;
-    }
 
-    /**
-     * @param ArrayCollection|Contact[] $contacts
-     */
-    public function setContacts($contacts)
-    {
-        $this->contacts = $contacts;
-    }
-
-    /**
-     * @return ArrayCollection|FiscalYear[]
-     */
-    public function getFiscalYears()
-    {
-        return $this->fiscalYears;
-    }
-
-    /**
-     * @param ArrayCollection|FiscalYear[] $fiscalYears
-     */
-    public function setFiscalYears($fiscalYears)
-    {
-        $this->fiscalYears = $fiscalYears;
-    }
-
-    /**
-     * @return Customer
-     */
-    public function getCustomerAccount()
-    {
-        return $this->customerAccount;
-    }
-
-    /**
-     * @param Customer $customerAccount
-     */
-    public function setCustomerAccount(Customer $customerAccount)
-    {
-        $this->customerAccount = $customerAccount;
-    }
-
-    /**
-     * @return FormerAccountant
-     */
-    public function getFormerAccountant()
-    {
-        return $this->formerAccountant;
-    }
-
-    /**
-     * @param FormerAccountant $formerAccountant
-     */
-    public function setFormerAccountant(FormerAccountant $formerAccountant)
-    {
-        $this->formerAccountant = $formerAccountant;
-    }
-
-    /**
-     * @return Rendezvous
-     */
-    public function getRendezvous()
-    {
-        return $this->rendezvous;
-    }
-
-    /**
-     * @param Rendezvous $rendezvous
-     */
-    public function setRendezvous(Rendezvous $rendezvous)
-    {
-        $this->rendezvous = $rendezvous;
-    }
-
-    /**
-     * @return ArrayCollection|Quotation[]
-     */
-    public function getQuotations()
-    {
-        return $this->quotations;
-    }
-
-    /**
-     * @param ArrayCollection|Quotation[] $quotations
-     */
-    public function setQuotations($quotations)
-    {
-        $this->quotations = $quotations;
-    }
-
-    /**
-     * @return ArrayCollection|QuotationLine[]
-     */
-    public function getQuotationLines()
-    {
-        return $this->quotationLines;
-    }
-
-    /**
-     * @param ArrayCollection|QuotationLine[] $quotationLines
-     */
-    public function setQuotationLines($quotationLines)
-    {
-        $this->quotationLines = $quotationLines;
-    }
-
-    /**
-     * @return ArrayCollection|Invoice[]
-     */
-    public function getInvoices()
-    {
-        return $this->invoices;
-    }
-
-    /**
-     * @param ArrayCollection|Invoice[] $invoices
-     */
-    public function setInvoices($invoices)
-    {
-        $this->invoices = $invoices;
-    }
 
 }

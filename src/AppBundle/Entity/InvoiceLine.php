@@ -1,15 +1,5 @@
 <?php
 
-/*
- * This file is part of the Moddus project.
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- *
- * Developed by MIT <contact@mit-agency.com>
- *
- */
-
 namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -49,20 +39,12 @@ class InvoiceLine
      * @ORM\Column(name="price", type="float")
      */
     private $price;
-
     /**
      * @return int
      */
     public function getId()
     {
         return $this->id;
-    }
-    /**
-     * @param int $id
-     */
-    public function setId(int $id)
-    {
-        $this->id = $id;
     }
 
     /**
@@ -79,7 +61,6 @@ class InvoiceLine
     {
         $this->price = $price;
     }
-
     /**
      * @return Invoice
      */

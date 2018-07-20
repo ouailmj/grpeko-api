@@ -28,6 +28,7 @@ use Doctrine\ORM\Mapping as ORM;
 class LegalForm
 {
 
+
     /**
      * @var int
      *
@@ -139,5 +140,7 @@ class LegalForm
     {
         return $this->fiscalYears->removeElement($fiscalYear);
     }
+
+
 
 }
