@@ -10,7 +10,6 @@
  *
  */
 
-
 namespace AppBundle\Entity;
 
 /**
@@ -23,19 +22,24 @@ namespace AppBundle\Entity;
  */
 class Customer extends Company
 {
-
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
     /**
      * @var JobQuotation
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\JobQuotation", inversedBy="customer")
      */
     private $jobQuotation;
-
     /**
      * @var Calendar
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Calendar", inversedBy="customer")
      */
     private $calendar;
-
     /**
      * @return JobQuotation
      */
@@ -68,7 +72,20 @@ class Customer extends Company
         $this->calendar = $calendar;
     }
 
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
-
+    /**
+     * @param int $id
+     */
+    public function setId(int $id)
+    {
+        $this->id = $id;
+    }
 
 }

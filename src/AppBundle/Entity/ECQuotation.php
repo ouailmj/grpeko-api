@@ -28,17 +28,87 @@ class ECQuotation extends JobQuotation
 {
 
     /**
+     * ECQuotation constructor.
+     */
+    public function __construct()
+    {
+        $this->quotationLines = new ArrayCollection();
+    }
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+    private $nbPurchaseInvoicPerYear;
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+    private $nbSalesInvoicesPerYear;
+
+    /**
      * @var QuotationLine [] | ArrayCollection
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\QuotationLine", mappedBy="ecQuotation")
      */
     private $quotationLines;
 
     /**
-     * ECQuotation constructor.
+     * @return int
      */
-    public function __construct()
+    public function getId(): int
     {
-        $this->quotationLines = new ArrayCollection();
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNbPurchaseInvoicPerYear(): string
+    {
+        return $this->nbPurchaseInvoicPerYear;
+    }
+
+    /**
+     * @param string $nbPurchaseInvoicPerYear
+     */
+    public function setNbPurchaseInvoicPerYear(string $nbPurchaseInvoicPerYear)
+    {
+        $this->nbPurchaseInvoicPerYear = $nbPurchaseInvoicPerYear;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNbSalesInvoicesPerYear(): string
+    {
+        return $this->nbSalesInvoicesPerYear;
+    }
+
+    /**
+     * @param string $nbSalesInvoicesPerYear
+     */
+    public function setNbSalesInvoicesPerYear(string $nbSalesInvoicesPerYear)
+    {
+        $this->nbSalesInvoicesPerYear = $nbSalesInvoicesPerYear;
     }
 
 

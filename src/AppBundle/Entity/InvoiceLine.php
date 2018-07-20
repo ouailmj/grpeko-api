@@ -27,7 +27,20 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class InvoiceLine
 {
-
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="price", type="float")
+     */
+    private $price;
     /**
      * @var Invoice
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Invoice", inversedBy="inviceLines")
@@ -50,5 +63,36 @@ class InvoiceLine
         $this->invoice = $invoice;
     }
 
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPrice(): float
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param float $price
+     */
+    public function setPrice(float $price)
+    {
+        $this->price = $price;
+    }
 
 }

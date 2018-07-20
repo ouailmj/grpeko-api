@@ -28,6 +28,30 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class TypeMission
 {
+
+    /**
+     * TypeMission constructor.
+     */
+    public function __construct()
+    {
+        $this->missions = new ArrayCollection();
+        $this->assignments = new ArrayCollection();
+    }
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    /**
+     * @var string
+     * @ORM\Column(type="string")
+     * @Groups({"type_mission"})
+     */
+    private $type;
     /**
      * @var Mission [] | ArrayCollection
      *
@@ -42,14 +66,36 @@ class TypeMission
     private $assignments;
 
     /**
-     * TypeMission constructor.
+     * @return int
      */
-    public function __construct()
+    public function getId(): int
     {
-        $this->missions = new ArrayCollection();
-        $this->assignments = new ArrayCollection();
+        return $this->id;
     }
 
+    /**
+     * @param int $id
+     */
+    public function setId(int $id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType(string $type)
+    {
+        $this->type = $type;
+    }
 
     /**
      * @return Mission[]|ArrayCollection

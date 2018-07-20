@@ -27,6 +27,14 @@ use Doctrine\ORM\Mapping as ORM;
 class QuotationLine
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    /**
      * @var ECQuotation
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ECQuotation", inversedBy="quotationLines")
      */

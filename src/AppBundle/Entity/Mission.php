@@ -29,6 +29,26 @@ use Doctrine\ORM\Mapping as ORM;
 class Mission
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+    /**
+     * @var string
+     * @ORM\Column(type = "string")
+     *  @Groups({"type_mission"})
+     */
+    private $title;
+    /**
+     * @var double
+     * @ORM\Column(type = "float")
+     * @Groups({"type_mission"})
+     */
+    private $time;
+    /**
      * @var Mode
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Mode", inversedBy="missions")
      */
@@ -39,6 +59,54 @@ class Mission
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\TypeMission", inversedBy="missions")
      */
     private $typeMission;
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string $title
+     */
+    public function setTitle(string $title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @return float
+     */
+    public function getTime(): float
+    {
+        return $this->time;
+    }
+
+    /**
+     * @param float $time
+     */
+    public function setTime(float $time)
+    {
+        $this->time = $time;
+    }
 
     /**
      * @return Mode
