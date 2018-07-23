@@ -44,44 +44,34 @@ class Address
      * @ORM\Column(type="text", nullable=true)
      */
     protected $description;
-<<<<<<< HEAD
-=======
 
->>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=10, nullable=true)
      */
     protected $postalCode;
-<<<<<<< HEAD
-=======
 
->>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=150, nullable=true)
      */
     protected $city;
-<<<<<<< HEAD
-=======
 
->>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=250, nullable=true)
      */
     protected $email;
-<<<<<<< HEAD
+
     /**
-     * @var Person
+     * @var \DateTime
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Person" ,inversedBy="currentAddress")
+     * @ORM\Column(type="datetimetz", nullable=true)
      */
-    // protected $category;
-=======
+    protected $leftAt = null;
 
     /**
      * @return string
@@ -131,7 +121,6 @@ class Address
         $this->city = $city;
     }
 
->>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * @return string
      */
@@ -139,10 +128,7 @@ class Address
     {
         return $this->email;
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * @param string $email
      */
@@ -150,21 +136,9 @@ class Address
     {
         $this->email = $email;
     }
-<<<<<<< HEAD
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetimetz", nullable=true)
-     */
-    protected $leftAt = null;
-    /**
-     * Get id.
-     *
-=======
 
 
     /**
->>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
      * @return int
      */
     public function getId()
@@ -172,72 +146,6 @@ class Address
         return $this->id;
     }
 
-
-    /**
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-    /**
-     * @return Person
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-    /**
-     * @param Person $category
-     */
-    public function setCategory(Person $category)
-    {
-        $this->category = $category;
-    }
-    /**
-     * @param string $description
-     *
-     * @return Address
-     */
-    public function setDescription(string $description)
-    {
-        $this->description = $description;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getPostalCode()
-    {
-        return $this->postalCode;
-    }
-    /**
-     * @param string $postalCode
-     *
-     * @return Address
-     */
-    public function setPostalCode(string $postalCode)
-    {
-        $this->postalCode = $postalCode;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getCity()
-    {
-        return $this->city;
-    }
-    /**
-     * @param string $city
-     *
-     * @return Address
-     */
-    public function setCity(string $city)
-    {
-        $this->city = $city;
-        return $this;
-    }
     /**
      * @return \DateTime
      */

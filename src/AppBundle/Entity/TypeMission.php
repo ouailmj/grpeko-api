@@ -46,12 +46,7 @@ class TypeMission
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-    /**
-     * @var string
-     * @ORM\Column(type="string")
-     * @Groups({"type_mission"})
-     */
-    private $type;
+
     /**
      * @var Mission [] | ArrayCollection
      *

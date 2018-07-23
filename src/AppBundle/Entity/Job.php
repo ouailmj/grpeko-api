@@ -28,13 +28,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Job
 {
-    /**
-     * Job constructor.
-     */
-    public function __construct()
-    {
-        $this->jobQuotations = new ArrayCollection();
-    }
+
 
     /**
      * @var int
@@ -43,37 +37,7 @@ class Job
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="startDate", type="datetime")
-     */
-    private $startDate;
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="endDate", type="datetime")
-     */
-    private $endDate;
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="closeDate", type="datetime")
-     */
-    private $closeDate;
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="lastFiscalEndDate", type="datetime")
-     */
-    private $lastFiscalEndDate;
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="firstFiscalStartDate", type="datetime")
-     */
-    private $firstFiscalStartDate;
+    protected $id;
 
     /**
      * @var JobType
@@ -83,14 +47,11 @@ class Job
 
     /**
      * @var JobQuotation [] | ArrayCollection
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\JobQuotation", inversedBy="job")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\JobQuotation", mappedBy="job")
      */
     private $jobQuotations;
 
     /**
-<<<<<<< HEAD
-     * @return int
-=======
      * @var \DateTime
      *
      * @ORM\Column(name="startDate", type="datetime")
@@ -127,100 +88,21 @@ class Job
 
     /**
      * Job constructor.
->>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
+     */
+    public function __construct()
+    {
+        $this->jobQuotations = new ArrayCollection();
+    }
+
+    /**
+     * @return int
      */
     public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param int $id
-     */
-    public function setId(int $id)
-    {
-        $this->id = $id;
-    }
 
-    /**
-     * @return \DateTime
-     */
-    public function getStartDate()
-    {
-        return $this->startDate;
-    }
-
-    /**
-     * @param \DateTime $startDate
-     */
-    public function setStartDate(\DateTime $startDate)
-    {
-        $this->startDate = $startDate;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getEndDate()
-    {
-        return $this->endDate;
-    }
-
-    /**
-     * @param \DateTime $endDate
-     */
-    public function setEndDate(\DateTime $endDate)
-    {
-        $this->endDate = $endDate;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getCloseDate()
-    {
-        return $this->closeDate;
-    }
-
-    /**
-     * @param \DateTime $closeDate
-     */
-    public function setCloseDate(\DateTime $closeDate)
-    {
-        $this->closeDate = $closeDate;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getLastFiscalEndDate()
-    {
-        return $this->lastFiscalEndDate;
-    }
-
-    /**
-     * @param \DateTime $lastFiscalEndDate
-     */
-    public function setLastFiscalEndDate(\DateTime $lastFiscalEndDate)
-    {
-        $this->lastFiscalEndDate = $lastFiscalEndDate;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getFirstFiscalStartDate()
-    {
-        return $this->firstFiscalStartDate;
-    }
-
-    /**
-     * @param \DateTime $firstFiscalStartDate
-     */
-    public function setFirstFiscalStartDate(\DateTime $firstFiscalStartDate)
-    {
-        $this->firstFiscalStartDate = $firstFiscalStartDate;
-    }
 
     /**
      * @return JobType

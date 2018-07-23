@@ -94,52 +94,36 @@ class Company
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-<<<<<<< HEAD
-    private $legalName;
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $phoneNumber;
-=======
     protected $legalName;
->>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-<<<<<<< HEAD
-    private $faxNumber;
-=======
     protected $phoneNumber;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $faxNumber;
 
->>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * @var array
      *
      * @ORM\Column(type="array", nullable=true)
      */
-<<<<<<< HEAD
-    private $otherPhoneNumbers = [];
-=======
     protected $otherPhoneNumbers = [];
 
->>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=10, nullable=true)
      */
-<<<<<<< HEAD
-    private $postalCode;
-=======
     protected $postalCode;
 
->>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * Regime d'imposition.
      *
@@ -147,11 +131,7 @@ class Company
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-<<<<<<< HEAD
-    private $taxationRegime;
-=======
     protected $taxationRegime;
->>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
 
     /**
      * Activite principale.
@@ -160,62 +140,36 @@ class Company
      *
      * @ORM\Column(type="text", nullable=true)
      */
-<<<<<<< HEAD
-    private $mainActivity;
-=======
     protected $mainActivity;
 
->>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-<<<<<<< HEAD
-    private $socialReason;
-=======
     protected $socialReason;
 
->>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-<<<<<<< HEAD
-    private $code;
-    /**
-     * @var CustomerStatus
-     *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\CustomerStatus" ,mappedBy="company" ,cascade={"persist", "remove"}))
-     */
-    private $customerStatus;
-=======
     protected $code;
 
->>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-<<<<<<< HEAD
-    private $relation;
-=======
     protected $relation;
 
->>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      */
-<<<<<<< HEAD
-    private $siretNumber;
-=======
     protected $siretNumber;
 
->>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * TVA intra communautaire.
      *
@@ -223,24 +177,16 @@ class Company
      *
      * @ORM\Column(type="float", nullable=true)
      */
-<<<<<<< HEAD
-    private $intraCommunityVAT;
-=======
     protected $intraCommunityVAT;
 
->>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      */
-<<<<<<< HEAD
-    private $sirenNumber;
-=======
     protected $sirenNumber;
 
 
->>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * Nombre d'actions ou parts sociales.
      *
@@ -248,12 +194,8 @@ class Company
      *
      * @ORM\Column(type="integer", nullable=true)
      */
-<<<<<<< HEAD
-    private $nbActions;
-=======
     protected $nbActions;
 
->>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * capital social.
      *
@@ -261,9 +203,6 @@ class Company
      *
      * @ORM\Column(type="integer", nullable=true)
      */
-<<<<<<< HEAD
-    private $capitalSocial;
-=======
     protected $capitalSocial;
 
     /**
@@ -272,7 +211,6 @@ class Company
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $legalEntity;
->>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * Company constructor.
      */

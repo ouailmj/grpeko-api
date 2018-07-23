@@ -14,7 +14,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Serializer\Annotation\Groups;
 
 
 /**
@@ -46,19 +45,12 @@ class Mission
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Mode", inversedBy="missions")
      */
     private $mode;
-    /**
-     * @var string
-     * @ORM\Column(type = "string")
-     *  @Groups({"type_mission"})
-     */
-    private $title;
+
     /**
      * @var TypeMission
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\TypeMission", inversedBy="missions")
      */
     private $typeMission;
-<<<<<<< HEAD
-=======
 
 
     /**
@@ -76,17 +68,13 @@ class Mission
      */
     private $title;
 
->>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * @var double
      * @ORM\Column(type = "float")
      * @Groups({"type_mission"})
      */
     private $time;
-<<<<<<< HEAD
-=======
 
->>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * @return int
      */
@@ -177,21 +165,5 @@ class Mission
     }
 
 
-
-    /**
-     * @return float
-     */
-    public function getTime(): float
-    {
-        return $this->time;
-    }
-
-    /**
-     * @param float $time
-     */
-    public function setTime(float $time)
-    {
-        $this->time = $time;
-    }
 
 }

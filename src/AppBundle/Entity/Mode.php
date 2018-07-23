@@ -30,6 +30,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Mode
 {
+
+
     /**
      * @var int
      *
@@ -37,87 +39,7 @@ class Mode
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
-    /**
-     * @var double
-     * @ORM\Column(type="float")
-     */
-    private $price;
-    /**
-     * @var string
-     * @ORM\Column(type="string")
-     */
-    private $mode;
-    /**
-     * @var \DateTime
-     * @ORM\Column(type="datetime")
-     */
-    private $validDate;
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId(int $id)
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return float
-     */
-    public function getPrice()
-    {
-        return $this->price;
-    }
-
-    /**
-     * @param float $price
-     */
-    public function setPrice(float $price)
-    {
-        $this->price = $price;
-    }
-
-    /**
-     * @return string
-     */
-    public function getMode()
-    {
-        return $this->mode;
-    }
-
-    /**
-     * @param string $mode
-     */
-    public function setMode(string $mode)
-    {
-        $this->mode = $mode;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getValidDate()
-    {
-        return $this->validDate;
-    }
-
-    /**
-     * @param \DateTime $validDate
-     */
-    public function setValidDate(\DateTime $validDate)
-    {
-        $this->validDate = $validDate;
-    }
-
+    protected $id;
 
     /**
      * @var Mission [] | ArrayCollection
@@ -152,6 +74,14 @@ class Mode
     public function __construct()
     {
         $this->missions = new ArrayCollection();
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
 
