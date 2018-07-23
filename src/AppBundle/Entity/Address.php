@@ -44,30 +44,94 @@ class Address
      * @ORM\Column(type="text", nullable=true)
      */
     protected $description;
+<<<<<<< HEAD
+=======
+
+>>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=10, nullable=true)
      */
     protected $postalCode;
+<<<<<<< HEAD
+=======
+
+>>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=150, nullable=true)
      */
     protected $city;
+<<<<<<< HEAD
+=======
+
+>>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=250, nullable=true)
      */
     protected $email;
+<<<<<<< HEAD
     /**
      * @var Person
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Person" ,inversedBy="currentAddress")
      */
     // protected $category;
+=======
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription(string $description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPostalCode()
+    {
+        return $this->postalCode;
+    }
+
+    /**
+     * @param string $postalCode
+     */
+    public function setPostalCode(string $postalCode)
+    {
+        $this->postalCode = $postalCode;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param string $city
+     */
+    public function setCity(string $city)
+    {
+        $this->city = $city;
+    }
+
+>>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * @return string
      */
@@ -75,6 +139,10 @@ class Address
     {
         return $this->email;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * @param string $email
      */
@@ -82,6 +150,7 @@ class Address
     {
         $this->email = $email;
     }
+<<<<<<< HEAD
     /**
      * @var \DateTime
      *
@@ -91,6 +160,11 @@ class Address
     /**
      * Get id.
      *
+=======
+
+
+    /**
+>>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
      * @return int
      */
     public function getId()

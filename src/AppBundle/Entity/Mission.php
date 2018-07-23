@@ -14,6 +14,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 
 /**
@@ -56,12 +57,36 @@ class Mission
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\TypeMission", inversedBy="missions")
      */
     private $typeMission;
+<<<<<<< HEAD
+=======
+
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="price", type="float")
+     *  @Groups({"type_mission"})
+     */
+    private $price;
+
+    /**
+     * @var string
+     * @ORM\Column(type = "string")
+     *  @Groups({"type_mission"})
+     */
+    private $title;
+
+>>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * @var double
      * @ORM\Column(type = "float")
      * @Groups({"type_mission"})
      */
     private $time;
+<<<<<<< HEAD
+=======
+
+>>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * @return int
      */
@@ -102,6 +127,55 @@ class Mission
     {
         $this->typeMission = $typeMission;
     }
+
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string $title
+     */
+    public function setTitle(string $title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @return float
+     */
+    public function getTime()
+    {
+        return $this->time;
+    }
+
+    /**
+     * @param float $time
+     */
+    public function setTime(float $time)
+    {
+        $this->time = $time;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param float $price
+     */
+    public function setPrice(float $price)
+    {
+        $this->price = $price;
+    }
+
 
 
     /**

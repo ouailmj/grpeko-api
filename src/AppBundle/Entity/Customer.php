@@ -27,6 +27,64 @@ use Doctrine\ORM\Mapping as ORM;
 class Customer extends Company
 {
 
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $firstName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $lastName;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetimetz", nullable=true)
+     */
+    protected $birthDate;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetimetz", nullable=true)
+     */
+    protected $deathDate = null;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=25, nullable=true)
+     */
+    protected $phoneNumber;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=25, nullable=true)
+     */
+    protected $faxNumber;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=25, nullable=true)
+     */
+    protected $postalCode;
+
     /**
      * @var JobQuotation
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\JobQuotation", mappedBy="customer")
@@ -38,6 +96,13 @@ class Customer extends Company
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Calendar", inversedBy="customer")
      */
     private $calendar;
+
+    /**
+     * @var User
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
 
     /**
      * @var AccessCode [] | ArrayCollection
@@ -340,6 +405,150 @@ class Customer extends Company
     public function removeBankAccount(BankAccount $bankAccount)
     {
         return $this->bankAccounts->removeElement($bankAccount);
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName(string $name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * @param string $firstName
+     */
+    public function setFirstName(string $firstName)
+    {
+        $this->firstName = $firstName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @param string $lastName
+     */
+    public function setLastName(string $lastName)
+    {
+        $this->lastName = $lastName;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getBirthDate()
+    {
+        return $this->birthDate;
+    }
+
+    /**
+     * @param \DateTime $birthDate
+     */
+    public function setBirthDate(\DateTime $birthDate)
+    {
+        $this->birthDate = $birthDate;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDeathDate()
+    {
+        return $this->deathDate;
+    }
+
+    /**
+     * @param \DateTime $deathDate
+     */
+    public function setDeathDate(\DateTime $deathDate)
+    {
+        $this->deathDate = $deathDate;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhoneNumber()
+    {
+        return $this->phoneNumber;
+    }
+
+    /**
+     * @param string $phoneNumber
+     */
+    public function setPhoneNumber(string $phoneNumber)
+    {
+        $this->phoneNumber = $phoneNumber;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFaxNumber()
+    {
+        return $this->faxNumber;
+    }
+
+    /**
+     * @param string $faxNumber
+     */
+    public function setFaxNumber(string $faxNumber)
+    {
+        $this->faxNumber = $faxNumber;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPostalCode()
+    {
+        return $this->postalCode;
+    }
+
+    /**
+     * @param string $postalCode
+     */
+    public function setPostalCode(string $postalCode)
+    {
+        $this->postalCode = $postalCode;
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function setUser(User $user)
+    {
+        $this->user = $user;
     }
 
 

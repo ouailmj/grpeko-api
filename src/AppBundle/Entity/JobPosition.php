@@ -47,6 +47,12 @@ class JobPosition
      */
     private $employees;
 
+/**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    private $name;
     /**
      * JobPosition constructor.
      */
@@ -97,6 +103,22 @@ class JobPosition
     public function removeEmployee(Employee $employee)
     {
         return $this->employees->removeElement($employee);
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName(string $name)
+    {
+        $this->name = $name;
     }
 
 

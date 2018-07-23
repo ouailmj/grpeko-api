@@ -49,6 +49,13 @@ class CustomerStatus
     private $customers;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="status", type="string", length=255)
+     */
+    private $status;
+
+    /**
      * @return int
      */
     public function getId()
@@ -92,5 +99,22 @@ class CustomerStatus
     {
         return $this->customers->removeElement($customer);
     }
+
+    /**
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param string $status
+     */
+    public function setStatus(string $status)
+    {
+        $this->status = $status;
+    }
+
 
 }

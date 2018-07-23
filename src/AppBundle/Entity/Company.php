@@ -94,6 +94,7 @@ class Company
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
+<<<<<<< HEAD
     private $legalName;
     /**
      * @var string
@@ -101,25 +102,44 @@ class Company
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $phoneNumber;
+=======
+    protected $legalName;
+>>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
+<<<<<<< HEAD
     private $faxNumber;
+=======
+    protected $phoneNumber;
+
+
+>>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * @var array
      *
      * @ORM\Column(type="array", nullable=true)
      */
+<<<<<<< HEAD
     private $otherPhoneNumbers = [];
+=======
+    protected $otherPhoneNumbers = [];
+
+>>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=10, nullable=true)
      */
+<<<<<<< HEAD
     private $postalCode;
+=======
+    protected $postalCode;
+
+>>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * Regime d'imposition.
      *
@@ -127,7 +147,11 @@ class Company
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
+<<<<<<< HEAD
     private $taxationRegime;
+=======
+    protected $taxationRegime;
+>>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
 
     /**
      * Activite principale.
@@ -136,18 +160,29 @@ class Company
      *
      * @ORM\Column(type="text", nullable=true)
      */
+<<<<<<< HEAD
     private $mainActivity;
+=======
+    protected $mainActivity;
+
+>>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
+<<<<<<< HEAD
     private $socialReason;
+=======
+    protected $socialReason;
+
+>>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
+<<<<<<< HEAD
     private $code;
     /**
      * @var CustomerStatus
@@ -155,18 +190,32 @@ class Company
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\CustomerStatus" ,mappedBy="company" ,cascade={"persist", "remove"}))
      */
     private $customerStatus;
+=======
+    protected $code;
+
+>>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
+<<<<<<< HEAD
     private $relation;
+=======
+    protected $relation;
+
+>>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      */
+<<<<<<< HEAD
     private $siretNumber;
+=======
+    protected $siretNumber;
+
+>>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * TVA intra communautaire.
      *
@@ -174,13 +223,24 @@ class Company
      *
      * @ORM\Column(type="float", nullable=true)
      */
+<<<<<<< HEAD
     private $intraCommunityVAT;
+=======
+    protected $intraCommunityVAT;
+
+>>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
      */
+<<<<<<< HEAD
     private $sirenNumber;
+=======
+    protected $sirenNumber;
+
+
+>>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * Nombre d'actions ou parts sociales.
      *
@@ -188,7 +248,12 @@ class Company
      *
      * @ORM\Column(type="integer", nullable=true)
      */
+<<<<<<< HEAD
     private $nbActions;
+=======
+    protected $nbActions;
+
+>>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * capital social.
      *
@@ -196,7 +261,18 @@ class Company
      *
      * @ORM\Column(type="integer", nullable=true)
      */
+<<<<<<< HEAD
     private $capitalSocial;
+=======
+    protected $capitalSocial;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $legalEntity;
+>>>>>>> cdc67786fc3b0546c7cd56109720f04bd3519903
     /**
      * Company constructor.
      */
@@ -327,6 +403,246 @@ class Company
     public function setVatSystem(VatSystem $vatSystem)
     {
         $this->vatSystem = $vatSystem;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLegalName()
+    {
+        return $this->legalName;
+    }
+
+    /**
+     * @param string $legalName
+     */
+    public function setLegalName(string $legalName)
+    {
+        $this->legalName = $legalName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhoneNumber()
+    {
+        return $this->phoneNumber;
+    }
+
+    /**
+     * @param string $phoneNumber
+     */
+    public function setPhoneNumber(string $phoneNumber)
+    {
+        $this->phoneNumber = $phoneNumber;
+    }
+
+    /**
+     * @return array
+     */
+    public function getOtherPhoneNumbers()
+    {
+        return $this->otherPhoneNumbers;
+    }
+
+    /**
+     * @param array $otherPhoneNumbers
+     */
+    public function setOtherPhoneNumbers(array $otherPhoneNumbers)
+    {
+        $this->otherPhoneNumbers = $otherPhoneNumbers;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPostalCode()
+    {
+        return $this->postalCode;
+    }
+
+    /**
+     * @param string $postalCode
+     */
+    public function setPostalCode(string $postalCode)
+    {
+        $this->postalCode = $postalCode;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTaxationRegime()
+    {
+        return $this->taxationRegime;
+    }
+
+    /**
+     * @param string $taxationRegime
+     */
+    public function setTaxationRegime(string $taxationRegime)
+    {
+        $this->taxationRegime = $taxationRegime;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMainActivity()
+    {
+        return $this->mainActivity;
+    }
+
+    /**
+     * @param string $mainActivity
+     */
+    public function setMainActivity(string $mainActivity)
+    {
+        $this->mainActivity = $mainActivity;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSocialReason()
+    {
+        return $this->socialReason;
+    }
+
+    /**
+     * @param string $socialReason
+     */
+    public function setSocialReason(string $socialReason)
+    {
+        $this->socialReason = $socialReason;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * @param string $code
+     */
+    public function setCode(string $code)
+    {
+        $this->code = $code;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRelation()
+    {
+        return $this->relation;
+    }
+
+    /**
+     * @param string $relation
+     */
+    public function setRelation(string $relation)
+    {
+        $this->relation = $relation;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSiretNumber()
+    {
+        return $this->siretNumber;
+    }
+
+    /**
+     * @param string $siretNumber
+     */
+    public function setSiretNumber(string $siretNumber)
+    {
+        $this->siretNumber = $siretNumber;
+    }
+
+    /**
+     * @return float
+     */
+    public function getIntraCommunityVAT()
+    {
+        return $this->intraCommunityVAT;
+    }
+
+    /**
+     * @param float $intraCommunityVAT
+     */
+    public function setIntraCommunityVAT(float $intraCommunityVAT)
+    {
+        $this->intraCommunityVAT = $intraCommunityVAT;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSirenNumber()
+    {
+        return $this->sirenNumber;
+    }
+
+    /**
+     * @param string $sirenNumber
+     */
+    public function setSirenNumber(string $sirenNumber)
+    {
+        $this->sirenNumber = $sirenNumber;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNbActions()
+    {
+        return $this->nbActions;
+    }
+
+    /**
+     * @param int $nbActions
+     */
+    public function setNbActions(int $nbActions)
+    {
+        $this->nbActions = $nbActions;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCapitalSocial()
+    {
+        return $this->capitalSocial;
+    }
+
+    /**
+     * @param int $capitalSocial
+     */
+    public function setCapitalSocial(int $capitalSocial)
+    {
+        $this->capitalSocial = $capitalSocial;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLegalEntity()
+    {
+        return $this->legalEntity;
+    }
+
+    /**
+     * @param string $legalEntity
+     */
+    public function setLegalEntity(string $legalEntity)
+    {
+        $this->legalEntity = $legalEntity;
     }
 
 

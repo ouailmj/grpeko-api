@@ -35,7 +35,7 @@ class CACQuotation extends JobQuotation
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @return int

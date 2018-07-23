@@ -126,6 +126,26 @@ class Mode
      */
     private $missions;
 
+
+
+    /**
+     * @var double
+     * @ORM\Column(type="float")
+     */
+    private $price;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    private $mode;
+
+    /**
+     * @var \DateTime
+     * @ORM\Column(type="datetime")
+     */
+    private $validDate;
+
     /**
      * Mode constructor.
      */
@@ -168,6 +188,54 @@ class Mode
     public function removeMission(Mission $mission)
     {
         return $this->missions->removeElement($mission);
+    }
+
+    /**
+     * @return float
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param float $price
+     */
+    public function setPrice(float $price)
+    {
+        $this->price = $price;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMode()
+    {
+        return $this->mode;
+    }
+
+    /**
+     * @param string $mode
+     */
+    public function setMode(string $mode)
+    {
+        $this->mode = $mode;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getValidDate()
+    {
+        return $this->validDate;
+    }
+
+    /**
+     * @param \DateTime $validDate
+     */
+    public function setValidDate(\DateTime $validDate)
+    {
+        $this->validDate = $validDate;
     }
 
 
