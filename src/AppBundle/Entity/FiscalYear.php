@@ -98,6 +98,44 @@ class FiscalYear
      */
     private $secondaryAssignments;
 
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="startDate", type="datetimetz",nullable=true)
+     */
+    protected $startDate;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="closeDate", type="datetimetz",nullable=true)
+     */
+    protected $closeDate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="status", type="string", length=10,nullable=true)
+     */
+    protected $status;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer",nullable=true)
+     */
+    protected $year;
+
+    /**
+     * Regime d'imposition.
+     *
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $taxationRegime;
+
     /**
      * FiscalYear constructor.
      */
@@ -260,6 +298,86 @@ class FiscalYear
     public function removeSecondaryAssignment(Assignment $secondaryAssignment)
     {
         return $this->secondaryAssignments->removeElement($secondaryAssignment);
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getStartDate()
+    {
+        return $this->startDate;
+    }
+
+    /**
+     * @param \DateTime $startDate
+     */
+    public function setStartDate(\DateTime $startDate)
+    {
+        $this->startDate = $startDate;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCloseDate()
+    {
+        return $this->closeDate;
+    }
+
+    /**
+     * @param \DateTime $closeDate
+     */
+    public function setCloseDate(\DateTime $closeDate)
+    {
+        $this->closeDate = $closeDate;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param string $status
+     */
+    public function setStatus(string $status)
+    {
+        $this->status = $status;
+    }
+
+    /**
+     * @return int
+     */
+    public function getYear()
+    {
+        return $this->year;
+    }
+
+    /**
+     * @param int $year
+     */
+    public function setYear(int $year)
+    {
+        $this->year = $year;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTaxationRegime()
+    {
+        return $this->taxationRegime;
+    }
+
+    /**
+     * @param string $taxationRegime
+     */
+    public function setTaxationRegime(string $taxationRegime)
+    {
+        $this->taxationRegime = $taxationRegime;
     }
 
 

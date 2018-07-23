@@ -46,7 +46,7 @@ AppBundle\Entity\Employee:
         phoneNumber: '<e164PhoneNumber()>'
         faxNumber: '<e164PhoneNumber()>'
         postalCode: '<postcode()>'
-        userAccount: '@administrator'
+        user: '@administrator'
         initials: 'ADMIN'
     employeeuser:
         firstName: '<firstName()>'
@@ -54,19 +54,19 @@ AppBundle\Entity\Employee:
         phoneNumber: '<e164PhoneNumber()>'
         faxNumber: '<e164PhoneNumber()>'
         postalCode: '<postcode()>'
-        userAccount: '@user'
+        user: '@user'
         manager: '@employeeadmin'
         initials: 'COL'
-        jobPosition: '@collaborateur'
+        jobPositions: ['@collaborateur']
     employee_{0..50}:
         firstName: '<firstName()>'
         lastName: '<lastName()>'
         phoneNumber: '<e164PhoneNumber()>'
         faxNumber: '<e164PhoneNumber()>'
         postalCode: '<postcode()>'
-        userAccount: '@useraccount_<current()>'
+        user: '@useraccount_<current()>'
         manager: '@employee_*'
-        jobPosition: '@collaborateur'
+        jobPositions: ['@collaborateur']
 
 AppBundle\Entity\TypeMission:
     mission_comptable:
@@ -268,14 +268,13 @@ AppBundle\Entity\Mode:
         mode: Sur Place
         validDate: <dateTime('+1 years')>
 
-AppBundle\Entity\MissionPurchase:
+AppBundle\Entity\Job:
     mission_purchase_0:
         closeDate: <dateTime('+2 years')>
         endDate: <dateTime('+3 years')>
         startDate: <dateTime('+1 years')>
         lastFiscalEndDate: <dateTime('+3 years')>
         firstFiscalStartDate: <dateTime('+1 years')>
-        fiscalYears: ['@fiscal_year_0']
     mission_purchase_1:
         closeDate: <dateTime('+6 years')>
         endDate: <dateTime('+5 years')>
@@ -286,22 +285,6 @@ AppBundle\Entity\MissionPurchase:
 AppBundle\Entity\CustomerStatus:
     customer_status_0:
         status: customer
-        company: '@company_0'
-
-AppBundle\Entity\Company:
-    company_0:
-        legalName: Multi Information Technology
-        phoneNumber: 0528365698
-        postalCode: 41000
-        legalForm: SARL
-        mainActivity: Service Informatique
-        customerStatus: '@customer_status_0'
-        relation: ''
-        apeCode: 000000
-        siretNumber: 000000
-        nbActions: 58
-        capitalSocial: 60000000
-        customerAccount: '@customer_account_0'
 
 AppBundle\Entity\Customer:
     customer_account_0:
@@ -311,7 +294,16 @@ AppBundle\Entity\Customer:
         birthDate: <dateTime('-32 years')>
         deathDate: <dateTime('+30 years')>
         phoneNumber: 0635293668
-        userAccount: '@user_client'
+        customerStatus: '@customer_status_0'
+        user: '@user_client'
+        legalName: Multi Information Technology
+        phoneNumber: 0528365698
+        postalCode: 41000
+        mainActivity: Service Informatique
+        relation: ''
+        siretNumber: 000000
+        nbActions: 58
+        capitalSocial: 60000000
 
 AppBundle\Entity\FiscalYear:
     fiscal_year_0:
@@ -319,9 +311,8 @@ AppBundle\Entity\FiscalYear:
         closeDate: <dateTime('+1 years')>
         status: SARL
         year: 2018
-        company: '@company_0'
-        missionPurchase: '@mission_purchase_0'
-        assignment: '@assignment_0'
+        customer: '@customer_account_0'
+        mainAssignment: '@assignment_0'
 
 AppBundle\Entity\Assignment:
     assignment_0:

@@ -15,6 +15,8 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * Class TypeMission
@@ -24,6 +26,12 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="type_mission")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\TypeMissionRepository")
  *
+ * @ApiResource(
+ *
+ *  attributes ={
+ *     "normalization_context"={"groups"={"type_mission"}},
+ *     }
+ * )
  * @ORM\HasLifecycleCallbacks()
  */
 class TypeMission
@@ -51,6 +59,13 @@ class TypeMission
      * @ORM\ManyToMany(targetEntity="Assignment", mappedBy="typeMissions")
      */
     private $assignments;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string")
+     * @Groups({"type_mission"})
+     */
+    private $type;
 
     /**
      * TypeMission constructor.
@@ -141,7 +156,20 @@ class TypeMission
         return $this->assignments->removeElement($assignment);
     }
 
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
 
-
+    /**
+     * @param string $type
+     */
+    public function setType(string $type)
+    {
+        $this->type = $type;
+    }
 
 }
