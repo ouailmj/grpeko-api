@@ -324,6 +324,726 @@ class Contact
         return $this->id;
     }
 
+    /**
+     * @return string
+     */
+    public function getCivility()
+    {
+        return $this->civility;
+    }
+
+    /**
+     * @param string $civility
+     */
+    public function setCivility(string $civility)
+    {
+        $this->civility = $civility;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFirstname(): string
+    {
+        return $this->firstname;
+    }
+
+    /**
+     * @param string $firstname
+     */
+    public function setFirstname(string $firstname)
+    {
+        $this->firstname = $firstname;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastname(): string
+    {
+        return $this->lastname;
+    }
+
+    /**
+     * @param string $lastname
+     */
+    public function setLastname(string $lastname)
+    {
+        $this->lastname = $lastname;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBirthPlace(): string
+    {
+        return $this->birthPlace;
+    }
+
+    /**
+     * @param string $birthPlace
+     */
+    public function setBirthPlace(string $birthPlace)
+    {
+        $this->birthPlace = $birthPlace;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBirthDept(): string
+    {
+        return $this->birthDept;
+    }
+
+    /**
+     * @param string $birthDept
+     */
+    public function setBirthDept(string $birthDept)
+    {
+        $this->birthDept = $birthDept;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBirthCountry(): string
+    {
+        return $this->birthCountry;
+    }
+
+    /**
+     * @param string $birthCountry
+     */
+    public function setBirthCountry(string $birthCountry)
+    {
+        $this->birthCountry = $birthCountry;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNationality(): string
+    {
+        return $this->nationality;
+    }
+
+    /**
+     * @param string $nationality
+     */
+    public function setNationality(string $nationality)
+    {
+        $this->nationality = $nationality;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMandaQuality(): string
+    {
+        return $this->mandaQuality;
+    }
+
+    /**
+     * @param string $mandaQuality
+     */
+    public function setMandaQuality(string $mandaQuality)
+    {
+        $this->mandaQuality = $mandaQuality;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMandaSocial(): string
+    {
+        return $this->mandaSocial;
+    }
+
+    /**
+     * @param string $mandaSocial
+     */
+    public function setMandaSocial(string $mandaSocial)
+    {
+        $this->mandaSocial = $mandaSocial;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTns(): string
+    {
+        return $this->tns;
+    }
+
+    /**
+     * @param string $tns
+     */
+    public function setTns(string $tns)
+    {
+        $this->tns = $tns;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOtherCompany(): string
+    {
+        return $this->otherCompany;
+    }
+
+    /**
+     * @param string $otherCompany
+     */
+    public function setOtherCompany(string $otherCompany)
+    {
+        $this->otherCompany = $otherCompany;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPartNumber(): int
+    {
+        return $this->partNumber;
+    }
+
+    /**
+     * @param int $partNumber
+     */
+    public function setPartNumber(int $partNumber)
+    {
+        $this->partNumber = $partNumber;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPartNumberPercent(): float
+    {
+        return $this->partNumberPercent;
+    }
+
+    /**
+     * @param float $partNumberPercent
+     */
+    public function setPartNumberPercent(float $partNumberPercent)
+    {
+        $this->partNumberPercent = $partNumberPercent;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLegalForm(): string
+    {
+        return $this->legalForm;
+    }
+
+    /**
+     * @param string $legalForm
+     */
+    public function setLegalForm(string $legalForm)
+    {
+        $this->legalForm = $legalForm;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSocialCapital(): string
+    {
+        return $this->socialCapital;
+    }
+
+    /**
+     * @param string $socialCapital
+     */
+    public function setSocialCapital(string $socialCapital)
+    {
+        $this->socialCapital = $socialCapital;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRepresentative(): string
+    {
+        return $this->representative;
+    }
+
+    /**
+     * @param string $representative
+     */
+    public function setRepresentative(string $representative)
+    {
+        $this->representative = $representative;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRepresentativeQuality(): string
+    {
+        return $this->representativeQuality;
+    }
+
+    /**
+     * @param string $representativeQuality
+     */
+    public function setRepresentativeQuality(string $representativeQuality)
+    {
+        $this->representativeQuality = $representativeQuality;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSiren(): string
+    {
+        return $this->siren;
+    }
+
+    /**
+     * @param string $siren
+     */
+    public function setSiren(string $siren)
+    {
+        $this->siren = $siren;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIntermediate(): string
+    {
+        return $this->intermediate;
+    }
+
+    /**
+     * @param string $intermediate
+     */
+    public function setIntermediate(string $intermediate)
+    {
+        $this->intermediate = $intermediate;
+    }
+
+    /**
+     * @return float
+     */
+    public function getMandataire(): float
+    {
+        return $this->mandataire;
+    }
+
+    /**
+     * @param float $mandataire
+     */
+    public function setMandataire(float $mandataire)
+    {
+        $this->mandataire = $mandataire;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     */
+    public function setEmail(string $email)
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAutoEmailReceipt(): string
+    {
+        return $this->autoEmailReceipt;
+    }
+
+    /**
+     * @param string $autoEmailReceipt
+     */
+    public function setAutoEmailReceipt(string $autoEmailReceipt)
+    {
+        $this->autoEmailReceipt = $autoEmailReceipt;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAdressenumber(): string
+    {
+        return $this->adressenumber;
+    }
+
+    /**
+     * @param string $adressenumber
+     */
+    public function setAdressenumber(string $adressenumber)
+    {
+        $this->adressenumber = $adressenumber;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAdresse(): string
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * @param string $adresse
+     */
+    public function setAdresse(string $adresse)
+    {
+        $this->adresse = $adresse;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCity(): string
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param string $city
+     */
+    public function setCity(string $city)
+    {
+        $this->city = $city;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCountry(): string
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param string $country
+     */
+    public function setCountry(string $country)
+    {
+        $this->country = $country;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEkoNews(): string
+    {
+        return $this->ekoNews;
+    }
+
+    /**
+     * @param string $ekoNews
+     */
+    public function setEkoNews(string $ekoNews)
+    {
+        $this->ekoNews = $ekoNews;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEkoConseils(): string
+    {
+        return $this->ekoConseils;
+    }
+
+    /**
+     * @param string $ekoConseils
+     */
+    public function setEkoConseils(string $ekoConseils)
+    {
+        $this->ekoConseils = $ekoConseils;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAnniversaire(): string
+    {
+        return $this->anniversaire;
+    }
+
+    /**
+     * @param string $anniversaire
+     */
+    public function setAnniversaire(string $anniversaire)
+    {
+        $this->anniversaire = $anniversaire;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFetes(): string
+    {
+        return $this->fetes;
+    }
+
+    /**
+     * @param string $fetes
+     */
+    public function setFetes(string $fetes)
+    {
+        $this->fetes = $fetes;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMaritalSituation(): string
+    {
+        return $this->maritalSituation;
+    }
+
+    /**
+     * @param string $maritalSituation
+     */
+    public function setMaritalSituation(string $maritalSituation)
+    {
+        $this->maritalSituation = $maritalSituation;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPropreSociety(): string
+    {
+        return $this->propreSociety;
+    }
+
+    /**
+     * @param string $propreSociety
+     */
+    public function setPropreSociety(string $propreSociety)
+    {
+        $this->propreSociety = $propreSociety;
+    }
+
+    /**
+     * @return string
+     */
+    public function getComment(): string
+    {
+        return $this->comment;
+    }
+
+    /**
+     * @param string $comment
+     */
+    public function setComment(string $comment)
+    {
+        $this->comment = $comment;
+    }
+
+    /**
+     * @return int
+     */
+    public function getChildrenNumber(): int
+    {
+        return $this->childrenNumber;
+    }
+
+    /**
+     * @param int $childrenNumber
+     */
+    public function setChildrenNumber(int $childrenNumber)
+    {
+        $this->childrenNumber = $childrenNumber;
+    }
+
+    /**
+     * @return float
+     */
+    public function getAnnualIncome(): float
+    {
+        return $this->annualIncome;
+    }
+
+    /**
+     * @param float $annualIncome
+     */
+    public function setAnnualIncome(float $annualIncome)
+    {
+        $this->annualIncome = $annualIncome;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOwner(): string
+    {
+        return $this->owner;
+    }
+
+    /**
+     * @param string $owner
+     */
+    public function setOwner(string $owner)
+    {
+        $this->owner = $owner;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHusbandJob(): string
+    {
+        return $this->husbandJob;
+    }
+
+    /**
+     * @param string $husbandJob
+     */
+    public function setHusbandJob(string $husbandJob)
+    {
+        $this->husbandJob = $husbandJob;
+    }
+
+    /**
+     * @return string
+     */
+    public function getActifsPlacement(): string
+    {
+        return $this->actifsPlacement;
+    }
+
+    /**
+     * @param string $actifsPlacement
+     */
+    public function setActifsPlacement(string $actifsPlacement)
+    {
+        $this->actifsPlacement = $actifsPlacement;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassifs(): string
+    {
+        return $this->passifs;
+    }
+
+    /**
+     * @param string $passifs
+     */
+    public function setPassifs(string $passifs)
+    {
+        $this->passifs = $passifs;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPreviousSituation(): string
+    {
+        return $this->previousSituation;
+    }
+
+    /**
+     * @param string $previousSituation
+     */
+    public function setPreviousSituation(string $previousSituation)
+    {
+        $this->previousSituation = $previousSituation;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAccre(): string
+    {
+        return $this->accre;
+    }
+
+    /**
+     * @param string $accre
+     */
+    public function setAccre(string $accre)
+    {
+        $this->accre = $accre;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAccreDescription(): string
+    {
+        return $this->accreDescription;
+    }
+
+    /**
+     * @param string $accreDescription
+     */
+    public function setAccreDescription(string $accreDescription)
+    {
+        $this->accreDescription = $accreDescription;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateStartJobPole(): \DateTime
+    {
+        return $this->dateStartJobPole;
+    }
+
+    /**
+     * @param \DateTime $dateStartJobPole
+     */
+    public function setDateStartJobPole(\DateTime $dateStartJobPole)
+    {
+        $this->dateStartJobPole = $dateStartJobPole;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateEndJobPole(): \DateTime
+    {
+        return $this->dateEndJobPole;
+    }
+
+    /**
+     * @param \DateTime $dateEndJobPole
+     */
+    public function setDateEndJobPole(\DateTime $dateEndJobPole)
+    {
+        $this->dateEndJobPole = $dateEndJobPole;
+    }
+
+    /**
+     * @return string
+     */
+    public function getARCEARE(): string
+    {
+        return $this->ARCE_ARE;
+    }
+
+    /**
+     * @param string $ARCE_ARE
+     */
+    public function setARCEARE(string $ARCE_ARE)
+    {
+        $this->ARCE_ARE = $ARCE_ARE;
+    }
+
 
 
     /**

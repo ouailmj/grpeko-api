@@ -48,6 +48,11 @@ class CustomerState
      */
     private $customers;
 
+    public function __construct()
+    {
+        $this->customers = new ArrayCollection();
+    }
+
     /**
      * @return int
      */

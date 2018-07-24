@@ -157,6 +157,7 @@ class Customer extends Company
         $this->contactsStatus = new ArrayCollection();
         $this->fiscalYears = new ArrayCollection();
         $this->bankAccounts = new ArrayCollection();
+        $this->jobQuotations=new ArrayCollection();
     }
 
 

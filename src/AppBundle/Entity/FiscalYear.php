@@ -130,44 +130,6 @@ class FiscalYear
      */
     private $secondaryAssignments;
 
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="startDate", type="datetimetz",nullable=true)
-     */
-    protected $startDate;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="closeDate", type="datetimetz",nullable=true)
-     */
-    protected $closeDate;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="status", type="string", length=10,nullable=true)
-     */
-    protected $status;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(type="integer",nullable=true)
-     */
-    protected $year;
-
-    /**
-     * Regime d'imposition.
-     *
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $taxationRegime;
-
     /**
      * FiscalYear constructor.
      */

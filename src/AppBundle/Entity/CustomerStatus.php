@@ -48,6 +48,12 @@ class CustomerStatus
      */
     private $customers;
 
+    public function __construct()
+    {
+        $this->customers = new ArrayCollection();
+    }
+
+
     /**
      * @var string
      *
