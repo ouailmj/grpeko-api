@@ -13,7 +13,7 @@
 namespace AppBundle\Form;
 
 
-use AppBundle\Entity\TransmissionMode;
+use AppBundle\Entity\Mode;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
@@ -38,7 +38,7 @@ class TransmissionModeType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => TransmissionMode::class,
+            'data_class' => Mode::class,
         ]);
     }
 

@@ -15,6 +15,8 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 
 /**
@@ -25,7 +27,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="mode")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ModeRepository")
- *
+ * @ApiResource
  * @ORM\HasLifecycleCallbacks()
  */
 class Mode
@@ -38,6 +40,7 @@ class Mode
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *  @Groups({"mission"})
      */
     protected $id;
 
@@ -48,8 +51,6 @@ class Mode
      */
     private $missions;
 
-
-
     /**
      * @var double
      * @ORM\Column(type="float")
@@ -59,6 +60,7 @@ class Mode
     /**
      * @var string
      * @ORM\Column(type="string")
+     * @Groups({"mission"})
      */
     private $mode;
 

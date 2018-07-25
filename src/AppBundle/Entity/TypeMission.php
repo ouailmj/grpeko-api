@@ -44,12 +44,14 @@ class TypeMission
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *  @Groups({"mission"})
      */
     protected $id;
 
     /**
      * @var Mission [] | ArrayCollection
      *
+     * @Groups({"type_mission"})
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Mission", mappedBy="typeMission")
      */
     private $missions;
@@ -63,7 +65,7 @@ class TypeMission
     /**
      * @var string
      * @ORM\Column(type="string")
-     * @Groups({"type_mission"})
+     * @Groups({"type_mission","mission"})
      */
     private $type;
 

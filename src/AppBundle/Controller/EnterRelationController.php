@@ -114,7 +114,7 @@ class EnterRelationController extends BaseController
      */
     public function newAction(Request $request)
     {
-        /*$rendezvous = new Rendezvous();
+        $rendezvous = new Rendezvous();
         $formrendezvous = $this->createForm('AppBundle\Form\RendezVousType', $rendezvous);
         $formrendezvous->handleRequest($request);
 
@@ -123,7 +123,7 @@ class EnterRelationController extends BaseController
         }
 
         return $this->render('prisedeconnaissance/entree_relation/new.html.twig', ['rendezvous' => $formrendezvous->createView()]);
-    */
+
         }
 
   /*  public function move(Rendezvous $rendezvous, string $fileName)

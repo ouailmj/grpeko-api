@@ -17,4 +17,9 @@
             {% include 'default/parametrages_devis.html.twig' %}
         </div>
     </div>
+
+    {% block javascripts %}
+
+    <script type="text/javascript" src="{{ asset('build/js/pages/setting-quotation.js')}}"></script>
+    {% endblock %}
 {% endblock %}
