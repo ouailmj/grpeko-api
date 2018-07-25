@@ -13,11 +13,13 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class FormerAccountantType extends AbstractType
+class TaxSystemType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -25,24 +27,17 @@ class FormerAccountantType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class, [
-                'label' => 'Societe:',
+            ->add('name', ChoiceType::class, [
+                'label' => 'Régime d\'imposition:',
+                'choices' => [
+                    'micro-entreprise' => 'micro-entreprise',
+                    'l’auto-entreprise' => 'l’auto-entreprise',
+                    'réel simplifié' => 'réel simplifié',
+                    'réel normal' => 'réel normal',
+                ],
                 'required' => false,
             ])
-            ->add('civility', TextType::class, [
-                'label' => 'Civilité:',
-                'required' => false,
-            ])
-            ->add('firstName', TextType::class, [
-                'label' => 'Prénom:',
-                'required' => false,
-            ])
-            ->add('lastName', TextType::class, [
-                'label' => 'Nom:',
-                'required' => false,
-            ]);
-           // ->add('address', AdresseType::class)
-
+        ;
     }
 
     /**
@@ -51,11 +46,8 @@ class FormerAccountantType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'AppBundle\Entity\FormerAccountant',
-            'require_password' => true,
-            'adresse' => null,
+            'data_class' => 'AppBundle\Entity\TaxSystem',
         ]);
-        //    $resolver->setRequired('address');
     }
 
     /**
@@ -63,6 +55,6 @@ class FormerAccountantType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_formerAccountant';
+        return 'appbundle_taxSystem';
     }
 }

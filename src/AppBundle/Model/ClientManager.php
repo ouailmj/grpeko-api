@@ -45,16 +45,22 @@ class ClientManager
         $this->em->flush();
     }
 
-    public function editClient(Company $company)
+    public function editClient(Customer $company)
     {
         foreach ($company->getFiscalYears() as $fiscal)
         {
-            $fiscal->setCompany($company);
+            $fiscal->setCustomer($company);
         }
+
+        foreach ($company->getContacts() as $cn)
+        {
+            $cn->setCustomer($company);
+        }
+
         $this->em->flush();
     }
 
-    public function createClient(Company $prospect, array $contacts = null)
+    public function createClient(Customer $prospect, array $contacts = null)
     {
         //  $email = array_map(function($contacts){
         //     return $contacts->getEmail();
@@ -64,42 +70,48 @@ class ClientManager
         //     return $contacts->getFirstname();
         // }, $formcompany->get('contacts')->getData()->toArray());
 
+        $user=new User();
+
         $password = rand(100000, 1000000);
-        $prospect->setCustomerAccount(new Customer());
-
-        $prospect->getCustomerAccount()->setUserAccount(new User());
-        $prospect->getCustomerAccount()->getUserAccount()->setPlainPassword($password);
-
+        $user->setPlainPassword($password);
         if (null !== $contacts) {
             $contact = new Contact();
+
             $contact->setFirstname($contacts[0]);
             $contact->setLastname($contacts[1]);
             $contact->setEmail($contacts[2]);
-            $prospect->getCustomerAccount()->setName($contacts[0]);
-            $prospect->getCustomerAccount()->getUserAccount()->setEmail($contacts[2]);
+
+            $user->setUsername($contacts[0]);
+            $user->setEmail($contacts[2]);
+
             $prospect->addContact($contact);
+            $prospect->setUser($user);
         } else {
-            $prospect->getCustomerAccount()->getUserAccount()->setEmail($prospect->getContacts()->first()->getEmail());
+            //$prospect->getCustomerAccount()->getUserAccount()->setEmail($prospect->getContacts()->first()->getEmail());
         }
 
-        if (($user = $prospect->getCustomerAccount()->getUserAccount()) instanceof User) {
+        if (($user = $prospect->getUser()) instanceof User) {
             if (empty($account = $this->userManager->findUserByUsernameOrEmail($user->getEmail()))) {
-                $this->userManager->createUser($prospect->getCustomerAccount()->getUserAccount(), false);
+                $this->userManager->createUser($prospect->getUser(), false);
             } else {
-                $prospect->getCustomerAccount()->setUserAccount($account);
+               // $prospect->getCustomerAccount()->setUserAccount($account);
             }
             $user->addRole(User::ROLE_PROSPECT);
         }
 
         foreach ($prospect->getContacts() as $c) {
-            $c->setCompany($prospect);
+            $c->setCustomer($prospect);
         }
 
         foreach ($prospect->getFiscalYears() as $fiscalYear) {
-            $fiscalYear->setCompany($prospect);
+            $fiscalYear->setCustomer($prospect);
         }
-
+        $prospect->getApeCode()->setCompanies([$prospect]);
+        $prospect->getLegalForm()->setCompanies([$prospect]);
+        $prospect->getTaxSystem()->setCompanies([$prospect]);
+        $prospect->getVatSystem()->setCompanies([$prospect]);
         $this->em->persist($prospect);
+
         $this->em->flush();
     }
 }

@@ -46,9 +46,9 @@
                                 <fieldset class="content-group">
 
                                     {{form_row(formcompany.legalName)}}
-                                    {{form_row(formcompany.legalForm)}}
-                                    {{form_row(formcompany.taxationRegime)}}
-                                    {{form_row(formcompany.vatSystem)}}
+                                    {{form_widget(formcompany.legalForm)}}
+                                    {{form_widget(formcompany.taxSystem)}}
+                                    {{form_widget(formcompany.vatSystem)}}
                                     {{form_row(formcompany.currentAddress.description)}}
                                     {{form_row(formcompany.currentAddress.postalCode)}}
                                     {{form_row(formcompany.currentAddress.city)}}
@@ -65,7 +65,7 @@
                                 <fieldset class="scheduler-border">
                                     <legend class="scheduler-border" style="text-transform: capitalize">aaaaa</legend>
 
-                                    {{form_row(formcompany.apeCode)}}
+                                    {{form_widget(formcompany.apeCode)}}
                                     {{form_row(formcompany.mainActivity)}}
                                     {{form_row(formcompany.siretNumber)}}
                                     {{form_row(formcompany.sirenNumber)}}
@@ -84,18 +84,12 @@
                                             {{form_row(formcompany.formerAccountant.civility)}}
                                             {{form_row(formcompany.formerAccountant.firstName)}}
                                             {{form_row(formcompany.formerAccountant.lastName)}}
-                                            {{form_row(formcompany.formerAccountant.address.description)}}
-                                            {{form_row(formcompany.formerAccountant.address.postalCode)}}
-                                            {{form_row(formcompany.formerAccountant.address.city)}}
-                                            {{form_row(formcompany.formerAccountant.address.email)}}
-
                                             {#   <div class="form-group">
                                                      <div class="col-xs- col-md-5 pull-right" >
                                                          <input type="button" class="form-control btn-info" id="pwd" value="&nbsp;Générer et envoyer la lettre de reprise de dossier&nbsp;" name="pwd">
                                                      </div>
                                                  </div>
                                              #}
-
                                         </fieldset>
 
                                     </div>

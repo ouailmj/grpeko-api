@@ -228,28 +228,3 @@ AppBundle\Entity\User:
 
 
 ############################
-
-AppBundle\Entity\Company:
-    company_0:
-        apeCode: ['@bank_accounts_0']
-        $legalForm: ['@bank_accounts_0']
-        $taxSystem: ['@bank_accounts_0']
-        $vatSystem: ['@bank_accounts_0']
-        $oldAddresses: ['@bank_accounts_0']
-        $currentAddress: ['@bank_accounts_0']
-        $legalName: ['@bank_accounts_0']
-        $phoneNumber: ['@bank_accounts_0']
-        $faxNumber: ['@bank_accounts_0']
-        $otherPhoneNumbers: ['@bank_accounts_0']
-        $postalCode: ['@bank_accounts_0']
-        $taxationRegime: ['@bank_accounts_0']
-        $mainActivity: ['@bank_accounts_0']
-        $socialReason: ['@bank_accounts_0']
-        $code: ['@bank_accounts_0']
-        $relation: ['@bank_accounts_0']
-        $siretNumber: ['@bank_accounts_0']
-        $intraCommunityVAT: ['@bank_accounts_0']
-        $sirenNumber: ['@bank_accounts_0']
-        $nbActions: ['@bank_accounts_0']
-        $capitalSocial: ['@bank_accounts_0']
-        $legalEntity: ['@bank_accounts_0']

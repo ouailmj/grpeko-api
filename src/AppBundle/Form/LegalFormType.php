@@ -13,12 +13,13 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class FiscalType extends AbstractType
+class LegalFormType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -26,26 +27,21 @@ class FiscalType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('startDate', DateType::class, [
+            ->add('name', ChoiceType::class, [
+                'label' => 'Forme Juridique:',
+                //  'label' => false,
+                'choices' => [
+                    'SARL' => 'SARL',
+                    'EURL' => 'EURL',
+                    'SELARL' => 'SELARL',
+                    'SA' => 'SA',
+                    'SAS' => 'SAS',
+                    'SASU' => 'SASU',
+                    'SARL' => 'SARL',
+                    'SNC' => 'SNC',
+                    'SCP' => 'SCP',
+                ],
                 'required' => true,
-                'format' => 'dd/MM/yyyy',
-                'widget' => 'single_text',
-                'attr' => ['class' => 'french_picker form-control'],
-                'label' => 'Date ouverture',
-            ])
-            ->add('closeDate', DateType::class, [
-                'required' => true,
-                'format' => 'dd/MM/yyyy',
-                'widget' => 'single_text',
-                'attr' => ['class' => 'french_picker form-control'],
-                'label' => 'Date de fermeture',
-            ])
-
-          //  ->add('status', TextType::class, array(
-             //       'label' => false
-            //    ))
-            ->add('mainassignment', AssignmentType::class, [
-                'label' => false,
             ])
         ;
     }
@@ -56,9 +52,7 @@ class FiscalType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'AppBundle\Entity\FiscalYear',
-            'forEdit' => false,
-            'advisories' => [],
+            'data_class' => 'AppBundle\Entity\LegalForm',
         ]);
     }
 
@@ -67,6 +61,6 @@ class FiscalType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_fiscalyear';
+        return 'appbundle_legalForm';
     }
 }

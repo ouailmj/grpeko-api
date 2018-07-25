@@ -46,6 +46,7 @@ class CustomerStatus
      * @var Customer [] | ArrayCollection
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Customer", mappedBy="customerStatus")
      */
+
     private $customers;
 
     public function __construct()

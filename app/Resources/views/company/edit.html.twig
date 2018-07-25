@@ -13,29 +13,28 @@
                     <div class="">
                         <ul class="nav nav-tabs nav-tabs-highlight">
                             <li class="active"><a href="#Contacts" data-toggle="tab" aria-expanded="true"><i class="icon-users position-left"></i>Informations générales</a></li>
-                            {#   <li class=""><a href="#Dossiers" data-toggle="tab" aria-expanded="false"><i class="icon-folder position-left"></i>Rendez-vous</a></li>#}
-                            <li class=""><a href="{{ path('contact_list', { 'id': app.request.get('id') }) }}"><i class="icon-address-book3 position-left"></i>Contacts</a></li>
-                            <li>
-                                <ul class="nav navbar-nav navbar-right">
-                                    <li class="dropdown dropdown-user">
-                                        <a class="dropdown-toggle" data-toggle="dropdown">
-                                            <i class="icon-file-stats2 position-left"></i>
-                                            Autre
-                                            <span class="caret"></span>
-                                        </a>
+                            {#   <li class=""><a href="#Dossiers" data-toggle="tab" aria-expanded="false"><i class="icon-folder position-left"></i>Rendez-vous</a></li>
+                              <li>
+                                  <ul class="nav navbar-nav navbar-right">
+                                      <li class="dropdown dropdown-user">
+                                          <a class="dropdown-toggle" data-toggle="dropdown">
+                                              <i class="icon-file-stats2 position-left"></i>
+                                              Autre
+                                              <span class="caret"></span>
+                                          </a>
 
                                         <ul class="dropdown-menu dropdown-menu-right">
-                                            <li class=""><a href="#mission" data-toggle="tab" aria-expanded="false">Mission</a></li>
-                                            <li class=""><a href="{{ path('excerice_list',{'id': app.request.get('id') }) }}">Exercices</a></li>
-                                            <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Informations Bancaires</a></li>
-                                            <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Rapprochement CFONB - Mots clés</a></li>
-                                            <li class=""><a href="#Facturation" data-toggle="tab" aria-expanded="false">Facturation</a></li>
-                                            <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Codes accés espaces clients</a></li>
+                                              <li class=""><a href="#mission" data-toggle="tab" aria-expanded="false">Mission</a></li>
+                                              <li class=""><a href="#Exercices" data-toggle="tab" aria-expanded="false">Exercices</a></li>
+                                              <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Informations Bancaires</a></li>
+                                              <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Rapprochement CFONB - Mots clés</a></li>
+                                              <li class=""><a href="#Facturation" data-toggle="tab" aria-expanded="false">Facturation</a></li>
+                                              <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Codes accés espaces clients</a></li>
 
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
+                                          </ul>
+                                     </li>
+                                 </ul>
+                             </li>#}
                         </ul>
                     </div>
 
@@ -47,9 +46,9 @@
                                 <fieldset class="content-group">
 
                                     {{form_row(formcompany.legalName)}}
-                                    {{form_row(formcompany.legalForm)}}
-                                    {{form_row(formcompany.taxationRegime)}}
-                                    {{form_row(formcompany.vatSystem)}}
+                                    {{form_widget(formcompany.legalForm)}}
+                                    {{form_widget(formcompany.taxSystem)}}
+                                    {{form_widget(formcompany.vatSystem)}}
                                     {{form_row(formcompany.currentAddress.description)}}
                                     {{form_row(formcompany.currentAddress.postalCode)}}
                                     {{form_row(formcompany.currentAddress.city)}}
@@ -66,7 +65,7 @@
                                 <fieldset class="scheduler-border">
                                     <legend class="scheduler-border" style="text-transform: capitalize">aaaaa</legend>
 
-                                    {{form_row(formcompany.apeCode)}}
+                                    {{form_widget(formcompany.apeCode)}}
                                     {{form_row(formcompany.mainActivity)}}
                                     {{form_row(formcompany.siretNumber)}}
                                     {{form_row(formcompany.sirenNumber)}}
@@ -85,18 +84,12 @@
                                             {{form_row(formcompany.formerAccountant.civility)}}
                                             {{form_row(formcompany.formerAccountant.firstName)}}
                                             {{form_row(formcompany.formerAccountant.lastName)}}
-                                            {{form_row(formcompany.formerAccountant.address.description)}}
-                                            {{form_row(formcompany.formerAccountant.address.postalCode)}}
-                                            {{form_row(formcompany.formerAccountant.address.city)}}
-                                            {{form_row(formcompany.formerAccountant.address.email)}}
-
                                             {#   <div class="form-group">
                                                      <div class="col-xs- col-md-5 pull-right" >
                                                          <input type="button" class="form-control btn-info" id="pwd" value="&nbsp;Générer et envoyer la lettre de reprise de dossier&nbsp;" name="pwd">
                                                      </div>
                                                  </div>
                                              #}
-
                                         </fieldset>
 
                                     </div>
@@ -116,8 +109,9 @@
 
                                     </div>
                                 </div>
-                                {#<div class="form-group">
+                                <div class="form-group">
                                     <div class=" col-sm-12">
+
                                         <fieldset class="scheduler-border">
                                             <legend class="scheduler-border" style="text-transform: capitalize">contacts</legend>
                                             {% if company.contacts[0].firstname is defined %}
@@ -136,8 +130,9 @@
                                                 {{form_row(formcompany.contacts.email)}}
                                             {% endif %}
                                         </fieldset>
+
                                     </div>
-                                </div>#}
+                                </div>
 
 
                                 <div class="form-group">
@@ -219,10 +214,8 @@
                     allow_up: false,
                     allow_down: false,
                     init_with_n_elements: 0,
-
                 }
             );
-
             $('.add-fiscal-collection').collection({
                     name_prefix: "{{ formcompany.fiscalYears.vars.full_name }}",
                     add_at_the_end: true,
@@ -237,22 +230,20 @@
                         //$('select').select2();
                         return true;
                     }
-
                 }
             );
-
             /*
-                        $('.add-contact-collection').collection({
-                               // name_prefix: ,
-                                add_at_the_end: true,
-                                hide_useless_buttons: true,
-                                add: '<a style="float:right" href="#" class="collection-action btn btn-success btn-small collection-rescue-add">Ajouter</a>',
-                                remove: '<a href="#" class="collection-remove btn btn-warning collection-action">Retirer</a>',
-                                allow_up: false,
-                                allow_down: false,
-                                init_with_n_elements: 0,
-                            }
-                        );
-                        */
+             $('.add-contact-collection').collection({
+             // name_prefix: ,
+             add_at_the_end: true,
+             hide_useless_buttons: true,
+             add: '<a style="float:right" href="#" class="collection-action btn btn-success btn-small collection-rescue-add">Ajouter</a>',
+             remove: '<a href="#" class="collection-remove btn btn-warning collection-action">Retirer</a>',
+             allow_up: false,
+             allow_down: false,
+             init_with_n_elements: 0,
+             }
+             );
+             */
         </script>
     {% endblock %}

@@ -9,7 +9,7 @@ use AppBundle\Entity\Customer;
 use AppBundle\Entity\EnterRelation;
 use AppBundle\Entity\FiscalYear;
 use AppBundle\Entity\User;
-use AppBundle\Form\CompanyType;
+use AppBundle\Form\CustomerType;
 use AppBundle\Form\FiscalDetailsType;
 use AppBundle\Form\FiscalType;
 use AppBundle\Model\ClientManager;
@@ -28,7 +28,7 @@ use AppBundle\Event\RendezVousCreatedEvent;
  * @package AppBundle\Controller
  * @Route("company")
  */
-class CompanyController extends BaseController
+class CustomerController extends BaseController
 {
     private  $clientManager;
     private  $contactManager;
@@ -104,16 +104,20 @@ class CompanyController extends BaseController
      */
     public function newAction(Request $request)
     {
-        $company = new Company();
-        $formcompany = $this->createForm('AppBundle\Form\CompanyType', $company, array(
+        $company = new Customer();
+        $formcompany = $this->createForm('AppBundle\Form\CustomerType', $company, array(
             'add_contact_data' => false,
         ));
         $formcompany->handleRequest($request);
+
         if ($formcompany->isSubmitted() && $formcompany->isValid()) {
+
             $contacts=[ $formcompany->get("contacts")->get("firstname")->getData(),
                         $formcompany->get("contacts")->get("lastname")->getData(),
                         $formcompany->get("contacts")->get("email")->getData(),
              ];
+
+
             $this->clientManager->createClient($company,$contacts);
          //   $this->get('event_dispatcher')->dispatch(AppEvents::CLIENT_CREATED, new ClientCreatedEvent($company));
             $this->addSuccessFlash();
@@ -129,11 +133,15 @@ class CompanyController extends BaseController
      * @Route("/edit/{id}", name="company_edit")
      *
      */
-    public function editAction(Company $company, Request $request)
+    public function editAction(Customer $company, Request $request)
     {
-        $formcompany = $this->createForm('AppBundle\Form\CompanyType', $company);
+
+      // dump($company->getContacts()->first()->getEmail());die;
+        $formcompany = $this->createForm('AppBundle\Form\CustomerType', $company);
+
         $formcompany->handleRequest($request);
         if ($formcompany->isSubmitted() && $formcompany->isValid()) {
+
 
             $this->clientManager->editClient($company);
             $this->addSuccessFlash();

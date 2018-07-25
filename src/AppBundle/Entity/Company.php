@@ -49,31 +49,31 @@ class Company
 
     /**
      * @var APECode
-     * @ORM\ManyToOne(targetEntity="APECode", inversedBy="companies")
+     * @ORM\ManyToOne(targetEntity="APECode", inversedBy="companies",cascade={"persist"})
      */
     private $apeCode;
 
     /**
      * @var LegalForm
-     * @ORM\ManyToOne(targetEntity="LegalForm", inversedBy="companies")
+     * @ORM\ManyToOne(targetEntity="LegalForm", inversedBy="companies",cascade={"persist"})
      */
     private $legalForm;
 
     /**
      * @var TaxSystem
-     * @ORM\ManyToOne(targetEntity="TaxSystem", inversedBy="companies")
+     * @ORM\ManyToOne(targetEntity="TaxSystem", inversedBy="companies",cascade={"persist"})
      */
     private $taxSystem;
 
     /**
      * @var VatSystem
-     * @ORM\ManyToOne(targetEntity="VatSystem", inversedBy="companies")
+     * @ORM\ManyToOne(targetEntity="VatSystem", inversedBy="companies",cascade={"persist"})
      */
     private $vatSystem;
 
     /**
      * @var Address [] | ArrayCollection
-     * @ORM\ManyToMany(targetEntity="Address")
+     * @ORM\ManyToMany(targetEntity="Address",cascade={"persist"})
      * @ORM\JoinTable(name="company_address",
      *      joinColumns={@ORM\JoinColumn(name="company_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="address_id", referencedColumnName="id", unique=true)}
@@ -84,10 +84,19 @@ class Company
     /**
      * @var Address
      *
-     * @ORM\OneToOne(targetEntity="Address")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address",cascade={"persist"})
      * @ORM\JoinColumn(name="current_address_id", referencedColumnName="id")
      */
     private $currentAddress;
+
+    /**
+     * @var Address
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address", cascade={"persist", "remove"})
+     *
+     * @ORM\JoinColumn(name="siege_address_id", referencedColumnName="id")
+     */
+    protected $siegeAddress;
 
     /**
      * @var string
@@ -255,7 +264,7 @@ class Company
     /**
      * @param LegalForm $legalForm
      */
-    public function setLegalForm(LegalForm $legalForm)
+    public function setLegalForm($legalForm)
     {
         $this->legalForm = $legalForm;
     }
@@ -309,6 +318,38 @@ class Company
     public function setCurrentAddress(Address $currentAddress)
     {
         $this->currentAddress = $currentAddress;
+    }
+
+    /**
+     * @return Address
+     */
+    public function getSiegeAddress()
+    {
+        return $this->siegeAddress;
+    }
+
+    /**
+     * @param Address $siegeAddress
+     */
+    public function setSiegeAddress(Address $siegeAddress)
+    {
+        $this->siegeAddress = $siegeAddress;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFaxNumber()
+    {
+        return $this->faxNumber;
+    }
+
+    /**
+     * @param string $faxNumber
+     */
+    public function setFaxNumber(string $faxNumber)
+    {
+        $this->faxNumber = $faxNumber;
     }
 
     /**

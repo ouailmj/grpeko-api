@@ -119,7 +119,7 @@ class Customer extends Company
 
     /**
      * @var FiscalYear [] | ArrayCollection
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\FiscalYear", mappedBy="customer")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\FiscalYear", mappedBy="customer",cascade={"persist"})
      */
     private $fiscalYears;
 
@@ -131,13 +131,13 @@ class Customer extends Company
 
     /**
      * @var CustomerStatus
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CustomerStatus", inversedBy="customers")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CustomerStatus", inversedBy="customers",cascade={"persist"})
      */
     private $customerStatus;
 
     /**
      * @var FormerAccountant
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\FormerAccountant", inversedBy="customers")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\FormerAccountant", inversedBy="customers",cascade={"persist"})
      */
     private $formerAccountant;
 
@@ -146,6 +146,12 @@ class Customer extends Company
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\BankAccount", mappedBy="customer")
      */
     private $bankAccounts;
+
+    /**
+     * @var Contact[] | ArrayCollection
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Contact" ,mappedBy="customer" ,cascade={"persist", "remove"})
+     */
+    private $contacts;
 
     /**
      * Customer constructor.
@@ -158,8 +164,44 @@ class Customer extends Company
         $this->fiscalYears = new ArrayCollection();
         $this->bankAccounts = new ArrayCollection();
         $this->jobQuotations=new ArrayCollection();
+        $this->contacts=new ArrayCollection();
     }
 
+    /**
+     * @return Contact[]|ArrayCollection
+     */
+    public function getContacts()
+    {
+        return $this->contacts;
+    }
+
+    /**
+     * @param Contact[]|ArrayCollection $contacts
+     */
+    public function setContacts($contacts)
+    {
+        $this->contacts = $contacts;
+    }
+
+    /**
+     * @param $contacts
+     *
+     * @return $this
+     */
+    public function addContact(Contact $contacts)
+    {
+        $this->contacts->add($contacts);
+        return $this;
+    }
+    /**
+     * @param $contacts
+     *
+     * @return bool
+     */
+    public function removeContact($contacts)
+    {
+        return $this->contacts->removeElement($contacts);
+    }
 
     /**
      * @return JobQuotation

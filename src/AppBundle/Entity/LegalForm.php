@@ -38,6 +38,14 @@ class LegalForm
      */
     protected $id;
 
+    /**
+     * Forme juridique.
+     *
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $name;
 
     /**
      * @var FiscalYear [] | ArrayCollection
@@ -85,6 +93,22 @@ class LegalForm
     public function setCompanies($companies)
     {
         $this->companies = $companies;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName(string $name)
+    {
+        $this->name = $name;
     }
 
     /**

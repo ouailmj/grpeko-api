@@ -37,6 +37,11 @@ class Contact
      */
     protected $id;
 
+    /**
+     * @var Customer
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Customer" ,inversedBy="contacts" ,cascade={"persist"})
+     */
+    private $customer;
 
     /**
      * @var ContactStatus
@@ -322,6 +327,22 @@ class Contact
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return Company
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
+    }
+
+    /**
+     * @param Company $customer
+     */
+    public function setCustomer(Company $customer)
+    {
+        $this->customer = $customer;
     }
 
     /**

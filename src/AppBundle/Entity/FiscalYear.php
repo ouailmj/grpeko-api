@@ -117,7 +117,7 @@ class FiscalYear
 
     /**
      * @var Assignment
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Assignment", inversedBy="mainFiscalYear")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Assignment", inversedBy="mainFiscalYear",cascade={"persist"})
      *
      */
     private $mainAssignment;
