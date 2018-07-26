@@ -38,7 +38,7 @@ monolog:
         #    level: info
 
 swiftmailer:
-    port: 1025
+    port: 25
     delivery_addresses: ['%mailer_user%']
 
 hautelook_alice:

@@ -83,4 +83,9 @@ class Mailer
 
         $this->sendEmailMessage($bodymessage, $email, $sujet);
     }
+
+    public function testEmail()
+    {
+        $this->sendEmailMessage('Test Mail', 'dummy@et.to', 'Test Email');
+    }
 }

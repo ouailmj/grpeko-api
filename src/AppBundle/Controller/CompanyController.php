@@ -130,7 +130,7 @@ class CompanyController extends BaseController
         $contacts = $this->em->getRepository('AppBundle:Contact')->findAll();
 
         return $this->render('contact/list.html.twig', [
-            'contacts' => $contacts
+            'contacts' => $contacts,
         ]);
     }
 

@@ -203,6 +203,6 @@ class CustomerStatus
 
     public function __toString()
     {
-        return (empty($this->status)) ? "" : $this->status;
+        return (empty($this->status)) ? '' : $this->status;
     }
 }
