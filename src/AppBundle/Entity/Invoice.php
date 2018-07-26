@@ -12,6 +12,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -32,10 +33,32 @@ class Invoice
     private $id;
 
     /**
-     * @var CustomerStatus
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CustomerStatus", inversedBy="invoices")
+     * @var Company
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company", inversedBy="invoices")
      */
-    private $customerStatus;
+    private $company;
+
+    /**
+     * @var FiscalYear
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\FiscalYear", inversedBy="invoices")
+     */
+    private $fiscalYear;
+
+    /**
+     * @var InvoiceLine [] | ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\InvoiceLine", mappedBy="invoice")
+     */
+    private $invoiceLines;
+
+    /**
+     * Invoice constructor.
+     */
+    public function __construct()
+    {
+        $this->invoiceLines = new ArrayCollection;
+    }
+
 
     /**
      * Get id.
@@ -48,18 +71,72 @@ class Invoice
     }
 
     /**
-     * @return CustomerStatus
+     * @return Company
      */
-    public function getCustomerStatus(): CustomerStatus
+    public function getCompany()
     {
-        return $this->customerStatus;
+        return $this->company;
     }
 
     /**
-     * @param CustomerStatus $customerStatus
+     * @param Company $company
      */
-    public function setCustomerStatus(CustomerStatus $customerStatus)
+    public function setCompany(Company $company)
     {
-        $this->customerStatus = $customerStatus;
+        $this->company = $company;
     }
+
+    /**
+     * @return FiscalYear
+     */
+    public function getFiscalYear(): FiscalYear
+    {
+        return $this->fiscalYear;
+    }
+
+    /**
+     * @param FiscalYear $fiscalYear
+     */
+    public function setFiscalYear(FiscalYear $fiscalYear)
+    {
+        $this->fiscalYear = $fiscalYear;
+    }
+
+    /**
+     * @return InvoiceLine[]|ArrayCollection
+     */
+    public function getInvoiceLines()
+    {
+        return $this->invoiceLines;
+    }
+
+    /**
+     * @param InvoiceLine[]|ArrayCollection $invoiceLines
+     */
+    public function setInvoiceLines($invoiceLines)
+    {
+        $this->invoiceLines = $invoiceLines;
+    }
+
+    /**
+     * @param InvoiceLine $invoiceLine
+     * @return $this
+     */
+    public function addInvoiceLine(InvoiceLine $invoiceLine)
+    {
+        $this->invoiceLines->add($invoiceLine);
+        return $this;
+    }
+
+    /**
+     * @param InvoiceLine $invoiceLine
+     * @return bool
+     */
+    public function removeInvoiceLine(InvoiceLine $invoiceLine)
+    {
+        return $this->invoiceLines->removeElement($invoiceLine);
+    }
+
+
+
 }

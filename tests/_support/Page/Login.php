@@ -21,7 +21,6 @@ class Login
     public static $initialsField        = 'appbundle_employee[initials]';
     public static $phonenbrField        = 'appbundle_employee[phoneNumber]';
     public static $FaxField             = 'appbundle_employee[faxNumber]';
-    public static $FixenumbreField      = 'appbundle_employee[FixeNumber]';
     public static $postalcodeField      = 'appbundle_employee[currentAddress][postalCode]';
     public static $descriptionField     = 'appbundle_employee[currentAddress][description]';
     public static $cityField            = 'appbundle_employee[currentAddress][city]';

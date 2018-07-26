@@ -14,12 +14,14 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * Employee.
  *
  * @ORM\Table(name="employee")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EmployeeRepository")
+ * @ApiResource()
  * @ORM\HasLifecycleCallbacks()
  */
 class Employee extends Person
@@ -41,6 +43,12 @@ class Employee extends Person
      */
     private $jobPosition;
 
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $initials;
+
     /**
      * @var Assignment [] | ArrayCollection
      *
@@ -49,25 +57,22 @@ class Employee extends Person
     private $assignments;
 
     /**
-     * @var Employee
-     *
-     * @ORM\OneToOne(targetEntity="Employee")
-     * @ORM\JoinColumn(name="manager_id", referencedColumnName="id")
+     * @ORM\OneToMany(targetEntity="Employee", mappedBy="manager")
+     */
+    private $staffs;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Employee", inversedBy="staffs")
+     * @ORM\JoinColumn(name="manager_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $manager;
 
     /**
-     * @var status
+     * @var boolean
      * @ORM\Column(name="status", type="boolean", nullable=true)
      */
     protected $status = false;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=10, nullable=true)
-     */
-    protected $initials;
 
     /**
      * @var \DateTime
@@ -75,6 +80,31 @@ class Employee extends Person
      * @ORM\Column(type="datetimetz", nullable=true)
      */
     protected $entryDate;
+
+    /**
+     * @var CommissionRate [] | ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\CommissionRate", mappedBy="employee")
+     */
+    private $commissionRates;
+
+    /**
+     * @var Group
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Group", inversedBy="employees")
+     */
+    private $group;
+
+    /**
+     * Employee constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->staffs = new ArrayCollection();
+        $this->commissionRates = new ArrayCollection();
+    }
 
     /**
      * @return \DateTime
@@ -159,7 +189,7 @@ class Employee extends Person
     /**
      * @param Employee $manager
      */
-    public function setManager(self $manager)
+    public function setManager(Employee $manager)
     {
         $this->manager = $manager;
     }
@@ -179,4 +209,103 @@ class Employee extends Person
     {
         $this->initials = $initials;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getStaffs()
+    {
+        return $this->staffs;
+    }
+
+    /**
+     * @param mixed $staffs
+     */
+    public function setStaffs($staffs)
+    {
+        $this->staffs = $staffs;
+    }
+
+
+    public function addStaff(Employee $employee)
+    {
+        $this->staffs->add($employee);
+        return $this;
+    }
+
+    public function removeStaff(Employee $employee)
+    {
+        return $this->staffs->removeElement($employee);
+
+    }
+
+    /**
+     * @return bool
+     */
+    public function isStatus(): bool
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param bool $status
+     */
+    public function setStatus(bool $status)
+    {
+        $this->status = $status;
+    }
+
+    /**
+     * @return CommissionRate[]|ArrayCollection
+     */
+    public function getCommissionRates()
+    {
+        return $this->commissionRates;
+    }
+
+    /**
+     * @param CommissionRate[]|ArrayCollection $commissionRates
+     */
+    public function setCommissionRates($commissionRates)
+    {
+        $this->commissionRates = $commissionRates;
+    }
+
+
+    /**
+     * @param CommissionRate $commissionRate
+     * @return $this
+     */
+    public function addCommissionRate(CommissionRate $commissionRate)
+    {
+        $this->commissionRates->add($commissionRate);
+        return $this;
+    }
+
+    /**
+     * @param CommissionRate $commissionRate
+     * @return bool
+     */
+    public function removeEmployee(CommissionRate $commissionRate)
+    {
+        return $this->commissionRates->removeElement($commissionRate);
+    }
+
+    /**
+     * @return Group
+     */
+    public function getGroup()
+    {
+        return $this->group;
+    }
+
+    /**
+     * @param Group $group
+     */
+    public function setGroupe(Group $group)
+    {
+        $this->group = $group;
+    }
+
+
 }

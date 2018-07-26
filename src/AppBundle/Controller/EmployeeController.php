@@ -59,13 +59,14 @@ class EmployeeController extends BaseController
     public function newAction(Request $request, EmployeeManager $employeeManager)
     {
         $employee = new Employee();
-        $form = $this->createForm('AppBundle\Form\EmployeeType', $employee);
+        $form = $this->createForm(EmployeeType::class, $employee);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             if (!empty($plainPassword = $form->get('userAccount')->get('password')->getData())) {
                 $employee->getUserAccount()->setPlainPassword($plainPassword);
             }
+            $employee->addAddress($form->get('currentAddress')->getData());
 
             $employeeManager->createEmployee($employee);
 

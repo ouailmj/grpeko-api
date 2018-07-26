@@ -14,6 +14,8 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Product.
@@ -29,7 +31,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     "product"="Product",
  *     "mission"="Mission",
  * })
- *
+ * @ApiResource
  * @ORM\HasLifecycleCallbacks()
  */
 class Product
@@ -47,11 +49,12 @@ class Product
      * @var float
      *
      * @ORM\Column(name="price", type="float")
+     *  @Groups({"type_mission"})
      */
     private $price;
 
     /**
-     * @var QuotationLine[] | ArrayCollection
+     * @var  ArrayCollection
      * @ORM\OneToMany(targetEntity="QuotationLine", mappedBy="product")
      */
     private $quotationLines;
@@ -99,9 +102,9 @@ class Product
     }
 
     /**
-     * @return QuotationLine
+     * @return ArrayCollection
      */
-    public function getQuotationLines(): QuotationLine
+    public function getQuotationLines()
     {
         return $this->quotationLines;
     }

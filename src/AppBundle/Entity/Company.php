@@ -241,6 +241,37 @@ class Company extends LegalEntity
      */
     protected $formerAccountant;
 
+
+    /**
+     * @var Rendezvous
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Rendezvous", mappedBy="company", cascade={"persist", "remove"})
+     *
+     */
+    private $rendezvous;
+
+
+    /**
+     * @var Quotation [] | ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Quotation", mappedBy="company")
+     */
+    private $quotations;
+
+
+    /**
+     * @var QuotationLine [] | ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="QuotationLine",  mappedBy="company")
+     */
+    private $quotationLines;
+
+    /**
+     * @var Invoice [] | ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Invoice", mappedBy="company")
+     */
+    private $invoices;
+
     /**
      * Company constructor.
      */
@@ -250,6 +281,9 @@ class Company extends LegalEntity
         $this->fiscalYears = new ArrayCollection();
         $this->contacts = new ArrayCollection();
         $this->otherPhoneNumbers = new ArrayCollection();
+        $this->quotations = new ArrayCollection();
+        $this->quotationLines = new ArrayCollection();
+        $this->invoices = new ArrayCollection();
     }
 
     /**
@@ -732,5 +766,106 @@ class Company extends LegalEntity
     public function setCustomerStatus(CustomerStatus $customerStatus)
     {
         $this->customerStatus = $customerStatus;
+    }
+
+    /**
+     * @return Rendezvous
+     */
+    public function getRendezvous()
+    {
+        return $this->rendezvous;
+    }
+
+    /**
+     * @param Rendezvous $rendezvous
+     */
+    public function setRendezvous(Rendezvous $rendezvous)
+    {
+        $this->rendezvous = $rendezvous;
+    }
+
+
+    /**
+     * @return Quotation[]|ArrayCollection
+     */
+    public function getQuotations()
+    {
+        return $this->quotations;
+    }
+
+    /**
+     * @param Quotation[]|ArrayCollection $quotations
+     */
+    public function setQuotations($quotations)
+    {
+        $this->quotations = $quotations;
+    }
+
+    public function addQuotation(Quotation $quotation)
+    {
+        $this->quotations->add($quotation);
+
+        return $this;
+    }
+
+    public function removeQuotation(Quotation $quotation)
+    {
+        return $this->quotations->removeElement($quotation);
+    }
+
+    /**
+     * @return QuotationLine[]|ArrayCollection
+     */
+    public function getQuotationLines()
+    {
+        return $this->quotationLines;
+    }
+
+    /**
+     * @param QuotationLine[]|ArrayCollection $quotationLines
+     */
+    public function setQuotationLines($quotationLines)
+    {
+        $this->quotationLines = $quotationLines;
+    }
+
+    public function addQuotationLine(QuotationLine $quotationLines)
+    {
+        $this->quotationLines->add($quotationLines);
+
+        return $this;
+    }
+
+    public function removeQuotationLine(QuotationLine $quotationLines)
+    {
+        return $this->quotationLines->removeElement($quotationLines);
+    }
+
+    /**
+     * @return Invoice[]|ArrayCollection
+     */
+    public function getInvoices()
+    {
+        return $this->invoices;
+    }
+
+    /**
+     * @param Invoice[]|ArrayCollection $invoices
+     */
+    public function setInvoices($invoices)
+    {
+        $this->invoices = $invoices;
+    }
+
+    public function addInvoice(Invoice $invoice)
+    {
+        $this->invoices->add($invoice);
+
+        return $this;
+    }
+
+    public function removeInvoice(Invoice $invoice)
+    {
+        return $this->invoices->removeElement($invoice);
     }
 }

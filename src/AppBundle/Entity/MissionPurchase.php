@@ -68,21 +68,27 @@ class MissionPurchase
     private $firstFiscalStartDate;
 
     /**
-     * @var Mission[] | ArrayCollection
-     * @ORM\ManyToMany(targetEntity="Mission")
-     * @ORM\JoinTable(name="mission_purchase_mission",
-     *      joinColumns={@ORM\JoinColumn(name="mission_purchase_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="mission_id", referencedColumnName="id", unique=true)}
-     *      )
-     */
-    protected $missions;
-
-    /**
      * @var Quotation
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Quotation" ,inversedBy="missionPurchase")
      */
     protected $quotation;
+
+
+    /**
+     * @var FiscalYear [] | ArrayCollection
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\FiscalYear", mappedBy="missionPurchase")
+     */
+    private $fiscalYears;
+
+    /**
+     * MissionPurchase constructor.
+     */
+    public function __construct()
+    {
+        $this->fiscalYears = new ArrayCollection();
+    }
+
 
     /**
      * Get id.
@@ -210,45 +216,75 @@ class MissionPurchase
      * @return \DateTime
      */
     public function getFirstFiscalStartDate()
-    {
-        return $this->firstFiscalStartDate;
+    {        return $this->firstFiscalStartDate;
     }
 
     /**
-     * @return Mission[]|ArrayCollection
+     * @return FiscalYear[]|ArrayCollection
      */
-    public function getMissions()
+    public function getFiscalYear()
     {
-        return $this->missions;
+        return $this->fiscalYears;
     }
 
     /**
-     * @param Mission[]|ArrayCollection $missions
+     * @param array $fiscalYears
      */
-    public function setMissions($missions)
+    public function setFiscalYear(array $fiscalYears)
     {
-        $this->missions = $missions;
+        $this->fiscalYears = $fiscalYears;
     }
 
     /**
-     * @param Mission $mission
-     *
+     * @param FiscalYear $fiscalYear
      * @return $this
      */
-    public function addMission(Mission $mission)
+    public function addFiscalYear(FiscalYear $fiscalYear)
     {
-        $this->missions->add($mission);
-
+        $this->fiscalYears->add($fiscalYear);
         return $this;
     }
 
     /**
-     * @param $mission
-     *
+     * @param FiscalYear $fiscalYear
      * @return bool
      */
-    public function removeMission($mission)
+    public function removeFiscalYear(FiscalYear $fiscalYear)
     {
-        return $this->missions->removeElement($mission);
+        return $this->fiscalYears->removeElement($fiscalYear);
     }
+
+    /**
+     * @return Quotation
+     */
+    public function getQuotation()
+    {
+        return $this->quotation;
+    }
+
+    /**
+     * @param Quotation $quotation
+     */
+    public function setQuotation(Quotation $quotation)
+    {
+        $this->quotation = $quotation;
+    }
+
+    /**
+     * @return FiscalYear[]|ArrayCollection
+     */
+    public function getFiscalYears()
+    {
+        return $this->fiscalYears;
+    }
+
+    /**
+     * @param FiscalYear[]|ArrayCollection $fiscalYears
+     */
+    public function setFiscalYears($fiscalYears)
+    {
+        $this->fiscalYears = $fiscalYears;
+    }
+
+
 }

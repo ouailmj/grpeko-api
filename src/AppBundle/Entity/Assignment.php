@@ -34,9 +34,16 @@ class Assignment
     /**
      * @var FiscalYear
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\FiscalYear" ,mappedBy="assignment"))
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\FiscalYear" ,mappedBy="mainAssignment"))
      */
-    protected $fiscalYear;
+    protected $mainFiscalYear;
+
+    /**
+     * @var FiscalYear
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\FiscalYear" ,inversedBy="secondaryAssignments"))
+     */
+    protected $secondaryFiscalYear;
 
     /**
      * @var Employee
@@ -44,6 +51,14 @@ class Assignment
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Employee" ,inversedBy="assignments"))
      */
     protected $employee;
+
+    /**
+     * @var TypeMission
+     *
+     * @ORM\ManyToOne(targetEntity="TypeMission")
+     * @ORM\JoinColumn(name="type_mission_id", referencedColumnName="id")
+     */
+    private $typeMission;
 
     /**
      * Get id.
@@ -58,18 +73,35 @@ class Assignment
     /**
      * @return FiscalYear
      */
-    public function getFiscalYear()
+    public function getMainFiscalYear()
     {
-        return $this->fiscalYear;
+        return $this->mainFiscalYear;
     }
 
     /**
-     * @param FiscalYear $fiscalYear
+     * @param FiscalYear $mainFiscalYear
      */
-    public function setFiscalYear(FiscalYear $fiscalYear)
+    public function setMainFiscalYear(FiscalYear $mainFiscalYear)
     {
-        $this->fiscalYear = $fiscalYear;
+        $this->mainFiscalYear = $mainFiscalYear;
     }
+
+    /**
+     * @return FiscalYear
+     */
+    public function getSecondaryFiscalYear()
+    {
+        return $this->secondaryFiscalYear;
+    }
+
+    /**
+     * @param FiscalYear $secondaryFiscalYear
+     */
+    public function setSecondaryFiscalYear(FiscalYear $secondaryFiscalYear)
+    {
+        $this->secondaryFiscalYear = $secondaryFiscalYear;
+    }
+
 
     /**
      * @return Employee
@@ -86,4 +118,22 @@ class Assignment
     {
         $this->employee = $employee;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getTypeMission()
+    {
+        return $this->typeMission;
+    }
+
+    /**
+     * @param mixed $typeMission
+     */
+    public function setTypeMission($typeMission)
+    {
+        $this->typeMission = $typeMission;
+    }
+
+
 }

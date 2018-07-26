@@ -12,9 +12,9 @@
 
 namespace AppBundle\Entity;
 
-// use AppBundle\Model\Address;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PersonRepository")
@@ -30,7 +30,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     "customer"="Customer",
  *     "contact"="Contact",
  * })
- *
+ * @ApiResource()
  * @ORM\HasLifecycleCallbacks()
  */
 class Person
@@ -101,38 +101,13 @@ class Person
     protected $postalCode;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Address")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Address", cascade={"persist"})
      * @ORM\JoinTable(name="person_address",
      *      joinColumns={@ORM\JoinColumn(name="person_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="address_id", referencedColumnName="id", unique=true)}
      *      )
      */
     private $addresses;
-
-    /**
-     * @var Address
-     *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Address", cascade={"persist", "remove"})
-     *
-     * @ORM\JoinColumn(name="current_address_id", referencedColumnName="id")
-     */
-    protected $currentAddress;
-
-    /**
-     * @return Address
-     */
-    public function getCurrentAddress()
-    {
-        return $this->currentAddress;
-    }
-
-    /**
-     * @param Address $currentAddress
-     */
-    public function setCurrentAddress($currentAddress)
-    {
-        $this->currentAddress = $currentAddress;
-    }
 
     /**
      * @var User
@@ -144,7 +119,7 @@ class Person
     /**
      * Person constructor.
      *
-     * @param $addresses
+     *
      */
     public function __construct()
     {
@@ -321,11 +296,10 @@ class Person
 
     /**
      * @param \AppBundle\Entity\Address $address
-     *
      * @return $this
      */
-    public function addAddress(\AppBundle\Entity\Address $address)
-    {
+    public function addAddress(\AppBundle\Entity\Address $address){
+
         $this->addresses->add($address);
 
         return $this;

@@ -44,10 +44,10 @@ class QuotationLine
     private $quotation;
 
     /**
-     * @var CustomerStatus
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CustomerStatus",inversedBy="quotationLines")
+     * @var Company
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company",inversedBy="quotationLines")
      */
-    private $customerStatus;
+    private $company;
 
     /**
      * Get id.
@@ -92,18 +92,19 @@ class QuotationLine
     }
 
     /**
-     * @return CustomerStatus
+     * @return Company
      */
-    public function getCustomerStatus(): CustomerStatus
+    public function getCompany(): Company
     {
-        return $this->customerStatus;
+        return $this->company;
     }
 
     /**
-     * @param CustomerStatus $customerStatus
+     * @param Company $company
      */
-    public function setCustomerStatus(CustomerStatus $customerStatus)
+    public function setCompany(Company $company)
     {
-        $this->customerStatus = $customerStatus;
+        $this->company = $company;
     }
+
 }
