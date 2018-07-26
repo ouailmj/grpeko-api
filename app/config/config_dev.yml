@@ -38,8 +38,8 @@ monolog:
         #    level: info
 
 swiftmailer:
-    port: 25
-    delivery_addresses: ['%mailer_user%']
+    port: 1025
+    delivery_addresses: ['groupeekofr.dev@gmail.com']
 
 hautelook_alice:
     fixtures_path: 'Resources/fixtures/orm' # Path to which to look for fixtures relative to the project directory or the bundle path.
