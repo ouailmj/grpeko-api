@@ -1,6 +1,7 @@
 {% extends 'company/company.html.twig' %}
 {% block _content %}
 
+
             <div class="panel panel-flat">
                 <div class="panel-heading">
                     <h5 class="panel-title">Clients - Modus</h5>
@@ -59,10 +60,18 @@
                                 {{ form_end(delete_form[loop.index-1]) }}
                             </td>
                             <td>{{company.code}}</td>
-                            <td>{{company.legalform}}</td>
+                            <td>
+                                {% if company.legalform.name is defined %}
+                                 {{company.legalform.name}}
+                                {% endif %}
+                            </td>
                             <td>{{company.customerStatus.status}}</td>
                             <td>Null</td>
-                            <td>{{company.legalform}}</td>
+                            <td>
+                                {% if company.legalform.name is defined %}
+                                 {{company.legalform.name}}
+                                {% endif %}
+                            </td>
                             <td>
                                 {% for fiscalYear in company.fiscalYears %}
                                     {{fiscalYear.closeDate |date(date_default_fromat)}}
@@ -70,25 +79,31 @@
                             </td>
                             <td>Null</td>
                             <td>
-                                {{company.taxSystem}}
-                            </td>
-                            <td>
-                                {{company.vatSystem}}
-                            </td>
-                            <td>{{company.mainActivity}}</td>
-                            <td>
-                                {% if company.rendezvous != null %}
-                                <a href="{{ asset('/uploads/files/' ~ company.rendezvous.fichePatrimoniale) }}" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-file-download"></i></b>Fiche Patrimoniale</a>
-                            {% else %}
-                                Aucun
+                                {% if company.taxSystem.name is defined %}
+                                    {{company.taxSystem.name}}
                                 {% endif %}
                             </td>
                             <td>
-                                {% if company.rendezvous != null %}
-                                <a href="{{ asset('/uploads/files/' ~ company.rendezvous.cin) }}" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-file-download"></i></b>Fiche CIN</a></td>
-                        {% else %}
-                            Aucun
-                            {% endif %}
+                                {% if company.vatSystem.name is defined %}
+                                    {{company.vatSystem.name}}
+                                {% endif %}
+                            </td>
+                            <td>{{company.mainActivity}}</td>
+                            <td>
+                                {#  {% if company.rendezvous != null %}
+                                <a href="{{ asset('/uploads/files/' ~ company.rendezvous.fichePatrimoniale) }}" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-file-download"></i></b>Fiche Patrimoniale</a>
+                            {% else %}
+                                Aucun
+                                {% endif %} #}
+                            </td>
+                            <td>
+                               {# {% if company.rendezvous != null %}
+                                <a href="{{ asset('/uploads/files/' ~ company.rendezvous.cin) }}" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-file-download"></i></b>Fiche CIN</a>
+
+                            {% else %}
+                                Aucun
+                                {% endif %} #}
+                            </td>
                         </tr>
                         {% endfor %}
 

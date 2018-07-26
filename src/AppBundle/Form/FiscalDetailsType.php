@@ -9,6 +9,8 @@
 namespace AppBundle\Form;
 
 use AppBundle\Entity\FormerAccountant;
+use AppBundle\Entity\VatSystem;
+use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -44,26 +46,10 @@ class FiscalDetailsType extends AbstractType
             ->add('status', TextType::class, array(
                    'label' => 'Status'
                 ))
-            ->add('taxationRegime', ChoiceType::class, array(
-                'label' => 'Régime d\'imposition:',
-                'choices'=>array(
-                    'micro-entreprise'=>'micro-entreprise',
-                    'l’auto-entreprise'=>'l’auto-entreprise',
-                    'réel simplifié'=>'réel simplifié',
-                    'réel normal'=>'réel normal',
-                ),
-                'required'  => false
-            ))
-            ->add('vatSystem', ChoiceType::class, array(
-                'label' => 'Régime de TVA:',
-                'choices'=>array(
-                    'le régime du réel normal de TVA '=>'le régime du réel normal de TVA ',
-                    'le régime simplifié d’imposition à la TVA'=>'le régime simplifié d’imposition à la TVA',
-                    'le régime de la franchise en base de TVA'=>'le régime de la franchise en base de TVA',
-                ),
-                'required'  => false
-            ))
-            ->add('assignment', AssignmentType::class, array(
+            ->add('taxsystem',TaxSystemType::class,array('label'=>false))
+            ->add('vatSystem', VatSystemType::class,array('label'=>false))
+
+            ->add('mainassignment', AssignmentType::class, array(
                 'label' => false
             ))
 

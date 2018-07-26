@@ -110,8 +110,13 @@ class ClientManager
         $prospect->getLegalForm()->setCompanies([$prospect]);
         $prospect->getTaxSystem()->setCompanies([$prospect]);
         $prospect->getVatSystem()->setCompanies([$prospect]);
-        $this->em->persist($prospect);
 
+        $this->em->persist($prospect);
+        $this->em->flush();
+        $code=$prospect->getCustomerStatus()->getStatus()=="Client" ? "C".$prospect->getId() :"P1".$prospect->getId();
+        $prospect->setCode($code);
         $this->em->flush();
     }
 }
+
+//TODO:Contacts New company, name unique

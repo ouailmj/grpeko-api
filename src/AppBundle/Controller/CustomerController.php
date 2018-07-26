@@ -9,11 +9,13 @@ use AppBundle\Entity\Customer;
 use AppBundle\Entity\EnterRelation;
 use AppBundle\Entity\FiscalYear;
 use AppBundle\Entity\User;
+use AppBundle\Form\ContactDetailsType;
 use AppBundle\Form\CustomerType;
 use AppBundle\Form\FiscalDetailsType;
 use AppBundle\Form\FiscalType;
 use AppBundle\Model\ClientManager;
 use AppBundle\Model\ContactManager;
+use AppBundle\Model\FiscalManager;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -30,26 +32,12 @@ use AppBundle\Event\RendezVousCreatedEvent;
  */
 class CustomerController extends BaseController
 {
-    private  $clientManager;
-    private  $contactManager;
-    private $em;
-    /**
-     * CompanyController constructor.
-     */
-    public function __construct(ClientManager $clientManager,ContactManager $contactManager, EntityManager $em)
-    {
-        $this->clientManager= $clientManager;
-        $this->contactManager= $contactManager;
-        $this->em= $em;
-
-    }
-
     /**
      * @Route("/list", name="company_index")
      */
-    public function indexAction(Request $request)
+    public function indexAction(Request $request,ClientManager $cm)
     {
-        $companys = $this->clientManager->findAllClients();
+        $companys = $cm->findAllClients();
         $listcompanys=[];
         foreach ($companys as $company)
         {
@@ -62,20 +50,19 @@ class CustomerController extends BaseController
         ));
     }
 
-
     /**
      * Deletes a Company entity.
      *  @Route("/{id}/delete", name="company_delete")
      *  @Method("DELETE")
      */
-    public function deleteAction(Request $request, Company $company)
+    public function deleteAction(Request $request, Customer $company,ClientManager $cm)
     {
         $form = $this->createDeleteForm($company);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $this->clientManager->deleteClient($company);
+            $cm->deleteClient($company);
             $this->addSuccessFlash();
         }
 
@@ -102,10 +89,10 @@ class CustomerController extends BaseController
     /**
      * @Route("/new", name="company_new")
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request,ClientManager $cm)
     {
         $company = new Customer();
-        $formcompany = $this->createForm('AppBundle\Form\CustomerType', $company, array(
+        $formcompany = $this->createForm(CustomerType::class, $company, array(
             'add_contact_data' => false,
         ));
         $formcompany->handleRequest($request);
@@ -116,9 +103,7 @@ class CustomerController extends BaseController
                         $formcompany->get("contacts")->get("lastname")->getData(),
                         $formcompany->get("contacts")->get("email")->getData(),
              ];
-
-
-            $this->clientManager->createClient($company,$contacts);
+            $cm->createClient($company,$contacts);
          //   $this->get('event_dispatcher')->dispatch(AppEvents::CLIENT_CREATED, new ClientCreatedEvent($company));
             $this->addSuccessFlash();
             $this->redirectToRoute('company_new');
@@ -128,32 +113,30 @@ class CustomerController extends BaseController
                             array('formcompany' => $formcompany->createView()));
     }
 
-
     /**
      * @Route("/edit/{id}", name="company_edit")
      *
      */
-    public function editAction(Customer $company, Request $request)
+    public function editAction(Customer $company, Request $request,ClientManager $cm)
     {
-
-      // dump($company->getContacts()->first()->getEmail());die;
-        $formcompany = $this->createForm('AppBundle\Form\CustomerType', $company);
+        $formcompany = $this->createForm(CustomerType::class, $company);
 
         $formcompany->handleRequest($request);
         if ($formcompany->isSubmitted() && $formcompany->isValid()) {
 
-
-            $this->clientManager->editClient($company);
+            $contacts=[ $formcompany->get("contacts")->get("firstname")->getData(),
+                $formcompany->get("contacts")->get("lastname")->getData(),
+                $formcompany->get("contacts")->get("email")->getData(),
+            ];
+            $cm->editClient($company,$contacts);
             $this->addSuccessFlash();
         }
-
         return $this->render('company/edit.html.twig',
             array(
                 'formcompany' => $formcompany->createView(),
                 'company' => $company
             ));
     }
-
 
     /**
      * @Route("/contact/new", name="contact_new")
@@ -162,20 +145,19 @@ class CustomerController extends BaseController
     public function NewContactAction(Request $request)
     {
         $idcompany=$request->query->get('id');
-        $company=$this->em->getRepository('AppBundle:Company')->find($idcompany);
+        $company=$this->em->getRepository('AppBundle:Customer')->find($idcompany);
         $contact = new Contact();
-        $formcontact = $this->createForm('AppBundle\Form\ContactDetailsType',$contact);
+        $formcontact = $this->createForm(ContactDetailsType::class,$contact);
         $formcontact->handleRequest($request);
         if ($formcontact->isSubmitted() && $formcontact->isValid()) {
 
-            $contact->setCompany($company);
+            $contact->setCustomer($company);
             $this->contactManager->createContact($contact);
             $this->addSuccessFlash();
            return $this->redirectToRoute('contact_list',["id"=>$idcompany]);
         }
         return $this->render('contact/new.html.twig',array('contact' => $formcontact->createView()));
     }
-
 
     /**
      * @Route("/contact/list/{id}", name="contact_list")
@@ -196,9 +178,11 @@ class CustomerController extends BaseController
      * @Route("/contact/edit/{id}", name="contact_edit")
      *
      */
-    public function editContactAction(Contact $contact, Request $request)
+    public function editContactAction(Contact $contact, Request $request,ContactManager $cm)
     {
-        $formcontact = $this->createForm('AppBundle\Form\ContactDetailsType', $contact);
+
+        $idcustomer=$contact->getCustomer()->getId();
+        $formcontact = $this->createForm(ContactDetailsType::class, $contact);
         $formcontact->handleRequest($request);
         if ($formcontact->isSubmitted() && $formcontact->isValid()) {
             foreach ($contact->getChildren() as $c)
@@ -209,13 +193,13 @@ class CustomerController extends BaseController
             {
                 $w->setContact($contact);
             }
-
-            $this->contactManager->editContact($contact);
+            $cm->editContact($contact);
             $this->addSuccessFlash();
         }
         return $this->render('contact/edit.html.twig',
             array(
                 'contact' => $formcontact->createView(),
+                'idcustomer'=>$idcustomer
             ));
     }
 
@@ -224,7 +208,7 @@ class CustomerController extends BaseController
      *  @Route("/contact/{id}/delete", name="contact_delete")
      *  @Method("DELETE")
      */
-    public function deleteContactAction(Request $request, Contact $contact)
+    public function deleteContactAction(Request $request, Contact $contact,ContactManager $cm)
     {
         $idcompany=$contact->getCompany()->getId();
         $form = $this->createContactDeleteForm($contact);
@@ -232,7 +216,7 @@ class CustomerController extends BaseController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $this->contactManager->deleteContact($contact);
+            $cm->deleteContact($contact);
             $this->addSuccessFlash();
         }
 
@@ -252,19 +236,17 @@ class CustomerController extends BaseController
      * @Route("/excercice/new", name="excercice_new")
      *
      */
-    public function newExcerciceAction(Request $request)
+    public function newExcerciceAction(Request $request,FiscalManager $fs)
     {
         $excercice=new FiscalYear();
         $idcompany=$request->query->get('id');
-        $company=$this->em->getRepository('AppBundle:Company')->find($idcompany);
-        $formexcercice = $this->createForm('AppBundle\Form\FiscalDetailsType',$excercice);
+        $company=$this->em->getRepository(Customer::class)->find($idcompany);
+        $formexcercice = $this->createForm(FiscalDetailsType::class,$excercice);
         $formexcercice->handleRequest($request);
         if ($formexcercice->isSubmitted() && $formexcercice->isValid()) {
-             $excercice->setCompany($company);
-             $this->em->persist($excercice);
-             $this->em->flush();
-          //  $this->contactManager->createContact($excercice);
-            $this->addSuccessFlash();
+             $excercice->setCustomer($company);
+             $fs->createFiscal($excercice);
+             $this->addSuccessFlash();
             return $this->redirectToRoute('excerice_list',["id"=>$idcompany]);
         }
         return $this->render('excercice/new.html.twig',array('formexcercice' => $formexcercice->createView()));
@@ -289,17 +271,15 @@ class CustomerController extends BaseController
      * @Route("/excercice/edit/{id}", name="excercice_edit")
      *
      */
-    public function editExcerciceAction(Request $request,FiscalYear $fiscalYear)
+    public function editExcerciceAction(Request $request,FiscalYear $fiscalYear,FiscalManager $fs)
     {
-         $idCompany=$fiscalYear->getCompany()->getId();
+        $idCompany=$fiscalYear->getCustomer()->getId();
 
         $formexcercice = $this->createForm(FiscalDetailsType::class, $fiscalYear);
         $formexcercice->handleRequest($request);
         if ($formexcercice->isSubmitted() && $formexcercice->isValid()) {
 
-            $this->em->flush();
-            //$this->contactManager->editContact($contact);
-
+            $fs->editFiscal($fiscalYear);
             $this->addSuccessFlash();
         }
         return $this->render('excercice/edit.html.twig',
@@ -313,15 +293,13 @@ class CustomerController extends BaseController
      *  @Route("/excercice/{id}/delete", name="excercice_delete")
      *  @Method("DELETE")
      */
-    public function deleteExcerciceAction(Request $request, FiscalYear $fiscalYear)
+    public function deleteExcerciceAction(Request $request, FiscalYear $fiscalYear,FiscalManager $fs)
     {
-        $idcompany=$fiscalYear->getCompany()->getId();
+        $idcompany=$fiscalYear->getCustomer()->getId();
         $form = $this->createExcerciceDeleteForm($fiscalYear);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->em->remove($fiscalYear);
-            $this->em->flush();
+            $fs->deleteFiscal($fiscalYear);
             $this->addSuccessFlash();
         }
         return $this->redirectToRoute('excerice_list',["id"=>$idcompany]);
@@ -335,6 +313,5 @@ class CustomerController extends BaseController
             ->getForm()
             ;
     }
-
 
 }

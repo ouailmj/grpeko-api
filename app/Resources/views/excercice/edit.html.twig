@@ -26,7 +26,7 @@
 
                                         <ul class="dropdown-menu dropdown-menu-right">
                                             <li class=""><a href="#mission" data-toggle="tab" aria-expanded="false">Mission</a></li>
-                                            <li class=""><a href="" data-toggle="tab" aria-expanded="false">Exercices</a></li>
+                                            <li class=""><a href="{{ path('excerice_list',{'id': idCompany }) }}">Exercices</a></li>
                                             <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Informations Bancaires</a></li>
                                             <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Rapprochement CFONB - Mots clés</a></li>
                                             <li class=""><a href="#Facturation" data-toggle="tab" aria-expanded="false">Facturation</a></li>
@@ -54,9 +54,9 @@
                                             {{form_row(formexcercice.startDate)}}
                                             {{form_row(formexcercice.closeDate)}}
                                             {{form_row(formexcercice.status)}}
-                                            {{form_row(formexcercice.taxationRegime)}}
+                                            {{form_row(formexcercice.taxsystem)}}
                                             {{form_row(formexcercice.vatSystem)}}
-                                            {{form_row(formexcercice.assignment)}}
+                                            {{form_row(formexcercice.mainassignment)}}
                                             {{form_row(formexcercice.Enregistrer)}}
 
                                         </fieldset>

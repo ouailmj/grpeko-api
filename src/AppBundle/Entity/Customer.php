@@ -87,7 +87,7 @@ class Customer extends Company
 
     /**
      * @var JobQuotation
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\JobQuotation", mappedBy="customer")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\JobQuotation", mappedBy="customer",cascade={"persist","remove"})
      */
     private $jobQuotations;
 
@@ -107,43 +107,43 @@ class Customer extends Company
     /**
      * @var AccessCode [] | ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\AccessCode", mappedBy="customer")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\AccessCode", mappedBy="customer",cascade={"persist","remove"})
      */
     private $accessCodes;
 
     /**
      * @var ContactStatus [] | ArrayCollection
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\ContactStatus", mappedBy="customer")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\ContactStatus", mappedBy="customer",cascade={"persist","remove"})
      */
     private $contactsStatus;
 
     /**
      * @var FiscalYear [] | ArrayCollection
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\FiscalYear", mappedBy="customer",cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\FiscalYear", mappedBy="customer",cascade={"persist","remove"})
      */
     private $fiscalYears;
 
     /**
      * @var CustomerState
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CustomerState", inversedBy="customers")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CustomerState", inversedBy="customers",cascade={"persist","remove"})
      */
     private $customerState;
 
     /**
      * @var CustomerStatus
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CustomerStatus", inversedBy="customers",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CustomerStatus", inversedBy="customers",cascade={"persist","remove"})
      */
     private $customerStatus;
 
     /**
      * @var FormerAccountant
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\FormerAccountant", inversedBy="customers",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\FormerAccountant", inversedBy="customers",cascade={"persist","remove"}))
      */
     private $formerAccountant;
 
     /**
      * @var BankAccount [] | ArrayCollection
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\BankAccount", mappedBy="customer")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\BankAccount", mappedBy="customer",cascade={"persist","remove"})
      */
     private $bankAccounts;
 

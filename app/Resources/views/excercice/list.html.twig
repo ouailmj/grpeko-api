@@ -23,7 +23,7 @@
                                          </a>
                                          <ul class="dropdown-menu dropdown-menu-right">
                                              <li class=""><a href="#mission" data-toggle="tab" aria-expanded="false">Mission</a></li>
-                                             <li class=""><a href="#Exercices" data-toggle="tab" aria-expanded="false">Exercices</a></li>
+                                             <li class=""><a href="{{ path('excerice_list',{'id': app.request.get('id') }) }}">Exercices</a></li>
                                              <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Informations Bancaires</a></li>
                                              <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Rapprochement CFONB - Mots clés</a></li>
                                              <li class=""><a href="#Facturation" data-toggle="tab" aria-expanded="false">Facturation</a></li>
@@ -56,7 +56,7 @@
                                     <tbody>
 
                                     {% for excercice in excercices %}
-                                        {% set employe= excercice.Assignment.Employee %}
+                                        {% set employe= excercice.mainAssignment.Employee %}
                                         <tr>
                                             <td class="text-center">
                                                 <div class="">
@@ -72,8 +72,8 @@
                                             <td>{{ excercice.closeDate |date(date_default_fromat) }}</td>
                                             <td>{{ employe.lastname~" "~employe.firstname }}</td>
                                             <td>{{ excercice.status }}</td>
-                                            <td>{{ excercice.taxationRegime }}</td>
-                                            <td>{{ excercice.vatSystem }}</td>
+                                            <td>{{ excercice.taxsystem.name }}</td>
+                                            <td>{{ excercice.vatSystem.name }}</td>
                                         </tr>
                                     {% endfor %}
                                     </tbody>

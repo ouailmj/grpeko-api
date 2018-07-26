@@ -78,24 +78,17 @@ class FiscalYear
      * @ORM\Column(name="status", type="string", length=10,nullable=true)
      */
     private $status;
-    /**
-     * Regime d'imposition.
-     *
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $taxationRegime;
+
     /**
      * @var TaxSystem
-     * @ORM\ManyToOne(targetEntity="TaxSystem", inversedBy="fiscalYears")
+     * @ORM\ManyToOne(targetEntity="TaxSystem", inversedBy="fiscalYears",cascade={"persist","remove"})
      *
      */
     private $taxSystem;
 
     /**
      * @var VatSystem
-     * @ORM\ManyToOne(targetEntity="VatSystem", inversedBy="fiscalYears")
+     * @ORM\ManyToOne(targetEntity="VatSystem", inversedBy="fiscalYears",cascade={"persist","remove"})
      *
      */
     private $vatSystem;
@@ -357,26 +350,5 @@ class FiscalYear
     {
         $this->year = $year;
     }
-
-    /**
-     * @return string
-     */
-    public function getTaxationRegime()
-    {
-        return $this->taxationRegime;
-    }
-
-    /**
-     * @param string $taxationRegime
-     */
-    public function setTaxationRegime(string $taxationRegime)
-    {
-        $this->taxationRegime = $taxationRegime;
-    }
-
-
-
-
-
 
 }

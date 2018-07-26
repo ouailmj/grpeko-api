@@ -13,6 +13,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -27,8 +28,16 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Contact
 {
-
     /**
+     * Contact constructor.
+     */
+    public function __construct()
+    {
+        $this->weddings = new ArrayCollection();
+        $this->children = new ArrayCollection();
+    }
+
+        /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -322,6 +331,167 @@ class Contact
     private $ARCE_ARE;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetimetz", nullable=true)
+     */
+    protected $birthDate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="associe", type="string"))
+     */
+    private $associe = false;
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=25, nullable=true)
+     */
+    protected $phoneNumber;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=25, nullable=true)
+     */
+
+    protected $faxNumber;
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=25, nullable=true)
+     */
+    protected $postalCode;
+
+    /**
+     * @var Child [] | ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Child",  mappedBy="contact",cascade={"persist","remove"})
+     */
+    private $children;
+    /**
+     * @var Wedding [] | ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Wedding", mappedBy="contact",cascade={"persist","remove"})
+     */
+    private $weddings;
+
+    /**
+     * @return Child[]|ArrayCollection
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
+     * @param Child[]|ArrayCollection $children
+     */
+    public function setChildren($children)
+    {
+        $this->children = $children;
+    }
+
+    /**
+     * @return Wedding[]|ArrayCollection
+     */
+    public function getWeddings()
+    {
+        return $this->weddings;
+    }
+
+    /**
+     * @param Wedding[]|ArrayCollection $weddings
+     */
+    public function setWeddings($weddings)
+    {
+        $this->weddings = $weddings;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFaxNumber()
+    {
+        return $this->faxNumber;
+    }
+
+    /**
+     * @param string $faxNumber
+     */
+    public function setFaxNumber(string $faxNumber)
+    {
+        $this->faxNumber = $faxNumber;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPostalCode()
+    {
+        return $this->postalCode;
+    }
+
+    /**
+     * @param string $postalCode
+     */
+    public function setPostalCode(string $postalCode)
+    {
+        $this->postalCode = $postalCode;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getPhoneNumber()
+    {
+        return $this->phoneNumber;
+    }
+
+    /**
+     * @param string $phoneNumber
+     */
+    public function setPhoneNumber(string $phoneNumber)
+    {
+        $this->phoneNumber = $phoneNumber;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAssocie()
+    {
+        return $this->associe;
+    }
+
+    /**
+     * @param string $associe
+     */
+    public function setAssocie(string $associe)
+    {
+        $this->associe = $associe;
+    }
+
+
+    /**
+     * @return \DateTime
+     */
+    public function getBirthDate()
+    {
+        return $this->birthDate;
+    }
+
+    /**
+     * @param \DateTime $birthDate
+     */
+    public function setBirthDate(\DateTime $birthDate=null)
+    {
+        $this->birthDate = $birthDate;
+    }
+
+    /**
      * @return int
      */
     public function getId()
@@ -364,7 +534,7 @@ class Contact
     /**
      * @return string
      */
-    public function getFirstname(): string
+    public function getFirstname()
     {
         return $this->firstname;
     }
@@ -380,7 +550,7 @@ class Contact
     /**
      * @return string
      */
-    public function getLastname(): string
+    public function getLastname()
     {
         return $this->lastname;
     }
@@ -396,7 +566,7 @@ class Contact
     /**
      * @return string
      */
-    public function getBirthPlace(): string
+    public function getBirthPlace()
     {
         return $this->birthPlace;
     }
@@ -412,7 +582,7 @@ class Contact
     /**
      * @return string
      */
-    public function getBirthDept(): string
+    public function getBirthDept()
     {
         return $this->birthDept;
     }
@@ -428,7 +598,7 @@ class Contact
     /**
      * @return string
      */
-    public function getBirthCountry(): string
+    public function getBirthCountry()
     {
         return $this->birthCountry;
     }
@@ -444,7 +614,7 @@ class Contact
     /**
      * @return string
      */
-    public function getNationality(): string
+    public function getNationality()
     {
         return $this->nationality;
     }
@@ -460,7 +630,7 @@ class Contact
     /**
      * @return string
      */
-    public function getMandaQuality(): string
+    public function getMandaQuality()
     {
         return $this->mandaQuality;
     }
@@ -476,7 +646,7 @@ class Contact
     /**
      * @return string
      */
-    public function getMandaSocial(): string
+    public function getMandaSocial()
     {
         return $this->mandaSocial;
     }
@@ -492,7 +662,7 @@ class Contact
     /**
      * @return string
      */
-    public function getTns(): string
+    public function getTns()
     {
         return $this->tns;
     }
@@ -508,7 +678,7 @@ class Contact
     /**
      * @return string
      */
-    public function getOtherCompany(): string
+    public function getOtherCompany()
     {
         return $this->otherCompany;
     }
@@ -524,7 +694,7 @@ class Contact
     /**
      * @return int
      */
-    public function getPartNumber(): int
+    public function getPartNumber()
     {
         return $this->partNumber;
     }
@@ -540,7 +710,7 @@ class Contact
     /**
      * @return float
      */
-    public function getPartNumberPercent(): float
+    public function getPartNumberPercent()
     {
         return $this->partNumberPercent;
     }
@@ -556,7 +726,7 @@ class Contact
     /**
      * @return string
      */
-    public function getLegalForm(): string
+    public function getLegalForm()
     {
         return $this->legalForm;
     }
@@ -572,7 +742,7 @@ class Contact
     /**
      * @return string
      */
-    public function getSocialCapital(): string
+    public function getSocialCapital()
     {
         return $this->socialCapital;
     }
@@ -588,7 +758,7 @@ class Contact
     /**
      * @return string
      */
-    public function getRepresentative(): string
+    public function getRepresentative()
     {
         return $this->representative;
     }
@@ -604,7 +774,7 @@ class Contact
     /**
      * @return string
      */
-    public function getRepresentativeQuality(): string
+    public function getRepresentativeQuality()
     {
         return $this->representativeQuality;
     }
@@ -620,7 +790,7 @@ class Contact
     /**
      * @return string
      */
-    public function getSiren(): string
+    public function getSiren()
     {
         return $this->siren;
     }
@@ -636,7 +806,7 @@ class Contact
     /**
      * @return string
      */
-    public function getIntermediate(): string
+    public function getIntermediate()
     {
         return $this->intermediate;
     }
@@ -652,7 +822,7 @@ class Contact
     /**
      * @return float
      */
-    public function getMandataire(): float
+    public function getMandataire()
     {
         return $this->mandataire;
     }
@@ -668,7 +838,7 @@ class Contact
     /**
      * @return string
      */
-    public function getEmail(): string
+    public function getEmail()
     {
         return $this->email;
     }
@@ -684,7 +854,7 @@ class Contact
     /**
      * @return string
      */
-    public function getAutoEmailReceipt(): string
+    public function getAutoEmailReceipt()
     {
         return $this->autoEmailReceipt;
     }
@@ -700,7 +870,7 @@ class Contact
     /**
      * @return string
      */
-    public function getAdressenumber(): string
+    public function getAdressenumber()
     {
         return $this->adressenumber;
     }
@@ -716,7 +886,7 @@ class Contact
     /**
      * @return string
      */
-    public function getAdresse(): string
+    public function getAdresse()
     {
         return $this->adresse;
     }
@@ -732,7 +902,7 @@ class Contact
     /**
      * @return string
      */
-    public function getCity(): string
+    public function getCity()
     {
         return $this->city;
     }
@@ -748,7 +918,7 @@ class Contact
     /**
      * @return string
      */
-    public function getCountry(): string
+    public function getCountry()
     {
         return $this->country;
     }
@@ -764,7 +934,7 @@ class Contact
     /**
      * @return string
      */
-    public function getEkoNews(): string
+    public function getEkoNews()
     {
         return $this->ekoNews;
     }
@@ -780,7 +950,7 @@ class Contact
     /**
      * @return string
      */
-    public function getEkoConseils(): string
+    public function getEkoConseils()
     {
         return $this->ekoConseils;
     }
@@ -796,7 +966,7 @@ class Contact
     /**
      * @return string
      */
-    public function getAnniversaire(): string
+    public function getAnniversaire()
     {
         return $this->anniversaire;
     }
@@ -812,7 +982,7 @@ class Contact
     /**
      * @return string
      */
-    public function getFetes(): string
+    public function getFetes()
     {
         return $this->fetes;
     }
@@ -828,7 +998,7 @@ class Contact
     /**
      * @return string
      */
-    public function getMaritalSituation(): string
+    public function getMaritalSituation()
     {
         return $this->maritalSituation;
     }
@@ -844,7 +1014,7 @@ class Contact
     /**
      * @return string
      */
-    public function getPropreSociety(): string
+    public function getPropreSociety()
     {
         return $this->propreSociety;
     }
@@ -860,7 +1030,7 @@ class Contact
     /**
      * @return string
      */
-    public function getComment(): string
+    public function getComment()
     {
         return $this->comment;
     }
@@ -876,7 +1046,7 @@ class Contact
     /**
      * @return int
      */
-    public function getChildrenNumber(): int
+    public function getChildrenNumber()
     {
         return $this->childrenNumber;
     }
@@ -892,7 +1062,7 @@ class Contact
     /**
      * @return float
      */
-    public function getAnnualIncome(): float
+    public function getAnnualIncome()
     {
         return $this->annualIncome;
     }
@@ -908,7 +1078,7 @@ class Contact
     /**
      * @return string
      */
-    public function getOwner(): string
+    public function getOwner()
     {
         return $this->owner;
     }
@@ -924,7 +1094,7 @@ class Contact
     /**
      * @return string
      */
-    public function getHusbandJob(): string
+    public function getHusbandJob()
     {
         return $this->husbandJob;
     }
@@ -940,7 +1110,7 @@ class Contact
     /**
      * @return string
      */
-    public function getActifsPlacement(): string
+    public function getActifsPlacement()
     {
         return $this->actifsPlacement;
     }
@@ -956,7 +1126,7 @@ class Contact
     /**
      * @return string
      */
-    public function getPassifs(): string
+    public function getPassifs()
     {
         return $this->passifs;
     }
@@ -972,7 +1142,7 @@ class Contact
     /**
      * @return string
      */
-    public function getPreviousSituation(): string
+    public function getPreviousSituation()
     {
         return $this->previousSituation;
     }
@@ -988,7 +1158,7 @@ class Contact
     /**
      * @return string
      */
-    public function getAccre(): string
+    public function getAccre()
     {
         return $this->accre;
     }
@@ -1004,7 +1174,7 @@ class Contact
     /**
      * @return string
      */
-    public function getAccreDescription(): string
+    public function getAccreDescription()
     {
         return $this->accreDescription;
     }
@@ -1020,7 +1190,7 @@ class Contact
     /**
      * @return \DateTime
      */
-    public function getDateStartJobPole(): \DateTime
+    public function getDateStartJobPole()
     {
         return $this->dateStartJobPole;
     }
@@ -1028,7 +1198,7 @@ class Contact
     /**
      * @param \DateTime $dateStartJobPole
      */
-    public function setDateStartJobPole(\DateTime $dateStartJobPole)
+    public function setDateStartJobPole(\DateTime $dateStartJobPole=null)
     {
         $this->dateStartJobPole = $dateStartJobPole;
     }
@@ -1036,7 +1206,7 @@ class Contact
     /**
      * @return \DateTime
      */
-    public function getDateEndJobPole(): \DateTime
+    public function getDateEndJobPole()
     {
         return $this->dateEndJobPole;
     }
@@ -1044,7 +1214,7 @@ class Contact
     /**
      * @param \DateTime $dateEndJobPole
      */
-    public function setDateEndJobPole(\DateTime $dateEndJobPole)
+    public function setDateEndJobPole(\DateTime $dateEndJobPole=null)
     {
         $this->dateEndJobPole = $dateEndJobPole;
     }
@@ -1052,7 +1222,7 @@ class Contact
     /**
      * @return string
      */
-    public function getARCEARE(): string
+    public function getARCEARE()
     {
         return $this->ARCE_ARE;
     }
