@@ -6,6 +6,7 @@ security:
 
     role_hierarchy:
         ROLE_ADVISORY:    ROLE_USER
+        ROLE_PROSPECT:    ROLE_USER
         ROLE_ADMIN:       ROLE_ADVISORY
         ROLE_SUPER_ADMIN: ROLE_ADMIN, ROLE_ADVISORY
 
@@ -58,7 +59,7 @@ security:
         - { path: ^/portail, role: ROLE_USER }
         - { path: ^/portal, role: ROLE_USER }
         - { path: ^/$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/app/, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: ROLE_USER }
+        - { path: ^/app/, role: ROLE_USER }
         - { path: ^/app/relation/uploadmodel, role: ROLE_PROSPECT }
+        - { path: ^/, role: ROLE_USER }

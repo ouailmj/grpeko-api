@@ -42,7 +42,7 @@ class Own
 
     /**
      * @var Invoices
-     * @ORM\ManyToOne(targetEntity="Invoices", inversedBy="owns")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Invoice", inversedBy="owns")
      */
     private $invoice;
 

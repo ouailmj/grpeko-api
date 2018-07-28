@@ -123,5 +123,9 @@ class CustomerStatus
         $this->status = $status;
     }
 
+    public function __toString()
+    {
+        return (empty($this->status)) ? "" : $this->status;
+    }
 
 }
