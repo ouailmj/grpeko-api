@@ -41,8 +41,8 @@ class Own
     protected $id;
 
     /**
-     * @var Invoice
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Invoice", inversedBy="owns")
+     * @var Invoices
+     * @ORM\ManyToOne(targetEntity="Invoices", inversedBy="owns")
      */
     private $invoice;
 
@@ -56,7 +56,7 @@ class Own
 
 
     /**
-     * @return Invoice
+     * @return Invoices
      */
     public function getInvoice()
     {
@@ -64,9 +64,9 @@ class Own
     }
 
     /**
-     * @param Invoice $invoice
+     * @param Invoices $invoice
      */
-    public function setInvoice(Invoice $invoice)
+    public function setInvoice(Invoices $invoice)
     {
         $this->invoice = $invoice;
     }

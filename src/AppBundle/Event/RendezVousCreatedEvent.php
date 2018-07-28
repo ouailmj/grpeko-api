@@ -13,6 +13,7 @@
 namespace AppBundle\Event;
 
 use AppBundle\Entity\Company;
+use AppBundle\Entity\Customer;
 use Symfony\Component\EventDispatcher\Event;
 
 class RendezVousCreatedEvent extends Event
@@ -20,7 +21,7 @@ class RendezVousCreatedEvent extends Event
     private $prospect;
     private $data;
 
-    public function __construct(Company $prospect, array $data)
+    public function __construct(Customer $prospect, array $data)
     {
         $this->prospect = $prospect;
         $this->data = $data;
@@ -43,7 +44,7 @@ class RendezVousCreatedEvent extends Event
     }
 
     /**
-     * @return Company
+     * @return Customer
      */
     public function getProspect()
     {
@@ -53,7 +54,7 @@ class RendezVousCreatedEvent extends Event
     /**
      * @param Company $prospect
      */
-    public function setProspect(Company $prospect)
+    public function setProspect(Customer $prospect)
     {
         $this->prospect = $prospect;
     }

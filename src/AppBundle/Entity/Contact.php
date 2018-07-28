@@ -14,7 +14,9 @@
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Contact
@@ -23,7 +25,8 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="contact")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ContactRepository")
- *
+ * @UniqueEntity("email")
+ * @UniqueEntity("firstname")
  * @ORM\HasLifecycleCallbacks()
  */
 class Contact
@@ -54,7 +57,7 @@ class Contact
 
     /**
      * @var ContactStatus
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\ContactStatus", inversedBy="contact")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\ContactStatus", inversedBy="contact",cascade={"remove"})
      */
     private $contactStatus;
     /**
@@ -67,7 +70,7 @@ class Contact
     // * @Assert\NotBlank()
     /**
      * @var string
-     * @ORM\Column(name="firstname", type="string", length=50, nullable=true)
+     * @ORM\Column(name="firstname", type="string", length=50, nullable=true,unique=true)
      */
     private $firstname;
 
@@ -261,6 +264,7 @@ class Contact
     /**
      * @var integer
      * @ORM\Column(name="childrenNumber", type="integer" ,nullable=true)
+     * @Assert\Type("integer")
      */
     private $childrenNumber;
 

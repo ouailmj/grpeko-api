@@ -30,7 +30,7 @@ class InvoiceLine
 
     /**
      * @var Invoice
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Invoice", inversedBy="invoiceLines")
+     * @ORM\ManyToOne(targetEntity="Invoice", inversedBy="invoiceLines")
      */
     private $invoice;
     /**

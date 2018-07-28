@@ -26,8 +26,19 @@ class ContactManager
 
     public function createContact(Contact $contact)
     {
+        $this->affectationContactId($contact);
         $this->em->persist($contact);
         $this->em->flush();
+    }
+
+    public function affectationContactId(Contact $contact)
+    {
+        foreach ($contact->getWeddings() as $w) {
+            $w->setContact($contact);
+        }
+        foreach ($contact->getChildren() as $w) {
+            $w->setContact($contact);
+        }
     }
 
     public function editContact(Contact $contact)
@@ -40,4 +51,5 @@ class ContactManager
         $this->em->remove($contact);
         $this->em->flush();
     }
+
 }

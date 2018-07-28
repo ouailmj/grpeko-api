@@ -18,6 +18,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -187,7 +188,7 @@ class ContactDetailsType extends AbstractType
 
             ->add('comment', TextareaType::class, ['required' => false])
 
-            ->add('childrenNumber', TextType::class, ['required' => false])
+            ->add('childrenNumber', NumberType::class, ['required' => false])
 
             ->add('intermediate', TextType::class, [
                 'label' => 'de part:',

@@ -16,7 +16,7 @@ class CreateUserCest
     // tests
     public function testSomeFeature(AcceptanceTester $I,$username = 'admin', $password = 'f%/R4Uk#](wUvM\'V')
     {
-        $I->amOnPage(LoginPage::$URL);
+      /*  $I->amOnPage(LoginPage::$URL);
         $I->fillField(LoginPage::$usernameField, $username);
         $I->fillField(LoginPage::$passwordField, $password);
         $I->click(LoginPage::$submitButton);
@@ -40,6 +40,6 @@ class CreateUserCest
         $I->fillField(LoginPage::$usernameField_second,LoginPage::$username);
         $I->fillField(LoginPage::$emailField,LoginPage::$email);
         $I->fillField(LoginPage::$passwordField_first,LoginPage::$password_first);
-        $I->fillField(LoginPage::$passwordField_second,LoginPage::$password_second);
+        $I->fillField(LoginPage::$passwordField_second,LoginPage::$password_second);*/
     }
 }

@@ -8,6 +8,7 @@ use AppBundle\Entity\Contact;
 use AppBundle\Entity\Customer;
 use AppBundle\Entity\EnterRelation;
 use AppBundle\Entity\FiscalYear;
+use AppBundle\Entity\Invoice;
 use AppBundle\Entity\User;
 use AppBundle\Form\ContactDetailsType;
 use AppBundle\Form\CustomerType;
@@ -17,13 +18,10 @@ use AppBundle\Model\ClientManager;
 use AppBundle\Model\ContactManager;
 use AppBundle\Model\FiscalManager;
 use Doctrine\ORM\EntityManager;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
-use AppBundle\Event\AppEvents;
-use AppBundle\Event\ClientCreatedEvent;
-use AppBundle\Event\RendezVousCreatedEvent;
 
 /**
  * Class CompanyController
@@ -32,11 +30,19 @@ use AppBundle\Event\RendezVousCreatedEvent;
  */
 class CustomerController extends BaseController
 {
+    private $em;
+
+    public function __construct(EntityManagerInterface $em)
+    {
+        $this->em=$em;
+    }
+
     /**
      * @Route("/list", name="company_index")
      */
     public function indexAction(Request $request,ClientManager $cm)
     {
+
         $companys = $cm->findAllClients();
         $listcompanys=[];
         foreach ($companys as $company)
@@ -48,6 +54,7 @@ class CustomerController extends BaseController
             'companys'     => $companys,
             'delete_form'   => $listcompanys
         ));
+
     }
 
     /**
@@ -74,11 +81,10 @@ class CustomerController extends BaseController
      *
      * @param Company $company The Company entity
      *
-     * @return \Symfony\Component\Form\Form The form
+     * @return \Symfony\Component\Form\FormInterface The form
      */
     private function createDeleteForm(Company $company)
     {
-
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('company_delete', array('id' => $company->getId())))
             ->setMethod('DELETE')
@@ -142,17 +148,17 @@ class CustomerController extends BaseController
      * @Route("/contact/new", name="contact_new")
      *
      */
-    public function NewContactAction(Request $request)
+    public function NewContactAction(Request $request,ContactManager $cm)
     {
         $idcompany=$request->query->get('id');
-        $company=$this->em->getRepository('AppBundle:Customer')->find($idcompany);
+        $company=$this->em->getRepository(Customer::class)->find($idcompany);
         $contact = new Contact();
         $formcontact = $this->createForm(ContactDetailsType::class,$contact);
         $formcontact->handleRequest($request);
         if ($formcontact->isSubmitted() && $formcontact->isValid()) {
 
             $contact->setCustomer($company);
-            $this->contactManager->createContact($contact);
+            $cm->createContact($contact);
             $this->addSuccessFlash();
            return $this->redirectToRoute('contact_list',["id"=>$idcompany]);
         }
@@ -163,7 +169,7 @@ class CustomerController extends BaseController
      * @Route("/contact/list/{id}", name="contact_list")
      *
      */
-    public function ListContactAction(Company $company , Request $request)
+    public function ListContactAction(Customer $company , Request $request)
     {
         $contacts=$company->getContacts();
         $listcontacts=[];
@@ -210,7 +216,7 @@ class CustomerController extends BaseController
      */
     public function deleteContactAction(Request $request, Contact $contact,ContactManager $cm)
     {
-        $idcompany=$contact->getCompany()->getId();
+        $idcompany=$contact->getCustomer()->getId();
         $form = $this->createContactDeleteForm($contact);
         $form->handleRequest($request);
 
@@ -256,7 +262,7 @@ class CustomerController extends BaseController
      * @Route("/excerice/list/{id}", name="excerice_list")
      *
      */
-    public function listExcericeAction(Company $company ,Request $request)
+    public function listExcericeAction(Customer $company ,Request $request)
     {
         $excercices=$company->getFiscalYears();
         $listexcercice=[];
@@ -312,6 +318,46 @@ class CustomerController extends BaseController
             ->setMethod('DELETE')
             ->getForm()
             ;
+    }
+
+    /**
+     * @Route("/invoice/list", name="invoice_list")
+     *
+     */
+    public function listInvoiceAction()
+    {
+
+        return $this->render('invoices/list.html.twig');
+    }
+
+    /**
+     * @Route("/invoice/new", name="invoice_new")
+     *
+     */
+    public function newInvoiceAction()
+    {
+
+        return $this->render('invoices/new.html.twig');
+    }
+
+    /**
+     * @Route("/invoice/edit/{id}", name="invoice_edit")
+     *
+     */
+    public function editInvoiceAction()
+    {
+
+        return $this->render('invoices/edit.html.twig');
+    }
+
+    /**
+     * @Route("/invoice/avoir/new", name="avoir_new")
+     *
+     */
+    public function newAvoirAction()
+    {
+
+        return $this->render('invoices/avoir.html.twig');
     }
 
 }

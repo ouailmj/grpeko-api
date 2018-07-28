@@ -17,8 +17,8 @@ class ClientEditCest
 
     public function tryToTest(Login $I)
     {
-        $I->amOnPage(Clientedit::$UrlListCLient);
+       /* $I->amOnPage(Clientedit::$UrlListCLient);
         $I->click(Clientedit::$buttoneditclient);
-        $I->amOnPage(Clientedit::$UrlEdit);
+        $I->amOnPage(Clientedit::$UrlEdit);*/
     }
 }

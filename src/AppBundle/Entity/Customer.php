@@ -14,6 +14,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -99,7 +100,7 @@ class Customer extends Company
 
     /**
      * @var User
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User",cascade={"persist","remove"})
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
@@ -149,10 +150,17 @@ class Customer extends Company
 
     /**
      * @var Contact[] | ArrayCollection
+     * @Assert\Valid
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Contact" ,mappedBy="customer" ,cascade={"persist", "remove"})
      */
     private $contacts;
 
+    /**
+     * @var Rendezvous
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Rendezvous", mappedBy="customer", cascade={"persist", "remove"})
+     *
+     */
+    private $rendezvous;
     /**
      * Customer constructor.
      */
@@ -166,6 +174,23 @@ class Customer extends Company
         $this->jobQuotations=new ArrayCollection();
         $this->contacts=new ArrayCollection();
     }
+
+    /**
+     * @return Rendezvous
+     */
+    public function getRendezvous()
+    {
+        return $this->rendezvous;
+    }
+
+    /**
+     * @param Rendezvous $rendezvous
+     */
+    public function setRendezvous(Rendezvous $rendezvous)
+    {
+        $this->rendezvous = $rendezvous;
+    }
+
 
     /**
      * @return Contact[]|ArrayCollection

@@ -28,7 +28,7 @@
                                             <li class=""><a href="{{ path('excerice_list',{'id': app.request.get('id') }) }}">Exercices</a></li>
                                             <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Informations Bancaires</a></li>
                                             <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Rapprochement CFONB - Mots clés</a></li>
-                                            <li class=""><a href="#Facturation" data-toggle="tab" aria-expanded="false">Facturation</a></li>
+                                            <li class=""><a href="{{ path('invoice_list',{'id': app.request.get('id') }) }}">Facturation</a></li>
                                             <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Codes accés espaces clients</a></li>
 
                                         </ul>
@@ -67,11 +67,15 @@
                                                     <div class="">
                                                       <a title="Modifier" href="{{ path('contact_edit', { 'id': contact.id }) }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
                                                     </div>
+                                                    {{ form_start(delete_form[loop.index-1]) }}
+                                                    <button type="submit" style="background: transparent;border: none">
+                                                        <a onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" title="Supprimer" class=" legitRipple"><i class="icon-trash position-left"></i></a>
+                                                    </button>
+                                                    {{ form_end(delete_form[loop.index-1]) }}
                                                 </td>
-
                                                 <td>{{ contact.civility }}</td>
-                                                <td>{{ contact.lastname }}</td>
                                                 <td>{{ contact.firstname }}</td>
+                                                <td>{{ contact.lastname }}</td>
                                                 <td>{{ contact.partNumberPercent }}%</td>
                                                 <td>{{ contact.mandaSocial }}</td>
                                                 <td>Oui</td>

@@ -14,10 +14,12 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Company;
 use AppBundle\Entity\Contact;
+use AppBundle\Entity\Customer;
 use AppBundle\Entity\EnterRelation;
 use AppBundle\Entity\Rendezvous;
 use AppBundle\Event\AppEvents;
 use AppBundle\Event\RendezVousCreatedEvent;
+use AppBundle\Form\RendezVousType;
 use AppBundle\Model\ClientManager;
 use AppBundle\Model\RendezVousManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -39,8 +41,8 @@ class EnterRelationController extends BaseController
      */
     public function __construct(RendezVousManager $rendezVousManager, ClientManager $clientManager)
     {
-       // $this->rendezVousManager = $rendezVousManager;
-     //   $this->clientManager = $clientManager;
+        $this->rendezVousManager = $rendezVousManager;
+        $this->clientManager = $clientManager;
     }
 
     /**
@@ -48,38 +50,55 @@ class EnterRelationController extends BaseController
      */
     public function rendezVousAction(Request $request)
     {
-       /* if ($request->isMethod('POST')) {
-            $nom = $request->get('lastname');
-            $email = $request->get('email');
-
-            $data = ['sujet' => $request->get('sujet'),
-                'datedebut' => $request->get('datedebut'),
-                'heuredebut' => $request->get('heuredebut'),
-                'datefin' => $request->get('datefin'),
-                'heurefin' => $request->get('heurefin'),
-            ];
-            $prospect = new Company();
+        if ($request->isMethod('POST')) {
+            $data=$this->getAppointementinfos($request);
+            $prospect = new Customer();
             $contact = new Contact();
-            $contact->setLastname($nom);
-            $contact->setEmail($email);
+            $contact->setLastname($data["nom"]);
+            $contact->setEmail($data["email"]);
             $prospect->addContact($contact);
-            $this->clientManager->createClient($prospect);
-            $this->get('event_dispatcher')->dispatch(AppEvents::RENDEZVOUS_CREATED, new RendezVousCreatedEvent($prospect, $data));
-            $this->addSuccessFlash();
+            $test=$this->clientManager->createClient($prospect);
+
+            if ($test==0 )
+            {
+                $this->clearSession();
+                $this->addErrorFlash();
+                return $this->redirect($request->headers->get('referer'));
+            }
+            else{
+                $this->clearSession();
+                $this->get('event_dispatcher')->dispatch(AppEvents::RENDEZVOUS_CREATED, new RendezVousCreatedEvent($prospect, $data));
+                $this->addSuccessFlash();
+            }
         }
 
-        return $this->render('prisedeconnaissance/entree_relation/rendez_vous.html.twig', [
-        ]);*/
+        return $this->render('prisedeconnaissance/entree_relation/rendez_vous.html.twig');
     }
 
+    public function clearSession()
+    {
+        $this->get('session')->getFlashBag()->clear();
+    }
+    public function getAppointementinfos(Request $request)
+    {
+        return ['sujet' => $request->get('sujet'),
+            'datedebut' => $request->get('datedebut'),
+            'heuredebut' => $request->get('heuredebut'),
+            'heurefin' => $request->get('heurefin'),
+            'nom' => $request->get('lastname'),
+            'email' => $request->get('email')
+        ];
+    }
     /**
      *  @Route("/uploadmodel/{company}", name="model_upload")
      */
-    public function uploadmodel(Company $company, Request $request)
+    public function uploadmodel(Customer $company, Request $request)
     {
-      /*  $rendezvous = new Rendezvous();
-        $formrendezvous = $this->createForm('AppBundle\Form\RendezVousType', $rendezvous);
+
+        $rendezvous = new Rendezvous();
+        $formrendezvous = $this->createForm(RendezVousType::class, $rendezvous);
         $formrendezvous->handleRequest($request);
+
 
         //TODO: Utiliser les mimetypes pour savoir les types des fichiers
 
@@ -106,7 +125,7 @@ class EnterRelationController extends BaseController
         }
 
         return $this->render('prisedeconnaissance/entree_relation/upload_model.html.twig', ['rendezvous' => $formrendezvous->createView()]);
-    */
+
       }
 
     /**

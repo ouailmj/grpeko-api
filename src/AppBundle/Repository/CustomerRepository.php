@@ -14,7 +14,20 @@
 namespace AppBundle\Repository;
 
 
+use AppBundle\Entity\Customer;
+use AppBundle\Entity\FiscalYear;
+
 class CustomerRepository extends BaseRepository
 {
 
+
+    public function test()
+    {
+       return $this->createQueryBuilder('b')->
+            select('Year(c.startDate)')
+                ->from(FiscalYear::class, 'c')
+           ->getQuery()
+           ->execute();
+
+    }
 }

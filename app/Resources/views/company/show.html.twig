@@ -90,19 +90,19 @@
                             </td>
                             <td>{{company.mainActivity}}</td>
                             <td>
-                                {#  {% if company.rendezvous != null %}
+                                {% if company.rendezvous != null %}
                                 <a href="{{ asset('/uploads/files/' ~ company.rendezvous.fichePatrimoniale) }}" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-file-download"></i></b>Fiche Patrimoniale</a>
                             {% else %}
                                 Aucun
-                                {% endif %} #}
+                                {% endif %}
                             </td>
                             <td>
-                               {# {% if company.rendezvous != null %}
+                                {% if company.rendezvous != null %}
                                 <a href="{{ asset('/uploads/files/' ~ company.rendezvous.cin) }}" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-labeled btn-labeled-left bg-blue heading-btn legitRipple"><b><i class="icon-file-download"></i></b>Fiche CIN</a>
 
                             {% else %}
                                 Aucun
-                                {% endif %} #}
+                                {% endif %}
                             </td>
                         </tr>
                         {% endfor %}

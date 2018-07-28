@@ -26,10 +26,10 @@
 
                                         <ul class="dropdown-menu dropdown-menu-right">
                                               <li class=""><a href="#mission" data-toggle="tab" aria-expanded="false">Mission</a></li>
-                                              <li class=""><a href="{{ path('excercice_new',{'id': app.request.get('id') }) }}">Exercices</a></li>
+                                              <li class=""><a href="{{ path('excerice_list',{'id': app.request.get('id') }) }}">Exercices</a></li>
                                               <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Informations Bancaires</a></li>
                                               <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Rapprochement CFONB - Mots clés</a></li>
-                                              <li class=""><a href="#Facturation" data-toggle="tab" aria-expanded="false">Facturation</a></li>
+                                              <li class=""><a href="{{ path('invoice_list',{'id': app.request.get('id') }) }}">Facturation</a></li>
                                               <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Codes accés espaces clients</a></li>
 
                                           </ul>

@@ -1,0 +1,148 @@
+{% extends 'company/company.html.twig' %}
+{% block _content %}
+    <div class="panel panel-flat">
+    <button type="button" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-labeled-left bg-blue heading-btn">Importer les réglements</button>
+    <span title="Ajouter un nouvel collaborateur" class="pull-right"><a href="" style="background-color: #5d9d9c; border-color: #5d9d9c; margin-left:1rem;" class="btn btn-labeled-left bg-blue heading-btn legitRipple">Editer les factures</a></span>
+    <span title="Ajouter un nouvel collaborateur" class="pull-right"><a href="" style="background-color: #5d9d9c; border-color: #5d9d9c;" class="btn btn-labeled-left bg-blue heading-btn legitRipple">Créer les facture suivantes</a></span>
+    <br><br><br>
+    <div class="datatable-scroll-wrap">
+        <table class="table datatable-responsive table-bordered table-hover datatable-highlight dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+            <thead>
+             <tr role="row">
+                 <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Filtres</th>
+                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Code</th>
+                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Entité Juridique</th>
+                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Statut</th>
+                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >EKO</th>
+                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Banque</th>
+                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >CEB</th>
+                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Envoyé client</th>
+                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Date</th>
+                <th class="text-center sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Retour client</th>
+                <th class="text-center sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Date</th>
+                <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1">Envoyé banque</th>
+                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Date</th>
+                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >RIB Actif</th>
+                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Date</th>
+                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Solde</th>
+                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" >Date de dernier exercice à traiter</th>
+            </tr>
+            </thead>
+            <tbody>
+             <tr role="row">
+                 <td class="text-center sorting_1">
+                     <div class="">
+                         <a title="Modifier" href="/app/invoice/edit/2" class="legitRipple"><i class="icon-pen position-left"></i></a>
+                     </div>
+                     <form name="form" method="post" action="/app/company/2/delete"><input type="hidden" name="_method" value="DELETE">
+                         <button type="submit" style="background: transparent;border: none">
+                             <a onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" title="Supprimer" class="legitRipple"><i class="icon-trash position-left"></i></a>
+                         </button>
+                         <input type="hidden" id="form__token" name="form[_token]" value="8WL2umaYV9CYKsiYNsvh0CgfoO-U2-_HoTZNnfU7Hvo"></form>
+                 </td>
+                <td>CC0009</td>
+                <td>TEST EP</td>
+                <td>En cours</td>
+                <td>ABA</td>
+                <td>BNP Paribas</td>
+                <td>JEDECLARE</td>
+                <td>EN CREATION</td>
+                <td>17/07/2017</td>
+                <td>OK</td>
+                <td>26/07/2017</td>
+                <td>OK</td>
+                <td>19/07/2017</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+             <tr role="row">
+                 <td class="text-center sorting_1">
+                     <div class="">
+                         <a title="Modifier" href="/app/invoice/edit/2" class="legitRipple"><i class="icon-pen position-left"></i></a>
+                     </div>
+                     <form name="form" method="post" action="/app/company/2/delete"><input type="hidden" name="_method" value="DELETE">
+                         <button type="submit" style="background: transparent;border: none">
+                             <a onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" title="Supprimer" class="legitRipple"><i class="icon-trash position-left"></i></a>
+                         </button>
+                         <input type="hidden" id="form__token" name="form[_token]" value="8WL2umaYV9CYKsiYNsvh0CgfoO-U2-_HoTZNnfU7Hvo"></form>
+                 </td>
+                 <td>CC0010</td>
+                 <td>TEST EP</td>
+                 <td>En cours</td>
+                 <td>ABA</td>
+                 <td>BNP Paribas</td>
+                 <td>JEDECLARE</td>
+                 <td>EN CREATION</td>
+                 <td>17/07/2017</td>
+                 <td>OK</td>
+                 <td>26/07/2017</td>
+                 <td>OK</td>
+                 <td>19/07/2017</td>
+                 <td></td>
+                 <td></td>
+                 <td></td>
+                 <td></td>
+             </tr>
+             <tr role="row">
+                 <td class="text-center sorting_1">
+                     <div class="">
+                         <a title="Modifier" href="/app/invoice/edit/2" class="legitRipple"><i class="icon-pen position-left"></i></a>
+                     </div>
+                     <form name="form" method="post" action="/app/company/2/delete"><input type="hidden" name="_method" value="DELETE">
+                         <button type="submit" style="background: transparent;border: none">
+                             <a onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" title="Supprimer" class="legitRipple"><i class="icon-trash position-left"></i></a>
+                         </button>
+                         <input type="hidden" id="form__token" name="form[_token]" value="8WL2umaYV9CYKsiYNsvh0CgfoO-U2-_HoTZNnfU7Hvo"></form>
+                 </td>
+                 <td>CC0011</td>
+                 <td>TEST EP</td>
+                 <td>En cours</td>
+                 <td>ABA</td>
+                 <td>BNP Paribas</td>
+                 <td>JEDECLARE</td>
+                 <td>EN CREATION</td>
+                 <td>17/07/2017</td>
+                 <td>OK</td>
+                 <td>26/07/2017</td>
+                 <td>OK</td>
+                 <td>19/07/2017</td>
+                 <td></td>
+                 <td></td>
+                 <td></td>
+                 <td></td>
+             </tr>
+             <tr role="row">
+                 <td class="text-center sorting_1">
+                     <div class="">
+                         <a title="Modifier" href="/app/invoice/edit/2" class="legitRipple"><i class="icon-pen position-left"></i></a>
+                     </div>
+                     <form name="form" method="post" action="/app/company/2/delete"><input type="hidden" name="_method" value="DELETE">
+                         <button type="submit" style="background: transparent;border: none">
+                             <a onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" title="Supprimer" class="legitRipple"><i class="icon-trash position-left"></i></a>
+                         </button>
+                         <input type="hidden" id="form__token" name="form[_token]" value="8WL2umaYV9CYKsiYNsvh0CgfoO-U2-_HoTZNnfU7Hvo"></form>
+                 </td>
+                 <td>CC0012</td>
+                 <td>TEST EP</td>
+                 <td>En cours</td>
+                 <td>ABA</td>
+                 <td>BNP Paribas</td>
+                 <td>JEDECLARE</td>
+                 <td>EN CREATION</td>
+                 <td>17/07/2017</td>
+                 <td>OK</td>
+                 <td>26/07/2017</td>
+                 <td>OK</td>
+                 <td>19/07/2017</td>
+                 <td></td>
+                 <td></td>
+                 <td></td>
+                 <td></td>
+             </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+{% endblock %}

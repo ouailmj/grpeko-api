@@ -1,0 +1,376 @@
+{% extends 'company/company.html.twig' %}
+{% block _content %}
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h5 class="panel-title">Création d'une facture<a class="heading-elements-toggle"><i class="icon-more"></i></a></h5>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li><a data-action="collapse"></a></li>
+                    <li><a data-action="reload"></a></li>
+                    <li><a data-action="close"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="panel-body">
+            <form method="post" action={{ path('rendezvous_new') }}>
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+
+
+                            <fieldset class="scheduler-border">
+
+                                <legend class="scheduler-border" style="text-transform: capitalize">Infos</legend>
+
+                                <div class="row">
+                                    <div class="col-lg-2" >
+                                        Client
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <input type="text" class="form-control" value="INFOSCOPE" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-2" >
+                                        Commentaire
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <textarea cols="2" rows="5" class="form-control"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-2" style="margin-top: 60px;" >
+                                        Total
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <table class="table">
+                                            <tr>
+                                                <th>HT</th>
+                                                <th>TVA</th>
+                                                <th>TTC</th>
+                                                <th>Réglé</th>
+                                                <th>Solde</th>
+                                            </tr>
+                                            <tr>
+                                                <td>1000,00€ </td>
+                                                <td>200,00€</td>
+                                                <td>1200€</td>
+                                                <td>600,00€</td>
+                                                <td>600,00€</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                            </fieldset>
+
+                            <fieldset class="scheduler-border">
+
+                                <legend class="scheduler-border" style="text-transform: capitalize">Détail</legend>
+
+                                <div class="row">
+                                    <div class="col-lg-2" >
+                                        Libellé
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-lg-2" >
+                                        Catégorie
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <select>
+                                            <option>ADMIN</option>
+                                            <option>CAC</option>
+                                            <option>COMPTA</option>
+                                            <option>CONSEIL</option>
+                                            <option>DOM</option>
+                                            <option>JURID</option>
+                                            <option>MEX</option>
+                                            <option>REDUC</option>
+                                            <option>REVST</option>
+                                            <option>SOCIAL</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-2" >
+                                        Montant HT
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <fieldset class="scheduler-border">
+
+                                <legend class="scheduler-border" style="text-transform: capitalize">Facture details</legend>
+
+                                <div class="row">
+                                    <div class="col-lg-2" >
+                                        N° de Facture
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <input type="text" class="form-control" value="2025-0001-EC0957">
+                                    </div>
+
+                                    <div class="col-lg-2" >
+                                        Facture de Paie
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <select>
+                                            <option>Oui</option>
+                                            <option>Non</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-2" >
+                                        Date de Facture
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <input type="text" class="french_picker form-control picker__input picker__input--active" name="datefin" placeholder="16/07/2018" >
+                                    </div>
+
+                                    <div class="col-lg-2" >
+                                        Date de clôture
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <input type="text" class="french_picker form-control picker__input picker__input--active" name="datefin" placeholder="16/07/2018" >
+                                    </div>
+                                </div>
+
+<br>
+                                <div class="row">
+                                    <div class="col-lg-2" >
+                                        Mode de réglement
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <select>
+                                            <option>Chéque</option>
+                                            <option>Prélévement</option>
+                                            <option>Virement</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-lg-2" >
+                                        Nombre d'échéances
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <input type="text" class="form-control">
+                                    </div>
+
+                                    <div class="col-lg-2" >
+                                        Début des échéances
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <input type="text" class="french_picker form-control picker__input picker__input--active" name="datefin" placeholder="16/07/2018" >
+                                    </div>
+
+                                </div>
+
+                                <br>
+                               <div class="row" align="center">
+                                   <div class="col-lg-12">
+                                       <button type="submit" class="btn-success btn legitRipple">Recalculer  l'échéancier<span class="legitRipple-ripple"></span></button>
+                                   </div>
+                               </div>
+
+                            </fieldset>
+
+                            <fieldset class="scheduler-border">
+
+                                <legend class="scheduler-border" style="text-transform: capitalize">Echéancier</legend>
+
+                                <div class="row">
+                                    <div class="col-lg-2" >
+                                        Date
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <input type="text" class="french_picker form-control picker__input picker__input--active" name="datefin" placeholder="16/07/2018" >
+
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-lg-2" >
+                                        HT
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <input type="text" class="form-control" value="">
+                                    </div>
+                                    <div class="col-lg-5">
+                                        Total : <span>12000,00 €</span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-2" >
+                                        TTC
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <input type="text" class="form-control" value="">
+                                    </div>
+                                    <div class="col-lg-5">
+                                        Total : <span>10000,00 €</span>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <fieldset class="scheduler-border">
+
+                                <legend class="scheduler-border" style="text-transform: capitalize">Mail de rejet</legend>
+
+                                <div class="row">
+                                    <div class="col-lg-2" >
+                                        Echéance
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <select>
+                                            <option>Oui</option>
+                                            <option>Non</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <button type="submit" class="btn-success btn legitRipple">Envoyer l'email<span class="legitRipple-ripple"></span></button>
+                                    </div>
+                                </div>
+
+                            </fieldset>
+
+                            <fieldset class="scheduler-border">
+
+                                <legend class="scheduler-border" style="text-transform: capitalize">Gestion Facture</legend>
+
+                                <div class="row">
+                                    <div class="col-lg-4" >
+                                        <a  style="width: 100%" class="btn-success btn legitRipple" href="{{ path('avoir_new') }}">Editer la facture<span class="legitRipple-ripple"></span></a>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <a  style="width: 100%" class="btn-success btn legitRipple" href="{{ path('invoice_edit', { 'id': 1 }) }}">Créer la facture pour l'excercice suivant<span class="legitRipple-ripple"></span></a>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <a  style="width: 100%" class="btn-success btn legitRipple" href="{{ path('avoir_new') }}">Créer un avoir lié a cette facture<span class="legitRipple-ripple"></span></a>
+                                    </div>
+                                </div>
+<br>
+
+                                <fieldset class="scheduler-border">
+
+                                    <legend class="scheduler-border" style="text-transform: capitalize">Réglements</legend>
+
+                                    <div class="row">
+                                        <div class="col-lg-2" >
+                                            Date
+                                        </div>
+                                        <div class="col-lg-5">
+                                            <input type="text" class="french_picker form-control picker__input picker__input--active" name="datefin" placeholder="16/07/2018" >
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-2" >
+                                            Régl. TTC
+                                        </div>
+                                        <div class="col-lg-5">
+                                            <input type="text" class="form-control" value="">
+                                        </div>
+                                        <div class="col-lg-5">
+                                            Total : <span>600,00 €</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-2" >
+                                            Commentaire
+                                        </div>
+                                        <div class="col-lg-5">
+                                            <textarea cols="2" rows="5" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+
+                                <div class="row">
+                                    <div class="col-lg-6" >
+                                        <a  style="width: 100%" class="btn-success btn legitRipple" data-toggle="modal" data-target="#modal_apurer">Apurer<span class="legitRipple-ripple"></span></a>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <a  style="width: 100%" class="btn-success btn legitRipple" data-toggle="modal" data-target="#modal_rejet">Créer facture de frais de rejet<span class="legitRipple-ripple"></span></a>
+                                    </div>
+                                </div>
+
+                            </fieldset>
+
+
+                            <div class="form-group" style="float: right">
+                                <div class="row">
+                                    <button type="submit" class="btn-success btn legitRipple">Enregistrer<span class="legitRipple-ripple"></span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Basic modal -->
+        <div id="modal_apurer" class="modal fade" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Apurer</h5>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <div class="modal-body">
+                        <p>Veuillez indiquer la date pour l'ajout de la ligne 'Ecart divers' de euros.</p>
+                        <input type="text" class="french_picker form-control picker__input picker__input--active">
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn bg-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /basic modal -->
+
+        <!-- Basic modal -->
+        <div id="modal_rejet" class="modal fade" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Rejet</h5>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <div class="modal-body">
+                        <p>Veuillez indiquer le montant des frais de rejets á imputer sur la nouvelle facture.</p>
+                        <input type="text" class="form-control">
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn bg-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /basic modal -->
+
+    </div>
+{% endblock %}
