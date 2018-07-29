@@ -77,12 +77,6 @@ class ClientManager
 
             $email=$prospect->getContacts()->first()->getEmail();
             $this->setProspectStatut($prospect);
-
-            if($this->em->getRepository(User::class)->findByEmail($email)>0)
-            {
-                return 0;
-            }
-
             $prospect->setUser($this->newUserProspect($email));
             $test=1;
         }
@@ -96,7 +90,7 @@ class ClientManager
         $this->em->persist($prospect);
         $this->em->flush();
         $this->codeClientSave($prospect);
-        return 1;
+
     }
 
     public function generatePassword()
@@ -116,7 +110,7 @@ class ClientManager
     {
         $user=new User();
         $user->setPlainPassword($this->generatePassword());
-        $user->setUsername($contacts[0]);
+        #$user->setUsername($contacts[0]);
         $user->setEmail($contacts[2]);
         $user->addRole(User::ROLE_CUSTOMER);
         return $user;
@@ -161,4 +155,3 @@ class ClientManager
     }
 
 }
-//TODO:Contacts New company, name unique

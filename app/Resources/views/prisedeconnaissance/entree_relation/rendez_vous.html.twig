@@ -36,20 +36,20 @@
                             Date de debut
                         </div>
                         <div class="col-lg-2" >
-                            <input type="text" required class="french_picker form-control picker__input picker__input--active" name="datedebut" required onchange="getdatestart(this)">
+                            <input type="text" required class="french_picker form-control picker__input picker__input--active" name="datedebut" required>
                         </div>
                         <div class="col-lg-2" >
                             Heure de debut
                         </div>
                         <div class="col-lg-1" >
-                            <input type="text" class="form-control"placeholder="09:00" name="heuredebut" required onchange="gethourstart(this)">
+                            <input type="text" class="form-control"placeholder="09:00" name="heuredebut" required>
                         </div>
                         <div class="col-lg-2" >
                             Heure de Fin
                         </div>
 
                         <div class="col-lg-1" >
-                            <input type="text" class="form-control"placeholder="09:00" name="heurefin" required onchange="gethourend(this)">
+                            <input type="text" class="form-control"placeholder="09:00" name="heurefin" required>
                         </div>
                     </div>
 
@@ -129,8 +129,12 @@
                             Quel est <span class="tutoie">ton</span> email stp ?
                         </div>
                         <div class="col-lg-3">
-                            <input type="email" class="form-control" name="email" required>
+                            <input type="email" class="form-control" name="email" id="appbundle_customer_contacts_email" required>
                         </div>
+                    </div>
+
+                    <div class="alert alert-warning"  id="emailerror" style="display: none;width: 50%">
+                        <strong>Erreur!</strong> Cette adresse e-mail est déjà utilisée !
                     </div>
 
                     <div class="row">
@@ -200,7 +204,7 @@
 
                     <div class="row">
                         <div class="col-lg-6">
-                            <span class="hideoui">Si oui, quelle est ton fonction au sein de l'entreprise ?</span> <span class="hidenon"> si non, quelle sera ton fonction au sein de l'entreprise?</span>
+                            <span class="hideoui">Si oui, quelle est <span class="tutoie">ton</span> fonction au sein de l'entreprise ?</span> <span class="hidenon"> si non, quelle sera <span class="tutoie">ton</span> fonction au sein de l'entreprise?</span>
                         </div>
                         <div class="col-lg-3">
                             <select>
@@ -298,7 +302,8 @@
 
                         <div class="col-lg-3" style="float: right">
 
-                            <input type="submit" value="Valider" class="form-control btn-success" style="background-color: #5d9d9c">
+                            <input type="button" id="save" value="Valider" class="form-control btn-success" style="background-color: #5d9d9c">
+                            <input type="submit" id="appbundle_customer_Enregistrer" value="Valider" class="form-control btn-success" style="display: none">
 
                         </div>
 
@@ -311,6 +316,7 @@
 
     {% block javascripts %}
         <script type="text/javascript" src="{{ asset('assets/js/appointement.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/validation.js') }}"></script>
     {% endblock javascripts %}
 
 {% endblock %}

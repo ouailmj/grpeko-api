@@ -298,7 +298,7 @@ class FiscalYear
     /**
      * @param \DateTime $startDate
      */
-    public function setStartDate(\DateTime $startDate)
+    public function setStartDate(\DateTime $startDate=null)
     {
         $this->startDate = $startDate;
     }
@@ -314,7 +314,7 @@ class FiscalYear
     /**
      * @param \DateTime $closeDate
      */
-    public function setCloseDate(\DateTime $closeDate)
+    public function setCloseDate(\DateTime $closeDate=null)
     {
         $this->closeDate = $closeDate;
     }

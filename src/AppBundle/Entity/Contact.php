@@ -132,12 +132,14 @@ class Contact
     /**
      * @var integer
      * @ORM\Column(name="partNumber", type="integer", nullable=true)
+     * @Assert\Type("integer")
      */
     private $partNumber;
 
     /**
      * @var float
      * @ORM\Column(name="partNumberPercent", type="float", nullable=true)
+     * @Assert\Type("float")
      */
     private $partNumberPercent;
 
@@ -180,6 +182,7 @@ class Contact
     /**
      * @var float
      * @ORM\Column(name="mandataire", type="float", nullable=true)
+     * @Assert\Type("float")
      */
     private $mandataire;
 
@@ -271,6 +274,7 @@ class Contact
     /**
      * @var float
      * @ORM\Column(name="annualIncome", type="float" ,nullable=true)
+     * @Assert\Type("float")
      */
     private $annualIncome;
 

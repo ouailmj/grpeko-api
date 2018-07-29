@@ -4,7 +4,7 @@
         <div class="tabbale">
             <ul class="nav nav-tabs bg-teal-400 nav-justified">
                 <li id="clikfirsttab" class="active"><a href="#firsttab" data-toggle="tab" aria-expanded="true">Fiche Client</a></li>
-                <li><a href="{{ path('devis_new') }}">Prise de connaissance</a></li>
+                <li><a href="">Prise de connaissance</a></li>
             </ul>
 
 
@@ -42,7 +42,7 @@
                     <div class="tab-content panel panel-flat border-top-info">
                         <div class="tab-pane active" id="Contacts">
                             <div class="panel-body">
-                                {{ form_start(formcompany, {'attr': {'class': 'form-horizontal'}}) }}
+                                {{ form_start(formcompany, {'attr': {'class': 'form-horizontal','id':'appbundle_customer'}}) }}
                                 <fieldset class="content-group">
 
                                     {{form_row(formcompany.legalName)}}
@@ -120,6 +120,10 @@
                                             {{form_row(formcompany.contacts.lastname)}}
                                             {{form_row(formcompany.contacts.email)}}
 
+                                            <div class="alert alert-warning"  id="emailerror" style="display: none;width: 50%">
+                                                <strong>Erreur!</strong> Cette adresse e-mail est déjà utilisée !
+                                            </div>
+
                                         </fieldset>
 
                                     </div>
@@ -150,7 +154,10 @@
                                     </div>
                                 </div>
 
-                                {{form_row(formcompany.Enregistrer)}}
+                                <input type="button" class="btn-success btn" value="Enregistrer" style="float:right" id="save">
+                                <br>
+                                {{form_widget(formcompany.Enregistrer, {'attr': {'style': 'display:none'}}) }}
+
 
                                 {{ form_widget(formcompany._token) }}
                                 {{ form_end(formcompany, {'render_rest': false}) }}
@@ -192,6 +199,7 @@
 
         </div>
     </div>
+
 {% endblock %}
     {% block javascripts %}
         <script src="{{ asset('assets/js/plugins/symfony_collectionjs/jquery.collection.js') }}"></script>
@@ -223,18 +231,6 @@
                     }
                 }
             );
-            /*
-             $('.add-contact-collection').collection({
-             // name_prefix: ,
-             add_at_the_end: true,
-             hide_useless_buttons: true,
-             add: '<a style="float:right" href="#" class="collection-action btn btn-success btn-small collection-rescue-add">Ajouter</a>',
-             remove: '<a href="#" class="collection-remove btn btn-warning collection-action">Retirer</a>',
-             allow_up: false,
-             allow_down: false,
-             init_with_n_elements: 0,
-             }
-             );
-             */
         </script>
+        <script type="text/javascript" src="{{ asset('assets/js/validation.js') }}"></script>
     {% endblock %}

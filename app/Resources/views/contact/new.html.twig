@@ -5,7 +5,7 @@
         <div class="tabbale">
             <ul class="nav nav-tabs bg-teal-400 nav-justified">
                 <li id="clikfirsttab" class="active"><a href="#firsttab" data-toggle="tab" aria-expanded="true">Fiche Client</a></li>
-                <li><a href="{{ path('devis_new') }}">Prise de connaissance</a></li>
+                <li><a href="">Prise de connaissance</a></li>
             </ul>
 
                 <div class="tab-content" id="firsttab">
@@ -192,10 +192,12 @@
                     <div class="col-sm-5">
                         <div class="col-sm-7">
                             {{form_widget(contact.partNumber)}}
+                            {{form_errors(contact.partNumber)}}
                         </div>
                         <div class="col-sm-5">
                             <div>
                                 {{form_widget(contact.partNumberPercent)}}
+                                {{form_errors(contact.partNumberPercent)}}
                             </div>
                         </div>
                     </div>
@@ -314,6 +316,7 @@
                 <label class="control-label col-sm-1" >Email</label>
                 <div class="col-sm-2">
                     {{form_widget(contact.email)}}
+                    {{form_errors(contact.email)}}
                 </div>
             </div>
 
@@ -442,7 +445,6 @@
                 <label class="control-label col-sm-2">Nombre d'enfant</label>
                 <div class="col-sm-2">
                     {{form_row(contact.childrenNumber)}}
-                    {{form_errors(contact.childrenNumber)}}
                 </div>
             </div>
 
@@ -473,6 +475,7 @@
                 <label class="control-label col-sm-2" >Revenue annuel net</label>
                 <div class="col-sm-2">
                     {{form_widget(contact.annualIncome)}}
+                    {{form_errors(contact.annualIncome)}}
                 </div>
             </div>
 

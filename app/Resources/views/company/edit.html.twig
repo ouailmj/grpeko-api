@@ -4,7 +4,7 @@
         <div class="tabbale">
             <ul class="nav nav-tabs bg-teal-400 nav-justified">
                 <li id="clikfirsttab" class="active"><a href="#firsttab" data-toggle="tab" aria-expanded="true">Fiche Client</a></li>
-                <li><a href="{{ path('devis_new') }}">Prise de connaissance</a></li>
+                <li><a href="">Prise de connaissance</a></li>
             </ul>
 
 
@@ -114,7 +114,7 @@
                                 <div class="form-group">
                                     <div class=" col-sm-12">
 
-                                        <fieldset class="scheduler-border">
+                                      {#  <fieldset class="scheduler-border">
                                             <legend class="scheduler-border" style="text-transform: capitalize">contacts</legend>
                                             {% if company.contacts[0].firstname is defined %}
                                                 {{form_row(formcompany.contacts.firstname,  { 'value': company.contacts[0].firstname })}}
@@ -131,8 +131,8 @@
                                             {% else %}
                                                 {{form_row(formcompany.contacts.email)}}
                                             {% endif %}
-                                        </fieldset>
-
+                                          </fieldset>
+                                        #}
                                     </div>
                                 </div>
 

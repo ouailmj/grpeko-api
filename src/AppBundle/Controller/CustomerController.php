@@ -21,6 +21,7 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -360,4 +361,16 @@ class CustomerController extends BaseController
         return $this->render('invoices/avoir.html.twig');
     }
 
+
+    /**
+     * @Route("/emailcheck", name="emailcheck")
+     * @Method("GET")
+     */
+    public function uniqueEmailCheck(Request $request)
+    {
+        $email=$request->query->get('email');
+        $cpt=$this->em->getRepository(User::class)->findByEmail($email);
+
+        return new JsonResponse($cpt);
+    }
 }

@@ -92,9 +92,9 @@ class ContactDetailsType extends AbstractType
                 ],
             ])
 
-            ->add('partNumber', TextType::class, ['required' => false])
+            ->add('partNumber', NumberType::class, ['required' => false])
 
-            ->add('partNumberPercent', TextType::class, ['attr' => ['placeholder' => '% '], 'required' => false])
+            ->add('partNumberPercent', NumberType::class, ['attr' => ['placeholder' => '% '], 'required' => false])
 
             ->add('tns', TextType::class, ['required' => false])
 
@@ -188,7 +188,7 @@ class ContactDetailsType extends AbstractType
 
             ->add('comment', TextareaType::class, ['required' => false])
 
-            ->add('childrenNumber', NumberType::class, ['required' => false])
+            ->add('childrenNumber', NumberType::class, ['required' => false ,  'label' => false])
 
             ->add('intermediate', TextType::class, [
                 'label' => 'de part:',
@@ -221,7 +221,7 @@ class ContactDetailsType extends AbstractType
                     ],
                 ])
 
-            ->add('annualIncome', TextType::class, ['required' => false])
+            ->add('annualIncome', NumberType::class, ['required' => false])
             ->add('owner', ChoiceType::class, ['choices' => [
                 'Oui' => 'Oui',
                 'Non' => 'Non',
