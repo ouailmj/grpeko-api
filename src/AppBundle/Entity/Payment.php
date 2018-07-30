@@ -72,7 +72,7 @@ class Payment
     /**
      * @param Invoices $invoice
      */
-    public function setInvoice(Invoices $invoice)
+    public function setInvoice(Invoice $invoice)
     {
         $this->invoice = $invoice;
     }
