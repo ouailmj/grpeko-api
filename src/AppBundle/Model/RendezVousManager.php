@@ -13,6 +13,7 @@
 namespace AppBundle\Model;
 
 use AppBundle\Entity\Company;
+use AppBundle\Entity\Customer;
 use AppBundle\Entity\Rendezvous;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -30,21 +31,36 @@ class RendezVousManager
         $this->em = $em;
     }
 
-    public function uploadFiles(Company $company, Rendezvous $rendezvous, String $path)
+    public function uploadFiles(Customer $company, Rendezvous $rendezvous, String $path)
     {
-        $file = $rendezvous->getFichePatrimoniale();
-        $fileName = md5(uniqid()).'.'.$file->guessExtension();
-        $file->move($path, $fileName);
-        $rendezvous->setFichePatrimoniale($fileName);
-
-        $file = $rendezvous->getCin();
-        $fileName = md5(uniqid()).'.'.$file->guessExtension();
-        $file->move($path, $fileName);
-        $rendezvous->setCin($fileName);
+        $this->moveFile($rendezvous,$path);
+        $this->moveCin($rendezvous,$path);
         $company->setRendezvous($rendezvous);
-        $rendezvous->setCompany($company);
-
+        $rendezvous->setCustomer($company);
         $this->em->persist($rendezvous);
         $this->em->flush();
     }
+
+    public function generateUniqueName()
+    {
+        return md5(uniqid());
+    }
+
+    public function moveFile(Rendezvous $rendezvous,$path)
+    {
+        $file = $rendezvous->getFichePatrimoniale();
+        $fileName = $this->generateUniqueName().'.'.$file->guessExtension();
+
+        $file->move($path, $fileName);
+        $rendezvous->setFichePatrimoniale($fileName);
+    }
+
+    public function moveCin(Rendezvous $rendezvous,$path)
+    {
+        $file = $rendezvous->getCin();
+        $fileName = $this->generateUniqueName().'.'.$file->guessExtension();
+        $file->move($path, $fileName);
+        $rendezvous->setCin($fileName);
+    }
+
 }

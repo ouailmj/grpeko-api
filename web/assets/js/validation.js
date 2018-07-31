@@ -1,0 +1,25 @@
+$('#save').click(function(){
+    $email=document.getElementById("appbundle_customer_contacts_email").value;
+    if($email!="")
+    {
+        $.ajax({
+            url:"/app/relation/contactemailcheck?email=$email",
+            method:"GET",
+            data:{email:$email},
+            success: function(cpt) {
+                if(cpt!=0)
+                {
+                    document.getElementById("emailerror").style.display="block";
+                }
+                else
+                {
+                    document.getElementById("emailerror").style.display="none";
+                    document.getElementById("appbundle_customer_Enregistrer").click();
+                }
+            }
+        })
+    }
+    else{
+        document.getElementById("appbundle_customer_Enregistrer").click();
+    }
+});

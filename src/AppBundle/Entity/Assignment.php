@@ -10,18 +10,28 @@
  *
  */
 
+
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
- * Assignment.
+ * Class Assignment
+ * @package AppBundle\Entity
+ *
+ *
  *
  * @ORM\Table(name="assignment")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AssignmentRepository")
+ *
+ * @ORM\HasLifecycleCallbacks()
  */
 class Assignment
 {
+
+
     /**
      * @var int
      *
@@ -29,45 +39,84 @@ class Assignment
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
+
+    /**
+     * @var TypeMission [] | ArrayCollection
+     * @ORM\ManyToMany(targetEntity="TypeMission", inversedBy="assignments")
+     */
+    private $typeMissions;
+
+    /**
+     * @var FiscalYear
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\FiscalYear", mappedBy="mainAssignment")
+     */
+    private $mainFiscalYear;
 
     /**
      * @var FiscalYear
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\FiscalYear" ,mappedBy="mainAssignment"))
-     */
-    protected $mainFiscalYear;
-
-    /**
-     * @var FiscalYear
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\FiscalYear", inversedBy="secondaryAssignments")
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\FiscalYear" ,inversedBy="secondaryAssignments"))
      */
-    protected $secondaryFiscalYear;
+    private $secondaryFiscalYear;
 
     /**
      * @var Employee
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Employee" ,inversedBy="assignments"))
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Employee", inversedBy="assignments")
      */
-    protected $employee;
+    private $employee;
 
     /**
-     * @var TypeMission
-     *
-     * @ORM\ManyToOne(targetEntity="TypeMission")
-     * @ORM\JoinColumn(name="type_mission_id", referencedColumnName="id")
+     * Assignment constructor.
      */
-    private $typeMission;
+    public function __construct()
+    {
+        $this->typeMissions = new ArrayCollection();
+    }
 
     /**
-     * Get id.
-     *
      * @return int
      */
     public function getId()
     {
         return $this->id;
+    }
+
+
+    /**
+     * @return TypeMission[]|ArrayCollection
+     */
+    public function getTypeMissions()
+    {
+        return $this->typeMissions;
+    }
+
+    /**
+     * @param TypeMission[]|ArrayCollection $typeMissions
+     */
+    public function setTypeMissions($typeMissions)
+    {
+        $this->typeMissions = $typeMissions;
+    }
+
+    /**
+     * @param TypeMission $typeMission
+     * @return $this
+     */
+    public function addTypeMission(TypeMission $typeMission)
+    {
+        $this->typeMissions->add($typeMission);
+        return $this;
+    }
+
+    /**
+     * @param TypeMission $typeMission
+     * @return $this
+     */
+    public function removeTypeMission(TypeMission $typeMission)
+    {
+        return  $this->typeMissions->removeElement($typeMission);
     }
 
     /**
@@ -102,7 +151,6 @@ class Assignment
         $this->secondaryFiscalYear = $secondaryFiscalYear;
     }
 
-
     /**
      * @return Employee
      */
@@ -119,21 +167,7 @@ class Assignment
         $this->employee = $employee;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getTypeMission()
-    {
-        return $this->typeMission;
-    }
 
-    /**
-     * @param mixed $typeMission
-     */
-    public function setTypeMission($typeMission)
-    {
-        $this->typeMission = $typeMission;
-    }
 
 
 }

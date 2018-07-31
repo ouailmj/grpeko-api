@@ -14,14 +14,19 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Company;
 use AppBundle\Entity\Contact;
+use AppBundle\Entity\Customer;
 use AppBundle\Entity\EnterRelation;
 use AppBundle\Entity\Rendezvous;
 use AppBundle\Event\AppEvents;
 use AppBundle\Event\RendezVousCreatedEvent;
+use AppBundle\Form\RendezVousType;
 use AppBundle\Model\ClientManager;
 use AppBundle\Model\RendezVousManager;
+use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\FormError;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -33,14 +38,15 @@ class EnterRelationController extends BaseController
 {
     private $rendezVousManager;
     private $clientManager;
-
+    private $em;
     /**
      * EnterRelationController constructor.
      */
-    public function __construct(RendezVousManager $rendezVousManager, ClientManager $clientManager)
+    public function __construct(RendezVousManager $rendezVousManager, ClientManager $clientManager,EntityManagerInterface $em)
     {
         $this->rendezVousManager = $rendezVousManager;
         $this->clientManager = $clientManager;
+        $this->em=$em;
     }
 
     /**
@@ -49,36 +55,44 @@ class EnterRelationController extends BaseController
     public function rendezVousAction(Request $request)
     {
         if ($request->isMethod('POST')) {
-            $nom = $request->get('lastname');
-            $email = $request->get('email');
 
-            $data = ['sujet' => $request->get('sujet'),
-                'datedebut' => $request->get('datedebut'),
-                'heuredebut' => $request->get('heuredebut'),
-                'datefin' => $request->get('datefin'),
-                'heurefin' => $request->get('heurefin'),
-            ];
-            $prospect = new Company();
-            $contact = new Contact();
-            $contact->setLastname($nom);
-            $contact->setEmail($email);
-            $prospect->addContact($contact);
+            $data=$this->getAppointementinfos($request);
+            $prospect = new Customer();
+            $prospect->addContact($this->newContact($data));
             $this->clientManager->createClient($prospect);
             $this->get('event_dispatcher')->dispatch(AppEvents::RENDEZVOUS_CREATED, new RendezVousCreatedEvent($prospect, $data));
             $this->addSuccessFlash();
         }
 
-        return $this->render('prisedeconnaissance/entree_relation/rendez_vous.html.twig', [
-        ]);
+        return $this->render('prisedeconnaissance/entree_relation/rendez_vous.html.twig');
     }
 
+    public function newContact(array $data)
+    {
+        $contact = new Contact();
+        $contact->setLastname($data["nom"]);
+        $contact->setEmail($data["email"]);
+        return $contact;
+    }
+
+    public function getAppointementinfos(Request $request)
+    {
+        return ['sujet' => $request->get('sujet'),
+            'datedebut' => $request->get('datedebut'),
+            'heuredebut' => $request->get('heuredebut'),
+            'heurefin' => $request->get('heurefin'),
+            'nom' => $request->get('lastname'),
+            'email' => $request->get('email')
+        ];
+    }
     /**
      *  @Route("/uploadmodel/{company}", name="model_upload")
      */
-    public function uploadmodel(Company $company, Request $request)
+    public function uploadmodel(Customer $company, Request $request)
     {
+
         $rendezvous = new Rendezvous();
-        $formrendezvous = $this->createForm('AppBundle\Form\RendezVousType', $rendezvous);
+        $formrendezvous = $this->createForm(RendezVousType::class, $rendezvous);
         $formrendezvous->handleRequest($request);
 
         //TODO: Utiliser les mimetypes pour savoir les types des fichiers
@@ -106,49 +120,18 @@ class EnterRelationController extends BaseController
         }
 
         return $this->render('prisedeconnaissance/entree_relation/upload_model.html.twig', ['rendezvous' => $formrendezvous->createView()]);
-    }
+
+      }
 
     /**
-     * @Route("/devis", name="devis_new")
+     * @Route("/contactemailcheck", name="emailcontactcheck")
+     * @Method("GET")
      */
-    public function newAction(Request $request)
+    public function uniqueContactEmailCheck(Request $request)
     {
-        $rendezvous = new Rendezvous();
-        $formrendezvous = $this->createForm('AppBundle\Form\RendezVousType', $rendezvous);
-        $formrendezvous->handleRequest($request);
+        $email=$request->query->get('email');
+        $cpt=$this->em->getRepository(Contact::class)->findByEmail($email);
 
-        if ($formrendezvous->isSubmitted() && $formrendezvous->isValid()) {
-            $this->redirectToRoute('devis_new');
-        }
-
-        return $this->render('prisedeconnaissance/entree_relation/new.html.twig', ['rendezvous' => $formrendezvous->createView()]);
+        return new JsonResponse($cpt);
     }
-
-    public function move(Rendezvous $rendezvous, string $fileName)
-    {
-        $rendezvous->getFichePatrimoniale()->move($this->getParameter('files_directory'), $fileName);
-    }
-
-    /*
-     * @Route("/edit/{id}", name="relation_edit")
-     *
-     */
-
- /*   public function editAction(EnterRelation $relationentre,Request $request)
-    {
-
-        $formrelation = $this->createForm('AppBundle\Form\EntreRelationType', $relationentre);
-        $formrelation->handleRequest($request);
-
-        if ($formrelation->isSubmitted() && $formrelation->isValid()) {
-
-            $this->relationManager->createRelation($formrelation,$relationentre);
-            $this->addSuccessFlash();
-            return $this->redirectToRoute('relation_edit' , ['id' => $relationentre->getId()]);
-        }
-
-        return $this->render('prisedeconnaissance/entree_relation/edit.html.twig',
-                             array('formrelation' => $formrelation->createView()));
-
-    }*/
 }

@@ -4,7 +4,7 @@
         <div class="tabbale">
             <ul class="nav nav-tabs bg-teal-400 nav-justified">
                 <li id="clikfirsttab" class="active"><a href="#firsttab" data-toggle="tab" aria-expanded="true">Fiche Client</a></li>
-                <li><a href="{{ path('devis_new') }}">Prise de connaissance</a></li>
+                <li><a href="">Prise de connaissance</a></li>
             </ul>
 
             <div class="tab-content ">
@@ -25,10 +25,10 @@
 
                                         <ul class="dropdown-menu dropdown-menu-right">
                                             <li class=""><a href="#mission" data-toggle="tab" aria-expanded="false">Mission</a></li>
-                                            <li class=""><a href="{{ path('excercice_new',{'id': app.request.get('id') }) }}">Exercices</a></li>
+                                            <li class=""><a href="{{ path('excerice_list',{'id': app.request.get('id') }) }}">Exercices</a></li>
                                             <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Informations Bancaires</a></li>
                                             <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Rapprochement CFONB - Mots clés</a></li>
-                                            <li class=""><a href="#Facturation" data-toggle="tab" aria-expanded="false">Facturation</a></li>
+                                            <li class=""><a href="{{ path('invoice_list',{'id': app.request.get('id') }) }}">Facturation</a></li>
                                             <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Codes accés espaces clients</a></li>
 
                                         </ul>
@@ -48,7 +48,7 @@
                                         <span class="pull-left"><a href="{{ path('contact_new',{ 'id': app.request.get('id') }) }}" class="btn btn-primary heading-btn"><b><i class="icon-plus3"></i></b></a></span>
                                     </div>
 
-                                    <table class="table">
+                                    <table class="table datatable-responsive table-bordered table-hover datatable-highlight" style=" border:none !important;">
                                         <thead>
                                         <tr>
                                             <th class="text-center">Actions</th>
@@ -67,11 +67,15 @@
                                                     <div class="">
                                                       <a title="Modifier" href="{{ path('contact_edit', { 'id': contact.id }) }}" class=" legitRipple"><i class="icon-pen position-left"></i></a>
                                                     </div>
+                                                    {{ form_start(delete_form[loop.index-1]) }}
+                                                    <button type="submit" style="background: transparent;border: none">
+                                                        <a onclick="return confirm('Êtes-vous sûr ? Cette action est irréversible.');" title="Supprimer" class=" legitRipple"><i class="icon-trash position-left"></i></a>
+                                                    </button>
+                                                    {{ form_end(delete_form[loop.index-1]) }}
                                                 </td>
-
                                                 <td>{{ contact.civility }}</td>
-                                                <td>{{ contact.lastname }}</td>
                                                 <td>{{ contact.firstname }}</td>
+                                                <td>{{ contact.lastname }}</td>
                                                 <td>{{ contact.partNumberPercent }}%</td>
                                                 <td>{{ contact.mandaSocial }}</td>
                                                 <td>Oui</td>

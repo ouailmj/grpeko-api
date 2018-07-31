@@ -178,7 +178,7 @@ class EntreRelationType extends AbstractType
                 'mapped' => false,
                 'data' => new \DateTime(),
             ])
-            ->add('company', CompanyType::class, [
+            ->add('company', CustomerType::class, [
                 'label' => false,
                 'required' => true,
             ]);

@@ -10,19 +10,29 @@
  *
  */
 
+
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
- * CustomerStatus.
+ * Class CustomerStatus
+ * @package AppBundle\Entity
+ *
  *
  * @ORM\Table(name="customer_status")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CustomerStatusRepository")
+ *
+ * @ORM\HasLifecycleCallbacks()
+ *
  */
 class CustomerStatus
 {
+
+
+
     /**
      * @var int
      *
@@ -30,7 +40,20 @@ class CustomerStatus
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
+
+    /**
+     * @var Customer [] | ArrayCollection
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Customer", mappedBy="customerStatus")
+     */
+
+    private $customers;
+
+    public function __construct()
+    {
+        $this->customers = new ArrayCollection();
+    }
+
 
     /**
      * @var string
@@ -39,17 +62,7 @@ class CustomerStatus
      */
     private $status;
 
-
     /**
-     * @var Company
-     *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Company" ,inversedBy="customerStatus" ,cascade={"persist", "remove"}))
-     */
-    private $company;
-
-    /**
-     * Get id.
-     *
      * @return int
      */
     public function getId()
@@ -57,23 +70,44 @@ class CustomerStatus
         return $this->id;
     }
 
-    /**
-     * Set status.
-     *
-     * @param string $status
-     *
-     * @return CustomerStatus
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
 
+
+    /**
+     * @return Customer[]|ArrayCollection
+     */
+    public function getCustomers()
+    {
+        return $this->customers;
+    }
+
+    /**
+     * @param Customer[]|ArrayCollection $customers
+     */
+    public function setCustomers($customers)
+    {
+        $this->customers = $customers;
+    }
+
+    /**
+     * @param Customer $customer
+     * @return $this
+     */
+    public function addCustomer(Customer $customer)
+    {
+        $this->customers->add($customer);
         return $this;
     }
 
     /**
-     * Get status.
-     *
+     * @param Customer $customer
+     * @return $this
+     */
+    public function removeCustomer(Customer $customer)
+    {
+        return $this->customers->removeElement($customer);
+    }
+
+    /**
      * @return string
      */
     public function getStatus()
@@ -81,25 +115,17 @@ class CustomerStatus
         return $this->status;
     }
 
-
     /**
-     * @return Company
+     * @param string $status
      */
-    public function getCompany()
+    public function setStatus(string $status)
     {
-        return $this->company;
-    }
-
-    /**
-     * @param Company $company
-     */
-    public function setCompany(Company $company)
-    {
-        $this->company = $company;
+        $this->status = $status;
     }
 
     public function __toString()
     {
-        return (empty($this->status)) ? '' : $this->status;
+        return (empty($this->status)) ? "" : $this->status;
     }
+
 }

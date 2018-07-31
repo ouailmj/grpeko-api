@@ -58,13 +58,6 @@ class User extends BaseUser
      */
     protected $googleId = '';
 
-    /**
-     * @var Person
-     *@ApiSubResource
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Person", mappedBy="userAccount", cascade={"persist", "remove"})
-     */
-    protected $person;
-
     // Transient Properties //
 
     /**
@@ -95,21 +88,5 @@ class User extends BaseUser
     {
         parent::__construct();
         $this->enabled = true;
-    }
-
-    /**
-     * @return Person
-     */
-    public function getPerson()
-    {
-        return $this->person;
-    }
-
-    /**
-     * @param Person $person
-     */
-    public function setPerson(Person $person)
-    {
-        $this->person = $person;
     }
 }

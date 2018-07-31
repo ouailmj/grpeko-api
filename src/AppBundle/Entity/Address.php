@@ -10,18 +10,25 @@
  *
  */
 
+
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Address.
+ * Class Address
+ * @package AppBundle\Entity
+ *
+ *
  *
  * @ORM\Table(name="address")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AddressRepository")
+ *
+ * @ORM\HasLifecycleCallbacks()
  */
 class Address
 {
+
     /**
      * @var int
      *
@@ -30,24 +37,28 @@ class Address
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
     /**
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
      */
     protected $description;
+
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=10, nullable=true)
      */
     protected $postalCode;
+
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=150, nullable=true)
      */
     protected $city;
+
     /**
      * @var string
      *
@@ -56,11 +67,59 @@ class Address
     protected $email;
 
     /**
-     * @var Person
+     * @var \DateTime
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Person" ,inversedBy="currentAddress")
+     * @ORM\Column(type="datetimetz", nullable=true)
      */
-    // protected $category;
+    protected $leftAt = null;
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription(string $description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPostalCode()
+    {
+        return $this->postalCode;
+    }
+
+    /**
+     * @param string $postalCode
+     */
+    public function setPostalCode(string $postalCode)
+    {
+        $this->postalCode = $postalCode;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param string $city
+     */
+    public function setCity(string $city)
+    {
+        $this->city = $city;
+    }
 
     /**
      * @return string
@@ -78,97 +137,13 @@ class Address
         $this->email = $email;
     }
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetimetz", nullable=true)
-     */
-    protected $leftAt = null;
 
     /**
-     * Get id.
-     *
      * @return int
      */
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * @return Person
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
-     * @param Person $category
-     */
-    public function setCategory(Person $category)
-    {
-        $this->category = $category;
-    }
-
-    /**
-     * @param string $description
-     *
-     * @return Address
-     */
-    public function setDescription(string $description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPostalCode()
-    {
-        return $this->postalCode;
-    }
-
-    /**
-     * @param string $postalCode
-     *
-     * @return Address
-     */
-    public function setPostalCode(string $postalCode)
-    {
-        $this->postalCode = $postalCode;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCity()
-    {
-        return $this->city;
-    }
-
-    /**
-     * @param string $city
-     *
-     * @return Address
-     */
-    public function setCity(string $city)
-    {
-        $this->city = $city;
-
-        return $this;
     }
 
     /**
@@ -178,7 +153,6 @@ class Address
     {
         return $this->leftAt;
     }
-
     /**
      * @param \DateTime $leftAt
      */

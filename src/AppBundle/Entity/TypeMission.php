@@ -10,15 +10,18 @@
  *
  */
 
+
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
- * TypeMission.
+ * Class TypeMission
+ * @package AppBundle\Entity
+ *
  *
  * @ORM\Table(name="type_mission")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\TypeMissionRepository")
@@ -27,11 +30,14 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *
  *  attributes ={
  *     "normalization_context"={"groups"={"type_mission"}},
- *}
- *     )
+ *     }
+ * )
+ * @ORM\HasLifecycleCallbacks()
  */
 class TypeMission
 {
+
+
     /**
      * @var int
      *
@@ -39,7 +45,20 @@ class TypeMission
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
+
+    /**
+     * @var Mission [] | ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Mission", mappedBy="typeMission")
+     */
+    private $missions;
+
+    /**
+     * @var Assignment [] | ArrayCollection
+     * @ORM\ManyToMany(targetEntity="Assignment", mappedBy="typeMissions")
+     */
+    private $assignments;
 
     /**
      * @var string
@@ -49,29 +68,23 @@ class TypeMission
     private $type;
 
     /**
-     * @var Mission [] | ArrayCollection
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Mission" ,mappedBy="typeMission" ,cascade={"persist", "remove"})
-     *
-     * @Groups({"type_mission"})
+     * TypeMission constructor.
      */
-    private $missions;
-
+    public function __construct()
+    {
+        $this->missions = new ArrayCollection();
+        $this->assignments = new ArrayCollection();
+    }
 
     /**
-     * @var Category
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Category" ,inversedBy="typeMissions" ,cascade={"persist"})
-     */
-    private $category;
-
-    /**
-     * Get id.
-     *
      * @return int
      */
     public function getId()
     {
         return $this->id;
     }
+
+
 
     /**
      * @return Mission[]|ArrayCollection
@@ -82,31 +95,71 @@ class TypeMission
     }
 
     /**
-     * @param $mission
-     *
+     * @param Mission[]|ArrayCollection $missions
+     */
+    public function setMissions($missions)
+    {
+        $this->missions = $missions;
+    }
+
+    /**
+     * @param Mission $mission
      * @return $this
      */
-    public function addMission($mission)
+    public function addMission(Mission $mission)
     {
         $this->missions->add($mission);
-
         return $this;
     }
 
     /**
-     * @param $mission
-     *
+     * @param Mission $mission
      * @return bool
      */
-    public function removeMission($mission)
+    public function removeMission(Mission $mission)
     {
         return $this->missions->removeElement($mission);
     }
 
     /**
+     * @return Assignment[]|ArrayCollection
+     */
+    public function getAssignments()
+    {
+        return $this->assignments;
+    }
+
+    /**
+     * @param Assignment[]|ArrayCollection $assignments
+     */
+    public function setAssignments($assignments)
+    {
+        $this->assignments = $assignments;
+    }
+
+    /**
+     * @param Assignment $assignment
+     * @return $this
+     */
+    public function addAssignment(Assignment $assignment)
+    {
+        $this->assignments->add($assignment);
+        return $this;
+    }
+
+    /**
+     * @param Assignment $assignment
+     * @return bool
+     */
+    public function removeAssignment(Assignment $assignment)
+    {
+        return $this->assignments->removeElement($assignment);
+    }
+
+    /**
      * @return string
      */
-    public function getType(): string
+    public function getType()
     {
         return $this->type;
     }
@@ -118,24 +171,5 @@ class TypeMission
     {
         $this->type = $type;
     }
-
-    /**
-     * @return Category
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
-     * @param Category $category
-     */
-    public function setCategory(Category $category)
-    {
-        $this->category = $category;
-    }
-
-
-
 
 }

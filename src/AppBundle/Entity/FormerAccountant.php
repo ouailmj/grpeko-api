@@ -10,18 +10,26 @@
  *
  */
 
+
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
- * FormerAccountant.
+ * Class FormerAccountant
+ * @package AppBundle\Entity
  *
  * @ORM\Table(name="former_accountant")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\FormerAccountantRepository")
+ *
+ * @ORM\HasLifecycleCallbacks()
  */
-class FormerAccountant extends LegalEntity
+class FormerAccountant
 {
+
+
     /**
      * @var int
      *
@@ -29,40 +37,43 @@ class FormerAccountant extends LegalEntity
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
-
+    protected $id;
     /**
      * @var string
      *
-     * @ORM\Column(name="civility", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255,nullable=true)
+     */
+    private $name;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="civility", type="string", length=255,nullable=true)
      */
     private $civility;
-
     /**
      * @var string
      *
-     * @ORM\Column(name="firstName", type="string", length=255)
+     * @ORM\Column(name="firstName", type="string", length=255,nullable=true)
      */
     private $firstName;
-
     /**
      * @var string
      *
-     * @ORM\Column(name="lastName", type="string", length=255)
+     * @ORM\Column(name="lastName", type="string", length=255,nullable=true)
      */
     private $lastName;
 
     /**
-     * @var Address
-     *
-     *  @ORM\OneToOne(targetEntity="AppBundle\Entity\Address", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="address_id", referencedColumnName="id",onDelete="CASCADE")
+     * @var Customer [] | ArrayCollection
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Customer", mappedBy="formerAccountant")
      */
-    private $address;
+    private $customers;
 
+    public function __construct()
+    {
+        $this->customers = new ArrayCollection();
+    }
     /**
-     * Get id.
-     *
      * @return int
      */
     public function getId()
@@ -71,22 +82,22 @@ class FormerAccountant extends LegalEntity
     }
 
     /**
-     * Set civility.
-     *
-     * @param string $civility
-     *
-     * @return FormerAccountant
+     * @return string
      */
-    public function setCivility($civility)
+    public function getName()
     {
-        $this->civility = $civility;
-
-        return $this;
+        return $this->name;
     }
 
     /**
-     * Get civility.
-     *
+     * @param string $name
+     */
+    public function setName(string $name)
+    {
+        $this->name = $name;
+    }
+
+    /**
      * @return string
      */
     public function getCivility()
@@ -95,22 +106,14 @@ class FormerAccountant extends LegalEntity
     }
 
     /**
-     * Set firstName.
-     *
-     * @param string $firstName
-     *
-     * @return FormerAccountant
+     * @param string $civility
      */
-    public function setFirstName($firstName)
+    public function setCivility(string $civility)
     {
-        $this->firstName = $firstName;
-
-        return $this;
+        $this->civility = $civility;
     }
 
     /**
-     * Get firstName.
-     *
      * @return string
      */
     public function getFirstName()
@@ -119,22 +122,14 @@ class FormerAccountant extends LegalEntity
     }
 
     /**
-     * Set lastName.
-     *
-     * @param string $lastName
-     *
-     * @return FormerAccountant
+     * @param string $firstName
      */
-    public function setLastName($lastName)
+    public function setFirstName(string $firstName)
     {
-        $this->lastName = $lastName;
-
-        return $this;
+        $this->firstName = $firstName;
     }
 
     /**
-     * Get lastName.
-     *
      * @return string
      */
     public function getLastName()
@@ -143,18 +138,47 @@ class FormerAccountant extends LegalEntity
     }
 
     /**
-     * @return Address
+     * @param string $lastName
      */
-    public function getAddress()
+    public function setLastName(string $lastName)
     {
-        return $this->address;
+        $this->lastName = $lastName;
+    }
+
+
+    /**
+     * @return Customer[]|ArrayCollection
+     */
+    public function getCustomers()
+    {
+        return $this->customers;
     }
 
     /**
-     * @param Address $address
+     * @param Customer[]|ArrayCollection $customers
      */
-    public function setAddress(Address $address)
+    public function setCustomers($customers)
     {
-        $this->address = $address;
+        $this->customers = $customers;
     }
+
+    /**
+     * @param Customer $customer
+     * @return $this
+     */
+    public function addCustomer(Customer $customer)
+    {
+        $this->customers->add($customer);
+        return $this;
+    }
+
+    /**
+     * @param Customer $customer
+     * @return $this
+     */
+    public function removeCustomer(Customer $customer)
+    {
+        return $this->customers->removeElement($customer);
+    }
+
 }

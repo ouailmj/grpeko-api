@@ -17,6 +17,8 @@ use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 
 class Mailer
 {
+    use ContactMailTrait, CustomerMailTrait;
+
     /** @var \Swift_Mailer */
     private $mailer;
 
@@ -55,37 +57,5 @@ class Mailer
             ->setContentType('text/html');
 
         $this->mailer->send($message);
-    }
-
-    public function sendContactMail(array $submittedData)
-    {
-        $body = $this->templateEngine->render('mail/website/contact.html.twig', $submittedData);
-
-        $this->sendEmailMessage($body, $this->adminMail, 'Groupe EKO - Un message de contact');
-    }
-
-    public function sendEmailCLient(RendezVousCreatedEvent $prospect)
-    {
-        $email = $prospect->getProspect()->getCustomerAccount()->getUserAccount()->getEmail();
-        $password = $prospect->getProspect()->getCustomerAccount()->getUserAccount()->getPlainPassword();
-        $name = $prospect->getProspect()->getContacts()[0]->getLastname();
-        $sujet = $prospect->getData()['sujet'];
-        $datedebut = $prospect->getData()['datedebut'];
-        $heuredebut = $prospect->getData()['heuredebut'];
-
-        $bodymessage = $this->templateEngine->render('mail/relation/rendezvous.html.twig', [
-            'name' => $name,
-            'datedebut' => $datedebut,
-            'heuredebut' => $heuredebut,
-            'email' => $email,
-            'password' => $password,
-        ]);
-
-        $this->sendEmailMessage($bodymessage, $email, $sujet);
-    }
-
-    public function testEmail()
-    {
-        $this->sendEmailMessage('Test Mail', 'dummy@et.to', 'Test Email');
     }
 }

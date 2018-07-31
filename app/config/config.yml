@@ -69,6 +69,9 @@ doctrine:
         #     path:     "%database_path%"
 
     orm:
+        dql:
+           datetime_functions:
+               year: DoctrineExtensions\Query\Mysql\Year
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
@@ -79,6 +82,8 @@ swiftmailer:
     host:      "%mailer_host%"
     username:  "%mailer_user%"
     password:  "%mailer_password%"
+    #encryption: ssl
+    #port:      465
     spool:     { type: memory }
 
 #FOSUser Cinfiguration
@@ -102,21 +107,6 @@ knp_menu:
     # the renderer to use, list is also available by default
     default_renderer: twig
 
-stof_doctrine_extensions:
-    default_locale: fr_FR
-    uploadable:
-        # Default file path: This is one of the three ways you can configure the path for the Uploadable extension
-        default_file_path:       "%kernel.root_dir%/../web/uploads"
-
-        # Mime type guesser class: Optional. By default, we provide an adapter for the one present in the HttpFoundation component of Symfony
-        mime_type_guesser_class: Stof\DoctrineExtensionsBundle\Uploadable\MimeTypeGuesserAdapter
-
-        # Default file info class implementing FileInfoInterface: Optional. By default we provide a class which is prepared to receive an UploadedFile instance.
-        default_file_info_class: Stof\DoctrineExtensionsBundle\Uploadable\UploadedFileInfo
-    orm:
-        default:
-            timestampable: true
-            uploadable: true
 bugsnag:
     api_key: "%bugsnag_key%"
 
@@ -155,15 +145,6 @@ lexik_jwt_authentication:
     public_key_path:  '%jwt_public_key_path%'
     pass_phrase:      '%jwt_key_pass_phrase%'
     token_ttl:        '%jwt_token_ttl%'
-
-knp_menu:
-    # use "twig: false" to disable the Twig extension and the TwigRenderer
-    twig:
-        template: KnpMenuBundle::menu.html.twig
-    #  if true, enables the helper for PHP templates
-    templating: false
-    # the renderer to use, list is also available by default
-    default_renderer: twig
 
 stof_doctrine_extensions:
     default_locale: fr_FR

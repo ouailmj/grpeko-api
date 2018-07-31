@@ -4,7 +4,7 @@
         <div class="tabbale">
             <ul class="nav nav-tabs bg-teal-400 nav-justified">
                 <li id="clikfirsttab" class="active"><a href="#firsttab" data-toggle="tab" aria-expanded="true">Fiche Client</a></li>
-                <li><a href="{{ path('devis_new') }}">Prise de connaissance</a></li>
+                <li><a href="">Prise de connaissance</a></li>
             </ul>
 
 
@@ -29,7 +29,7 @@
                                             <li class=""><a href="{{ path('excerice_list',{'id': app.request.get('id') }) }}">Exercices</a></li>
                                             <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Informations Bancaires</a></li>
                                             <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Rapprochement CFONB - Mots clés</a></li>
-                                            <li class=""><a href="#Facturation" data-toggle="tab" aria-expanded="false">Facturation</a></li>
+                                            <li class=""><a href="{{ path('invoice_list',{'id': app.request.get('id') }) }}">Facturation</a></li>
                                             <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Codes accés espaces clients</a></li>
 
                                         </ul>
@@ -40,6 +40,7 @@
                     </div>
 
 
+
                     <div class="tab-content panel panel-flat border-top-info">
                         <div class="tab-pane active" id="Contacts">
                             <div class="panel-body">
@@ -47,9 +48,9 @@
                                 <fieldset class="content-group">
 
                                     {{form_row(formcompany.legalName)}}
-                                    {{form_row(formcompany.legalForm)}}
-                                    {{form_row(formcompany.taxationRegime)}}
-                                    {{form_row(formcompany.vatSystem)}}
+                                    {{form_widget(formcompany.legalForm)}}
+                                    {{form_widget(formcompany.taxSystem)}}
+                                    {{form_widget(formcompany.vatSystem)}}
                                     {{form_row(formcompany.currentAddress.description)}}
                                     {{form_row(formcompany.currentAddress.postalCode)}}
                                     {{form_row(formcompany.currentAddress.city)}}
@@ -66,7 +67,7 @@
                                 <fieldset class="scheduler-border">
                                     <legend class="scheduler-border" style="text-transform: capitalize">aaaaa</legend>
 
-                                    {{form_row(formcompany.apeCode)}}
+                                    {{form_widget(formcompany.apeCode)}}
                                     {{form_row(formcompany.mainActivity)}}
                                     {{form_row(formcompany.siretNumber)}}
                                     {{form_row(formcompany.sirenNumber)}}
@@ -85,18 +86,12 @@
                                             {{form_row(formcompany.formerAccountant.civility)}}
                                             {{form_row(formcompany.formerAccountant.firstName)}}
                                             {{form_row(formcompany.formerAccountant.lastName)}}
-                                            {{form_row(formcompany.formerAccountant.address.description)}}
-                                            {{form_row(formcompany.formerAccountant.address.postalCode)}}
-                                            {{form_row(formcompany.formerAccountant.address.city)}}
-                                            {{form_row(formcompany.formerAccountant.address.email)}}
-
                                             {#   <div class="form-group">
                                                      <div class="col-xs- col-md-5 pull-right" >
                                                          <input type="button" class="form-control btn-info" id="pwd" value="&nbsp;Générer et envoyer la lettre de reprise de dossier&nbsp;" name="pwd">
                                                      </div>
                                                  </div>
                                              #}
-
                                         </fieldset>
 
                                     </div>
@@ -116,9 +111,10 @@
 
                                     </div>
                                 </div>
-                                {#<div class="form-group">
+                                <div class="form-group">
                                     <div class=" col-sm-12">
-                                        <fieldset class="scheduler-border">
+
+                                      {#  <fieldset class="scheduler-border">
                                             <legend class="scheduler-border" style="text-transform: capitalize">contacts</legend>
                                             {% if company.contacts[0].firstname is defined %}
                                                 {{form_row(formcompany.contacts.firstname,  { 'value': company.contacts[0].firstname })}}
@@ -135,9 +131,10 @@
                                             {% else %}
                                                 {{form_row(formcompany.contacts.email)}}
                                             {% endif %}
-                                        </fieldset>
+                                          </fieldset>
+                                        #}
                                     </div>
-                                </div>#}
+                                </div>
 
 
                                 <div class="form-group">
@@ -219,10 +216,8 @@
                     allow_up: false,
                     allow_down: false,
                     init_with_n_elements: 0,
-
                 }
             );
-
             $('.add-fiscal-collection').collection({
                     name_prefix: "{{ formcompany.fiscalYears.vars.full_name }}",
                     add_at_the_end: true,
@@ -237,22 +232,20 @@
                         //$('select').select2();
                         return true;
                     }
-
                 }
             );
-
             /*
-                        $('.add-contact-collection').collection({
-                               // name_prefix: ,
-                                add_at_the_end: true,
-                                hide_useless_buttons: true,
-                                add: '<a style="float:right" href="#" class="collection-action btn btn-success btn-small collection-rescue-add">Ajouter</a>',
-                                remove: '<a href="#" class="collection-remove btn btn-warning collection-action">Retirer</a>',
-                                allow_up: false,
-                                allow_down: false,
-                                init_with_n_elements: 0,
-                            }
-                        );
-                        */
+             $('.add-contact-collection').collection({
+             // name_prefix: ,
+             add_at_the_end: true,
+             hide_useless_buttons: true,
+             add: '<a style="float:right" href="#" class="collection-action btn btn-success btn-small collection-rescue-add">Ajouter</a>',
+             remove: '<a href="#" class="collection-remove btn btn-warning collection-action">Retirer</a>',
+             allow_up: false,
+             allow_down: false,
+             init_with_n_elements: 0,
+             }
+             );
+             */
         </script>
     {% endblock %}

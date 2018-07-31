@@ -15,8 +15,11 @@ namespace AppBundle\Model;
 use AppBundle\Entity\Company;
 use AppBundle\Entity\Contact;
 use AppBundle\Entity\Customer;
+use AppBundle\Entity\CustomerState;
+use AppBundle\Entity\CustomerStatus;
 use AppBundle\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class ClientManager
 {
@@ -36,7 +39,7 @@ class ClientManager
 
     public function findAllClients()
     {
-        return $this->em->getRepository('AppBundle:Company')->findAll();
+        return $this->em->getRepository('AppBundle:Customer')->findAll();
     }
 
     public function deleteClient(Company $company)
@@ -45,61 +48,110 @@ class ClientManager
         $this->em->flush();
     }
 
-    public function editClient(Company $company)
+    public function editClient(Customer $company)
     {
         foreach ($company->getFiscalYears() as $fiscal)
         {
-            $fiscal->setCompany($company);
+            $fiscal->setCustomer($company);
         }
+        foreach ($company->getContacts() as $cn)
+        {
+            $cn->setCustomer($company);
+        }
+        $this->em->flush();
+        $code=$company->getCustomerStatus()->getStatus()=="Client" ? "C".$company->getId() :"P".$company->getId();
+        $company->setCode($code);
         $this->em->flush();
     }
 
-    public function createClient(Company $prospect, array $contacts = null)
+    public function createClient(Customer $prospect, array $contacts = null)
     {
-        //  $email = array_map(function($contacts){
-        //     return $contacts->getEmail();
-        //  }, $formcompany->get('contacts')->getData()->toArray());
-
-        //  $name = array_map(function($contacts) {
-        //     return $contacts->getFirstname();
-        // }, $formcompany->get('contacts')->getData()->toArray());
-
-        $password = rand(100000, 1000000);
-        $prospect->setCustomerAccount(new Customer());
-
-        $prospect->getCustomerAccount()->setUserAccount(new User());
-        $prospect->getCustomerAccount()->getUserAccount()->setPlainPassword($password);
-
+        $test=0;
         if (null !== $contacts) {
-            $contact = new Contact();
-            $contact->setFirstname($contacts[0]);
-            $contact->setLastname($contacts[1]);
-            $contact->setEmail($contacts[2]);
-            $prospect->getCustomerAccount()->setName($contacts[0]);
-            $prospect->getCustomerAccount()->getUserAccount()->setEmail($contacts[2]);
-            $prospect->addContact($contact);
+
+            $prospect->addContact($this->newContact($contacts));
+            $prospect->setUser($this->newUserClient($contacts));
+            $test=0;
+
         } else {
-            $prospect->getCustomerAccount()->getUserAccount()->setEmail($prospect->getContacts()->first()->getEmail());
+
+            $email=$prospect->getContacts()->first()->getEmail();
+            $this->setProspectStatut($prospect);
+            $prospect->setUser($this->newUserProspect($email));
+            $test=1;
         }
 
-        if (($user = $prospect->getCustomerAccount()->getUserAccount()) instanceof User) {
+        if (($user = $prospect->getUser()) instanceof User) {
             if (empty($account = $this->userManager->findUserByUsernameOrEmail($user->getEmail()))) {
-                $this->userManager->createUser($prospect->getCustomerAccount()->getUserAccount(), false);
-            } else {
-                $prospect->getCustomerAccount()->setUserAccount($account);
+                $this->userManager->createUser($prospect->getUser(), false);
             }
-            $user->addRole(User::ROLE_PROSPECT);
         }
-
-        foreach ($prospect->getContacts() as $c) {
-            $c->setCompany($prospect);
-        }
-
-        foreach ($prospect->getFiscalYears() as $fiscalYear) {
-            $fiscalYear->setCompany($prospect);
-        }
-
+        $this->affectationCustomerId($prospect,$test);
         $this->em->persist($prospect);
         $this->em->flush();
+        $this->codeClientSave($prospect);
+
     }
+
+    public function generatePassword()
+    {
+        return rand(100000, 1000000);
+    }
+    public function newUserProspect(string $email)
+    {
+            $user=new User();
+            $user->setPlainPassword($this->generatePassword());
+            $user->setEmail($email);
+            $user->addRole(User::ROLE_PROSPECT);
+
+        return $user;
+    }
+    public function newUserClient(array $contacts)
+    {
+        $user=new User();
+        $user->setPlainPassword($this->generatePassword());
+        #$user->setUsername($contacts[0]);
+        $user->setEmail($contacts[2]);
+        $user->addRole(User::ROLE_CUSTOMER);
+        return $user;
+    }
+    public function newContact(array $contacts)
+    {
+        $contact = new Contact();
+        #$contact->setFirstname($contacts[0]);
+        $contact->setLastname($contacts[1]);
+        $contact->setEmail($contacts[2]);
+
+        return $contact;
+    }
+    public function affectationCustomerId(Customer $customer, $test)
+    {
+        foreach ($customer->getContacts() as $c) {
+            $c->setCustomer($customer);
+        }
+        if($test==0)
+        {
+            foreach ($customer->getFiscalYears() as $fiscalYear) {
+                $fiscalYear->setCustomer($customer);
+            }
+            $customer->getApeCode()->setCompanies([$customer]);
+            $customer->getLegalForm()->setCompanies([$customer]);
+            $customer->getTaxSystem()->setCompanies([$customer]);
+            $customer->getVatSystem()->setCompanies([$customer]);
+        }
+    }
+    public function codeClientNew(Customer $prospect){
+        return $prospect->getCustomerStatus()->getStatus()=="Client" ? "C".$prospect->getId() :"P".$prospect->getId();
+    }
+    public function codeClientSave(Customer $prospect){
+        $prospect->setCode($this->codeClientNew($prospect));
+        $this->em->flush();
+    }
+    public function setProspectStatut(Customer $prospect)
+    {
+        $CustomerStatut=new CustomerStatus();
+        $CustomerStatut->setStatus("Prospect");
+        $prospect->setCustomerStatus($CustomerStatut);
+    }
+
 }

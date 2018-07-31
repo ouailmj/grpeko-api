@@ -1,17 +1,204 @@
+AppBundle\Entity\Job:
+    job1:
+        jobType: '@jobType1'
+        jobQuotations: ['@jobQuotation1']
+        startDate: <dateTime()>
+        endDate: <dateTime()>
+        closeDate: <dateTime()>
+        lastFiscalEndDate: <dateTime()>
+        firstFiscalStartDate: <dateTime()>
+
+AppBundle\Entity\jobType:
+    jobType1:
+        jobs: ['@job1']
+
+AppBundle\Entity\jobQuotation:
+    jobQuotation1:
+        job: '@job1'
+        customer: '@customer1'
+
+AppBundle\Entity\Calendar:
+    calendar1:
+        customer: '@customer1'
+
+AppBundle\Entity\CustomerStatus:
+    customer_status_0:
+        customers: ['@customer1']
+        status: customer
+
+AppBundle\Entity\customerState:
+    customer_state_0:
+        customers: ['@customer1']
+
+AppBundle\Entity\FormerAccountant:
+    former_accountant_0:
+        customers: ['@customer1']
+
+AppBundle\Entity\Bank:
+    bank_0:
+        bankAccounts: ['@bank_accounts_0']
+
+AppBundle\Entity\journal:
+    journal_0:
+        bankAccounts: ['@bank_accounts_0']
+
+AppBundle\Entity\SentToCustomerStatus:
+    sent_Customer_status_0:
+        bankAccounts: ['@bank_accounts_0']
+
+AppBundle\Entity\CEBProvider:
+    ceb_provider_0:
+        cebMandates: ['@ceb_mandate_0']
+
+AppBundle\Entity\CEBMandate:
+    ceb_mandate_0:
+        bankAccount: '@bank_accounts_0'
+        cebProvider: '@ceb_provider_0'
+
+AppBundle\Entity\bankAccount:
+    bank_accounts_0:
+        customer: '@customer1'
+        bank: '@bank_0'
+        journal: '@journal_0'
+        SentToCustomerStatus: '@sent_Customer_status_0'
+        cebMandate: '@ceb_mandate_0'
+
+AppBundle\Entity\Customer:
+    customer1:
+        name: '<name()>'
+        firstName: '<firstName()>'
+        lastName: '<lastName()>'
+        birthDate: <dateTime()>
+        deathDate: <dateTime()>
+        phoneNumber: 0635293668
+        faxNumber: 0535293668
+        postalCode: 40000
+        #jobQuotations: ['@jobQuotation1']
+        calendar: '@calendar1'
+        user: '@user_client'
+        accessCodes: ['@accesscode1']
+        contactsStatus: ['@contactstatus1']
+        fiscalYears: ['@fiscal_year_0']
+        customerState: '@customer_state_0'
+        customerStatus: '@customer_status_0'
+        formerAccountant: '@former_accountant_0'
+        bankAccounts: ['@bank_accounts_0']
+
 AppBundle\Entity\JobPosition:
     collaborateur:
+        employees: ['@employeeadmin']
         name: 'Collaborateur'
     ec:
+        employees: ['@employeeuser']
         name: 'Expert Comptable'
     cc:
+        employees: ['@employeeadmin']
         name: 'Commissaire aux comptes'
 
-AppBundle\Entity\Address:
-    addresscompany_{0..100}:
-        city: '<city()>'
+AppBundle\Entity\Employee:
+    employeeadmin:
+        firstName: '<firstName()>'
+        lastName: '<lastName()>'
+        phoneNumber: '<e164PhoneNumber()>'
+        faxNumber: '<e164PhoneNumber()>'
         postalCode: '<postcode()>'
-        description: '<address()>'
-        email: '<email()>'
+        user: '@administrator'
+        initials: 'ADMIN'
+    employeeuser:
+        firstName: '<firstName()>'
+        lastName: '<lastName()>'
+        phoneNumber: '<e164PhoneNumber()>'
+        faxNumber: '<e164PhoneNumber()>'
+        postalCode: '<postcode()>'
+        user: '@user_client'
+        manager: '@employeeadmin'
+        initials: 'COL'
+        jobPositions: ['@collaborateur']
+    employee_{0..50}:
+        firstName: '<firstName()>'
+        lastName: '<lastName()>'
+        phoneNumber: '<e164PhoneNumber()>'
+        faxNumber: '<e164PhoneNumber()>'
+        postalCode: '<postcode()>'
+        user: '@useraccount_<current()>'
+        manager: '@employee_*'
+        jobPositions: ['@collaborateur']
+
+AppBundle\Entity\FiscalYear:
+    fiscal_year_0:
+        startDate: <dateTime()>
+        closeDate: <dateTime('+1 years')>
+        status: SARL
+        year: 2018
+        customer: '@customer1'
+        mainAssignment: '@assignment_0'
+
+AppBundle\Entity\Assignment:
+    assignment_0:
+        employee: '@employeeadmin'
+        mainFiscalYear: '@fiscal_year_0'
+
+AppBundle\Entity\ContactStatus:
+    contactstatus1:
+        contact: '@contact1'
+        customer: '@customer1'
+
+AppBundle\Entity\Contact:
+    contact1:
+        contactStatus: '@contactstatus1'
+        civility: 'MR'
+        firstname: '<firstname()>'
+        lastname: '<lastname()>'
+        birthPlace: 'Marrakech'
+#        $birthDept: customer1
+#        $birthCountry: customer1
+#        $nationality: customer1
+#        $mandaQuality: customer1
+#        $mandaSocial: customer1
+#        $tns: customer1
+#        $otherCompany: customer1
+#        $partNumber: customer1
+#        $partNumberPercent: customer1
+#        $legalForm: customer1
+#        $socialCapital: customer1
+#        $representative: customer1
+#        $representativeQuality: customer1
+#        $siren: customer1
+#        $intermediate: customer1
+#        $mandataire: customer1
+#        $email: customer1
+#        $autoEmailReceipt: customer1
+#        $adressenumber: customer1
+#        $adresse: customer1
+#        $city: customer1
+#        $country: customer1
+#        $adresse: $ekoNews
+#        $ekoNews: $ekoNews
+#        $ekoConseils: $ekoNews
+#        $anniversaire: $ekoNews
+#        $fetes: $ekoNews
+#        $maritalSituation: $ekoNews
+#        $propreSociety: $ekoNews
+#        $childrenNumber: $ekoNews
+#        $annualIncome: $ekoNews
+#        $owner: $ekoNews
+#        $husbandJob: $ekoNews
+#        $actifsPlacement: $ekoNews
+#        $passifs: $ekoNews
+#        $previousSituation: $ekoNews
+#        $accre: $ekoNews
+#        $dateStartJobPole: $ekoNews
+#        $dateEndJobPole: $ekoNews
+#        $ARCE_ARE: $ekoNews
+
+AppBundle\Entity\AccessCode:
+    accesscode1:
+        customer: '@customer1'
+        accessCodeCategory: '@accesscodecategory1'
+
+AppBundle\Entity\AccessCodeCategory:
+    accesscodecategory1:
+        accessCodes: ['@accesscode1']
 
 AppBundle\Entity\User:
     administrator:
@@ -39,291 +226,5 @@ AppBundle\Entity\User:
         enabled: <randomElement([true, false])>
         roles: ['ROLE_USER']
 
-AppBundle\Entity\Employee:
-    employeeadmin:
-        firstName: '<firstName()>'
-        lastName: '<lastName()>'
-        phoneNumber: '<e164PhoneNumber()>'
-        faxNumber: '<e164PhoneNumber()>'
-        postalCode: '<postcode()>'
-        userAccount: '@administrator'
-        initials: 'ADMIN'
-    employeeuser:
-        firstName: '<firstName()>'
-        lastName: '<lastName()>'
-        phoneNumber: '<e164PhoneNumber()>'
-        faxNumber: '<e164PhoneNumber()>'
-        postalCode: '<postcode()>'
-        userAccount: '@user'
-        manager: '@employeeadmin'
-        initials: 'COL'
-        jobPosition: '@collaborateur'
-    employee_{0..50}:
-        firstName: '<firstName()>'
-        lastName: '<lastName()>'
-        phoneNumber: '<e164PhoneNumber()>'
-        faxNumber: '<e164PhoneNumber()>'
-        postalCode: '<postcode()>'
-        userAccount: '@useraccount_<current()>'
-        manager: '@employee_*'
-        jobPosition: '@collaborateur'
 
-AppBundle\Entity\TypeMission:
-    mission_comptable:
-        type: 'Mission comptable'
-    mission_fiscale:
-        type: 'Mission fiscale'
-    teledeclaration:
-        type: 'Télédéclaration'
-    mission_juridique:
-        type: 'Mission juridique'
-
-AppBundle\Entity\Mission:
-    mission_comptable_1:
-        typeMission: '@mission_comptable'
-        price: 50
-        title: 'Saisie des pièces'
-        time: 1.00
-    mission_comptable_2:
-        typeMission: '@mission_comptable'
-        price: 510
-        title: 'Montage des tableaux de notes de frais'
-        time: 0.00
-    mission_comptable_3:
-        typeMission: '@mission_comptable'
-        price: 90
-        title: 'Traitement des immobilisations'
-        time: 0.00
-    mission_comptable_4:
-        typeMission: '@mission_comptable'
-        price: 70
-        title: 'Analyse des fichiers de données'
-        time: 0.50
-    mission_comptable_5:
-        typeMission: '@mission_comptable'
-        price: 66
-        title: 'Situation'
-        time: 1.00
-    mission_comptable_6:
-        typeMission: '@mission_comptable'
-        price: 40
-        title: 'Révision comptabilité client'
-        time: 2.00
-    mission_comptable_7:
-        typeMission: '@mission_comptable'
-        price: 99
-        title: 'Conseils'
-        time: 2.00
-    mission_comptable_7:
-        typeMission: '@mission_comptable'
-        price: 9
-        title: 'Optimisation fiscale et sociale'
-        time: 1.00
-    mission_comptable_7:
-        typeMission: '@mission_comptable'
-        price: 95
-        title: 'Dossier de révision normes OEC'
-        time: 1.00
-    mission_fiscale_1:
-        typeMission: '@mission_fiscale'
-        price: 15
-        title: 'ACOMPTE TVA'
-        time: 0.00
-    mission_fiscale_2:
-        typeMission: '@mission_fiscale'
-        price: 105
-        title: 'TVA REELLE'
-        time: 0.00
-    mission_fiscale_3:
-        typeMission: '@mission_fiscale'
-        price: 15
-        title: 'ACOMPTE IS'
-        time: 0.00
-    mission_fiscale_4:
-        typeMission: '@mission_fiscale'
-        price: 85
-        title: 'IMPOT SUR LES SOCIETES'
-        time: 0.00
-    mission_fiscale_5:
-        typeMission: '@mission_fiscale'
-        price: 63
-        title: 'TVTS'
-        time: 0.00
-    mission_fiscale_6:
-        typeMission: '@mission_fiscale'
-        price: 15
-        title: 'Retenue à la source dividendes'
-        time: 0.00
-    mission_fiscale_7:
-        typeMission: '@mission_fiscale'
-        price: 59
-        title: 'CFE'
-        time: 0.00
-    mission_fiscale_8:
-        typeMission: '@mission_fiscale'
-        price: 590
-        title: 'CVAE'
-        time: 0.00
-    mission_fiscale_9:
-        typeMission: '@mission_fiscale'
-        price: 54
-        title: 'DEB / IFU'
-        time: 0.00
-    mission_fiscale_10:
-        typeMission: '@mission_fiscale'
-        price: 78
-        title: 'DAS2T'
-        time: 0.00
-    mission_fiscale_11:
-        typeMission: '@mission_fiscale'
-        price: 78
-        title: 'Laisse fiscale'
-        time: 1.00
-    mission_fiscale_12:
-        typeMission: '@mission_fiscale'
-        price: 78
-        title: 'Conseils'
-        time: 2.00
-    mission_teledeclaration:
-        typeMission: '@teledeclaration'
-        price: 78
-        title: 'Télédéclaration'
-        time: 1.00
-    mission_juridique_1:
-        typeMission: '@mission_juridique'
-        price: 56
-        title: 'PV AGO EURL'
-        time: 4.00
-    mission_juridique_2:
-        typeMission: '@mission_juridique'
-        price: 56
-        title: 'PV AGO SARL'
-        time: 5.00
-    mission_juridique_3:
-        typeMission: '@mission_juridique'
-        price: 56
-        title: 'PV AGO SCI'
-        time: 5.00
-    mission_juridique_4:
-        typeMission: '@mission_juridique'
-        price: 56
-        title: 'PV AGO SAS'
-        time: 7.00
-    mission_juridique_5:
-        typeMission: '@mission_juridique'
-        price: 56
-        title: 'PV AGO SA'
-        time: 8.00
-    mission_juridique_6:
-        typeMission: '@mission_juridique'
-        price: 56
-        title: 'PV AGE EURL'
-        time: 4.00
-    mission_juridique_7:
-        typeMission: '@mission_juridique'
-        price: 56
-        title: 'PV AGE SARL'
-        time: 5.00
-    mission_juridique_8:
-        typeMission: '@mission_juridique'
-        price: 56
-        title: 'PV AGE SCI'
-        time: 5.00
-    mission_juridique_9:
-        typeMission: '@mission_juridique'
-        price: 56
-        title: 'PV AGE SAS'
-        time: 7.00
-    mission_juridique_10:
-        typeMission: '@mission_juridique'
-        price: 56
-        title: 'PV AGE SA'
-        time: 8.00
-    mission_juridique_11:
-        typeMission: '@mission_juridique'
-        price: 56
-        title: 'Cession de parts'
-        time: 1.00
-    mission_juridique_12:
-        typeMission: '@mission_juridique'
-        price: 56
-        title: 'Conseils'
-        time: 1.00
-
-AppBundle\Entity\TransmissionMode:
-    transmission_mode_0:
-        price: 50
-        mode: Papier
-        validDate: <dateTime('+1 years')>
-    transmission_mode_1:
-        price: 35
-        mode: Fichier Excel
-        validDate: <dateTime('+1 years')>
-    transmission_mode_2:
-        price: 35
-        mode: Scan
-        validDate: <dateTime('+1 years')>
-    transmission_mode_3:
-        price: 80
-        mode: Sur Place
-        validDate: <dateTime('+1 years')>
-
-AppBundle\Entity\MissionPurchase:
-    mission_purchase_0:
-        closeDate: <dateTime('+2 years')>
-        endDate: <dateTime('+3 years')>
-        startDate: <dateTime('+1 years')>
-        lastFiscalEndDate: <dateTime('+3 years')>
-        firstFiscalStartDate: <dateTime('+1 years')>
-        fiscalYears: ['@fiscal_year_0']
-    mission_purchase_1:
-        closeDate: <dateTime('+6 years')>
-        endDate: <dateTime('+5 years')>
-        startDate: <dateTime('+2 years')>
-        lastFiscalEndDate: <dateTime('+6 years')>
-        firstFiscalStartDate: <dateTime('+2 years')>
-
-AppBundle\Entity\CustomerStatus:
-    customer_status_0:
-        status: customer
-        company: '@company_0'
-
-AppBundle\Entity\Company:
-    company_0:
-        legalName: Multi Information Technology
-        phoneNumber: 0528365698
-        postalCode: 41000
-        legalForm: SARL
-        mainActivity: Service Informatique
-        customerStatus: '@customer_status_0'
-        relation: ''
-        apeCode: 000000
-        siretNumber: 000000
-        nbActions: 58
-        capitalSocial: 60000000
-        customerAccount: '@customer_account_0'
-
-AppBundle\Entity\Customer:
-    customer_account_0:
-        name: 'Jhon'
-        firstName: 'Jhon'
-        lastName: 'lannister'
-        birthDate: <dateTime('-32 years')>
-        deathDate: <dateTime('+30 years')>
-        phoneNumber: 0635293668
-        userAccount: '@user_client'
-
-AppBundle\Entity\FiscalYear:
-    fiscal_year_0:
-        startDate: <dateTime()>
-        closeDate: <dateTime('+1 years')>
-        status: SARL
-        year: 2018
-        company: '@company_0'
-        missionPurchase: '@mission_purchase_0'
-        assignment: '@assignment_0'
-
-AppBundle\Entity\Assignment:
-    assignment_0:
-        employee: '@employeeadmin'
-        mainFiscalYear: '@fiscal_year_0'
+############################

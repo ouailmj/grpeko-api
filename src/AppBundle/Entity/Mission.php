@@ -10,22 +10,28 @@
  *
  */
 
+
 namespace AppBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 
+
 /**
- * Mission.
+ * Class Mission
+ * @package AppBundle\Entity
+ *
  *
  * @ORM\Table(name="mission")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MissionRepository")
- * @ApiResource
+ *
+ * @ORM\HasLifecycleCallbacks()
  */
-class Mission extends Product
+class Mission
 {
+
+
+
     /**
      * @var int
      *
@@ -35,12 +41,26 @@ class Mission extends Product
      */
     protected $id;
 
+    /**
+     * @var Mode
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Mode", inversedBy="missions")
+     */
+    private $mode;
 
     /**
      * @var TypeMission
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\TypeMission" ,inversedBy="missions" ,cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\TypeMission", inversedBy="missions")
      */
     private $typeMission;
+
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="price", type="float")
+     *  @Groups({"type_mission"})
+     */
+    private $price;
 
     /**
      * @var string
@@ -55,6 +75,31 @@ class Mission extends Product
      * @Groups({"type_mission"})
      */
     private $time;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+
+    /**
+     * @return Mode
+     */
+    public function getMode()
+    {
+        return $this->mode;
+    }
+
+    /**
+     * @param Mode $mode
+     */
+    public function setMode(Mode $mode)
+    {
+        $this->mode = $mode;
+    }
 
     /**
      * @return TypeMission
@@ -75,7 +120,7 @@ class Mission extends Product
     /**
      * @return string
      */
-    public function getTitle(): string
+    public function getTitle()
     {
         return $this->title;
     }
@@ -91,7 +136,7 @@ class Mission extends Product
     /**
      * @return float
      */
-    public function getTime(): float
+    public function getTime()
     {
         return $this->time;
     }
@@ -103,4 +148,23 @@ class Mission extends Product
     {
         $this->time = $time;
     }
+
+    /**
+     * @return float
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param float $price
+     */
+    public function setPrice(float $price)
+    {
+        $this->price = $price;
+    }
+
+
+
 }

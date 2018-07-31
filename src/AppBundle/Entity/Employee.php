@@ -10,22 +10,26 @@
  *
  */
 
+
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
- * Employee.
+ * Class Employee
+ * @package AppBundle\Entity
+ *
  *
  * @ORM\Table(name="employee")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EmployeeRepository")
- * @ApiResource()
+ *
  * @ORM\HasLifecycleCallbacks()
  */
-class Employee extends Person
+class Employee
 {
+
+
     /**
      * @var int
      *
@@ -36,13 +40,24 @@ class Employee extends Person
     protected $id;
 
     /**
-     * @var JobPosition
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\JobPosition", inversedBy="employees",cascade={"persist"})
-     * @ORM\JoinColumn(name="job_position_id", referencedColumnName="id", nullable=true)
+     * @var Assignment [] | ArrayCollection
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Assignment", mappedBy="employee")
      */
-    private $jobPosition;
+    private $assignments;
 
+
+    /**
+     * @var Employee  [] | ArrayCollection
+     * @ORM\OneToMany(targetEntity="Employee", mappedBy="manager")
+     */
+    private $staff;
+
+    /**
+     * @var Employee
+     * @ORM\ManyToOne(targetEntity="Employee", inversedBy="staff")
+     * @ORM\JoinColumn(name="manager_id", referencedColumnName="id")
+     */
+    private $manager;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -50,81 +65,78 @@ class Employee extends Person
     protected $initials;
 
     /**
-     * @var Assignment [] | ArrayCollection
+     * @var JobPosition  [] | ArrayCollection
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\JobPosition", inversedBy="employees")
+     */
+    private $jobPositions;
+
+    /**
+     * @var User
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
+
+    /**
+     * @var string
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Assignment", mappedBy="employee")
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $assignments;
-
+    protected $name;
     /**
-     * @ORM\OneToMany(targetEntity="Employee", mappedBy="manager")
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $staffs;
-
+    protected $firstName;
     /**
-     * @ORM\ManyToOne(targetEntity="Employee", inversedBy="staffs")
-     * @ORM\JoinColumn(name="manager_id", referencedColumnName="id", onDelete="SET NULL")
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $manager;
-
-    /**
-     * @var boolean
-     * @ORM\Column(name="status", type="boolean", nullable=true)
-     */
-    protected $status = false;
-
-
+    protected $lastName;
     /**
      * @var \DateTime
      *
      * @ORM\Column(type="datetimetz", nullable=true)
      */
-    protected $entryDate;
-
+    protected $birthDate;
     /**
-     * @var CommissionRate [] | ArrayCollection
+     * @var \DateTime
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\CommissionRate", mappedBy="employee")
+     * @ORM\Column(type="datetimetz", nullable=true)
      */
-    private $commissionRates;
-
+    protected $deathDate = null;
     /**
-     * @var Group
+     * @var string
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Group", inversedBy="employees")
+     * @ORM\Column(type="string", length=25, nullable=true)
      */
-    private $group;
+    protected $phoneNumber;
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=25, nullable=true)
+     */
+    protected $faxNumber;
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=25, nullable=true)
+     */
+    protected $postalCode;
 
     /**
      * Employee constructor.
      */
     public function __construct()
     {
-        parent::__construct();
-
-        $this->staffs = new ArrayCollection();
-        $this->commissionRates = new ArrayCollection();
+        $this->assignments = new ArrayCollection();
+        $this->staff = new ArrayCollection();
+        $this->jobPositions = new ArrayCollection();
     }
 
     /**
-     * @return \DateTime
-     */
-    public function getEntryDate()
-    {
-        return $this->entryDate;
-    }
-
-    /**
-     * @param \DateTime $entryDate
-     */
-    public function setEntryDate($entryDate)
-    {
-        $this->entryDate = $entryDate;
-    }
-
-    /**
-     * Get id.
-     *
      * @return int
      */
     public function getId()
@@ -132,21 +144,6 @@ class Employee extends Person
         return $this->id;
     }
 
-    /**
-     * @return JobPosition
-     */
-    public function getJobPosition()
-    {
-        return $this->jobPosition;
-    }
-
-    /**
-     * @param JobPosition $jobPosition
-     */
-    public function setJobPosition(JobPosition $jobPosition)
-    {
-        $this->jobPosition = $jobPosition;
-    }
 
     /**
      * @return Assignment[]|ArrayCollection
@@ -157,25 +154,31 @@ class Employee extends Person
     }
 
     /**
-     * @param $assignment
-     *
+     * @param Assignment[]|ArrayCollection $assignments
+     */
+    public function setAssignments($assignments)
+    {
+        $this->assignments = $assignments;
+    }
+
+
+    /**
+     * @param Assignment $assignment
      * @return $this
      */
-    public function addAssignments($assignment)
+    public function addAssignment(Assignment $assignment)
     {
         $this->assignments->add($assignment);
-
         return $this;
     }
 
     /**
-     * @param $assignment
-     *
+     * @param Assignment $assignment
      * @return bool
      */
-    public function removeAssignments($assignment)
+    public function removeAssignment(Assignment $assignment)
     {
-        return  $this->assignments->removeElement($assignment);
+        return $this->assignments->removeElement($assignment);
     }
 
     /**
@@ -195,6 +198,77 @@ class Employee extends Person
     }
 
     /**
+     * @return Employee[]|ArrayCollection
+     */
+    public function getStaff()
+    {
+        return $this->staff;
+    }
+
+    /**
+     * @param Employee[]|ArrayCollection $staff
+     */
+    public function setStaff($staff)
+    {
+        $this->staff = $staff;
+    }
+
+    /**
+     * @param Employee $employee
+     * @return $this
+     */
+    public function addStaff(Employee $employee)
+    {
+        $this->staff->add($employee);
+        return $this;
+    }
+
+    /**
+     * @param Employee $employee
+     * @return bool
+     */
+    public function removeStaff(Employee $employee)
+    {
+        return  $this->staff->removeElement($employee);
+    }
+
+    /**
+     * @return JobPosition[]|ArrayCollection
+     */
+    public function getJobPositions()
+    {
+        return $this->jobPositions;
+    }
+
+    /**
+     * @param JobPosition[]|ArrayCollection $jobPositions
+     */
+    public function setJobPositions($jobPositions)
+    {
+        $this->jobPositions = $jobPositions;
+    }
+
+
+    /**
+     * @param JobPosition $jobPosition
+     * @return $this
+     */
+    public function addJobPosition(JobPosition $jobPosition)
+    {
+        $this->jobPositions->add($jobPosition);
+        return $this;
+    }
+
+    /**
+     * @param JobPosition $jobPosition
+     * @return bool
+     */
+    public function removeJobPosition(JobPosition $jobPosition)
+    {
+        return  $this->jobPositions->removeElement($jobPosition);
+    }
+
+    /**
      * @return mixed
      */
     public function getInitials()
@@ -211,100 +285,147 @@ class Employee extends Person
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getStaffs()
+    public function getName()
     {
-        return $this->staffs;
+        return $this->name;
     }
 
     /**
-     * @param mixed $staffs
+     * @param string $name
      */
-    public function setStaffs($staffs)
+    public function setName(string $name)
     {
-        $this->staffs = $staffs;
-    }
-
-
-    public function addStaff(Employee $employee)
-    {
-        $this->staffs->add($employee);
-        return $this;
-    }
-
-    public function removeStaff(Employee $employee)
-    {
-        return $this->staffs->removeElement($employee);
-
+        $this->name = $name;
     }
 
     /**
-     * @return bool
+     * @return string
      */
-    public function isStatus(): bool
+    public function getFirstName()
     {
-        return $this->status;
+        return $this->firstName;
     }
 
     /**
-     * @param bool $status
+     * @param string $firstName
      */
-    public function setStatus(bool $status)
+    public function setFirstName(string $firstName)
     {
-        $this->status = $status;
+        $this->firstName = $firstName;
     }
 
     /**
-     * @return CommissionRate[]|ArrayCollection
+     * @return string
      */
-    public function getCommissionRates()
+    public function getLastName()
     {
-        return $this->commissionRates;
+        return $this->lastName;
     }
 
     /**
-     * @param CommissionRate[]|ArrayCollection $commissionRates
+     * @param string $lastName
      */
-    public function setCommissionRates($commissionRates)
+    public function setLastName(string $lastName)
     {
-        $this->commissionRates = $commissionRates;
-    }
-
-
-    /**
-     * @param CommissionRate $commissionRate
-     * @return $this
-     */
-    public function addCommissionRate(CommissionRate $commissionRate)
-    {
-        $this->commissionRates->add($commissionRate);
-        return $this;
+        $this->lastName = $lastName;
     }
 
     /**
-     * @param CommissionRate $commissionRate
-     * @return bool
+     * @return \DateTime
      */
-    public function removeEmployee(CommissionRate $commissionRate)
+    public function getBirthDate()
     {
-        return $this->commissionRates->removeElement($commissionRate);
+        return $this->birthDate;
     }
 
     /**
-     * @return Group
+     * @param \DateTime $birthDate
      */
-    public function getGroup()
+    public function setBirthDate(\DateTime $birthDate)
     {
-        return $this->group;
+        $this->birthDate = $birthDate;
     }
 
     /**
-     * @param Group $group
+     * @return \DateTime
      */
-    public function setGroupe(Group $group)
+    public function getDeathDate()
     {
-        $this->group = $group;
+        return $this->deathDate;
+    }
+
+    /**
+     * @param \DateTime $deathDate
+     */
+    public function setDeathDate(\DateTime $deathDate)
+    {
+        $this->deathDate = $deathDate;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhoneNumber()
+    {
+        return $this->phoneNumber;
+    }
+
+    /**
+     * @param string $phoneNumber
+     */
+    public function setPhoneNumber(string $phoneNumber)
+    {
+        $this->phoneNumber = $phoneNumber;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFaxNumber()
+    {
+        return $this->faxNumber;
+    }
+
+    /**
+     * @param string $faxNumber
+     */
+    public function setFaxNumber(string $faxNumber)
+    {
+        $this->faxNumber = $faxNumber;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPostalCode()
+    {
+        return $this->postalCode;
+    }
+
+    /**
+     * @param string $postalCode
+     */
+    public function setPostalCode(string $postalCode)
+    {
+        $this->postalCode = $postalCode;
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function setUser(User $user)
+    {
+        $this->user = $user;
     }
 
 
