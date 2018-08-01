@@ -14,20 +14,25 @@
 namespace AppBundle\Repository;
 
 
-use AppBundle\Entity\Customer;
-use AppBundle\Entity\FiscalYear;
-
 class CustomerRepository extends BaseRepository
 {
 
+    #public function test()
+    #{
+       #return $this->createQueryBuilder('b')->
+            #select('Year(c.startDate)')
+                #->from(FiscalYear::class, 'c')
+           #->getQuery()
+           #->execute();
 
-    public function test()
+   # }
+
+    public function findByID($id)
     {
-       return $this->createQueryBuilder('b')->
-            select('Year(c.startDate)')
-                ->from(FiscalYear::class, 'c')
-           ->getQuery()
-           ->execute();
-
+        return $this->createQueryBuilder('c')
+            ->where('c.user = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->execute();
     }
 }

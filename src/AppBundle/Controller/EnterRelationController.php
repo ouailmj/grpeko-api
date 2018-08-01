@@ -101,19 +101,11 @@ class EnterRelationController extends BaseController
             $cpt = 0;
             $fiche = $rendezvous->getFichePatrimoniale();
             $cin = $rendezvous->getCin();
-            if (!in_array($fiche->guessExtension(), ['xlsx', 'xlsx'], true)) {
-                $error = new FormError("merci d'exporter un fichier excel !");
-                $formrendezvous->get('FichePatrimoniale')->addError($error);
-                $cpt = 1;
-            }
-            if (!in_array($cin->guessExtension(), ['jpg', 'jpeg', 'png', 'pdf'], true)) {
-                $error = new FormError("merci d'exporter une image ou un fichier pdf !");
-                $formrendezvous->get('Cin')->addError($error);
-                $cpt = 1;
-            }
+            $this->checkFicheExtension($fiche,$formrendezvous);
+            $this->checkCinExtension($cin,$formrendezvous);
             if (0 === $cpt) {
-                $this->rendezVousManager->uploadFiles($company, $rendezvous, $this->getParameter('files_directory'));
-                $this->addSuccessFlash();
+                $test=$this->rendezVousManager->uploadFiles($company, $rendezvous, $this->getParameter('files_directory'));
+                $test==0? $this->addSuccessFlash() : $this->addErrorFlash();
             }
 
             $this->redirectToRoute('model_upload', ['company'=>$company->getId()]);
@@ -123,6 +115,22 @@ class EnterRelationController extends BaseController
 
       }
 
+      public function checkFicheExtension($fiche,$formrendezvous)
+      {
+          if (!in_array($fiche->guessExtension(), ['xlsx', 'xlsx'], true)) {
+              $error = new FormError("merci d'exporter un fichier excel !");
+              $formrendezvous->get('FichePatrimoniale')->addError($error);
+              $cpt = 1;
+          }
+      }
+      public function checkCinExtension($cin,$formrendezvous)
+      {
+          if (!in_array($cin->guessExtension(), ['jpg', 'jpeg', 'png', 'pdf'], true)) {
+              $error = new FormError("merci d'exporter une image ou un fichier pdf !");
+              $formrendezvous->get('Cin')->addError($error);
+              $cpt = 1;
+          }
+      }
     /**
      * @Route("/contactemailcheck", name="emailcontactcheck")
      * @Method("GET")
