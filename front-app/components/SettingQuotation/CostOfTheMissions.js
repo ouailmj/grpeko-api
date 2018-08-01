@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MissionLineQuotation from "./MissionLineQuotation";
-import QuotationService from "../../services/quotation";
 
 class CostOfTheMissions extends React.Component{
     constructor(props){

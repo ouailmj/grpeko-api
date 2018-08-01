@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ContentEditable from "react-sane-contenteditable";
+import QuotationService from "../../services/quotation";
 
 class MissionLineQuotation extends React.Component{
 
     constructor(props){
         super(props)
         this.state={
-            missionType: this.props.mission.typeMission,
+            missionType: this.props.mission.typeMission === null ? null:this.props.mission.typeMission["@id"],
             missionTitle: this.props.mission.title,
-            mode: this.props.mission.mode,
+            mode: this.props.mission.mode === null ? null:this.props.mission.mode["@id"],
             isCalculateFromTheTimeRetained: this.props.mission.isCalculateFromTheTimeRetained,
             defaultNumberPerYear: this.props.mission.defaultNumberPerYear,
             unitTime: this.props.mission.unitTime,
@@ -22,6 +23,7 @@ class MissionLineQuotation extends React.Component{
         this.handleChangeCalculateFromTheTimeRetained = this.handleChangeCalculateFromTheTimeRetained.bind(this)
         this.handleChangeMissionType = this.handleChangeMissionType.bind(this)
         this.handleChangeMode = this.handleChangeMode.bind(this)
+        this.updateMission = this.updateMission.bind(this)
 
     }
 
@@ -30,14 +32,17 @@ class MissionLineQuotation extends React.Component{
     }
 
     handleChangeDefaultNumberPerYear(evt , value){
+        if(isNaN(parseInt(value, 10) ))value = 0;
         this.setState({ defaultNumberPerYear: parseInt(value, 10)  });
     }
 
     handleChangeUnitTime(evt , value){
+        if(isNaN(parseInt(value, 10) ))value = 0;
         this.setState({ unitTime: parseInt(value, 10) });
     }
 
     handleChangeFixedAmount(evt , value){
+        if(isNaN(parseInt(value, 10) ))value = 0;
         this.setState({ fixedAmount: parseInt(value, 10) });
     }
 
@@ -46,7 +51,7 @@ class MissionLineQuotation extends React.Component{
     }
 
     handleChangeMode(evt){
-        this.setState({ mode: evt.target.value });
+        this.setState({ mode: evt.target.value=== ""?null:evt.target.value });
     }
 
     handleChangeCalculateFromTheTimeRetained(event){
@@ -56,6 +61,27 @@ class MissionLineQuotation extends React.Component{
                 isCalculateFromTheTimeRetained: value
             });
     }
+
+    updateMission(){
+        const quotationService = new QuotationService();
+        const data =
+            {
+                "mode": this.state.mode,
+                "typeMission": this.state.missionType,
+                "title": this.state.missionTitle,
+                "isCalculateFromTheTimeRetained": this.state.isCalculateFromTheTimeRetained,
+                "defaultNumberPerYear": this.state.defaultNumberPerYear ,
+                "unitTime": this.state.unitTime,
+                "fixedAmount": this.state.fixedAmount
+            }
+        console.log('data', data)
+        quotationService.updateMission(data , this.props.mission.id,(res)=>{
+    console.log(res)
+            console.log(this.state.missionType, this.state.missionTitle, this.state.mode, this.state.isCalculateFromTheTimeRetained, this.state.defaultNumberPerYear, this.state.unitTime, this.state.fixedAmount)
+            alert('Votre opération a été exécutée avec succès');
+        })
+    }
+
 
     render(){
         const listItemTypeMission = this.props.allTypeMission.map((item , i) =>
@@ -69,7 +95,7 @@ class MissionLineQuotation extends React.Component{
         return (
             <tr>
                 <td><a href="#"><i className="glyphicon glyphicon-trash text-danger"></i></a></td>
-                <td><a href="#"><i className="glyphicon glyphicon-edit text-info"></i></a></td>
+                <td><a  onClick={this.updateMission}><i className="glyphicon glyphicon-edit text-info"></i></a></td>
                 <td>
                     <select value={this.state.missionType} onChange={this.handleChangeMissionType}>
                         {listItemTypeMission}
@@ -87,14 +113,12 @@ class MissionLineQuotation extends React.Component{
                     />
                 </td>
                 <td>
-                    <select  onChange={this.handleChangeMode}>
-                        <option></option>
+                    <select value={this.state.mode} onChange={this.handleChangeMode}>
+                        <option  selected={null} value={null}> </option>
                         {listItemModes}
                     </select>
-
                 </td>
                 <td className="text-center">
-
                     <input
                         name="isCalculateFromTheTimeRetained"
                         type="checkbox"
@@ -103,9 +127,10 @@ class MissionLineQuotation extends React.Component{
                 </td>
                 <td className="text-center">
                     <ContentEditable
+                        style={{padding: '2rem 6rem 2rem 6rem'}}
                         tagName="span"
                         className=""
-                        content={this.state.defaultNumberPerYear==null?"vide":""+this.state.defaultNumberPerYear}
+                        content={this.state.defaultNumberPerYear==null? "    ":""+this.state.defaultNumberPerYear}
                         editable={!this.state.isCalculateFromTheTimeRetained}
                         maxLength={140}
                         multiLine={false}
@@ -114,20 +139,22 @@ class MissionLineQuotation extends React.Component{
                 </td>
                 <td className="text-center">
                     <ContentEditable
+                        style={{padding: '2rem 6rem 2rem 6rem'}}
                         tagName="span"
                         className=""
-                        content={this.state.unitTime==null?"vide":""+this.state.unitTime}
+                        content={this.state.unitTime==null?" ":""+this.state.unitTime}
                         editable={true}
                         maxLength={140}
                         multiLine={false}
                         onChange={this.handleChangeUnitTime}
                     />
                 </td>
-                <td className="text-center">
+                <td className="text-center" >
                     <ContentEditable
+                        style={{padding: '2rem 6rem 2rem 6rem'}}
                         tagName="span"
                         className=""
-                        content={this.state.fixedAmount==null?"vide":""+this.state.fixedAmount}
+                        content={this.state.fixedAmount==null?" ":""+this.state.fixedAmount}
                         editable={true}
                         maxLength={140}
                         multiLine={false}

@@ -83,7 +83,6 @@ AppBundle\Entity\Mission:
         typeMission: '@mission_comptable'
         price: 50
         title: 'Saisie des pièces'
-        time: 1.00
         mode: '@transmission_mode_2'
         isCalculateFromTheTimeRetained: true
         defaultNumberPerYear: null
@@ -93,7 +92,6 @@ AppBundle\Entity\Mission:
         typeMission: '@mission_comptable'
         price: 510
         title: 'Montage des tableaux de notes de frais'
-        time: 0.00
         isCalculateFromTheTimeRetained: false
         defaultNumberPerYear: 0
         unitTime: 0.50
@@ -102,7 +100,6 @@ AppBundle\Entity\Mission:
         typeMission: '@mission_comptable'
         price: 90
         title: 'Traitement des immobilisations'
-        time: 0.00
         isCalculateFromTheTimeRetained: false
         defaultNumberPerYear: 0
         unitTime: 0.25
@@ -111,7 +108,6 @@ AppBundle\Entity\Mission:
         typeMission: '@mission_comptable'
         price: 70
         title: 'Analyse des fichiers de données'
-        time: 0.50
         mode: '@transmission_mode_1'
         isCalculateFromTheTimeRetained: false
         defaultNumberPerYear: 12
@@ -121,7 +117,6 @@ AppBundle\Entity\Mission:
         typeMission: '@mission_comptable'
         price: 66
         title: 'Situation'
-        time: 1.00
         isCalculateFromTheTimeRetained: false
         defaultNumberPerYear: 0
         unitTime: 1.00
@@ -130,7 +125,6 @@ AppBundle\Entity\Mission:
         typeMission: '@mission_comptable'
         price: 40
         title: 'Révision comptabilité client'
-        time: 2.00
         isCalculateFromTheTimeRetained: false
         defaultNumberPerYear: 1
         unitTime: 2.00
@@ -139,7 +133,6 @@ AppBundle\Entity\Mission:
         typeMission: '@mission_comptable'
         price: 99
         title: 'Conseils'
-        time: 2.00
         isCalculateFromTheTimeRetained: false
         defaultNumberPerYear: 1
         unitTime: 2.00
@@ -148,7 +141,6 @@ AppBundle\Entity\Mission:
         typeMission: '@mission_comptable'
         price: 9
         title: 'Dossier de révision normes OEC'
-        time: 1.00
         isCalculateFromTheTimeRetained: false
         defaultNumberPerYear: 1
         unitTime: 1.00
@@ -157,16 +149,13 @@ AppBundle\Entity\Mission:
         typeMission: '@mission_comptable'
         price: 9
         title: 'Optimisation fiscale et sociale'
-        time: 1.00
         isCalculateFromTheTimeRetained: false
         defaultNumberPerYear: 1
-        unitTime: 1.00
         fixedAmount: null
     mission_fiscale_1:
         typeMission: '@mission_fiscale'
         price: 15
         title: 'ACOMPTE TVA'
-        time: 0.00
         isCalculateFromTheTimeRetained: false
         defaultNumberPerYear: 0
         unitTime: 0.25
@@ -175,7 +164,6 @@ AppBundle\Entity\Mission:
         typeMission: '@mission_fiscale'
         price: 105
         title: 'TVA REELLE'
-        time: 0.00
         isCalculateFromTheTimeRetained: false
         defaultNumberPerYear: 12
         unitTime: 0.75
@@ -184,7 +172,6 @@ AppBundle\Entity\Mission:
         typeMission: '@mission_fiscale'
         price: 15
         title: 'ACOMPTE IS'
-        time: 0.00
         isCalculateFromTheTimeRetained: false
         defaultNumberPerYear: 4
         unitTime: 0.25
@@ -193,7 +180,6 @@ AppBundle\Entity\Mission:
         typeMission: '@mission_fiscale'
         price: 85
         title: 'IMPOT SUR LES SOCIETES'
-        time: 0.00
         isCalculateFromTheTimeRetained: false
         defaultNumberPerYear: 1
         unitTime: 0.50
@@ -202,7 +188,6 @@ AppBundle\Entity\Mission:
         typeMission: '@mission_fiscale'
         price: 63
         title: 'TVTS'
-        time: 0.00
         isCalculateFromTheTimeRetained: false
         defaultNumberPerYear: 1
         unitTime: 0.25
@@ -211,7 +196,6 @@ AppBundle\Entity\Mission:
         typeMission: '@mission_fiscale'
         price: 15
         title: 'Retenue à la source dividendes'
-        time: 0.00
         isCalculateFromTheTimeRetained: false
         defaultNumberPerYear: 1
         unitTime: 0.25
@@ -220,7 +204,6 @@ AppBundle\Entity\Mission:
         typeMission: '@mission_fiscale'
         price: 59
         title: 'CFE'
-        time: 0.00
         isCalculateFromTheTimeRetained: false
         defaultNumberPerYear: 1
         unitTime: 0.25
@@ -229,7 +212,6 @@ AppBundle\Entity\Mission:
         typeMission: '@mission_fiscale'
         price: 590
         title: 'CVAE'
-        time: 0.00
         isCalculateFromTheTimeRetained: false
         defaultNumberPerYear: 1
         unitTime: 0.25
@@ -238,7 +220,6 @@ AppBundle\Entity\Mission:
         typeMission: '@mission_fiscale'
         price: 54
         title: 'DEB / IFU'
-        time: 0.00
         isCalculateFromTheTimeRetained: false
         defaultNumberPerYear: 1
         unitTime: 0.25
@@ -247,7 +228,6 @@ AppBundle\Entity\Mission:
         typeMission: '@mission_fiscale'
         price: 78
         title: 'DAS2T'
-        time: 0.00
         isCalculateFromTheTimeRetained: false
         defaultNumberPerYear: 1
         unitTime: 0.25
@@ -256,7 +236,6 @@ AppBundle\Entity\Mission:
         typeMission: '@mission_fiscale'
         price: 78
         title: 'Laisse fiscale'
-        time: 1.00
         isCalculateFromTheTimeRetained: false
         defaultNumberPerYear: 1
         unitTime: 1.00
@@ -265,7 +244,6 @@ AppBundle\Entity\Mission:
         typeMission: '@mission_fiscale'
         price: 78
         title: 'Conseils'
-        time: 2.00
         isCalculateFromTheTimeRetained: false
         defaultNumberPerYear: 1
         unitTime: 2.00
@@ -274,7 +252,6 @@ AppBundle\Entity\Mission:
         typeMission: '@teledeclaration'
         price: 78
         title: 'Télédéclaration'
-        time: 1.00
         isCalculateFromTheTimeRetained: false
         defaultNumberPerYear: 1
         unitTime: null
@@ -283,7 +260,6 @@ AppBundle\Entity\Mission:
         typeMission: '@mission_juridique'
         price: 56
         title: 'PV AGO EURL'
-        time: 4.00
         isCalculateFromTheTimeRetained: false
         defaultNumberPerYear: 0
         unitTime: 0.25
@@ -292,7 +268,6 @@ AppBundle\Entity\Mission:
         typeMission: '@mission_juridique'
         price: 56
         title: 'PV AGO SARL'
-        time: 5.00
         isCalculateFromTheTimeRetained: false
         defaultNumberPerYear: 0
         unitTime: 4.00
@@ -301,7 +276,6 @@ AppBundle\Entity\Mission:
         typeMission: '@mission_juridique'
         price: 56
         title: 'PV AGO SCI'
-        time: 5.00
         isCalculateFromTheTimeRetained: false
         defaultNumberPerYear: 0
         unitTime: 5.00
@@ -310,7 +284,6 @@ AppBundle\Entity\Mission:
         typeMission: '@mission_juridique'
         price: 56
         title: 'PV AGO SAS'
-        time: 7.00
         isCalculateFromTheTimeRetained: false
         defaultNumberPerYear: 0
         unitTime: 7.00
@@ -319,7 +292,6 @@ AppBundle\Entity\Mission:
         typeMission: '@mission_juridique'
         price: 56
         title: 'PV AGO SA'
-        time: 8.00
         isCalculateFromTheTimeRetained: false
         defaultNumberPerYear: 0
         unitTime: 8.00
@@ -328,7 +300,6 @@ AppBundle\Entity\Mission:
         typeMission: '@mission_juridique'
         price: 56
         title: 'PV AGE EURL'
-        time: 4.00
         isCalculateFromTheTimeRetained: false
         defaultNumberPerYear: 0
         unitTime: 4.00
@@ -337,12 +308,10 @@ AppBundle\Entity\Mission:
         typeMission: '@mission_juridique'
         price: 56
         title: 'PV AGE SARL'
-        time: 5.00
     mission_juridique_8:
         typeMission: '@mission_juridique'
         price: 56
         title: 'PV AGE SCI'
-        time: 5.00
         isCalculateFromTheTimeRetained: false
         defaultNumberPerYear: 0
         unitTime: 5.00
@@ -351,7 +320,6 @@ AppBundle\Entity\Mission:
         typeMission: '@mission_juridique'
         price: 56
         title: 'PV AGE SAS'
-        time: 7.00
         isCalculateFromTheTimeRetained: false
         defaultNumberPerYear: 0
         unitTime: 7.00
@@ -360,7 +328,6 @@ AppBundle\Entity\Mission:
         typeMission: '@mission_juridique'
         price: 56
         title: 'PV AGE SA'
-        time: 8.00
         isCalculateFromTheTimeRetained: false
         defaultNumberPerYear: 0
         unitTime: 8.00
@@ -369,7 +336,6 @@ AppBundle\Entity\Mission:
         typeMission: '@mission_juridique'
         price: 56
         title: 'Cession de parts'
-        time: 1.00
         isCalculateFromTheTimeRetained: false
         defaultNumberPerYear: 0
         unitTime: 1.33
@@ -378,7 +344,6 @@ AppBundle\Entity\Mission:
         typeMission: '@mission_juridique'
         price: 56
         title: 'Conseils'
-        time: 1.00
         isCalculateFromTheTimeRetained: false
         defaultNumberPerYear: 1
         unitTime: 1.00
@@ -419,6 +384,11 @@ AppBundle\Entity\Job:
 AppBundle\Entity\CustomerStatus:
     customer_status_0:
         status: customer
+
+AppBundle\Entity\QuotationSetting:
+    quotation_setting_0:
+        coefficientNumberWritingByInvoice: 2
+        numberWritingPerMinutes: 2
 
 AppBundle\Entity\Customer:
     customer_account_0:

@@ -37,6 +37,46 @@
                                 </table>
                             </div>
                         </div>
+                        <div class="col-xs-6 col-md-6 mb-20 ">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th colspan="4" style="text-align: center; background-color: #eef3fd;"> Autre paramétrages</th>
+                                    </tr>
+                                    {#  <tr>
+                                      <th><a data-toggle="modal" data-target="#myModal" href="#"><i class="glyphicon glyphicon-plus-sign text-success"></i></a></th>
+                                        <th>Mode de transmission</th>
+                                        <th >à partir du</th>
+                                        <th>taux horaire</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for m in mode %}
+
+                                        <tr>
+                                        <td>
+
+                                            {{ form_start(delete_forms[loop.index-1], {'attr': {'id':'formid'~loop.index} } ) }}
+                                            {{ form_widget(delete_forms[loop.index-1]) }}
+                                            {% set  confirm =  'Êtes-vous sûr ? Cette action est irréversible.' %}
+                                            <a title="Delete" onclick="send=confirm(' {{ confirm }}');if(send)document.getElementById('formid{{  loop.index}}').submit();"     class="text-primary legitRipple"  ><i class="glyphicon glyphicon-trash text-danger"></i></a>
+
+                                            {{ form_end(delete_forms[loop.index-1]) }}
+
+                                        </td>
+                                        <td>{{ m.mode }}</td>
+                                        <td>{{ m.validDate|date("m/d/Y") }}</td>
+                                        <td>{{ m.price }} €</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>#}
+
+                                </table>
+
+                                <div id="eko-other-setting-quotation-container"></div>
+                            </div>
+                        </div>
                     </div>
                     <div id="eko-setting-quotation-container"></div>
 
@@ -137,3 +177,4 @@
 
                         </div>
                     </div>
+                    <!-- End Modal -->

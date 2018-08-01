@@ -103,12 +103,6 @@ class Mission
      */
     private $title;
 
-    /**
-     * @var double
-     * @ORM\Column(type = "float")
-     * @Groups({"type_mission","mission"})
-     */
-    private $time;
 
     /**
      * @return int
@@ -167,21 +161,7 @@ class Mission
         $this->title = $title;
     }
 
-    /**
-     * @return float
-     */
-    public function getTime()
-    {
-        return $this->time;
-    }
 
-    /**
-     * @param float $time
-     */
-    public function setTime(float $time)
-    {
-        $this->time = $time;
-    }
 
     /**
      * @return float
