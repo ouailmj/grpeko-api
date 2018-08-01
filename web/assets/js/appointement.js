@@ -22,7 +22,6 @@ $( document ).ready(function() {
                 {
                       for(let i = 0; i < hidenon.length; i++) { document.getElementsByClassName("hidenon")[i].style.display="none";}
                       for(let i = 0; i < hideoui.length; i++) { document.getElementsByClassName("hideoui")[i].style.display="block";}
-
                 }
                 else{
                     for(let i = 0; i < hideoui.length; i++) { document.getElementsByClassName("hideoui")[i].style.display="none";}
@@ -36,7 +35,8 @@ $( document ).ready(function() {
                 {
                     for(var i = 0; i < tutoie.length; i++) { document.getElementsByClassName("tutoie")[i].innerHTML="ton";}
                 }
-                else {
+                else
+                {
                     for(var i = 0; i < tutoie.length; i++) { document.getElementsByClassName("tutoie")[i].innerHTML="votre";}
                 }
             });

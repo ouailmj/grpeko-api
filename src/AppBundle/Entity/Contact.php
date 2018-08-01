@@ -206,7 +206,7 @@ class Contact
 
     /**
      * @var string
-     * @ORM\Column(name="adresse", type="string",length=20 ,nullable=true)
+     * @ORM\Column(name="adresse", type="text" ,nullable=true)
      */
     private $adresse;
 
