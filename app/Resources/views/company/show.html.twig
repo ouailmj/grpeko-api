@@ -61,9 +61,7 @@
                             </td>
                             <td>{{company.code}}</td>
                             <td>
-                                {% if company.legalform.name is defined %}
-                                 {{company.legalform.name}}
-                                {% endif %}
+                                {{ company.legalName|default('') }}
                             </td>
                             <td>{{company.customerStatus.status}}</td>
                             <td>Null</td>

@@ -57,6 +57,8 @@ class EnterRelationController extends BaseController
         if ($request->isMethod('POST')) {
             $data = $this->getAppointementinfos($request);
             $prospect = new Customer();
+            $prospect->setLegalName($data['company_name']);
+
             $prospect->addContact($this->newContact($data));
             $this->clientManager->createClient($prospect);
             $this->get('event_dispatcher')->dispatch(AppEvents::RENDEZVOUS_CREATED, new RendezVousCreatedEvent($prospect, $data));

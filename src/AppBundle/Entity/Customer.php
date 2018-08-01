@@ -627,4 +627,11 @@ class Customer extends Company
     {
         $this->user = $user;
     }
+
+    public function getCode()
+    {
+        $prefix = ('customer' == $this->customerStatus->getStatus()) ? 'C' : 'P';
+
+        return $prefix . $this->code;
+    }
 }
