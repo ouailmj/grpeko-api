@@ -98,7 +98,7 @@
                             Quelle est <span class="tutoie">ton</span> date de naissance ?
                         </div>
                         <div class="col-lg-3">
-                            <input type="text" class="french_picker form-control picker__input picker__input--active">
+                            <input type="text" class="datepicker form-control">
                         </div>
                     </div>
 
@@ -317,6 +317,12 @@
     {% block javascripts %}
         <script type="text/javascript" src="{{ asset('assets/js/appointement.js') }}"></script>
         <script type="text/javascript" src="{{ asset('assets/js/validation.js') }}"></script>
+        <script>
+            $(function(){
+                $('.datepicker').datepicker();
+
+            });
+        </script>
     {% endblock javascripts %}
 
 {% endblock %}
