@@ -37,8 +37,13 @@ class RendezVousManager
         $this->moveCin($rendezvous,$path);
         $company->setRendezvous($rendezvous);
         $rendezvous->setCustomer($company);
-        $this->em->persist($rendezvous);
-        $this->em->flush();
+        $customerId=$this->em->getRepository(Rendezvous::class)->findById($company->getId());
+        if($customerId==0) {
+            $this->em->persist($rendezvous);
+            $this->em->flush();
+            return 0;
+        }
+        return 1;
     }
 
     public function generateUniqueName()
@@ -62,5 +67,7 @@ class RendezVousManager
         $file->move($path, $fileName);
         $rendezvous->setCin($fileName);
     }
+
+
 
 }
