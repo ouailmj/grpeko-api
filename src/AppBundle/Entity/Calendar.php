@@ -10,14 +10,12 @@
  *
  */
 
-
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class Calendar
- * @package AppBundle\Entity
+ * Class Calendar.
  *
  *
  *
@@ -29,8 +27,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Calendar
 {
-
-
     /**
      * @var int
      *
@@ -69,7 +65,4 @@ class Calendar
     {
         $this->customer = $customer;
     }
-
-
-
 }

@@ -16,8 +16,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class Invoice
- * @package AppBundle\Entity
+ * Class Invoice.
  *
  *
  * @ORM\Table(name="invoice")
@@ -27,8 +26,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Invoice
 {
-
-
     /**
      * @var int
      *
@@ -84,7 +81,6 @@ class Invoice
         return $this->id;
     }
 
-
     /**
      * @return Own[]|ArrayCollection
      */
@@ -103,21 +99,24 @@ class Invoice
 
     /**
      * @param Own $own
+     *
      * @return $this
      */
     public function addOwn(Own $own)
     {
         $this->owns->add($own);
+
         return $this;
     }
 
     /**
      * @param Own $own
+     *
      * @return bool
      */
     public function removeOwn(Own $own)
     {
-       return $this->owns->removeElement($own);
+        return $this->owns->removeElement($own);
     }
 
     /**
@@ -136,24 +135,26 @@ class Invoice
         $this->invoiceLines = $invoiceLines;
     }
 
-
     /**
      * @param InvoiceLine $invoiceLine
+     *
      * @return $this
      */
     public function addInvoiceLine(InvoiceLine $invoiceLine)
     {
         $this->invoiceLines->add($invoiceLine);
+
         return $this;
     }
 
     /**
      * @param InvoiceLine $invoiceLine
+     *
      * @return bool
      */
     public function removeInvoiceLine(InvoiceLine $invoiceLine)
     {
-       return $this->invoiceLines->removeElement($invoiceLine);
+        return $this->invoiceLines->removeElement($invoiceLine);
     }
 
     /**
@@ -172,19 +173,21 @@ class Invoice
         $this->payments = $payments;
     }
 
-
     /**
      * @param Payment $payment
+     *
      * @return $this
      */
     public function addPayment(Payment $payment)
     {
         $this->payments->add($payment);
+
         return $this;
     }
 
     /**
      * @param Payment $payment
+     *
      * @return bool
      */
     public function removePayment(Payment $payment)
@@ -207,7 +210,4 @@ class Invoice
     {
         $this->address = $address;
     }
-
-
-
 }

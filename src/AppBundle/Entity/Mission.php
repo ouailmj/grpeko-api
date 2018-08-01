@@ -10,16 +10,13 @@
  *
  */
 
-
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
-
 /**
- * Class Mission
- * @package AppBundle\Entity
+ * Class Mission.
  *
  *
  * @ORM\Table(name="mission")
@@ -29,9 +26,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
  */
 class Mission
 {
-
-
-
     /**
      * @var int
      *
@@ -53,7 +47,6 @@ class Mission
      */
     private $typeMission;
 
-
     /**
      * @var float
      *
@@ -70,7 +63,7 @@ class Mission
     private $title;
 
     /**
-     * @var double
+     * @var float
      * @ORM\Column(type = "float")
      * @Groups({"type_mission"})
      */
@@ -83,7 +76,6 @@ class Mission
     {
         return $this->id;
     }
-
 
     /**
      * @return Mode
@@ -164,7 +156,4 @@ class Mission
     {
         $this->price = $price;
     }
-
-
-
 }

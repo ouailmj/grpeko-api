@@ -10,29 +10,21 @@
  *
  */
 
-
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-
-
 /**
- * Class BankAccount
- * @package AppBundle\Entity
+ * Class BankAccount.
  *
  *
  * @ORM\Table(name="bank_account")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\BankAccountRepository")
  *
  * @ORM\HasLifecycleCallbacks()
- *
  */
 class BankAccount
 {
-
-
-
     /**
      * @var int
      *
@@ -41,7 +33,6 @@ class BankAccount
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-
 
     /**
      * @var Customer
@@ -80,7 +71,6 @@ class BankAccount
     {
         return $this->id;
     }
-
 
     /**
      * @return Customer
@@ -161,8 +151,4 @@ class BankAccount
     {
         $this->cebMandate = $cebMandate;
     }
-
-
-
-
 }

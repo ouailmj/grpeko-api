@@ -10,16 +10,13 @@
  *
  */
 
-
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-
 /**
- * Class FormerAccountant
- * @package AppBundle\Entity
+ * Class FormerAccountant.
  *
  * @ORM\Table(name="former_accountant")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\FormerAccountantRepository")
@@ -28,8 +25,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class FormerAccountant
 {
-
-
     /**
      * @var int
      *
@@ -73,6 +68,7 @@ class FormerAccountant
     {
         $this->customers = new ArrayCollection();
     }
+
     /**
      * @return int
      */
@@ -145,7 +141,6 @@ class FormerAccountant
         $this->lastName = $lastName;
     }
 
-
     /**
      * @return Customer[]|ArrayCollection
      */
@@ -164,21 +159,23 @@ class FormerAccountant
 
     /**
      * @param Customer $customer
+     *
      * @return $this
      */
     public function addCustomer(Customer $customer)
     {
         $this->customers->add($customer);
+
         return $this;
     }
 
     /**
      * @param Customer $customer
+     *
      * @return $this
      */
     public function removeCustomer(Customer $customer)
     {
         return $this->customers->removeElement($customer);
     }
-
 }

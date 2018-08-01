@@ -10,15 +10,13 @@
  *
  */
 
-
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class ECQuotation
- * @package AppBundle\Entity
+ * Class ECQuotation.
  *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ECQuotationRepository")
  *
@@ -26,7 +24,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ECQuotation extends JobQuotation
 {
-
     /**
      * ECQuotation constructor.
      */
@@ -111,7 +108,6 @@ class ECQuotation extends JobQuotation
         $this->nbSalesInvoicesPerYear = $nbSalesInvoicesPerYear;
     }
 
-
     /**
      * @return QuotationLine[]|ArrayCollection
      */
@@ -130,22 +126,23 @@ class ECQuotation extends JobQuotation
 
     /**
      * @param QuotationLine $quotationLine
+     *
      * @return $this
      */
     public function addQuotationLine(QuotationLine $quotationLine)
     {
         $this->quotationLines->add($quotationLine);
+
         return $this;
     }
 
     /**
      * @param QuotationLine $quotationLine
+     *
      * @return bool
      */
     public function removeQuotationLine(QuotationLine $quotationLine)
     {
         return $this->quotationLines->removeElement($quotationLine);
     }
-
-
 }

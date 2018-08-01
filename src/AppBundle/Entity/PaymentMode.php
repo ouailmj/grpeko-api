@@ -1,20 +1,22 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: soufiane
- * Date: 18/07/18
- * Time: 12:43
+
+/*
+ * This file is part of the Moddus project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Developed by MIT <contact@mit-agency.com>
+ *
  */
 
 namespace AppBundle\Entity;
-
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class PaymentMode
- * @package AppBundle\Entity
+ * Class PaymentMode.
  *
  *
  * @ORM\Table(name="payment_mode")
@@ -24,8 +26,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class PaymentMode
 {
-
-
     /**
      * @var int
      *
@@ -74,24 +74,25 @@ class PaymentMode
         $this->payments = $payment;
     }
 
-
     /**
      * @param Payment $payment
+     *
      * @return $this
      */
     public function addOwn(Payment $payment)
     {
         $this->payments->add($payment);
+
         return $this;
     }
 
     /**
      * @param Payment $payment
+     *
      * @return bool
      */
     public function removeOwn(Payment $payment)
     {
         return $this->payments->removeElement($payment);
     }
-
 }

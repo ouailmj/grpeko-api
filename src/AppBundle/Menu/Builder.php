@@ -34,7 +34,7 @@ class Builder implements ContainerAwareInterface
     /** @var AuthorizationChecker */
     protected $authorizationChecker;
 
-    private  $tokenStorage;
+    private $tokenStorage;
 
     private $em;
 
@@ -48,20 +48,22 @@ class Builder implements ContainerAwareInterface
     {
         $this->factory = $factory;
         $this->authorizationChecker = $authorizationChecker;
-        $this->tokenStorage=$tokenStorage;
-        $this->em=$em;
+        $this->tokenStorage = $tokenStorage;
+        $this->em = $em;
     }
 
-    public function getAutenticatedUserID(){
-
+    public function getAutenticatedUserID()
+    {
         return $this->tokenStorage->getToken()->getUser()->getId();
     }
+
     public function getCostumerId()
     {
-        $customer=$this->em->getRepository(Customer::class)->findById($this->getAutenticatedUserID());
-        return reset($customer)->getId();
+        $customer = $this->em->getRepository(Customer::class)->findById($this->getAutenticatedUserID());
 
+        return reset($customer)->getId();
     }
+
     public function createMainMenu(array $options)
     {
         $menu = $this->factory->createItem('root');
@@ -79,17 +81,15 @@ class Builder implements ContainerAwareInterface
         ]);
 
         if ($this->authorizationChecker->isGranted('ROLE_PROSPECT')) {
-
             $menu->addChild('Télécharger le modèle', [
                 'route' => 'model_upload',
-                'routeParameters'=>["company"=>$this->getCostumerId()],
+                'routeParameters' => ['company' => $this->getCostumerId()],
                 'label' => '<i class="icon-download"> </i> <span>Fiche Patrimoniale</span>',
                 'extras' => ['safe_label' => true],
             ]);
         }
 
         if (!$this->authorizationChecker->isGranted('ROLE_PROSPECT')) {
-
             $menu->addChild('Clients', [
                 'route' => 'company_index',
                 'label' => '<i class="icon-users4"> </i> <span>Clients</span>',

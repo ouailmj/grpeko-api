@@ -82,8 +82,6 @@ swiftmailer:
     host:      "%mailer_host%"
     username:  "%mailer_user%"
     password:  "%mailer_password%"
-    #encryption: ssl
-    #port:      465
     spool:     { type: memory }
 
 #FOSUser Cinfiguration

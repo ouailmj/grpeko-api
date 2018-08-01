@@ -10,15 +10,13 @@
  *
  */
 
-
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class CEBProvider
- * @package AppBundle\Entity
+ * Class CEBProvider.
  *
  *
  * @ORM\Table(name="ceb_provider")
@@ -28,8 +26,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class CEBProvider
 {
-
-
     /**
      * @var int
      *
@@ -79,22 +75,23 @@ class CEBProvider
 
     /**
      * @param CEBMandate $CEBMandate
+     *
      * @return $this
      */
     public function addCebMandate(CEBMandate $CEBMandate)
     {
         $this->cebMandates->add($CEBMandate);
+
         return $this;
     }
 
     /**
      * @param CEBMandate $CEBMandate
+     *
      * @return bool
      */
     public function removeCebMandate(CEBMandate $CEBMandate)
     {
         return  $this->cebMandates->removeElement($CEBMandate);
     }
-
-
 }

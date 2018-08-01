@@ -12,7 +12,6 @@
 
 namespace AppBundle\Entity;
 
-use ApiPlatform\Core\Annotation\ApiSubresource;
 use ApiPlatform\Core\Annotation\ApiResource;
 use AppBundle\AppBundle;
 use Doctrine\ORM\Mapping as ORM;

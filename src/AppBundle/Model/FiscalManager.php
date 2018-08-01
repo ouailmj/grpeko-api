@@ -12,7 +12,6 @@
 
 namespace AppBundle\Model;
 
-use AppBundle\Entity\Contact;
 use AppBundle\Entity\FiscalYear;
 use Doctrine\ORM\EntityManagerInterface;
 

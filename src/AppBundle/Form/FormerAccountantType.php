@@ -41,8 +41,7 @@ class FormerAccountantType extends AbstractType
                 'label' => 'Nom:',
                 'required' => false,
             ]);
-           // ->add('address', AdresseType::class)
-
+        // ->add('address', AdresseType::class)
     }
 
     /**

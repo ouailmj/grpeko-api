@@ -12,7 +12,6 @@
 
 namespace AppBundle\Mailer;
 
-use AppBundle\Event\RendezVousCreatedEvent;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 
 class Mailer

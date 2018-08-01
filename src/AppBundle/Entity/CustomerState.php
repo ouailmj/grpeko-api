@@ -10,16 +10,13 @@
  *
  */
 
-
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-
 /**
- * Class CustomerState
- * @package AppBundle\Entity
+ * Class CustomerState.
  *
  *
  *
@@ -30,8 +27,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class CustomerState
 {
-
-
     /**
      * @var int
      *
@@ -40,7 +35,6 @@ class CustomerState
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-
 
     /**
      * @var Customer [] | ArrayCollection
@@ -61,7 +55,6 @@ class CustomerState
         return $this->id;
     }
 
-
     /**
      * @return Customer[]|ArrayCollection
      */
@@ -80,24 +73,23 @@ class CustomerState
 
     /**
      * @param Customer $customer
+     *
      * @return $this
      */
     public function addCustomer(Customer $customer)
     {
         $this->customers->add($customer);
+
         return $this;
     }
 
     /**
      * @param Customer $customer
+     *
      * @return $this
      */
     public function removeCustomer(Customer $customer)
     {
         return $this->customers->removeElement($customer);
     }
-
-
-
-
 }

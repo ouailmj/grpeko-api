@@ -10,15 +10,13 @@
  *
  */
 
-
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class Bank
- * @package AppBundle\Entity
+ * Class Bank.
  *
  *
  * @ORM\Table(name="bank")
@@ -28,8 +26,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Bank
 {
-
-
     /**
      * @var int
      *
@@ -79,23 +75,23 @@ class Bank
 
     /**
      * @param BankAccount $bankAccount
+     *
      * @return $this
      */
     public function addBankAccount(BankAccount $bankAccount)
     {
         $this->bankAccounts->add($bankAccount);
+
         return $this;
     }
 
     /**
      * @param BankAccount $bankAccount
+     *
      * @return bool
      */
     public function removeBankAccount(BankAccount $bankAccount)
     {
-       return $this->bankAccounts->removeElement($bankAccount);
+        return $this->bankAccounts->removeElement($bankAccount);
     }
-
-
-
 }

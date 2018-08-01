@@ -10,16 +10,13 @@
  *
  */
 
-
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-
 /**
- * Class Mode
- * @package AppBundle\Entity
+ * Class Mode.
  *
  *
  *
@@ -30,8 +27,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Mode
 {
-
-
     /**
      * @var int
      *
@@ -48,10 +43,8 @@ class Mode
      */
     private $missions;
 
-
-
     /**
-     * @var double
+     * @var float
      * @ORM\Column(type="float")
      */
     private $price;
@@ -84,7 +77,6 @@ class Mode
         return $this->id;
     }
 
-
     /**
      * @return Mission[]|ArrayCollection
      */
@@ -103,16 +95,19 @@ class Mode
 
     /**
      * @param Mission $mission
+     *
      * @return $this
      */
     public function addMission(Mission $mission)
     {
         $this->missions->add($mission);
+
         return $this;
     }
 
     /**
      * @param Mission $mission
+     *
      * @return bool
      */
     public function removeMission(Mission $mission)
@@ -167,8 +162,4 @@ class Mode
     {
         $this->validDate = $validDate;
     }
-
-
-
-
 }

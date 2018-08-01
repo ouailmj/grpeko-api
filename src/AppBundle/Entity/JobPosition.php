@@ -10,16 +10,13 @@
  *
  */
 
-
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-
 /**
- * Class JobPosition
- * @package AppBundle\Entity
+ * Class JobPosition.
  *
  *
  * @ORM\Table(name="job_position")
@@ -29,9 +26,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class JobPosition
 {
-
-
-
     /**
      * @var int
      *
@@ -42,23 +36,24 @@ class JobPosition
     protected $id;
 
     /**
-     * @var Employee  [] | ArrayCollection
+     * @var Employee [] | ArrayCollection
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Employee", mappedBy="jobPositions")
      */
     private $employees;
 
-/**
+    /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
+
     /**
      * JobPosition constructor.
      */
     public function __construct()
     {
-        $this->employees = new ArrayCollection;
+        $this->employees = new ArrayCollection();
     }
 
     /**
@@ -68,7 +63,6 @@ class JobPosition
     {
         return $this->id;
     }
-
 
     /**
      * @return Employee[]|ArrayCollection
@@ -88,16 +82,19 @@ class JobPosition
 
     /**
      * @param Employee $employee
+     *
      * @return $this
      */
     public function addEmployee(Employee $employee)
     {
         $this->employees->add($employee);
+
         return $this;
     }
 
     /**
      * @param Employee $employee
+     *
      * @return bool
      */
     public function removeEmployee(Employee $employee)
@@ -120,7 +117,4 @@ class JobPosition
     {
         $this->name = $name;
     }
-
-
-
 }

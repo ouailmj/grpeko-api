@@ -10,11 +10,8 @@
  *
  */
 
-
 namespace AppBundle\Repository;
-
 
 class CEBMandateRepository extends BaseRepository
 {
-
 }

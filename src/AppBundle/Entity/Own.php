@@ -12,13 +12,10 @@
 
 namespace AppBundle\Entity;
 
-
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class Own
- * @package AppBundle\Entity
+ * Class Own.
  *
  *
  * @ORM\Table(name="own")
@@ -28,9 +25,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Own
 {
-
-
-
     /**
      * @var int
      *
@@ -54,7 +48,6 @@ class Own
         return $this->id;
     }
 
-
     /**
      * @return Invoices
      */
@@ -70,9 +63,4 @@ class Own
     {
         $this->invoice = $invoice;
     }
-
-
-
-
-
 }

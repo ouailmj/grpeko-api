@@ -10,15 +10,13 @@
  *
  */
 
-
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class Employee
- * @package AppBundle\Entity
+ * Class Employee.
  *
  *
  * @ORM\Table(name="employee")
@@ -28,8 +26,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Employee
 {
-
-
     /**
      * @var int
      *
@@ -45,9 +41,8 @@ class Employee
      */
     private $assignments;
 
-
     /**
-     * @var Employee  [] | ArrayCollection
+     * @var Employee [] | ArrayCollection
      * @ORM\OneToMany(targetEntity="Employee", mappedBy="manager")
      */
     private $staff;
@@ -65,7 +60,7 @@ class Employee
     protected $initials;
 
     /**
-     * @var JobPosition  [] | ArrayCollection
+     * @var JobPosition [] | ArrayCollection
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\JobPosition", inversedBy="employees")
      */
     private $jobPositions;
@@ -144,7 +139,6 @@ class Employee
         return $this->id;
     }
 
-
     /**
      * @return Assignment[]|ArrayCollection
      */
@@ -161,19 +155,21 @@ class Employee
         $this->assignments = $assignments;
     }
 
-
     /**
      * @param Assignment $assignment
+     *
      * @return $this
      */
     public function addAssignment(Assignment $assignment)
     {
         $this->assignments->add($assignment);
+
         return $this;
     }
 
     /**
      * @param Assignment $assignment
+     *
      * @return bool
      */
     public function removeAssignment(Assignment $assignment)
@@ -192,7 +188,7 @@ class Employee
     /**
      * @param Employee $manager
      */
-    public function setManager(Employee $manager)
+    public function setManager(self $manager)
     {
         $this->manager = $manager;
     }
@@ -215,19 +211,22 @@ class Employee
 
     /**
      * @param Employee $employee
+     *
      * @return $this
      */
-    public function addStaff(Employee $employee)
+    public function addStaff(self $employee)
     {
         $this->staff->add($employee);
+
         return $this;
     }
 
     /**
      * @param Employee $employee
+     *
      * @return bool
      */
-    public function removeStaff(Employee $employee)
+    public function removeStaff(self $employee)
     {
         return  $this->staff->removeElement($employee);
     }
@@ -248,19 +247,21 @@ class Employee
         $this->jobPositions = $jobPositions;
     }
 
-
     /**
      * @param JobPosition $jobPosition
+     *
      * @return $this
      */
     public function addJobPosition(JobPosition $jobPosition)
     {
         $this->jobPositions->add($jobPosition);
+
         return $this;
     }
 
     /**
      * @param JobPosition $jobPosition
+     *
      * @return bool
      */
     public function removeJobPosition(JobPosition $jobPosition)
@@ -427,6 +428,4 @@ class Employee
     {
         $this->user = $user;
     }
-
-
 }

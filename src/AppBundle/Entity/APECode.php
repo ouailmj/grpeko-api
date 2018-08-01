@@ -10,15 +10,13 @@
  *
  */
 
-
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class APECode
- * @package AppBundle\Entity
+ * Class APECode.
  *
  *
  * @ORM\Table(name="ape_code")
@@ -28,8 +26,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class APECode
 {
-
-
     /**
      * @var int
      *
@@ -86,8 +82,6 @@ class APECode
         $this->name = $name;
     }
 
-
-
     /**
      * @return Company[]|ArrayCollection
      */
@@ -106,16 +100,19 @@ class APECode
 
     /**
      * @param Company $company
+     *
      * @return $this
      */
     public function addCompany(Company $company)
     {
         $this->companies->add($company);
+
         return $this;
     }
 
     /**
      * @param Company $company
+     *
      * @return bool
      */
     public function removeCompany(Company $company)

@@ -10,15 +10,13 @@
  *
  */
 
-
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class SentToCustomerStatus
- * @package AppBundle\Entity
+ * Class SentToCustomerStatus.
  *
  * @ORM\Table(name="sent_to_customer_status")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\SentToCustomerStatusRepository")
@@ -27,8 +25,6 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class SentToCustomerStatus
 {
-
-
     /**
      * @var int
      *
@@ -37,7 +33,6 @@ class SentToCustomerStatus
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-
 
     /**
      * @var BankAccount [] | ArrayCollection
@@ -61,7 +56,6 @@ class SentToCustomerStatus
         return $this->id;
     }
 
-
     /**
      * @return BankAccount[]|ArrayCollection
      */
@@ -80,21 +74,23 @@ class SentToCustomerStatus
 
     /**
      * @param BankAccount $bankAccount
+     *
      * @return $this
      */
     public function addBankAccount(BankAccount $bankAccount)
     {
         $this->bankAccounts->add($bankAccount);
+
         return $this;
     }
 
     /**
      * @param BankAccount $bankAccount
+     *
      * @return bool
      */
     public function removeBankAccount(BankAccount $bankAccount)
     {
         return $this->bankAccounts->removeElement($bankAccount);
     }
-
 }

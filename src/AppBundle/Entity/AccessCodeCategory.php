@@ -10,15 +10,13 @@
  *
  */
 
-
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class AccessCodeCategory
- * @package AppBundle\Entity
+ * Class AccessCodeCategory.
  *
  *
  *
@@ -30,8 +28,6 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class AccessCodeCategory
 {
-
-
     /**
      * @var int
      *
@@ -55,7 +51,6 @@ class AccessCodeCategory
     {
         return $this->id;
     }
-
 
     /**
      * AccessCodeCategory constructor.
@@ -83,23 +78,25 @@ class AccessCodeCategory
 
     /**
      * @param AccessCode $accessCode
+     *
      * @return $this
      */
     public function addAccessCode(AccessCode $accessCode)
     {
         $this->accessCodes->add($accessCode);
+
         return $this;
     }
 
     /**
      * @param AccessCode $accessCode
+     *
      * @return $this
      */
     public function removeAccessCode(AccessCode $accessCode)
     {
         $this->accessCodes->removeElement($accessCode);
+
         return $this;
     }
-
-
 }

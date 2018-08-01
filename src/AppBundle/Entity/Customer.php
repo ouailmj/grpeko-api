@@ -10,16 +10,14 @@
  *
  */
 
-
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Class Customer
- * @package AppBundle\Entity
+ * Class Customer.
  *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CustomerRepository")
  *
@@ -27,9 +25,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Customer extends Company
 {
-
-
-
     /**
      * @var string
      *
@@ -158,9 +153,9 @@ class Customer extends Company
     /**
      * @var Rendezvous
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Rendezvous", mappedBy="customer", cascade={"persist", "remove"})
-     *
      */
     private $rendezvous;
+
     /**
      * Customer constructor.
      */
@@ -171,8 +166,8 @@ class Customer extends Company
         $this->contactsStatus = new ArrayCollection();
         $this->fiscalYears = new ArrayCollection();
         $this->bankAccounts = new ArrayCollection();
-        $this->jobQuotations=new ArrayCollection();
-        $this->contacts=new ArrayCollection();
+        $this->jobQuotations = new ArrayCollection();
+        $this->contacts = new ArrayCollection();
     }
 
     /**
@@ -190,7 +185,6 @@ class Customer extends Company
     {
         $this->rendezvous = $rendezvous;
     }
-
 
     /**
      * @return Contact[]|ArrayCollection
@@ -216,8 +210,10 @@ class Customer extends Company
     public function addContact(Contact $contacts)
     {
         $this->contacts->add($contacts);
+
         return $this;
     }
+
     /**
      * @param $contacts
      *
@@ -244,27 +240,29 @@ class Customer extends Company
         $this->jobQuotations = $jobQuotations;
     }
 
-
     /**
      * @param JobQuotation $jobQuotation
+     *
      * @return $this
      */
     public function addJobQuotation(JobQuotation $jobQuotation)
     {
         $this->accessCodes->add($jobQuotation);
+
         return $this;
     }
 
     /**
      * @param JobQuotation $jobQuotation
+     *
      * @return $this
      */
     public function removeJobQuotation(JobQuotation $jobQuotation)
     {
         $this->accessCodes->removeElement($jobQuotation);
+
         return $this;
     }
-
 
     /**
      * @return Calendar
@@ -300,21 +298,25 @@ class Customer extends Company
 
     /**
      * @param AccessCode $accessCode
+     *
      * @return $this
      */
     public function addAccessCode(AccessCode $accessCode)
     {
         $this->accessCodes->add($accessCode);
+
         return $this;
     }
 
     /**
      * @param AccessCode $accessCode
+     *
      * @return $this
      */
     public function removeAccessCode(AccessCode $accessCode)
     {
         $this->accessCodes->removeElement($accessCode);
+
         return $this;
     }
 
@@ -334,24 +336,27 @@ class Customer extends Company
         $this->contactsStatus = $contactsStatus;
     }
 
-
     /**
      * @param ContactStatus $contactStatus
+     *
      * @return $this
      */
     public function addContactStatus(ContactStatus $contactStatus)
     {
         $this->contactsStatus->add($contactStatus);
+
         return $this;
     }
 
     /**
      * @param ContactStatus $contactStatus
+     *
      * @return $this
      */
     public function removeContactStatus(ContactStatus $contactStatus)
     {
         $this->contactsStatus->removeElement($contactStatus);
+
         return $this;
     }
 
@@ -371,20 +376,21 @@ class Customer extends Company
         $this->fiscalYears = $fiscalYears;
     }
 
-
-
     /**
      * @param FiscalYear $fiscalYear
+     *
      * @return $this
      */
     public function addFiscalYear(FiscalYear $fiscalYear)
     {
         $this->fiscalYears->add($fiscalYear);
+
         return $this;
     }
 
     /**
      * @param FiscalYear $fiscalYear
+     *
      * @return bool
      */
     public function removeFiscalYear(FiscalYear $fiscalYear)
@@ -458,16 +464,19 @@ class Customer extends Company
 
     /**
      * @param BankAccount $bankAccount
+     *
      * @return $this
      */
     public function addBankAccount(BankAccount $bankAccount)
     {
-         $this->bankAccounts->add($bankAccount);
+        $this->bankAccounts->add($bankAccount);
+
         return $this;
     }
 
     /**
      * @param BankAccount $bankAccount
+     *
      * @return bool
      */
     public function removeBankAccount(BankAccount $bankAccount)
@@ -618,8 +627,4 @@ class Customer extends Company
     {
         $this->user = $user;
     }
-
-
-
-
 }

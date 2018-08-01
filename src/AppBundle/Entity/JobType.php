@@ -10,16 +10,13 @@
  *
  */
 
-
 namespace AppBundle\Entity;
-
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class JobType
- * @package AppBundle\Entity
+ * Class JobType.
  *
  *
  * @ORM\Table(name="job_type")
@@ -29,9 +26,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class JobType
 {
-
-
-
     /**
      * @var int
      *
@@ -63,8 +57,6 @@ class JobType
         return $this->id;
     }
 
-
-
     /**
      * @return Job[]|ArrayCollection
      */
@@ -83,21 +75,23 @@ class JobType
 
     /**
      * @param Job $job
+     *
      * @return $this
      */
     public function addJob(Job $job)
     {
         $this->jobs->add($job);
+
         return $this;
     }
 
     /**
      * @param Job $job
+     *
      * @return bool
      */
     public function removeJob(Job $job)
     {
         return $this->jobs->removeElement($job);
     }
-
 }

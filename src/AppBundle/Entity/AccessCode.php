@@ -10,15 +10,12 @@
  *
  */
 
-
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-
 /**
- * Class AccessCode
- * @package AppBundle\Entity
+ * Class AccessCode.
  *
  *
  *
@@ -29,7 +26,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class AccessCode
 {
-
     /**
      * @var int
      *
@@ -42,7 +38,6 @@ class AccessCode
     /**
      * @var Customer
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Customer", inversedBy="accessCodes")
-     *
      */
     private $customer;
 
@@ -59,7 +54,6 @@ class AccessCode
     {
         return $this->id;
     }
-
 
     /**
      * @return Customer
@@ -92,9 +86,4 @@ class AccessCode
     {
         $this->accessCodeCategory = $accessCodeCategory;
     }
-
-
-
-
-
 }
