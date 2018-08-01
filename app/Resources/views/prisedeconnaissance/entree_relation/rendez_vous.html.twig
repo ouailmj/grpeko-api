@@ -13,304 +13,310 @@
             </div>
         </div>
         <div class="panel-body">
-<form method="post" action={{ path('rendezvous_new') }}>
-            <div class="panel-body">
-                <div class="col-lg-12 content-group-lg" style="background-color: #5d9d9c;color: #fff;font-size: 14px;text-align: center;margin: 10 0">
-                    <h6> Rendez-vous</h6>
-                </div>
-
-
-                <div class="row">
-
-                    <div class="col-lg-2" >
-                        Sujet
-                    </div>
-                    <div class="col-lg-8">
-                        <input type="text" class="form-control" name="sujet" required>
+            <form method="post" action={{ path('rendezvous_new') }}>
+                <div class="panel-body">
+                    <div class="col-lg-12 content-group-lg" style="background-color: #5d9d9c;color: #fff;font-size: 14px;text-align: center;margin: 10 0">
+                        <h6> Rendez-vous</h6>
                     </div>
 
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-lg-2" >
-                        Heure de debut
-                    </div>
-                    <div class="col-lg-2" >
-                        <input type="text" required class="french_picker form-control picker__input picker__input--active" name="datedebut" required onchange="getdatestart(this)">
-                    </div>
-                    <div class="col-lg-1" >
-                        <input type="text" class="form-control"placeholder="09:00" name="heuredebut" required onchange="gethourstart(this)">
-                    </div>
-                    <div class="col-lg-2" >
-                        Heure de fin
-                    </div>
-                    <div class="col-lg-2" >
-                        <input type="text" class="french_picker form-control picker__input picker__input--active" name="datefin" required>
-                    </div>
-                    <div class="col-lg-1" >
-                        <input type="text" class="form-control"placeholder="09:00" name="heurefin" required>
-                    </div>
-                </div>
 
-            </div>
+                    <div class="row">
 
-            <div class="panel-body">
-                <div class="col-lg-12 content-group-lg" style="background-color: #5d9d9c;color: #fff;font-size: 14px;text-align: center;margin: 10 0">
-                    <h6>Description</h6>
-                </div>
-
-                <label>Bonjour, je fais suite a votre demande de contact.</label><br><br>
-
-                <div class="row">
-
-                    <div class="col-lg-5" >
-                        Vous etes a la recherche d'un expert-comptable, d'un commissaire aux comptes ou d'une autre mission?
-                    </div>
-                    <div class="col-lg-2">
-
-                        <select>
-                            <option>EC</option>
-                            <option>CAC</option>
-                            <option>GP</option>
-                        </select>
+                        <div class="col-lg-2" >
+                            Sujet
+                        </div>
+                        <div class="col-lg-8">
+                            <input type="text" class="form-control" name="sujet" required>
+                        </div>
 
                     </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-2" >
+                            Date de debut
+                        </div>
+                        <div class="col-lg-2" >
+                            <input type="text" required class="french_picker form-control picker__input picker__input--active" name="datedebut" required>
+                        </div>
+                        <div class="col-lg-2" >
+                            Heure de debut
+                        </div>
+                        <div class="col-lg-1" >
+                            <input type="text" class="form-control"placeholder="09:00" name="heuredebut" required>
+                        </div>
+                        <div class="col-lg-2" >
+                            Heure de Fin
+                        </div>
 
-                    <div class="col-lg-3">
-                        L'entreprise est-elle créée?
-                    </div>
-                    <div class="col-lg-2">
-
-                        <select>
-                            <option>Oui</option>
-                            <option>Non</option>
-                        </select>
-
+                        <div class="col-lg-1" >
+                            <input type="text" class="form-control"placeholder="09:00" name="heurefin" required>
+                        </div>
                     </div>
 
                 </div>
 
-<br>
-                <div class="row">
-
-                    <div class="col-lg-5" >
-                        Si oui, quel est le nom de l'entreprise? Si non, comment va-t-elle s'appeler?
-                    </div>
-                    <div class="col-lg-2">
-
-                       <input type="text" class="form-control">
-
+                <div class="panel-body">
+                    <div class="col-lg-12 content-group-lg" style="background-color: #5d9d9c;color: #fff;font-size: 14px;text-align: center;margin: 10 0">
+                        <h6>Description</h6>
                     </div>
 
-                    <div class="col-lg-3">
-                        Si oui, quelle est la forme ?
-                    </div>
-                    <div class="col-lg-2">
+                    <label><b>Bonjour, je fais suite  à <span class="tutoie">ton</span> demande de contact.</b></label><br><br>
 
-                        <select>
-                            <option>SARL</option>
-                            <option>EURL</option>
-                            <option>SELARL</option>
-                            <option>SA</option>
-                            <option>SAS</option>
-                            <option>SASU</option>
-                            <option>SARL</option>
-                            <option>SNC</option>
-                            <option>SCP</option>
-                        </select>
+                    <div class="row">
+                        <div class="col-lg-6" >
+                            Quel est <span class="tutoie">ton</span> prénom svp?
+                        </div>
+                        <div class="col-lg-3">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6" >
+                            Quel est <span class="tutoie">ton</span> nom svp?
+                        </div>
+                        <div class="col-lg-3">
+                            <input type="text" class="form-control"  name="lastname" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6" >
+                            Civilité?
+                        </div>
+                        <div class="col-lg-3">
+                            <select>
+                                <option>Mr</option>
+                                <option>Mme</option>
+                                <option>Mlle</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6" >
+                            Quelle est <span class="tutoie">ton</span> date de naissance ?
+                        </div>
+                        <div class="col-lg-3">
+                            <input type="text" class="french_picker form-control picker__input picker__input--active">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6" >
+                            <b>On se tutoie ?</b>
+                        </div>
+                        <div class="col-lg-3" >
+                            <select id="tutoie">
+                                <option>Oui</option>
+                                <option>Non</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6" >
+                            Quel est <span class="tutoie">ton</span> numéro de téléphone stp ?
+                        </div>
+
+                        <div class="col-lg-3" >
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6" >
+                            Quel est <span class="tutoie">ton</span> email stp ?
+                        </div>
+                        <div class="col-lg-3">
+                            <input type="email" class="form-control" name="email" id="appbundle_customer_contacts_email" required>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-warning"  id="emailerror" style="display: none;width: 50%">
+                        <strong>Erreur!</strong> Cette adresse e-mail est déjà utilisée !
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6" >
+                            Rappelez moi de la part de qui tu viens, stp ?
+                        </div>
+                        <div class="col-lg-3">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6" >
+                            Recherche par nom d'entreprise
+                        </div>
+                        <div class="col-lg-3" >
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-lg-6" >
+                            Recherche par prénom / nom
+                        </div>
+                        <div class="col-lg-3" >
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6" >
+                            Vous êtes à la recherche d'un expert-comptable, d'un commissaire aux comptes ou d'une autre mission?
+                        </div>
+                        <div class="col-lg-3">
+
+                            <select>
+                                <option>EC</option>
+                                <option>CAC</option>
+                                <option>MX</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <b>L'entreprise est-elle créée?</b>
+                        </div>
+                        <div class="col-lg-3">
+                            <select id="societecreeer">
+                                <option>Oui</option>
+                                <option>Non</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6" >
+                            <span class="hideoui">Quel est le nom de l'entreprise?</span> <span class="hidenon">Comment va-t-elle s'appeler?</span>
+                        </div>
+                        <div class="col-lg-3">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <span class="hideoui">Quelle est <span class="tutoie">ton</span> fonction au sein de l'entreprise ?</span> <span class="hidenon">Quelle sera <span class="tutoie">ton</span> fonction au sein de l'entreprise?</span>
+                        </div>
+                        <div class="col-lg-3">
+                            <select>
+                                <option>Président</option>
+                                <option>Gérant</option>
+                                <option>Secrétaire</option>
+                                <option>Directeur général</option>
+                                <option>Comptable</option>
+                                <option>Commercial</option>
+                                <option>Responsable informatique</option>
+                                <option>Autre</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row hideoui" >
+                        <div class="col-lg-6">
+                            <span>Quelle est la forme ?</span>
+                        </div>
+                        <div class="col-lg-3">
+                            <select>
+                                <option>SARL</option>
+                                <option>EURL</option>
+                                <option>SELARL</option>
+                                <option>SA</option>
+                                <option>SAS</option>
+                                <option>SASU</option>
+                                <option>SARL</option>
+                                <option>SNC</option>
+                                <option>SCP</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="row hideoui">
+                        <div class="col-lg-6" >
+                            <span>Vous rechercher un prestataire pour quelle date de clôture?</span>
+                        </div>
+                        <div class="col-lg-3">
+                            <input type="text" class="french_picker form-control picker__input picker__input--active">
+                        </div>
+                    </div>
+
+                    <div class="row hidenon">
+                        <div class="col-lg-6" >
+                            <span>Vous souhaitez que la création soit faite pour quand?</span>
+                        </div>
+                        <div class="col-lg-3">
+                            <input  type="text" class="french_picker form-control picker__input picker__input--active inputhide">
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-lg-6" >
+                            Quelle est l'activité ou quelle va être l'activité de l'entreprise ?
+                        </div>
+                        <div class="col-lg-3">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+
+                   {# <div class="row">
+                        <div class="col-lg-6" >
+                            Je vous propose un rdv skype ou téléphone le <b id="daterendezvous"> </b> <b id="heuredebutrendezvous"></b> <b id="heurefinrendezvous"></b>
+                        </div>
+                    </div>
+                    #}
+
+
+
+                    <div class="row">
+                        <div class="col-lg-6" >
+                            Commentaire
+                        </div>
+                        <div class="col-lg-6" >
+                            <textarea class="form-control"></textarea>
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="row">
+
+                        <div class="col-lg-12" >
+
+                            <b>Je t'envoie une fiche client à remplir, Merci de me le remplir afin que je puisse avoir des informations prévisionnelles à jour, et que je puisse te conseiller au mieux, C'est vraiment très important.</b>
+                        </div>
+
+                    </div>
+                    <br>
+                    <div class="row">
+
+                        <div class="col-lg-3" style="float: right">
+
+                            <input type="button" id="save" value="Valider" class="form-control btn-success" style="background-color: #5d9d9c">
+                            <input type="submit" id="appbundle_customer_Enregistrer" value="Valider" class="form-control btn-success" style="display: none">
+
+                        </div>
 
                     </div>
 
                 </div>
-                <br>
-
-                <div class="row">
-
-                    <div class="col-lg-4" >
-                        Si oui,vous rechercher un prestataire pour quelle date de cloture?
-                    </div>
-                    <div class="col-lg-2">
-                        <input type="text" class="french_picker form-control picker__input picker__input--active">
-                    </div>
-
-                    <div class="col-lg-4" >
-                        Si non, vous souhaitez que la creation soit faite pour quand?
-                    </div>
-                    <div class="col-lg-2">
-                        <input type="text" class="french_picker form-control picker__input picker__input--active">
-                    </div>
-
-                </div>
-
-                <br>
-
-                <div class="row">
-
-                    <div class="col-lg-4" >
-                        Qu'elle est l'activité ou quelle va etre l'activité de la société
-                    </div>
-                    <div class="col-lg-2">
-                        <input type="text" class="form-control">
-                    </div>
-
-                    <div class="col-lg-6" >
-                        Je vous propose un rdv skype ou téléphone le <b id="daterendezvous"> </b> <b id="heurerendezvous"></b>
-                    </div>
-
-                </div>
-<br>
-                <div class="row">
-
-                    <div class="col-lg-2" >
-                        Quel est votre prénom svp?
-                    </div>
-                    <div class="col-lg-2">
-                        <input type="text" class="form-control">
-                    </div>
-
-                    <div class="col-lg-2" >
-                        Quel est votre nom svp?
-                    </div>
-
-                    <div class="col-lg-2">
-                        <input type="text" class="form-control"  name="lastname" required>
-                    </div>
-
-                    <div class="col-lg-2" >
-                        Civilité?
-                    </div>
-
-                    <div class="col-lg-2">
-                        <select>
-                            <option>Mr</option>
-                            <option>Mme</option>
-                            <option>Mlle</option>
-                        </select>
-                    </div>
-
-                </div>
-
-                <br>
-
-                <div class="row">
-
-                    <div class="col-lg-2" >
-                        Quelle est votre date de naissance
-                    </div>
-                    <div class="col-lg-2">
-                        <input type="text" class="french_picker form-control picker__input picker__input--active">
-                    </div>
-
-                    <div class="col-lg-2" >
-                       On se tutoi ?
-                    </div>
-
-                    <div class="col-lg-2" >
-                        <select>
-                            <option>Oui</option>
-                            <option>Non</option>
-                        </select>
-                    </div>
-
-                    <div class="col-lg-2" >
-                        Quel est ton numéro de telephone stp?
-                    </div>
-
-                    <div class="col-lg-2" >
-                        <input type="text" class="form-control">
-                    </div>
-
-                </div>
-<br>
-
-                <div class="row">
-
-                    <div class="col-lg-2" >
-                        Quel est ton email stp
-                    </div>
-                    <div class="col-lg-2">
-                        <input type="email" class="form-control" name="email" required>
-                    </div>
-
-                    <div class="col-lg-2" >
-                        Rappelez moi de la part de qui tu viens, stp?
-                    </div>
-
-
-                    <div class="col-lg-2">
-                        <input type="text" class="form-control">
-                    </div>
-
-                    <div class="col-lg-2" >
-                        Recherche par nom d'entreprise
-                    </div>
-
-                    <div class="col-lg-2" >
-                        <input type="text" class="form-control">
-                    </div>
-
-                </div>
-
-                <br>
-
-                <div class="row">
-
-                    <div class="col-lg-2" >
-                        Recherche par prénom / nom d'entreprise
-                    </div>
-
-                    <div class="col-lg-2" >
-                        <input type="text" class="form-control">
-                    </div>
-
-
-                    <div class="col-lg-2" >
-                        Commentaire
-                    </div>
-
-                    <div class="col-lg-6" >
-                        <textarea class="form-control"></textarea>
-                    </div>
-
-                </div>
-
-                <br>
-
-                <div class="row">
-
-                    <div class="col-lg-12" >
-
-                        <b>Je t'envoie une fiche client a remplir, Merci de me le remplir afin que je pousse avoir des informations prévisionnelles a jour, et que je pisse te conseiller au mieux, C'est vraiment très important.</b>
-                    </div>
-
-                </div>
-<br>
-                <div class="row">
-
-                    <div class="col-lg-3" style="float: right">
-
-                        <input type="submit" value="Valider" class="form-control btn-success" style="background-color: #5d9d9c">
-
-                    </div>
-
-                </div>
-
-            </div>
-</form>
+            </form>
         </div>
     </div>
 
     {% block javascripts %}
-        <script>
-            function getdatestart(val)
-            {
-                document.getElementById("daterendezvous").innerHTML=val.value;
-            }
-            function gethourstart(val)
-            {
-                document.getElementById("heurerendezvous").innerHTML=" á "+val.value;
-            }
-        </script>
+        <script type="text/javascript" src="{{ asset('assets/js/appointement.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/validation.js') }}"></script>
     {% endblock javascripts %}
 
 {% endblock %}

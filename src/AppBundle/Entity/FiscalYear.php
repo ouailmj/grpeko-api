@@ -41,6 +41,19 @@ class FiscalYear
 
     /**
      * @var Mode
+     * @var \DateTime
+     *
+     * @ORM\Column(name="startDate", type="datetimetz",nullable=true)
+     */
+    protected $startDate;
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="closeDate", type="datetimetz",nullable=true)
+     */
+    protected $closeDate;
+    /**
+     * @var string
      *
      * @ORM\OneToOne(targetEntity="Mode")
      * @ORM\JoinColumn(name="mode_id", referencedColumnName="id")
@@ -53,17 +66,29 @@ class FiscalYear
      *
      */
     private $legalForm;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer",nullable=true)
+     */
+    private $year;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="status", type="string", length=10,nullable=true)
+     */
+    private $status;
 
     /**
      * @var TaxSystem
-     * @ORM\ManyToOne(targetEntity="TaxSystem", inversedBy="fiscalYears")
+     * @ORM\ManyToOne(targetEntity="TaxSystem", inversedBy="fiscalYears",cascade={"persist","remove"})
      *
      */
     private $taxSystem;
 
     /**
      * @var VatSystem
-     * @ORM\ManyToOne(targetEntity="VatSystem", inversedBy="fiscalYears")
+     * @ORM\ManyToOne(targetEntity="VatSystem", inversedBy="fiscalYears",cascade={"persist","remove"})
      *
      */
     private $vatSystem;
@@ -85,7 +110,7 @@ class FiscalYear
 
     /**
      * @var Assignment
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Assignment", inversedBy="mainFiscalYear")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Assignment", inversedBy="mainFiscalYear",cascade={"persist"})
      *
      */
     private $mainAssignment;
@@ -97,44 +122,6 @@ class FiscalYear
      *
      */
     private $secondaryAssignments;
-
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="startDate", type="datetimetz",nullable=true)
-     */
-    protected $startDate;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="closeDate", type="datetimetz",nullable=true)
-     */
-    protected $closeDate;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="status", type="string", length=10,nullable=true)
-     */
-    protected $status;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(type="integer",nullable=true)
-     */
-    protected $year;
-
-    /**
-     * Regime d'imposition.
-     *
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $taxationRegime;
 
     /**
      * FiscalYear constructor.
@@ -311,7 +298,7 @@ class FiscalYear
     /**
      * @param \DateTime $startDate
      */
-    public function setStartDate(\DateTime $startDate)
+    public function setStartDate(\DateTime $startDate=null)
     {
         $this->startDate = $startDate;
     }
@@ -327,7 +314,7 @@ class FiscalYear
     /**
      * @param \DateTime $closeDate
      */
-    public function setCloseDate(\DateTime $closeDate)
+    public function setCloseDate(\DateTime $closeDate=null)
     {
         $this->closeDate = $closeDate;
     }
@@ -363,26 +350,5 @@ class FiscalYear
     {
         $this->year = $year;
     }
-
-    /**
-     * @return string
-     */
-    public function getTaxationRegime()
-    {
-        return $this->taxationRegime;
-    }
-
-    /**
-     * @param string $taxationRegime
-     */
-    public function setTaxationRegime(string $taxationRegime)
-    {
-        $this->taxationRegime = $taxationRegime;
-    }
-
-
-
-
-
 
 }

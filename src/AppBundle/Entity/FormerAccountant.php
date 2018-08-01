@@ -38,6 +38,30 @@ class FormerAccountant
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255,nullable=true)
+     */
+    private $name;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="civility", type="string", length=255,nullable=true)
+     */
+    private $civility;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="firstName", type="string", length=255,nullable=true)
+     */
+    private $firstName;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lastName", type="string", length=255,nullable=true)
+     */
+    private $lastName;
 
     /**
      * @var Customer [] | ArrayCollection
@@ -45,12 +69,80 @@ class FormerAccountant
      */
     private $customers;
 
+    public function __construct()
+    {
+        $this->customers = new ArrayCollection();
+    }
     /**
      * @return int
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName(string $name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCivility()
+    {
+        return $this->civility;
+    }
+
+    /**
+     * @param string $civility
+     */
+    public function setCivility(string $civility)
+    {
+        $this->civility = $civility;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * @param string $firstName
+     */
+    public function setFirstName(string $firstName)
+    {
+        $this->firstName = $firstName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @param string $lastName
+     */
+    public function setLastName(string $lastName)
+    {
+        $this->lastName = $lastName;
     }
 
 

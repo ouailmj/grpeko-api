@@ -1,10 +1,11 @@
 {% extends "mail/layout.html.twig" %}
 
 {% block content %}
-    Je fais suite a notre conversation et te confirme notre rdv téléphonique de {{ datedebut }} à {{ heuredebut }} <br>
-    Afin de préparer ce rdv, merci de me retourner cette <a href="{{absolute_url(path('model_upload'))}}">fiche patrimoniale remplie stp.</a><br>
+
+    Je fais suite a notre conversation et te confirme notre rdv téléphonique de {{ data["datedebut"] }} du {{ data["heuredebut"] }}h - {{ data["heurefin"] }}h <br>
+    Afin de préparer ce rdv, merci de me retourner cette <a href="{{ absolute_url(path('model_upload', { 'company': data["customerid"] })) }}">fiche patrimoniale remplie stp.</a><br>
     <h3>Authentification :</h3>
-    Email:{{ email }}<br>
-    Password:{{ password }}
+    Email:{{ data["email"] }}<br>
+    Password:{{ data["password"] }}
     <br>
 {% endblock %}

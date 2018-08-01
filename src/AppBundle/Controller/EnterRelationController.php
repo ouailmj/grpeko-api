@@ -14,14 +14,19 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Company;
 use AppBundle\Entity\Contact;
+use AppBundle\Entity\Customer;
 use AppBundle\Entity\EnterRelation;
 use AppBundle\Entity\Rendezvous;
 use AppBundle\Event\AppEvents;
 use AppBundle\Event\RendezVousCreatedEvent;
+use AppBundle\Form\RendezVousType;
 use AppBundle\Model\ClientManager;
 use AppBundle\Model\RendezVousManager;
+use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\FormError;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -33,14 +38,15 @@ class EnterRelationController extends BaseController
 {
     private $rendezVousManager;
     private $clientManager;
-
+    private $em;
     /**
      * EnterRelationController constructor.
      */
-    public function __construct(RendezVousManager $rendezVousManager, ClientManager $clientManager)
+    public function __construct(RendezVousManager $rendezVousManager, ClientManager $clientManager,EntityManagerInterface $em)
     {
-       // $this->rendezVousManager = $rendezVousManager;
-     //   $this->clientManager = $clientManager;
+        $this->rendezVousManager = $rendezVousManager;
+        $this->clientManager = $clientManager;
+        $this->em=$em;
     }
 
     /**
@@ -48,37 +54,45 @@ class EnterRelationController extends BaseController
      */
     public function rendezVousAction(Request $request)
     {
-       /* if ($request->isMethod('POST')) {
-            $nom = $request->get('lastname');
-            $email = $request->get('email');
+        if ($request->isMethod('POST')) {
 
-            $data = ['sujet' => $request->get('sujet'),
-                'datedebut' => $request->get('datedebut'),
-                'heuredebut' => $request->get('heuredebut'),
-                'datefin' => $request->get('datefin'),
-                'heurefin' => $request->get('heurefin'),
-            ];
-            $prospect = new Company();
-            $contact = new Contact();
-            $contact->setLastname($nom);
-            $contact->setEmail($email);
-            $prospect->addContact($contact);
+            $data=$this->getAppointementinfos($request);
+            $prospect = new Customer();
+            $prospect->addContact($this->newContact($data));
             $this->clientManager->createClient($prospect);
             $this->get('event_dispatcher')->dispatch(AppEvents::RENDEZVOUS_CREATED, new RendezVousCreatedEvent($prospect, $data));
             $this->addSuccessFlash();
         }
 
-        return $this->render('prisedeconnaissance/entree_relation/rendez_vous.html.twig', [
-        ]);*/
+        return $this->render('prisedeconnaissance/entree_relation/rendez_vous.html.twig');
     }
 
+    public function newContact(array $data)
+    {
+        $contact = new Contact();
+        $contact->setLastname($data["nom"]);
+        $contact->setEmail($data["email"]);
+        return $contact;
+    }
+
+    public function getAppointementinfos(Request $request)
+    {
+        return ['sujet' => $request->get('sujet'),
+            'datedebut' => $request->get('datedebut'),
+            'heuredebut' => $request->get('heuredebut'),
+            'heurefin' => $request->get('heurefin'),
+            'nom' => $request->get('lastname'),
+            'email' => $request->get('email')
+        ];
+    }
     /**
      *  @Route("/uploadmodel/{company}", name="model_upload")
      */
-    public function uploadmodel(Company $company, Request $request)
+    public function uploadmodel(Customer $company, Request $request)
     {
-      /*  $rendezvous = new Rendezvous();
-        $formrendezvous = $this->createForm('AppBundle\Form\RendezVousType', $rendezvous);
+
+        $rendezvous = new Rendezvous();
+        $formrendezvous = $this->createForm(RendezVousType::class, $rendezvous);
         $formrendezvous->handleRequest($request);
 
         //TODO: Utiliser les mimetypes pour savoir les types des fichiers
@@ -87,26 +101,35 @@ class EnterRelationController extends BaseController
             $cpt = 0;
             $fiche = $rendezvous->getFichePatrimoniale();
             $cin = $rendezvous->getCin();
-            if (!in_array($fiche->guessExtension(), ['xlsx', 'xlsx'], true)) {
-                $error = new FormError("merci d'exporter un fichier excel !");
-                $formrendezvous->get('FichePatrimoniale')->addError($error);
-                $cpt = 1;
-            }
-            if (!in_array($cin->guessExtension(), ['jpg', 'jpeg', 'png', 'pdf'], true)) {
-                $error = new FormError("merci d'exporter une image ou un fichier pdf !");
-                $formrendezvous->get('Cin')->addError($error);
-                $cpt = 1;
-            }
+            $this->checkFicheExtension($fiche,$formrendezvous);
+            $this->checkCinExtension($cin,$formrendezvous);
             if (0 === $cpt) {
-                $this->rendezVousManager->uploadFiles($company, $rendezvous, $this->getParameter('files_directory'));
-                $this->addSuccessFlash();
+                $test=$this->rendezVousManager->uploadFiles($company, $rendezvous, $this->getParameter('files_directory'));
+                $test==0? $this->addSuccessFlash() : $this->addErrorFlash();
             }
 
             $this->redirectToRoute('model_upload', ['company'=>$company->getId()]);
         }
 
         return $this->render('prisedeconnaissance/entree_relation/upload_model.html.twig', ['rendezvous' => $formrendezvous->createView()]);
-    */
+
+      }
+
+      public function checkFicheExtension($fiche,$formrendezvous)
+      {
+          if (!in_array($fiche->guessExtension(), ['xlsx', 'xlsx'], true)) {
+              $error = new FormError("merci d'exporter un fichier excel !");
+              $formrendezvous->get('FichePatrimoniale')->addError($error);
+              $cpt = 1;
+          }
+      }
+      public function checkCinExtension($cin,$formrendezvous)
+      {
+          if (!in_array($cin->guessExtension(), ['jpg', 'jpeg', 'png', 'pdf'], true)) {
+              $error = new FormError("merci d'exporter une image ou un fichier pdf !");
+              $formrendezvous->get('Cin')->addError($error);
+              $cpt = 1;
+          }
       }
 
     /**
@@ -122,7 +145,7 @@ class EnterRelationController extends BaseController
             $this->redirectToRoute('devis_new');
         }
 
-        return $this->render('prisedeconnaissance/entree_relation/new.html.twig', ['rendezvous' => $formrendezvous->createView()]);
+        return $this->render('prisedeconnaissance/entree_relwation/new.html.twig', ['rendezvous' => $formrendezvous->createView()]);
 
         }
 
@@ -134,23 +157,14 @@ class EnterRelationController extends BaseController
     /*
      * @Route("/edit/{id}", name="relation_edit")
      *
+     * @Route("/contactemailcheck", name="emailcontactcheck")
+     * @Method("GET")
      */
-
- /*   public function editAction(EnterRelation $relationentre,Request $request)
+    public function uniqueContactEmailCheck(Request $request)
     {
+        $email=$request->query->get('email');
+        $cpt=$this->em->getRepository(Contact::class)->findByEmail($email);
 
-        $formrelation = $this->createForm('AppBundle\Form\EntreRelationType', $relationentre);
-        $formrelation->handleRequest($request);
-
-        if ($formrelation->isSubmitted() && $formrelation->isValid()) {
-
-            $this->relationManager->createRelation($formrelation,$relationentre);
-            $this->addSuccessFlash();
-            return $this->redirectToRoute('relation_edit' , ['id' => $relationentre->getId()]);
-        }
-
-        return $this->render('prisedeconnaissance/entree_relation/edit.html.twig',
-                             array('formrelation' => $formrelation->createView()));
-
-    }*/
+        return new JsonResponse($cpt);
+    }
 }

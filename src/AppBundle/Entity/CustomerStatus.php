@@ -46,7 +46,14 @@ class CustomerStatus
      * @var Customer [] | ArrayCollection
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Customer", mappedBy="customerStatus")
      */
+
     private $customers;
+
+    public function __construct()
+    {
+        $this->customers = new ArrayCollection();
+    }
+
 
     /**
      * @var string
@@ -116,5 +123,9 @@ class CustomerStatus
         $this->status = $status;
     }
 
+    public function __toString()
+    {
+        return (empty($this->status)) ? "" : $this->status;
+    }
 
 }

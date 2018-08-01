@@ -18,9 +18,9 @@ class ClientListCest
 
     public function tryToTest(Login $I)
     {
-        $I->amOnPage(ClientList::$UrlListCLient);
+      /*  $I->amOnPage(ClientList::$UrlListCLient);
         $I->click(ClientList::$navigatelistclient);
         $I->seeCurrentUrlEquals(ClientList::$UrlListCLient);
-        $I->see(ClientList::$legalForm);
+        $I->see(ClientList::$legalForm);*/
     }
 }

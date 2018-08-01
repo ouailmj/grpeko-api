@@ -1,38 +1,414 @@
+AppBundle\Entity\Job:
+    job_{1..10}:
+        jobType: '@jobType_<current()>'
+        jobQuotations: ['@jobQuotation_<current()>']
+        startDate: <dateTime()>
+        endDate: <dateTime()>
+        closeDate: <dateTime()>
+        lastFiscalEndDate: <dateTime()>
+        firstFiscalStartDate: <dateTime()>
+
+AppBundle\Entity\jobType:
+    jobType_{1..10}:
+        jobs: ['@job_<current()>']
+
+AppBundle\Entity\jobQuotation:
+    jobQuotation_{1..10}:
+        job: '@job_<current()>'
+        customer: '@customer_<current()>'
+
+AppBundle\Entity\Calendar:
+    calendar_{1..10}:
+        customer: '@customer_<current()>'
+
+AppBundle\Entity\CustomerStatus:
+    customer_status_{1..10}:
+        customers: ['@customer_<current()>']
+        status: customer
+
+AppBundle\Entity\customerState:
+    customer_state_{1..10}:
+        customers: ['@customer_<current()>']
+
+AppBundle\Entity\FormerAccountant:
+    former_accountant_{1..10}:
+        civility: <randomElement(['Mr','Mme','Mlle'])>
+        firstname: '<firstname()>'
+        lastname: '<lastname()>'
+        customers: ['@customer_<current()>']
+
+AppBundle\Entity\Bank:
+    bank_{1..10}:
+        bankAccounts: ['@bank_accounts_<current()>']
+
+AppBundle\Entity\journal:
+    journal_{1..10}:
+        bankAccounts: ['@bank_accounts_<current()>']
+
+AppBundle\Entity\SentToCustomerStatus:
+    sent_Customer_status_{1..10}:
+        bankAccounts: ['@bank_accounts_<current()>']
+
+AppBundle\Entity\CEBProvider:
+    ceb_provider_{1..10}:
+        cebMandates: ['@ceb_mandate_<current()>']
+
+AppBundle\Entity\CEBMandate:
+    ceb_mandate_{1..10}:
+        bankAccount: '@bank_accounts_<current()>'
+        cebProvider: '@ceb_provider_<current()>'
+
+AppBundle\Entity\bankAccount:
+    bank_accounts_{1..10}:
+        customer: '@customer_<current()>'
+        bank: '@bank_<current()>'
+        journal: '@journal_<current()>'
+        SentToCustomerStatus: '@sent_Customer_status_<current()>'
+        cebMandate: '@ceb_mandate_<current()>'
+
+
 AppBundle\Entity\JobPosition:
-    collaborateur:
-        name: 'Collaborateur'
-    ec:
+    collaborateur_{1..10}:
+        employees: ['@employeeadmin_1']
+        name: 'collaborateur'
+    ec_{1..10}:
+        employees: ['@employeeuser_<current()>']
         name: 'Expert Comptable'
-    cc:
+    cc_{1..10}:
+        employees: ['@employeeadmin_1']
         name: 'Commissaire aux comptes'
 
-AppBundle\Entity\Address:
-    addresscompany_{0..100}:
+AppBundle\Entity\Assignment:
+    assignment_{1..10}:
+        employee: '@employeeadmin_1'
+        mainFiscalYear: '@fiscal_year_<current()>'
+
+AppBundle\Entity\ContactStatus:
+    contactstatus_{1..10}:
+        contact: '@contact_<current()>'
+        customer: '@customer_<current()>'
+
+AppBundle\Entity\Contact:
+    contact_{1..10}:
+        customer: '@customer_<current()>'
+        contactStatus: '@contactstatus_<current()>'
+        civility: 'MR'
+        firstname: '<firstname()>'
+        lastname: '<lastname()>'
+        birthCountry: <randomElement(['France','Germany','Canada','Japan','USA','Thailand','Australie','Mexico'])>
+        nationality:  <randomElement(['France','Germany','Canada','Japan','USA','Thailand','Australie','Mexico'])>
+        birthPlace: <randomElement(['Paris','Berlin','Torronto','Tokyo','New York','Bangkok','Sydney','Mexico'])>
+        partNumber:  '<numberBetween(1,100)>'
+        partNumberPercent:  '<numberBetween(1,50)>'
+        childrenNumber: '<numberBetween(1,5)>'
+        email (unique): <email()>
+        adresse: '<address()>'
         city: '<city()>'
-        postalCode: '<postcode()>'
-        description: '<address()>'
-        email: '<email()>'
+        country: <randomElement(['France','Germany','Canada','Japan','USA','Thailand','Australie','Mexico'])>
+        annualIncome:  '<numberBetween(1000000,100000000)>'
+        dateStartJobPole: <dateTime()>
+        dateEndJobPole: <dateTime()>
+        birthDate: <dateTime('-10 years')>
+        phoneNumber: '<e164PhoneNumber()>'
+        faxNumber: '<e164PhoneNumber()>'
+        postal_code: '<postcode()>'
+#        $birthDept: customer_<current()>
+#        $mandaQuality: customer_<current()>
+#        $mandaSocial: customer_<current()>
+#        $tns: customer_<current()>
+#        $otherCompany: customer_<current()>
+#        $legalForm: customer_<current()>
+#        $socialCapital: customer_<current()>
+#        $representative: customer_<current()>
+#        $representativeQuality: customer_<current()>
+#        $siren: customer_<current()>
+#        $intermediate: customer_<current()>
+#        $mandataire: customer_<current()>
+#        $autoEmailReceipt: customer_<current()>
+#        $adressenumber: customer_<current()>
+#        $adresse: customer_<current()>
+#        $city: customer_<current()>
+#        $country: customer_<current()>
+#        $adresse: $ekoNews
+#        $ekoNews:
+#        $ekoConseils: $ekoNews
+#        $anniversaire: $ekoNews
+#        $fetes: $ekoNews
+#        $maritalSituation: $ekoNews
+#        $propreSociety: $ekoNews
+#        $annualIncome: $ekoNews
+#        $owner: $ekoNews
+#        $husbandJob: $ekoNews
+#        $actifsPlacement: $ekoNews
+#        $passifs: $ekoNews
+#        $previousSituation: $ekoNews
+#        $accre: $ekoNews
+#        $AR CE_ARE: $ekoNews
+
+AppBundle\Entity\AccessCode:
+    accesscode_{1..10}:
+        customer: '@customer_<current()>'
+        accessCodeCategory: '@accesscodecategory_<current()>'
+
+AppBundle\Entity\AccessCodeCategory:
+    accesscodecategory_{1..10}:
+        accessCodes: ['@accesscode_<current()>']
 
 AppBundle\Entity\User:
-    administrator:
+    administrator_1:
         username: admin
         email: admin@ekoapp.fr
         password: '\$2y\$13\$X8i.jsXKdDib97tfshryNuTSLLWnYT8tnWY/vM7sOjtDBDdo7SYuO' # f%/R4Uk#](wUvM'V
         enabled: true
         roles: ['ROLE_SUPER_ADMIN']
-    user:
+    user_1:
+        username (unique): <username()>
+        email (unique): <email()>
+        password: '\$2y\$13\$X8i.jsXKdDib97tfshryNuTSLLWnYT8tnWY/vM7sOjtDBDdo7SYuO' # f%/R4Uk#](wUvM'V
+        enabled: true
+        roles: ['ROLE_USER']
+    user_2:
+        username (unique): <username()>
+        email (unique): <email()>
+        password: '\$2y\$13\$X8i.jsXKdDib97tfshryNuTSLLWnYT8tnWY/vM7sOjtDBDdo7SYuO' # f%/R4Uk#](wUvM'V
+        enabled: true
+        roles: ['ROLE_USER']
+    user_3:
+        username (unique): <username()>
+        email (unique): <email()>
+        password: '\$2y\$13\$X8i.jsXKdDib97tfshryNuTSLLWnYT8tnWY/vM7sOjtDBDdo7SYuO' # f%/R4Uk#](wUvM'V
+        enabled: true
+        roles: ['ROLE_USER']
+    user_4:
+        username (unique): <username()>
+        email (unique): <email()>
+        password: '\$2y\$13\$X8i.jsXKdDib97tfshryNuTSLLWnYT8tnWY/vM7sOjtDBDdo7SYuO' # f%/R4Uk#](wUvM'V
+        enabled: <randomElement([true, false])>
+        roles: ['ROLE_USER']
+    user_5:
+        username (unique): <username()>
+        email (unique): <email()>
+        password: '\$2y\$13\$X8i.jsXKdDib97tfshryNuTSLLWnYT8tnWY/vM7sOjtDBDdo7SYuO' # f%/R4Uk#](wUvM'V
+        enabled: <randomElement([true, false])>
+        roles: ['ROLE_USER']
+    user_6:
+        username (unique): <username()>
+        email (unique): <email()>
+        password: '\$2y\$13\$X8i.jsXKdDib97tfshryNuTSLLWnYT8tnWY/vM7sOjtDBDdo7SYuO' # f%/R4Uk#](wUvM'V
+        enabled: <randomElement([true, false])>
+        roles: ['ROLE_USER']
+    user_7:
+        username (unique): <username()>
+        email (unique): <email()>
+        password: '\$2y\$13\$X8i.jsXKdDib97tfshryNuTSLLWnYT8tnWY/vM7sOjtDBDdo7SYuO' # f%/R4Uk#](wUvM'V
+        enabled: <randomElement([true, false])>
+        roles: ['ROLE_USER']
+    user_8:
+        username (unique): <username()>
+        email (unique): <email()>
+        password: '\$2y\$13\$X8i.jsXKdDib97tfshryNuTSLLWnYT8tnWY/vM7sOjtDBDdo7SYuO' # f%/R4Uk#](wUvM'V
+        enabled: <randomElement([true, false])>
+        roles: ['ROLE_USER']
+    user_9:
+        username (unique): <username()>
+        email (unique): <email()>
+        password: '\$2y\$13\$X8i.jsXKdDib97tfshryNuTSLLWnYT8tnWY/vM7sOjtDBDdo7SYuO' # f%/R4Uk#](wUvM'V
+        enabled: <randomElement([true, false])>
+        roles: ['ROLE_USER']
+    user_10:
+        username (unique): <username()>
+        email (unique): <email()>
+        password: '\$2y\$13\$X8i.jsXKdDib97tfshryNuTSLLWnYT8tnWY/vM7sOjtDBDdo7SYuO' # f%/R4Uk#](wUvM'V
+        enabled: <randomElement([true, false])>
+        roles: ['ROLE_USER']
+
+########################################################################################################
+
+AppBundle\Entity\Customer:
+    customer_{1..10}:
+        apeCode: '@apecode_<current()>'
+        legalForm: '@LegalForm_<current()>'
+        taxSystem: '@TaxSystem_<current()>'
+        vatSystem: '@VatSystem_<current()>'
+        oldAddresses: ['@addresscompany_<current()>']
+        currentAddress: '@addresscompany_<current()>'
+        siegeAddress : '@addresscompany_<current()>'
+        legalName: Multi Information Technology
+        phoneNumber: '<e164PhoneNumber()>'
+        faxNumber: '<e164PhoneNumber()>'
+        otherPhoneNumbers: ['<e164PhoneNumber()>']
+        postalCode: '<postcode()>'
+        taxationRegime: TaxationRegime
+        mainActivity: Service Informatique
+        socialReason: '<company()>'
+        code: '<numberBetween(1, 100)>'
+        relation: Relation
+        siretNumber: '<numberBetween(1000, 100000)>'
+        intraCommunityVAT: '<randomFloat(2,0,100)>'
+        sirenNumber: '<numberBetween(1000, 100000)>'
+        nbActions: '<numberBetween(1,100)>'
+        capitalSocial: '<randomNumber(8)>'
+        legalEntity: LegalEntity
+        calendar: '@calendar_<current()>'
+        user: '@user_<current()>'
+        accessCodes: ['@accesscode_<current()>']
+        contactsStatus: ['@contactstatus_<current()>']
+        fiscalYears: ['@fiscal_year_<current()>']
+        customerState: '@customer_state_<current()>'
+        customerStatus: '@customer_status_<current()>'
+        formerAccountant: '@former_accountant_<current()>'
+        bankAccounts: ['@bank_accounts_<current()>']
+        #jobQuotations: ['@jobQuotation_<current()>']
+
+#AppBundle\Entity\CommissionRate:
+#    CommissionRate_0:
+#        year: 2018
+#        employee: '@employee_0'
+
+#AppBundle\Entity\Group:
+    #group_{1..10}:
+        #employees: ['@employee_<current()>']
+
+AppBundle\Entity\Invoice:
+    invoice_{1..10}:
+        address: '@addresscompany_<current()>'
+        owns: ['@Own_<current()>']
+        payments: ['@payment_<current()>']
+       # invoiceLines: ['@invoiceLine_<current()>']
+
+AppBundle\Entity\Payment:
+    payment_{1..10}:
+        invoice: '@invoice_<current()>'
+        paymentMode: '@PaymentMode_<current()>'
+
+AppBundle\Entity\PaymentMode:
+    PaymentMode_{1..10}:
+        payments: ['@payment_<current()>']
+
+AppBundle\Entity\InvoiceLine:
+    invoiceLine_{1..10}:
+        invoice: '@invoice_<current()>'
+        price: '<numberBetween(100,9000)>'
+
+AppBundle\Entity\Own:
+    Own_{1..10}:
+        invoice: '@invoice_*'
+
+AppBundle\Entity\ECQuotation:
+    ECQuotation_{1..10}:
+        nbPurchaseInvoicPerYear: '<numberBetween(50,1000)>'
+        nbSalesInvoicesPerYear: '<numberBetween(40,1500)>'
+        quotationLines: ['@quotationLines_<current()>']
+        customer: '@customer_<current()>'
+        job: '@job_<current()>'
+
+AppBundle\Entity\QuotationLine:
+    quotationLines_{1..10}:
+        ecQuotation: '@ECQuotation_<current()>'
+        mission: '@mission_comptable_<current()>'
+
+AppBundle\Entity\APECode:
+    apecode_{1..10}:
+        name: '<numberBetween(100, 1000)>'
+        companies: ['@customer_<current()>']
+
+AppBundle\Entity\LegalForm:
+    LegalForm_{1..10}:
+        fiscalYears: ['@fiscal_year_<current()>']
+        companies: ['@customer_<current()>']
+
+AppBundle\Entity\TaxSystem:
+    TaxSystem_{1..10}:
+        fiscalYears: ['@fiscal_year_<current()>']
+        companies: ['@customer_<current()>']
+
+AppBundle\Entity\VatSystem:
+    VatSystem_{1..10}:
+        fiscalYears: ['@fiscal_year_<current()>']
+        companies: ['@customer_<current()>']
+
+AppBundle\Entity\JobPosition:
+    collaborateur_{1..10}:
+        name: 'collaborateur'
+    ec_{1..10}:
+        name: 'Expert Comptable'
+    cc_{1..10}:
+        name: 'Commissaire aux comptes'
+
+AppBundle\Entity\Address:
+    addresscompany_{0..10}:
+        city: '<city()>'
+        postalCode: '<postcode()>'
+        description: '<address()>'
+        email: '<email()>'
+    addressfiscal_{0..10}:
+            city: '<city()>'
+            postalCode: '<postcode()>'
+            description: '<address()>'
+            email: '<email()>'
+
+AppBundle\Entity\User:
+    administrator_1:
+        username: admin
+        email: admin@ekoapp.fr
+        password: '\$2y\$13\$X8i.jsXKdDib97tfshryNuTSLLWnYT8tnWY/vM7sOjtDBDdo7SYuO' # f%/R4Uk#](wUvM'V
+        enabled: true
+        roles: ['ROLE_SUPER_ADMIN']
+    user_1:
         username: collaborateur
-        email: collaborateur@ekoapp.fr
+        email (unique): <email()>
         password: '\$2y\$13\$X8i.jsXKdDib97tfshryNuTSLLWnYT8tnWY/vM7sOjtDBDdo7SYuO' # f%/R4Uk#](wUvM'V
         enabled: true
         roles: ['ROLE_USER']
-    user_client:
+    user_2:
+        username: collaborateur
+        email (unique): <email()>
+        password: '\$2y\$13\$X8i.jsXKdDib97tfshryNuTSLLWnYT8tnWY/vM7sOjtDBDdo7SYuO' # f%/R4Uk#](wUvM'V
+        enabled: true
+        roles: ['ROLE_USER']
+    user_3:
         username: client
-        email: client@ekoapp.fr
+        email (unique): <email()>
         password: '\$2y\$13\$X8i.jsXKdDib97tfshryNuTSLLWnYT8tnWY/vM7sOjtDBDdo7SYuO' # f%/R4Uk#](wUvM'V
         enabled: true
         roles: ['ROLE_USER']
-    useraccount_{0..50}:
+    user_4:
+        username (unique): <username()>
+        email (unique): <email()>
+        password: '\$2y\$13\$X8i.jsXKdDib97tfshryNuTSLLWnYT8tnWY/vM7sOjtDBDdo7SYuO' # f%/R4Uk#](wUvM'V
+        enabled: <randomElement([true, false])>
+        roles: ['ROLE_USER']
+    user_5:
+        username (unique): <username()>
+        email (unique): <email()>
+        password: '\$2y\$13\$X8i.jsXKdDib97tfshryNuTSLLWnYT8tnWY/vM7sOjtDBDdo7SYuO' # f%/R4Uk#](wUvM'V
+        enabled: <randomElement([true, false])>
+        roles: ['ROLE_USER']
+    user_6:
+        username (unique): <username()>
+        email (unique): <email()>
+        password: '\$2y\$13\$X8i.jsXKdDib97tfshryNuTSLLWnYT8tnWY/vM7sOjtDBDdo7SYuO' # f%/R4Uk#](wUvM'V
+        enabled: <randomElement([true, false])>
+        roles: ['ROLE_USER']
+    user_7:
+        username (unique): <username()>
+        email (unique): <email()>
+        password: '\$2y\$13\$X8i.jsXKdDib97tfshryNuTSLLWnYT8tnWY/vM7sOjtDBDdo7SYuO' # f%/R4Uk#](wUvM'V
+        enabled: <randomElement([true, false])>
+        roles: ['ROLE_USER']
+    user_8:
+        username (unique): <username()>
+        email (unique): <email()>
+        password: '\$2y\$13\$X8i.jsXKdDib97tfshryNuTSLLWnYT8tnWY/vM7sOjtDBDdo7SYuO' # f%/R4Uk#](wUvM'V
+        enabled: <randomElement([true, false])>
+        roles: ['ROLE_USER']
+    user_9:
+        username (unique): <username()>
+        email (unique): <email()>
+        password: '\$2y\$13\$X8i.jsXKdDib97tfshryNuTSLLWnYT8tnWY/vM7sOjtDBDdo7SYuO' # f%/R4Uk#](wUvM'V
+        enabled: <randomElement([true, false])>
+        roles: ['ROLE_USER']
+    user_10:
         username (unique): <username()>
         email (unique): <email()>
         password: '\$2y\$13\$X8i.jsXKdDib97tfshryNuTSLLWnYT8tnWY/vM7sOjtDBDdo7SYuO' # f%/R4Uk#](wUvM'V
@@ -40,33 +416,24 @@ AppBundle\Entity\User:
         roles: ['ROLE_USER']
 
 AppBundle\Entity\Employee:
-    employeeadmin:
+    employeeadmin_1:
         firstName: '<firstName()>'
         lastName: '<lastName()>'
         phoneNumber: '<e164PhoneNumber()>'
         faxNumber: '<e164PhoneNumber()>'
         postalCode: '<postcode()>'
-        user: '@administrator'
+        user: '@administrator_1'
         initials: 'ADMIN'
-    employeeuser:
+    employeeuser_{1..10}:
         firstName: '<firstName()>'
         lastName: '<lastName()>'
         phoneNumber: '<e164PhoneNumber()>'
         faxNumber: '<e164PhoneNumber()>'
         postalCode: '<postcode()>'
-        user: '@user'
-        manager: '@employeeadmin'
+        user: '@user_<current()>'
+        manager: '@employeeadmin_1'
         initials: 'COL'
-        jobPositions: ['@collaborateur']
-    employee_{0..50}:
-        firstName: '<firstName()>'
-        lastName: '<lastName()>'
-        phoneNumber: '<e164PhoneNumber()>'
-        faxNumber: '<e164PhoneNumber()>'
-        postalCode: '<postcode()>'
-        user: '@useraccount_<current()>'
-        manager: '@employee_*'
-        jobPositions: ['@collaborateur']
+        jobPositions: ['@collaborateur_1']
 
 AppBundle\Entity\TypeMission:
     mission_comptable:
@@ -77,6 +444,7 @@ AppBundle\Entity\TypeMission:
         type: 'Télédéclaration'
     mission_juridique:
         type: 'Mission juridique'
+
 
 AppBundle\Entity\Mission:
     mission_comptable_1:
@@ -89,7 +457,7 @@ AppBundle\Entity\Mission:
         unitTime: 1.00
         fixedAmount: null
     mission_comptable_2:
-        typeMission: '@mission_comptable'
+        typeMission: '@Tmission_comptable_2'
         price: 510
         title: 'Montage des tableaux de notes de frais'
         isCalculateFromTheTimeRetained: false
@@ -97,7 +465,7 @@ AppBundle\Entity\Mission:
         unitTime: 0.50
         fixedAmount: null
     mission_comptable_3:
-        typeMission: '@mission_comptable'
+        typeMission: '@Tmission_comptable_3'
         price: 90
         title: 'Traitement des immobilisations'
         isCalculateFromTheTimeRetained: false
@@ -105,7 +473,7 @@ AppBundle\Entity\Mission:
         unitTime: 0.25
         fixedAmount: null
     mission_comptable_4:
-        typeMission: '@mission_comptable'
+        typeMission: '@Tmission_comptable_4'
         price: 70
         title: 'Analyse des fichiers de données'
         mode: '@transmission_mode_1'
@@ -114,7 +482,7 @@ AppBundle\Entity\Mission:
         unitTime: 0.50
         fixedAmount: null
     mission_comptable_5:
-        typeMission: '@mission_comptable'
+        typeMission: '@Tmission_comptable_5'
         price: 66
         title: 'Situation'
         isCalculateFromTheTimeRetained: false
@@ -122,7 +490,7 @@ AppBundle\Entity\Mission:
         unitTime: 1.00
         fixedAmount: null
     mission_comptable_6:
-        typeMission: '@mission_comptable'
+        typeMission: '@Tmission_comptable_6'
         price: 40
         title: 'Révision comptabilité client'
         isCalculateFromTheTimeRetained: false
@@ -130,7 +498,7 @@ AppBundle\Entity\Mission:
         unitTime: 2.00
         fixedAmount: null
     mission_comptable_7:
-        typeMission: '@mission_comptable'
+        typeMission: '@Tmission_comptable_7'
         price: 99
         title: 'Conseils'
         isCalculateFromTheTimeRetained: false
@@ -161,7 +529,7 @@ AppBundle\Entity\Mission:
         unitTime: 0.25
         fixedAmount: null
     mission_fiscale_2:
-        typeMission: '@mission_fiscale'
+        typeMission: '@Tmission_fiscale_2'
         price: 105
         title: 'TVA REELLE'
         isCalculateFromTheTimeRetained: false
@@ -169,7 +537,7 @@ AppBundle\Entity\Mission:
         unitTime: 0.75
         fixedAmount: null
     mission_fiscale_3:
-        typeMission: '@mission_fiscale'
+        typeMission: '@Tmission_fiscale_3'
         price: 15
         title: 'ACOMPTE IS'
         isCalculateFromTheTimeRetained: false
@@ -177,7 +545,7 @@ AppBundle\Entity\Mission:
         unitTime: 0.25
         fixedAmount: null
     mission_fiscale_4:
-        typeMission: '@mission_fiscale'
+        typeMission: '@Tmission_fiscale_4'
         price: 85
         title: 'IMPOT SUR LES SOCIETES'
         isCalculateFromTheTimeRetained: false
@@ -185,7 +553,7 @@ AppBundle\Entity\Mission:
         unitTime: 0.50
         fixedAmount: null
     mission_fiscale_5:
-        typeMission: '@mission_fiscale'
+        typeMission: '@Tmission_fiscale_5'
         price: 63
         title: 'TVTS'
         isCalculateFromTheTimeRetained: false
@@ -193,7 +561,7 @@ AppBundle\Entity\Mission:
         unitTime: 0.25
         fixedAmount: null
     mission_fiscale_6:
-        typeMission: '@mission_fiscale'
+        typeMission: '@Tmission_fiscale_6'
         price: 15
         title: 'Retenue à la source dividendes'
         isCalculateFromTheTimeRetained: false
@@ -201,7 +569,7 @@ AppBundle\Entity\Mission:
         unitTime: 0.25
         fixedAmount: null
     mission_fiscale_7:
-        typeMission: '@mission_fiscale'
+        typeMission: '@Tmission_fiscale_7'
         price: 59
         title: 'CFE'
         isCalculateFromTheTimeRetained: false
@@ -209,7 +577,7 @@ AppBundle\Entity\Mission:
         unitTime: 0.25
         fixedAmount: null
     mission_fiscale_8:
-        typeMission: '@mission_fiscale'
+        typeMission: '@Tmission_fiscale_8'
         price: 590
         title: 'CVAE'
         isCalculateFromTheTimeRetained: false
@@ -217,7 +585,7 @@ AppBundle\Entity\Mission:
         unitTime: 0.25
         fixedAmount: null
     mission_fiscale_9:
-        typeMission: '@mission_fiscale'
+        typeMission: '@Tmission_fiscale_9'
         price: 54
         title: 'DEB / IFU'
         isCalculateFromTheTimeRetained: false
@@ -225,7 +593,7 @@ AppBundle\Entity\Mission:
         unitTime: 0.25
         fixedAmount: null
     mission_fiscale_10:
-        typeMission: '@mission_fiscale'
+        typeMission: '@Tmission_fiscale_10'
         price: 78
         title: 'DAS2T'
         isCalculateFromTheTimeRetained: false
@@ -265,7 +633,7 @@ AppBundle\Entity\Mission:
         unitTime: 0.25
         fixedAmount: null
     mission_juridique_2:
-        typeMission: '@mission_juridique'
+        typeMission: '@Tmission_juridique_2'
         price: 56
         title: 'PV AGO SARL'
         isCalculateFromTheTimeRetained: false
@@ -273,7 +641,7 @@ AppBundle\Entity\Mission:
         unitTime: 4.00
         fixedAmount: null
     mission_juridique_3:
-        typeMission: '@mission_juridique'
+        typeMission: '@Tmission_juridique_3'
         price: 56
         title: 'PV AGO SCI'
         isCalculateFromTheTimeRetained: false
@@ -281,7 +649,7 @@ AppBundle\Entity\Mission:
         unitTime: 5.00
         fixedAmount: null
     mission_juridique_4:
-        typeMission: '@mission_juridique'
+        typeMission: '@Tmission_juridique_4'
         price: 56
         title: 'PV AGO SAS'
         isCalculateFromTheTimeRetained: false
@@ -289,7 +657,7 @@ AppBundle\Entity\Mission:
         unitTime: 7.00
         fixedAmount: null
     mission_juridique_5:
-        typeMission: '@mission_juridique'
+        typeMission: '@Tmission_juridique_5'
         price: 56
         title: 'PV AGO SA'
         isCalculateFromTheTimeRetained: false
@@ -297,7 +665,7 @@ AppBundle\Entity\Mission:
         unitTime: 8.00
         fixedAmount: null
     mission_juridique_6:
-        typeMission: '@mission_juridique'
+        typeMission: '@Tmission_juridique_6'
         price: 56
         title: 'PV AGE EURL'
         isCalculateFromTheTimeRetained: false
@@ -305,11 +673,11 @@ AppBundle\Entity\Mission:
         unitTime: 4.00
         fixedAmount: null
     mission_juridique_7:
-        typeMission: '@mission_juridique'
+        typeMission: '@Tmission_juridique_7'
         price: 56
         title: 'PV AGE SARL'
     mission_juridique_8:
-        typeMission: '@mission_juridique'
+        typeMission: '@Tmission_juridique_8'
         price: 56
         title: 'PV AGE SCI'
         isCalculateFromTheTimeRetained: false
@@ -317,7 +685,7 @@ AppBundle\Entity\Mission:
         unitTime: 5.00
         fixedAmount: null
     mission_juridique_9:
-        typeMission: '@mission_juridique'
+        typeMission: '@Tmission_juridique_9'
         price: 56
         title: 'PV AGE SAS'
         isCalculateFromTheTimeRetained: false
@@ -325,7 +693,7 @@ AppBundle\Entity\Mission:
         unitTime: 7.00
         fixedAmount: null
     mission_juridique_10:
-        typeMission: '@mission_juridique'
+        typeMission: '@Tmission_juridique_10'
         price: 56
         title: 'PV AGE SA'
         isCalculateFromTheTimeRetained: false
@@ -349,26 +717,19 @@ AppBundle\Entity\Mission:
         unitTime: 1.00
         fixedAmount: null
 
+AppBundle\Entity\QuotationSetting:
+    quotation_setting_0:
+        coefficientNumberWritingByInvoice: 2
+        numberWritingPerMinutes: 2
+        
 AppBundle\Entity\Mode:
-    transmission_mode_0:
-        price: 50
-        mode: Papier
-        validDate: <dateTime('+1 years')>
-    transmission_mode_1:
-        price: 35
-        mode: Fichier Excel
-        validDate: <dateTime('+1 years')>
-    transmission_mode_2:
-        price: 35
-        mode: Scan
-        validDate: <dateTime('+1 years')>
-    transmission_mode_3:
+    transmission_mode_{1..10}:
         price: 80
-        mode: Sur Place
-        validDate: <dateTime('+1 years')>
+        mode: <randomElement(['Sur Place','Word','Scan','Fichier Excel'])>
+        valid_date: <dateTime('+4 years')>
 
 AppBundle\Entity\Job:
-    mission_purchase_0:
+    mission_purchase_{1..10}:
         closeDate: <dateTime('+2 years')>
         endDate: <dateTime('+3 years')>
         startDate: <dateTime('+1 years')>
@@ -381,44 +742,38 @@ AppBundle\Entity\Job:
         lastFiscalEndDate: <dateTime('+6 years')>
         firstFiscalStartDate: <dateTime('+2 years')>
 
-AppBundle\Entity\CustomerStatus:
-    customer_status_0:
-        status: customer
-
-AppBundle\Entity\QuotationSetting:
-    quotation_setting_0:
-        coefficientNumberWritingByInvoice: 2
-        numberWritingPerMinutes: 2
-
-AppBundle\Entity\Customer:
-    customer_account_0:
-        name: 'Jhon'
-        firstName: 'Jhon'
-        lastName: 'lannister'
-        birthDate: <dateTime('-32 years')>
-        deathDate: <dateTime('+30 years')>
-        phoneNumber: 0635293668
-        customerStatus: '@customer_status_0'
-        user: '@user_client'
-        legalName: Multi Information Technology
-        phoneNumber: 0528365698
-        postalCode: 41000
-        mainActivity: Service Informatique
-        relation: ''
-        siretNumber: 000000
-        nbActions: 58
-        capitalSocial: 60000000
 
 AppBundle\Entity\FiscalYear:
-    fiscal_year_0:
+    fiscal_year_{1..10}:
         startDate: <dateTime()>
         closeDate: <dateTime('+1 years')>
         status: SARL
         year: 2018
-        customer: '@customer_account_0'
-        mainAssignment: '@assignment_0'
+        customer: '@customer_<current()>'
+        mainAssignment: '@assignment_<current()>'
+        mode: '@transmission_mode_<current()>'
+        legalForm: '@LegalForm_<current()>'
+        taxSystem: '@TaxSystem_<current()>'
+        vatSystem: '@VatSystem_<current()>'
+        address : '@addressfiscal_<current()>'
 
 AppBundle\Entity\Assignment:
-    assignment_0:
-        employee: '@employeeadmin'
-        mainFiscalYear: '@fiscal_year_0'
+    assignment_{1..10}:
+        employee: '@employeeadmin_1>'
+        mainFiscalYear: '@fiscal_year_<current()>'
+        secondaryFiscalYear: '@fiscal_year_<current()>'
+
+AppBundle\Entity\Child:
+    child_{1..5}:
+        firstName: '<firstname()>'
+        lastName: '<lastname()>'
+        birthDate: <dateTime('-5 years')>
+        #deathDate: '@fiscal_year_<current()>'
+        age: '<numberBetween(1,60)>'
+        contact: '@contact_<current()>'
+
+AppBundle\Entity\Wedding:
+    wedding_{1..10}:
+        startsDate: <dateTime()>
+        endsDate: <dateTime('+2 years')>
+        contact: '@contact_<current()>'

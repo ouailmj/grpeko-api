@@ -67,6 +67,13 @@ class Address
     protected $email;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetimetz", nullable=true)
+     */
+    protected $leftAt = null;
+
+    /**
      * @return string
      */
     public function getDescription()
@@ -139,5 +146,18 @@ class Address
         return $this->id;
     }
 
-
+    /**
+     * @return \DateTime
+     */
+    public function getLeftAt()
+    {
+        return $this->leftAt;
+    }
+    /**
+     * @param \DateTime $leftAt
+     */
+    public function setLeftAt(\DateTime $leftAt)
+    {
+        $this->leftAt = $leftAt;
+    }
 }

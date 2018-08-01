@@ -41,7 +41,7 @@ class Payment
     /**
      * @var Invoice
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Invoice", inversedBy="payments")
+     * @ORM\ManyToOne(targetEntity="Invoice", inversedBy="payments")
      */
     private $invoice;
 
@@ -70,7 +70,7 @@ class Payment
     }
 
     /**
-     * @param Invoice $invoice
+     * @param Invoices $invoice
      */
     public function setInvoice(Invoice $invoice)
     {

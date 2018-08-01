@@ -48,7 +48,12 @@ class ContactStatus
      * @ORM\ManyToOne(targetEntity="Customer", inversedBy="contactsStatus")
      */
     private $customer;
-
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="status", type="string", length=255,nullable=true)
+     */
+    private $status;
     /**
      * @return int
      */

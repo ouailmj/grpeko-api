@@ -14,6 +14,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -87,7 +88,7 @@ class Customer extends Company
 
     /**
      * @var JobQuotation
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\JobQuotation", mappedBy="customer")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\JobQuotation", mappedBy="customer",cascade={"persist","remove"})
      */
     private $jobQuotations;
 
@@ -99,7 +100,7 @@ class Customer extends Company
 
     /**
      * @var User
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User",cascade={"persist","remove"})
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
@@ -107,46 +108,59 @@ class Customer extends Company
     /**
      * @var AccessCode [] | ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\AccessCode", mappedBy="customer")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\AccessCode", mappedBy="customer",cascade={"persist","remove"})
      */
     private $accessCodes;
 
     /**
      * @var ContactStatus [] | ArrayCollection
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\ContactStatus", mappedBy="customer")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\ContactStatus", mappedBy="customer",cascade={"persist","remove"})
      */
     private $contactsStatus;
 
     /**
      * @var FiscalYear [] | ArrayCollection
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\FiscalYear", mappedBy="customer")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\FiscalYear", mappedBy="customer",cascade={"persist","remove"})
      */
     private $fiscalYears;
 
     /**
      * @var CustomerState
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CustomerState", inversedBy="customers")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CustomerState", inversedBy="customers",cascade={"persist","remove"})
      */
     private $customerState;
 
     /**
      * @var CustomerStatus
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CustomerStatus", inversedBy="customers")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CustomerStatus", inversedBy="customers",cascade={"persist","remove"})
      */
     private $customerStatus;
 
     /**
      * @var FormerAccountant
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\FormerAccountant", inversedBy="customers")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\FormerAccountant", inversedBy="customers",cascade={"persist","remove"}))
      */
     private $formerAccountant;
 
     /**
      * @var BankAccount [] | ArrayCollection
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\BankAccount", mappedBy="customer")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\BankAccount", mappedBy="customer",cascade={"persist","remove"})
      */
     private $bankAccounts;
 
+    /**
+     * @var Contact[] | ArrayCollection
+     * @Assert\Valid
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Contact" ,mappedBy="customer" ,cascade={"persist", "remove"})
+     */
+    private $contacts;
+
+    /**
+     * @var Rendezvous
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Rendezvous", mappedBy="customer", cascade={"persist", "remove"})
+     *
+     */
+    private $rendezvous;
     /**
      * Customer constructor.
      */
@@ -157,8 +171,62 @@ class Customer extends Company
         $this->contactsStatus = new ArrayCollection();
         $this->fiscalYears = new ArrayCollection();
         $this->bankAccounts = new ArrayCollection();
+        $this->jobQuotations=new ArrayCollection();
+        $this->contacts=new ArrayCollection();
     }
 
+    /**
+     * @return Rendezvous
+     */
+    public function getRendezvous()
+    {
+        return $this->rendezvous;
+    }
+
+    /**
+     * @param Rendezvous $rendezvous
+     */
+    public function setRendezvous(Rendezvous $rendezvous)
+    {
+        $this->rendezvous = $rendezvous;
+    }
+
+
+    /**
+     * @return Contact[]|ArrayCollection
+     */
+    public function getContacts()
+    {
+        return $this->contacts;
+    }
+
+    /**
+     * @param Contact[]|ArrayCollection $contacts
+     */
+    public function setContacts($contacts)
+    {
+        $this->contacts = $contacts;
+    }
+
+    /**
+     * @param $contacts
+     *
+     * @return $this
+     */
+    public function addContact(Contact $contacts)
+    {
+        $this->contacts->add($contacts);
+        return $this;
+    }
+    /**
+     * @param $contacts
+     *
+     * @return bool
+     */
+    public function removeContact($contacts)
+    {
+        return $this->contacts->removeElement($contacts);
+    }
 
     /**
      * @return JobQuotation

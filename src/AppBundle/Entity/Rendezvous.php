@@ -40,11 +40,12 @@ class Rendezvous
     private $cin;
 
     /**
-     * @var Company
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Company", inversedBy="rendezvous")
+     * @var Customer
+     * 
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Customer", inversedBy="rendezvous")
      *
      */
-    private $company;
+    private $customer;
 
     /**
      * @return mixed
@@ -81,17 +82,18 @@ class Rendezvous
     /**
      * @return Company
      */
-    public function getCompany()
+    public function getCustomer()
     {
-        return $this->company;
+        return $this->customer;
     }
 
     /**
-     * @param Company $company
+     * @param Company $customer
      */
-    public function setCompany(Company $company)
+    public function setCustomer(Company $customer)
     {
-        $this->company = $company;
+        $this->customer = $customer;
     }
+
 
 }

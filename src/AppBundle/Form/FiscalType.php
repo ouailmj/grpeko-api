@@ -44,7 +44,7 @@ class FiscalType extends AbstractType
           //  ->add('status', TextType::class, array(
              //       'label' => false
             //    ))
-            ->add('assignment', AssignmentType::class, [
+            ->add('mainassignment', AssignmentType::class, [
                 'label' => false,
             ])
         ;

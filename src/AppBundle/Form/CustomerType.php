@@ -21,7 +21,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CompanyType extends AbstractType
+class CustomerType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -33,41 +33,10 @@ class CompanyType extends AbstractType
                 'label' => 'Raison Sociale:',
                 'required' => true,
             ])
-            ->add('legalForm', ChoiceType::class, [
-                'label' => 'Forme Juridique:',
-                //  'label' => false,
-                'choices' => [
-                    'SARL' => 'SARL',
-                    'EURL' => 'EURL',
-                    'SELARL' => 'SELARL',
-                    'SA' => 'SA',
-                    'SAS' => 'SAS',
-                    'SASU' => 'SASU',
-                    'SARL' => 'SARL',
-                    'SNC' => 'SNC',
-                    'SCP' => 'SCP',
-                ],
-                'required' => true,
-            ])
-            ->add('taxationRegime', ChoiceType::class, [
-                'label' => 'Régime d\'imposition:',
-                'choices' => [
-                    'micro-entreprise' => 'micro-entreprise',
-                    'l’auto-entreprise' => 'l’auto-entreprise',
-                    'réel simplifié' => 'réel simplifié',
-                    'réel normal' => 'réel normal',
-                ],
-                'required' => false,
-            ])
-            ->add('vatSystem', ChoiceType::class, [
-                'label' => 'Régime de TVA:',
-                'choices' => [
-                    'le régime du réel normal de TVA ' => 'le régime du réel normal de TVA ',
-                    'le régime simplifié d’imposition à la TVA' => 'le régime simplifié d’imposition à la TVA',
-                    'le régime de la franchise en base de TVA' => 'le régime de la franchise en base de TVA',
-                ],
-                'required' => false,
-            ])
+            ->add('legalForm', LegalFormType::class)
+            ->add('taxSystem', TaxSystemType::class)
+            ->add('vatSystem', VatSystemType::class)
+
             ->add('currentAddress', AdresseCurrentType::class)
             ->add('siegeAddress', AdresseType::class, [
                 'label' => false,
@@ -84,26 +53,8 @@ class CompanyType extends AbstractType
                         'class' => 'old-addresses-collection',
                     ],
                 ])
-            ->add('apeCode', ChoiceType::class, [
-                'label' => 'Code APE:',
-                'choices' => [
-                    '0112' => '0112',
-                    '0113' => '0113',
-                    '0114' => '0114',
-                    '0115' => '0115',
-                    '0116' => '0116',
-                    '0119' => '0119',
-                    '0121' => '0121',
-                    '0122' => '0122',
-                    '0123' => '0123',
-                    '0124' => '0124',
-                    '0125' => '0125',
-                    '0126' => '0126',
-                    '0127' => '0127',
-                    '0128' => '0128',
-                ],
-                'required' => false,
-            ])
+            ->add('apeCode', ApeCodeType::class)
+
             ->add('mainActivity', TextType::class, [
                 'label' => false,
                 'label' => 'Activité principale:',
@@ -157,7 +108,7 @@ class CompanyType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'AppBundle\Entity\Company',
+            'data_class' => 'AppBundle\Entity\Customer',
             'add_contact_data' => true,
         ]);
     }
@@ -167,6 +118,6 @@ class CompanyType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_company';
+        return 'appbundle_customer';
     }
 }

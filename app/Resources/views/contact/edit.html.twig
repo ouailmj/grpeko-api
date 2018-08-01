@@ -5,16 +5,16 @@
         <div class="tabbale">
             <ul class="nav nav-tabs bg-teal-400 nav-justified">
                 <li id="clikfirsttab" class="active"><a href="#firsttab" data-toggle="tab" aria-expanded="true">Fiche Client</a></li>
-                <li><a href="{{ path('devis_new') }}">Prise de connaissance</a></li>
+                <li><a href="">Prise de connaissance</a></li>
             </ul>
 
             <div class="tab-content" id="firsttab">
 
                 <div class="">
                     <ul class="nav nav-tabs nav-tabs-highlight">
-                        <li class=""><a href="{{ path('company_edit',{'id': app.request.get('id') }) }}"><i class="icon-users position-left"></i>Informations générales</a></li>
+                        <li class=""><a href="{{ path('company_edit',{'id': idcustomer}) }}"><i class="icon-users position-left"></i>Informations générales</a></li>
                         {# <li class=""><a href="#Dossiers" data-toggle="tab" aria-expanded="false"><i class="icon-folder position-left"></i>Rendez-vous</a></li> #}
-                        <li class="active"><a href="#Contrats" data-toggle="tab" aria-expanded="false"><i class="icon-address-book3 position-left"></i>Contacts</a></li>
+                        <li class=""><a href="{{ path('contact_list', { 'id': app.request.get('id') }) }}"><i class="icon-address-book3 position-left"></i>Contacts</a></li>
                         <li>
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="dropdown dropdown-user">
@@ -26,10 +26,10 @@
 
                                     <ul class="dropdown-menu dropdown-menu-right">
                                         <li class=""><a href="#mission" data-toggle="tab" aria-expanded="false">Mission</a></li>
-                                        <li class=""><a href="#Exercices" data-toggle="tab" aria-expanded="false">Exercices</a></li>
+                                        <li class=""><a href="{{ path('excerice_list',{'id': idcustomer }) }}">Exercices</a></li>
                                         <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Informations Bancaires</a></li>
                                         <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Rapprochement CFONB - Mots clés</a></li>
-                                        <li class=""><a href="#Facturation" data-toggle="tab" aria-expanded="false">Facturation</a></li>
+                                        <li class=""><a href="{{ path('invoice_list',{'id': app.request.get('id') }) }}">Facturation</a></li>
                                         <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Codes accés espaces clients</a></li>
 
                                     </ul>

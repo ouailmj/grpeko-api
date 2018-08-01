@@ -46,7 +46,6 @@ class AssignmentType extends AbstractType
         $resolver->setDefaults([
             'data_class' => 'AppBundle\Entity\Assignment',
             'forEdit' => false,
-            'advisories' => [],
         ]);
     }
 

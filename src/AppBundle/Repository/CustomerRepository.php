@@ -17,4 +17,22 @@ namespace AppBundle\Repository;
 class CustomerRepository extends BaseRepository
 {
 
+    #public function test()
+    #{
+       #return $this->createQueryBuilder('b')->
+            #select('Year(c.startDate)')
+                #->from(FiscalYear::class, 'c')
+           #->getQuery()
+           #->execute();
+
+   # }
+
+    public function findByID($id)
+    {
+        return $this->createQueryBuilder('c')
+            ->where('c.user = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->execute();
+    }
 }

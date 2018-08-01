@@ -5,7 +5,7 @@
         <div class="tabbale">
             <ul class="nav nav-tabs bg-teal-400 nav-justified">
                 <li id="clikfirsttab" class="active"><a href="#firsttab" data-toggle="tab" aria-expanded="true">Fiche Client</a></li>
-                <li><a href="{{ path('devis_new') }}">Prise de connaissance</a></li>
+                <li><a href="">Prise de connaissance</a></li>
             </ul>
 
                 <div class="tab-content" id="firsttab">
@@ -25,10 +25,10 @@
 
                                         <ul class="dropdown-menu dropdown-menu-right">
                                             <li class=""><a href="#mission" data-toggle="tab" aria-expanded="false">Mission</a></li>
-                                            <li class=""><a href="{{ path('excercice_new',{'id': app.request.get('id') }) }}">Exercices</a></li>
+                                            <li class=""><a href="{{ path('excerice_list',{'id': app.request.get('id') }) }}">Exercices</a></li>
                                             <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Informations Bancaires</a></li>
                                             <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Rapprochement CFONB - Mots clés</a></li>
-                                            <li class=""><a href="#Facturation" data-toggle="tab" aria-expanded="false">Facturation</a></li>
+                                            <li class=""><a href="{{ path('invoice_list',{'id': app.request.get('id') }) }}">Facturation</a></li>
                                             <li class=""><a href="#Relation_client" data-toggle="tab" aria-expanded="false">Codes accés espaces clients</a></li>
 
                                         </ul>
@@ -192,10 +192,12 @@
                     <div class="col-sm-5">
                         <div class="col-sm-7">
                             {{form_widget(contact.partNumber)}}
+                            {{form_errors(contact.partNumber)}}
                         </div>
                         <div class="col-sm-5">
                             <div>
                                 {{form_widget(contact.partNumberPercent)}}
+                                {{form_errors(contact.partNumberPercent)}}
                             </div>
                         </div>
                     </div>
@@ -314,6 +316,7 @@
                 <label class="control-label col-sm-1" >Email</label>
                 <div class="col-sm-2">
                     {{form_widget(contact.email)}}
+                    {{form_errors(contact.email)}}
                 </div>
             </div>
 
@@ -441,7 +444,7 @@
             <div class="form-group">
                 <label class="control-label col-sm-2">Nombre d'enfant</label>
                 <div class="col-sm-2">
-                    {{form_widget(contact.childrenNumber)}}
+                    {{form_row(contact.childrenNumber)}}
                 </div>
             </div>
 
@@ -452,7 +455,6 @@
                         <legend class="scheduler-border" style="text-transform: capitalize">Mariages</legend>
 
                             {{form_widget(contact.weddings)}}
-
 
                     </fieldset>
                 </div>
@@ -473,6 +475,7 @@
                 <label class="control-label col-sm-2" >Revenue annuel net</label>
                 <div class="col-sm-2">
                     {{form_widget(contact.annualIncome)}}
+                    {{form_errors(contact.annualIncome)}}
                 </div>
             </div>
 

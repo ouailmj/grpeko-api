@@ -41,6 +41,15 @@ class TaxSystem
     protected $id;
 
     /**
+     * Régime d'imposition: Tax
+     *
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $name;
+
+    /**
      * @var Company [] | ArrayCollection
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Company", mappedBy="taxSystem")
      */
@@ -67,6 +76,22 @@ class TaxSystem
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName(string $name)
+    {
+        $this->name = $name;
     }
 
 

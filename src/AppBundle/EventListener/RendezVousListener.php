@@ -14,7 +14,7 @@ namespace AppBundle\EventListener;
 
 use AppBundle\Event\AppEvents;
 use AppBundle\Event\RendezVousCreatedEvent;
-use AppBundle\Mailer;
+use AppBundle\Mailer\Mailer;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class RendezVousListener implements EventSubscriberInterface
@@ -22,9 +22,11 @@ class RendezVousListener implements EventSubscriberInterface
     private $mailer;
 
     /**
-     * ClientListener constructor.
+     * RendezVousListener constructor.
+     *
+     * @param Mailer $mailer
      */
-    public function __construct(Mailer\Mailer $mailer)
+    public function __construct(Mailer $mailer)
     {
         $this->mailer = $mailer;
     }
