@@ -10,15 +10,12 @@
  *
  */
 
-
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-
 /**
- * Class CEBMandate
- * @package AppBundle\Entity
+ * Class CEBMandate.
  *
  *
  *
@@ -29,8 +26,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class CEBMandate
 {
-
-
     /**
      * @var int
      *
@@ -43,14 +38,12 @@ class CEBMandate
     /**
      * @var BankAccount
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\BankAccount", mappedBy="cebMandate")
-     *
      */
     private $bankAccount;
 
     /**
      * @var CEBProvider
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CEBProvider", inversedBy="cebMandates")
-     *
      */
     private $cebProvider;
 
@@ -61,7 +54,6 @@ class CEBMandate
     {
         return $this->id;
     }
-
 
     /**
      * @return BankAccount
@@ -94,6 +86,4 @@ class CEBMandate
     {
         $this->cebProvider = $cebProvider;
     }
-
-
 }

@@ -10,15 +10,12 @@
  *
  */
 
-
 namespace AppBundle\Entity;
-
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class JobQuotation
- * @package AppBundle\Entity
+ * Class JobQuotation.
  *
  * @ORM\Table(name="job_quotation")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\JobQuotationRepository")
@@ -35,7 +32,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class JobQuotation
 {
-
     /**
      * @var int
      *
@@ -44,7 +40,6 @@ class JobQuotation
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-
 
     /**
      * @var Job
@@ -66,8 +61,6 @@ class JobQuotation
     {
         return $this->id;
     }
-
-
 
     /**
      * @return Job
@@ -100,8 +93,4 @@ class JobQuotation
     {
         $this->customer = $customer;
     }
-
-
-
-
 }

@@ -10,9 +10,7 @@
  *
  */
 
-
 namespace AppBundle\Repository;
-
 
 use AppBundle\Entity\Contact;
 
@@ -20,8 +18,8 @@ class ContactRepository extends BaseRepository
 {
     public function findByEmail($email)
     {
-        $qb=$this->createQueryBuilder("contact");
-        $cpt= $qb->select('contact.email')
+        $qb = $this->createQueryBuilder('contact');
+        $cpt = $qb->select('contact.email')
             ->from(Contact::class, 'c')
             ->where('c.email =:email')
             ->setParameter('email', $email)

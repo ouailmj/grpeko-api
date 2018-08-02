@@ -15,8 +15,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class Payment
- * @package AppBundle\Entity
+ * Class Payment.
  *
  *
  * @ORM\Table(name="payment")
@@ -26,8 +25,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Payment
 {
-
-
     /**
      * @var int
      *
@@ -36,7 +33,6 @@ class Payment
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-
 
     /**
      * @var Invoice
@@ -59,7 +55,6 @@ class Payment
     {
         return $this->id;
     }
-
 
     /**
      * @return Invoice
@@ -92,9 +87,4 @@ class Payment
     {
         $this->paymentMode = $paymentMode;
     }
-
-
-
-
-
 }

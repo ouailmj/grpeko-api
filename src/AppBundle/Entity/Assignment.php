@@ -10,16 +10,13 @@
  *
  */
 
-
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-
 /**
- * Class Assignment
- * @package AppBundle\Entity
+ * Class Assignment.
  *
  *
  *
@@ -30,8 +27,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Assignment
 {
-
-
     /**
      * @var int
      *
@@ -57,7 +52,6 @@ class Assignment
      * @var FiscalYear
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\FiscalYear", inversedBy="secondaryAssignments")
-     *
      */
     private $secondaryFiscalYear;
 
@@ -83,7 +77,6 @@ class Assignment
         return $this->id;
     }
 
-
     /**
      * @return TypeMission[]|ArrayCollection
      */
@@ -102,16 +95,19 @@ class Assignment
 
     /**
      * @param TypeMission $typeMission
+     *
      * @return $this
      */
     public function addTypeMission(TypeMission $typeMission)
     {
         $this->typeMissions->add($typeMission);
+
         return $this;
     }
 
     /**
      * @param TypeMission $typeMission
+     *
      * @return $this
      */
     public function removeTypeMission(TypeMission $typeMission)
@@ -166,8 +162,4 @@ class Assignment
     {
         $this->employee = $employee;
     }
-
-
-
-
 }

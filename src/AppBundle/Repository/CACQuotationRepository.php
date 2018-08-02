@@ -10,13 +10,10 @@
  *
  */
 
-
 namespace AppBundle\Repository;
-
 
 use AppBundle\Entity\JobQuotation;
 
 class CACQuotationRepository extends JobQuotation
 {
-
 }

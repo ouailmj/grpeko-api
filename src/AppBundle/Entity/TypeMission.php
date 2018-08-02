@@ -10,17 +10,15 @@
  *
  */
 
-
 namespace AppBundle\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
-use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
- * Class TypeMission
- * @package AppBundle\Entity
+ * Class TypeMission.
  *
  *
  * @ORM\Table(name="type_mission")
@@ -36,8 +34,6 @@ use ApiPlatform\Core\Annotation\ApiResource;
  */
 class TypeMission
 {
-
-
     /**
      * @var int
      *
@@ -86,8 +82,6 @@ class TypeMission
         return $this->id;
     }
 
-
-
     /**
      * @return Mission[]|ArrayCollection
      */
@@ -106,16 +100,19 @@ class TypeMission
 
     /**
      * @param Mission $mission
+     *
      * @return $this
      */
     public function addMission(Mission $mission)
     {
         $this->missions->add($mission);
+
         return $this;
     }
 
     /**
      * @param Mission $mission
+     *
      * @return bool
      */
     public function removeMission(Mission $mission)
@@ -141,16 +138,19 @@ class TypeMission
 
     /**
      * @param Assignment $assignment
+     *
      * @return $this
      */
     public function addAssignment(Assignment $assignment)
     {
         $this->assignments->add($assignment);
+
         return $this;
     }
 
     /**
      * @param Assignment $assignment
+     *
      * @return bool
      */
     public function removeAssignment(Assignment $assignment)
@@ -173,5 +173,4 @@ class TypeMission
     {
         $this->type = $type;
     }
-
 }

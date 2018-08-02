@@ -10,16 +10,13 @@
  *
  */
 
-
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-
 /**
- * Class VatSystem
- * @package AppBundle\Entity
+ * Class VatSystem.
  *
  *
  *
@@ -30,8 +27,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class VatSystem
 {
-
-
     /**
      * @var int
      *
@@ -42,14 +37,13 @@ class VatSystem
     protected $id;
 
     /**
-     * Régime de TVA
+     * Régime de TVA.
      *
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $name;
-
 
     /**
      * @var Company [] | ArrayCollection
@@ -96,7 +90,6 @@ class VatSystem
         $this->name = $name;
     }
 
-
     /**
      * @return Company[]|ArrayCollection
      */
@@ -115,16 +108,19 @@ class VatSystem
 
     /**
      * @param Company $company
+     *
      * @return $this
      */
     public function addCompany(Company $company)
     {
         $this->companies->add($company);
+
         return $this;
     }
 
     /**
      * @param Company $company
+     *
      * @return bool
      */
     public function removeCompany(Company $company)
@@ -150,21 +146,23 @@ class VatSystem
 
     /**
      * @param FiscalYear $fiscalYear
+     *
      * @return $this
      */
     public function addFiscalYear(FiscalYear $fiscalYear)
     {
         $this->fiscalYears->add($fiscalYear);
+
         return $this;
     }
 
     /**
      * @param FiscalYear $fiscalYear
+     *
      * @return bool
      */
     public function removeFiscalYear(FiscalYear $fiscalYear)
     {
         return $this->fiscalYears->removeElement($fiscalYear);
     }
-
 }

@@ -10,15 +10,13 @@
  *
  */
 
-
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class LegalForm
- * @package AppBundle\Entity
+ * Class LegalForm.
  *
  * @ORM\Table(name="legal_form")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\LegalFormRepository")
@@ -27,8 +25,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class LegalForm
 {
-
-
     /**
      * @var int
      *
@@ -59,7 +55,6 @@ class LegalForm
      */
     private $companies;
 
-
     /**
      * LegalForm constructor.
      */
@@ -76,8 +71,6 @@ class LegalForm
     {
         return $this->id;
     }
-
-
 
     /**
      * @return Company[]|ArrayCollection
@@ -113,16 +106,19 @@ class LegalForm
 
     /**
      * @param Company $company
+     *
      * @return $this
      */
     public function addCompany(Company $company)
     {
         $this->companies->add($company);
+
         return $this;
     }
 
     /**
      * @param Company $company
+     *
      * @return bool
      */
     public function removeCompany(Company $company)
@@ -148,23 +144,23 @@ class LegalForm
 
     /**
      * @param FiscalYear $fiscalYear
+     *
      * @return $this
      */
     public function addFiscalYear(FiscalYear $fiscalYear)
     {
         $this->fiscalYears->add($fiscalYear);
+
         return $this;
     }
 
     /**
      * @param FiscalYear $fiscalYear
+     *
      * @return bool
      */
     public function removeFiscalYear(FiscalYear $fiscalYear)
     {
         return $this->fiscalYears->removeElement($fiscalYear);
     }
-
-
-
 }

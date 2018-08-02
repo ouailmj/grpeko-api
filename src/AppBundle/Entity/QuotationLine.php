@@ -10,14 +10,12 @@
  *
  */
 
-
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class QuotationLine
- * @package AppBundle\Entity
+ * Class QuotationLine.
  *
  * @ORM\Table(name="quotation_line")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\QuotationLineRepository")
@@ -26,8 +24,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class QuotationLine
 {
-
-
     /**
      * @var int
      *
@@ -57,7 +53,6 @@ class QuotationLine
     {
         return $this->id;
     }
-
 
     /**
      * @return ECQuotation
@@ -90,10 +85,4 @@ class QuotationLine
     {
         $this->mission = $mission;
     }
-
-
-
-
-
-
 }

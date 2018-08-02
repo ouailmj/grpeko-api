@@ -10,22 +10,19 @@
  *
  */
 
-
 namespace AppBundle\Repository;
-
 
 class CustomerRepository extends BaseRepository
 {
+    //public function test()
+    //{
+    //return $this->createQueryBuilder('b')->
+    //select('Year(c.startDate)')
+    //->from(FiscalYear::class, 'c')
+    //->getQuery()
+    //->execute();
 
-    #public function test()
-    #{
-       #return $this->createQueryBuilder('b')->
-            #select('Year(c.startDate)')
-                #->from(FiscalYear::class, 'c')
-           #->getQuery()
-           #->execute();
-
-   # }
+    // }
 
     public function findByID($id)
     {

@@ -51,5 +51,4 @@ class ContactManager
         $this->em->remove($contact);
         $this->em->flush();
     }
-
 }

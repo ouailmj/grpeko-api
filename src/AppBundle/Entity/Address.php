@@ -10,14 +10,12 @@
  *
  */
 
-
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class Address
- * @package AppBundle\Entity
+ * Class Address.
  *
  *
  *
@@ -28,7 +26,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Address
 {
-
     /**
      * @var int
      *
@@ -137,7 +134,6 @@ class Address
         $this->email = $email;
     }
 
-
     /**
      * @return int
      */
@@ -153,6 +149,7 @@ class Address
     {
         return $this->leftAt;
     }
+
     /**
      * @param \DateTime $leftAt
      */

@@ -70,7 +70,7 @@ class AffectationController extends BaseController
         $entityManager = $this->getDoctrine()->getManager();
         $companys = $entityManager->getRepository(Company::class)->findById($allvals);
 
-        /**
+        /*
          * @var Company
          */
         foreach ($companys as $coco) {

@@ -10,15 +10,12 @@
  *
  */
 
-
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-
 /**
- * Class CACQuotation
- * @package AppBundle\Entity
+ * Class CACQuotation.
  *
  *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CACQuotationRepository")
@@ -27,7 +24,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class CACQuotation extends JobQuotation
 {
-
     /**
      * @var int
      *
@@ -52,5 +48,4 @@ class CACQuotation extends JobQuotation
     {
         $this->id = $id;
     }
-
 }

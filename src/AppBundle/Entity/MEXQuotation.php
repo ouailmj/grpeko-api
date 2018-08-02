@@ -10,14 +10,12 @@
  *
  */
 
-
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class MEXQuotation
- * @package AppBundle\Entity
+ * Class MEXQuotation.
  *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MEXQuotationRepository")
  *
@@ -25,5 +23,4 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class MEXQuotation extends JobQuotation
 {
-
 }

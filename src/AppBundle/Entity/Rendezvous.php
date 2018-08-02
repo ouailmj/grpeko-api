@@ -41,9 +41,8 @@ class Rendezvous
 
     /**
      * @var Customer
-     * 
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Customer", inversedBy="rendezvous")
      *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Customer", inversedBy="rendezvous")
      */
     private $customer;
 
@@ -94,6 +93,5 @@ class Rendezvous
     {
         $this->customer = $customer;
     }
-
 
 }

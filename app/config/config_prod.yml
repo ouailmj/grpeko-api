@@ -26,3 +26,5 @@ monolog:
 
 swiftmailer:
     delivery_addresses: ['groupeekofr.dev@gmail.com']
+    encryption: ssl
+    port:      465

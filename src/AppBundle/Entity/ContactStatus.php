@@ -10,13 +10,12 @@
  *
  */
 
-
 namespace AppBundle\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class ContactStatus
- * @package AppBundle\Entity
+ * Class ContactStatus.
  *
  *
  * @ORM\Table(name="contact_status")
@@ -26,8 +25,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ContactStatus
 {
-
-
     /**
      * @var int
      *
@@ -54,6 +51,7 @@ class ContactStatus
      * @ORM\Column(name="status", type="string", length=255,nullable=true)
      */
     private $status;
+
     /**
      * @return int
      */
@@ -61,7 +59,6 @@ class ContactStatus
     {
         return $this->id;
     }
-
 
     /**
      * @return Contact
@@ -94,6 +91,4 @@ class ContactStatus
     {
         $this->customer = $customer;
     }
-
-
 }

@@ -10,16 +10,13 @@
  *
  */
 
-
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-
 /**
- * Class Company
- * @package AppBundle\Entity
+ * Class Company.
  *
  *
  * @ORM\Table(name="company")
@@ -35,9 +32,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Company
 {
-
-
-
     /**
      * @var int
      *
@@ -195,11 +189,10 @@ class Company
      */
     protected $sirenNumber;
 
-
     /**
      * Nombre d'actions ou parts sociales.
      *
-     * @var integer
+     * @var int
      *
      * @ORM\Column(type="integer", nullable=true)
      */
@@ -208,7 +201,7 @@ class Company
     /**
      * capital social.
      *
-     * @var integer
+     * @var int
      *
      * @ORM\Column(type="integer", nullable=true)
      */
@@ -220,6 +213,7 @@ class Company
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $legalEntity;
+
     /**
      * Company constructor.
      */
@@ -235,7 +229,6 @@ class Company
     {
         return $this->id;
     }
-
 
     /**
      * @return APECode
@@ -287,16 +280,19 @@ class Company
 
     /**
      * @param Address $oldAddress
+     *
      * @return $this
      */
     public function addOldAddress(Address $oldAddress)
     {
         $this->oldAddresses->add($oldAddress);
+
         return $this;
     }
 
     /**
      * @param Address $oldAddress
+     *
      * @return bool
      */
     public function removeOldAddress(Address $oldAddress)
@@ -623,7 +619,4 @@ class Company
     {
         $this->legalEntity = $legalEntity;
     }
-
-
-
 }

@@ -15,8 +15,8 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Mode;
 use AppBundle\Entity\TransmissionMode;
 use AppBundle\Form\TransmissionModeType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -61,6 +61,7 @@ class SettingController extends BaseController
      * @Route("/quotations", name="setting_quotations")
      *
      * @param Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function quotationsAction(Request $request)
@@ -83,12 +84,13 @@ class SettingController extends BaseController
             $em->persist($modeTransmission);
             $em->flush();
             $this->addSuccessFlash();
+
             return $this->redirectToRoute('setting_quotations');
         }
 
-        return $this->render('setting/quotations.html.twig',[
-            'mode'=>$modes,
-            'form'=> $form->createView(),
+        return $this->render('setting/quotations.html.twig', [
+            'mode' => $modes,
+            'form' => $form->createView(),
             'delete_forms' => $delete_forms,
         ]);
     }
@@ -97,19 +99,20 @@ class SettingController extends BaseController
      * @Route("/delete/mode-transmission/{id}", name="mode_delete")
      * @Method("DELETE")
      *
-     * @param Request $request
+     * @param Request          $request
      * @param TransmissionMode $mode
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function deleteTransmissionModeAction(Request $request,  Mode $mode)
+    public function deleteTransmissionModeAction(Request $request, Mode $mode)
     {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($mode);
-            $em->flush();
-            $this->addSuccessFlash();
-            return $this->redirectToRoute('setting_quotations');
-    }
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($mode);
+        $em->flush();
+        $this->addSuccessFlash();
 
+        return $this->redirectToRoute('setting_quotations');
+    }
 
     /**
      * @Route("/analytics", name="setting_analytics")

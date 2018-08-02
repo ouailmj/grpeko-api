@@ -10,29 +10,22 @@
  *
  */
 
-
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-
 /**
- * Class CustomerStatus
- * @package AppBundle\Entity
+ * Class CustomerStatus.
  *
  *
  * @ORM\Table(name="customer_status")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CustomerStatusRepository")
  *
  * @ORM\HasLifecycleCallbacks()
- *
  */
 class CustomerStatus
 {
-
-
-
     /**
      * @var int
      *
@@ -46,14 +39,12 @@ class CustomerStatus
      * @var Customer [] | ArrayCollection
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Customer", mappedBy="customerStatus")
      */
-
     private $customers;
 
     public function __construct()
     {
         $this->customers = new ArrayCollection();
     }
-
 
     /**
      * @var string
@@ -69,8 +60,6 @@ class CustomerStatus
     {
         return $this->id;
     }
-
-
 
     /**
      * @return Customer[]|ArrayCollection
@@ -90,16 +79,19 @@ class CustomerStatus
 
     /**
      * @param Customer $customer
+     *
      * @return $this
      */
     public function addCustomer(Customer $customer)
     {
         $this->customers->add($customer);
+
         return $this;
     }
 
     /**
      * @param Customer $customer
+     *
      * @return $this
      */
     public function removeCustomer(Customer $customer)
@@ -125,7 +117,6 @@ class CustomerStatus
 
     public function __toString()
     {
-        return (empty($this->status)) ? "" : $this->status;
+        return (empty($this->status)) ? '' : $this->status;
     }
-
 }

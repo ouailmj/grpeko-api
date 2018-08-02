@@ -10,15 +10,13 @@
  *
  */
 
-
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class FiscalYear
- * @package AppBundle\Entity
+ * Class FiscalYear.
  *
  *
  * @ORM\Table(name="fiscal_year")
@@ -28,8 +26,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class FiscalYear
 {
-
-
     /**
      * @var int
      *
@@ -63,11 +59,10 @@ class FiscalYear
     /**
      * @var LegalForm
      * @ORM\ManyToOne(targetEntity="LegalForm", inversedBy="fiscalYears")
-     *
      */
     private $legalForm;
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(type="integer",nullable=true)
      */
@@ -82,14 +77,12 @@ class FiscalYear
     /**
      * @var TaxSystem
      * @ORM\ManyToOne(targetEntity="TaxSystem", inversedBy="fiscalYears",cascade={"persist","remove"})
-     *
      */
     private $taxSystem;
 
     /**
      * @var VatSystem
      * @ORM\ManyToOne(targetEntity="VatSystem", inversedBy="fiscalYears",cascade={"persist","remove"})
-     *
      */
     private $vatSystem;
 
@@ -104,14 +97,12 @@ class FiscalYear
     /**
      * @var Customer
      * @ORM\ManyToOne(targetEntity="Customer", inversedBy="fiscalYears")
-     *
      */
     private $customer;
 
     /**
      * @var Assignment
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Assignment", inversedBy="mainFiscalYear",cascade={"persist"})
-     *
      */
     private $mainAssignment;
 
@@ -119,7 +110,6 @@ class FiscalYear
      * @var Assignment [] | ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Assignment", mappedBy="secondaryFiscalYear")
-     *
      */
     private $secondaryAssignments;
 
@@ -138,7 +128,6 @@ class FiscalYear
     {
         return $this->id;
     }
-
 
     /**
      * @return Mode
@@ -270,16 +259,19 @@ class FiscalYear
 
     /**
      * @param Assignment $secondaryAssignment
+     *
      * @return $this
      */
     public function addSecondaryAssignment(Assignment $secondaryAssignment)
     {
         $this->secondaryAssignments->add($secondaryAssignment);
+
         return $this;
     }
 
     /**
      * @param Assignment $secondaryAssignment
+     *
      * @return bool
      */
     public function removeSecondaryAssignment(Assignment $secondaryAssignment)
@@ -298,7 +290,7 @@ class FiscalYear
     /**
      * @param \DateTime $startDate
      */
-    public function setStartDate(\DateTime $startDate=null)
+    public function setStartDate(\DateTime $startDate = null)
     {
         $this->startDate = $startDate;
     }
@@ -314,7 +306,7 @@ class FiscalYear
     /**
      * @param \DateTime $closeDate
      */
-    public function setCloseDate(\DateTime $closeDate=null)
+    public function setCloseDate(\DateTime $closeDate = null)
     {
         $this->closeDate = $closeDate;
     }
@@ -350,5 +342,4 @@ class FiscalYear
     {
         $this->year = $year;
     }
-
 }

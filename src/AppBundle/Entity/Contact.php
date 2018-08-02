@@ -10,17 +10,15 @@
  *
  */
 
-
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Class Contact
- * @package AppBundle\Entity
+ * Class Contact.
  *
  *
  * @ORM\Table(name="contact")
@@ -40,7 +38,7 @@ class Contact
         $this->children = new ArrayCollection();
     }
 
-        /**
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -130,7 +128,7 @@ class Contact
     private $otherCompany;
 
     /**
-     * @var integer
+     * @var int
      * @ORM\Column(name="partNumber", type="integer", nullable=true)
      * @Assert\Type("integer")
      */
@@ -265,7 +263,7 @@ class Contact
     private $comment;
 
     /**
-     * @var integer
+     * @var int
      * @ORM\Column(name="childrenNumber", type="integer" ,nullable=true)
      * @Assert\Type("integer")
      */
@@ -363,7 +361,6 @@ class Contact
      *
      * @ORM\Column(type="string", length=25, nullable=true)
      */
-
     protected $faxNumber;
     /**
      * @var string
@@ -449,7 +446,6 @@ class Contact
         $this->postalCode = $postalCode;
     }
 
-
     /**
      * @return string
      */
@@ -482,7 +478,6 @@ class Contact
         $this->associe = $associe;
     }
 
-
     /**
      * @return \DateTime
      */
@@ -494,7 +489,7 @@ class Contact
     /**
      * @param \DateTime $birthDate
      */
-    public function setBirthDate(\DateTime $birthDate=null)
+    public function setBirthDate(\DateTime $birthDate = null)
     {
         $this->birthDate = $birthDate;
     }
@@ -1206,7 +1201,7 @@ class Contact
     /**
      * @param \DateTime $dateStartJobPole
      */
-    public function setDateStartJobPole(\DateTime $dateStartJobPole=null)
+    public function setDateStartJobPole(\DateTime $dateStartJobPole = null)
     {
         $this->dateStartJobPole = $dateStartJobPole;
     }
@@ -1222,7 +1217,7 @@ class Contact
     /**
      * @param \DateTime $dateEndJobPole
      */
-    public function setDateEndJobPole(\DateTime $dateEndJobPole=null)
+    public function setDateEndJobPole(\DateTime $dateEndJobPole = null)
     {
         $this->dateEndJobPole = $dateEndJobPole;
     }
@@ -1243,8 +1238,6 @@ class Contact
         $this->ARCE_ARE = $ARCE_ARE;
     }
 
-
-
     /**
      * @return ContactStatus
      */
@@ -1260,6 +1253,4 @@ class Contact
     {
         $this->contactStatus = $contactStatus;
     }
-
-
 }

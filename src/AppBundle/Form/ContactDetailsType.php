@@ -188,7 +188,7 @@ class ContactDetailsType extends AbstractType
 
             ->add('comment', TextareaType::class, ['required' => false])
 
-            ->add('childrenNumber', NumberType::class, ['required' => false ,  'label' => false])
+            ->add('childrenNumber', NumberType::class, ['required' => false,  'label' => false])
 
             ->add('intermediate', TextType::class, [
                 'label' => 'de part:',

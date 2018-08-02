@@ -12,13 +12,11 @@
 
 namespace AppBundle\Entity;
 
-
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class Job
- * @package AppBundle\Entity
+ * Class Job.
  *
  *
  * @ORM\Table(name="job")
@@ -28,8 +26,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Job
 {
-
-
     /**
      * @var int
      *
@@ -102,8 +98,6 @@ class Job
         return $this->id;
     }
 
-
-
     /**
      * @return JobType
      */
@@ -138,11 +132,13 @@ class Job
 
     /**
      * @param JobQuotation $jobQuotation
+     *
      * @return $this
      */
     public function addJobQuotation(JobQuotation $jobQuotation)
     {
         $this->jobQuotations->add($jobQuotation);
+
         return $this;
     }
 
@@ -230,6 +226,4 @@ class Job
     {
         $this->firstFiscalStartDate = $firstFiscalStartDate;
     }
-
-
 }

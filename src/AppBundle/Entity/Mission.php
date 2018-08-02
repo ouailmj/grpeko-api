@@ -10,17 +10,14 @@
  *
  */
 
-
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use ApiPlatform\Core\Annotation\ApiResource;
 
-
 /**
- * Class Mission
- * @package AppBundle\Entity
+ * Class Mission.
  *
  *
  * @ORM\Table(name="mission")
@@ -103,6 +100,12 @@ class Mission
      */
     private $title;
 
+    /**
+     * @var float
+     * @ORM\Column(type = "float")
+     * @Groups({"type_mission"})
+     */
+    private $time;
 
     /**
      * @return int
@@ -111,7 +114,6 @@ class Mission
     {
         return $this->id;
     }
-
 
     /**
      * @return Mode

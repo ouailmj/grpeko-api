@@ -10,15 +10,13 @@
  *
  */
 
-
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class TaxSystem
- * @package AppBundle\Entity
+ * Class TaxSystem.
  *
  *
  *
@@ -29,8 +27,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class TaxSystem
 {
-
-
     /**
      * @var int
      *
@@ -41,7 +37,7 @@ class TaxSystem
     protected $id;
 
     /**
-     * Régime d'imposition: Tax
+     * Régime d'imposition: Tax.
      *
      * @var string
      *
@@ -94,7 +90,6 @@ class TaxSystem
         $this->name = $name;
     }
 
-
     /**
      * @return Company[]|ArrayCollection
      */
@@ -113,16 +108,19 @@ class TaxSystem
 
     /**
      * @param Company $company
+     *
      * @return $this
      */
     public function addCompany(Company $company)
     {
         $this->companies->add($company);
+
         return $this;
     }
 
     /**
      * @param Company $company
+     *
      * @return bool
      */
     public function removeCompany(Company $company)
@@ -146,25 +144,25 @@ class TaxSystem
         $this->fiscalYears = $fiscalYears;
     }
 
-
     /**
      * @param FiscalYear $fiscalYear
+     *
      * @return $this
      */
     public function addFiscalYear(FiscalYear $fiscalYear)
     {
         $this->fiscalYears->add($fiscalYear);
+
         return $this;
     }
 
     /**
      * @param FiscalYear $fiscalYear
+     *
      * @return bool
      */
     public function removeFiscalYear(FiscalYear $fiscalYear)
     {
         return $this->fiscalYears->removeElement($fiscalYear);
     }
-
-
 }

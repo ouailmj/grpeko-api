@@ -14,13 +14,10 @@ namespace AppBundle\Mailer;
 
 trait ContactMailTrait
 {
-
-
     public function sendContactMail(array $submittedData)
     {
         $body = $this->templateEngine->render('mail/website/contact.html.twig', $submittedData);
 
         $this->sendEmailMessage($body, $this->adminMail, 'Groupe EKO - Un message de contact');
     }
-
 }

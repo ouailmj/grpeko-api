@@ -10,15 +10,13 @@
  *
  */
 
-
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class Journal
- * @package AppBundle\Entity
+ * Class Journal.
  *
  *
  *
@@ -29,9 +27,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Journal
 {
-
-
-
     /**
      * @var int
      *
@@ -63,7 +58,6 @@ class Journal
         return $this->id;
     }
 
-
     /**
      * @return BankAccount[]|ArrayCollection
      */
@@ -82,21 +76,23 @@ class Journal
 
     /**
      * @param BankAccount $bankAccount
+     *
      * @return $this
      */
     public function addBankAccount(BankAccount $bankAccount)
     {
         $this->bankAccounts->add($bankAccount);
+
         return $this;
     }
 
     /**
      * @param BankAccount $bankAccount
+     *
      * @return bool
      */
     public function removeBankAccount(BankAccount $bankAccount)
     {
         return $this->bankAccounts->removeElement($bankAccount);
     }
-
 }
