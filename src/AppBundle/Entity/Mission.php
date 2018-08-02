@@ -101,13 +101,6 @@ class Mission
     private $title;
 
     /**
-     * @var float
-     * @ORM\Column(type = "float")
-     * @Groups({"type_mission"})
-     */
-    private $time;
-
-    /**
      * @return int
      */
     public function getId()
