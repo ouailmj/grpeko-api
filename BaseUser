@@ -1,0 +1,33 @@
+[1mdiff --git a/src/AppBundle/Entity/User.php b/src/AppBundle/Entity/User.php[m
+[1mindex 0ff2ba0..f8b23c2 100644[m
+[1m--- a/src/AppBundle/Entity/User.php[m
+[1m+++ b/src/AppBundle/Entity/User.php[m
+[36m@@ -27,7 +27,27 @@[m [muse Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;[m
+  * @ORM\HasLifecycleCallbacks()[m
+  * @UniqueEntity("email")[m
+  * @UniqueEntity("username")[m
+[31m- * @ApiResource()[m
+[32m+[m[32m * @ApiResource([m
+[32m+[m[32m *     itemOperations={[m
+[32m+[m[32m *     "get",[m
+[32m+[m[32m *     "put",[m
+[32m+[m[32m *     "delete",[m
+[32m+[m[32m *     },[m
+[32m+[m[32m *     collectionOperations= {[m
+[32m+[m[32m *     "post",[m
+[32m+[m[32m *     "api_current_user"={[m
+[32m+[m[32m *          "route_name"="currentUserAPI",[m
+[32m+[m[32m *          "method"="GET"[m
+[32m+[m[32m *      },[m
+[32m+[m[32m *     "api_sign_up"={"route_name"="signUpAPI"},[m
+[32m+[m[32m *     "api_avatar_upload" = {[m
+[32m+[m[32m *         "method"="POST",[m
+[32m+[m[32m *         "path"="/upload-avatar",[m
+[32m+[m[32m *         "controller"=UploadAvatarAction::class,[m
+[32m+[m[32m *         "defaults"={"_api_receive"=false},[m
+[32m+[m[32m *     },[m
+[32m+[m[32m *     }[m
+[32m+[m[32m *)[m
+  */[m
+ class User extends BaseUser[m
+ {[m

@@ -26,7 +26,27 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\HasLifecycleCallbacks()
  * @UniqueEntity("email")
  * @UniqueEntity("username")
- * @ApiResource()
+ * @ApiResource(
+ *     itemOperations={
+ *     "get",
+ *     "put",
+ *     "delete",
+ *     },
+ *     collectionOperations= {
+ *     "post",
+ *     "api_current_user"={
+ *          "route_name"="currentUserAPI",
+ *          "method"="GET"
+ *      },
+ *     "api_sign_up"={"route_name"="signUpAPI"},
+ *     "api_avatar_upload" = {
+ *         "method"="POST",
+ *         "path"="/upload-avatar",
+ *         "controller"=UploadAvatarAction::class,
+ *         "defaults"={"_api_receive"=false},
+ *     },
+ *     }
+ *)
  */
 class User extends BaseUser
 {

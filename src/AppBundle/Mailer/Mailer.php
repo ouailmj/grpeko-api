@@ -12,6 +12,7 @@
 
 namespace AppBundle\Mailer;
 
+use AppBundle\Event\RendezVousCreatedEvent;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 
 class Mailer
@@ -56,5 +57,21 @@ class Mailer
             ->setContentType('text/html');
 
         $this->mailer->send($message);
+    }
+
+    /**
+     * Notifies a user that his account has been created.
+     *
+     * @param User $user
+     */
+    public function sendPasswordUpdatedMessage(User $user)
+    {
+        $subject = $this->translator->trans('mail.password_updated_header');
+        $bodyMessage = $this->templateEngine->render(':mail/user:password_updated.html.twig', [
+            'subject' => $subject,
+            'email' => $user->getEmail(),
+            'password' => $user->getPlainPassword(),
+        ]);
+        $this->sendEmailMessage($bodyMessage, $user->getEmail(), $subject);
     }
 }

@@ -12,6 +12,7 @@
 
 namespace AppBundle\Model;
 
+use AppBundle\Mailer\Mailer;
 use AppBundle\Entity\User;
 use Doctrine\ORM\EntityManager;
 
@@ -22,6 +23,9 @@ class UserManager
      */
     private $fosUserManager;
 
+    /** @var Mailer */
+    private $mailer;
+
     /**
      * @var EntityManager
      */
@@ -30,10 +34,11 @@ class UserManager
     /**
      * UserManager constructor.
      *
+     * @param Mailer                               $mailer
      * @param \FOS\UserBundle\Doctrine\UserManager $fosUserManager
      * @param EntityManager                        $em
      */
-    public function __construct(\FOS\UserBundle\Doctrine\UserManager $fosUserManager, EntityManager $em)
+    public function __construct(\FOS\UserBundle\Doctrine\UserManager $fosUserManager,Mailer $mailer, EntityManager $em)
     {
         $this->fosUserManager = $fosUserManager;
         $this->em = $em;
@@ -59,5 +64,21 @@ class UserManager
     public function findUserByUsernameOrEmail($username)
     {
         return $this->fosUserManager->findUserByUsernameOrEmail($username);
+    }
+
+    /**
+     * @param User $user
+     * @param bool $sendMail
+     *
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function updatePassword(User $user, $sendMail = true, $flush = true)
+    {
+        $plainPassword = $user->getPlainPassword();
+        $this->fosUserManager->updatePassword($user);
+        if($flush) $this->em->flush();
+        $user->setPlainPassword($plainPassword);
+        $user->eraseCredentials();
     }
 }
