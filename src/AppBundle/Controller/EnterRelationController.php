@@ -137,6 +137,30 @@ class EnterRelationController extends BaseController
     }
 
     /**
+     * @Route("/devis", name="devis_new")
+     */
+    public function newAction(Request $request)
+    {
+        $rendezvous = new Rendezvous();
+        $formrendezvous = $this->createForm('AppBundle\Form\RendezVousType', $rendezvous);
+        $formrendezvous->handleRequest($request);
+
+        if ($formrendezvous->isSubmitted() && $formrendezvous->isValid()) {
+            $this->redirectToRoute('devis_new');
+        }
+
+        return $this->render('prisedeconnaissance/entree_relwation/new.html.twig', ['rendezvous' => $formrendezvous->createView()]);
+
+        }
+
+  /*  public function move(Rendezvous $rendezvous, string $fileName)
+    {
+        $rendezvous->getFichePatrimoniale()->move($this->getParameter('files_directory'), $fileName);
+    }*/
+
+    /*
+     * @Route("/edit/{id}", name="relation_edit")
+     *
      * @Route("/contactemailcheck", name="emailcontactcheck")
      * @Method("GET")
      */

@@ -88,4 +88,5 @@ class User extends BaseUser
         parent::__construct();
         $this->enabled = true;
     }
+    
 }

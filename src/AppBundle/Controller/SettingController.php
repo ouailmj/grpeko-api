@@ -66,12 +66,13 @@ class SettingController extends BaseController
      */
     public function quotationsAction(Request $request)
     {
-        $modeTransmission = new TransmissionMode();
-        $em = $this->getDoctrine()->getManager();
-        $modes = $em->getRepository(TransmissionMode::class)->findAll();
-        $delete_forms = [];
-        foreach ($modes as $mode) {
-            $delete_forms[] = $this->createFormBuilder()
+        $modeTransmission = new Mode();
+        $em =  $this->getDoctrine()->getManager();
+        $modes =$em->getRepository(Mode::class)->findAll();
+        $delete_forms= array();
+        foreach ($modes as $mode)
+        {
+            $delete_forms [] = $this->createFormBuilder()
                 ->setAction($this->generateUrl('mode_delete', ['id' => $mode->getId()]))
                 ->setMethod('DELETE')
                 ->getForm()->createView()

@@ -34,7 +34,7 @@ class MissionLine extends React.Component{
                 <td>
                     <input style={{width: '60px'}} type={'text'}  onChange={this.getResponse} />
                 </td>
-                <td>{this.props.missionLine.time}</td>
+                <td>{this.props.missionLine.unitTime}</td>
                 <td>{this.state.price}</td>
             </tr>
 
